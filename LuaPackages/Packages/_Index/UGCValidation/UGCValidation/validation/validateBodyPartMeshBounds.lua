@@ -140,7 +140,7 @@ local function calculateMeshSize(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateBodyPartMeshBounds_FailedToLoadMesh)
+		Analytics.reportFailure(Analytics.ErrorType.validateBodyPartMeshBounds_FailedToLoadMesh, nil, validationContext)
 		local errorMessage = "Failed to read mesh"
 		if validationContext.isServer then
 			-- there could be many reasons that an error occurred, the asset is not necessarilly incorrect, we just didn't get as
@@ -154,15 +154,18 @@ local function calculateMeshSize(
 end
 
 -- if the CageOrigin is far from the origin, then layered clothing can get fitted to the character, but it will be visibly offset from the character
-local function validateCageOrigin(meshHandle: MeshPart): (boolean, { string }?)
+local function validateCageOrigin(
+	meshHandle: MeshPart,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	assert(getFFlagUGCValidateCageOrigin())
 
 	local wrapTarget = meshHandle:FindFirstChildWhichIsA("WrapTarget")
 	-- the existance of all required Instances has been checked prior to calling this function where the asset is checked against the schema
 	assert(wrapTarget, "Missing WrapTarget child for " .. meshHandle.Name)
 
-	Analytics.reportFailure(Analytics.ErrorType.validateBodyPart_CageOriginOutOfBounds)
 	if wrapTarget.CageOrigin.Position.Magnitude > maxBodyPartCageOrigin :: number then
+		Analytics.reportFailure(Analytics.ErrorType.validateBodyPart_CageOriginOutOfBounds, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -196,7 +199,7 @@ local function validateInternal(
 
 	local reasonsAccumulator = FailureReasonsAccumulator.new()
 	if getFFlagUGCValidateCageOrigin() then
-		reasonsAccumulator:updateReasons(validateCageOrigin(meshHandle))
+		reasonsAccumulator:updateReasons(validateCageOrigin(meshHandle, validationContext))
 	end
 	reasonsAccumulator:updateReasons(validateWrapTargetComparison(meshScale, meshHandle, validationContext))
 

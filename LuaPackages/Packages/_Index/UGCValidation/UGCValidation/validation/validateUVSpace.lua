@@ -9,7 +9,10 @@ local Types = require(root.util.Types)
 local getEngineFeatureUGCValidateEditableMeshAndImage =
 	require(root.flags.getEngineFeatureUGCValidateEditableMeshAndImage)
 
-local function validateUVSpace(meshInfo: Types.MeshInfo): (boolean, { string }?)
+local function validateUVSpace(
+	meshInfo: Types.MeshInfo,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	local success, result
 	if getEngineFeatureUGCValidateEditableMeshAndImage() then
 		success, result = pcall(function()
@@ -22,7 +25,7 @@ local function validateUVSpace(meshInfo: Types.MeshInfo): (boolean, { string }?)
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateUVSpace_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateUVSpace_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -33,7 +36,7 @@ local function validateUVSpace(meshInfo: Types.MeshInfo): (boolean, { string }?)
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateUVSpace_InvalidUVSpace)
+		Analytics.reportFailure(Analytics.ErrorType.validateUVSpace_InvalidUVSpace, nil, validationContext)
 		return false,
 			{
 				string.format(

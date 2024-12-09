@@ -29,9 +29,9 @@ local validateModeration = require(root.validation.validateModeration)
 local validateCanLoad = require(root.validation.validateCanLoad)
 local validateAssetCreator = require(root.validation.validateAssetCreator)
 
-local function validateExistance(contentIdMap: any)
+local function validateExistance(contentIdMap: any, validationContext: Types.ValidationContext)
 	for _, data in pairs(contentIdMap) do
-		if not validateCanLoad(data.instance[data.fieldName]) then
+		if not validateCanLoad(data.instance[data.fieldName], validationContext) then
 			-- loading a mesh/texture can fail for many reasons, therefore we throw an error here, which means that the validation of this asset
 			-- will be run again, rather than returning false. This is because we can't conclusively say it failed. It's inconclusive. This throwing
 			-- of an error should only happen when validation is called from RCC
@@ -50,9 +50,16 @@ local ASSET_STATUS_RCC = {
 	MODERATION_STATE_APPROVED = { ["MODERATION_STATE_APPROVED"] = true, ["Approved"] = true },
 }
 
-local function validateCreatorId(idsHashTable, creatorId, instance, fieldName, id): (boolean, { string }?)
+local function validateCreatorId(
+	idsHashTable,
+	creatorId,
+	instance,
+	fieldName,
+	id,
+	validationContext
+): (boolean, { string }?)
 	if not idsHashTable[tonumber(creatorId)] then
-		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsRestrictedUserId)
+		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsRestrictedUserId, nil, validationContext)
 		return false,
 			{
 				`{instance:GetFullName()}.{fieldName} ( {id} ) is not owned by the current user. You can only validate assets that you or a group you belong to owns.`,
@@ -61,12 +68,18 @@ local function validateCreatorId(idsHashTable, creatorId, instance, fieldName, i
 	return true
 end
 
-local function validateModerationState(moderationState, instance, fieldName, id): (boolean, { string }?)
+local function validateModerationState(
+	moderationState,
+	instance,
+	fieldName,
+	id,
+	validationContext
+): (boolean, { string }?)
 	local isReviewing = ASSET_STATUS_RCC.MODERATION_STATE_REVIEWING[moderationState]
 	if isReviewing then
 		-- throw an error here, which means that the validation of this asset will be run again, rather than returning false. This is because we can't
 		-- conclusively say it failed. It's inconclusive / in-progress, so we need to try again later
-		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsReviewing)
+		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsReviewing, nil, validationContext)
 		error(
 			"Failed to load asset {instance:GetFullName()}.{fieldName} ( {id} ) that is still going through the review process. Please, wait for a notification of completion from the review process and try again."
 		)
@@ -74,7 +87,7 @@ local function validateModerationState(moderationState, instance, fieldName, id)
 
 	local isApproved = ASSET_STATUS_RCC.MODERATION_STATE_APPROVED[moderationState]
 	if not isApproved then
-		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsNotApproved)
+		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_IsNotApproved, nil, validationContext)
 		return false,
 			{
 				`{instance:GetFullName()}.{fieldName} ( {id} ) is not owned by the current user. You can only validate assets that you or a group you belong to owns.`,
@@ -86,7 +99,8 @@ end
 
 local function validateModerationRCC(
 	restrictedUserIds: Types.RestrictedUserIds?,
-	contentIdMap: any
+	contentIdMap: any,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	-- if there are no users to validate against, we assume, it's not needed
 	if not restrictedUserIds or #restrictedUserIds == 0 then
@@ -113,11 +127,17 @@ local function validateModerationRCC(
 		local creatorId = if creatorTable.userId then creatorTable.userId else creatorTable.groupId
 		if getFFlagUGCValidationAnalytics() then
 			reasonsAccumulator:updateReasons(
-				validateCreatorId(idsHashTable, creatorId, data.instance, data.fieldName, id)
+				validateCreatorId(idsHashTable, creatorId, data.instance, data.fieldName, id, validationContext)
 			)
 
 			reasonsAccumulator:updateReasons(
-				validateModerationState(response.moderationResult.moderationState, data.instance, data.fieldName, id)
+				validateModerationState(
+					response.moderationResult.moderationState,
+					data.instance,
+					data.fieldName,
+					id,
+					validationContext
+				)
 			)
 		else
 			local failureMessage = string.format(
@@ -174,12 +194,12 @@ local function validateDependencies(
 		validationContext
 	)
 	if not parseSuccess then
-		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_ParseFailure)
+		Analytics.reportFailure(Analytics.ErrorType.validateDependencies_ParseFailure, nil, validationContext)
 		return false, parseReasons
 	end
 
 	if isServer and not allowEditableInstances then
-		validateExistance(contentIdMap)
+		validateExistance(contentIdMap, validationContext)
 	end
 
 	local reasonsAccumulator = FailureReasonsAccumulator.new()
@@ -194,7 +214,7 @@ local function validateDependencies(
 				)
 			else
 				reasonsAccumulator:updateReasons(
-					validateModerationRCC(restrictedUserIds :: Types.RestrictedUserIds, contentIdMap)
+					validateModerationRCC(restrictedUserIds :: Types.RestrictedUserIds, contentIdMap, validationContext)
 				)
 			end
 		end

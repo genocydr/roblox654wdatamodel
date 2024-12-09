@@ -77,7 +77,7 @@ local function TileContentPanel(props: Props)
 		then (font.BaseSize + textSizeOffset) * titleFont.RelativeSize * titleTextLineCount
 		else font.BaseSize * titleFont.RelativeSize * titleTextLineCount
 
-	local titleColorStyle = if UIBloxConfig.useNewThemeColorPalettes then theme.TextDefault else theme.TextEmphasis
+	local titleColorStyle = theme.TextEmphasis
 
 	return React.createElement("Frame", {
 		Size = UDim2.new(UDim.new(1, 0), panelHeight),

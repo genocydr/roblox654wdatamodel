@@ -46,14 +46,19 @@ local getFFlagUGCValidateTotalSurfaceAreaTestBody = require(root.flags.getFFlagU
 local function validateIsSkinned(
 	obj: MeshPart,
 	isServer: boolean?,
-	allowEditableInstances: boolean?
+	allowEditableInstances: boolean?,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	local retrievedMeshData, testsPassed
 	if getEngineFeatureUGCValidateEditableMeshAndImage() then
 		local alternateId = obj:GetAttribute(Constants.AlternateMeshIdAttributeName)
 		if not obj.HasSkinnedMesh then
 			if alternateId == nil or alternateId == "" or not allowEditableInstances then
-				Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_NoSkinningInfo)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateDescendantMeshMetrics_NoSkinningInfo,
+					nil,
+					validationContext
+				)
 				return false, { `Missing skinning data for {obj.Name}.MeshId. You need to skin your model.` }
 			end
 		end
@@ -67,7 +72,11 @@ local function validateIsSkinned(
 		end)
 	else
 		if not obj.HasSkinnedMesh then
-			Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_NoSkinningInfo)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateDescendantMeshMetrics_NoSkinningInfo,
+				nil,
+				validationContext
+			)
 			return false, { `Missing skinning data for {obj.Name}.MeshId. You need to skin your model.` }
 		end
 
@@ -89,7 +98,11 @@ local function validateIsSkinned(
 			-- happen when validation is called from RCC
 			error(errorMessage)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_FailedToLoadMesh)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateDescendantMeshMetrics_FailedToLoadMesh,
+			nil,
+			validationContext
+		)
 		return false, { errorMessage }
 	end
 
@@ -101,7 +114,11 @@ local function validateIsSkinned(
 		if isServer then
 			error(errorMessage)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_HasSkinnedMeshMismatch)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateDescendantMeshMetrics_HasSkinnedMeshMismatch,
+			nil,
+			validationContext
+		)
 		return false, { errorMessage }
 	end
 	return true
@@ -128,7 +145,11 @@ local function validateTotalAssetTriangles(
 				local getEditableMeshSuccess, editableMesh =
 					getEditableMeshFromContext(data.instance, data.fieldName, validationContext)
 				if not getEditableMeshSuccess then
-					Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_FailedToLoadMesh)
+					Analytics.reportFailure(
+						Analytics.ErrorType.validateDescendantMeshMetrics_FailedToLoadMesh,
+						nil,
+						validationContext
+					)
 					return false,
 						string.format(
 							"Failed to load mesh for '%s'. Make sure mesh exists and try again.",
@@ -165,11 +186,19 @@ local function validateTotalAssetTriangles(
 			-- which would mean the asset failed validation
 			error(message :: string)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_FailedToCalculateTriangles)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateDescendantMeshMetrics_FailedToCalculateTriangles,
+			nil,
+			validationContext
+		)
 		return false, { message :: string }
 	end
 	if totalAssetTriangles :: number > maxTriangleCount then
-		Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_TooManyTriangles)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateDescendantMeshMetrics_TooManyTriangles,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -210,7 +239,11 @@ local function validateMeshIsAtOrigin(
 
 	local Tol = 0.001
 	if meshCenter.Magnitude > Tol then
-		Analytics.reportFailure(Analytics.ErrorType.validateDescendantMeshMetrics_TooFarFromOrigin)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateDescendantMeshMetrics_TooFarFromOrigin,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -320,7 +353,7 @@ local function validateDescendantMeshMetrics(
 			-- EditableMesh data currently does not support skinning, leave this check as-is for now
 			startTime = tick()
 			reasonsAccumulator:updateReasons(
-				validateIsSkinned(data.instance :: MeshPart, isServer, allowEditableInstances)
+				validateIsSkinned(data.instance :: MeshPart, isServer, allowEditableInstances, validationContext)
 			)
 			Analytics.recordScriptTime("validateIsSkinned", startTime, validationContext)
 

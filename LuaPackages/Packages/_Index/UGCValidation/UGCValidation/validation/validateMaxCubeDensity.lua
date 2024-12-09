@@ -44,7 +44,7 @@ local function validateMaxCubeDensity(
 			)
 		end
 
-		Analytics.reportFailure(Analytics.ErrorType.validateVertexDensity_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateVertexDensity_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -55,7 +55,7 @@ local function validateMaxCubeDensity(
 	end
 
 	if result > getFIntUGCValidationVertexDensityThreshold() then
-		Analytics.reportFailure(Analytics.ErrorType.validateVertexDensity_MaxDensityExceeded)
+		Analytics.reportFailure(Analytics.ErrorType.validateVertexDensity_MaxDensityExceeded, nil, validationContext)
 		return false,
 			{
 				"The maximum vertex density has been exceeded. Reduce the number of vertices that are very close to each other.",

@@ -51,7 +51,7 @@ local function validateMeshPartBodyPart(
 
 	local validationResult = validateWithSchema(schema, inst, validationContext)
 	if not validationResult.success then
-		Analytics.reportFailure(Analytics.ErrorType.validateMeshPartBodyPart_ValidateWithSchema)
+		Analytics.reportFailure(Analytics.ErrorType.validateMeshPartBodyPart_ValidateWithSchema, nil, validationContext)
 		return false,
 			{
 				string.format("Body part '%s' does not follow R15 schema. The specific issues are: ", inst.Name),
@@ -110,15 +110,15 @@ local function validateMeshPartBodyPart(
 		Analytics.recordScriptTime("validateAssetTransparency", startTime, validationContext)
 	end
 
-	reasonsAccumulator:updateReasons(validateMaterials(inst))
+	reasonsAccumulator:updateReasons(validateMaterials(inst, validationContext))
 
-	reasonsAccumulator:updateReasons(validateProperties(inst, assetTypeEnum))
+	reasonsAccumulator:updateReasons(validateProperties(inst, assetTypeEnum, validationContext))
 
 	if getFFlagUGCValidateBodyPartsCollisionFidelity() then
 		reasonsAccumulator:updateReasons(validateBodyPartCollisionFidelity(inst, validationContext))
 	end
 
-	reasonsAccumulator:updateReasons(validateTags(inst))
+	reasonsAccumulator:updateReasons(validateTags(inst, validationContext))
 
 	reasonsAccumulator:updateReasons(validateAttributes(inst, validationContext))
 

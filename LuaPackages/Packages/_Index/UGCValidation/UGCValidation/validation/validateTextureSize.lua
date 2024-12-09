@@ -27,7 +27,11 @@ local function validateTextureSize(
 			if allowNoTexture then
 				return true
 			else
-				Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_InvalidTextureId)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateTextureSize_InvalidTextureId,
+					nil,
+					validationContext
+				)
 				return false,
 					{
 						string.format(
@@ -42,7 +46,11 @@ local function validateTextureSize(
 			if allowNoTexture then
 				return true
 			else
-				Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_InvalidTextureId)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateTextureSize_InvalidTextureId,
+					nil,
+					validationContext
+				)
 				return false,
 					{
 						string.format(
@@ -73,12 +81,12 @@ local function validateTextureSize(
 				-- which would mean the asset failed validation
 				error("Failed to execute validateTextureSize check")
 			end
-			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_FailedToExecute)
+			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_FailedToExecute, nil, validationContext)
 			return false, { "Failed to execute validateTextureSize check" }
 		end
 
 		if not result then
-			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_TextureTooBig)
+			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_TextureTooBig, nil, validationContext)
 			return false, { "Your textures exceeds the max texture size limit for UGC upload requirements." }
 		end
 	else
@@ -105,7 +113,7 @@ local function validateTextureSize(
 					)
 				)
 			end
-			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_FailedToLoadTexture)
+			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_FailedToLoadTexture, nil, validationContext)
 			return false,
 				{
 					string.format(
@@ -114,7 +122,7 @@ local function validateTextureSize(
 					),
 				} :: { any }
 		elseif imageSize.X > Constants.MAX_TEXTURE_SIZE or imageSize.Y > Constants.MAX_TEXTURE_SIZE then
-			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_TextureTooBig)
+			Analytics.reportFailure(Analytics.ErrorType.validateTextureSize_TextureTooBig, nil, validationContext)
 			return false,
 				{
 					string.format(

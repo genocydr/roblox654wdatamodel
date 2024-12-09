@@ -50,7 +50,11 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 	local allowUnreviewedAssets = validationContext.allowUnreviewedAssets
 
 	if FFlagLegacyAccessoryCheckCategory and not RigidOrLayeredAllowed.isRigidAccessoryAllowed(assetTypeEnum) then
-		Analytics.reportFailure(Analytics.ErrorType.validateLegacyAccessory_AssetTypeNotAllowedAsRigidAccessory)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateLegacyAccessory_AssetTypeNotAllowedAsRigidAccessory,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -79,7 +83,7 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 	end
 
 	if getFFlagUGCValidationNameCheck() and isServer then
-		success, reasons = validateAccessoryName(instance)
+		success, reasons = validateAccessoryName(instance, validationContext)
 		if not success then
 			return false, reasons
 		end
@@ -154,8 +158,8 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 			local textureSuccess
 			local meshSuccess
 			local _canLoadFailedReason: any = {}
-			textureSuccess, _canLoadFailedReason = validateCanLoad(mesh.TextureId)
-			meshSuccess, _canLoadFailedReason = validateCanLoad(mesh.MeshId)
+			textureSuccess, _canLoadFailedReason = validateCanLoad(mesh.TextureId, validationContext)
+			meshSuccess, _canLoadFailedReason = validateCanLoad(mesh.MeshId, validationContext)
 			if not textureSuccess or not meshSuccess then
 				-- Failure to load assets should be treated as "inconclusive".
 				-- Validation didn't succeed or fail, we simply couldn't run validation because the assets couldn't be loaded.
@@ -170,19 +174,19 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 	end
 
 	local failedReason: any = {}
-	success, failedReason = validateMaterials(instance)
+	success, failedReason = validateMaterials(instance, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
 	end
 
-	success, failedReason = validateProperties(instance)
+	success, failedReason = validateProperties(instance, nil, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
 	end
 
-	success, failedReason = validateTags(instance)
+	success, failedReason = validateTags(instance, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
@@ -202,7 +206,7 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 
 	local partScaleType = handle:FindFirstChild("AvatarPartScaleType")
 	if partScaleType and partScaleType:IsA("StringValue") then
-		success, failedReason = validateScaleType(partScaleType)
+		success, failedReason = validateScaleType(partScaleType, validationContext)
 		if not success then
 			table.insert(reasons, table.concat(failedReason, "\n"))
 			validationResult = false
@@ -210,7 +214,7 @@ local function validateLegacyAccessory(validationContext: Types.ValidationContex
 	end
 
 	if getFFlagUGCValidateThumbnailConfiguration() then
-		success, failedReason = validateThumbnailConfiguration(instance, handle, meshInfo, meshScale)
+		success, failedReason = validateThumbnailConfiguration(instance, handle, meshInfo, meshScale, validationContext)
 		if not success then
 			table.insert(reasons, table.concat(failedReason, "\n"))
 			validationResult = false

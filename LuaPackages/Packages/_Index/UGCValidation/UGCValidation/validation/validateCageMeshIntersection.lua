@@ -20,7 +20,11 @@ local function validateCageMeshIntersection(
 	local assetTypeEnum = validationContext.assetTypeEnum
 	if getEngineFeatureUGCValidateEditableMeshAndImage() then
 		if not meshInfo.editableMesh then
-			Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_InvalidRefMeshId)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateCageMeshIntersection_InvalidRefMeshId,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(
@@ -31,7 +35,11 @@ local function validateCageMeshIntersection(
 		end
 	else
 		if meshInfo.contentId == "" then
-			Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_InvalidRefMeshId)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateCageMeshIntersection_InvalidRefMeshId,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(
@@ -67,7 +75,11 @@ local function validateCageMeshIntersection(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageMeshIntersection_FailedToExecute,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -81,7 +93,7 @@ local function validateCageMeshIntersection(
 	local result = true
 	if not checkIntersection then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_Intersection)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_Intersection, nil, validationContext)
 		table.insert(
 			reasons,
 			string.format(
@@ -93,7 +105,11 @@ local function validateCageMeshIntersection(
 
 	if not checkIrrelevantCageModified then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_IrrelevantCageModified)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageMeshIntersection_IrrelevantCageModified,
+			nil,
+			validationContext
+		)
 		table.insert(
 			reasons,
 			string.format(
@@ -107,7 +123,11 @@ local function validateCageMeshIntersection(
 
 	if not checkOuterCageFarExtendedFromMesh then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_OuterCageFarExtendedFromMesh)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageMeshIntersection_OuterCageFarExtendedFromMesh,
+			nil,
+			validationContext
+		)
 		table.insert(
 			reasons,
 			string.format(
@@ -119,7 +139,11 @@ local function validateCageMeshIntersection(
 
 	if not checkAverageOuterCageToMeshVertDistances then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshIntersection_AverageOuterCageToMeshVertDistances)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageMeshIntersection_AverageOuterCageToMeshVertDistances,
+			nil,
+			validationContext
+		)
 		table.insert(
 			reasons,
 			string.format(

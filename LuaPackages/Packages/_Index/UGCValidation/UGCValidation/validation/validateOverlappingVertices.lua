@@ -42,7 +42,7 @@ local function validateOverlappingVertices(
 				)
 			)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateOverlappingVertices_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateOverlappingVertices_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -53,7 +53,11 @@ local function validateOverlappingVertices(
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateOverlappingVertices_OverlappingVertices)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateOverlappingVertices_OverlappingVertices,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(

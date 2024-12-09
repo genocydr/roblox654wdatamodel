@@ -85,7 +85,11 @@ local function validateInMeshSpace(
 			posMeshSpace[dimension] < (minMeshSpace :: any)[dimension]
 			or posMeshSpace[dimension] > (maxMeshSpace :: any)[dimension]
 		then
-			Analytics.reportFailure(Analytics.ErrorType.validateBodyPartChildAttachmentBounds_InvalidAttachmentPosition)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateBodyPartChildAttachmentBounds_InvalidAttachmentPosition,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					if getFFlagUGCValidateFixAttachmentErrorMessage()
@@ -150,7 +154,11 @@ local function checkAll(
 	return reasonsAccumulator:getFinalResults()
 end
 
-local function validateAttachmentRotation(inst: Instance, assetCFrame: CFrame): (boolean, { string }?)
+local function validateAttachmentRotation(
+	inst: Instance,
+	assetCFrame: CFrame,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	local reasonsAccumulator = FailureReasonsAccumulator.new()
 
 	for _, desc in inst:GetDescendants() do
@@ -164,7 +172,11 @@ local function validateAttachmentRotation(inst: Instance, assetCFrame: CFrame): 
 			if isRigAttachment then
 				local x, y, z = desc.CFrame:ToOrientation()
 				if not floatEquals(x, 0) or not floatEquals(y, 0) or not floatEquals(z, 0) then
-					Analytics.reportFailure(Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated)
+					Analytics.reportFailure(
+						Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated,
+						nil,
+						validationContext
+					)
 					reasonsAccumulator:updateReasons(false, {
 						string.format(
 							"Detected rotation in Attachment '%s'. You must reset all rotation values for this attachment to zero.",
@@ -183,7 +195,11 @@ local function validateAttachmentRotation(inst: Instance, assetCFrame: CFrame): 
 				local orientationOffset = getDiffBetweenOrientations(requiredOrientation, desc.CFrame)
 				local maxOffset: number = maxOrientationOffsets[desc.Name]
 				if orientationOffset > maxOffset + ANGLE_EPSILON then
-					Analytics.reportFailure(Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated)
+					Analytics.reportFailure(
+						Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated,
+						nil,
+						validationContext
+					)
 
 					local requiredOriAngles
 					if getFFlagUGCValidateOrientedAttachmentOrientationCheck() then
@@ -213,7 +229,11 @@ local function validateAttachmentRotation(inst: Instance, assetCFrame: CFrame): 
 
 			local x, y, z = desc.CFrame:ToOrientation()
 			if not floatEquals(x, 0) or not floatEquals(y, 0) or not floatEquals(z, 0) then
-				Analytics.reportFailure(Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateBodyPartChildAttachmentBounds_AttachmentRotated,
+					nil,
+					validationContext
+				)
 				reasonsAccumulator:updateReasons(false, {
 					string.format(
 						"Detected rotation in Attachment '%s'. You must reset all rotation values for this attachment to zero.",
@@ -264,7 +284,7 @@ local function validateBodyPartChildAttachmentBounds(
 		assetCFrame = assetCFrameOpt :: CFrame
 	end
 
-	reasonsAccumulator:updateReasons(validateAttachmentRotation(inst, assetCFrame))
+	reasonsAccumulator:updateReasons(validateAttachmentRotation(inst, assetCFrame, validationContext))
 
 	local boundsTransformData
 	if getFFlagUGCValidateOrientedAttachmentPositionCheck() then

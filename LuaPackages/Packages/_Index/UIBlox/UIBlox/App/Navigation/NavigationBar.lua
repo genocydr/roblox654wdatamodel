@@ -71,13 +71,7 @@ local function NavigationBar(providedProps: Props)
 	assert(#providedProps.items > 0, "At least one item should be present!")
 	local props = Cryo.Dictionary.join(defaultProps, providedProps)
 	local style = useStyle()
-	local itemBindingSize, setItemBindingSize
-	local itemSize, setItemSize
-	if UIBloxConfig.enableAppNavUpdate then
-		itemBindingSize, setItemBindingSize = React.useBinding(UDim2.new())
-	else
-		itemSize, setItemSize = React.useState(UDim2.new(0, 0, 0, 0))
-	end
+	local itemBindingSize, setItemBindingSize = React.useBinding(UDim2.new())
 	local height = props.size.Y.Offset :: number
 	local paddingTop = if props.paddings and props.paddings.Top
 		then props.paddings.Top
@@ -98,11 +92,7 @@ local function NavigationBar(providedProps: Props)
 			local totalWidth = if rbx.AbsoluteSize.X > props.maxWidth then props.maxWidth else rbx.AbsoluteSize.X
 			local itemWidth = (totalWidth - paddingLeft - paddingRight) / #props.items
 			local itemHeight = height - paddingTop - paddingBottom
-			if UIBloxConfig.enableAppNavUpdate then
-				setItemBindingSize(UDim2.new(0, itemWidth, 0, itemHeight))
-			else
-				setItemSize(UDim2.new(0, itemWidth, 0, itemHeight))
-			end
+			setItemBindingSize(UDim2.new(0, itemWidth, 0, itemHeight))
 		end
 	end, {
 		height,
@@ -156,7 +146,11 @@ local function NavigationBar(providedProps: Props)
 		}, {
 			AnimatedNavigationBar = React.createElement("Frame", {
 				Position = heightOffset:map(function(heightOffset)
-					return UDim2.new(0, 0, 0, heightOffset)
+					if UIBloxConfig.enableAppNavAnimationFix then
+						return UDim2.new(0, 0, 0, math.floor((heightOffset :: number) + 0.5))
+					else
+						return UDim2.new(0, 0, 0, heightOffset)
+					end
 				end),
 				BorderSizePixel = 0,
 				Size = UDim2.new(1, 0, 1, 0),
@@ -225,7 +219,7 @@ local function NavigationBar(providedProps: Props)
 		} :: { any }
 	elseif props.alignment == NavigationBarAlignment.EvenlyDistributed then
 		alignmentTypesProps = {
-			itemSize = if UIBloxConfig.enableAppNavUpdate then itemBindingSize else itemSize,
+			itemSize = itemBindingSize,
 		} :: { any }
 	else
 		error("NavigationBar Alignment type is incorrect!")

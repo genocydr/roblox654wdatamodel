@@ -41,7 +41,11 @@ local function validateFullBodyCageDeletion(
 				)
 			)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateFullBodyCageDeletion_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateFullBodyCageDeletion_FailedToExecute,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -52,7 +56,11 @@ local function validateFullBodyCageDeletion(
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateFullBodyCageDeletion_GeometryRemoved)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateFullBodyCageDeletion_GeometryRemoved,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(

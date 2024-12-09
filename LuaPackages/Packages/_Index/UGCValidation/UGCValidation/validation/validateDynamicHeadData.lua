@@ -58,7 +58,11 @@ local requiredActiveFACSControls = {
 	"EyesLookDown",
 }
 
-local function downloadFailure(isServer: boolean?, name: string?): (boolean, { string }?)
+local function downloadFailure(
+	isServer: boolean?,
+	name: string?,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	local errorMessage =
 		string.format("Failed to load model for dynamic head '%s'. Make sure model exists and try again.", name)
 	if isServer then
@@ -68,7 +72,11 @@ local function downloadFailure(isServer: boolean?, name: string?): (boolean, { s
 		-- happen when validation is called from RCC
 		error(errorMessage)
 	end
-	Analytics.reportFailure(Analytics.ErrorType.validateDynamicHeadMeshPartFormat_FailedToLoadMesh)
+	Analytics.reportFailure(
+		Analytics.ErrorType.validateDynamicHeadMeshPartFormat_FailedToLoadMesh,
+		nil,
+		validationContext
+	)
 	return false, { errorMessage }
 end
 
@@ -247,11 +255,15 @@ local function validateDynamicHeadData(
 		end)
 
 		if not retrievedMeshData then
-			return downloadFailure(isServer, meshPartHead.Name)
+			return downloadFailure(isServer, meshPartHead.Name, validationContext)
 		end
 
 		if not testsPassed then
-			Analytics.reportFailure(Analytics.ErrorType.validateDynamicHeadMeshPartFormat_ValidateDynamicHeadMesh)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateDynamicHeadMeshPartFormat_ValidateDynamicHeadMesh,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(
@@ -282,7 +294,7 @@ local function validateDynamicHeadData(
 		if not commandExecuted then
 			local errorMessage = missingControlsOrErrorMessage
 			if string.find(errorMessage, "Download Error") == 1 then
-				return downloadFailure(isServer, meshPartHead.Name)
+				return downloadFailure(isServer, meshPartHead.Name, validationContext)
 			end
 			assert(false, errorMessage) --any other error to download error is a code problem
 		end
@@ -293,7 +305,9 @@ local function validateDynamicHeadData(
 		local areAllControlsActive = #inactiveControls == 0
 		if not doAllControlsExist or not areAllControlsActive then
 			Analytics.reportFailure(
-				Analytics.ErrorType.validateDynamicHeadMeshPartFormat_ValidateDynamicHeadMeshControls
+				Analytics.ErrorType.validateDynamicHeadMeshPartFormat_ValidateDynamicHeadMeshControls,
+				nil,
+				validationContext
 			)
 
 			reasonsAccumulator:updateReasons(doAllControlsExist, {

@@ -37,7 +37,7 @@ local function findIcon(searchData)
 	return icon
 end
 
-local function getSizeMapping(standardSize, size, tokens: typeof(Foundation.Hooks.useTokens()))
+local function getSizeMapping(standardSize, size: UDim2?, tokens: typeof(Foundation.Hooks.useTokens()))
 	if standardSize then
 		return sizeMapping[standardSize]
 	elseif size then
@@ -52,7 +52,7 @@ local function getSizeMapping(standardSize, size, tokens: typeof(Foundation.Hook
 	return nil
 end
 
-local function getWidth(size, fitContent): UDim?
+local function getWidth(size: UDim2?, fitContent): UDim?
 	if size then
 		return size.X
 	elseif fitContent then
@@ -62,10 +62,19 @@ local function getWidth(size, fitContent): UDim?
 	end
 end
 
+local function getTestId(tag: string?): string?
+	if not tag or #tag == 0 then
+		return nil
+	end
+
+	return tag:match("data%-testid=([^%s]+)")
+end
+
 return {
 	buttonMapping = buttonMapping,
 	sizeMapping = sizeMapping,
 	findIcon = findIcon,
 	getSizeMapping = getSizeMapping,
 	getWidth = getWidth,
+	getTestId = getTestId,
 }

@@ -44,7 +44,7 @@ local function validateLCCagingRelevancy(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateCagingRelevancy_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateCagingRelevancy_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -62,7 +62,7 @@ local function validateLCCagingRelevancy(
 	local score = math.floor(100 * relevant / considered)
 
 	if score < getFIntUGCLCCagingRelevancyMinimum() then
-		Analytics.reportFailure(Analytics.ErrorType.validateCagingRelevancy_IrrelevantCaging)
+		Analytics.reportFailure(Analytics.ErrorType.validateCagingRelevancy_IrrelevantCaging, nil, validationContext)
 		return false,
 			{
 				string.format(

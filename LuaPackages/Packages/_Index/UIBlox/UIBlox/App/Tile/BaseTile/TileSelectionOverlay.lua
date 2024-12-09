@@ -8,7 +8,6 @@ local Packages = UIBlox.Parent
 local Roact = require(Packages.Roact)
 local t = require(Packages.t)
 local withStyle = require(UIBlox.Core.Style.withStyle)
-local UIBloxConfig = require(Packages.UIBlox.UIBloxConfig)
 
 local Images = require(UIBlox.App.ImageSet.Images)
 local ImageSetComponent = require(UIBlox.Core.ImageSet.ImageSetComponent)
@@ -33,17 +32,7 @@ function TileSelectionOverlay:render()
 
 	return withStyle(function(stylePalette)
 		local theme = stylePalette.Theme
-
-		local paddingRight, paddingTop
-		if UIBloxConfig.itemTileOverlayPaddingUseTokens then
-			-- Use reduced padding here because selected icon includes empty border space
-			local tokens = stylePalette.Tokens
-			paddingRight = tokens.Global.Size_25
-			paddingTop = tokens.Global.Size_25
-		else
-			paddingRight = 6
-			paddingTop = 6
-		end
+		local tokens = stylePalette.Tokens
 
 		return Roact.createElement("Frame", {
 			BackgroundColor3 = theme.Overlay.Color,
@@ -56,7 +45,8 @@ function TileSelectionOverlay:render()
 				AnchorPoint = Vector2.new(1, 0),
 				BackgroundTransparency = 1,
 				Image = selectionIcon,
-				Position = UDim2.new(1, -paddingRight, 0, paddingTop),
+				-- Use reduced padding here because selected icon includes empty border space
+				Position = UDim2.new(1, -tokens.Global.Size_25, 0, tokens.Global.Size_25),
 				Size = UDim2.new(0, imageSize.X, 0, imageSize.Y),
 			}),
 			UICorner = cornerRadius ~= UDim.new(0, 0) and Roact.createElement("UICorner", {

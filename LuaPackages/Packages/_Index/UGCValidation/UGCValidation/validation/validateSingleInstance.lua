@@ -12,7 +12,7 @@ local function validateSingleInstance(
 
 	-- validate that only one instance was selected
 	if #instances == 0 then
-		Analytics.reportFailure(Analytics.ErrorType.validateSingleInstance_ZeroInstances)
+		Analytics.reportFailure(Analytics.ErrorType.validateSingleInstance_ZeroInstances, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -21,7 +21,7 @@ local function validateSingleInstance(
 				),
 			}
 	elseif #instances > 1 then
-		Analytics.reportFailure(Analytics.ErrorType.validateSingleInstance_MultipleInstances)
+		Analytics.reportFailure(Analytics.ErrorType.validateSingleInstance_MultipleInstances, nil, validationContext)
 		return false,
 			{
 				string.format(

@@ -1,9 +1,8 @@
 local Fonts = require(script.Parent.Fonts)
 local LightTheme = require(script.Parent.Themes.LightTheme)
-local LightThemeNew = require(script.Parent.Themes.LightThemeNew)
 local TokenTypes = require(script.Parent.Tokens.Types)
 
-export type Theme = typeof(LightTheme) | typeof(LightThemeNew)
+export type Theme = typeof(LightTheme)
 export type ThemeItem = {
 	Color: Color3,
 	Transparency: number,

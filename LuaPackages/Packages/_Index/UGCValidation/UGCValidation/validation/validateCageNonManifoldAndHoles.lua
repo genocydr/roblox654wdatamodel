@@ -9,7 +9,10 @@ local Analytics = require(root.Analytics)
 local getEngineFeatureUGCValidateEditableMeshAndImage =
 	require(root.flags.getEngineFeatureUGCValidateEditableMeshAndImage)
 
-local function validateCageNonManifoldAndHoles(meshInfo: Types.MeshInfo): (boolean, { string }?)
+local function validateCageNonManifoldAndHoles(
+	meshInfo: Types.MeshInfo,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	local success, checkNonManifold, checkCageHoles
 	if getEngineFeatureUGCValidateEditableMeshAndImage() then
 		success, checkNonManifold, checkCageHoles = pcall(function()
@@ -22,7 +25,11 @@ local function validateCageNonManifoldAndHoles(meshInfo: Types.MeshInfo): (boole
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageNonManifoldAndHoles_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageNonManifoldAndHoles_FailedToExecute,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -36,7 +43,7 @@ local function validateCageNonManifoldAndHoles(meshInfo: Types.MeshInfo): (boole
 	local result = true
 	if not checkNonManifold then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageNonManifoldAndHoles_NonManifold)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageNonManifoldAndHoles_NonManifold, nil, validationContext)
 		table.insert(
 			reasons,
 			string.format(
@@ -48,7 +55,7 @@ local function validateCageNonManifoldAndHoles(meshInfo: Types.MeshInfo): (boole
 
 	if not checkCageHoles then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageNonManifoldAndHoles_CageHoles)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageNonManifoldAndHoles_CageHoles, nil, validationContext)
 		table.insert(
 			reasons,
 			string.format(

@@ -134,6 +134,9 @@ function ResponsiveCarousel:init()
 end
 
 function ResponsiveCarousel:getButtonSize(style)
+	if UIBloxConfig.useFoundationButton then
+		return UDim2.fromOffset(0, self.props.headerHeight)
+	end
 	local buttonTextStyle = style.Font.CaptionHeader
 	local buttonFontSize = buttonTextStyle.RelativeSize * style.Font.BaseSize
 	local buttonTextSize = GetTextSize(self.props.buttonText, buttonFontSize, buttonTextStyle.Font, BIG_VECTOR)
@@ -154,6 +157,7 @@ function ResponsiveCarousel:renderHeader(headerProps)
 			ResponsiveCarouselHeaderPadding = Roact.createElement("UIPadding", {
 				PaddingLeft = UDim.new(0, headerProps.margin),
 				PaddingRight = UDim.new(0, headerProps.margin),
+				PaddingTop = if UIBloxConfig.useFoundationButton then UDim.new(0, 2) else nil,
 			}),
 			ResponsiveCarouselHeaderMaxWidth = if headerProps.width > 0
 				then Roact.createElement("UISizeConstraint", {
@@ -161,7 +165,12 @@ function ResponsiveCarousel:renderHeader(headerProps)
 				})
 				else nil,
 			ResponsiveCarouselTitle = Roact.createElement(GenericTextLabel, {
-				Size = UDim2.new(1, -buttonSize.X.Offset - self.props.headerPadding, 1, 0),
+				Size = UDim2.new(
+					1,
+					(if UIBloxConfig.useFoundationButton then 0 else -buttonSize.X.Offset) - self.props.headerPadding,
+					1,
+					0
+				),
 				Text = self.props.headerText,
 				TextXAlignment = Enum.TextXAlignment.Left,
 				TextYAlignment = Enum.TextYAlignment.Center,
@@ -172,7 +181,8 @@ function ResponsiveCarousel:renderHeader(headerProps)
 			ResponsiveCarouselSeeAll = if shouldShowButton
 				then Roact.createElement(Button, {
 					buttonType = ButtonType.Secondary,
-					position = UDim2.new(1, -buttonSize.X.Offset, 0, 0),
+					position = UDim2.new(1, if UIBloxConfig.useFoundationButton then 0 else -buttonSize.X.Offset, 0, 0),
+					anchorPoint = if UIBloxConfig.useFoundationButton then Vector2.new(1, 0) else nil,
 					size = buttonSize,
 					text = self.props.buttonText,
 					fontStyle = style.Font.CaptionHeader,

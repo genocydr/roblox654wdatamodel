@@ -9,6 +9,7 @@ local getFFlagUGCValidateAddSpecificPropertyRequirements =
 local Analytics = require(root.Analytics)
 local Constants = require(root.Constants)
 
+local Types = require(root.util.Types)
 local valueToString = require(root.util.valueToString)
 
 local EPSILON = 1e-5
@@ -57,7 +58,11 @@ local function getSpecificExpectedValue(
 	return Constants.SPECIFIC_PROPERTIES[assetTypeEnum :: Enum.AssetType][className][propName]
 end
 
-local function validateProperties(instance, assetTypeEnum: Enum.AssetType?): (boolean, { string }?)
+local function validateProperties(
+	instance,
+	assetTypeEnum: Enum.AssetType?,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	-- full tree of instance + descendants
 	local objects: { Instance } = instance:GetDescendants()
 	table.insert(objects, instance)
@@ -72,7 +77,11 @@ local function validateProperties(instance, assetTypeEnum: Enum.AssetType?): (bo
 					end)
 
 					if not propExists then
-						Analytics.reportFailure(Analytics.ErrorType.validateProperties_PropertyDoesNotExist)
+						Analytics.reportFailure(
+							Analytics.ErrorType.validateProperties_PropertyDoesNotExist,
+							nil,
+							validationContext
+						)
 						return false,
 							{
 								string.format(
@@ -92,7 +101,11 @@ local function validateProperties(instance, assetTypeEnum: Enum.AssetType?): (bo
 						end
 					end
 					if not propEq(propValue, specificExpectedValue) then
-						Analytics.reportFailure(Analytics.ErrorType.validateProperties_PropertyMismatch)
+						Analytics.reportFailure(
+							Analytics.ErrorType.validateProperties_PropertyMismatch,
+							nil,
+							validationContext
+						)
 						return false,
 							{
 								string.format(

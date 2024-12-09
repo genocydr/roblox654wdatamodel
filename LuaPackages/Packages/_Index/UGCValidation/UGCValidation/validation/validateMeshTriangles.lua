@@ -35,7 +35,7 @@ local function validateMeshTriangles(
 		end
 
 		if not success then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_FailedToExecute)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_FailedToExecute, nil, validationContext)
 			if nil ~= isServer and isServer then
 				-- there could be many reasons that an error occurred, the asset is not necessarilly incorrect, we just didn't get as
 				-- far as testing it, so we throw an error which means the RCC will try testing the asset again, rather than returning false
@@ -46,7 +46,7 @@ local function validateMeshTriangles(
 		end
 
 		if not result then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_TooManyTriangles)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_TooManyTriangles, nil, validationContext)
 			return false, { "Your mesh exceeds the max triangle limit for UGC upload requirements." }
 		end
 	else
@@ -63,7 +63,7 @@ local function validateMeshTriangles(
 
 		maxTriangles = if nil ~= maxTriangles then maxTriangles else Constants.MAX_HAT_TRIANGLES
 		if not success then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_FailedToLoadMesh)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_FailedToLoadMesh, nil, validationContext)
 			if nil ~= isServer and isServer then
 				-- there could be many reasons that an error occurred, the asset is not necessarilly incorrect, we just didn't get as
 				-- far as testing it, so we throw an error which means the RCC will try testing the asset again, rather than returning false
@@ -83,7 +83,7 @@ local function validateMeshTriangles(
 					),
 				}
 		elseif triangles > maxTriangles :: number then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_TooManyTriangles)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangles_TooManyTriangles, nil, validationContext)
 			return false,
 				{
 					string.format(

@@ -111,6 +111,12 @@ function UGCValidation.validate(
 		Analytics.reportScriptTimes(validationContext)
 	end
 
+	Analytics.reportCounter(
+		validationSuccess,
+		if assetTypeEnum == Enum.AssetType.DynamicHead then "Head" else "BodyPart",
+		validationContext
+	)
+
 	return validationSuccess, reasons
 end
 
@@ -444,6 +450,8 @@ function UGCValidation.validateFullBody(
 		Analytics.recordScriptTime(script.Name, startTime, validationContext)
 		Analytics.reportScriptTimes(validationContext)
 	end
+
+	Analytics.reportCounter(validationSuccess, "FullBody", validationContext)
 
 	return validationSuccess, reasons
 end

@@ -47,12 +47,20 @@ local function getFullNameWithoutRootFolder(inst: Instance, rootFolderName: stri
 	return string.sub(fullName, j :: number + 1, #fullName)
 end
 
-local function compareFolderInfo(fromFolder: any, toFolder: any): (boolean, { string }?)
+local function compareFolderInfo(
+	fromFolder: any,
+	toFolder: any,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	local reasonsAccumulator = FailureReasonsAccumulator.new()
 
 	for key, val in fromFolder do
 		if nil == toFolder[key] or toFolder[key] ~= val then
-			Analytics.reportFailure(Analytics.ErrorType.validateLimbsAndTorso_FolderInfoMismatch)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateLimbsAndTorso_FolderInfoMismatch,
+				nil,
+				validationContext
+			)
 			reasonsAccumulator:updateReasons(false, {
 				`Attribute {key} has a different values in different children folders. You need to use the same value in all folders.`,
 			})
@@ -63,7 +71,8 @@ end
 
 local function validateFolderAssetIdsMatch(
 	allSelectedInstances: { Instance },
-	requiredTopLevelFolders: { string }
+	requiredTopLevelFolders: { string },
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	if #requiredTopLevelFolders == 1 then
 		return true
@@ -97,8 +106,8 @@ local function validateFolderAssetIdsMatch(
 			continue
 		end
 
-		reasonsAccumulator:updateReasons(compareFolderInfo(prevFolderInfo, folderInfo))
-		reasonsAccumulator:updateReasons(compareFolderInfo(folderInfo, prevFolderInfo))
+		reasonsAccumulator:updateReasons(compareFolderInfo(prevFolderInfo, folderInfo, validationContext))
+		reasonsAccumulator:updateReasons(compareFolderInfo(folderInfo, prevFolderInfo, validationContext))
 	end
 	return reasonsAccumulator:getFinalResults()
 end
@@ -111,7 +120,7 @@ local function validateR6Folder(
 	local reasonsAccumulator = FailureReasonsAccumulator.new()
 
 	if #(inst:GetChildren()) > 0 then
-		Analytics.reportFailure(Analytics.ErrorType.validateLimbsAndTorso_R6FolderHasChildren)
+		Analytics.reportFailure(Analytics.ErrorType.validateLimbsAndTorso_R6FolderHasChildren, nil, validationContext)
 		reasonsAccumulator:updateReasons(false, {
 			string.format(
 				`Deprecated R6 folder for '%s' should be empty. You need to clear that folder and try again.`,
@@ -120,9 +129,9 @@ local function validateR6Folder(
 		})
 	end
 
-	reasonsAccumulator:updateReasons(validateTags(inst))
+	reasonsAccumulator:updateReasons(validateTags(inst, validationContext))
 
-	reasonsAccumulator:updateReasons(validateProperties(inst, assetTypeEnum))
+	reasonsAccumulator:updateReasons(validateProperties(inst, assetTypeEnum, validationContext))
 
 	reasonsAccumulator:updateReasons(validateAttributes(inst, validationContext))
 
@@ -157,7 +166,7 @@ local function validateLimbsAndTorso(validationContext: Types.ValidationContext)
 	end
 
 	if not areTopLevelFoldersCorrect(allSelectedInstances, requiredTopLevelFolders) then
-		Analytics.reportFailure(Analytics.ErrorType.validateLimbsAndTorso_TopLevelFolders)
+		Analytics.reportFailure(Analytics.ErrorType.validateLimbsAndTorso_TopLevelFolders, nil, validationContext)
 		return false,
 			{
 				"Incorrect hierarchy for asset with the following missing folders: "
@@ -184,7 +193,7 @@ local function validateLimbsAndTorso(validationContext: Types.ValidationContext)
 		end
 	end
 
-	return validateFolderAssetIdsMatch(allSelectedInstances, requiredTopLevelFolders)
+	return validateFolderAssetIdsMatch(allSelectedInstances, requiredTopLevelFolders, validationContext)
 end
 
 return validateLimbsAndTorso

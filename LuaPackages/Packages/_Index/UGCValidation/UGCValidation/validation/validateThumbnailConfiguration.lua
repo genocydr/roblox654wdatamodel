@@ -18,7 +18,8 @@ local function validateThumbnailConfiguration(
 	accessory: Instance,
 	handle: BasePart,
 	meshInfo: Types.MeshInfo,
-	meshScale: Vector3
+	meshScale: Vector3,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	local thumbnailConfiguration = accessory:FindFirstChild("ThumbnailConfiguration")
 
@@ -26,7 +27,11 @@ local function validateThumbnailConfiguration(
 		-- if ThumbnailConfiguration is present, validateInstanceTree verifies ThumbnailCameraTarget also exists
 		local thumbnailCameraTarget = thumbnailConfiguration:FindFirstChild("ThumbnailCameraTarget") :: ObjectValue
 		if thumbnailCameraTarget.Value ~= handle then
-			Analytics.reportFailure(Analytics.ErrorType.validateThumbnailConfiguration_InvalidTarget)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateThumbnailConfiguration_InvalidTarget,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(
@@ -53,7 +58,11 @@ local function validateThumbnailConfiguration(
 						cameraCF
 					) == false
 				then
-					Analytics.reportFailure(Analytics.ErrorType.validateThumbnailConfiguration_OutsideView)
+					Analytics.reportFailure(
+						Analytics.ErrorType.validateThumbnailConfiguration_OutsideView,
+						nil,
+						validationContext
+					)
 					return false,
 						{
 							string.format(
@@ -67,7 +76,11 @@ local function validateThumbnailConfiguration(
 					UGCValidationService:CheckMeshInCameraFrustum(meshInfo.contentId, meshScale, handleCF, cameraCF)
 					== false
 				then
-					Analytics.reportFailure(Analytics.ErrorType.validateThumbnailConfiguration_OutsideView)
+					Analytics.reportFailure(
+						Analytics.ErrorType.validateThumbnailConfiguration_OutsideView,
+						nil,
+						validationContext
+					)
 					return false,
 						{
 							string.format(

@@ -55,7 +55,7 @@ local function validateMeshComparison(
 	local otherMeshMax = meshMaxOptOther :: Vector3
 
 	if (meshMin - otherMeshMin).Magnitude > maxDiff or (meshMax - otherMeshMax).Magnitude > maxDiff then
-		Analytics.reportFailure(Analytics.ErrorType.validateMeshComparison)
+		Analytics.reportFailure(Analytics.ErrorType.validateMeshComparison, nil, validationContext)
 		return false, { formatError(mesh, otherMesh, maxDiff) }
 	end
 	return true

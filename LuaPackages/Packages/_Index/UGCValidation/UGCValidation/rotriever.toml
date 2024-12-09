@@ -1,6 +1,6 @@
 [package]
 name = "UGCValidation"
-version = "1.13.2"
+version = "1.13.3"
 readme = "README.md"
 content_root = "src"
 files = [

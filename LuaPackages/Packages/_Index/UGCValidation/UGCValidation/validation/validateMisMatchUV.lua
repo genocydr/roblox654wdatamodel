@@ -11,7 +11,8 @@ local getEngineFeatureUGCValidateEditableMeshAndImage =
 
 local function validateMisMatchUV(
 	innerCageMeshInfo: Types.MeshInfo,
-	outerCageMeshInfo: Types.MeshInfo
+	outerCageMeshInfo: Types.MeshInfo,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	assert(innerCageMeshInfo.context == outerCageMeshInfo.context)
 
@@ -30,7 +31,7 @@ local function validateMisMatchUV(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateMisMatchUV_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateMisMatchUV_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -41,7 +42,7 @@ local function validateMisMatchUV(
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateMisMatchUV_UVMismatch)
+		Analytics.reportFailure(Analytics.ErrorType.validateMisMatchUV_UVMismatch, nil, validationContext)
 		return false,
 			{
 				string.format(

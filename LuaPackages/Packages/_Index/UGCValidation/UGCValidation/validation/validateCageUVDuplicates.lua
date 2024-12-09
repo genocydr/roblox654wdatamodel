@@ -54,7 +54,7 @@ local function validateCageUVDuplicates(
 		end
 
 		if not success then
-			Analytics.reportFailure(Analytics.ErrorType.validateCageUVDuplicate_FailedToExecute)
+			Analytics.reportFailure(Analytics.ErrorType.validateCageUVDuplicate_FailedToExecute, nil, validationContext)
 			local errorMsg = string.format(
 				"Failed to load UVs for Inner cage of '%s'. Make sure the UV map exists and try again.",
 				meshInfo.fullName
@@ -63,7 +63,11 @@ local function validateCageUVDuplicates(
 		end
 
 		if countUVNotInReference > getFIntUGCValidateCageDuplicateUVThreshold() then
-			Analytics.reportFailure(Analytics.ErrorType.validateCageUVDuplicate_UnexpectedUVValue)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateCageUVDuplicate_UnexpectedUVValue,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(

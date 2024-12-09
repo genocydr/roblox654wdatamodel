@@ -453,12 +453,8 @@ local function initializeLibrary(configs)
 			Colors = require(script.App.Style.Colors),
 			Constants = require(script.App.Style.Constants),
 			Themes = {
-				DarkTheme = if configs.useNewThemeColorPalettes
-					then require(script.App.Style.Themes.DarkThemeNew)
-					else require(script.App.Style.Themes.DarkTheme),
-				LightTheme = if configs.useNewThemeColorPalettes
-					then require(script.App.Style.Themes.LightThemeNew)
-					else require(script.App.Style.Themes.LightTheme),
+				DarkTheme = require(script.App.Style.Themes.DarkTheme),
+				LightTheme = require(script.App.Style.Themes.LightTheme),
 			},
 			Tokens = require(script.App.Style.Tokens),
 		}),
@@ -548,6 +544,9 @@ local function initializeLibrary(configs)
 
 			NavigationBar = lazify(function()
 				return require(script.App.Navigation.NavigationBar)
+			end),
+			NavigationBarV2 = lazify(function()
+				return require(script.App.Navigation.NavigationBarV2)
 			end),
 			NavigationRail = lazify(function()
 				return require(script.App.Navigation.NavigationRail)
@@ -640,9 +639,7 @@ local function initializeLibrary(configs)
 			validateFont = require(script.App.Style.Validator.validateFont),
 			validateFontInfo = require(script.Core.Style.Validator.validateFontInfo),
 			validateTypographyInfo = require(script.Core.Style.Validator.validateTypographyInfo),
-			validateTheme = if configs.useNewThemeColorPalettes
-				then require(script.App.Style.Validator.validateThemeNew)
-				else require(script.App.Style.Validator.validateTheme),
+			validateTheme = require(script.App.Style.Validator.validateTheme),
 			validateColorInfo = require(script.Core.Style.Validator.validateColorInfo),
 			validateColorToken = require(script.Core.Style.Validator.validateColorToken),
 		},

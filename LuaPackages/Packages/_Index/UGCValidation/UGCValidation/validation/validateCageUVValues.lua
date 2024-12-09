@@ -59,7 +59,7 @@ local function validateCageUVValues(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageUVValues_FailedToLoadMesh)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageUVValues_FailedToLoadMesh, nil, validationContext)
 		local errorMsg = string.format(
 			"Failed to load UVs for '%s'. Make sure the UV map exists and try again.",
 			wrapTarget:GetFullName()
@@ -74,7 +74,7 @@ local function validateCageUVValues(
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageUVValues_UnexpectedUVValue)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageUVValues_UnexpectedUVValue, nil, validationContext)
 		return false,
 			{
 				string.format(

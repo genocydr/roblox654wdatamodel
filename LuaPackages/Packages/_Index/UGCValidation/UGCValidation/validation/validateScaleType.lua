@@ -7,17 +7,25 @@
 local root = script.Parent.Parent
 
 local Constants = require(root.Constants)
+local Types = require(root.util.Types)
 
 local Analytics = require(root.Analytics)
 
-local function validateScaleType(partScaleTypeNullable: StringValue?): (boolean, { string }?)
+local function validateScaleType(
+	partScaleTypeNullable: StringValue?,
+	validationContext: Types.ValidationContext
+): (boolean, { string }?)
 	if not partScaleTypeNullable then
 		return true -- a missing partScaleType is ok as it is optional in some schemas
 	end
 	local partScaleType = partScaleTypeNullable :: StringValue
 
 	if not Constants.AvatarPartScaleTypes[partScaleType.Value] then
-		Analytics.reportFailure(Analytics.ErrorType.validateScaleType_InvalidAvatarPartScaleType :: string)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateScaleType_InvalidAvatarPartScaleType :: string,
+			nil,
+			validationContext
+		)
 		assert(partScaleType.Parent) -- a partScaleType will never be the root, it'll have a parent
 		return false,
 			{

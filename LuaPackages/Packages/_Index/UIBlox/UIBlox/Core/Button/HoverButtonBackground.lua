@@ -57,7 +57,6 @@ function HoverButtonBackground:render()
 				ImageTransparency = backgroundHover.Transparency,
 				ScaleType = Enum.ScaleType.Slice,
 				SliceCenter = self.props.sliceCenter,
-				ZIndex = if UIBloxConfig.useNewThemeColorPalettes then -1 else nil,
 			}, {
 				corner = if self.props.image
 					then nil
@@ -78,7 +77,6 @@ function HoverButtonBackground:render()
 					else nil,
 				BackgroundColor3 = backgroundHover.Color,
 				BackgroundTransparency = backgroundHover.Transparency,
-				ZIndex = if UIBloxConfig.useNewThemeColorPalettes then -1 else nil,
 			}, {
 				corner = Roact.createElement("UICorner", {
 					CornerRadius = UDim.new(0, CORNER_RADIUS),

@@ -8,7 +8,6 @@ local Packages = UIBlox.Parent
 
 local Roact = require(Packages.Roact)
 local t = require(Packages.t)
-local UIBloxConfig = require(UIBlox.UIBloxConfig)
 
 local withStyle = require(Core.Style.withStyle)
 local Interactable = require(Core.Control.Interactable)
@@ -186,7 +185,7 @@ function ItemSplitTile:renderBottomContent(stylePalette)
 		+ PANEL_PADDING.Offset
 		+ controlStatePadding.Offset * 2
 
-	local titleColorStyle = if UIBloxConfig.useNewThemeColorPalettes then theme.TextDefault else theme.TextEmphasis
+	local titleColorStyle = theme.TextEmphasis
 
 	return Roact.createElement("Frame", {
 		Size = UDim2.new(1, 0, 0, bottomContentHeight),

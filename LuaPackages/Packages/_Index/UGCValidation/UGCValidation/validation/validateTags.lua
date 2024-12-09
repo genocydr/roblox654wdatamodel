@@ -4,7 +4,9 @@ local root = script.Parent.Parent
 
 local Analytics = require(root.Analytics)
 
-local function validateTags(instance: Instance): (boolean, { string }?)
+local Types = require(root.util.Types)
+
+local function validateTags(instance: Instance, validationContext: Types.ValidationContext): (boolean, { string }?)
 	local objects: { Instance } = instance:GetDescendants()
 	table.insert(objects, instance)
 
@@ -20,7 +22,7 @@ local function validateTags(instance: Instance): (boolean, { string }?)
 		for _, obj in ipairs(hasTags) do
 			table.insert(reasons, obj:GetFullName())
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateTags)
+		Analytics.reportFailure(Analytics.ErrorType.validateTags, nil, validationContext)
 		return false, reasons
 	end
 

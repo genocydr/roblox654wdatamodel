@@ -36,7 +36,11 @@ local function validateMeshTriangleArea(
 		end
 
 		if not success then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangleArea_FailedToLoadMesh)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateMeshTriangleArea_FailedToLoadMesh,
+				nil,
+				validationContext
+			)
 			if isServer then
 				error(
 					string.format(
@@ -55,7 +59,7 @@ local function validateMeshTriangleArea(
 		end
 
 		if not result then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangleArea_NoArea)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshTriangleArea_NoArea, nil, validationContext)
 			return false,
 				{
 					string.format(

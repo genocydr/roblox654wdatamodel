@@ -23,7 +23,8 @@ local function validateLayeredClothingAccessoryMeshPartAssetFormat(
 
 	success, reasons = validateLayeredClothingAccessoryMeshPartAssetFormatMatch(
 		meshPartAssetFormatAccessory,
-		specialMeshAssetFormatAccessory
+		specialMeshAssetFormatAccessory,
+		validationContext
 	)
 	if not success then
 		return false, reasons

@@ -73,7 +73,7 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 	end
 
 	if getFFlagUGCValidationNameCheck() and isServer then
-		success, reasons = validateAccessoryName(instance)
+		success, reasons = validateAccessoryName(instance, validationContext)
 		if not success then
 			return false, reasons
 		end
@@ -95,7 +95,7 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 		if not getEditableMeshSuccess then
 			if not meshInfo.contentId then
 				hasMeshContent = false
-				Analytics.reportFailure(Analytics.ErrorType.validateMeshPartAccessory_NoMeshId)
+				Analytics.reportFailure(Analytics.ErrorType.validateMeshPartAccessory_NoMeshId, nil, validationContext)
 				reasonsAccumulator:updateReasons(false, {
 					string.format(
 						"Accessory MeshPart '%s' must contain a valid meshId. Make sure the mesh referred to by the meshId exists and try again.",
@@ -103,7 +103,11 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 					),
 				})
 			else
-				Analytics.reportFailure(Analytics.ErrorType.validateMeshPartAccessory_FailedToLoadMesh)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateMeshPartAccessory_FailedToLoadMesh,
+					nil,
+					validationContext
+				)
 				return false,
 					{
 						string.format(
@@ -145,9 +149,9 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 			local meshSuccess
 			local _canLoadFailedReason: any = {}
 			if textureId ~= "" then
-				textureSuccess, _canLoadFailedReason = validateCanLoad(textureId)
+				textureSuccess, _canLoadFailedReason = validateCanLoad(textureId, validationContext)
 			end
-			meshSuccess, _canLoadFailedReason = validateCanLoad(handle.MeshId)
+			meshSuccess, _canLoadFailedReason = validateCanLoad(handle.MeshId, validationContext)
 			if not textureSuccess or not meshSuccess then
 				-- Failure to load assets should be treated as "inconclusive".
 				-- Validation didn't succeed or fail, we simply couldn't run validation because the assets couldn't be loaded.
@@ -171,7 +175,7 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 	end
 
 	if not meshSizeSuccess then
-		Analytics.reportFailure(Analytics.ErrorType.validateMeshPartAccessory_FailedToLoadMesh)
+		Analytics.reportFailure(Analytics.ErrorType.validateMeshPartAccessory_FailedToLoadMesh, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -193,11 +197,11 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 
 	local boundsInfo = assert(assetInfo.bounds[attachment.Name], "Could not find bounds for " .. attachment.Name)
 
-	reasonsAccumulator:updateReasons(validateMaterials(instance))
+	reasonsAccumulator:updateReasons(validateMaterials(instance, validationContext))
 
-	reasonsAccumulator:updateReasons(validateProperties(instance))
+	reasonsAccumulator:updateReasons(validateProperties(instance, nil, validationContext))
 
-	reasonsAccumulator:updateReasons(validateTags(instance))
+	reasonsAccumulator:updateReasons(validateTags(instance, validationContext))
 
 	reasonsAccumulator:updateReasons(validateAttributes(instance, validationContext))
 
@@ -206,7 +210,9 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 	)
 
 	if getFFlagUGCValidateThumbnailConfiguration() then
-		reasonsAccumulator:updateReasons(validateThumbnailConfiguration(instance, handle, meshInfo, meshScale))
+		reasonsAccumulator:updateReasons(
+			validateThumbnailConfiguration(instance, handle, meshInfo, meshScale, validationContext)
+		)
 	end
 
 	local checkModeration = not isServer
@@ -251,7 +257,7 @@ local function validateMeshPartAccessory(validationContext: Types.ValidationCont
 
 	local partScaleType = handle:FindFirstChild("AvatarPartScaleType")
 	if partScaleType and partScaleType:IsA("StringValue") then
-		reasonsAccumulator:updateReasons(validateScaleType(partScaleType))
+		reasonsAccumulator:updateReasons(validateScaleType(partScaleType, validationContext))
 	end
 
 	return reasonsAccumulator:getFinalResults()

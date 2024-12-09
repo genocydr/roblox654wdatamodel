@@ -44,7 +44,11 @@ local function validateCageUVTriangleArea(
 					)
 				)
 			end
-			Analytics.reportFailure(Analytics.ErrorType.validateCageUVTriangleArea_FailedToLoadMesh)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateCageUVTriangleArea_FailedToLoadMesh,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(
@@ -55,7 +59,11 @@ local function validateCageUVTriangleArea(
 		end
 
 		if not result then
-			Analytics.reportFailure(Analytics.ErrorType.validateCageUVTriangleArea_ZeroAreaTriangle)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateCageUVTriangleArea_ZeroAreaTriangle,
+				nil,
+				validationContext
+			)
 			return false,
 				{
 					string.format(

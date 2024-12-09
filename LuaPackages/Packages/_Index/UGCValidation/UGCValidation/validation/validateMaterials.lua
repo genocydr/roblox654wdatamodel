@@ -1,10 +1,12 @@
 local root = script.Parent.Parent
 
+local Types = require(root.util.Types)
+
 local Analytics = require(root.Analytics)
 local Constants = require(root.Constants)
 
 -- ensures no descendant of instance has a material that does not exist in Constants.MATERIAL_WHITELIST
-local function validateMaterials(instance: Instance): (boolean, { string }?)
+local function validateMaterials(instance: Instance, validationContext: Types.ValidationContext): (boolean, { string }?)
 	local materialFailures = {}
 
 	local objects: { Instance } = instance:GetDescendants()
@@ -26,7 +28,7 @@ local function validateMaterials(instance: Instance): (boolean, { string }?)
 			table.insert(reasons, name)
 		end
 		table.insert(reasons, "Accepted values are: " .. table.concat(acceptedMaterialNames, ", "))
-		Analytics.reportFailure(Analytics.ErrorType.validateMaterials)
+		Analytics.reportFailure(Analytics.ErrorType.validateMaterials, nil, validationContext)
 		return false, reasons
 	end
 

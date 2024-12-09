@@ -39,14 +39,17 @@ local function validateLegacyAccessoryMeshPartAssetFormat(
 	end
 
 	if getFFlagUGCValidationNameCheck() and isServer then
-		success, reasons = validateAccessoryName(meshPartAssetFormatAccessory)
+		success, reasons = validateAccessoryName(meshPartAssetFormatAccessory, validationContext)
 		if not success then
 			return false, reasons
 		end
 	end
 
-	success, reasons =
-		validateLegacyAccessoryMeshPartAssetFormatMatch(meshPartAssetFormatAccessory, specialMeshAssetFormatAccessory)
+	success, reasons = validateLegacyAccessoryMeshPartAssetFormatMatch(
+		meshPartAssetFormatAccessory,
+		specialMeshAssetFormatAccessory,
+		validationContext
+	)
 	if not success then
 		return false, reasons
 	end

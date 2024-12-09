@@ -95,7 +95,7 @@ local function validateAssetCreator(
 	end
 
 	if count > maxAssetIdSize then
-		Analytics.reportFailure(Analytics.ErrorType.validateAssetCreator_TooManyDependencies)
+		Analytics.reportFailure(Analytics.ErrorType.validateAssetCreator_TooManyDependencies, nil, validationContext)
 		return false,
 			{
 				"Upload of model has too many children assets (Meshes, Textures, etc.) and cannot be processed as is. You need to rearrange the model.",
@@ -128,7 +128,7 @@ local function validateAssetCreator(
 	local complete, responses = Promise.all(promises):await()
 
 	if not complete then
-		Analytics.reportFailure(Analytics.ErrorType.validateAssetCreator_FailedToLoad)
+		Analytics.reportFailure(Analytics.ErrorType.validateAssetCreator_FailedToLoad, nil, validationContext)
 		return false,
 			{ "Failed to load detailed information for model assets. Make sure all model assets exist and try again." }
 	end
@@ -137,7 +137,11 @@ local function validateAssetCreator(
 		local results = response.result
 		for instanceId, allowed in pairs(results) do
 			if getFFlagUGCValidationAnalytics() and not allowed then
-				Analytics.reportFailure(Analytics.ErrorType.validateAssetCreator_DependencyNotOwnedByCreator)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateAssetCreator_DependencyNotOwnedByCreator,
+					nil,
+					validationContext
+				)
 			end
 			local data = contentIdMap[instanceId]
 			local failureMessage = string.format(

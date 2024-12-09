@@ -142,7 +142,11 @@ local function NavigationRail(providedProps: Props)
 		}, {
 			AnimatedNavigationRail = React.createElement("Frame", {
 				Position = widthOffset:map(function(widthOffset)
-					return UDim2.new(0, widthOffset, 0, 0)
+					if UIBloxConfig.enableAppNavAnimationFix then
+						return UDim2.new(0, math.floor((widthOffset :: number) + 0.5), 0, 0)
+					else
+						return UDim2.new(0, widthOffset, 0, 0)
+					end
 				end),
 				BorderSizePixel = 0,
 				Size = UDim2.new(1, 0, 1, 0),

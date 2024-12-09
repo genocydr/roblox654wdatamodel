@@ -42,7 +42,7 @@ local function validateBodyPartCollisionFidelity(
 	if #failures == 0 then
 		return true
 	else
-		Analytics.reportFailure(Analytics.ErrorType.validateBodyPartCollisionFidelity)
+		Analytics.reportFailure(Analytics.ErrorType.validateBodyPartCollisionFidelity, nil, validationContext)
 		return false, failures
 	end
 end

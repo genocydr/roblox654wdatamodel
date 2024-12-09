@@ -9,7 +9,6 @@ local Cryo = require(Packages.Cryo)
 
 local bindingValidator = require(UIBlox.Core.Utility.bindingValidator)
 local ControlState = require(UIBlox.Core.Control.Enum.ControlState)
-local UIBloxConfig = require(UIBlox.UIBloxConfig)
 
 local InteractableListItem = require(script.Parent.InteractableListItem)
 local SelectionMode = require(script.Parent.Enum.SelectionMode)
@@ -54,9 +53,7 @@ InteractableList.validateProps = t.strictInterface({
 	automaticSize = t.optional(t.enum(Enum.AutomaticSize)),
 	--- options for default controllable
 	-- container size for each item
-	itemSize = if UIBloxConfig.enableAppNavUpdate
-		then t.optional(t.union(t.UDim2, bindingValidator(t.UDim2)))
-		else t.optional(t.UDim2),
+	itemSize = t.optional(t.union(t.UDim2, bindingValidator(t.UDim2))),
 })
 
 InteractableList.defaultProps = {

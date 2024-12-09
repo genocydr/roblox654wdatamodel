@@ -51,7 +51,7 @@ local function validateCageMeshDistance(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshDistance_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshDistance_FailedToExecute, nil, validationContext)
 		return false,
 			{
 				string.format(
@@ -68,7 +68,11 @@ local function validateCageMeshDistance(
 		or averageOuterCageToMeshDistance < 0
 	then
 		result = false
-		Analytics.reportFailure(Analytics.ErrorType.validateCageMeshDistance_OuterCageToMeshDistance)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCageMeshDistance_OuterCageToMeshDistance,
+			nil,
+			validationContext
+		)
 		if averageOuterCageToMeshDistance < 0 then
 			table.insert(
 				reasons,

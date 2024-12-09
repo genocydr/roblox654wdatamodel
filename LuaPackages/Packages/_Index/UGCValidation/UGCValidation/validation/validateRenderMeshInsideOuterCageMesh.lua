@@ -62,13 +62,21 @@ local function validateRenderMeshInsideOuterCageMesh(
 			-- which would mean the asset failed validation
 			error(errorString)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateRenderMeshInsideOuterCageMesh_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateRenderMeshInsideOuterCageMesh_FailedToExecute,
+			nil,
+			validationContext
+		)
 		return false, { errorString }
 	end
 
 	percentageInside = percentageInside * 100
 	if percentageInside < getFIntUGCValidateRenderMeshInsideOuterCageMeshThreshold() then
-		Analytics.reportFailure(Analytics.ErrorType.validateRenderMeshInsideOuterCageMesh_MaxOutsideCageMeshExceeded)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateRenderMeshInsideOuterCageMesh_MaxOutsideCageMeshExceeded,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(

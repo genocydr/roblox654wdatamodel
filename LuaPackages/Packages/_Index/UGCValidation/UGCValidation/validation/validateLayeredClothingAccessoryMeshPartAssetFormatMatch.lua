@@ -2,9 +2,12 @@ local root = script.Parent.Parent
 
 local Analytics = require(root.Analytics)
 
+local Types = require(root.util.Types)
+
 local function validateLayeredClothingAccessoryMeshPartAssetFormatMatch(
 	meshPartAccessory: Instance,
-	specialMeshAccessory: Instance
+	specialMeshAccessory: Instance,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	local meshPartHandle = meshPartAccessory:FindFirstChild("Handle") :: MeshPart
 	assert(meshPartHandle and meshPartHandle:IsA("MeshPart"))
@@ -16,7 +19,9 @@ local function validateLayeredClothingAccessoryMeshPartAssetFormatMatch(
 
 	if meshPartHandle.MeshId ~= specialMeshHandle.MeshId then
 		Analytics.reportFailure(
-			Analytics.ErrorType.validateLayeredClothingAccessoryMeshPartAssetFormatMatch_MeshIdMismatch
+			Analytics.ErrorType.validateLayeredClothingAccessoryMeshPartAssetFormatMatch_MeshIdMismatch,
+			nil,
+			validationContext
 		)
 		return false,
 			{
@@ -29,7 +34,9 @@ local function validateLayeredClothingAccessoryMeshPartAssetFormatMatch(
 
 	if meshPartHandle.TextureID ~= specialMeshHandle.TextureID then
 		Analytics.reportFailure(
-			Analytics.ErrorType.validateLayeredClothingAccessoryMeshPartAssetFormatMatch_TextureIdMismatch
+			Analytics.ErrorType.validateLayeredClothingAccessoryMeshPartAssetFormatMatch_TextureIdMismatch,
+			nil,
+			validationContext
 		)
 		return false,
 			{

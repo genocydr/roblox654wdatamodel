@@ -21,6 +21,8 @@ local getFFlagUGCValidateTotalSurfaceAreaTestAccessory =
 	require(root.flags.getFFlagUGCValidateTotalSurfaceAreaTestAccessory)
 local getEngineFeatureUGCValidateMeshInsideMesh = require(root.flags.getEngineFeatureUGCValidateMeshInsideMesh)
 local getEngineFeatureUGCValidateCageMeshDistance = require(root.flags.getEngineFeatureUGCValidateCageMeshDistance)
+local getEngineFeatureEngineUGCValidationIECTelemetry =
+	require(root.flags.getEngineFeatureEngineUGCValidationIECTelemetry)
 
 local getEngineFeatureEngineUGCValidationCageUVDuplicates =
 	require(root.flags.getEngineFeatureEngineUGCValidationCageUVDuplicates)
@@ -231,7 +233,33 @@ function Analytics.setMetadata(metadata: { [string]: any })
 	Analytics.metadata = result
 end
 
-function Analytics.reportFailure(errorType: string, extraArgs: { [string]: string }?)
+function Analytics.shouldReportIECTelemetry(validationContext: Types.ValidationContext)
+	if not getEngineFeatureEngineUGCValidationIECTelemetry() then
+		return false
+	end
+
+	if not validationContext then
+		return false
+	end
+
+	if RunService:IsStudio() or not validationContext.allowEditableInstances or not validationContext.isServer then
+		return false
+	end
+
+	return true
+end
+
+function Analytics.reportCounter(success, validationType, validationContext)
+	if Analytics.shouldReportIECTelemetry(validationContext) then
+		UGCValidationService:ReportUGCValidationCounter(success, validationType)
+	end
+end
+
+function Analytics.reportFailure(
+	errorType: string,
+	extraArgs: { [string]: string }?,
+	validationContext: Types.ValidationContext
+)
 	if not getFFlagUGCValidationAnalytics() then
 		return
 	end
@@ -245,6 +273,10 @@ function Analytics.reportFailure(errorType: string, extraArgs: { [string]: strin
 		userId = if StudioService then StudioService:GetUserId() else 0,
 	})
 	RbxAnalyticsService:SendEventDeferred(target, "ugcValidation", "failure", args)
+
+	if Analytics.shouldReportIECTelemetry(validationContext) then
+		UGCValidationService:ReportUGCValidationFailureTelemetry(errorType)
+	end
 end
 
 function Analytics.reportThumbnailing(time: number, extraArgs: { [string]: string }?)

@@ -73,7 +73,7 @@ local function validateAttributes(
 		for _, name in pairs(attributesFailures) do
 			table.insert(reasons, name)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateAttributes)
+		Analytics.reportFailure(Analytics.ErrorType.validateAttributes, nil, validationContext)
 		return false, reasons
 	end
 

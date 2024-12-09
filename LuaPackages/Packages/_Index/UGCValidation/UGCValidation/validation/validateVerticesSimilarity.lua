@@ -41,13 +41,17 @@ local function validateVerticesSimilarity(
 			error(string.format(MESSAGE_EXECUTE_FAILED, meshInfo.fullName))
 		end
 
-		Analytics.reportFailure(Analytics.ErrorType.validateVerticesSimilarity_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateVerticesSimilarity_FailedToExecute, nil, validationContext)
 		return false, { string.format(MESSAGE_EXECUTE_FAILED, meshInfo.fullName) }
 	end
 
 	result = math.floor(result * 100)
 	if result > getFIntUGCLCCageVerticesSimilarityMaximum() then
-		Analytics.reportFailure(Analytics.ErrorType.validateVerticesSimilarity_MaxSimilarityExceeded)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateVerticesSimilarity_MaxSimilarityExceeded,
+			nil,
+			validationContext
+		)
 		return false,
 			{ string.format(MESSAGE_SIMILARITY_FAILED, debugName, result, getFIntUGCLCCageVerticesSimilarityMaximum()) }
 	end

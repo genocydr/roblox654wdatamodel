@@ -39,7 +39,7 @@ local function validatePackage(validationContext: Types.ValidationContext): (boo
 	)
 
 	if not parseSuccess then
-		Analytics.reportFailure(Analytics.ErrorType.validatePackage_FailedToParse)
+		Analytics.reportFailure(Analytics.ErrorType.validatePackage_FailedToParse, nil, validationContext)
 		return false,
 			{
 				string.format(

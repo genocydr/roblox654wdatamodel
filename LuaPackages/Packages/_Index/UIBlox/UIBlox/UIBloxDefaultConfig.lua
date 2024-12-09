@@ -1,7 +1,4 @@
 return {
-	-- New color palettes of color system 1.1
-	useNewThemeColorPalettes = false,
-
 	-- enable trace level log
 	enableTraceLevelLog = false,
 
@@ -131,14 +128,11 @@ return {
 	-- Fix gradient issue in ExpandableTextArea in color update
 	enableExpandableTextAreaGradientFix = false,
 
-	-- Fix incorrect padding in ItemTile overlay icons, switch to use design tokens
-	itemTileOverlayPaddingUseTokens = false,
-
 	-- Fix incorrect disabling of LaserPointer in PointerOverlay
 	fixLaserPointerDisable = false,
 
-	-- Enable the update of AppNav components
-	enableAppNavUpdate = false,
+	-- Enable the flex layout of AppNav
+	enableAppNavFlexLayout = false,
 
 	-- Enable Panel managed anchoring for Panel3D
 	enablePanelManagedAnchoring = false,
@@ -166,6 +160,9 @@ return {
 
 	-- Update NavigationBar & NavigationRail's backgrounds to be transparent
 	enableAppNavTransparentBackground = false,
+
+	-- Fix the AppNav NavigationBar/Rail animation issues
+	enableAppNavAnimationFix = false,
 
 	-- Enable ComboButton support in ExperienceActionRow
 	enableComboButtonInExperienceActionRow = false,

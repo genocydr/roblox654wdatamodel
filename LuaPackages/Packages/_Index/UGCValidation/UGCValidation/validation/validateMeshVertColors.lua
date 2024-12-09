@@ -36,7 +36,7 @@ local function validateMeshVertexColors(
 	end
 
 	if not success then
-		Analytics.reportFailure(Analytics.ErrorType.validateMeshVertexColors_FailedToLoadMesh)
+		Analytics.reportFailure(Analytics.ErrorType.validateMeshVertexColors_FailedToLoadMesh, nil, validationContext)
 		local message = string.format(
 			"Failed to load vertex color map for model mesh %s. Make sure it exists and try again.",
 			meshInfo.fullName
@@ -51,7 +51,11 @@ local function validateMeshVertexColors(
 	end
 
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateMeshVertexColors_NonNeutralVertexColors)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateMeshVertexColors_NonNeutralVertexColors,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(

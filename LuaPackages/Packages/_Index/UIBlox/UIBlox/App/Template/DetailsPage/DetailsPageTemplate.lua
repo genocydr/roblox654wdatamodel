@@ -241,13 +241,11 @@ function DetailsPageTemplate:render()
 				CloseButton = Roact.createElement(IconButton, {
 					size = UDim2.fromScale(1, 1),
 					icon = showFullscreen and Images[ICON_BACK] or Images[ICON_CLOSE],
-					iconColor3 = if UIBloxConfig.useNewThemeColorPalettes then nil else style.Theme.UIEmphasis.Color,
+					iconColor3 = style.Theme.UIEmphasis.Color,
 					iconSize = IconSize.Medium,
 					onActivated = self.props.onClose,
 					showBackground = self.state.showStickyActionTopBar == false,
-					backgroundColor = if UIBloxConfig.useNewThemeColorPalettes
-						then nil
-						else style.Theme.BackgroundUIDefault,
+					backgroundColor = style.Theme.BackgroundUIDefault,
 				}),
 			}),
 			BackgroundDetailsFrame = Roact.createElement("Frame", {

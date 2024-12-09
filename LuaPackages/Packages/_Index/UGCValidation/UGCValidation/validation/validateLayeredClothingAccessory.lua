@@ -68,7 +68,9 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 
 	if not RigidOrLayeredAllowed.isLayeredClothingAllowed(assetTypeEnum) then
 		Analytics.reportFailure(
-			Analytics.ErrorType.validateLayeredClothingAccessory_AssetTypeNotAllowedAsLayeredClothing
+			Analytics.ErrorType.validateLayeredClothingAccessory_AssetTypeNotAllowedAsLayeredClothing,
+			nil,
+			validationContext
 		)
 		return false,
 			{
@@ -98,7 +100,7 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 	end
 
 	if getFFlagUGCValidationNameCheck() and isServer then
-		success, reasons = validateAccessoryName(instance)
+		success, reasons = validateAccessoryName(instance, validationContext)
 		if not success then
 			return false, reasons
 		end
@@ -121,7 +123,11 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 		if not getEditableMeshSuccess then
 			if not meshInfo.contentId then
 				hasMeshContent = false
-				Analytics.reportFailure(Analytics.ErrorType.validateLayeredClothingAccessory_NoMeshId)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateLayeredClothingAccessory_NoMeshId,
+					nil,
+					validationContext
+				)
 				validationResult = false
 				table.insert(reasons, {
 					string.format(
@@ -130,7 +136,11 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 					),
 				})
 			else
-				Analytics.reportFailure(Analytics.ErrorType.validateLayeredClothingAccessory_FailedToLoadMesh)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateLayeredClothingAccessory_FailedToLoadMesh,
+					nil,
+					validationContext
+				)
 				return false,
 					{
 						string.format(
@@ -174,9 +184,9 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 			local meshSuccess
 			local _canLoadFailedReason: any = {}
 			if textureId ~= "" then
-				textureSuccess, _canLoadFailedReason = validateCanLoad(textureId)
+				textureSuccess, _canLoadFailedReason = validateCanLoad(textureId, validationContext)
 			end
-			meshSuccess, _canLoadFailedReason = validateCanLoad(handle.MeshId)
+			meshSuccess, _canLoadFailedReason = validateCanLoad(handle.MeshId, validationContext)
 			if not textureSuccess or not meshSuccess then
 				-- Failure to load assets should be treated as "inconclusive".
 				-- Validation didn't succeed or fail, we simply couldn't run validation because the assets couldn't be loaded.
@@ -200,7 +210,11 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 	end
 
 	if not meshSizeSuccess then
-		Analytics.reportFailure(Analytics.ErrorType.validateLayeredClothingAccessory_FailedToLoadMesh)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateLayeredClothingAccessory_FailedToLoadMesh,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -230,19 +244,19 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 	end
 
 	local failedReason: any = {}
-	success, failedReason = validateMaterials(instance)
+	success, failedReason = validateMaterials(instance, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
 	end
 
-	success, failedReason = validateProperties(instance)
+	success, failedReason = validateProperties(instance, nil, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
 	end
 
-	success, failedReason = validateTags(instance)
+	success, failedReason = validateTags(instance, validationContext)
 	if not success then
 		table.insert(reasons, table.concat(failedReason, "\n"))
 		validationResult = false
@@ -262,7 +276,7 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 
 	local partScaleType = handle:FindFirstChild("AvatarPartScaleType")
 	if partScaleType and partScaleType:IsA("StringValue") then
-		success, failedReason = validateScaleType(partScaleType)
+		success, failedReason = validateScaleType(partScaleType, validationContext)
 		if not success then
 			table.insert(reasons, table.concat(failedReason, "\n"))
 			validationResult = false
@@ -270,7 +284,7 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 	end
 
 	if getFFlagUGCValidateThumbnailConfiguration() then
-		success, failedReason = validateThumbnailConfiguration(instance, handle, meshInfo, meshScale)
+		success, failedReason = validateThumbnailConfiguration(instance, handle, meshInfo, meshScale, validationContext)
 		if not success then
 			table.insert(reasons, table.concat(failedReason, "\n"))
 			validationResult = false
@@ -281,7 +295,11 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 		local wrapLayer = handle:FindFirstChildOfClass("WrapLayer")
 
 		if wrapLayer == nil then
-			Analytics.reportFailure(Analytics.ErrorType.validateLayeredClothingAccessory_NoWrapLayer)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateLayeredClothingAccessory_NoWrapLayer,
+				nil,
+				validationContext
+			)
 			table.insert(
 				reasons,
 				string.format(
@@ -298,7 +316,11 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 			end
 
 			if getFFlagUGCValidateCageOrigin() then
-				Analytics.reportFailure(Analytics.ErrorType.validateLayeredClothingAccessory_CageOriginOutOfBounds)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateLayeredClothingAccessory_CageOriginOutOfBounds,
+					nil,
+					validationContext
+				)
 				-- for layered clothing accessories there is no reason not to have the CageOrigin of the WrapLayer at 0,0,0 as the item should get
 				-- fitted to the character's WrapTarget mesh regardless of the CageOrigin position. There is an exploit that if you have identical
 				-- CageMesh and ReferenceMesh in the WrapLayer then your Accessory will not deform to the character's WrapTarget, then you can
@@ -378,7 +400,7 @@ local function validateLayeredClothingAccessory(validationContext: Types.Validat
 		end
 
 		if getFFlagUGCLCQualityReplaceLua() then
-			success, failedReason = validateUVSpace(meshInfo)
+			success, failedReason = validateUVSpace(meshInfo, validationContext)
 			if not success then
 				table.insert(reasons, table.concat(failedReason, "\n"))
 				validationResult = false

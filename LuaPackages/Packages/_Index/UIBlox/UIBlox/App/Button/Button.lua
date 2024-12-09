@@ -229,23 +229,32 @@ end
 local ButtonForwardRef = React.forwardRef(function(props, ref)
 	if UIBloxConfig.useFoundationButton then
 		local tokens = Foundation.Hooks.useTokens()
-		return React.createElement(Foundation.Button, {
-			variant = FoundationButtonUtils.buttonMapping[props.buttonType],
-			size = FoundationButtonUtils.getSizeMapping(props.standardSize, props.size, tokens),
-			width = FoundationButtonUtils.getWidth(props.size, props.fitContent),
-			AnchorPoint = props.anchorPoint,
-			Position = props.position,
-			LayoutOrder = props.layoutOrder,
-			icon = FoundationButtonUtils.findIcon(props.icon),
-			text = props.text,
-			isDisabled = props.isDisabled or props.userInteractionEnabled == false,
-			inputDelay = if props.isDelayedInput and props.enableInputDelayed
-				then props.delayInputSeconds or 3
-				else nil,
-			onActivated = props.onActivated,
-			testId = props[React.Tag],
-			ref = ref or props.buttonRef,
-		})
+		local isRoactGamepadEnabled = props.isRoactGamepadEnabled
+		return React.createElement(
+			if isRoactGamepadEnabled then RoactGamepad.Focusable[Foundation.Button] else Foundation.Button,
+			{
+				variant = FoundationButtonUtils.buttonMapping[props.buttonType],
+				size = FoundationButtonUtils.getSizeMapping(props.standardSize, props.size, tokens),
+				width = FoundationButtonUtils.getWidth(props.size, props.fitContent),
+				AnchorPoint = props.anchorPoint,
+				Position = props.position,
+				LayoutOrder = props.layoutOrder,
+				icon = FoundationButtonUtils.findIcon(props.icon),
+				text = props.text,
+				isDisabled = props.isDisabled or props.userInteractionEnabled == false,
+				inputDelay = if props.isDelayedInput and props.enableInputDelayed
+					then props.delayInputSeconds or 3
+					else nil,
+				onActivated = props.onActivated,
+				testId = FoundationButtonUtils.getTestId(props[React.Tag]),
+				ref = ref or props.buttonRef,
+
+				NextSelectionUp = props.NextSelectionUp,
+				NextSelectionDown = props.NextSelectionDown,
+				NextSelectionLeft = props.NextSelectionLeft,
+				NextSelectionRight = props.NextSelectionRight,
+			}
+		)
 	else
 		return React.createElement(
 			if UIBloxConfig.useNewSelectionCursor then ButtonFunctionalWrapper else Button,

@@ -21,7 +21,7 @@ local function validateHSR(inst: Instance, validationContext: Types.ValidationCo
 		if (not obj:IsA("BaseWrap")) or (obj :: BaseWrap):IsHSRReady() then
 			continue
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateHSR_HSRDataNotReady)
+		Analytics.reportFailure(Analytics.ErrorType.validateHSR_HSRDataNotReady, nil, validationContext)
 		reasonsAccumulator:updateReasons(false, { `Missing HSR data for {obj:GetFullName()}. Please, try again.` })
 	end
 

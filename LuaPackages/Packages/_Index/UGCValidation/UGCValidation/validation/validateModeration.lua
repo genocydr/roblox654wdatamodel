@@ -53,7 +53,7 @@ local function validateModeration(
 	local parseSuccess, parseReasons =
 		ParseContentIds.parseWithErrorCheck(contentIds, contentIdMap, instance, nil, nil, validationContext)
 	if not parseSuccess then
-		Analytics.reportFailure(Analytics.ErrorType.validateModeration_FailedToParse)
+		Analytics.reportFailure(Analytics.ErrorType.validateModeration_FailedToParse, nil, validationContext)
 		return false, parseReasons
 	end
 
@@ -62,7 +62,11 @@ local function validateModeration(
 	local success, response = getAssetCreationDetails(contentIds)
 
 	if not success or #response ~= #contentIds then
-		Analytics.reportFailure(Analytics.ErrorType.validateModeration_CouldNotFetchModerationDetails)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateModeration_CouldNotFetchModerationDetails,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(
@@ -74,7 +78,7 @@ local function validateModeration(
 
 	local passedUserCheck, reasons = validateUser(restrictedUserIds, response, contentIdMap)
 	if not passedUserCheck then
-		Analytics.reportFailure(Analytics.ErrorType.validateModeration_ValidateUser)
+		Analytics.reportFailure(Analytics.ErrorType.validateModeration_ValidateUser, nil, validationContext)
 		return passedUserCheck, reasons
 	end
 
@@ -99,7 +103,11 @@ local function validateModeration(
 				moderationMessages[idx] = id
 			end
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateModeration_AssetsHaveNotPassedModeration)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateModeration_AssetsHaveNotPassedModeration,
+			nil,
+			validationContext
+		)
 		return false, {
 			"Asset(s) failed to pass moderation:",
 			unpack(moderationMessages),

@@ -44,13 +44,21 @@ local function validateSurfaceAppearances(
 
 		if meshPartHasTexture then
 			if surfaceAppearance then
-				Analytics.reportFailure(Analytics.ErrorType.validateSurfaceAppearances_MeshPartHasTexture)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateSurfaceAppearances_MeshPartHasTexture,
+					nil,
+					validationContext
+				)
 				reasonsAccumulator:updateReasons(false, {
 					`TextureID and SurfaceAppearance are both defined for MeshPart ({(descendant :: Instance):GetFullName()}). Publishing will only use SurfaceApperance.`,
 				})
 			end
 		elseif not surfaceAppearance then
-			Analytics.reportFailure(Analytics.ErrorType.validateSurfaceAppearances_MissingSurfaceAppearance)
+			Analytics.reportFailure(
+				Analytics.ErrorType.validateSurfaceAppearances_MissingSurfaceAppearance,
+				nil,
+				validationContext
+			)
 			reasonsAccumulator:updateReasons(false, {
 				`({(descendant :: Instance):GetFullName()}) has an empty TextureID and no child SurfaceAppearance instance. You need to define at least one of them.`,
 			})

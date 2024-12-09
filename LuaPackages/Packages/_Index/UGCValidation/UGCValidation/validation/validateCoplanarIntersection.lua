@@ -41,7 +41,11 @@ local function getTriangleCount(
 	if not success then
 		local errorString =
 			string.format("Failed to load model mesh %s. Make sure the mesh exists and try again.", meshInfo.fullName)
-		Analytics.reportFailure(Analytics.ErrorType.validateCoplanarIntersection_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCoplanarIntersection_FailedToExecute,
+			nil,
+			validationContext
+		)
 		if nil ~= isServer and isServer then
 			-- there could be many reasons that an error occurred, the asset is not necessarilly incorrect, we just didn't get as
 			-- far as testing it, so we throw an error which means the RCC will try testing the asset again, rather than returning false
@@ -107,12 +111,20 @@ local function validateCoplanarIntersection(
 			-- which would mean the asset failed validation
 			error(errorString)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateCoplanarIntersection_FailedToExecute)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCoplanarIntersection_FailedToExecute,
+			nil,
+			validationContext
+		)
 		return false, { errorString }
 	end
 
 	if isOverLimit then
-		Analytics.reportFailure(Analytics.ErrorType.validateCoplanarIntersection_CoplanarIntersection)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateCoplanarIntersection_CoplanarIntersection,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				string.format(

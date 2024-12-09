@@ -116,12 +116,12 @@ local function validateMeshBounds(
 				-- which would mean the asset failed validation
 				error("Failed to execute validateMeshBounds check")
 			end
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_FailedToExecute)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_FailedToExecute, nil, validationContext)
 			return false, { "Failed to execute validateMeshBounds check" }
 		end
 
 		if not result then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge, nil, validationContext)
 			return false, getErrors(meshInfo.context :: string, assetTypeName, boundsSize)
 		end
 	else
@@ -137,7 +137,7 @@ local function validateMeshBounds(
 		end
 
 		if not success then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_FailedToLoadMesh)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_FailedToLoadMesh, nil, validationContext)
 			if nil ~= isServer and isServer then
 				-- there could be many reasons that an error occurred, the asset is not necessarilly incorrect, we just didn't get as
 				-- far as testing it, so we throw an error which means the RCC will try testing the asset again, rather than returning false
@@ -161,7 +161,7 @@ local function validateMeshBounds(
 		for _, vertPos in pairs(verts) do
 			local worldPos = handle.CFrame:PointToWorldSpace(vertPos * meshScale)
 			if not pointInBounds(worldPos, boundsCF, boundsSize) then
-				Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge)
+				Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge, nil, validationContext)
 				return false, getErrors(meshInfo.context :: string, assetTypeName, boundsSize)
 			end
 		end
@@ -169,7 +169,7 @@ local function validateMeshBounds(
 
 	if getFFlagUGCValidatePartSizeWithinRenderSizeLimits() then
 		if not isSizeWithinBounds(handle, boundsSize) then
-			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge)
+			Analytics.reportFailure(Analytics.ErrorType.validateMeshBounds_TooLarge, nil, validationContext)
 			return false, getErrors(handle:GetFullName(), assetTypeName, boundsSize)
 		end
 	end

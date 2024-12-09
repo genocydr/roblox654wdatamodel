@@ -124,12 +124,12 @@ local function validateCageUVs(
 			-- which would mean the asset failed validation
 			error(errorMsg)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateCageUVs_TestExecutedSuccessfully)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageUVs_TestExecutedSuccessfully, nil, validationContext)
 		return false, { errorMsg }
 	end
 
 	if not testPassed then
-		Analytics.reportFailure(Analytics.ErrorType.validateCageUVs_TestPassed)
+		Analytics.reportFailure(Analytics.ErrorType.validateCageUVs_TestPassed, nil, validationContext)
 		return false,
 			{
 				string.format(

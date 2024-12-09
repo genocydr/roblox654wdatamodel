@@ -133,7 +133,7 @@ local function validateMeshIds(
 				validationContext
 			)
 			if not parseSuccess then
-				Analytics.reportFailure(Analytics.ErrorType.validateFullBody_MeshIdsMissing)
+				Analytics.reportFailure(Analytics.ErrorType.validateFullBody_MeshIdsMissing, nil, validationContext)
 				return false,
 					{
 						"Unable to run full body validation due to previous errors detected while processing individual body parts",
@@ -153,7 +153,7 @@ local function validateInstanceHierarchy(
 	if not validateCorrectAssetTypesExist(fullBodyData) then
 		local errorMsg =
 			"Full body check did not receive the correct set of body part Asset Types (i.e. Head, Torso, LeftArm, RightArm, LeftLeg, RightLeg). Make sure the body model is valid and try again."
-		Analytics.reportFailure(Analytics.ErrorType.validateFullBody_IncorrectAssetTypeSet)
+		Analytics.reportFailure(Analytics.ErrorType.validateFullBody_IncorrectAssetTypeSet, nil, validationContext)
 		if isServer then
 			-- this is a code issue, where the wrong set of assets have been sent, this is not a fault on the UGC creator
 			error(errorMsg)
@@ -162,7 +162,7 @@ local function validateInstanceHierarchy(
 	end
 
 	if not validateAllAssetsWithSchema(fullBodyData, requiredTopLevelFolders, validationContext) then
-		Analytics.reportFailure(Analytics.ErrorType.validateFullBody_InstancesMissing)
+		Analytics.reportFailure(Analytics.ErrorType.validateFullBody_InstancesMissing, nil, validationContext)
 		-- don't need more detailed error, as this is a check which has been done for each individual asset
 		return false,
 			{

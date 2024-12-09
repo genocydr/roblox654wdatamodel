@@ -37,7 +37,11 @@ local function resetPhysicsData(roots: { Instance }, validationContext: Types.Va
 						if validationContext.isServer then
 							error("Failed to load mesh data")
 						end
-						Analytics.reportFailure(Analytics.ErrorType.resetPhysicsData_FailedToLoadMesh)
+						Analytics.reportFailure(
+							Analytics.ErrorType.resetPhysicsData_FailedToLoadMesh,
+							nil,
+							validationContext
+						)
 						return false, "Failed to load mesh data"
 					end
 				end

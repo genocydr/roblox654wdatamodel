@@ -60,12 +60,16 @@ local function validateTotalSurfaceArea(
 			-- which would mean the asset failed validation
 			error(errorString)
 		end
-		Analytics.reportFailure(Analytics.ErrorType.validateTotalSurfaceArea_FailedToExecute)
+		Analytics.reportFailure(Analytics.ErrorType.validateTotalSurfaceArea_FailedToExecute, nil, validationContext)
 		return false, { errorString }
 	end
 
 	if result > getFIntMaxTotalSurfaceArea() then
-		Analytics.reportFailure(Analytics.ErrorType.validateTotalSurfaceArea_maxTotalSurfaceAreaExceeded)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateTotalSurfaceArea_maxTotalSurfaceAreaExceeded,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				if getFFlagUGCValidateFixTotalSurfaceAreaTestErrorString()

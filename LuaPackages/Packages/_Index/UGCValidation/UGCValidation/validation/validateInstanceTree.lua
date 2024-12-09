@@ -14,7 +14,7 @@ local function validateInstanceTree(
 	-- validate using hat schema
 	local validationResult = validateWithSchema(schema, instance, validationContext)
 	if validationResult.success == false then
-		Analytics.reportFailure(Analytics.ErrorType.validateInstanceTree)
+		Analytics.reportFailure(Analytics.ErrorType.validateInstanceTree, nil, validationContext)
 		return false, {
 			"Detected the following error(s): " .. validationResult.message,
 		}
@@ -41,7 +41,7 @@ local function validateInstanceTree(
 	end
 
 	if #invalidDescendantsReasons > 0 then
-		Analytics.reportFailure(Analytics.ErrorType.validateInstanceTree_InvalidDescendants)
+		Analytics.reportFailure(Analytics.ErrorType.validateInstanceTree_InvalidDescendants, nil, validationContext)
 		return false, invalidDescendantsReasons
 	end
 

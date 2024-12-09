@@ -48,7 +48,7 @@ local function getCageMeshInfos(
 
 		local hasCageMeshContent: boolean = cageMeshInfo.contentId ~= "" and cageMeshInfo.contentId ~= nil
 		if not hasCageMeshContent then
-			Analytics.reportFailure(MISSING_CAGES_ERRORS[ind])
+			Analytics.reportFailure(MISSING_CAGES_ERRORS[ind], nil, validationContext)
 			table.insert(issues, string.format(MESSAGE_MISSING_MESH, CAGE_NAMES[ind], cageMeshName, instance.Name))
 			continue
 		end

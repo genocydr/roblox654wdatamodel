@@ -76,7 +76,8 @@ end
 local function getScaleType(
 	fullBodyAssets: Types.AllBodyParts?,
 	inst: Instance?,
-	assetTypeEnum: Enum.AssetType?
+	assetTypeEnum: Enum.AssetType?,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?, string?)
 	local isSingleInstance = inst and assetTypeEnum
 	assert((nil ~= fullBodyAssets) ~= (nil ~= isSingleInstance)) -- one, but not both, should have a value
@@ -94,7 +95,11 @@ local function getScaleType(
 		return true
 	end)
 	if not result then
-		Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_InconsistentAvatarPartScaleType)
+		Analytics.reportFailure(
+			Analytics.ErrorType.validateAssetBounds_InconsistentAvatarPartScaleType,
+			nil,
+			validationContext
+		)
 		return false,
 			{
 				"All MeshParts must have the same value in their AvatarPartScaleType child. Please verify the values match.",
@@ -102,7 +107,7 @@ local function getScaleType(
 			nil
 	end
 
-	local success, reasons = validateScaleType(prevPartScaleType)
+	local success, reasons = validateScaleType(prevPartScaleType, validationContext)
 	return success, reasons, if success then prevPartScaleType.Value else nil
 end
 
@@ -110,7 +115,8 @@ local function validateMinBoundsInternal(
 	assetSize: Vector3, -- remove with getFFlagUGCValidateOrientedSizing()
 	minSize: Vector3,
 	assetTypeEnum: Enum.AssetType?,
-	minMaxBounds: Types.BoundsData
+	minMaxBounds: Types.BoundsData,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	if getFFlagUGCValidateOrientedSizing() then
 		local reasonsAccumulator = FailureReasonsAccumulator.new()
@@ -127,7 +133,11 @@ local function validateMinBoundsInternal(
 
 			local isMeshLargeEnough = assetSizeOnAxis >= minSizeOnAxis
 			if not isMeshLargeEnough and not hasAnalyticsBeenReported then
-				Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooSmall)
+				Analytics.reportFailure(
+					Analytics.ErrorType.validateAssetBounds_AssetSizeTooSmall,
+					nil,
+					validationContext
+				)
 				hasAnalyticsBeenReported = true
 			end
 
@@ -146,7 +156,7 @@ local function validateMinBoundsInternal(
 	else
 		local isMeshBigEnough = assetSize.X >= minSize.X and assetSize.Y >= minSize.Y and assetSize.Z >= minSize.Z
 		if not isMeshBigEnough then
-			Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooSmall)
+			Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooSmall, nil, validationContext)
 			return false,
 				{
 					if not assetTypeEnum
@@ -169,7 +179,8 @@ local function validateMaxBoundsInternal(
 	assetSize: Vector3, -- remove with getFFlagUGCValidateOrientedSizing()
 	maxSize: Vector3,
 	assetTypeEnum: Enum.AssetType?,
-	minMaxBounds: Types.BoundsData
+	minMaxBounds: Types.BoundsData,
+	validationContext: Types.ValidationContext
 ): (boolean, { string }?)
 	if getFFlagUGCValidateOrientedSizing() then
 		local reasonsAccumulator = FailureReasonsAccumulator.new()
@@ -186,7 +197,7 @@ local function validateMaxBoundsInternal(
 
 			local isMeshSmallEnough = assetSizeOnAxis <= maxSizeOnAxis
 			if not isMeshSmallEnough and not hasAnalyticsBeenReported then
-				Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooBig)
+				Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooBig, nil, validationContext)
 				hasAnalyticsBeenReported = true
 			end
 
@@ -206,7 +217,7 @@ local function validateMaxBoundsInternal(
 		local isMeshSmallEnough = assetSize.X <= maxSize.X and assetSize.Y <= maxSize.Y and assetSize.Z <= maxSize.Z
 
 		if not isMeshSmallEnough then
-			Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooBig)
+			Analytics.reportFailure(Analytics.ErrorType.validateAssetBounds_AssetSizeTooBig, nil, validationContext)
 			return false,
 				{
 					if not assetTypeEnum
@@ -293,7 +304,7 @@ local function validateAssetBounds(
 		end
 	end
 
-	local success, reasons, scaleType = getScaleType(fullBodyAssets, inst, assetTypeEnum)
+	local success, reasons, scaleType = getScaleType(fullBodyAssets, inst, assetTypeEnum, validationContext)
 	if not success then
 		return success, reasons
 	end
@@ -318,7 +329,8 @@ local function validateAssetBounds(
 			minMaxBounds.maxMeshCorner :: Vector3 - minMaxBounds.minMeshCorner :: Vector3,
 			minSize,
 			assetTypeEnum,
-			minMaxBounds
+			minMaxBounds,
+			validationContext
 		)
 	)
 
@@ -327,7 +339,8 @@ local function validateAssetBounds(
 			minMaxBounds.maxOverall :: Vector3 - minMaxBounds.minOverall :: Vector3,
 			maxSize,
 			assetTypeEnum,
-			minMaxBounds
+			minMaxBounds,
+			validationContext
 		)
 	)
 
