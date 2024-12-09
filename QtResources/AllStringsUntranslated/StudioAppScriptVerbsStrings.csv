@@ -5,6 +5,7 @@ Studio.App.ScriptVerbs.StartSyncFailedNamingErrorTitle,,<b>Naming Error</b>,<b>N
 Studio.App.ScriptVerbs.StartSyncFailedNamingErrorDetail,,Unable to start sync due to an error with script names. See output window for details.,Unable to start sync due to an error with script names. See output window for details.
 Studio.App.ScriptVerbs.StartSyncFailedTooManyScriptsTitle,,Too many files selected,Too many files selected
 Studio.App.ScriptVerbs.StartSyncFailedTooManyScriptsDetail,,Can't sync more than %1 scripts at a time. Select fewer scripts and try again.,Can't sync more than %1 scripts at a time. Select fewer scripts and try again.
+Studio.App.ScriptVerbs.StartSyncSaveToFolder,,Save to Folder,Save to Folder
 Studio.App.ScriptVerbs.DeleteFileTitle,,<b>Syncing has been disabled for the selected scripts.</b>,<b>Syncing has been disabled for the selected scripts.</b>
 Studio.App.ScriptVerbs.DeleteFileDetail,,"<div>You can now delete the local files. To stop seeing this dialog, adjust the 'Keep local files after sync' setting in <a href=""settings"">Studio Settings</a>.</div>","<div>You can now delete the local files. To stop seeing this dialog, adjust the 'Keep local files after sync' setting in <a href=""settings"">Studio Settings</a>.</div>"
 Studio.App.ScriptVerbs.AskIfOverwriteFileOnDiskTitle,,<b>Do you want to overwrite the file(s) on disk?</b>,<b>Do you want to overwrite the file(s) on disk?</b>

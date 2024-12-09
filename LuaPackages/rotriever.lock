@@ -144,8 +144,8 @@ dependencies = [
     "StringUtilities string-utilities 1.0.0 registry",
     "TagUtils TagUtils 0.1.0 registry",
     "Thumbnailing Thumbnailing 0.3.0 registry",
-    "UGCValidation UGCValidation 1.13.2 registry",
-    "UIBlox UIBlox 0.2.36 registry",
+    "UGCValidation UGCValidation 1.13.3 registry",
+    "UIBlox UIBlox 0.2.44 registry",
     "UrlBuilder UrlBuilder 1.2.4 registry",
     "UsageTracker UsageTracker 0.1.1 registry",
     "VirtualizedList VirtualizedList 1.4.3 registry",
@@ -373,7 +373,7 @@ dependencies = [
     "Roact RoactCompat 17.1.6 registry",
     "RoactRodux <patched> RoactRodux 0.5.1 registry",
     "Rodux <patched> Rodux 3.2.0 registry",
-    "UIBlox UIBlox 0.2.36 registry",
+    "UIBlox UIBlox 0.2.44 registry",
     "t t 1.2.6 registry",
 ]
 
@@ -1653,7 +1653,7 @@ dependencies = [
     "RoduxFriends RoduxFriends 4.3.0 registry",
     "RoduxPresence RoduxPresence 3.2.3 registry",
     "Symbol lua-symbol 0.1.0 registry",
-    "UIBlox UIBlox 0.2.36 registry",
+    "UIBlox UIBlox 0.2.44 registry",
     "enumerate enumerate 1.1.0 registry",
     "llama llama 1.0.0 registry",
     "t t 1.2.6 registry",
@@ -1741,7 +1741,7 @@ dependencies = ["Collections Collections 1.2.3 registry"]
 
 [[package]]
 name = "UGCValidation"
-version = "1.13.2"
+version = "1.13.3"
 source = "registry"
 dependencies = [
     "Cryo Cryo 1.1.0 registry",
@@ -1750,7 +1750,7 @@ dependencies = [
 
 [[package]]
 name = "UIBlox"
-version = "0.2.36"
+version = "0.2.44"
 source = "registry"
 dependencies = [
     "Cryo Cryo 1.1.0 registry",

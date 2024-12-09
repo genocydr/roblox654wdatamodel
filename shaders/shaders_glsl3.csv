@@ -49,8 +49,11 @@ DefaultReflectionVS_00000000,Vertex
 DefaultReflectionVS_00000001,Vertex
 DefaultReflectionVS_00000002,Vertex
 DefaultReflectionVS_00000006,Vertex
+DefaultReflectionVS_00001002,Vertex
+DefaultReflectionVS_00001006,Vertex
 DefaultReflectionVS_00100001,Vertex
 DefaultReflectionVS_04000006,Vertex
+DefaultReflectionVS_04001006,Vertex
 DefaultShadowFS,Fragment
 DefaultSurfaceAppearanceDitheredDepthFS,Fragment
 DefaultUnifiedDetiledFS,Fragment

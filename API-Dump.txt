@@ -652,6 +652,13 @@ Class AudioSearchParams : Instance [NotReplicated]
 	Property AudioSearchParams.SearchKeyword: string
 	Property AudioSearchParams.Tag: string
 	Property AudioSearchParams.Title: string
+Class AuroraService : Instance [NotCreatable] [Service] [Deprecated]
+	Function AuroraService:GetServerView(target: Instance) -> Instance? [Deprecated]
+	Function AuroraService:IsDesynced(target: Instance) -> boolean [Deprecated]
+	Function AuroraService:NetDesync(target: Instance) -> () [Deprecated]
+	Function AuroraService:NetSync(target: Instance) -> () [Deprecated]
+	Function AuroraService:SetIncomingReplicationLag(seconds: number) -> () [Deprecated]
+	Function AuroraService:UpdateProperties(target: Instance) -> () [Deprecated]
 Class AvatarChatService : Instance [NotCreatable] [Service]
 	Property AvatarChatService.ClientFeatures: number {RobloxScriptSecurity} [Hidden] [ReadOnly]
 	Property AvatarChatService.ClientFeaturesInitialized: boolean {RobloxScriptSecurity} [Hidden] [ReadOnly]
@@ -2049,6 +2056,8 @@ Class Feature : Instance [NotCreatable]
 	Property Feature.TopBottom: Enum.TopBottom
 Class Hole : Feature [Deprecated]
 Class MotorFeature : Feature [Deprecated]
+Class FeatureRestrictionManager : Instance [NotCreatable] [Service]
+	Event FeatureRestrictionManager.TimeoutChatAttempt(isPermanentTimeout: boolean, endTime: number) {RobloxScriptSecurity} [Hidden]
 Class File : Instance [NotCreatable] [NotReplicated]
 	Property File.Size: number {PluginSecurity} [Hidden] [ReadOnly]
 	Function File:GetBinaryContents() -> string {PluginSecurity}
@@ -2354,6 +2363,7 @@ Class TextLabel : GuiLabel
 	Property TextLabel.TextXAlignment: Enum.TextXAlignment
 	Property TextLabel.TextYAlignment: Enum.TextYAlignment
 	Function TextLabel:SetTextFromInput(text: string) -> () {RobloxScriptSecurity}
+Class RelativeGui : GuiObject [NotReplicated]
 Class ScrollingFrame : GuiObject
 	Property ScrollingFrame.DraggingScrollBar: Enum.DraggingScrollBar {RobloxScriptSecurity} [Hidden] [ReadOnly]
 	Property ScrollingFrame.HorizontalBarRect: Rect {RobloxScriptSecurity} [Hidden] [ReadOnly]
@@ -4064,7 +4074,6 @@ Class Workspace : WorldRoot [NotCreatable] [Service]
 	Property Workspace.AirDensity: number
 	Property Workspace.AllowThirdPartySales: boolean [NotReplicated]
 	Property Workspace.AvatarUnificationMode: Enum.AvatarUnificationMode [NotScriptable]
-	Property Workspace.CSGAsyncDynamicCollision: Enum.CSGAsyncDynamicCollision [NotScriptable]
 	Property Workspace.ClientAnimatorThrottling: Enum.ClientAnimatorThrottlingMode
 	Property Workspace.CollisionGroupData: BinaryString {RobloxSecurity} [Hidden] [NotScriptable]
 	Property Workspace.CollisionGroups: string [📁 LoadOnly] [Hidden] [WriteOnly] [NotReplicated] [NotScriptable]
@@ -5422,7 +5431,6 @@ Class StartPageService : Instance [NotCreatable] [Service] [NotReplicated]
 	Function StartPageService:openLink(link: string) -> () {RobloxScriptSecurity}
 	Function StartPageService:openLocalFile(filePath: string) -> () {RobloxScriptSecurity}
 	Function StartPageService:openPlace(placeId: number, universeId: number, launchTutorial: boolean) -> () {RobloxScriptSecurity}
-	Function StartPageService:refreshRegistryDataInStartPage() -> () {RobloxScriptSecurity}
 	Function StartPageService:removeAPIGameFromRegistry(gameId: number) -> () {RobloxScriptSecurity}
 	Function StartPageService:removeLocalFileFromRegistry(fileName: string) -> () {RobloxScriptSecurity}
 	Function StartPageService:setTutorialBannerClosed(closed: boolean) -> () {RobloxScriptSecurity}
@@ -5812,7 +5820,6 @@ Class StudioService : Instance [NotCreatable] [Service] [NotReplicated]
 	Function StudioService:OpenInBrowser_DONOTUSE(url: string) -> () {RobloxScriptSecurity}
 	Function StudioService:PromptImportFile(fileTypeFilter: { any }? = {}) -> Instance? {PluginSecurity} [Yields]
 	Function StudioService:PromptImportFiles(fileTypeFilter: { any }? = {}) -> Instances {PluginSecurity} [Yields]
-	Function StudioService:RequestClose(closeMode: Enum.StudioCloseMode) -> () {RobloxScriptSecurity}
 	Function StudioService:SetPluginEnabled(assetId: number, state: boolean) -> () {RobloxScriptSecurity}
 	Function StudioService:ShowPlaceVersionHistoryDialog(placeId: number) -> () {RobloxScriptSecurity}
 	Function StudioService:ShowPublishToRoblox() -> () {RobloxScriptSecurity}
@@ -5926,6 +5933,7 @@ Class TeleportService : Instance [NotCreatable] [Service]
 	Function TeleportService:GetLocalPlayerTeleportData() -> any
 	Function TeleportService:GetPlayerPlaceInstanceAsync(userId: number) -> ...any [Yields]
 	Function TeleportService:GetTeleportSetting(setting: string) -> any
+	Function TeleportService:GetThirdPartyTeleportInfo(goForth: boolean) -> ...any {RobloxScriptSecurity}
 	Function TeleportService:ReserveServer(placeId: number) -> ...any [Yields]
 	Function TeleportService:SetTeleportGui(gui: Instance) -> ()
 	Function TeleportService:SetTeleportSetting(setting: string, value: any) -> ()
@@ -5936,6 +5944,7 @@ Class TeleportService : Instance [NotCreatable] [Service]
 	Function TeleportService:TeleportToPlaceInstance(placeId: number, instanceId: string, player: Instance? = nil, spawnName: string? = "", teleportData: any, customLoadingScreen: Instance? = nil) -> ()
 	Function TeleportService:TeleportToPrivateServer(placeId: number, reservedServerAccessCode: string, players: Instances, spawnName: string? = "", teleportData: any, customLoadingScreen: Instance? = nil) -> ()
 	Function TeleportService:TeleportToSpawnByName(placeId: number, spawnName: string, player: Instance? = nil, teleportData: any, customLoadingScreen: Instance? = nil) -> ()
+	Function TeleportService:TeleportTrustedBackForth(goForth: boolean) -> () {RobloxScriptSecurity}
 	Function TeleportService:UnblockAsync() -> ...any {RobloxScriptSecurity} [Yields]
 	Event TeleportService.LocalPlayerArrivedFromTeleport(loadingGui: Instance, dataTable: any)
 	Event TeleportService.MenuTeleportAttempt() {RobloxScriptSecurity}
@@ -7360,10 +7369,6 @@ Enum ButtonStyle
 	EnumItem ButtonStyle.RobloxRoundButton : 3
 	EnumItem ButtonStyle.RobloxRoundDefaultButton : 4
 	EnumItem ButtonStyle.RobloxRoundDropdownButton : 5
-Enum CSGAsyncDynamicCollision
-	EnumItem CSGAsyncDynamicCollision.Default : 0
-	EnumItem CSGAsyncDynamicCollision.Disabled : 1
-	EnumItem CSGAsyncDynamicCollision.Enabled : 2
 Enum CageType
 	EnumItem CageType.Inner : 0
 	EnumItem CageType.Outer : 1

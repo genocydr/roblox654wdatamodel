@@ -137,15 +137,15 @@ DefaultReflectionVS_00000400,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00000402,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00000406,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00001000,Vertex,❌,❌,❌,✔,❌,❌
-DefaultReflectionVS_00001002,Vertex,❌,❌,❌,✔,❌,❌
-DefaultReflectionVS_00001006,Vertex,❌,❌,❌,✔,❌,❌
+DefaultReflectionVS_00001002,Vertex,❌,❌,❌,✔,✔,❌
+DefaultReflectionVS_00001006,Vertex,❌,❌,❌,✔,✔,❌
 DefaultReflectionVS_00001400,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00001402,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00001406,Vertex,❌,❌,❌,✔,❌,❌
 DefaultReflectionVS_00100001,Vertex,❌,❌,❌,❌,✔,❌
 DefaultReflectionVS_04000006,Vertex,❌,❌,❌,✔,✔,❌
 DefaultReflectionVS_04000406,Vertex,❌,❌,❌,✔,❌,❌
-DefaultReflectionVS_04001006,Vertex,❌,❌,❌,✔,❌,❌
+DefaultReflectionVS_04001006,Vertex,❌,❌,❌,✔,✔,❌
 DefaultReflectionVS_04001406,Vertex,❌,❌,❌,✔,❌,❌
 DefaultShadowFS,Fragment,✔,✔,✔,✔,✔,✔
 DefaultShadowGeomVS_00000000,Vertex,❌,❌,❌,✔,❌,❌
@@ -576,6 +576,7 @@ UIFogVS,Vertex,❌,❌,❌,✔,❌,❌
 UIFS,Fragment,❌,❌,❌,✔,❌,❌
 UIFSAdvSDBox,Fragment,❌,❌,❌,✔,❌,❌
 UIFSMdrSDBox,Fragment,❌,❌,❌,✔,❌,❌
+UIFSPremultiplied,Fragment,❌,❌,❌,✔,❌,❌
 UILitFogFSSDBox,Fragment,❌,❌,❌,✔,❌,❌
 UITransformedLitFogVS,Vertex,❌,❌,❌,✔,❌,❌
 UITransformedVS,Vertex,❌,❌,❌,✔,❌,❌
