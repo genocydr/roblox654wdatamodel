@@ -1,0 +1,531 @@
+PROTO_0:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["onAvatarGesturesChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  NEWTABLE R1 2 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["new"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["connections"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K4 ["VRPlayers"]
+  GETTABLEKS R1 R0 K3 ["connections"]
+  LOADK R3 K5 ["AvatarGestures"]
+  GETUPVAL R4 2
+  LOADK R6 K5 ["AvatarGestures"]
+  NAMECALL R4 R4 K6 ["GetPropertyChangedSignal"]
+  CALL R4 2 1
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K7 ["connect"]
+  CALL R1 4 0
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K5 ["AvatarGestures"]
+  JUMPIFNOT R1 [+3]
+  NAMECALL R1 R0 K8 ["onAvatarGesturesChanged"]
+  CALL R1 1 0
+  RETURN R0 1
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["Character"]
+  JUMPIFNOT R1 [+53]
+  GETTABLEKS R1 R0 K0 ["Character"]
+  LOADK R3 K1 ["Humanoid"]
+  NAMECALL R1 R1 K2 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+22]
+  NEWTABLE R2 0 3
+  LOADK R3 K3 ["TrackedIKLeftHand"]
+  LOADK R4 K4 ["TrackedIKRightHand"]
+  LOADK R5 K5 ["TrackedIKHead"]
+  SETLIST R2 R3 3 [1]
+  GETIMPORT R3 K7 [pairs]
+  MOVE R4 R2
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  MOVE R10 R7
+  NAMECALL R8 R1 K2 ["FindFirstChild"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+3]
+  NAMECALL R9 R8 K8 ["Destroy"]
+  CALL R9 1 0
+  FORGLOOP R3 2 [-9]
+  NEWTABLE R2 0 3
+  LOADK R3 K9 ["TrackedLeftHand"]
+  LOADK R4 K10 ["TrackedRightHand"]
+  LOADK R5 K11 ["TrackedHead"]
+  SETLIST R2 R3 3 [1]
+  GETIMPORT R3 K7 [pairs]
+  MOVE R4 R2
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  GETTABLEKS R8 R0 K0 ["Character"]
+  MOVE R10 R7
+  NAMECALL R8 R8 K2 ["FindFirstChild"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+3]
+  NAMECALL R9 R8 K8 ["Destroy"]
+  CALL R9 1 0
+  FORGLOOP R3 2 [-11]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onCharacterChanged"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["VRPlayers"]
+  ORK R4 R2 K1 []
+  SETTABLE R4 R3 R1
+  JUMPIFNOT R2 [+18]
+  GETTABLEKS R3 R0 K2 ["avatarUtil"]
+  JUMPIF R3 [+6]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["new"]
+  CALL R3 0 1
+  SETTABLEKS R3 R0 K2 ["avatarUtil"]
+  GETTABLEKS R3 R0 K2 ["avatarUtil"]
+  MOVE R5 R1
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  NAMECALL R3 R3 K4 ["connectPlayerCharacterChanges"]
+  CALL R3 3 0
+  RETURN R0 0
+  GETGLOBAL R3 K5 ["cleanCharacter"]
+  MOVE R4 R1
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R2 K1 [next]
+  GETTABLEKS R3 R0 K2 ["VRPlayers"]
+  CALL R2 1 1
+  JUMPIFEQKNIL R2 [+21]
+  GETUPVAL R2 0
+  LOADK R4 K3 ["VRAvatarGestures"]
+  DUPTABLE R5 K7 [{"placeId", "calledFrom", "playerUserID"}]
+  GETIMPORT R7 K9 [game]
+  GETTABLEKS R6 R7 K10 ["PlaceId"]
+  SETTABLEKS R6 R5 K4 ["placeId"]
+  LOADK R6 K11 ["ServerPlayerAddedWithVRPlayer"]
+  SETTABLEKS R6 R5 K5 ["calledFrom"]
+  GETTABLEKS R6 R1 K12 ["UserId"]
+  SETTABLEKS R6 R5 K6 ["playerUserID"]
+  GETUPVAL R6 1
+  NAMECALL R2 R2 K13 ["ReportInfluxSeries"]
+  CALL R2 4 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  MOVE R5 R1
+  NAMECALL R2 R2 K0 ["onPlayerChanged"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onPlayerAdded"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  LOADB R4 0
+  NAMECALL R1 R1 K0 ["onPlayerChanged"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["onAvatarGesturesChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["AvatarGestures"]
+  JUMPIFNOT R1 [+50]
+  GETUPVAL R1 1
+  LOADK R3 K1 ["AvatarGesturesVRPlayer"]
+  NAMECALL R1 R1 K2 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIF R1 [+11]
+  GETIMPORT R2 K5 [Instance.new]
+  LOADK R3 K6 ["RemoteEvent"]
+  CALL R2 1 1
+  MOVE R1 R2
+  LOADK R2 K1 ["AvatarGesturesVRPlayer"]
+  SETTABLEKS R2 R1 K7 ["Name"]
+  GETUPVAL R2 1
+  SETTABLEKS R2 R1 K8 ["Parent"]
+  GETTABLEKS R2 R0 K9 ["connections"]
+  LOADK R4 K10 ["VRPlayerOnServerEvent"]
+  GETTABLEKS R5 R1 K11 ["OnServerEvent"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K12 ["connect"]
+  CALL R2 4 0
+  GETTABLEKS R2 R0 K9 ["connections"]
+  LOADK R4 K13 ["PlayerAdded"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K13 ["PlayerAdded"]
+  NEWCLOSURE R6 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K12 ["connect"]
+  CALL R2 4 0
+  GETTABLEKS R2 R0 K9 ["connections"]
+  LOADK R4 K14 ["PlayerRemoving"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K14 ["PlayerRemoving"]
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K12 ["connect"]
+  CALL R2 4 0
+  RETURN R0 0
+  GETIMPORT R1 K16 [pairs]
+  GETTABLEKS R2 R0 K17 ["VRPlayers"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  MOVE R8 R4
+  LOADB R9 0
+  NAMECALL R6 R0 K18 ["onPlayerChanged"]
+  CALL R6 3 0
+  FORGLOOP R1 1 [-6]
+  GETTABLEKS R1 R0 K9 ["connections"]
+  NAMECALL R1 R1 K19 ["disconnectAll"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K9 ["connections"]
+  LOADK R3 K0 ["AvatarGestures"]
+  GETUPVAL R4 0
+  LOADK R6 K0 ["AvatarGestures"]
+  NAMECALL R4 R4 K20 ["GetPropertyChangedSignal"]
+  CALL R4 2 1
+  NEWCLOSURE R5 P3
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K12 ["connect"]
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R3 0
+  MOVE R5 R2
+  NAMECALL R3 R3 K0 ["GetPlayerFromCharacter"]
+  CALL R3 2 1
+  LOADK R5 K1 ["Tracked"]
+  MOVE R6 R1
+  CONCAT R4 R5 R6
+  MOVE R7 R4
+  NAMECALL R5 R2 K2 ["FindFirstChild"]
+  CALL R5 2 1
+  JUMPIF R5 [+19]
+  GETIMPORT R6 K5 [Instance.new]
+  LOADK R7 K6 ["Part"]
+  CALL R6 1 1
+  MOVE R5 R6
+  SETTABLEKS R4 R5 K7 ["Name"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K8 ["Transparency"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K9 ["CanCollide"]
+  SETTABLEKS R2 R5 K10 ["Parent"]
+  MOVE R8 R3
+  NAMECALL R6 R5 K11 ["SetNetworkOwner"]
+  CALL R6 2 0
+  MOVE R9 R4
+  LOADK R10 K12 ["Attachment"]
+  CONCAT R8 R9 R10
+  NAMECALL R6 R5 K2 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIF R6 [+12]
+  GETIMPORT R7 K5 [Instance.new]
+  LOADK R8 K12 ["Attachment"]
+  CALL R7 1 1
+  MOVE R6 R7
+  MOVE R8 R4
+  LOADK R9 K12 ["Attachment"]
+  CONCAT R7 R8 R9
+  SETTABLEKS R7 R6 K7 ["Name"]
+  SETTABLEKS R5 R6 K10 ["Parent"]
+  MOVE R10 R4
+  LOADK R11 K13 ["AlignPosition"]
+  CONCAT R9 R10 R11
+  NAMECALL R7 R5 K2 ["FindFirstChild"]
+  CALL R7 2 1
+  JUMPIF R7 [+21]
+  GETIMPORT R8 K5 [Instance.new]
+  LOADK R9 K13 ["AlignPosition"]
+  CALL R8 1 1
+  MOVE R7 R8
+  MOVE R9 R4
+  LOADK R10 K13 ["AlignPosition"]
+  CONCAT R8 R9 R10
+  SETTABLEKS R8 R7 K7 ["Name"]
+  GETIMPORT R8 K17 [Enum.PositionAlignmentMode.OneAttachment]
+  SETTABLEKS R8 R7 K18 ["Mode"]
+  SETTABLEKS R6 R7 K19 ["Attachment0"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K20 ["RigidityEnabled"]
+  SETTABLEKS R5 R7 K10 ["Parent"]
+  MOVE R11 R4
+  LOADK R12 K21 ["AlignOrientation"]
+  CONCAT R10 R11 R12
+  NAMECALL R8 R5 K2 ["FindFirstChild"]
+  CALL R8 2 1
+  JUMPIF R8 [+21]
+  GETIMPORT R9 K5 [Instance.new]
+  LOADK R10 K21 ["AlignOrientation"]
+  CALL R9 1 1
+  MOVE R8 R9
+  MOVE R10 R4
+  LOADK R11 K21 ["AlignOrientation"]
+  CONCAT R9 R10 R11
+  SETTABLEKS R9 R8 K7 ["Name"]
+  GETIMPORT R9 K23 [Enum.OrientationAlignmentMode.OneAttachment]
+  SETTABLEKS R9 R8 K18 ["Mode"]
+  SETTABLEKS R6 R8 K19 ["Attachment0"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K20 ["RigidityEnabled"]
+  SETTABLEKS R5 R8 K10 ["Parent"]
+  MOVE R11 R1
+  NAMECALL R9 R2 K2 ["FindFirstChild"]
+  CALL R9 2 1
+  JUMPIFNOT R9 [+17]
+  GETTABLEKS R10 R9 K24 ["Size"]
+  SETTABLEKS R10 R5 K24 ["Size"]
+  GETTABLEKS R10 R9 K25 ["CFrame"]
+  SETTABLEKS R10 R5 K25 ["CFrame"]
+  GETTABLEKS R10 R9 K26 ["Position"]
+  SETTABLEKS R10 R7 K26 ["Position"]
+  GETTABLEKS R10 R9 K25 ["CFrame"]
+  SETTABLEKS R10 R8 K25 ["CFrame"]
+  JUMP [+17]
+  LOADK R10 K27 [{1, 1, 1}]
+  SETTABLEKS R10 R5 K24 ["Size"]
+  GETTABLEKS R10 R2 K28 ["WorldPivot"]
+  SETTABLEKS R10 R5 K25 ["CFrame"]
+  GETTABLEKS R11 R2 K28 ["WorldPivot"]
+  GETTABLEKS R10 R11 K26 ["Position"]
+  SETTABLEKS R10 R7 K26 ["Position"]
+  GETTABLEKS R10 R2 K28 ["WorldPivot"]
+  SETTABLEKS R10 R8 K25 ["CFrame"]
+  LOADK R12 K29 ["Humanoid"]
+  NAMECALL R10 R2 K2 ["FindFirstChild"]
+  CALL R10 2 1
+  JUMPIFNOT R10 [+22]
+  LOADK R12 K30 ["TrackedIK"]
+  MOVE R13 R1
+  CONCAT R11 R12 R13
+  MOVE R14 R11
+  NAMECALL R12 R10 K2 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMPIF R12 [+7]
+  GETIMPORT R13 K5 [Instance.new]
+  LOADK R14 K31 ["IKControl"]
+  CALL R13 1 1
+  MOVE R12 R13
+  SETTABLEKS R11 R12 K7 ["Name"]
+  LOADK R13 K32 [0.1]
+  SETTABLEKS R13 R12 K33 ["SmoothTime"]
+  SETTABLEKS R10 R12 K10 ["Parent"]
+  SETTABLEKS R5 R12 K34 ["Target"]
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R0 K2 [task.wait]
+  LOADK R1 K3 [0.1]
+  CALL R0 1 0
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  SETTABLEKS R1 R0 K4 ["ChainRoot"]
+  RETURN R0 0
+
+PROTO_13:
+  MOVE R6 R1
+  LOADK R7 K0 ["Hand"]
+  CONCAT R5 R6 R7
+  MOVE R6 R2
+  NAMECALL R3 R0 K1 ["findOrCreateColliders"]
+  CALL R3 3 0
+  MOVE R6 R1
+  LOADK R7 K0 ["Hand"]
+  CONCAT R5 R6 R7
+  NAMECALL R3 R2 K2 ["FindFirstChild"]
+  CALL R3 2 1
+  LOADK R6 K3 ["Humanoid"]
+  NAMECALL R4 R2 K2 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+35]
+  LOADK R6 K4 ["TrackedIK"]
+  MOVE R7 R1
+  LOADK R8 K0 ["Hand"]
+  CONCAT R5 R6 R8
+  MOVE R8 R5
+  NAMECALL R6 R4 K2 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+26]
+  GETIMPORT R7 K8 [Enum.IKControlType.Transform]
+  SETTABLEKS R7 R6 K9 ["Type"]
+  MOVE R10 R1
+  LOADK R11 K10 ["UpperArm"]
+  CONCAT R9 R10 R11
+  NAMECALL R7 R2 K2 ["FindFirstChild"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+9]
+  SETTABLEKS R3 R6 K11 ["ChainRoot"]
+  GETIMPORT R8 K14 [coroutine.wrap]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CALL R8 1 1
+  CALL R8 0 0
+  JUMPIFNOT R3 [+2]
+  SETTABLEKS R3 R6 K15 ["EndEffector"]
+  LOADN R8 1
+  SETTABLEKS R8 R6 K16 ["Priority"]
+  JUMPIFNOT R3 [+8]
+  LOADK R7 K17 ["RagdollBallSocket"]
+  NAMECALL R5 R3 K2 ["FindFirstChild"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+3]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K18 ["LimitsEnabled"]
+  RETURN R0 0
+
+PROTO_14:
+  LOADK R4 K0 ["Head"]
+  MOVE R5 R1
+  NAMECALL R2 R0 K1 ["findOrCreateColliders"]
+  CALL R2 3 0
+  LOADK R4 K0 ["Head"]
+  NAMECALL R2 R1 K2 ["FindFirstChild"]
+  CALL R2 2 1
+  LOADK R5 K3 ["Humanoid"]
+  NAMECALL R3 R1 K2 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+19]
+  LOADK R6 K4 ["TrackedIKHead"]
+  NAMECALL R4 R3 K2 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+14]
+  GETIMPORT R5 K8 [Enum.IKControlType.Rotation]
+  SETTABLEKS R5 R4 K9 ["Type"]
+  LOADK R7 K10 ["UpperTorso"]
+  NAMECALL R5 R1 K2 ["FindFirstChild"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+2]
+  SETTABLEKS R5 R4 K11 ["ChainRoot"]
+  JUMPIFNOT R2 [+2]
+  SETTABLEKS R2 R4 K12 ["EndEffector"]
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["GetPlayerFromCharacter"]
+  CALL R2 2 1
+  GETTABLEKS R4 R0 K1 ["VRPlayers"]
+  GETTABLE R3 R4 R2
+  JUMPIFNOT R3 [+18]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["AvatarGestures"]
+  JUMPIFNOT R3 [+14]
+  LOADK R5 K3 ["Left"]
+  MOVE R6 R1
+  NAMECALL R3 R0 K4 ["createHandCollider"]
+  CALL R3 3 0
+  LOADK R5 K5 ["Right"]
+  MOVE R6 R1
+  NAMECALL R3 R0 K4 ["createHandCollider"]
+  CALL R3 3 0
+  MOVE R5 R1
+  NAMECALL R3 R0 K6 ["createHeadCollider"]
+  CALL R3 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R2 K4 ["RobloxGui"]
+  NAMECALL R0 R0 K5 ["WaitForChild"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K6 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K7 ["VRService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K8 ["RobloxReplicatedStorage"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K9 ["RbxAnalyticsService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K11 [require]
+  GETTABLEKS R8 R0 K12 ["Modules"]
+  GETTABLEKS R7 R8 K13 ["Common"]
+  GETTABLEKS R6 R7 K14 ["AvatarUtil"]
+  CALL R5 1 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R9 R0 K12 ["Modules"]
+  GETTABLEKS R8 R9 K13 ["Common"]
+  GETTABLEKS R7 R8 K15 ["ConnectionUtil"]
+  CALL R6 1 1
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K16 ["VRAvatarGesturesAnalyticsThrottleHundrethsPercent"]
+  LOADN R10 0
+  NAMECALL R7 R7 K17 ["DefineFastInt"]
+  CALL R7 3 1
+  NEWTABLE R8 16 0
+  SETTABLEKS R8 R8 K18 ["__index"]
+  DUPCLOSURE R9 K19 [PROTO_1]
+  CAPTURE VAL R8
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  SETTABLEKS R9 R8 K20 ["new"]
+  DUPCLOSURE R9 K21 [PROTO_2]
+  SETGLOBAL R9 K22 ["cleanCharacter"]
+  DUPCLOSURE R9 K23 [PROTO_4]
+  CAPTURE VAL R5
+  SETTABLEKS R9 R8 K24 ["onPlayerChanged"]
+  DUPCLOSURE R9 K25 [PROTO_5]
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  SETTABLEKS R9 R8 K26 ["onPlayerAdded"]
+  DUPCLOSURE R9 K27 [PROTO_10]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K28 ["onAvatarGesturesChanged"]
+  DUPCLOSURE R9 K29 [PROTO_11]
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K30 ["findOrCreateColliders"]
+  DUPCLOSURE R9 K31 [PROTO_13]
+  SETTABLEKS R9 R8 K32 ["createHandCollider"]
+  DUPCLOSURE R9 K33 [PROTO_14]
+  SETTABLEKS R9 R8 K34 ["createHeadCollider"]
+  DUPCLOSURE R9 K35 [PROTO_15]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R9 R8 K36 ["onCharacterChanged"]
+  RETURN R8 1

@@ -44,8 +44,8 @@ local GetFFlagFixChromeReferences = require(CorePackages.Workspace.Packages.Shar
 local Chrome = script.Parent.Parent.Parent.Chrome
 local ChromeEnabled = require(Chrome.Enabled)
 local ChromeService = if GetFFlagFixChromeReferences()
-	then if ChromeEnabled() then require(Chrome.ChromeShared.Service) else nil
-	else require(script.Parent.Parent.Parent.Chrome.ChromeShared.Service)
+	then if ChromeEnabled() then require(Chrome.Service) else nil
+	else require(script.Parent.Parent.Parent.Chrome.Service)
 
 local SelfieViewModule = script.Parent.Parent.Parent.SelfieView
 local GetFFlagSelfieViewDontWaitForCharacter = require(SelfieViewModule.Flags.GetFFlagSelfieViewDontWaitForCharacter)

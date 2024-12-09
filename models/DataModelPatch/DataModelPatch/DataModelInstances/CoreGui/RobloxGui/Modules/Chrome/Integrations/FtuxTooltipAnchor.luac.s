@@ -1,0 +1,82 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  NEWTABLE R3 4 0
+  GETIMPORT R4 K4 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K5 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K6 ["BackgroundTransparency"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["Change"]
+  GETTABLEKS R4 R5 K8 ["AbsoluteSize"]
+  SETTABLE R0 R3 R4
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["Change"]
+  GETTABLEKS R4 R5 K9 ["AbsolutePosition"]
+  SETTABLE R0 R3 R4
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  DUPTABLE R3 K3 [{"ref", "headerText", "bodyText"}]
+  SETTABLEKS R1 R3 K0 ["ref"]
+  GETTABLEKS R4 R0 K1 ["headerText"]
+  SETTABLEKS R4 R3 K1 ["headerText"]
+  GETTABLEKS R4 R0 K2 ["bodyText"]
+  SETTABLEKS R4 R3 K2 ["bodyText"]
+  DUPTABLE R4 K8 [{"DisplayOrder", "active", "guiTarget", "preferredOrientation"}]
+  LOADN R5 10
+  SETTABLEKS R5 R4 K4 ["DisplayOrder"]
+  GETTABLEKS R5 R0 K9 ["shouldShowTooltip"]
+  SETTABLEKS R5 R4 K5 ["active"]
+  GETUPVAL R5 1
+  SETTABLEKS R5 R4 K6 ["guiTarget"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K10 ["Bottom"]
+  SETTABLEKS R5 R4 K7 ["preferredOrientation"]
+  DUPCLOSURE R5 K11 [PROTO_0]
+  CAPTURE UPVAL U3
+  CALL R2 3 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["UIBlox"]
+  CALL R3 1 1
+  GETTABLEKS R7 R3 K10 ["App"]
+  GETTABLEKS R6 R7 K11 ["Dialog"]
+  GETTABLEKS R5 R6 K12 ["TooltipV2"]
+  GETTABLEKS R4 R5 K13 ["withTooltip"]
+  GETTABLEKS R8 R3 K10 ["App"]
+  GETTABLEKS R7 R8 K11 ["Dialog"]
+  GETTABLEKS R6 R7 K14 ["Enum"]
+  GETTABLEKS R5 R6 K15 ["TooltipOrientation"]
+  GETTABLEKS R6 R2 K16 ["forwardRef"]
+  DUPCLOSURE R7 K17 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CALL R6 1 1
+  RETURN R6 1

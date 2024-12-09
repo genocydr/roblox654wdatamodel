@@ -13,7 +13,6 @@ local utility = require(RobloxGui.Modules.Settings.Utility)
 local Theme = require(RobloxGui.Modules.Settings.Theme)
 
 local GetFFlagEnableNewInviteMenu = require(Modules.Flags.GetFFlagEnableNewInviteMenu)
-local GetFFlagInviteFriendsDesignUpdates = require(Modules.Settings.Flags.GetFFlagInviteFriendsDesignUpdates)
 
 local Roact = require(CorePackages.Packages.Roact)
 local RoactRodux = require(CorePackages.Packages.RoactRodux)
@@ -33,7 +32,7 @@ local SetGameInfoCreated = require(ShareGame.Actions.SetGameInfoCreated)
 
 local USER_LIST_PADDING = 10
 local SHARE_INVITE_LINK_HEIGHT = 44
-if GetFFlagInviteFriendsDesignUpdates() and GetFFlagEnableNewInviteMenu() then
+if GetFFlagEnableNewInviteMenu() then
 	USER_LIST_PADDING = 16
 	SHARE_INVITE_LINK_HEIGHT = 52
 end

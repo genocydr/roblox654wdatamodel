@@ -243,10 +243,7 @@ PROTO_6:
   SETTABLEKS R8 R7 K12 ["ContextItems"]
   SETTABLEKS R4 R7 K13 ["Payload"]
   CALL R5 2 1
-  GETUPVAL R6 2
-  CALL R6 0 1
-  JUMPIFNOT R6 [+20]
-  GETUPVAL R7 3
+  GETUPVAL R7 2
   GETTABLEKS R6 R7 K17 ["createBlockingRoot"]
   MOVE R7 R3
   CALL R6 1 1
@@ -256,19 +253,12 @@ PROTO_6:
   MOVE R7 R5
   CALL R6 1 0
   RETURN R0 0
-  GETUPVAL R7 3
+  GETUPVAL R7 2
   GETTABLEKS R6 R7 K19 ["act"]
   NEWCLOSURE R7 P0
   CAPTURE VAL R0
   CAPTURE VAL R5
   CALL R6 1 0
-  RETURN R0 0
-  GETUPVAL R7 0
-  GETTABLEKS R6 R7 K20 ["mount"]
-  MOVE R7 R5
-  MOVE R8 R2
-  CALL R6 2 1
-  SETTABLEKS R6 R0 K21 ["handle"]
   RETURN R0 0
 
 PROTO_7:
@@ -339,32 +329,27 @@ MAIN:
   GETIMPORT R15 K5 [require]
   GETTABLEKS R18 R0 K18 ["Src"]
   GETTABLEKS R17 R18 K24 ["Flags"]
-  GETTABLEKS R16 R17 K26 ["getFFlagAssetImporterUseReactCompat"]
+  GETTABLEKS R16 R17 K26 ["getFFlagImportQueueFixGroupFetch"]
   CALL R15 1 1
-  GETIMPORT R16 K5 [require]
-  GETTABLEKS R19 R0 K18 ["Src"]
-  GETTABLEKS R18 R19 K24 ["Flags"]
-  GETTABLEKS R17 R18 K27 ["getFFlagImportQueueFixGroupFetch"]
-  CALL R16 1 1
-  DUPTABLE R17 K33 [{"BlenderCubeDefault", "CubeWithAllPbrs", "CorruptedFile", "BlenderCubeRigged", "RootTwoGroupFiveCube"}]
-  LOADK R18 K34 ["blender-cube-default.fbx"]
-  SETTABLEKS R18 R17 K28 ["BlenderCubeDefault"]
-  LOADK R18 K35 ["cube-with-all-pbrs.fbx"]
-  SETTABLEKS R18 R17 K29 ["CubeWithAllPbrs"]
-  LOADK R18 K36 ["corrupted-file.fbx"]
-  SETTABLEKS R18 R17 K30 ["CorruptedFile"]
-  LOADK R18 K37 ["blender-cube-rigged.fbx"]
-  SETTABLEKS R18 R17 K31 ["BlenderCubeRigged"]
-  LOADK R18 K38 ["root-two-group-five-cube.fbx"]
-  SETTABLEKS R18 R17 K32 ["RootTwoGroupFiveCube"]
-  NEWTABLE R18 0 0
-  SETTABLEKS R18 R18 K39 ["__index"]
-  SETTABLEKS R17 R18 K40 ["Resources"]
-  DUPCLOSURE R19 K41 [PROTO_0]
+  DUPTABLE R16 K32 [{"BlenderCubeDefault", "CubeWithAllPbrs", "CorruptedFile", "BlenderCubeRigged", "RootTwoGroupFiveCube"}]
+  LOADK R17 K33 ["blender-cube-default.fbx"]
+  SETTABLEKS R17 R16 K27 ["BlenderCubeDefault"]
+  LOADK R17 K34 ["cube-with-all-pbrs.fbx"]
+  SETTABLEKS R17 R16 K28 ["CubeWithAllPbrs"]
+  LOADK R17 K35 ["corrupted-file.fbx"]
+  SETTABLEKS R17 R16 K29 ["CorruptedFile"]
+  LOADK R17 K36 ["blender-cube-rigged.fbx"]
+  SETTABLEKS R17 R16 K30 ["BlenderCubeRigged"]
+  LOADK R17 K37 ["root-two-group-five-cube.fbx"]
+  SETTABLEKS R17 R16 K31 ["RootTwoGroupFiveCube"]
+  NEWTABLE R17 0 0
+  SETTABLEKS R17 R17 K38 ["__index"]
+  SETTABLEKS R16 R17 K39 ["Resources"]
+  DUPCLOSURE R18 K40 [PROTO_0]
   CAPTURE VAL R7
-  CAPTURE VAL R17
-  SETTABLEKS R19 R18 K42 ["getResourcePathForTesting"]
-  DUPCLOSURE R19 K43 [PROTO_1]
+  CAPTURE VAL R16
+  SETTABLEKS R18 R17 K41 ["getResourcePathForTesting"]
+  DUPCLOSURE R18 K42 [PROTO_1]
   CAPTURE VAL R5
   CAPTURE VAL R7
   CAPTURE VAL R9
@@ -372,24 +357,23 @@ MAIN:
   CAPTURE VAL R4
   CAPTURE VAL R11
   CAPTURE VAL R12
-  CAPTURE VAL R16
-  CAPTURE VAL R18
+  CAPTURE VAL R15
+  CAPTURE VAL R17
   CAPTURE VAL R2
-  SETTABLEKS R19 R18 K44 ["new"]
-  DUPCLOSURE R19 K45 [PROTO_2]
-  SETTABLEKS R19 R18 K46 ["loadData"]
-  DUPCLOSURE R19 K47 [PROTO_4]
+  SETTABLEKS R18 R17 K43 ["new"]
+  DUPCLOSURE R18 K44 [PROTO_2]
+  SETTABLEKS R18 R17 K45 ["loadData"]
+  DUPCLOSURE R18 K46 [PROTO_4]
   CAPTURE VAL R14
   CAPTURE VAL R2
-  SETTABLEKS R19 R18 K48 ["destroy"]
-  DUPCLOSURE R19 K49 [PROTO_6]
+  SETTABLEKS R18 R17 K47 ["destroy"]
+  DUPCLOSURE R18 K48 [PROTO_6]
   CAPTURE VAL R2
   CAPTURE VAL R13
-  CAPTURE VAL R15
   CAPTURE VAL R3
-  SETTABLEKS R19 R18 K50 ["_createTestElement"]
-  DUPCLOSURE R19 K51 [PROTO_7]
-  SETTABLEKS R19 R18 K52 ["_setStory"]
-  DUPCLOSURE R19 K53 [PROTO_8]
-  SETTABLEKS R19 R18 K54 ["_setStoryProps"]
-  RETURN R18 1
+  SETTABLEKS R18 R17 K49 ["_createTestElement"]
+  DUPCLOSURE R18 K50 [PROTO_7]
+  SETTABLEKS R18 R17 K51 ["_setStory"]
+  DUPCLOSURE R18 K52 [PROTO_8]
+  SETTABLEKS R18 R17 K53 ["_setStoryProps"]
+  RETURN R17 1

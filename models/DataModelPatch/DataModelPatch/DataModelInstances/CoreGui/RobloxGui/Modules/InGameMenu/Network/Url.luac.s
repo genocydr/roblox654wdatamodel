@@ -1,0 +1,327 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["BaseUrl"]
+  LENGTH R3 R0
+  NAMECALL R1 R0 K1 ["sub"]
+  CALL R1 2 1
+  JUMPIFEQKS R1 K2 ["/"] [+4]
+  MOVE R1 R0
+  LOADK R2 K2 ["/"]
+  CONCAT R0 R1 R2
+  LOADK R3 K3 ["://"]
+  NAMECALL R1 R0 K4 ["find"]
+  CALL R1 2 2
+  LOADK R5 K5 ["%."]
+  ADDK R6 R2 K6 [1]
+  NAMECALL R3 R0 K4 ["find"]
+  CALL R3 3 2
+  ADDK R7 R2 K6 [1]
+  SUBK R8 R3 K6 [1]
+  NAMECALL R5 R0 K1 ["sub"]
+  CALL R5 3 1
+  ADDK R8 R4 K6 [1]
+  NAMECALL R6 R0 K1 ["sub"]
+  CALL R6 2 1
+  MOVE R7 R0
+  MOVE R8 R5
+  MOVE R9 R6
+  RETURN R7 3
+
+PROTO_1:
+  GETIMPORT R3 K1 [error]
+  LOADK R4 K2 ["Attempt to modify read-only table"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWTABLE R2 0 0
+  DUPTABLE R3 K3 [{"__index", "__newindex", "__metatable"}]
+  SETTABLEKS R0 R3 K0 ["__index"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K1 ["__newindex"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K2 ["__metatable"]
+  FASTCALL2 SETMETATABLE R2 R3 [+3]
+  GETIMPORT R1 K5 [setmetatable]
+  CALL R1 2 1
+  RETURN R1 1
+
+PROTO_3:
+  GETIMPORT R2 K2 [string.format]
+  LOADK R3 K3 ["%susers/%s/profile"]
+  GETTABLEKS R4 R0 K4 ["BASE_URL"]
+  MOVE R5 R1
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETIMPORT R2 K2 [string.format]
+  LOADK R3 K3 ["%susers/%s/friends"]
+  GETTABLEKS R4 R0 K4 ["BASE_URL"]
+  MOVE R5 R1
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_5:
+  GETIMPORT R2 K2 [string.format]
+  LOADK R3 K3 ["%susers/%s/inventory"]
+  GETTABLEKS R4 R0 K4 ["BASE_URL"]
+  MOVE R5 R1
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_6:
+  GETIMPORT R4 K2 [string.format]
+  LOADK R5 K3 ["%sThumbs/Asset.ashx?width=%d&height=%d&assetId=%s&ignorePlaceMediaItems=true"]
+  GETTABLEKS R6 R0 K4 ["BASE_URL"]
+  MOVE R7 R2
+  MOVE R8 R3
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R10 R1
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  CALL R4 5 -1
+  RETURN R4 -1
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["PREFIX"]
+  JUMPIFNOTEQKS R2 K1 ["www"] [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+PROTO_8:
+  NEWTABLE R2 0 0
+  GETIMPORT R3 K1 [pairs]
+  MOVE R4 R1
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  JUMPIFEQKNIL R7 [+38]
+  FASTCALL1 TYPE R7 [+3]
+  MOVE R9 R7
+  GETIMPORT R8 K3 [type]
+  CALL R8 1 1
+  JUMPIFNOTEQKS R8 K4 ["table"] [+17]
+  LOADN R10 1
+  LENGTH R8 R7
+  LOADN R9 1
+  FORNPREP R8
+  MOVE R14 R6
+  LOADK R15 K5 ["="]
+  GETTABLE R16 R7 R10
+  CONCAT R13 R14 R16
+  FASTCALL2 TABLE_INSERT R2 R13 [+4]
+  MOVE R12 R2
+  GETIMPORT R11 K7 [table.insert]
+  CALL R11 2 0
+  FORNLOOP R8
+  JUMP [+14]
+  MOVE R11 R6
+  LOADK R12 K5 ["="]
+  FASTCALL1 TOSTRING R7 [+3]
+  MOVE R14 R7
+  GETIMPORT R13 K9 [tostring]
+  CALL R13 1 1
+  CONCAT R10 R11 R13
+  FASTCALL2 TABLE_INSERT R2 R10 [+4]
+  MOVE R9 R2
+  GETIMPORT R8 K7 [table.insert]
+  CALL R8 2 0
+  FORGLOOP R3 2 [-40]
+  GETIMPORT R3 K11 [table.concat]
+  MOVE R4 R2
+  LOADK R5 K12 ["&"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ContentProvider"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  DUPCLOSURE R1 K4 [PROTO_0]
+  CAPTURE VAL R0
+  DUPCLOSURE R2 K5 [PROTO_1]
+  DUPCLOSURE R3 K6 [PROTO_2]
+  CAPTURE VAL R2
+  MOVE R4 R1
+  CALL R4 0 3
+  GETIMPORT R7 K9 [string.format]
+  LOADK R8 K10 ["https://api.%s"]
+  MOVE R9 R6
+  CALL R7 2 1
+  GETIMPORT R8 K9 [string.format]
+  LOADK R9 K11 ["https://apis.%s"]
+  MOVE R10 R6
+  CALL R8 2 1
+  GETIMPORT R9 K9 [string.format]
+  LOADK R10 K12 ["https://auth.%s"]
+  MOVE R11 R6
+  CALL R9 2 1
+  GETIMPORT R10 K9 [string.format]
+  LOADK R11 K13 ["https://accountsettings.%s"]
+  MOVE R12 R6
+  CALL R10 2 1
+  GETIMPORT R11 K9 [string.format]
+  LOADK R12 K14 ["https://avatar.%s"]
+  MOVE R13 R6
+  CALL R11 2 1
+  GETIMPORT R12 K9 [string.format]
+  LOADK R13 K15 ["https://catalog.%s"]
+  MOVE R14 R6
+  CALL R12 2 1
+  GETIMPORT R13 K9 [string.format]
+  LOADK R14 K16 ["https://chat.%sv2"]
+  MOVE R15 R6
+  CALL R13 2 1
+  GETIMPORT R14 K9 [string.format]
+  LOADK R15 K17 ["https://create.%s"]
+  MOVE R16 R6
+  CALL R14 2 1
+  GETIMPORT R15 K9 [string.format]
+  LOADK R16 K18 ["https://friends.%sv1"]
+  MOVE R17 R6
+  CALL R15 2 1
+  GETIMPORT R16 K9 [string.format]
+  LOADK R17 K19 ["https://assetgame.%s"]
+  MOVE R18 R6
+  CALL R16 2 1
+  GETIMPORT R17 K9 [string.format]
+  LOADK R18 K20 ["https://games.%s"]
+  MOVE R19 R6
+  CALL R17 2 1
+  GETIMPORT R18 K9 [string.format]
+  LOADK R19 K21 ["https://notifications.%s"]
+  MOVE R20 R6
+  CALL R18 2 1
+  GETIMPORT R19 K9 [string.format]
+  LOADK R20 K22 ["https://presence.%sv1"]
+  MOVE R21 R6
+  CALL R19 2 1
+  GETIMPORT R20 K9 [string.format]
+  LOADK R21 K23 ["https://realtime.%s"]
+  MOVE R22 R6
+  CALL R20 2 1
+  GETIMPORT R21 K9 [string.format]
+  LOADK R22 K24 ["https://web.%s"]
+  MOVE R23 R6
+  CALL R21 2 1
+  GETIMPORT R22 K9 [string.format]
+  LOADK R23 K25 ["https://www.%s"]
+  MOVE R24 R6
+  CALL R22 2 1
+  GETIMPORT R23 K9 [string.format]
+  LOADK R24 K26 ["https://ads.%s"]
+  MOVE R25 R6
+  CALL R23 2 1
+  GETIMPORT R24 K9 [string.format]
+  LOADK R25 K27 ["https://followings.%s"]
+  MOVE R26 R6
+  CALL R24 2 1
+  GETIMPORT R25 K9 [string.format]
+  LOADK R26 K28 ["https://economy.%s"]
+  MOVE R27 R6
+  CALL R25 2 1
+  GETIMPORT R26 K9 [string.format]
+  LOADK R27 K29 ["https://thumbnails.%s"]
+  MOVE R28 R6
+  CALL R26 2 1
+  GETIMPORT R27 K9 [string.format]
+  LOADK R28 K13 ["https://accountsettings.%s"]
+  MOVE R29 R6
+  CALL R27 2 1
+  GETIMPORT R28 K9 [string.format]
+  LOADK R29 K30 ["https://premiumfeatures.%s"]
+  MOVE R30 R6
+  CALL R28 2 1
+  GETIMPORT R29 K9 [string.format]
+  LOADK R30 K31 ["https://locale.%s"]
+  MOVE R31 R6
+  CALL R29 2 1
+  GETIMPORT R30 K9 [string.format]
+  LOADK R31 K32 ["https://badges.%s"]
+  MOVE R32 R6
+  CALL R30 2 1
+  GETIMPORT R31 K9 [string.format]
+  LOADK R32 K33 ["https://metrics.%sv1"]
+  MOVE R33 R6
+  CALL R31 2 1
+  GETIMPORT R32 K9 [string.format]
+  LOADK R33 K34 ["https://apis.rcs.%s"]
+  MOVE R34 R6
+  CALL R32 2 1
+  GETIMPORT R33 K9 [string.format]
+  LOADK R34 K35 ["https://discussions.%s"]
+  MOVE R35 R6
+  CALL R33 2 1
+  GETIMPORT R34 K37 [string.gsub]
+  MOVE R35 R4
+  LOADK R36 K38 ["http://"]
+  LOADK R37 K39 ["https://"]
+  CALL R34 3 1
+  GETIMPORT R35 K9 [string.format]
+  LOADK R36 K40 ["https://gameinternationalization.%s"]
+  MOVE R37 R6
+  CALL R35 2 1
+  NEWTABLE R36 64 0
+  SETTABLEKS R6 R36 K41 ["DOMAIN"]
+  SETTABLEKS R5 R36 K42 ["PREFIX"]
+  SETTABLEKS R4 R36 K43 ["BASE_URL"]
+  SETTABLEKS R34 R36 K44 ["BASE_URL_SECURE"]
+  SETTABLEKS R7 R36 K45 ["API_URL"]
+  SETTABLEKS R8 R36 K46 ["APIS_URL"]
+  SETTABLEKS R9 R36 K47 ["AUTH_URL"]
+  SETTABLEKS R10 R36 K48 ["ACCOUNT_SETTINGS_URL"]
+  SETTABLEKS R11 R36 K49 ["AVATAR_URL"]
+  SETTABLEKS R12 R36 K50 ["CATALOG_URL"]
+  SETTABLEKS R14 R36 K51 ["CREATOR_HUB_URL"]
+  SETTABLEKS R17 R36 K52 ["GAME_URL"]
+  SETTABLEKS R16 R36 K53 ["GAME_ASSET_URL"]
+  SETTABLEKS R13 R36 K54 ["CHAT_URL"]
+  SETTABLEKS R15 R36 K55 ["FRIEND_URL"]
+  SETTABLEKS R19 R36 K56 ["PRESENCE_URL"]
+  SETTABLEKS R18 R36 K57 ["NOTIFICATION_URL"]
+  SETTABLEKS R20 R36 K58 ["REALTIME_URL"]
+  SETTABLEKS R21 R36 K59 ["WEB_URL"]
+  SETTABLEKS R22 R36 K60 ["WWW_URL"]
+  SETTABLEKS R23 R36 K61 ["ADS_URL"]
+  SETTABLEKS R24 R36 K62 ["FOLLOWINGS_URL"]
+  SETTABLEKS R25 R36 K63 ["ECONOMY_URL"]
+  SETTABLEKS R26 R36 K64 ["THUMBNAILS_URL"]
+  SETTABLEKS R30 R36 K65 ["BADGES_URL"]
+  SETTABLEKS R27 R36 K66 ["ACCOUNT_SETTINGS"]
+  SETTABLEKS R28 R36 K67 ["PREMIUM_FEATURES"]
+  SETTABLEKS R29 R36 K68 ["LOCALE"]
+  SETTABLEKS R31 R36 K69 ["METRICS_URL"]
+  SETTABLEKS R32 R36 K70 ["APIS_RCS_URL"]
+  SETTABLEKS R33 R36 K71 ["DISCUSSIONS_URL"]
+  LOADK R37 K72 ["https://blog.roblox.com/"]
+  SETTABLEKS R37 R36 K73 ["BLOG_URL"]
+  LOADK R37 K74 ["https://corp.roblox.com/"]
+  SETTABLEKS R37 R36 K75 ["CORP_URL"]
+  SETTABLEKS R35 R36 K76 ["GAME_I18N_URL"]
+  DUPCLOSURE R37 K77 [PROTO_3]
+  SETTABLEKS R37 R36 K78 ["getUserProfileUrl"]
+  DUPCLOSURE R37 K79 [PROTO_4]
+  SETTABLEKS R37 R36 K80 ["getUserFriendsUrl"]
+  DUPCLOSURE R37 K81 [PROTO_5]
+  SETTABLEKS R37 R36 K82 ["getUserInventoryUrl"]
+  DUPCLOSURE R37 K83 [PROTO_6]
+  SETTABLEKS R37 R36 K84 ["getPlaceDefaultThumbnailUrl"]
+  DUPCLOSURE R37 K85 [PROTO_7]
+  SETTABLEKS R37 R36 K86 ["isVanitySite"]
+  DUPCLOSURE R37 K87 [PROTO_8]
+  SETTABLEKS R37 R36 K88 ["makeQueryString"]
+  MOVE R37 R36
+  NEWTABLE R39 0 0
+  DUPTABLE R40 K92 [{"__index", "__newindex", "__metatable"}]
+  SETTABLEKS R37 R40 K89 ["__index"]
+  SETTABLEKS R2 R40 K90 ["__newindex"]
+  LOADB R41 0
+  SETTABLEKS R41 R40 K91 ["__metatable"]
+  FASTCALL2 SETMETATABLE R39 R40 [+3]
+  GETIMPORT R38 K94 [setmetatable]
+  CALL R38 2 1
+  MOVE R36 R38
+  RETURN R36 1

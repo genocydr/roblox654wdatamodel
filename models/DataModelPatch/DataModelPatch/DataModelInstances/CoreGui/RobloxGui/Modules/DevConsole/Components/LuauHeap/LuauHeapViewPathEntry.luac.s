@@ -1,0 +1,242 @@
+PROTO_0:
+  DUPTABLE R1 K1 [{"expanded"}]
+  GETTABLEKS R3 R0 K0 ["expanded"]
+  NOT R2 R3
+  SETTABLEKS R2 R1 K0 ["expanded"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R0 0
+  DUPCLOSURE R2 K0 [PROTO_0]
+  NAMECALL R0 R0 K1 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R1 K1 [{"expanded"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["expanded"]
+  SETTABLEKS R1 R0 K2 ["state"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K3 ["onButtonPress"]
+  RETURN R0 0
+
+PROTO_3:
+  NEWTABLE R2 0 0
+  LOADN R5 2
+  GETUPVAL R6 0
+  MUL R4 R5 R6
+  GETUPVAL R5 1
+  ADD R3 R4 R5
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K1 ["expanded"]
+  JUMPIFNOT R4 [+45]
+  JUMPIFNOT R1 [+44]
+  LENGTH R4 R1
+  JUMPIFNOT R4 [+42]
+  GETIMPORT R4 K3 [ipairs]
+  MOVE R5 R1
+  CALL R4 1 3
+  FORGPREP_INEXT R4
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K4 ["createElement"]
+  GETUPVAL R10 3
+  DUPTABLE R11 K9 [{"text", "layoutOrder", "size", "pos"}]
+  SETTABLEKS R8 R11 K5 ["text"]
+  SETTABLEKS R7 R11 K6 ["layoutOrder"]
+  GETIMPORT R12 K12 [UDim2.new]
+  GETIMPORT R13 K14 [UDim.new]
+  LOADN R14 1
+  MINUS R15 R3
+  CALL R13 2 1
+  GETIMPORT R14 K14 [UDim.new]
+  LOADN R15 0
+  GETUPVAL R16 4
+  CALL R14 2 -1
+  CALL R12 -1 1
+  SETTABLEKS R12 R11 K7 ["size"]
+  GETIMPORT R12 K12 [UDim2.new]
+  LOADN R13 0
+  MOVE R14 R3
+  LOADN R15 0
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K8 ["pos"]
+  CALL R9 2 1
+  SETTABLE R9 R2 R7
+  FORGLOOP R4 2 [inext] [-36]
+  RETURN R2 1
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETTABLEKS R2 R1 K1 ["size"]
+  JUMPIF R2 [+7]
+  GETIMPORT R2 K4 [UDim2.new]
+  LOADN R3 1
+  LOADN R4 0
+  LOADN R5 0
+  GETUPVAL R6 0
+  CALL R2 4 1
+  GETTABLEKS R4 R1 K6 ["layoutOrder"]
+  ORK R3 R4 K5 [0]
+  GETTABLEKS R4 R1 K7 ["name"]
+  GETTABLEKS R5 R1 K8 ["data"]
+  GETTABLEKS R7 R1 K9 ["depth"]
+  GETUPVAL R8 1
+  MUL R6 R7 R8
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K10 ["createElement"]
+  LOADK R8 K11 ["Frame"]
+  DUPTABLE R9 K16 [{"Size", "BackgroundTransparency", "LayoutOrder", "AutomaticSize"}]
+  SETTABLEKS R2 R9 K12 ["Size"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K13 ["BackgroundTransparency"]
+  SETTABLEKS R3 R9 K14 ["LayoutOrder"]
+  GETIMPORT R10 K19 [Enum.AutomaticSize.Y]
+  SETTABLEKS R10 R9 K15 ["AutomaticSize"]
+  DUPTABLE R10 K23 [{"layout", "button", "children"}]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K10 ["createElement"]
+  LOADK R12 K24 ["UIListLayout"]
+  DUPTABLE R13 K28 [{"FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R14 K30 [Enum.FillDirection.Vertical]
+  SETTABLEKS R14 R13 K25 ["FillDirection"]
+  GETIMPORT R14 K32 [Enum.HorizontalAlignment.Right]
+  SETTABLEKS R14 R13 K26 ["HorizontalAlignment"]
+  GETIMPORT R14 K33 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R14 R13 K27 ["SortOrder"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K20 ["layout"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K10 ["createElement"]
+  GETUPVAL R12 3
+  DUPTABLE R13 K38 [{"size", "inset", "isExpanded", "isExpandable", "onButtonPress", "layoutOrder"}]
+  GETIMPORT R14 K4 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 0
+  LOADN R17 0
+  GETUPVAL R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K1 ["size"]
+  SETTABLEKS R6 R13 K34 ["inset"]
+  GETTABLEKS R15 R0 K39 ["state"]
+  GETTABLEKS R14 R15 K40 ["expanded"]
+  SETTABLEKS R14 R13 K35 ["isExpanded"]
+  LENGTH R15 R5
+  JUMPIFNOTEQKN R15 K5 [0] [+2]
+  LOADB R14 0 +1
+  LOADB R14 1
+  SETTABLEKS R14 R13 K36 ["isExpandable"]
+  GETTABLEKS R14 R0 K37 ["onButtonPress"]
+  SETTABLEKS R14 R13 K37 ["onButtonPress"]
+  LOADN R14 255
+  SETTABLEKS R14 R13 K6 ["layoutOrder"]
+  DUPTABLE R14 K41 [{"name"}]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K10 ["createElement"]
+  GETUPVAL R16 4
+  DUPTABLE R17 K44 [{"text", "size", "pos"}]
+  SETTABLEKS R4 R17 K42 ["text"]
+  GETIMPORT R18 K4 [UDim2.new]
+  GETIMPORT R19 K46 [UDim.new]
+  LOADN R20 1
+  MINUS R21 R6
+  CALL R19 2 1
+  GETIMPORT R20 K46 [UDim.new]
+  LOADN R21 1
+  LOADN R22 0
+  CALL R20 2 -1
+  CALL R18 -1 1
+  SETTABLEKS R18 R17 K1 ["size"]
+  GETIMPORT R18 K4 [UDim2.new]
+  LOADN R19 0
+  GETUPVAL R21 5
+  ADD R20 R21 R6
+  LOADN R21 0
+  LOADN R22 0
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K43 ["pos"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K7 ["name"]
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K21 ["button"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K47 ["createFragment"]
+  MOVE R14 R5
+  NAMECALL R12 R0 K48 ["renderChildren"]
+  CALL R12 2 -1
+  CALL R11 -1 1
+  SETTABLEKS R11 R10 K22 ["children"]
+  CALL R7 3 -1
+  RETURN R7 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R6 K9 [script]
+  GETTABLEKS R5 R6 K10 ["Parent"]
+  GETTABLEKS R4 R5 K10 ["Parent"]
+  GETTABLEKS R3 R4 K10 ["Parent"]
+  GETTABLEKS R2 R3 K11 ["Components"]
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R4 R2 K12 ["CellLabel"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R5 R2 K13 ["BannerButton"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETIMPORT R8 K9 [script]
+  GETTABLEKS R7 R8 K10 ["Parent"]
+  GETTABLEKS R6 R7 K14 ["LuauHeapTypes"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETIMPORT R11 K9 [script]
+  GETTABLEKS R10 R11 K10 ["Parent"]
+  GETTABLEKS R9 R10 K10 ["Parent"]
+  GETTABLEKS R8 R9 K10 ["Parent"]
+  GETTABLEKS R7 R8 K15 ["Constants"]
+  CALL R6 1 1
+  GETTABLEKS R8 R6 K16 ["GeneralFormatting"]
+  GETTABLEKS R7 R8 K17 ["LineWidth"]
+  GETTABLEKS R9 R6 K16 ["GeneralFormatting"]
+  GETTABLEKS R8 R9 K18 ["LineColor"]
+  GETTABLEKS R10 R6 K19 ["LuauHeapFormatting"]
+  GETTABLEKS R9 R10 K20 ["PathEntryFrameHeight"]
+  GETTABLEKS R11 R6 K19 ["LuauHeapFormatting"]
+  GETTABLEKS R10 R11 K21 ["DepthIndent"]
+  GETTABLEKS R12 R6 K19 ["LuauHeapFormatting"]
+  GETTABLEKS R11 R12 K22 ["ValueCellWidth"]
+  GETTABLEKS R13 R6 K19 ["LuauHeapFormatting"]
+  GETTABLEKS R12 R13 K23 ["CellPadding"]
+  GETTABLEKS R14 R6 K19 ["LuauHeapFormatting"]
+  GETTABLEKS R13 R14 K24 ["ValuePadding"]
+  GETTABLEKS R14 R1 K25 ["PureComponent"]
+  LOADK R16 K26 ["LuauHeapViewPathEntry"]
+  NAMECALL R14 R14 K27 ["extend"]
+  CALL R14 2 1
+  DUPCLOSURE R15 K28 [PROTO_2]
+  SETTABLEKS R15 R14 K29 ["init"]
+  DUPCLOSURE R15 K30 [PROTO_3]
+  CAPTURE VAL R10
+  CAPTURE VAL R12
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R9
+  SETTABLEKS R15 R14 K31 ["renderChildren"]
+  DUPCLOSURE R15 K32 [PROTO_4]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R12
+  SETTABLEKS R15 R14 K33 ["render"]
+  RETURN R14 1

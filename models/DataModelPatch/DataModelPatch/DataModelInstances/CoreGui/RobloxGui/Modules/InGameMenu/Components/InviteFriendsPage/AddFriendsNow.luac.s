@@ -1,0 +1,440 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["buttonRef"]
+  DUPTABLE R1 K3 [{"buttonIsInitialized"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["buttonIsInitialized"]
+  SETTABLEKS R1 R0 K4 ["state"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["buttonRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K2 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["buttonIsInitialized"]
+  JUMPIF R2 [+13]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["Initialize"]
+  JUMPIFEQ R1 R2 [+9]
+  GETUPVAL R2 0
+  DUPTABLE R4 K3 [{"buttonIsInitialized"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K1 ["buttonIsInitialized"]
+  NAMECALL R2 R2 K4 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"isFocused", "didFocus"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K4 ["canCaptureFocus"]
+  JUMPIFNOT R4 [+7]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K5 ["state"]
+  GETTABLEKS R4 R5 K6 ["buttonIsInitialized"]
+  JUMPIFNOT R4 [+1]
+  MOVE R4 R0
+  SETTABLEKS R4 R3 K1 ["isFocused"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U3
+  SETTABLEKS R4 R3 K2 ["didFocus"]
+  DUPTABLE R4 K8 [{"MakeFriendsButton"}]
+  JUMPIFNOT R0 [+44]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 5
+  DUPTABLE R7 K16 [{"buttonType", "layoutOrder", "size", "text", "onActivated", "buttonRef", "onStateChanged"}]
+  GETUPVAL R9 6
+  GETTABLEKS R8 R9 K17 ["Secondary"]
+  SETTABLEKS R8 R7 K9 ["buttonType"]
+  LOADN R8 3
+  SETTABLEKS R8 R7 K10 ["layoutOrder"]
+  GETIMPORT R8 K20 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 48
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K11 ["size"]
+  GETUPVAL R9 7
+  GETTABLEKS R8 R9 K21 ["makeFriendsNow"]
+  SETTABLEKS R8 R7 K12 ["text"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K22 ["switchToPlayers"]
+  SETTABLEKS R8 R7 K13 ["onActivated"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K14 ["buttonRef"]
+  SETTABLEKS R8 R7 K14 ["buttonRef"]
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U8
+  SETTABLEKS R8 R7 K15 ["onStateChanged"]
+  CALL R5 2 1
+  JUMPIF R5 [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K7 ["MakeFriendsButton"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Font"]
+  GETTABLEKS R2 R3 K1 ["Body"]
+  GETTABLEKS R1 R2 K0 ["Font"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["Font"]
+  GETTABLEKS R4 R5 K1 ["Body"]
+  GETTABLEKS R3 R4 K2 ["RelativeSize"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["Font"]
+  GETTABLEKS R4 R5 K3 ["BaseSize"]
+  MUL R2 R3 R4
+  GETUPVAL R4 1
+  GETTABLEKS R6 R0 K4 ["noFriendsText"]
+  MOVE R7 R2
+  MOVE R8 R1
+  GETIMPORT R9 K7 [Vector2.new]
+  LOADN R10 48
+  LOADK R11 K8 [∞]
+  CALL R9 2 -1
+  NAMECALL R4 R4 K9 ["GetTextSize"]
+  CALL R4 -1 1
+  GETTABLEKS R3 R4 K10 ["Y"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["createElement"]
+  LOADK R5 K12 ["Frame"]
+  DUPTABLE R6 K17 [{"BackgroundTransparency", "Size", "Position", "AnchorPoint"}]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K13 ["BackgroundTransparency"]
+  GETIMPORT R7 K19 [UDim2.new]
+  LOADN R8 0
+  LOADN R9 48
+  LOADN R10 1
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K14 ["Size"]
+  GETIMPORT R7 K19 [UDim2.new]
+  LOADK R8 K20 [0.5]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K15 ["Position"]
+  GETIMPORT R7 K7 [Vector2.new]
+  LOADK R8 K20 [0.5]
+  LOADN R9 0
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K16 ["AnchorPoint"]
+  DUPTABLE R7 K26 [{"Layout", "Icon", "TextContainer", "RootedConnection", "MakeFriendsButton"}]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  LOADK R9 K27 ["UIListLayout"]
+  DUPTABLE R10 K32 [{"FillDirection", "HorizontalAlignment", "VerticalAlignment", "SortOrder"}]
+  GETIMPORT R11 K35 [Enum.FillDirection.Vertical]
+  SETTABLEKS R11 R10 K28 ["FillDirection"]
+  GETIMPORT R11 K37 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R11 R10 K29 ["HorizontalAlignment"]
+  GETIMPORT R11 K38 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R11 R10 K30 ["VerticalAlignment"]
+  GETIMPORT R11 K40 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R11 R10 K31 ["SortOrder"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K21 ["Layout"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  GETUPVAL R9 3
+  DUPTABLE R10 K43 [{"BackgroundTransparency", "Image", "Size", "ImageTransparency", "LayoutOrder"}]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K13 ["BackgroundTransparency"]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K44 ["Images"]
+  GETTABLEKS R11 R12 K45 ["AddFriend"]
+  SETTABLEKS R11 R10 K41 ["Image"]
+  GETIMPORT R11 K19 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 64
+  LOADN R14 0
+  LOADN R15 64
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K14 ["Size"]
+  LOADK R11 K20 [0.5]
+  SETTABLEKS R11 R10 K42 ["ImageTransparency"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K39 ["LayoutOrder"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K22 ["Icon"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  LOADK R9 K12 ["Frame"]
+  DUPTABLE R10 K46 [{"BackgroundTransparency", "Size", "LayoutOrder"}]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K13 ["BackgroundTransparency"]
+  GETIMPORT R11 K19 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  ADDK R15 R3 K47 [20]
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K14 ["Size"]
+  LOADN R11 2
+  SETTABLEKS R11 R10 K39 ["LayoutOrder"]
+  DUPTABLE R11 K49 [{"Text"}]
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  GETUPVAL R13 5
+  DUPTABLE R14 K54 [{"fontKey", "themeKey", "Text", "Position", "Size", "TextXAlignment", "TextWrapped"}]
+  LOADK R15 K1 ["Body"]
+  SETTABLEKS R15 R14 K50 ["fontKey"]
+  LOADK R15 K55 ["TextEmphasis"]
+  SETTABLEKS R15 R14 K51 ["themeKey"]
+  GETTABLEKS R15 R0 K4 ["noFriendsText"]
+  SETTABLEKS R15 R14 K48 ["Text"]
+  GETIMPORT R15 K19 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 4
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K15 ["Position"]
+  GETIMPORT R15 K19 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 1
+  LOADN R19 236
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K14 ["Size"]
+  GETIMPORT R15 K56 [Enum.TextXAlignment.Center]
+  SETTABLEKS R15 R14 K52 ["TextXAlignment"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K53 ["TextWrapped"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K48 ["Text"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K23 ["TextContainer"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  GETUPVAL R9 6
+  DUPTABLE R10 K58 [{"render"}]
+  NEWCLOSURE R11 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE VAL R0
+  CAPTURE UPVAL U13
+  SETTABLEKS R11 R10 K57 ["render"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K24 ["RootedConnection"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  GETUPVAL R9 11
+  DUPTABLE R10 K64 [{"buttonType", "layoutOrder", "size", "text", "onActivated"}]
+  GETUPVAL R12 12
+  GETTABLEKS R11 R12 K65 ["Secondary"]
+  SETTABLEKS R11 R10 K59 ["buttonType"]
+  LOADN R11 3
+  SETTABLEKS R11 R10 K60 ["layoutOrder"]
+  GETIMPORT R11 K19 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 48
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K61 ["size"]
+  GETTABLEKS R11 R0 K66 ["makeFriendsNow"]
+  SETTABLEKS R11 R10 K62 ["text"]
+  GETUPVAL R12 8
+  GETTABLEKS R11 R12 K67 ["switchToPlayers"]
+  SETTABLEKS R11 R10 K63 ["onActivated"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K25 ["MakeFriendsButton"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_5:
+  GETUPVAL R1 0
+  DUPTABLE R2 K2 [{"noFriendsText", "makeFriendsNow"}]
+  LOADK R3 K3 ["CoreScripts.InGameMenu.InviteFriends.NoFriends"]
+  SETTABLEKS R3 R2 K0 ["noFriendsText"]
+  LOADK R3 K4 ["CoreScripts.InGameMenu.InviteFriends.MakeFriendsNow"]
+  SETTABLEKS R3 R2 K1 ["makeFriendsNow"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETUPVAL R2 0
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_7:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  LOADK R2 K0 ["Players"]
+  CALL R1 1 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_8:
+  DUPTABLE R1 K1 [{"switchToPlayers"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["switchToPlayers"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["TextService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K10 ["Roact"]
+  GETTABLEKS R5 R3 K11 ["RoactRodux"]
+  GETTABLEKS R6 R3 K12 ["t"]
+  GETTABLEKS R7 R3 K13 ["UIBlox"]
+  GETTABLEKS R10 R7 K14 ["App"]
+  GETTABLEKS R9 R10 K15 ["Button"]
+  GETTABLEKS R8 R9 K15 ["Button"]
+  GETTABLEKS R12 R7 K14 ["App"]
+  GETTABLEKS R11 R12 K15 ["Button"]
+  GETTABLEKS R10 R11 K16 ["Enum"]
+  GETTABLEKS R9 R10 K17 ["ButtonType"]
+  GETTABLEKS R12 R7 K18 ["Core"]
+  GETTABLEKS R11 R12 K19 ["Style"]
+  GETTABLEKS R10 R11 K20 ["withStyle"]
+  GETIMPORT R14 K22 [script]
+  GETTABLEKS R13 R14 K23 ["Parent"]
+  GETTABLEKS R12 R13 K23 ["Parent"]
+  GETTABLEKS R11 R12 K23 ["Parent"]
+  GETIMPORT R12 K7 [require]
+  GETTABLEKS R14 R11 K24 ["Localization"]
+  GETTABLEKS R13 R14 K25 ["withLocalization"]
+  CALL R12 1 1
+  GETIMPORT R13 K7 [require]
+  GETTABLEKS R15 R11 K26 ["Resources"]
+  GETTABLEKS R14 R15 K27 ["Assets"]
+  CALL R13 1 1
+  GETIMPORT R14 K7 [require]
+  GETTABLEKS R16 R11 K28 ["Components"]
+  GETTABLEKS R15 R16 K29 ["ThemedTextLabel"]
+  CALL R14 1 1
+  GETIMPORT R15 K7 [require]
+  GETTABLEKS R18 R11 K28 ["Components"]
+  GETTABLEKS R17 R18 K30 ["Connection"]
+  GETTABLEKS R16 R17 K31 ["FocusHandler"]
+  CALL R15 1 1
+  GETIMPORT R16 K7 [require]
+  GETTABLEKS R19 R11 K28 ["Components"]
+  GETTABLEKS R18 R19 K30 ["Connection"]
+  GETTABLEKS R17 R18 K32 ["RootedConnection"]
+  CALL R16 1 1
+  GETIMPORT R17 K7 [require]
+  GETTABLEKS R19 R11 K33 ["Actions"]
+  GETTABLEKS R18 R19 K34 ["SetCurrentPage"]
+  CALL R17 1 1
+  GETTABLEKS R20 R7 K18 ["Core"]
+  GETTABLEKS R19 R20 K35 ["ImageSet"]
+  GETTABLEKS R18 R19 K36 ["ImageSetLabel"]
+  GETTABLEKS R22 R7 K18 ["Core"]
+  GETTABLEKS R21 R22 K37 ["Control"]
+  GETTABLEKS R20 R21 K16 ["Enum"]
+  GETTABLEKS R19 R20 K38 ["ControlState"]
+  GETTABLEKS R20 R4 K39 ["PureComponent"]
+  LOADK R22 K40 ["AddFriendsNow"]
+  NAMECALL R20 R20 K41 ["extend"]
+  CALL R20 2 1
+  GETTABLEKS R21 R6 K42 ["strictInterface"]
+  DUPTABLE R22 K45 [{"switchToPlayers", "canCaptureFocus"}]
+  GETTABLEKS R23 R6 K46 ["callback"]
+  SETTABLEKS R23 R22 K43 ["switchToPlayers"]
+  GETTABLEKS R23 R6 K47 ["boolean"]
+  SETTABLEKS R23 R22 K44 ["canCaptureFocus"]
+  CALL R21 1 1
+  SETTABLEKS R21 R20 K48 ["validateProps"]
+  DUPCLOSURE R21 K49 [PROTO_0]
+  CAPTURE VAL R4
+  SETTABLEKS R21 R20 K50 ["init"]
+  DUPCLOSURE R21 K51 [PROTO_6]
+  CAPTURE VAL R10
+  CAPTURE VAL R12
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  CAPTURE VAL R18
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R16
+  CAPTURE VAL R15
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R19
+  SETTABLEKS R21 R20 K52 ["render"]
+  GETTABLEKS R21 R5 K53 ["UNSTABLE_connect2"]
+  LOADNIL R22
+  DUPCLOSURE R23 K54 [PROTO_8]
+  CAPTURE VAL R17
+  CALL R21 2 1
+  MOVE R22 R20
+  CALL R21 1 -1
+  RETURN R21 -1

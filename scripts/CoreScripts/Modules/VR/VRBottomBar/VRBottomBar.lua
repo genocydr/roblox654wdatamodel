@@ -67,7 +67,6 @@ local FIntVRBottomBarPositionOffsetDepthNumber =
 	require(RobloxGui.Modules.Flags.FIntVRBottomBarPositionOffsetDepthNumber)
 local FFlagVRBottomBarHighlightedLeaveGameIcon =
 	require(RobloxGui.Modules.Flags.FFlagVRBottomBarHighlightedLeaveGameIcon)
-local FFlagVRBottomBarNoCurvature = game:DefineFastFlag("VRBottomBarNoCurvature", false)
 local FFlagEnableSpatialRobloxGui = require(RobloxGui.Modules.Flags.FFlagEnableSpatialRobloxGui)
 
 local SplashScreenManager = require(CorePackages.Workspace.Packages.SplashScreenManager).SplashScreenManager
@@ -701,9 +700,7 @@ function VRBottomBar:renderWithStyle(style)
 				then VRConstants.AnchoringTypes.PanelManaged
 				else VRConstants.AnchoringTypes.Head,
 			faceCamera = true,
-			curvature = if FFlagVRBottomBarNoCurvature or game:GetEngineFeature("EnableMaquettesSupport")
-				then 0
-				else nil,
+			curvature = 0,
 			alwaysOnTop = EngineFeatureEnableVRBottomBarWorksBehindObjects and true or nil,
 			parent = EngineFeatureEnableVRBottomBarWorksBehindObjects and GuiService.CoreGuiFolder or nil,
 			zOffset = 1,

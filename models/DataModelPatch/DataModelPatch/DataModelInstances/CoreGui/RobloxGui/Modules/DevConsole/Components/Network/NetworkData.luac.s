@@ -1,0 +1,443 @@
+PROTO_0:
+  GETTABLEKS R3 R0 K0 ["Num"]
+  GETTABLEKS R4 R1 K0 ["Num"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETTABLEKS R3 R0 K0 ["Method"]
+  GETTABLEKS R4 R1 K0 ["Method"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_2:
+  GETTABLEKS R3 R0 K0 ["Status"]
+  GETTABLEKS R4 R1 K0 ["Status"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["Time"]
+  GETTABLEKS R4 R1 K0 ["Time"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["RequestType"]
+  GETTABLEKS R4 R1 K0 ["RequestType"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_5:
+  GETTABLEKS R3 R0 K0 ["Url"]
+  GETTABLEKS R4 R1 K0 ["Url"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_6:
+  DUPTABLE R7 K7 [{"Num", "Method", "Status", "Time", "RequestType", "Url", "Response"}]
+  SETTABLEKS R0 R7 K0 ["Num"]
+  SETTABLEKS R1 R7 K1 ["Method"]
+  SETTABLEKS R2 R7 K2 ["Status"]
+  SETTABLEKS R3 R7 K3 ["Time"]
+  SETTABLEKS R4 R7 K4 ["RequestType"]
+  SETTABLEKS R5 R7 K5 ["Url"]
+  SETTABLEKS R6 R7 K6 ["Response"]
+  RETURN R7 1
+
+PROTO_7:
+  NEWTABLE R1 16 0
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K1 [setmetatable]
+  CALL R2 2 0
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["_isRunning"]
+  SETTABLEKS R0 R1 K3 ["_isClient"]
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["HttpResultOut"]
+  JUMPIF R2 [+3]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["ServerHttpResultOut"]
+  SETTABLEKS R2 R1 K6 ["_httpResultSignal"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["new"]
+  CALL R2 0 1
+  SETTABLEKS R2 R1 K8 ["_httpEntryAdded"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K9 ["_httpSummaryTable"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K10 ["_httpSummaryCount"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K7 ["new"]
+  GETUPVAL R3 4
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K11 ["_httpEntryBuffer"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K12 ["_httpLifeTimeEntryCount"]
+  GETUPVAL R3 5
+  GETTABLEN R2 R3 1
+  SETTABLEKS R2 R1 K13 ["_sortType"]
+  RETURN R1 1
+
+PROTO_8:
+  GETTABLEKS R3 R0 K1 ["_httpLifeTimeEntryCount"]
+  ADDK R2 R3 K0 [1]
+  SETTABLEKS R2 R0 K1 ["_httpLifeTimeEntryCount"]
+  GETTABLEKS R3 R0 K1 ["_httpLifeTimeEntryCount"]
+  GETTABLEKS R4 R1 K2 ["Method"]
+  GETTABLEKS R5 R1 K3 ["Status"]
+  GETTABLEKS R6 R1 K4 ["Time"]
+  GETTABLEKS R7 R1 K5 ["RequestType"]
+  GETTABLEKS R8 R1 K6 ["URL"]
+  GETTABLEKS R9 R1 K7 ["Response"]
+  DUPTABLE R2 K10 [{"Num", "Method", "Status", "Time", "RequestType", "Url", "Response"}]
+  SETTABLEKS R3 R2 K8 ["Num"]
+  SETTABLEKS R4 R2 K2 ["Method"]
+  SETTABLEKS R5 R2 K3 ["Status"]
+  SETTABLEKS R6 R2 K4 ["Time"]
+  SETTABLEKS R7 R2 K5 ["RequestType"]
+  SETTABLEKS R8 R2 K9 ["Url"]
+  SETTABLEKS R9 R2 K7 ["Response"]
+  GETTABLEKS R3 R0 K11 ["_httpEntryBuffer"]
+  MOVE R5 R2
+  NAMECALL R3 R3 K12 ["push_back"]
+  CALL R3 2 0
+  GETTABLEKS R3 R1 K5 ["RequestType"]
+  GETTABLEKS R5 R0 K13 ["_httpSummaryTable"]
+  GETTABLE R4 R5 R3
+  JUMPIF R4 [+43]
+  GETTABLEKS R6 R0 K14 ["_httpSummaryCount"]
+  ADDK R5 R6 K0 [1]
+  SETTABLEKS R5 R0 K14 ["_httpSummaryCount"]
+  GETTABLEKS R5 R0 K13 ["_httpSummaryTable"]
+  DUPTABLE R6 K20 [{"RequestType", "RequestCount", "FailedCount", "AverageTime", "MinTime", "MaxTime"}]
+  SETTABLEKS R3 R6 K5 ["RequestType"]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K15 ["RequestCount"]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K16 ["FailedCount"]
+  GETTABLEKS R7 R1 K4 ["Time"]
+  SETTABLEKS R7 R6 K17 ["AverageTime"]
+  GETTABLEKS R7 R1 K4 ["Time"]
+  SETTABLEKS R7 R6 K18 ["MinTime"]
+  GETTABLEKS R7 R1 K4 ["Time"]
+  SETTABLEKS R7 R6 K19 ["MaxTime"]
+  SETTABLE R6 R5 R3
+  GETTABLEKS R5 R1 K3 ["Status"]
+  LOADN R6 144
+  JUMPIFNOTLE R6 R5 [+61]
+  GETTABLEKS R6 R0 K13 ["_httpSummaryTable"]
+  GETTABLEKS R7 R1 K5 ["RequestType"]
+  GETTABLE R5 R6 R7
+  LOADN R6 1
+  SETTABLEKS R6 R5 K16 ["FailedCount"]
+  RETURN R0 0
+  GETTABLEKS R6 R4 K15 ["RequestCount"]
+  ADDK R5 R6 K0 [1]
+  SETTABLEKS R5 R4 K15 ["RequestCount"]
+  GETTABLEKS R5 R1 K3 ["Status"]
+  LOADN R6 144
+  JUMPIFNOTLE R6 R5 [+6]
+  GETTABLEKS R6 R4 K16 ["FailedCount"]
+  ADDK R5 R6 K0 [1]
+  SETTABLEKS R5 R4 K16 ["FailedCount"]
+  GETTABLEKS R9 R4 K17 ["AverageTime"]
+  GETTABLEKS R10 R4 K15 ["RequestCount"]
+  MUL R8 R9 R10
+  GETTABLEKS R9 R1 K4 ["Time"]
+  ADD R7 R8 R9
+  GETTABLEKS R8 R4 K17 ["AverageTime"]
+  SUB R6 R7 R8
+  GETTABLEKS R7 R4 K15 ["RequestCount"]
+  DIV R5 R6 R7
+  SETTABLEKS R5 R4 K17 ["AverageTime"]
+  GETTABLEKS R5 R1 K4 ["Time"]
+  GETTABLEKS R6 R4 K18 ["MinTime"]
+  JUMPIFNOTLT R5 R6 [+5]
+  GETTABLEKS R5 R1 K4 ["Time"]
+  SETTABLEKS R5 R4 K18 ["MinTime"]
+  GETTABLEKS R5 R1 K4 ["Time"]
+  GETTABLEKS R6 R4 K19 ["MaxTime"]
+  JUMPIFNOTLT R6 R5 [+5]
+  GETTABLEKS R5 R1 K4 ["Time"]
+  SETTABLEKS R5 R4 K19 ["MaxTime"]
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R3 0
+  GETTABLE R2 R3 R1
+  JUMPIFNOT R2 [+15]
+  SETTABLEKS R1 R0 K0 ["_sortType"]
+  GETTABLEKS R2 R0 K1 ["_httpEntryAdded"]
+  GETTABLEKS R4 R0 K2 ["_httpSummaryTable"]
+  GETTABLEKS R5 R0 K3 ["_httpSummaryCount"]
+  NAMECALL R6 R0 K4 ["getSortedEntries"]
+  CALL R6 1 -1
+  NAMECALL R2 R2 K5 ["Fire"]
+  CALL R2 -1 0
+  RETURN R0 0
+  GETIMPORT R2 K7 [error]
+  GETIMPORT R3 K10 [string.format]
+  LOADK R4 K11 ["attempted to pass invalid sortType: %s"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K13 [tostring]
+  CALL R5 1 1
+  CALL R3 2 1
+  LOADN R4 2
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R1 R0 K0 ["_sortType"]
+  RETURN R1 1
+
+PROTO_11:
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K0 ["_httpSummaryTable"]
+  GETTABLEKS R1 R0 K1 ["_httpEntryBuffer"]
+  NAMECALL R1 R1 K2 ["reset"]
+  CALL R1 1 0
+  LOADN R1 0
+  SETTABLEKS R1 R0 K3 ["_httpLifeTimeEntryCount"]
+  GETTABLEKS R1 R0 K4 ["_isClient"]
+  JUMPIFNOT R1 [+16]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K5 ["GetHttpResultHistory"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+11]
+  GETIMPORT R2 K7 [pairs]
+  MOVE R3 R1
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R6
+  NAMECALL R7 R0 K8 ["addHttpEntry"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R1 R0 K0 ["_httpEntryAdded"]
+  RETURN R1 1
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["_httpEntryBuffer"]
+  NAMECALL R1 R1 K1 ["iterator"]
+  CALL R1 1 1
+  NAMECALL R2 R1 K2 ["next"]
+  CALL R2 1 1
+  NEWTABLE R3 0 0
+  LOADN R4 1
+  JUMPIFNOT R2 [+7]
+  SETTABLE R2 R3 R4
+  ADDK R4 R4 K3 [1]
+  NAMECALL R5 R1 K2 ["next"]
+  CALL R5 1 1
+  MOVE R2 R5
+  JUMPBACK [-8]
+  GETIMPORT R5 K6 [table.sort]
+  MOVE R6 R3
+  GETUPVAL R8 0
+  GETTABLEKS R9 R0 K7 ["_sortType"]
+  GETTABLE R7 R8 R9
+  CALL R5 2 0
+  RETURN R3 1
+
+PROTO_14:
+  DUPTABLE R1 K3 [{"summaryTable", "summaryCount", "entryList"}]
+  GETTABLEKS R2 R0 K4 ["_httpSummaryTable"]
+  SETTABLEKS R2 R1 K0 ["summaryTable"]
+  GETTABLEKS R2 R0 K5 ["_httpSummaryCount"]
+  SETTABLEKS R2 R1 K1 ["summaryCount"]
+  NAMECALL R2 R0 K6 ["getSortedEntries"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K2 ["entryList"]
+  RETURN R1 1
+
+PROTO_15:
+  GETTABLEKS R1 R0 K0 ["_isRunning"]
+  RETURN R1 1
+
+PROTO_16:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["addHttpEntry"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["_httpEntryAdded"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["_httpSummaryTable"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["_httpSummaryCount"]
+  GETUPVAL R5 0
+  NAMECALL R5 R5 K4 ["getSortedEntries"]
+  CALL R5 1 -1
+  NAMECALL R1 R1 K5 ["Fire"]
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_17:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["RequestHttpResultApproved"]
+  CALL R1 1 0
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["_onHttpResultApprovedConnection"]
+  NAMECALL R1 R1 K2 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADNIL R2
+  SETTABLEKS R2 R1 K1 ["_onHttpResultApprovedConnection"]
+  RETURN R0 0
+
+PROTO_18:
+  GETTABLEKS R1 R0 K0 ["_httpResultConnection"]
+  JUMPIF R1 [+39]
+  GETTABLEKS R1 R0 K1 ["_additionHttpSetup"]
+  JUMPIFNOT R1 [+3]
+  GETTABLEKS R1 R0 K1 ["_additionHttpSetup"]
+  CALL R1 0 0
+  GETTABLEKS R1 R0 K2 ["_httpResultSignal"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K0 ["_httpResultConnection"]
+  NAMECALL R1 R0 K4 ["resetHttpEntryList"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K5 ["_isClient"]
+  JUMPIF R1 [+15]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K6 ["OnHttpResultApproved"]
+  NEWCLOSURE R3 P1
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K7 ["_onHttpResultApprovedConnection"]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K8 ["RequestServerHttpResult"]
+  CALL R1 1 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K9 ["_isRunning"]
+  RETURN R0 0
+
+PROTO_19:
+  GETTABLEKS R1 R0 K0 ["_httpResultConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["_httpResultConnection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["_httpResultConnection"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["_isRunning"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["LogService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETIMPORT R6 K7 [script]
+  GETTABLEKS R5 R6 K8 ["Parent"]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K8 ["Parent"]
+  GETTABLEKS R2 R3 K9 ["CircularBuffer"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETIMPORT R7 K7 [script]
+  GETTABLEKS R6 R7 K8 ["Parent"]
+  GETTABLEKS R5 R6 K8 ["Parent"]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K10 ["Signal"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETIMPORT R8 K7 [script]
+  GETTABLEKS R7 R8 K8 ["Parent"]
+  GETTABLEKS R6 R7 K8 ["Parent"]
+  GETTABLEKS R5 R6 K8 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Constants"]
+  CALL R3 1 1
+  GETTABLEKS R5 R3 K12 ["NetworkFormatting"]
+  GETTABLEKS R4 R5 K13 ["ChartHeaderNames"]
+  GETIMPORT R6 K15 [settings]
+  CALL R6 0 1
+  LOADK R8 K16 ["NewDevConsoleMaxHttpCount"]
+  NAMECALL R6 R6 K17 ["GetFVariable"]
+  CALL R6 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R5 K19 [tonumber]
+  CALL R5 -1 1
+  NEWTABLE R6 8 0
+  GETTABLEN R7 R4 1
+  DUPCLOSURE R8 K20 [PROTO_0]
+  SETTABLE R8 R6 R7
+  GETTABLEN R7 R4 2
+  DUPCLOSURE R8 K21 [PROTO_1]
+  SETTABLE R8 R6 R7
+  GETTABLEN R7 R4 3
+  DUPCLOSURE R8 K22 [PROTO_2]
+  SETTABLE R8 R6 R7
+  GETTABLEN R7 R4 4
+  DUPCLOSURE R8 K23 [PROTO_3]
+  SETTABLE R8 R6 R7
+  GETTABLEN R7 R4 5
+  DUPCLOSURE R8 K24 [PROTO_4]
+  SETTABLE R8 R6 R7
+  GETTABLEN R7 R4 6
+  DUPCLOSURE R8 K25 [PROTO_5]
+  SETTABLE R8 R6 R7
+  DUPCLOSURE R7 K26 [PROTO_6]
+  NEWTABLE R8 16 0
+  SETTABLEKS R8 R8 K27 ["__index"]
+  DUPCLOSURE R9 K28 [PROTO_7]
+  CAPTURE VAL R8
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  SETTABLEKS R9 R8 K29 ["new"]
+  DUPCLOSURE R9 K30 [PROTO_8]
+  SETTABLEKS R9 R8 K31 ["addHttpEntry"]
+  DUPCLOSURE R9 K32 [PROTO_9]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K33 ["setSortType"]
+  DUPCLOSURE R9 K34 [PROTO_10]
+  SETTABLEKS R9 R8 K35 ["getSortType"]
+  DUPCLOSURE R9 K36 [PROTO_11]
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K37 ["resetHttpEntryList"]
+  DUPCLOSURE R9 K38 [PROTO_12]
+  SETTABLEKS R9 R8 K10 ["Signal"]
+  DUPCLOSURE R9 K39 [PROTO_13]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K40 ["getSortedEntries"]
+  DUPCLOSURE R9 K41 [PROTO_14]
+  SETTABLEKS R9 R8 K42 ["getCurrentData"]
+  DUPCLOSURE R9 K43 [PROTO_15]
+  SETTABLEKS R9 R8 K44 ["isRunning"]
+  DUPCLOSURE R9 K45 [PROTO_18]
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K46 ["start"]
+  DUPCLOSURE R9 K47 [PROTO_19]
+  SETTABLEKS R9 R8 K48 ["stop"]
+  RETURN R8 1

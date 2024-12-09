@@ -1,0 +1,71 @@
+PROTO_0:
+  LOADNIL R2
+  GETTABLEKS R3 R0 K0 ["itemType"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["Bundle"]
+  JUMPIFNOTEQ R3 R4 [+17]
+  GETTABLEKS R3 R0 K2 ["costumeId"]
+  JUMPIFNOT R3 [+7]
+  GETIMPORT R3 K5 [string.format]
+  GETUPVAL R4 1
+  GETTABLEKS R5 R0 K2 ["costumeId"]
+  CALL R3 2 -1
+  RETURN R3 -1
+  GETTABLEKS R4 R0 K6 ["items"]
+  GETTABLEN R3 R4 1
+  GETTABLEKS R2 R3 K7 ["id"]
+  JUMP [+24]
+  GETTABLEKS R3 R0 K8 ["AssetId"]
+  JUMPIFEQKNIL R3 [+8]
+  GETTABLEKS R3 R0 K8 ["AssetId"]
+  JUMPIFEQKN R3 K9 [0] [+4]
+  GETTABLEKS R2 R0 K8 ["AssetId"]
+  JUMP [+13]
+  GETTABLEKS R3 R0 K10 ["IconImageAssetId"]
+  JUMPIFEQKNIL R3 [+4]
+  GETTABLEKS R2 R0 K10 ["IconImageAssetId"]
+  JUMP [+6]
+  GETIMPORT R3 K14 [Enum.Platform.XBoxOne]
+  JUMPIFNOTEQ R1 R3 [+3]
+  LOADK R3 K15 ["rbxasset://textures/ui/Shell/Icons/ROBUXIcon@1080.png"]
+  RETURN R3 1
+  GETUPVAL R4 2
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R8 R2
+  GETIMPORT R7 K17 [tostring]
+  CALL R7 1 1
+  MOVE R5 R7
+  LOADK R6 K18 ["&x=100&y=100&format=png"]
+  CONCAT R3 R4 R6
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R1 K1 [script]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["ContentProvider"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R0 K9 ["Enums"]
+  GETTABLEKS R3 R4 K10 ["ItemType"]
+  CALL R2 1 1
+  GETIMPORT R3 K13 [string.gsub]
+  GETTABLEKS R4 R1 K14 ["BaseUrl"]
+  NAMECALL R4 R4 K15 ["lower"]
+  CALL R4 1 1
+  LOADK R5 K16 ["https?://m."]
+  LOADK R6 K17 ["https?://www."]
+  CALL R3 3 1
+  MOVE R5 R3
+  LOADK R6 K18 ["thumbs/asset.ashx?assetid="]
+  CONCAT R4 R5 R6
+  MOVE R6 R3
+  LOADK R7 K19 ["outfit-thumbnail/image?userOutfitId=%s&width=100&height=100&format=png"]
+  CONCAT R5 R6 R7
+  DUPCLOSURE R6 K20 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  RETURN R6 1

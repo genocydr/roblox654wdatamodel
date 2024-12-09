@@ -1,0 +1,130 @@
+PROTO_0:
+  MOVE R2 R0
+  JUMPIF R2 [+2]
+  NEWTABLE R2 0 0
+  DUPTABLE R3 K13 [{"DisplayOptions", "MainView", "MemoryData", "NetworkData", "ScriptsData", "DataStoresData", "ServerStatsData", "ServerJobsData", "ActionBindingsData", "MicroProfiler", "DebugVisualizationsData", "ScriptProfiler", "LuauHeap"}]
+  GETUPVAL R4 0
+  GETTABLEKS R5 R2 K0 ["DisplayOptions"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K0 ["DisplayOptions"]
+  GETUPVAL R4 1
+  GETTABLEKS R5 R2 K1 ["MainView"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K1 ["MainView"]
+  GETUPVAL R4 2
+  GETTABLEKS R5 R2 K2 ["MemoryData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["MemoryData"]
+  GETUPVAL R4 3
+  GETTABLEKS R5 R2 K3 ["NetworkData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["NetworkData"]
+  GETUPVAL R4 4
+  GETTABLEKS R5 R2 K4 ["ScriptsData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K4 ["ScriptsData"]
+  GETUPVAL R4 5
+  GETTABLEKS R5 R2 K5 ["DataStoresData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K5 ["DataStoresData"]
+  GETUPVAL R4 6
+  GETTABLEKS R5 R2 K6 ["ServerStatsData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K6 ["ServerStatsData"]
+  GETUPVAL R4 7
+  GETTABLEKS R5 R2 K7 ["ServerJobsData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K7 ["ServerJobsData"]
+  GETUPVAL R4 8
+  GETTABLEKS R5 R2 K8 ["ActionBindingsData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K8 ["ActionBindingsData"]
+  GETUPVAL R4 9
+  GETTABLEKS R5 R2 K9 ["MicroProfiler"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K9 ["MicroProfiler"]
+  GETUPVAL R4 10
+  GETTABLEKS R5 R2 K10 ["DebugVisualizationsData"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K10 ["DebugVisualizationsData"]
+  GETUPVAL R4 11
+  GETTABLEKS R5 R2 K11 ["ScriptProfiler"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K11 ["ScriptProfiler"]
+  GETUPVAL R4 12
+  GETTABLEKS R5 R2 K12 ["LuauHeap"]
+  MOVE R6 R1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K12 ["LuauHeap"]
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R1 K1 [script]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R2 R0 K5 ["DevConsoleDisplayOptions"]
+  CALL R1 1 1
+  GETIMPORT R2 K4 [require]
+  GETTABLEKS R3 R0 K6 ["MainView"]
+  CALL R2 1 1
+  GETIMPORT R3 K4 [require]
+  GETTABLEKS R4 R0 K7 ["MemoryData"]
+  CALL R3 1 1
+  GETIMPORT R4 K4 [require]
+  GETTABLEKS R5 R0 K8 ["NetworkData"]
+  CALL R4 1 1
+  GETIMPORT R5 K4 [require]
+  GETTABLEKS R6 R0 K9 ["ScriptsData"]
+  CALL R5 1 1
+  GETIMPORT R6 K4 [require]
+  GETTABLEKS R7 R0 K10 ["DataStoresData"]
+  CALL R6 1 1
+  GETIMPORT R7 K4 [require]
+  GETTABLEKS R8 R0 K11 ["ServerStatsData"]
+  CALL R7 1 1
+  GETIMPORT R8 K4 [require]
+  GETTABLEKS R9 R0 K12 ["ServerJobsData"]
+  CALL R8 1 1
+  GETIMPORT R9 K4 [require]
+  GETTABLEKS R10 R0 K13 ["ActionBindingsData"]
+  CALL R9 1 1
+  GETIMPORT R10 K4 [require]
+  GETTABLEKS R11 R0 K14 ["MicroProfiler"]
+  CALL R10 1 1
+  GETIMPORT R11 K4 [require]
+  GETTABLEKS R12 R0 K15 ["DebugVisualizationsData"]
+  CALL R11 1 1
+  GETIMPORT R12 K4 [require]
+  GETTABLEKS R13 R0 K16 ["ScriptProfiler"]
+  CALL R12 1 1
+  GETIMPORT R13 K4 [require]
+  GETTABLEKS R14 R0 K17 ["LuauHeap"]
+  CALL R13 1 1
+  DUPCLOSURE R14 K18 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  RETURN R14 1

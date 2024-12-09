@@ -58,5 +58,11 @@ MAIN:
   SETTABLEKS R11 R10 K33 ["PaddingLeft"]
   CALL R8 2 -1
   SETLIST R6 R7 -1 [1]
-  CALL R3 3 -1
+  DUPTABLE R7 K36 [{"MinimumDialogSize"}]
+  GETIMPORT R8 K38 [Vector2.new]
+  LOADN R9 144
+  LOADN R10 130
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K35 ["MinimumDialogSize"]
+  CALL R3 4 -1
   RETURN R3 -1

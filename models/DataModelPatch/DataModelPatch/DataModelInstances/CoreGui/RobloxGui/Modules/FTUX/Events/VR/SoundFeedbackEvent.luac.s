@@ -1,0 +1,29 @@
+PROTO_0:
+  GETIMPORT R0 K2 [Instance.new]
+  LOADK R1 K3 ["Sound"]
+  CALL R0 1 1
+  GETIMPORT R2 K5 [game]
+  GETTABLEKS R1 R2 K6 ["Workspace"]
+  SETTABLEKS R1 R0 K7 ["Parent"]
+  LOADK R1 K8 ["rbxassetid://10066947742"]
+  SETTABLEKS R1 R0 K9 ["SoundId"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K10 ["Volume"]
+  NAMECALL R1 R0 K11 ["Play"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R4 K3 [script]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K4 ["Parent"]
+  GETTABLEKS R1 R2 K5 ["EventType"]
+  CALL R0 1 1
+  DUPTABLE R1 K7 [{"Name"}]
+  LOADK R2 K8 ["SoundFeedbackEvent"]
+  SETTABLEKS R2 R1 K6 ["Name"]
+  DUPCLOSURE R2 K9 [PROTO_0]
+  SETTABLEKS R2 R1 K10 ["StartEvent"]
+  RETURN R1 1

@@ -1,0 +1,426 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Array"]
+  GETTABLEKS R1 R2 K1 ["indexOf"]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLE R1 R2 R0
+  GETUPVAL R2 1
+  SETTABLEKS R1 R2 K0 ["VRSafetyBubbleMode"]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K1 ["AnalyticsSettingsChangeName"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K2 ["AnalyticsSettingsSafetyBubbleModeChangeName"]
+  DUPTABLE R5 K4 [{"mode"}]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K6 [tostring]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K3 ["mode"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R3 K1 [{"selectedMode"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["VRSafetyBubbleMode"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K3 ["Array"]
+  GETTABLEKS R6 R7 K4 ["indexOf"]
+  GETUPVAL R7 2
+  MOVE R8 R5
+  CALL R6 2 1
+  MOVE R4 R6
+  SETTABLEKS R4 R3 K0 ["selectedMode"]
+  NAMECALL R1 R0 K5 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selectedMode"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["VRSafetyBubbleMode"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K3 ["Array"]
+  GETTABLEKS R5 R6 K4 ["indexOf"]
+  GETUPVAL R6 3
+  MOVE R7 R4
+  CALL R5 2 1
+  MOVE R3 R5
+  SETTABLEKS R3 R2 K0 ["selectedMode"]
+  NAMECALL R0 R0 K5 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R2 K1 [{"label"}]
+  GETUPVAL R4 0
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R6 R0
+  GETIMPORT R5 K3 [tostring]
+  CALL R5 1 1
+  GETTABLE R3 R4 R5
+  SETTABLEKS R3 R2 K0 ["label"]
+  RETURN R2 1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLE R1 R2 R0
+  GETUPVAL R2 1
+  SETTABLEKS R1 R2 K0 ["VRSafetyBubbleMode"]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K1 ["AnalyticsSettingsChangeName"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K2 ["AnalyticsSettingsSafetyBubbleModeChangeName"]
+  DUPTABLE R5 K4 [{"mode"}]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K6 [tostring]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K3 ["mode"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"VRSafetyBubbleModeListener", "SafetyBubbleModeEntrySelector"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K7 [{"event", "callback"}]
+  GETUPVAL R6 2
+  SETTABLEKS R6 R5 K5 ["event"]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R6 R5 K6 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["VRSafetyBubbleModeListener"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  LOADK R4 K8 ["Frame"]
+  DUPTABLE R5 K14 [{"Size", "AutomaticSize", "BackgroundTransparency", "LayoutOrder", "ZIndex"}]
+  GETIMPORT R6 K17 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K9 ["Size"]
+  GETIMPORT R6 K20 [Enum.AutomaticSize.Y]
+  SETTABLEKS R6 R5 K10 ["AutomaticSize"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K11 ["BackgroundTransparency"]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K21 ["props"]
+  GETTABLEKS R6 R7 K12 ["LayoutOrder"]
+  SETTABLEKS R6 R5 K12 ["LayoutOrder"]
+  LOADN R6 2
+  SETTABLEKS R6 R5 K13 ["ZIndex"]
+  DUPTABLE R6 K27 [{"Padding", "ListLayout", "InputLabel", "InputDescription", "RadioList"}]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K28 ["UIPadding"]
+  DUPTABLE R9 K33 [{"PaddingLeft", "PaddingRight", "PaddingBottom", "PaddingTop"}]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 24
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K29 ["PaddingLeft"]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 24
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K30 ["PaddingRight"]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 15
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K31 ["PaddingBottom"]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 15
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K32 ["PaddingTop"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K22 ["Padding"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K36 ["UIListLayout"]
+  DUPTABLE R9 K40 [{"FillDirection", "HorizontalAlignment", "SortOrder", "Padding"}]
+  GETIMPORT R10 K42 [Enum.FillDirection.Vertical]
+  SETTABLEKS R10 R9 K37 ["FillDirection"]
+  GETIMPORT R10 K44 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R10 R9 K38 ["HorizontalAlignment"]
+  GETIMPORT R10 K45 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R10 R9 K39 ["SortOrder"]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 20
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K22 ["Padding"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K23 ["ListLayout"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 7
+  DUPTABLE R9 K49 [{"localizationKey", "Size", "Position", "AnchorPoint", "LayoutOrder"}]
+  GETUPVAL R11 8
+  GETTABLEKS R10 R11 K50 ["Title"]
+  SETTABLEKS R10 R9 K46 ["localizationKey"]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K9 ["Size"]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K47 ["Position"]
+  GETIMPORT R10 K52 [Vector2.new]
+  LOADN R11 0
+  LOADN R12 0
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K48 ["AnchorPoint"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K12 ["LayoutOrder"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K24 ["InputLabel"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 9
+  DUPTABLE R9 K58 [{"themeKey", "fontKey", "Text", "Size", "AutomaticSize", "TextWrapped", "LayoutOrder", "TextXAlignment"}]
+  LOADK R10 K59 ["TextDefault"]
+  SETTABLEKS R10 R9 K53 ["themeKey"]
+  LOADK R10 K60 ["CaptionHeader"]
+  SETTABLEKS R10 R9 K54 ["fontKey"]
+  GETTABLEKS R10 R0 K61 ["Description"]
+  SETTABLEKS R10 R9 K55 ["Text"]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADK R11 K62 [0.9]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K9 ["Size"]
+  GETIMPORT R10 K20 [Enum.AutomaticSize.Y]
+  SETTABLEKS R10 R9 K10 ["AutomaticSize"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K56 ["TextWrapped"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K12 ["LayoutOrder"]
+  GETIMPORT R10 K63 [Enum.TextXAlignment.Left]
+  SETTABLEKS R10 R9 K57 ["TextXAlignment"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K25 ["InputDescription"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 10
+  DUPTABLE R9 K71 [{"layoutOrder", "radioButtons", "onActivated", "currentValue", "automaticSize", "padding", "elementSize"}]
+  LOADN R10 3
+  SETTABLEKS R10 R9 K64 ["layoutOrder"]
+  GETUPVAL R12 5
+  GETTABLEKS R11 R12 K72 ["Array"]
+  GETTABLEKS R10 R11 K73 ["map"]
+  GETUPVAL R11 6
+  NEWCLOSURE R12 P1
+  CAPTURE VAL R0
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K65 ["radioButtons"]
+  DUPCLOSURE R10 K74 [PROTO_5]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  SETTABLEKS R10 R9 K66 ["onActivated"]
+  GETUPVAL R12 3
+  GETTABLEKS R11 R12 K75 ["state"]
+  GETTABLEKS R10 R11 K76 ["selectedMode"]
+  SETTABLEKS R10 R9 K67 ["currentValue"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K68 ["automaticSize"]
+  GETIMPORT R10 K35 [UDim.new]
+  LOADN R11 0
+  LOADN R12 20
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K69 ["padding"]
+  GETUPVAL R11 13
+  JUMPIFNOT R11 [+8]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 20
+  CALL R10 4 1
+  JUMP [+7]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 20
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K70 ["elementSize"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K26 ["RadioList"]
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K2 ["SafetyBubbleModeEntrySelector"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K5 [UserSettings]
+  CALL R2 0 1
+  GETTABLEKS R1 R2 K6 ["GameSettings"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R0 K9 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["LuauPolyfill"]
+  CALL R2 1 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K11 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K12 ["Roact"]
+  CALL R4 1 1
+  GETTABLEKS R5 R3 K13 ["t"]
+  GETTABLEKS R6 R3 K14 ["UIBlox"]
+  GETIMPORT R10 K16 [script]
+  GETTABLEKS R9 R10 K17 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Parent"]
+  GETTABLEKS R7 R8 K17 ["Parent"]
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R10 R7 K18 ["Components"]
+  GETTABLEKS R9 R10 K19 ["ThemedTextLabel"]
+  CALL R8 1 1
+  LOADK R11 K20 ["VRSafetyBubbleMode"]
+  NAMECALL R9 R1 K21 ["GetPropertyChangedSignal"]
+  CALL R9 2 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R12 R7 K22 ["Utility"]
+  GETTABLEKS R11 R12 K23 ["ExternalEventConnection"]
+  CALL R10 1 1
+  GETIMPORT R11 K8 [require]
+  GETIMPORT R14 K16 [script]
+  GETTABLEKS R13 R14 K17 ["Parent"]
+  GETTABLEKS R12 R13 K24 ["InputLabel"]
+  CALL R11 1 1
+  GETTABLEKS R14 R6 K25 ["App"]
+  GETTABLEKS R13 R14 K26 ["InputButton"]
+  GETTABLEKS R12 R13 K27 ["RadioButtonList"]
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R7 K28 ["Localization"]
+  GETTABLEKS R14 R15 K29 ["withLocalization"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R16 R7 K22 ["Utility"]
+  GETTABLEKS R15 R16 K30 ["SendAnalytics"]
+  CALL R14 1 1
+  GETIMPORT R15 K8 [require]
+  GETTABLEKS R17 R7 K31 ["Resources"]
+  GETTABLEKS R16 R17 K32 ["Constants"]
+  CALL R15 1 1
+  GETIMPORT R16 K8 [require]
+  GETTABLEKS R18 R7 K33 ["Flags"]
+  GETTABLEKS R17 R18 K34 ["FFlagFixSafetyBubbleWidth"]
+  CALL R16 1 1
+  CALL R16 0 1
+  NEWTABLE R17 8 0
+  LOADK R18 K35 ["CoreScripts.InGameMenu.GameSettings.SafetyBubbleModeTitle"]
+  SETTABLEKS R18 R17 K36 ["Title"]
+  LOADK R18 K37 ["CoreScripts.InGameMenu.GameSettings.SafetyBubbleModeDescription"]
+  SETTABLEKS R18 R17 K38 ["Description"]
+  LOADK R18 K39 ["CoreScripts.InGameMenu.GameSettings.SafetyBubbleModeNoOne"]
+  SETTABLEKS R18 R17 K40 ["Enum.VRSafetyBubbleMode.NoOne"]
+  LOADK R18 K41 ["CoreScripts.InGameMenu.GameSettings.SafetyBubbleModeOnlyFriends"]
+  SETTABLEKS R18 R17 K42 ["Enum.VRSafetyBubbleMode.OnlyFriends"]
+  LOADK R18 K43 ["CoreScripts.InGameMenu.GameSettings.SafetyBubbleModeAnyone"]
+  SETTABLEKS R18 R17 K44 ["Enum.VRSafetyBubbleMode.Anyone"]
+  GETIMPORT R18 K46 [Enum.VRSafetyBubbleMode]
+  NAMECALL R18 R18 K47 ["GetEnumItems"]
+  CALL R18 1 1
+  DUPCLOSURE R19 K48 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R18
+  DUPCLOSURE R20 K49 [PROTO_1]
+  CAPTURE VAL R18
+  CAPTURE VAL R1
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  GETTABLEKS R21 R4 K50 ["PureComponent"]
+  LOADK R23 K51 ["SafetyBubbleModeEntry"]
+  NAMECALL R21 R21 K52 ["extend"]
+  CALL R21 2 1
+  GETTABLEKS R22 R5 K53 ["strictInterface"]
+  DUPTABLE R23 K55 [{"LayoutOrder"}]
+  GETTABLEKS R24 R5 K56 ["optional"]
+  GETTABLEKS R25 R5 K57 ["integer"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K54 ["LayoutOrder"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K58 ["validateProps"]
+  DUPCLOSURE R22 K59 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R18
+  SETTABLEKS R22 R21 K60 ["init"]
+  DUPCLOSURE R22 K61 [PROTO_7]
+  CAPTURE VAL R13
+  CAPTURE VAL R17
+  CAPTURE VAL R4
+  CAPTURE VAL R10
+  CAPTURE VAL R9
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R18
+  CAPTURE VAL R11
+  CAPTURE VAL R8
+  CAPTURE VAL R12
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  SETTABLEKS R22 R21 K62 ["render"]
+  RETURN R21 1

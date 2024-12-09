@@ -1,0 +1,148 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["utilityProps"]
+  GETTABLEKS R0 R1 K1 ["isReportTabVisible"]
+  JUMPIFNOT R0 [+14]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["utilityProps"]
+  GETTABLEKS R0 R1 K2 ["analyticsDispatch"]
+  DUPTABLE R1 K4 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K5 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K6 ["SwitchToExperienceInitialSelections"]
+  SETTABLEKS R2 R1 K3 ["type"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["useReducer"]
+  GETUPVAL R3 2
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K1 ["InitExperienceUIState"]
+  CALL R2 2 2
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["useEffect"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  NEWTABLE R6 0 1
+  GETTABLEKS R8 R0 K3 ["utilityProps"]
+  GETTABLEKS R7 R8 K4 ["isReportTabVisible"]
+  SETLIST R6 R7 1 [1]
+  CALL R4 2 0
+  GETUPVAL R4 4
+  MOVE R5 R2
+  MOVE R6 R3
+  GETTABLEKS R7 R0 K3 ["utilityProps"]
+  GETUPVAL R8 5
+  GETTABLEKS R9 R0 K5 ["isSmallPortraitViewport"]
+  CALL R4 5 1
+  GETUPVAL R7 6
+  GETTABLEKS R6 R7 K6 ["Dictionary"]
+  GETTABLEKS R5 R6 K7 ["join"]
+  DUPTABLE R6 K9 [{"Layout"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K10 ["createElement"]
+  LOADK R8 K11 ["UIListLayout"]
+  DUPTABLE R9 K15 [{"FillDirection", "SortOrder", "Padding"}]
+  GETIMPORT R10 K18 [Enum.FillDirection.Vertical]
+  SETTABLEKS R10 R9 K12 ["FillDirection"]
+  GETIMPORT R10 K20 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R10 R9 K13 ["SortOrder"]
+  GETIMPORT R10 K23 [UDim.new]
+  LOADN R11 0
+  GETTABLEKS R12 R1 K24 ["ItemPadding"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K14 ["Padding"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K8 ["Layout"]
+  MOVE R7 R4
+  CALL R5 2 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K10 ["createElement"]
+  LOADK R7 K25 ["Frame"]
+  DUPTABLE R8 K28 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R9 K30 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K26 ["Size"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K27 ["BackgroundTransparency"]
+  DUPTABLE R9 K32 [{"MenuItems"}]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K10 ["createElement"]
+  LOADK R11 K25 ["Frame"]
+  DUPTABLE R12 K28 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R13 K30 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K26 ["Size"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K27 ["BackgroundTransparency"]
+  MOVE R13 R5
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K31 ["MenuItems"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K12 ["MenuConfigs"]
+  GETTABLEKS R4 R5 K13 ["getMenuItemsFromConfigs"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K14 ["Utility"]
+  GETTABLEKS R5 R6 K15 ["getMenuItemSizings"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K12 ["MenuConfigs"]
+  GETTABLEKS R7 R8 K16 ["Experience"]
+  GETTABLEKS R6 R7 K17 ["ReportExperienceMenuItemConfigList"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R0 K18 ["Components"]
+  GETTABLEKS R7 R8 K19 ["Types"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K18 ["Components"]
+  GETTABLEKS R8 R9 K20 ["Constants"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R10 R1 K10 ["Packages"]
+  GETTABLEKS R9 R10 K21 ["Cryo"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R0 K22 ["Reducers"]
+  GETTABLEKS R10 R11 K23 ["reportExperienceUIStateReducer"]
+  CALL R9 1 1
+  DUPCLOSURE R10 K24 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  RETURN R10 1

@@ -295,12 +295,12 @@ function GamepadMenu.openRootMenu()
 end
 
 function GamepadMenu.openUnibarMenu()
-	local ChromeService = require(RobloxGui.Modules.Chrome.ChromeShared.Service)
+	local ChromeService = require(RobloxGui.Modules.Chrome.Service)
 	ChromeService:enableFocusNav()
 end
 
 function GamepadMenu.closeUnibarMenu()
-	local ChromeService = require(RobloxGui.Modules.Chrome.ChromeShared.Service)
+	local ChromeService = require(RobloxGui.Modules.Chrome.Service)
 	ChromeService:disableFocusNav()
 end
 

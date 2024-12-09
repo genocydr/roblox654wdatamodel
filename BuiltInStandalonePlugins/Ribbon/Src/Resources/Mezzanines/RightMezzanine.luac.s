@@ -20,7 +20,7 @@ MAIN:
   GETTABLEKS R4 R5 K12 ["CollaboratorRibbon"]
   CALL R3 1 1
   GETTABLEKS R4 R1 K13 ["fromAction"]
-  NEWTABLE R5 0 10
+  NEWTABLE R5 0 9
   DUPTABLE R6 K19 [{"Id", "Type", "Action", "Size", "Style"}]
   LOADK R7 K20 ["UpdateAvailable"]
   SETTABLEKS R7 R6 K14 ["Id"]
@@ -103,35 +103,17 @@ MAIN:
   SETTABLEKS R14 R13 K17 ["Size"]
   LOADB R14 1
   SETTABLEKS R14 R13 K27 ["IconOnly"]
-  DUPTABLE R14 K37 [{"Id", "Type", "Action", "Size", "FastFlag"}]
-  LOADK R15 K38 ["LogoutMenu"]
+  DUPTABLE R14 K36 [{"Id", "Type", "Action", "Size"}]
+  LOADK R15 K37 ["LogoutMenu"]
   SETTABLEKS R15 R14 K14 ["Id"]
-  LOADK R15 K21 ["Button"]
+  LOADK R15 K38 ["AvatarThumbnail"]
   SETTABLEKS R15 R14 K15 ["Type"]
   MOVE R15 R4
-  LOADK R16 K38 ["LogoutMenu"]
+  LOADK R16 K37 ["LogoutMenu"]
   LOADK R17 K22 ["Toggle"]
   CALL R15 2 1
   SETTABLEKS R15 R14 K16 ["Action"]
-  LOADK R15 K23 ["Small"]
+  LOADK R15 K39 ["XSmall"]
   SETTABLEKS R15 R14 K17 ["Size"]
-  LOADK R15 K39 ["!LoginAvatarThumbnail"]
-  SETTABLEKS R15 R14 K36 ["FastFlag"]
-  DUPTABLE R15 K41 [{"Id", "Type", "Action", "Size", "DEPRECATED_FastFlag", "FastFlag"}]
-  LOADK R16 K38 ["LogoutMenu"]
-  SETTABLEKS R16 R15 K14 ["Id"]
-  LOADK R16 K42 ["AvatarThumbnail"]
-  SETTABLEKS R16 R15 K15 ["Type"]
-  MOVE R16 R4
-  LOADK R17 K38 ["LogoutMenu"]
-  LOADK R18 K22 ["Toggle"]
-  CALL R16 2 1
-  SETTABLEKS R16 R15 K16 ["Action"]
-  LOADK R16 K43 ["XSmall"]
-  SETTABLEKS R16 R15 K17 ["Size"]
-  LOADK R16 K44 ["LoginAvatarThumbnail"]
-  SETTABLEKS R16 R15 K40 ["DEPRECATED_FastFlag"]
-  LOADK R16 K44 ["LoginAvatarThumbnail"]
-  SETTABLEKS R16 R15 K36 ["FastFlag"]
-  SETLIST R5 R6 10 [1]
+  SETLIST R5 R6 9 [1]
   RETURN R5 1

@@ -1,0 +1,361 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["setVisible"]
+  SETTABLEKS R1 R0 K1 ["isVisible"]
+  GETTABLEKS R1 R0 K2 ["isTenFootInterface"]
+  JUMPIF R1 [+4]
+  GETTABLEKS R1 R0 K1 ["isVisible"]
+  SETTABLEKS R1 R0 K1 ["isVisible"]
+  GETTABLEKS R1 R0 K1 ["isVisible"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["isEmpty"]
+  GETTABLEKS R2 R0 K4 ["tempHideKeys"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K1 ["isVisible"]
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["Dictionary"]
+  GETTABLEKS R3 R4 K1 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K3 [{"setVisible"}]
+  GETTABLEKS R6 R1 K4 ["isVisible"]
+  SETTABLEKS R6 R5 K2 ["setVisible"]
+  CALL R3 2 1
+  GETTABLEKS R4 R3 K2 ["setVisible"]
+  SETTABLEKS R4 R3 K4 ["isVisible"]
+  GETTABLEKS R4 R3 K5 ["isTenFootInterface"]
+  JUMPIF R4 [+4]
+  GETTABLEKS R4 R3 K4 ["isVisible"]
+  SETTABLEKS R4 R3 K4 ["isVisible"]
+  GETTABLEKS R4 R3 K4 ["isVisible"]
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["isEmpty"]
+  GETTABLEKS R5 R3 K7 ["tempHideKeys"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K4 ["isVisible"]
+  MOVE R2 R3
+  RETURN R2 1
+
+PROTO_2:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["Dictionary"]
+  GETTABLEKS R3 R4 K1 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K3 [{"playerlistCoreGuiEnabled"}]
+  GETTABLEKS R6 R1 K4 ["isEnabled"]
+  SETTABLEKS R6 R5 K2 ["playerlistCoreGuiEnabled"]
+  CALL R3 2 1
+  GETTABLEKS R4 R3 K5 ["setVisible"]
+  SETTABLEKS R4 R3 K6 ["isVisible"]
+  GETTABLEKS R4 R3 K7 ["isTenFootInterface"]
+  JUMPIF R4 [+4]
+  GETTABLEKS R4 R3 K6 ["isVisible"]
+  SETTABLEKS R4 R3 K6 ["isVisible"]
+  GETTABLEKS R4 R3 K6 ["isVisible"]
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K8 ["isEmpty"]
+  GETTABLEKS R5 R3 K9 ["tempHideKeys"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K6 ["isVisible"]
+  MOVE R2 R3
+  RETURN R2 1
+
+PROTO_3:
+  GETTABLEKS R2 R1 K0 ["tempHideValue"]
+  JUMPIFNOTEQKNIL R2 [+4]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["None"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["Dictionary"]
+  GETTABLEKS R4 R5 K3 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K5 [{"tempHideKeys"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K2 ["Dictionary"]
+  GETTABLEKS R7 R8 K3 ["join"]
+  GETTABLEKS R8 R0 K4 ["tempHideKeys"]
+  NEWTABLE R9 1 0
+  GETTABLEKS R10 R1 K6 ["tempHideKey"]
+  SETTABLE R2 R9 R10
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K4 ["tempHideKeys"]
+  CALL R4 2 1
+  GETTABLEKS R5 R4 K7 ["setVisible"]
+  SETTABLEKS R5 R4 K8 ["isVisible"]
+  GETTABLEKS R5 R4 K9 ["isTenFootInterface"]
+  JUMPIF R5 [+4]
+  GETTABLEKS R5 R4 K8 ["isVisible"]
+  SETTABLEKS R5 R4 K8 ["isVisible"]
+  GETTABLEKS R5 R4 K8 ["isVisible"]
+  JUMPIFNOT R5 [+6]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K10 ["isEmpty"]
+  GETTABLEKS R6 R4 K4 ["tempHideKeys"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K8 ["isVisible"]
+  MOVE R3 R4
+  RETURN R3 1
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"performanceStatsVisible"}]
+  GETTABLEKS R5 R1 K4 ["isVisible"]
+  SETTABLEKS R5 R4 K2 ["performanceStatsVisible"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_5:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["Dictionary"]
+  GETTABLEKS R3 R4 K1 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K3 [{"isSmallTouchDevice"}]
+  GETTABLEKS R6 R1 K2 ["isSmallTouchDevice"]
+  SETTABLEKS R6 R5 K2 ["isSmallTouchDevice"]
+  CALL R3 2 1
+  GETTABLEKS R4 R3 K4 ["setVisible"]
+  SETTABLEKS R4 R3 K5 ["isVisible"]
+  GETTABLEKS R4 R3 K6 ["isTenFootInterface"]
+  JUMPIF R4 [+4]
+  GETTABLEKS R4 R3 K5 ["isVisible"]
+  SETTABLEKS R4 R3 K5 ["isVisible"]
+  GETTABLEKS R4 R3 K5 ["isVisible"]
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["isEmpty"]
+  GETTABLEKS R5 R3 K8 ["tempHideKeys"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K5 ["isVisible"]
+  MOVE R2 R3
+  RETURN R2 1
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["setVisible"]
+  GETTABLEKS R3 R1 K1 ["isTenFootInterface"]
+  JUMPIFNOT R3 [+1]
+  LOADB R2 0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["Dictionary"]
+  GETTABLEKS R4 R5 K3 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K4 [{"isTenFootInterface", "setVisible"}]
+  GETTABLEKS R7 R1 K1 ["isTenFootInterface"]
+  SETTABLEKS R7 R6 K1 ["isTenFootInterface"]
+  SETTABLEKS R2 R6 K0 ["setVisible"]
+  CALL R4 2 1
+  GETTABLEKS R5 R4 K0 ["setVisible"]
+  SETTABLEKS R5 R4 K5 ["isVisible"]
+  GETTABLEKS R5 R4 K1 ["isTenFootInterface"]
+  JUMPIF R5 [+4]
+  GETTABLEKS R5 R4 K5 ["isVisible"]
+  SETTABLEKS R5 R4 K5 ["isVisible"]
+  GETTABLEKS R5 R4 K5 ["isVisible"]
+  JUMPIFNOT R5 [+6]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K6 ["isEmpty"]
+  GETTABLEKS R6 R4 K7 ["tempHideKeys"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K5 ["isVisible"]
+  MOVE R3 R4
+  RETURN R3 1
+
+PROTO_7:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"inspectMenuEnabled"}]
+  GETTABLEKS R5 R1 K4 ["enabled"]
+  SETTABLEKS R5 R4 K2 ["inspectMenuEnabled"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_8:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"isUsingGamepad"}]
+  GETTABLEKS R5 R1 K2 ["isUsingGamepad"]
+  SETTABLEKS R5 R4 K2 ["isUsingGamepad"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_9:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"hasPermissionToVoiceChat"}]
+  GETTABLEKS R5 R1 K2 ["hasPermissionToVoiceChat"]
+  SETTABLEKS R5 R4 K2 ["hasPermissionToVoiceChat"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_10:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"isMinimized"}]
+  GETTABLEKS R5 R1 K2 ["isMinimized"]
+  SETTABLEKS R5 R4 K2 ["isMinimized"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_11:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"subjectToChinaPolicies"}]
+  GETTABLEKS R5 R1 K2 ["subjectToChinaPolicies"]
+  SETTABLEKS R5 R4 K2 ["subjectToChinaPolicies"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["VRService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Rodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K8 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Cryo"]
+  CALL R4 1 1
+  GETIMPORT R8 K12 [script]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K14 ["Actions"]
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R7 R5 K15 ["SetPlayerListVisibility"]
+  CALL R6 1 1
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R8 R5 K16 ["SetPlayerListEnabled"]
+  CALL R7 1 1
+  GETIMPORT R8 K7 [require]
+  GETTABLEKS R9 R5 K17 ["SetTempHideKey"]
+  CALL R8 1 1
+  GETIMPORT R9 K7 [require]
+  GETTABLEKS R10 R5 K18 ["SetPerformanceStatsVisible"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R11 R5 K19 ["SetSmallTouchDevice"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R12 R5 K20 ["SetTenFootInterface"]
+  CALL R11 1 1
+  GETIMPORT R12 K7 [require]
+  GETTABLEKS R13 R5 K21 ["SetInspectMenuEnabled"]
+  CALL R12 1 1
+  GETIMPORT R13 K7 [require]
+  GETTABLEKS R14 R5 K22 ["SetIsUsingGamepad"]
+  CALL R13 1 1
+  GETIMPORT R14 K7 [require]
+  GETTABLEKS R15 R5 K23 ["SetHasPermissionToVoiceChat"]
+  CALL R14 1 1
+  GETIMPORT R15 K7 [require]
+  GETTABLEKS R16 R5 K24 ["SetMinimized"]
+  CALL R15 1 1
+  GETIMPORT R16 K7 [require]
+  GETTABLEKS R17 R5 K25 ["SetSubjectToChinaPolicies"]
+  CALL R16 1 1
+  DUPTABLE R17 K39 [{"isMinimized", "setVisible", "isVisible", "isSmallTouchDevice", "performanceStatsVisible", "vrEnabled", "inspectMenuEnabled", "playerlistCoreGuiEnabled", "isTenFootInterface", "isUsingGamepad", "hasPermissionToVoiceChat", "tempHideKeys", "subjectToChinaPolicies"}]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K26 ["isMinimized"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K27 ["setVisible"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K28 ["isVisible"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K29 ["isSmallTouchDevice"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K30 ["performanceStatsVisible"]
+  GETTABLEKS R18 R1 K40 ["VREnabled"]
+  SETTABLEKS R18 R17 K31 ["vrEnabled"]
+  NAMECALL R18 R2 K41 ["GetInspectMenuEnabled"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K32 ["inspectMenuEnabled"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K33 ["playerlistCoreGuiEnabled"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K34 ["isTenFootInterface"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K35 ["isUsingGamepad"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K36 ["hasPermissionToVoiceChat"]
+  NEWTABLE R18 0 0
+  SETTABLEKS R18 R17 K37 ["tempHideKeys"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K38 ["subjectToChinaPolicies"]
+  DUPCLOSURE R18 K42 [PROTO_0]
+  CAPTURE VAL R4
+  GETTABLEKS R19 R3 K43 ["createReducer"]
+  MOVE R20 R17
+  NEWTABLE R21 16 0
+  GETTABLEKS R22 R6 K44 ["name"]
+  DUPCLOSURE R23 K45 [PROTO_1]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R7 K44 ["name"]
+  DUPCLOSURE R23 K46 [PROTO_2]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R8 K44 ["name"]
+  DUPCLOSURE R23 K47 [PROTO_3]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R9 K44 ["name"]
+  DUPCLOSURE R23 K48 [PROTO_4]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R10 K44 ["name"]
+  DUPCLOSURE R23 K49 [PROTO_5]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R11 K44 ["name"]
+  DUPCLOSURE R23 K50 [PROTO_6]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R12 K44 ["name"]
+  DUPCLOSURE R23 K51 [PROTO_7]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R13 K44 ["name"]
+  DUPCLOSURE R23 K52 [PROTO_8]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R14 K44 ["name"]
+  DUPCLOSURE R23 K53 [PROTO_9]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R15 K44 ["name"]
+  DUPCLOSURE R23 K54 [PROTO_10]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  GETTABLEKS R22 R16 K44 ["name"]
+  DUPCLOSURE R23 K55 [PROTO_11]
+  CAPTURE VAL R4
+  SETTABLE R23 R21 R22
+  CALL R19 2 1
+  RETURN R19 1

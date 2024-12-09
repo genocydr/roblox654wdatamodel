@@ -1,0 +1,154 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+13]
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  GETUPVAL R3 4
+  NAMECALL R3 R3 K0 ["GetPlaySessionId"]
+  CALL R3 1 -1
+  CALL R1 -1 0
+  JUMP [+3]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  CALL R1 1 0
+  GETUPVAL R1 5
+  CALL R1 0 1
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 6
+  CALL R1 0 1
+  GETUPVAL R2 7
+  GETUPVAL R3 3
+  MOVE R4 R1
+  CALL R2 2 0
+  DUPTABLE R1 K2 [{"deviceType"}]
+  GETUPVAL R3 8
+  GETTABLEKS R2 R3 K3 ["Console"]
+  SETTABLEKS R2 R1 K1 ["deviceType"]
+  GETUPVAL R3 9
+  GETTABLEKS R2 R3 K4 ["createElement"]
+  GETUPVAL R3 10
+  DUPTABLE R4 K6 [{"styleOverride"}]
+  SETTABLEKS R1 R4 K5 ["styleOverride"]
+  DUPTABLE R5 K8 [{"CoreScriptsGamepadDisconnectListener"}]
+  GETUPVAL R7 9
+  GETTABLEKS R6 R7 K4 ["createElement"]
+  GETUPVAL R7 11
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K7 ["CoreScriptsGamepadDisconnectListener"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["RbxAnalyticsService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K6 ["RobloxGui"]
+  NAMECALL R3 R1 K7 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K10 ["Workspace"]
+  GETTABLEKS R7 R8 K11 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["CoreScriptsRoactCommon"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K13 ["CoreScriptsRootProvider"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R9 R3 K14 ["Modules"]
+  GETTABLEKS R8 R9 K15 ["Common"]
+  GETTABLEKS R7 R8 K16 ["Hooks"]
+  GETTABLEKS R6 R7 K17 ["usePlayerCurrentScreenOrientation"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R3 K14 ["Modules"]
+  GETTABLEKS R8 R9 K18 ["GamepadDisconnect"]
+  GETTABLEKS R7 R8 K19 ["CoreScriptsGamepadDisconnectListener"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K11 ["Packages"]
+  GETTABLEKS R8 R9 K20 ["React"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R10 R0 K11 ["Packages"]
+  GETTABLEKS R9 R10 K21 ["Roact"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R12 R0 K10 ["Workspace"]
+  GETTABLEKS R11 R12 K11 ["Packages"]
+  GETTABLEKS R10 R11 K22 ["RobloxAppEnums"]
+  CALL R9 1 1
+  GETTABLEKS R10 R9 K23 ["DeviceType"]
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R15 R0 K10 ["Workspace"]
+  GETTABLEKS R14 R15 K11 ["Packages"]
+  GETTABLEKS R13 R14 K24 ["UiShellEvents"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K25 ["useLogInputTypeChanged"]
+  GETIMPORT R13 K9 [require]
+  GETTABLEKS R16 R0 K10 ["Workspace"]
+  GETTABLEKS R15 R16 K11 ["Packages"]
+  GETTABLEKS R14 R15 K24 ["UiShellEvents"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K26 ["useLogOrientationChanged"]
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R17 R0 K10 ["Workspace"]
+  GETTABLEKS R16 R17 K11 ["Packages"]
+  GETTABLEKS R15 R16 K27 ["SharedFlags"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K28 ["GetFFlagLogInputTypeChanged"]
+  GETIMPORT R15 K9 [require]
+  GETTABLEKS R18 R0 K10 ["Workspace"]
+  GETTABLEKS R17 R18 K11 ["Packages"]
+  GETTABLEKS R16 R17 K27 ["SharedFlags"]
+  CALL R15 1 1
+  GETTABLEKS R14 R15 K29 ["GetFFlagLogOrientationChanged"]
+  GETIMPORT R15 K1 [game]
+  LOADK R17 K30 ["EventIngestService"]
+  NAMECALL R15 R15 K3 ["GetService"]
+  CALL R15 2 1
+  GETIMPORT R18 K9 [require]
+  GETTABLEKS R21 R0 K10 ["Workspace"]
+  GETTABLEKS R20 R21 K11 ["Packages"]
+  GETTABLEKS R19 R20 K31 ["Analytics"]
+  CALL R18 1 1
+  GETTABLEKS R17 R18 K32 ["AnalyticsReporters"]
+  GETTABLEKS R16 R17 K33 ["EventIngest"]
+  GETTABLEKS R17 R16 K34 ["new"]
+  MOVE R18 R15
+  CALL R17 1 1
+  GETIMPORT R18 K1 [game]
+  LOADK R20 K35 ["RbxAnalyticsServiceExposePlaySessionId"]
+  NAMECALL R18 R18 K36 ["GetEngineFeature"]
+  CALL R18 2 1
+  DUPCLOSURE R19 K37 [PROTO_0]
+  CAPTURE VAL R13
+  CAPTURE VAL R18
+  CAPTURE VAL R11
+  CAPTURE VAL R17
+  CAPTURE VAL R2
+  CAPTURE VAL R14
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  GETTABLEKS R20 R8 K38 ["mount"]
+  GETTABLEKS R21 R7 K39 ["createElement"]
+  MOVE R22 R19
+  CALL R21 1 1
+  MOVE R22 R1
+  LOADK R23 K40 ["CoreScriptsGlobalEffects"]
+  CALL R20 3 0
+  RETURN R0 0

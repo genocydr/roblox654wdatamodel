@@ -26,7 +26,6 @@ local Analytics = PurchasePrompt.PublishAssetAnalytics
 local Actions = script.Parent.Parent.Parent.Actions
 local SetPromptVisibility = require(Actions.SetPromptVisibility)
 
-local FFlagCoreScriptPublishAssetAnalytics = require(RobloxGui.Modules.Flags.FFlagCoreScriptPublishAssetAnalytics)
 local FFlagPromptCreateAvatarDescriptionInvalidFix =
 	require(script.Parent.Parent.Parent.FFlagPromptCreateAvatarDescriptionInvalidFix)
 
@@ -69,9 +68,7 @@ function PublishAvatarPrompt:init()
 		purchasePromptReady = true,
 	})
 	self.openPreviewView = function()
-		if FFlagCoreScriptPublishAssetAnalytics then
-			Analytics.sendButtonClicked(Analytics.Section.BuyCreationPage, Analytics.Element.Expand)
-		end
+		Analytics.sendButtonClicked(Analytics.Section.BuyCreationPage, Analytics.Element.Expand)
 		self:setState({
 			showingPreviewView = true,
 		})
@@ -91,9 +88,7 @@ function PublishAvatarPrompt:init()
 	end
 
 	self.onSubmit = function()
-		if FFlagCoreScriptPublishAssetAnalytics then
-			Analytics.sendButtonClicked(Analytics.Section.BuyCreationPage, Analytics.Element.Buy)
-		end
+		Analytics.sendButtonClicked(Analytics.Section.BuyCreationPage, Analytics.Element.Buy)
 
 		local avatarPublishMetadata = {}
 		avatarPublishMetadata.name = self.state.name
@@ -117,7 +112,7 @@ function PublishAvatarPrompt:init()
 			isNameValid = isNameValid,
 		})
 
-		if FFlagCoreScriptPublishAssetAnalytics and not self.sentNameFieldTouched then
+		if not self.sentNameFieldTouched then
 			self.sentNameFieldTouched = true
 			Analytics.sendFieldTouched(Analytics.Section.BuyCreationPage, Analytics.Element.Name)
 		end
@@ -129,7 +124,7 @@ function PublishAvatarPrompt:init()
 			isDescValid = isDescValid,
 		})
 
-		if FFlagCoreScriptPublishAssetAnalytics and not self.sentDescriptionFieldTouched then
+		if not self.sentDescriptionFieldTouched then
 			self.sentDescriptionFieldTouched = true
 			Analytics.sendFieldTouched(Analytics.Section.BuyCreationPage, Analytics.Element.Description)
 		end
@@ -168,10 +163,8 @@ function PublishAvatarPrompt:init()
 end
 
 function PublishAvatarPrompt:didMount()
-	if FFlagCoreScriptPublishAssetAnalytics then
-		self.sentNameFieldTouched = false
-		self.sentDescriptionFieldTouched = false
-	end
+	self.sentNameFieldTouched = false
+	self.sentDescriptionFieldTouched = false
 
 	local windowStateChangedEvent = PurchasePrompt.windowStateChangedEvent
 	local promptStateSetToNoneEvent = PurchasePrompt.promptStateSetToNoneEvent
@@ -185,9 +178,7 @@ function PublishAvatarPrompt:didMount()
 		)
 	end
 
-	if FFlagCoreScriptPublishAssetAnalytics then
-		Analytics.sendPageLoad(Analytics.Section.BuyCreationPage)
-	end
+	Analytics.sendPageLoad(Analytics.Section.BuyCreationPage)
 end
 
 function PublishAvatarPrompt:willUnmount()

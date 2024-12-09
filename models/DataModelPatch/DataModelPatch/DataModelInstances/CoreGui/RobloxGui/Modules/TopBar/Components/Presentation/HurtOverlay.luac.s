@@ -1,0 +1,270 @@
+PROTO_0:
+  GETIMPORT R1 K2 [UDim2.new]
+  LOADN R3 246
+  MUL R2 R3 R0
+  LOADN R3 0
+  LOADN R5 246
+  MUL R4 R5 R0
+  LOADN R5 0
+  CALL R1 4 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETIMPORT R1 K2 [UDim2.new]
+  LOADN R3 1
+  LOADN R5 19
+  MUL R4 R5 R0
+  ADD R2 R3 R4
+  LOADN R3 0
+  LOADN R5 1
+  LOADN R7 19
+  MUL R6 R7 R0
+  ADD R4 R5 R6
+  LOADN R5 0
+  CALL R1 4 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["animationBindingUpdate"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"isAnimating"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["isAnimating"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"isAnimating"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["isAnimating"]
+  SETTABLEKS R1 R0 K2 ["state"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["createBinding"]
+  LOADN R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K4 ["animationBinding"]
+  SETTABLEKS R2 R0 K5 ["animationBindingUpdate"]
+  GETTABLEKS R1 R0 K4 ["animationBinding"]
+  DUPCLOSURE R3 K6 [PROTO_0]
+  NAMECALL R1 R1 K7 ["map"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K8 ["positionBinding"]
+  GETTABLEKS R1 R0 K4 ["animationBinding"]
+  DUPCLOSURE R3 K9 [PROTO_1]
+  NAMECALL R1 R1 K7 ["map"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K10 ["sizeBinding"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K11 ["createSingleMotor"]
+  LOADN R2 0
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K12 ["motor"]
+  GETTABLEKS R1 R0 K12 ["motor"]
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K13 ["onStep"]
+  CALL R1 2 0
+  GETTABLEKS R1 R0 K12 ["motor"]
+  NEWCLOSURE R3 P3
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K14 ["onComplete"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["healthEnabled"]
+  JUMPIFNOT R1 [+4]
+  GETTABLEKS R2 R0 K2 ["state"]
+  GETTABLEKS R1 R2 K3 ["isAnimating"]
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K4 ["IsSubjectToChinaPolicies"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K5 ["createElement"]
+  LOADK R4 K6 ["ImageLabel"]
+  DUPTABLE R5 K13 [{"Visible", "BackgroundTransparency", "Image", "ImageColor3", "Size", "Position"}]
+  SETTABLEKS R1 R5 K7 ["Visible"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K8 ["BackgroundTransparency"]
+  LOADK R6 K14 ["rbxasset://textures/ui/TopBar/WhiteOverlayAsset.png"]
+  SETTABLEKS R6 R5 K9 ["Image"]
+  SETTABLEKS R2 R5 K10 ["ImageColor3"]
+  GETTABLEKS R6 R0 K15 ["sizeBinding"]
+  SETTABLEKS R6 R5 K11 ["Size"]
+  GETTABLEKS R6 R0 K16 ["positionBinding"]
+  SETTABLEKS R6 R5 K12 ["Position"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_6:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["health"]
+  GETTABLEKS R4 R1 K1 ["health"]
+  JUMPIFNOTLT R3 R4 [+65]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["isDead"]
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R3 R1 K2 ["isDead"]
+  JUMPIF R3 [+56]
+  GETTABLEKS R4 R1 K1 ["health"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K1 ["health"]
+  SUB R3 R4 R5
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K3 ["maxHealth"]
+  DIV R4 R3 R5
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["HealthPercentForOverlay"]
+  JUMPIFNOTLE R5 R4 [+40]
+  GETTABLEKS R4 R0 K5 ["motor"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["instant"]
+  LOADN R7 0
+  CALL R6 1 -1
+  NAMECALL R4 R4 K7 ["setGoal"]
+  CALL R4 -1 0
+  GETTABLEKS R4 R0 K5 ["motor"]
+  LOADN R6 0
+  NAMECALL R4 R4 K8 ["step"]
+  CALL R4 2 0
+  GETTABLEKS R4 R0 K5 ["motor"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K9 ["spring"]
+  LOADN R7 1
+  GETUPVAL R8 2
+  CALL R6 2 -1
+  NAMECALL R4 R4 K7 ["setGoal"]
+  CALL R4 -1 0
+  GETTABLEKS R4 R0 K5 ["motor"]
+  NAMECALL R4 R4 K10 ["start"]
+  CALL R4 1 0
+  DUPTABLE R6 K12 [{"isAnimating"}]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K11 ["isAnimating"]
+  NAMECALL R4 R0 K13 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_7:
+  DUPTABLE R1 K4 [{"health", "maxHealth", "isDead", "healthEnabled"}]
+  GETTABLEKS R3 R0 K0 ["health"]
+  GETTABLEKS R2 R3 K5 ["currentHealth"]
+  SETTABLEKS R2 R1 K0 ["health"]
+  GETTABLEKS R3 R0 K0 ["health"]
+  GETTABLEKS R2 R3 K1 ["maxHealth"]
+  SETTABLEKS R2 R1 K1 ["maxHealth"]
+  GETTABLEKS R3 R0 K0 ["health"]
+  GETTABLEKS R2 R3 K2 ["isDead"]
+  SETTABLEKS R2 R1 K2 ["isDead"]
+  GETTABLEKS R3 R0 K6 ["coreGuiEnabled"]
+  GETIMPORT R4 K10 [Enum.CoreGuiType.Health]
+  GETTABLE R2 R3 R4
+  SETTABLEKS R2 R1 K3 ["healthEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R7 R0 K7 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["Otter"]
+  CALL R5 1 1
+  LOADK R8 K12 ["RobloxGui"]
+  NAMECALL R6 R1 K13 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R10 R6 K14 ["Modules"]
+  GETTABLEKS R9 R10 K15 ["Common"]
+  GETTABLEKS R8 R9 K16 ["PolicyService"]
+  CALL R7 1 1
+  GETIMPORT R10 K18 [script]
+  GETTABLEKS R9 R10 K19 ["Parent"]
+  GETTABLEKS R8 R9 K19 ["Parent"]
+  GETTABLEKS R9 R8 K19 ["Parent"]
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R11 R9 K20 ["Constants"]
+  CALL R10 1 1
+  DUPTABLE R11 K23 [{"frequency", "dampingRatio"}]
+  LOADK R12 K24 [0.75]
+  SETTABLEKS R12 R11 K21 ["frequency"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K22 ["dampingRatio"]
+  GETIMPORT R12 K27 [Color3.fromRGB]
+  LOADN R13 187
+  LOADN R14 0
+  LOADN R15 4
+  CALL R12 3 1
+  GETIMPORT R13 K29 [Color3.new]
+  LOADN R14 1
+  LOADN R15 1
+  LOADN R16 1
+  CALL R13 3 1
+  GETTABLEKS R14 R2 K30 ["PureComponent"]
+  LOADK R16 K31 ["HurtOverlay"]
+  NAMECALL R14 R14 K32 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R4 K33 ["strictInterface"]
+  DUPTABLE R16 K38 [{"healthEnabled", "health", "maxHealth", "isDead"}]
+  GETTABLEKS R17 R4 K39 ["boolean"]
+  SETTABLEKS R17 R16 K34 ["healthEnabled"]
+  GETTABLEKS R17 R4 K40 ["number"]
+  SETTABLEKS R17 R16 K35 ["health"]
+  GETTABLEKS R17 R4 K40 ["number"]
+  SETTABLEKS R17 R16 K36 ["maxHealth"]
+  GETTABLEKS R17 R4 K39 ["boolean"]
+  SETTABLEKS R17 R16 K37 ["isDead"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K41 ["validateProps"]
+  DUPCLOSURE R15 K42 [PROTO_4]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  SETTABLEKS R15 R14 K43 ["init"]
+  DUPCLOSURE R15 K44 [PROTO_5]
+  CAPTURE VAL R12
+  CAPTURE VAL R7
+  CAPTURE VAL R13
+  CAPTURE VAL R2
+  SETTABLEKS R15 R14 K45 ["render"]
+  DUPCLOSURE R15 K46 [PROTO_6]
+  CAPTURE VAL R10
+  CAPTURE VAL R5
+  CAPTURE VAL R11
+  SETTABLEKS R15 R14 K47 ["didUpdate"]
+  DUPCLOSURE R15 K48 [PROTO_7]
+  GETTABLEKS R16 R3 K49 ["UNSTABLE_connect2"]
+  MOVE R17 R15
+  LOADNIL R18
+  CALL R16 2 1
+  MOVE R17 R14
+  CALL R16 1 -1
+  RETURN R16 -1

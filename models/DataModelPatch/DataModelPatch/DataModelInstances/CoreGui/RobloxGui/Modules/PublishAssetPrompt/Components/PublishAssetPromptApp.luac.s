@@ -1,0 +1,569 @@
+PROTO_0:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 1
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["InputTypeConstants"]
+  GETTABLEKS R3 R4 K1 ["Gamepad"]
+  JUMPIFEQ R1 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["screenSize"]
+  GETTABLEKS R2 R0 K2 ["AbsoluteSize"]
+  JUMPIFEQ R1 R2 [+10]
+  GETUPVAL R1 0
+  DUPTABLE R3 K3 [{"screenSize"}]
+  GETTABLEKS R4 R0 K2 ["AbsoluteSize"]
+  SETTABLEKS R4 R3 K1 ["screenSize"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R3 K2 [{"isGamepad", "screenSize"}]
+  GETUPVAL R5 0
+  JUMPIFNOT R5 [+2]
+  LOADNIL R4
+  JUMP [+16]
+  GETUPVAL R5 1
+  NAMECALL R5 R5 K3 ["GetLastInputType"]
+  CALL R5 1 1
+  GETUPVAL R6 2
+  MOVE R7 R5
+  CALL R6 1 1
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K4 ["InputTypeConstants"]
+  GETTABLEKS R7 R8 K5 ["Gamepad"]
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K0 ["isGamepad"]
+  GETIMPORT R4 K8 [Vector2.new]
+  LOADN R5 0
+  LOADN R6 0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K1 ["screenSize"]
+  NAMECALL R1 R0 K9 ["setState"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K10 ["absoluteSizeChanged"]
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+2]
+  LOADNIL R1
+  JUMP [+4]
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K11 ["createFocusController"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K12 ["focusController"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K13 ["selectedCoreGuiObject"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K14 ["selectedGuiObject"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"isGamepad"}]
+  GETUPVAL R5 1
+  MOVE R6 R0
+  CALL R5 1 1
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K2 ["InputTypeConstants"]
+  GETTABLEKS R6 R7 K3 ["Gamepad"]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K0 ["isGamepad"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_4:
+  LOADNIL R1
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["resultModalType"]
+  JUMPIFNOT R2 [+14]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K4 [{"screenSize"}]
+  GETTABLEKS R6 R0 K5 ["state"]
+  GETTABLEKS R5 R6 K3 ["screenSize"]
+  SETTABLEKS R5 R4 K3 ["screenSize"]
+  CALL R2 2 1
+  MOVE R1 R2
+  JUMP [+52]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K6 ["assetInstance"]
+  JUMPIFNOT R2 [+23]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K7 ["promptType"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K8 ["PublishAssetSingleStep"]
+  JUMPIFNOTEQ R2 R3 [+39]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 3
+  DUPTABLE R4 K4 [{"screenSize"}]
+  GETTABLEKS R6 R0 K5 ["state"]
+  GETTABLEKS R5 R6 K3 ["screenSize"]
+  SETTABLEKS R5 R4 K3 ["screenSize"]
+  CALL R2 2 1
+  MOVE R1 R2
+  JUMP [+24]
+  GETUPVAL R2 4
+  JUMPIFNOT R2 [+22]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K7 ["promptType"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K9 ["PublishAvatar"]
+  JUMPIFNOTEQ R2 R3 [+14]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 5
+  DUPTABLE R4 K4 [{"screenSize"}]
+  GETTABLEKS R6 R0 K5 ["state"]
+  GETTABLEKS R5 R6 K3 ["screenSize"]
+  SETTABLEKS R5 R4 K3 ["screenSize"]
+  CALL R2 2 1
+  MOVE R1 R2
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  LOADK R3 K10 ["ScreenGui"]
+  NEWTABLE R4 8 0
+  LOADB R5 1
+  SETTABLEKS R5 R4 K11 ["IgnoreGuiInset"]
+  GETIMPORT R5 K15 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R5 R4 K13 ["ZIndexBehavior"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K16 ["AutoLocalize"]
+  LOADN R5 255
+  SETTABLEKS R5 R4 K17 ["DisplayOrder"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K18 ["Change"]
+  GETTABLEKS R5 R6 K19 ["AbsoluteSize"]
+  GETTABLEKS R6 R0 K20 ["absoluteSizeChanged"]
+  SETTABLE R6 R4 R5
+  DUPTABLE R5 K23 [{"LastInputTypeConnection", "PromptFrame"}]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R8 6
+  DUPTABLE R9 K27 [{"event", "callback"}]
+  GETUPVAL R11 7
+  GETTABLEKS R10 R11 K28 ["LastInputTypeChanged"]
+  SETTABLEKS R10 R9 K25 ["event"]
+  NEWCLOSURE R10 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  SETTABLEKS R10 R9 K26 ["callback"]
+  CALL R7 2 1
+  ORK R6 R7 K24 []
+  SETTABLEKS R6 R5 K21 ["LastInputTypeConnection"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R10 10
+  GETTABLEKS R9 R10 K29 ["Focusable"]
+  GETTABLEKS R8 R9 K30 ["Frame"]
+  DUPTABLE R9 K34 [{"focusController", "BackgroundTransparency", "Size"}]
+  GETUPVAL R11 11
+  JUMPIFNOT R11 [+2]
+  LOADNIL R10
+  JUMP [+2]
+  GETTABLEKS R10 R0 K31 ["focusController"]
+  SETTABLEKS R10 R9 K31 ["focusController"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K32 ["BackgroundTransparency"]
+  GETIMPORT R10 K37 [UDim2.fromScale]
+  LOADN R11 1
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K33 ["Size"]
+  DUPTABLE R10 K40 [{"Prompt", "CursorProvider"}]
+  GETUPVAL R12 11
+  JUMPIFNOT R12 [+2]
+  LOADNIL R11
+  JUMP [+1]
+  MOVE R11 R1
+  SETTABLEKS R11 R10 K38 ["Prompt"]
+  GETUPVAL R12 11
+  JUMPIFNOT R12 [+53]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K2 ["createElement"]
+  GETUPVAL R12 12
+  NEWTABLE R13 0 0
+  DUPTABLE R14 K42 [{"FocusNavigationProvider"}]
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K2 ["createElement"]
+  GETUPVAL R18 13
+  GETTABLEKS R17 R18 K43 ["FocusNavigationContext"]
+  GETTABLEKS R16 R17 K44 ["Provider"]
+  DUPTABLE R17 K46 [{"value"}]
+  GETUPVAL R18 14
+  SETTABLEKS R18 R17 K45 ["value"]
+  DUPTABLE R18 K48 [{"FocusNavigationRegistryProvider"}]
+  GETUPVAL R20 0
+  GETTABLEKS R19 R20 K2 ["createElement"]
+  GETUPVAL R20 15
+  LOADNIL R21
+  DUPTABLE R22 K50 [{"FocusNavigationEffects"}]
+  GETUPVAL R24 0
+  GETTABLEKS R23 R24 K2 ["createElement"]
+  GETUPVAL R24 16
+  DUPTABLE R25 K53 [{"selectionGroupName", "focusNavigableSurfaceIdentifier"}]
+  LOADK R26 K54 ["PublishAssetPromptApp"]
+  SETTABLEKS R26 R25 K51 ["selectionGroupName"]
+  GETUPVAL R27 17
+  GETTABLEKS R26 R27 K55 ["RouterView"]
+  SETTABLEKS R26 R25 K52 ["focusNavigableSurfaceIdentifier"]
+  DUPTABLE R26 K56 [{"Prompt"}]
+  SETTABLEKS R1 R26 K38 ["Prompt"]
+  CALL R23 3 1
+  SETTABLEKS R23 R22 K49 ["FocusNavigationEffects"]
+  CALL R19 3 1
+  SETTABLEKS R19 R18 K47 ["FocusNavigationRegistryProvider"]
+  CALL R15 3 1
+  SETTABLEKS R15 R14 K41 ["FocusNavigationProvider"]
+  CALL R11 3 1
+  JUMP [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K39 ["CursorProvider"]
+  CALL R7 3 1
+  ORK R6 R7 K24 []
+  SETTABLEKS R6 R5 K22 ["PromptFrame"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_5:
+  LOADNIL R1
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R2 0
+  LOADK R4 K0 ["PlayerGui"]
+  NAMECALL R2 R2 K1 ["FindFirstChildWhichIsA"]
+  CALL R2 2 1
+  MOVE R1 R2
+  GETTABLEKS R2 R0 K2 ["selectedCoreGuiObject"]
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R2 R0 K2 ["selectedCoreGuiObject"]
+  GETUPVAL R4 1
+  NAMECALL R2 R2 K3 ["IsDescendantOf"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R2 2
+  GETTABLEKS R3 R0 K2 ["selectedCoreGuiObject"]
+  SETTABLEKS R3 R2 K4 ["SelectedCoreObject"]
+  JUMP [+24]
+  GETTABLEKS R2 R0 K5 ["selectedGuiObject"]
+  JUMPIFNOT R2 [+17]
+  GETTABLEKS R2 R0 K5 ["selectedGuiObject"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K3 ["IsDescendantOf"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+10]
+  GETUPVAL R2 2
+  GETTABLEKS R3 R0 K5 ["selectedGuiObject"]
+  SETTABLEKS R3 R2 K6 ["SelectedObject"]
+  GETUPVAL R2 2
+  LOADNIL R3
+  SETTABLEKS R3 R2 K4 ["SelectedCoreObject"]
+  JUMP [+4]
+  GETUPVAL R2 2
+  LOADNIL R3
+  SETTABLEKS R3 R2 K4 ["SelectedCoreObject"]
+  LOADNIL R2
+  SETTABLEKS R2 R0 K2 ["selectedCoreGuiObject"]
+  LOADNIL R2
+  SETTABLEKS R2 R0 K5 ["selectedGuiObject"]
+  RETURN R0 0
+
+PROTO_6:
+  LOADNIL R3
+  LOADNIL R4
+  GETUPVAL R5 0
+  JUMPIFNOT R5 [+37]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K1 ["isGamepad"]
+  JUMPIFNOT R5 [+15]
+  LOADB R5 1
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K3 ["assetInstance"]
+  JUMPIFNOTEQKNIL R6 [+9]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K4 ["resultModalType"]
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R3 R5
+  GETTABLEKS R5 R2 K1 ["isGamepad"]
+  JUMPIFNOT R5 [+11]
+  LOADB R5 1
+  GETTABLEKS R6 R1 K3 ["assetInstance"]
+  JUMPIFNOTEQKNIL R6 [+7]
+  GETTABLEKS R6 R1 K4 ["resultModalType"]
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R4 R5
+  JUMP [+24]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K1 ["isGamepad"]
+  JUMPIFNOT R5 [+8]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K3 ["assetInstance"]
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R3 R5
+  GETTABLEKS R5 R2 K1 ["isGamepad"]
+  JUMPIFNOT R5 [+6]
+  GETTABLEKS R6 R1 K3 ["assetInstance"]
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R4 R5
+  JUMPIFEQ R3 R4 [+35]
+  JUMPIFNOT R3 [+20]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K5 ["SelectedCoreObject"]
+  SETTABLEKS R5 R0 K6 ["selectedCoreGuiObject"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K7 ["SelectedObject"]
+  SETTABLEKS R5 R0 K8 ["selectedGuiObject"]
+  GETUPVAL R5 1
+  LOADNIL R6
+  SETTABLEKS R6 R5 K7 ["SelectedObject"]
+  GETTABLEKS R6 R0 K9 ["focusController"]
+  GETTABLEKS R5 R6 K10 ["captureFocus"]
+  CALL R5 0 0
+  RETURN R0 0
+  GETTABLEKS R6 R0 K9 ["focusController"]
+  GETTABLEKS R5 R6 K11 ["releaseFocus"]
+  CALL R5 0 0
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K1 ["isGamepad"]
+  JUMPIFNOT R5 [+3]
+  NAMECALL R5 R0 K12 ["revertSelectedGuiObject"]
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["isGamepad"]
+  JUMPIFNOT R1 [+3]
+  NAMECALL R1 R0 K2 ["revertSelectedGuiObject"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_8:
+  DUPTABLE R1 K4 [{"resultModalType", "promptType", "assetInstance", "assetType"}]
+  GETTABLEKS R3 R0 K5 ["promptRequest"]
+  GETTABLEKS R2 R3 K0 ["resultModalType"]
+  SETTABLEKS R2 R1 K0 ["resultModalType"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K1 ["promptType"]
+  SETTABLEKS R2 R1 K1 ["promptType"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K2 ["assetInstance"]
+  SETTABLEKS R2 R1 K2 ["assetInstance"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K3 ["assetType"]
+  SETTABLEKS R2 R1 K3 ["assetType"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["UserInputService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R3 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K9 ["Players"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R8 R0 K12 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["Roact"]
+  CALL R6 1 1
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R9 R0 K12 ["Packages"]
+  GETTABLEKS R8 R9 K14 ["RoactRodux"]
+  CALL R7 1 1
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R10 R0 K12 ["Packages"]
+  GETTABLEKS R9 R10 K15 ["RoactGamepad"]
+  CALL R8 1 1
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R11 R0 K12 ["Packages"]
+  GETTABLEKS R10 R11 K16 ["t"]
+  CALL R9 1 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R14 R0 K17 ["Workspace"]
+  GETTABLEKS R13 R14 K12 ["Packages"]
+  GETTABLEKS R12 R13 K18 ["RoactUtils"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K19 ["ExternalEventConnection"]
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R14 R0 K17 ["Workspace"]
+  GETTABLEKS R13 R14 K12 ["Packages"]
+  GETTABLEKS R12 R13 K20 ["InputType"]
+  CALL R11 1 1
+  GETIMPORT R13 K11 [require]
+  GETTABLEKS R16 R0 K17 ["Workspace"]
+  GETTABLEKS R15 R16 K12 ["Packages"]
+  GETTABLEKS R14 R15 K20 ["InputType"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K21 ["getInputGroup"]
+  GETTABLEKS R13 R5 K22 ["LocalPlayer"]
+  GETIMPORT R15 K24 [script]
+  GETTABLEKS R14 R15 K25 ["Parent"]
+  GETIMPORT R15 K11 [require]
+  GETTABLEKS R17 R14 K25 ["Parent"]
+  GETTABLEKS R16 R17 K26 ["PromptType"]
+  CALL R15 1 1
+  GETIMPORT R16 K11 [require]
+  GETTABLEKS R17 R14 K27 ["PublishAssetPromptSingleStep"]
+  CALL R16 1 1
+  GETIMPORT R17 K11 [require]
+  GETTABLEKS R19 R14 K28 ["PublishAvatarPrompt"]
+  GETTABLEKS R18 R19 K28 ["PublishAvatarPrompt"]
+  CALL R17 1 1
+  GETIMPORT R18 K11 [require]
+  GETTABLEKS R19 R14 K29 ["ResultModal"]
+  CALL R18 1 1
+  GETIMPORT R19 K11 [require]
+  GETTABLEKS R21 R0 K12 ["Packages"]
+  GETTABLEKS R20 R21 K30 ["UIBlox"]
+  CALL R19 1 1
+  GETTABLEKS R22 R19 K31 ["App"]
+  GETTABLEKS R21 R22 K32 ["SelectionImage"]
+  GETTABLEKS R20 R21 K33 ["SelectionCursorProvider"]
+  GETIMPORT R21 K11 [require]
+  GETTABLEKS R23 R0 K12 ["Packages"]
+  GETTABLEKS R22 R23 K34 ["ReactFocusNavigation"]
+  CALL R21 1 1
+  GETTABLEKS R23 R21 K35 ["FocusNavigationService"]
+  GETTABLEKS R22 R23 K36 ["new"]
+  GETTABLEKS R24 R21 K37 ["EngineInterface"]
+  GETTABLEKS R23 R24 K6 ["CoreGui"]
+  CALL R22 1 1
+  GETIMPORT R23 K11 [require]
+  GETTABLEKS R26 R0 K17 ["Workspace"]
+  GETTABLEKS R25 R26 K12 ["Packages"]
+  GETTABLEKS R24 R25 K38 ["FocusNavigationUtils"]
+  CALL R23 1 1
+  GETTABLEKS R24 R23 K39 ["FocusNavigableSurfaceRegistry"]
+  GETTABLEKS R25 R24 K40 ["Provider"]
+  GETIMPORT R26 K11 [require]
+  GETTABLEKS R29 R4 K41 ["Modules"]
+  GETTABLEKS R28 R29 K42 ["Common"]
+  GETTABLEKS R27 R28 K43 ["FocusNavigationEffectsWrapper"]
+  CALL R26 1 1
+  GETTABLEKS R27 R23 K44 ["FocusNavigableSurfaceIdentifierEnum"]
+  GETIMPORT R28 K11 [require]
+  GETIMPORT R32 K24 [script]
+  GETTABLEKS R31 R32 K25 ["Parent"]
+  GETTABLEKS R30 R31 K25 ["Parent"]
+  GETTABLEKS R29 R30 K45 ["FFlagPublishAvatarPromptEnabled"]
+  CALL R28 1 1
+  GETIMPORT R29 K1 [game]
+  LOADK R31 K46 ["MigratePublishPromptFromRoactGamepad"]
+  LOADB R32 0
+  NAMECALL R29 R29 K47 ["DefineFastFlag"]
+  CALL R29 3 1
+  GETTABLEKS R30 R6 K48 ["PureComponent"]
+  LOADK R32 K49 ["PublishAssetPromptApp"]
+  NAMECALL R30 R30 K50 ["extend"]
+  CALL R30 2 1
+  GETIMPORT R31 K1 [game]
+  LOADK R33 K51 ["FixFocusOnResultModal"]
+  LOADB R34 0
+  NAMECALL R31 R31 K47 ["DefineFastFlag"]
+  CALL R31 3 1
+  GETTABLEKS R32 R9 K52 ["strictInterface"]
+  DUPTABLE R33 K55 [{"assetType", "assetInstance"}]
+  GETTABLEKS R34 R9 K56 ["optional"]
+  GETTABLEKS R35 R9 K57 ["enum"]
+  GETIMPORT R36 K60 [Enum.AssetType]
+  CALL R35 1 -1
+  CALL R34 -1 1
+  SETTABLEKS R34 R33 K53 ["assetType"]
+  GETTABLEKS R34 R9 K56 ["optional"]
+  GETTABLEKS R35 R9 K61 ["Instance"]
+  CALL R34 1 1
+  SETTABLEKS R34 R33 K54 ["assetInstance"]
+  CALL R32 1 1
+  SETTABLEKS R32 R30 K62 ["validateProps"]
+  DUPCLOSURE R32 K63 [PROTO_0]
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  DUPCLOSURE R33 K64 [PROTO_2]
+  CAPTURE VAL R29
+  CAPTURE VAL R2
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  CAPTURE VAL R8
+  SETTABLEKS R33 R30 K65 ["init"]
+  DUPCLOSURE R33 K66 [PROTO_4]
+  CAPTURE VAL R6
+  CAPTURE VAL R18
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  CAPTURE VAL R28
+  CAPTURE VAL R17
+  CAPTURE VAL R10
+  CAPTURE VAL R2
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  CAPTURE VAL R8
+  CAPTURE VAL R29
+  CAPTURE VAL R20
+  CAPTURE VAL R21
+  CAPTURE VAL R22
+  CAPTURE VAL R25
+  CAPTURE VAL R26
+  CAPTURE VAL R27
+  SETTABLEKS R33 R30 K67 ["render"]
+  JUMPIF R29 [+14]
+  DUPCLOSURE R33 K68 [PROTO_5]
+  CAPTURE VAL R13
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  SETTABLEKS R33 R30 K69 ["revertSelectedGuiObject"]
+  DUPCLOSURE R33 K70 [PROTO_6]
+  CAPTURE VAL R31
+  CAPTURE VAL R1
+  SETTABLEKS R33 R30 K71 ["didUpdate"]
+  DUPCLOSURE R33 K72 [PROTO_7]
+  SETTABLEKS R33 R30 K73 ["willUnmount"]
+  DUPCLOSURE R33 K74 [PROTO_8]
+  GETTABLEKS R34 R7 K75 ["connect"]
+  MOVE R35 R33
+  CALL R34 1 1
+  MOVE R35 R30
+  CALL R34 1 -1
+  RETURN R34 -1

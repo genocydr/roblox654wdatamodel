@@ -1,0 +1,1081 @@
+PROTO_0:
+  LOADK R0 K0 ["Service(Analytics)"]
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetPlatform"]
+  CALL R0 1 1
+  LOADK R1 K1 ["UNKNOWN"]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+6]
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R3 R0
+  GETIMPORT R2 K3 [tostring]
+  CALL R2 1 1
+  MOVE R1 R2
+  GETIMPORT R2 K7 [Enum.Platform.Windows]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K6 ["Windows"]
+  JUMP [+57]
+  GETIMPORT R2 K9 [Enum.Platform.OSX]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K8 ["OSX"]
+  JUMP [+51]
+  GETIMPORT R2 K11 [Enum.Platform.IOS]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K10 ["IOS"]
+  JUMP [+45]
+  GETIMPORT R2 K13 [Enum.Platform.Android]
+  JUMPIFNOTEQ R0 R2 [+25]
+  GETUPVAL R2 2
+  NAMECALL R2 R2 K14 ["GetUserAgent"]
+  CALL R2 1 1
+  GETIMPORT R3 K17 [string.find]
+  MOVE R4 R2
+  LOADK R5 K18 ["AmazonAppStore"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+2]
+  LOADK R1 K19 ["Amazon"]
+  JUMP [+1]
+  LOADK R1 K12 ["Android"]
+  GETUPVAL R3 3
+  CALL R3 0 1
+  JUMPIFNOT R3 [+25]
+  GETIMPORT R3 K17 [string.find]
+  MOVE R4 R2
+  LOADK R5 K20 ["OculusQuest3Store"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+19]
+  LOADK R1 K21 ["Quest"]
+  JUMP [+17]
+  GETIMPORT R2 K23 [Enum.Platform.XBoxOne]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K22 ["XBoxOne"]
+  JUMP [+11]
+  GETIMPORT R2 K25 [Enum.Platform.UWP]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K24 ["UWP"]
+  JUMP [+5]
+  GETIMPORT R2 K27 [Enum.Platform.PS4]
+  JUMPIFNOTEQ R0 R2 [+2]
+  LOADK R1 K28 ["PlayStation"]
+  GETUPVAL R2 4
+  CALL R2 0 1
+  JUMPIFNOT R2 [+2]
+  LOADK R2 K29 ["-Luobu"]
+  ADD R1 R1 R2
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["IsStudio"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  MOVE R4 R0
+  GETUPVAL R5 2
+  CALL R5 0 1
+  CONCAT R3 R4 R5
+  NAMECALL R1 R1 K1 ["ReportCounter"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["IsStudio"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  MOVE R3 R0
+  NAMECALL R1 R1 K1 ["ReportCounter"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R4 K1 ["client"]
+  LOADK R5 K2 ["InGamePrompt"]
+  MOVE R6 R0
+  MOVE R7 R1
+  JUMPIF R7 [+2]
+  NEWTABLE R7 0 0
+  NAMECALL R2 R2 K3 ["SetRBXEvent"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R4 K1 ["client"]
+  LOADK R5 K2 ["InGamePrompt"]
+  MOVE R6 R0
+  MOVE R7 R1
+  JUMPIF R7 [+2]
+  NEWTABLE R7 0 0
+  NAMECALL R2 R2 K3 ["SetRBXEvent"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["ReportRobuxUpsellStarted"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_7:
+  GETIMPORT R4 K3 [Enum.InfoType.Product]
+  JUMPIFNOTEQ R1 R4 [+14]
+  GETUPVAL R4 0
+  GETTABLEKS R6 R3 K4 ["receipt"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K5 ["LocalPlayer"]
+  GETTABLEKS R7 R8 K6 ["UserId"]
+  MOVE R8 R0
+  NAMECALL R4 R4 K7 ["SignalClientPurchaseSuccess"]
+  CALL R4 4 0
+  RETURN R0 0
+  GETUPVAL R4 0
+  MOVE R6 R0
+  MOVE R7 R2
+  NAMECALL R4 R4 K8 ["ReportAssetSale"]
+  CALL R4 3 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellShownPremium"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellShownPremium"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellShownNonPremium"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellShownNonPremium"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellConfirmed"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellConfirmed"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellPrecheckFail"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellPrecheckFail"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellInvalidProducts"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellInvalidProducts"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["PremiumUpsellInvalidPlatform"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["PremiumUpsellInvalidPlatform"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["AdultLegalTextShown"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 1
+  LOADK R3 K1 ["FailedBalanceCheckPostUpsell"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K2 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_16:
+  DUPTABLE R2 K3 [{"gameID", "productId", "requestType"}]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K6 ["GameId"]
+  SETTABLEKS R3 R2 K0 ["gameID"]
+  SETTABLEKS R0 R2 K1 ["productId"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R4 R1
+  GETIMPORT R3 K8 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K2 ["requestType"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K9 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  JUMP [+11]
+  GETUPVAL R3 1
+  LOADK R5 K10 ["client"]
+  LOADK R6 K11 ["InGamePrompt"]
+  LOADK R7 K12 ["ProductPurchaseShown"]
+  MOVE R8 R2
+  JUMPIF R8 [+2]
+  NEWTABLE R8 0 0
+  NAMECALL R3 R3 K13 ["SetRBXEvent"]
+  CALL R3 5 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K9 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R5 K12 ["ProductPurchaseShown"]
+  GETUPVAL R6 2
+  CALL R6 0 1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K14 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_17:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R5 R1
+  GETIMPORT R4 K9 [tostring]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K2 ["requestType"]
+  SETTABLEKS R2 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K10 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K11 ["client"]
+  LOADK R7 K12 ["InGamePrompt"]
+  LOADK R8 K13 ["ProductPurchaseUpsellShown"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K14 ["SetRBXEvent"]
+  CALL R4 5 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K10 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  RETURN R0 0
+  GETUPVAL R3 1
+  LOADK R6 K13 ["ProductPurchaseUpsellShown"]
+  GETUPVAL R7 2
+  CALL R7 0 1
+  CONCAT R5 R6 R7
+  NAMECALL R3 R3 K15 ["ReportCounter"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_18:
+  DUPTABLE R2 K3 [{"gameID", "productId", "requestType"}]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K6 ["GameId"]
+  SETTABLEKS R3 R2 K0 ["gameID"]
+  SETTABLEKS R0 R2 K1 ["productId"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R4 R1
+  GETIMPORT R3 K8 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K2 ["requestType"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K9 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  JUMP [+11]
+  GETUPVAL R3 1
+  LOADK R5 K10 ["client"]
+  LOADK R6 K11 ["InGamePrompt"]
+  LOADK R7 K12 ["ProductPurchaseConfirmed"]
+  MOVE R8 R2
+  JUMPIF R8 [+2]
+  NEWTABLE R8 0 0
+  NAMECALL R3 R3 K13 ["SetRBXEvent"]
+  CALL R3 5 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K9 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R5 K12 ["ProductPurchaseConfirmed"]
+  GETUPVAL R6 2
+  CALL R6 0 1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K14 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_19:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R5 R1
+  GETIMPORT R4 K9 [tostring]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K2 ["requestType"]
+  SETTABLEKS R2 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K10 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K11 ["client"]
+  LOADK R7 K12 ["InGamePrompt"]
+  LOADK R8 K13 ["ProductPurchaseUpsellConfirmed"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K14 ["SetRBXEvent"]
+  CALL R4 5 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K10 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  RETURN R0 0
+  GETUPVAL R3 1
+  LOADK R6 K13 ["ProductPurchaseUpsellConfirmed"]
+  GETUPVAL R7 2
+  CALL R7 0 1
+  CONCAT R5 R6 R7
+  NAMECALL R3 R3 K15 ["ReportCounter"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_20:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["ScaryModalShown"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  LOADK R4 K12 ["ScaryModalShown"]
+  MOVE R5 R1
+  CONCAT R3 R4 R5
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  RETURN R0 0
+  GETUPVAL R4 1
+  MOVE R7 R3
+  GETUPVAL R8 2
+  CALL R8 0 1
+  CONCAT R6 R7 R8
+  NAMECALL R4 R4 K14 ["ReportCounter"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_21:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["ScaryModalConfirmed"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  LOADK R4 K12 ["ScaryModalConfirmed"]
+  MOVE R5 R1
+  CONCAT R3 R4 R5
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  RETURN R0 0
+  GETUPVAL R4 1
+  MOVE R7 R3
+  GETUPVAL R8 2
+  CALL R8 0 1
+  CONCAT R6 R7 R8
+  NAMECALL R4 R4 K14 ["ReportCounter"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_22:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["ScaryModalCanceled"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  LOADK R4 K12 ["ScaryModalCanceled"]
+  MOVE R5 R1
+  CONCAT R3 R4 R5
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  RETURN R0 0
+  GETUPVAL R4 1
+  MOVE R7 R3
+  GETUPVAL R8 2
+  CALL R8 0 1
+  CONCAT R6 R7 R8
+  NAMECALL R4 R4 K14 ["ReportCounter"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_23:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["XboxPaymentsInGamePurchaseCanceled"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K9 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIF R3 [+5]
+  GETUPVAL R3 1
+  LOADK R5 K12 ["XboxPaymentsInGamePurchaseCanceled"]
+  NAMECALL R3 R3 K14 ["ReportCounter"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_24:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["XboxPaymentsInGamePurchaseSuccess"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K9 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIF R3 [+5]
+  GETUPVAL R3 1
+  LOADK R5 K12 ["XboxPaymentsInGamePurchaseSuccess"]
+  NAMECALL R3 R3 K14 ["ReportCounter"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_25:
+  DUPTABLE R3 K4 [{"gameID", "productId", "requestType", "iapProductId"}]
+  GETIMPORT R5 K6 [game]
+  GETTABLEKS R4 R5 K7 ["GameId"]
+  SETTABLEKS R4 R3 K0 ["gameID"]
+  SETTABLEKS R0 R3 K1 ["productId"]
+  SETTABLEKS R1 R3 K2 ["requestType"]
+  ORK R4 R2 K8 [""]
+  SETTABLEKS R4 R3 K3 ["iapProductId"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  JUMP [+11]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["client"]
+  LOADK R7 K11 ["InGamePrompt"]
+  LOADK R8 K12 ["XboxPaymentsInGamePurchaseFailure"]
+  MOVE R9 R3
+  JUMPIF R9 [+2]
+  NEWTABLE R9 0 0
+  NAMECALL R4 R4 K13 ["SetRBXEvent"]
+  CALL R4 5 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K9 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIF R3 [+5]
+  GETUPVAL R3 1
+  LOADK R5 K12 ["XboxPaymentsInGamePurchaseFailure"]
+  NAMECALL R3 R3 K14 ["ReportCounter"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_26:
+  DUPTABLE R2 K3 [{"gameID", "productId", "requestType"}]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K6 ["GameId"]
+  SETTABLEKS R3 R2 K0 ["gameID"]
+  SETTABLEKS R0 R2 K1 ["productId"]
+  SETTABLEKS R1 R2 K2 ["requestType"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K7 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  JUMP [+11]
+  GETUPVAL R3 1
+  LOADK R5 K8 ["client"]
+  LOADK R6 K9 ["InGamePrompt"]
+  LOADK R7 K10 ["2SVSettingsErrorShown"]
+  MOVE R8 R2
+  JUMPIF R8 [+2]
+  NEWTABLE R8 0 0
+  NAMECALL R3 R3 K11 ["SetRBXEvent"]
+  CALL R3 5 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K7 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R5 K10 ["2SVSettingsErrorShown"]
+  GETUPVAL R6 2
+  CALL R6 0 1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K12 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_27:
+  DUPTABLE R2 K3 [{"gameID", "productId", "requestType"}]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K6 ["GameId"]
+  SETTABLEKS R3 R2 K0 ["gameID"]
+  SETTABLEKS R0 R2 K1 ["productId"]
+  SETTABLEKS R1 R2 K2 ["requestType"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K7 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  JUMP [+11]
+  GETUPVAL R3 1
+  LOADK R5 K8 ["client"]
+  LOADK R6 K9 ["InGamePrompt"]
+  LOADK R7 K10 ["2SVSettingsErrorConfirmed"]
+  MOVE R8 R2
+  JUMPIF R8 [+2]
+  NEWTABLE R8 0 0
+  NAMECALL R3 R3 K11 ["SetRBXEvent"]
+  CALL R3 5 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K7 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  LOADK R5 K10 ["2SVSettingsErrorConfirmed"]
+  GETUPVAL R6 2
+  CALL R6 0 1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K12 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_28:
+  NEWTABLE R1 0 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  JUMP [+11]
+  GETUPVAL R2 1
+  LOADK R4 K1 ["client"]
+  LOADK R5 K2 ["InGamePrompt"]
+  LOADK R6 K3 ["RobuxUpsellInGameIXP"]
+  MOVE R7 R1
+  JUMPIF R7 [+2]
+  NEWTABLE R7 0 0
+  NAMECALL R2 R2 K4 ["SetRBXEvent"]
+  CALL R2 5 0
+  JUMPIFNOT R0 [+14]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["IsStudio"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  LOADK R4 K3 ["RobuxUpsellInGameIXP"]
+  GETUPVAL R5 2
+  CALL R5 0 1
+  CONCAT R3 R4 R5
+  NAMECALL R1 R1 K5 ["ReportCounter"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_29:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["client"]
+  LOADK R3 K1 ["InGamePrompt"]
+  LOADK R4 K2 ["AvatarCreationPurchaseSubmit"]
+  DUPTABLE R5 K4 [{"gameID"}]
+  GETIMPORT R7 K6 [game]
+  GETTABLEKS R6 R7 K7 ["GameId"]
+  SETTABLEKS R6 R5 K3 ["gameID"]
+  NAMECALL R0 R0 K8 ["SetRBXEvent"]
+  CALL R0 5 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K9 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 0
+  LOADK R3 K2 ["AvatarCreationPurchaseSubmit"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  CONCAT R2 R3 R4
+  NAMECALL R0 R0 K10 ["ReportCounter"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_30:
+  DUPTABLE R1 K2 [{"gameID", "requestType"}]
+  GETIMPORT R3 K4 [game]
+  GETTABLEKS R2 R3 K5 ["GameId"]
+  SETTABLEKS R2 R1 K0 ["gameID"]
+  SETTABLEKS R0 R1 K1 ["requestType"]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K6 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  JUMP [+11]
+  GETUPVAL R2 1
+  LOADK R4 K7 ["client"]
+  LOADK R5 K8 ["InGamePrompt"]
+  LOADK R6 K9 ["UserSettingEligibilityModalShown"]
+  MOVE R7 R1
+  JUMPIF R7 [+2]
+  NEWTABLE R7 0 0
+  NAMECALL R2 R2 K10 ["SetRBXEvent"]
+  CALL R2 5 0
+  LOADK R2 K9 ["UserSettingEligibilityModalShown"]
+  MOVE R3 R0
+  CONCAT R1 R2 R3
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K6 ["IsStudio"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  MOVE R5 R1
+  GETUPVAL R6 2
+  CALL R6 0 1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K11 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_31:
+  NEWTABLE R0 32 0
+  DUPTABLE R3 K1 [{"__tostring"}]
+  DUPCLOSURE R4 K2 [PROTO_0]
+  SETTABLEKS R4 R3 K0 ["__tostring"]
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K4 [setmetatable]
+  CALL R1 2 0
+  DUPCLOSURE R1 K5 [PROTO_1]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  DUPCLOSURE R2 K6 [PROTO_2]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  DUPCLOSURE R3 K7 [PROTO_3]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R3 R0 K8 ["sendCounter"]
+  DUPCLOSURE R3 K9 [PROTO_4]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  DUPCLOSURE R4 K10 [PROTO_5]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R4 R0 K11 ["signalEvent"]
+  DUPCLOSURE R4 K12 [PROTO_6]
+  CAPTURE UPVAL U7
+  SETTABLEKS R4 R0 K13 ["reportRobuxUpsellStarted"]
+  DUPCLOSURE R4 K14 [PROTO_7]
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  SETTABLEKS R4 R0 K15 ["signalPurchaseSuccess"]
+  DUPCLOSURE R4 K16 [PROTO_8]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K17 ["signalPremiumUpsellShownPremium"]
+  DUPCLOSURE R4 K18 [PROTO_9]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K19 ["signalPremiumUpsellShownNonPremium"]
+  DUPCLOSURE R4 K20 [PROTO_10]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K21 ["signalPremiumUpsellConfirmed"]
+  DUPCLOSURE R4 K22 [PROTO_11]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K23 ["signalPremiumUpsellPrecheckFail"]
+  DUPCLOSURE R4 K24 [PROTO_12]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K25 ["signalPremiumUpsellInvalidProducts"]
+  DUPCLOSURE R4 K26 [PROTO_13]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K27 ["signalPremiumUpsellInvalidPlatform"]
+  DUPCLOSURE R4 K28 [PROTO_14]
+  CAPTURE UPVAL U6
+  SETTABLEKS R4 R0 K29 ["signalAdultLegalTextShown"]
+  DUPCLOSURE R4 K30 [PROTO_15]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K31 ["signalFailedPurchasePostUpsell"]
+  DUPCLOSURE R4 K32 [PROTO_16]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K33 ["signalProductPurchaseShown"]
+  DUPCLOSURE R4 K34 [PROTO_17]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K35 ["signalProductPurchaseUpsellShown"]
+  DUPCLOSURE R4 K36 [PROTO_18]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K37 ["signalProductPurchaseConfirmed"]
+  DUPCLOSURE R4 K38 [PROTO_19]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K39 ["signalProductPurchaseUpsellConfirmed"]
+  DUPCLOSURE R4 K40 [PROTO_20]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K41 ["signalScaryModalShown"]
+  DUPCLOSURE R4 K42 [PROTO_21]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K43 ["signalScaryModalConfirmed"]
+  DUPCLOSURE R4 K44 [PROTO_22]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K45 ["signalScaryModalCanceled"]
+  DUPCLOSURE R4 K46 [PROTO_23]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R4 R0 K47 ["signalXboxInGamePurchaseCanceled"]
+  DUPCLOSURE R4 K48 [PROTO_24]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R4 R0 K49 ["signalXboxInGamePurchaseSuccess"]
+  DUPCLOSURE R4 K50 [PROTO_25]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R4 R0 K51 ["signalXboxInGamePurchaseFailure"]
+  DUPCLOSURE R4 K52 [PROTO_26]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K53 ["signalTwoSVSettingsErrorShown"]
+  DUPCLOSURE R4 K54 [PROTO_27]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K55 ["signalTwoSVSettingsErrorConfirmed"]
+  DUPCLOSURE R4 K56 [PROTO_28]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K57 ["signalRobuxUpsellInGameIXP"]
+  DUPCLOSURE R4 K58 [PROTO_29]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K59 ["signalAvatarCreationPurchaseSubmit"]
+  DUPCLOSURE R4 K60 [PROTO_30]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K61 ["signalUserSettingEligibilityModal"]
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["Players"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["RbxAnalyticsService"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K4 [game]
+  LOADK R5 K8 ["MarketplaceService"]
+  NAMECALL R3 R3 K6 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K4 [game]
+  LOADK R6 K9 ["UserInputService"]
+  NAMECALL R4 R4 K6 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K4 [game]
+  LOADK R7 K10 ["RunService"]
+  NAMECALL R5 R5 K6 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K4 [game]
+  LOADK R8 K11 ["HttpService"]
+  NAMECALL R6 R6 K6 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K13 [require]
+  GETTABLEKS R9 R0 K14 ["Utils"]
+  GETTABLEKS R8 R9 K15 ["getPaymentPlatform"]
+  CALL R7 1 1
+  GETIMPORT R8 K13 [require]
+  GETTABLEKS R10 R0 K16 ["Flags"]
+  GETTABLEKS R9 R10 K17 ["GetFFlagEnableLuobuInGameUpsell"]
+  CALL R8 1 1
+  GETIMPORT R9 K13 [require]
+  GETTABLEKS R11 R0 K16 ["Flags"]
+  GETTABLEKS R10 R11 K18 ["GetFFlagUsePlatformNameForUnknown"]
+  CALL R9 1 1
+  GETIMPORT R10 K13 [require]
+  GETTABLEKS R12 R0 K16 ["Flags"]
+  GETTABLEKS R11 R12 K19 ["GetFFlagEnableQuestIAPAnalytics"]
+  CALL R10 1 1
+  NEWTABLE R11 1 0
+  DUPCLOSURE R12 K20 [PROTO_31]
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K21 ["new"]
+  RETURN R11 1

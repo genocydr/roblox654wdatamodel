@@ -9,8 +9,6 @@ local BUTTON_SLICE = Rect.new(8, 6, 46, 44)
 local Modules = game:GetService("CoreGui").RobloxGui.Modules
 local Theme = require(Modules.Settings.Theme)
 
-local GetFFlagInviteFriendsDesignUpdates = require(Modules.Settings.Flags.GetFFlagInviteFriendsDesignUpdates)
-
 local DROPSHADOW_SIZE = {
 	Left = 4,
 	Right = 4,
@@ -42,7 +40,7 @@ function RectangleButton:render()
 
 	local buttonImage = self.state.isHovering and BUTTON_IMAGE_ACTIVE or BUTTON_IMAGE
 
-	if not GetFFlagInviteFriendsDesignUpdates() or not Theme.UIBloxThemeEnabled then
+	if not Theme.UIBloxThemeEnabled then
 		-- This is just needed if the button contains a drop shadow.
 		-- Insert padding so that child elements of this component are positioned
 		-- inside the button as expected. This is to offset the dropshadow

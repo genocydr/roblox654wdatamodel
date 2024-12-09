@@ -1,0 +1,51 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["subscriptionPurchaseInfo"]
+  GETUPVAL R3 0
+  GETTABLEKS R4 R1 K0 ["subscriptionPurchaseInfo"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K1 ["ImageUrl"]
+  GETTABLEKS R2 R1 K0 ["subscriptionPurchaseInfo"]
+  RETURN R2 1
+
+PROTO_1:
+  NEWTABLE R2 0 0
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R5 R1 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["PurchasePromptDeps"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K12 ["Rodux"]
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K13 ["Actions"]
+  GETTABLEKS R5 R6 K14 ["CompleteRequest"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K13 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["SubscriptionPurchaseInfoReceived"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R7 R0 K16 ["getPreviewImageUrl"]
+  CALL R6 1 1
+  GETTABLEKS R7 R3 K17 ["createReducer"]
+  NEWTABLE R8 0 0
+  NEWTABLE R9 2 0
+  GETTABLEKS R10 R5 K18 ["name"]
+  DUPCLOSURE R11 K19 [PROTO_0]
+  CAPTURE VAL R6
+  SETTABLE R11 R9 R10
+  GETTABLEKS R10 R4 K18 ["name"]
+  DUPCLOSURE R11 K20 [PROTO_1]
+  SETTABLE R11 R9 R10
+  CALL R7 2 1
+  RETURN R7 1

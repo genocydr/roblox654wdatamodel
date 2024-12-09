@@ -1,0 +1,314 @@
+PROTO_0:
+  DUPTABLE R1 K2 [{"mountTarget", "isActive"}]
+  SETTABLEKS R0 R1 K0 ["mountTarget"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["isActive"]
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K4 [setmetatable]
+  CALL R2 2 0
+  RETURN R1 1
+
+PROTO_1:
+  SETTABLEKS R1 R0 K0 ["socialService"]
+  SETTABLEKS R2 R0 K1 ["localPlayer"]
+  RETURN R0 1
+
+PROTO_2:
+  SETTABLEKS R1 R0 K0 ["analytics"]
+  RETURN R0 1
+
+PROTO_3:
+  NEWTABLE R1 0 0
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["hide"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R4 0
+  CALL R4 0 1
+  JUMPIFNOT R4 [+2]
+  GETUPVAL R3 1
+  JUMP [+15]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K0 ["Store"]
+  GETTABLEKS R3 R4 K1 ["new"]
+  GETUPVAL R4 3
+  LOADNIL R5
+  NEWTABLE R6 0 1
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K2 ["thunkMiddleware"]
+  SETLIST R6 R7 1 [1]
+  CALL R3 3 1
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K3 ["createElement"]
+  GETUPVAL R5 5
+  DUPTABLE R6 K13 [{"store", "isVisible", "analytics", "promptMessage", "inviteUserId", "inviteMessageId", "launchData", "isLoading", "onAfterClosePage"}]
+  SETTABLEKS R3 R6 K4 ["store"]
+  SETTABLEKS R1 R6 K5 ["isVisible"]
+  GETTABLEKS R7 R0 K6 ["analytics"]
+  SETTABLEKS R7 R6 K6 ["analytics"]
+  MOVE R7 R2
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R2 K7 ["promptMessage"]
+  SETTABLEKS R7 R6 K7 ["promptMessage"]
+  MOVE R7 R2
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R2 K8 ["inviteUserId"]
+  SETTABLEKS R7 R6 K8 ["inviteUserId"]
+  MOVE R7 R2
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R2 K9 ["inviteMessageId"]
+  SETTABLEKS R7 R6 K9 ["inviteMessageId"]
+  MOVE R7 R2
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R2 K10 ["launchData"]
+  SETTABLEKS R7 R6 K10 ["launchData"]
+  MOVE R7 R2
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R2 K11 ["isLoading"]
+  SETTABLEKS R7 R6 K11 ["isLoading"]
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K12 ["onAfterClosePage"]
+  CALL R4 2 -1
+  RETURN R4 -1
+
+PROTO_5:
+  GETIMPORT R3 K3 [Enum.UserInputState.Begin]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K4 ["hide"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["isActive"]
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  MOVE R2 R1
+  JUMPIFNOT R2 [+2]
+  GETTABLEKS R2 R1 K1 ["isLoading"]
+  SETTABLEKS R2 R0 K1 ["isLoading"]
+  GETTABLEKS R3 R0 K1 ["isLoading"]
+  NOT R2 R3
+  SETTABLEKS R2 R0 K0 ["isActive"]
+  JUMPIFNOT R1 [+42]
+  GETTABLEKS R3 R1 K2 ["inviteUserId"]
+  JUMPIFNOT R3 [+6]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["Triggers"]
+  GETTABLEKS R2 R3 K4 ["DeveloperSingle"]
+  JUMP [+5]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["Triggers"]
+  GETTABLEKS R2 R3 K5 ["DeveloperMultiple"]
+  LOADB R3 0
+  GETTABLEKS R4 R1 K6 ["launchData"]
+  JUMPIFEQKNIL R4 [+7]
+  GETTABLEKS R4 R1 K6 ["launchData"]
+  JUMPIFNOTEQKS R4 K7 [""] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETTABLEKS R4 R0 K8 ["analytics"]
+  MOVE R6 R2
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K9 ["ModalOpened"]
+  GETUPVAL R9 2
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  DUPTABLE R8 K11 [{"isLaunchDataProvided"}]
+  SETTABLEKS R3 R8 K10 ["isLaunchDataProvided"]
+  JUMP [+1]
+  LOADNIL R8
+  NAMECALL R4 R4 K12 ["sendEvent"]
+  CALL R4 4 0
+  GETTABLEKS R2 R0 K13 ["instance"]
+  JUMPIF R2 [+15]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K14 ["mount"]
+  LOADB R5 1
+  MOVE R6 R1
+  NAMECALL R3 R0 K15 ["_createTree"]
+  CALL R3 3 1
+  GETTABLEKS R4 R0 K16 ["mountTarget"]
+  LOADK R5 K17 ["invitePrompt"]
+  CALL R2 3 1
+  SETTABLEKS R2 R0 K13 ["instance"]
+  JUMP [+13]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K18 ["update"]
+  GETTABLEKS R3 R0 K13 ["instance"]
+  LOADB R6 1
+  MOVE R7 R1
+  NAMECALL R4 R0 K15 ["_createTree"]
+  CALL R4 3 -1
+  CALL R2 -1 1
+  SETTABLEKS R2 R0 K13 ["instance"]
+  GETTABLEKS R2 R0 K8 ["analytics"]
+  JUMPIFNOT R2 [+8]
+  GETTABLEKS R2 R0 K1 ["isLoading"]
+  JUMPIF R2 [+5]
+  GETTABLEKS R2 R0 K8 ["analytics"]
+  NAMECALL R2 R2 K19 ["inputShareGameEntryPoint"]
+  CALL R2 1 0
+  GETUPVAL R2 4
+  LOADK R4 K20 ["hideInvitePrompt"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  LOADB R6 0
+  GETIMPORT R7 K24 [Enum.KeyCode.ButtonB]
+  GETIMPORT R8 K26 [Enum.KeyCode.Backspace]
+  NAMECALL R2 R2 K27 ["BindCoreAction"]
+  CALL R2 6 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["isActive"]
+  JUMPIF R2 [+4]
+  GETTABLEKS R2 R0 K1 ["isLoading"]
+  JUMPIF R2 [+1]
+  RETURN R0 0
+  LOADB R2 0
+  SETTABLEKS R2 R0 K1 ["isLoading"]
+  LOADB R2 0
+  SETTABLEKS R2 R0 K0 ["isActive"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["update"]
+  GETTABLEKS R3 R0 K3 ["instance"]
+  LOADB R6 0
+  NAMECALL R4 R0 K4 ["_createTree"]
+  CALL R4 2 -1
+  CALL R2 -1 1
+  SETTABLEKS R2 R0 K3 ["instance"]
+  GETTABLEKS R2 R0 K5 ["socialService"]
+  JUMPIFNOT R2 [+12]
+  GETTABLEKS R2 R0 K6 ["localPlayer"]
+  JUMPIFNOT R2 [+9]
+  GETTABLEKS R2 R0 K5 ["socialService"]
+  GETTABLEKS R4 R0 K6 ["localPlayer"]
+  NEWTABLE R5 0 0
+  NAMECALL R2 R2 K7 ["InvokeGameInvitePromptClosed"]
+  CALL R2 3 0
+  GETUPVAL R2 1
+  LOADK R4 K8 ["hideInvitePrompt"]
+  NAMECALL R2 R2 K9 ["UnbindCoreAction"]
+  CALL R2 2 0
+  GETUPVAL R2 2
+  LOADNIL R3
+  SETTABLEKS R3 R2 K10 ["SelectedCoreObject"]
+  GETUPVAL R2 2
+  LOADK R4 K11 ["invitePrompt"]
+  NAMECALL R2 R2 K12 ["RemoveSelectionGroup"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["instance"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["unmount"]
+  GETTABLEKS R2 R0 K0 ["instance"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["ContextActionService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["GuiService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R0 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [require]
+  GETTABLEKS R7 R1 K11 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["Roact"]
+  CALL R5 1 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R1 K11 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["Rodux"]
+  CALL R6 1 1
+  GETTABLEKS R7 R4 K14 ["Modules"]
+  GETTABLEKS R8 R7 K15 ["Settings"]
+  GETIMPORT R9 K10 [require]
+  GETTABLEKS R13 R7 K15 ["Settings"]
+  GETTABLEKS R12 R13 K16 ["Pages"]
+  GETTABLEKS R11 R12 K17 ["ShareGame"]
+  GETTABLEKS R10 R11 K18 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R11 K10 [require]
+  GETTABLEKS R14 R1 K19 ["Workspace"]
+  GETTABLEKS R13 R14 K11 ["Packages"]
+  GETTABLEKS R12 R13 K20 ["GameInvite"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K21 ["GameInviteEvents"]
+  GETTABLEKS R12 R8 K16 ["Pages"]
+  GETTABLEKS R11 R12 K17 ["ShareGame"]
+  GETIMPORT R12 K10 [require]
+  GETTABLEKS R14 R11 K22 ["Components"]
+  GETTABLEKS R13 R14 K23 ["FullModalShareGameComponent"]
+  CALL R12 1 1
+  GETIMPORT R13 K10 [require]
+  GETTABLEKS R14 R11 K24 ["AppReducer"]
+  CALL R13 1 1
+  GETIMPORT R14 K10 [require]
+  GETTABLEKS R15 R11 K25 ["InviteStore"]
+  CALL R14 1 1
+  GETIMPORT R15 K10 [require]
+  GETTABLEKS R17 R7 K26 ["Flags"]
+  GETTABLEKS R16 R17 K27 ["GetFFlagEnableSharedInviteStore"]
+  CALL R15 1 1
+  GETIMPORT R16 K10 [require]
+  GETTABLEKS R19 R7 K15 ["Settings"]
+  GETTABLEKS R18 R19 K26 ["Flags"]
+  GETTABLEKS R17 R18 K28 ["GetFFlagAbuseReportAnalyticsHasLaunchData"]
+  CALL R16 1 1
+  NEWTABLE R17 8 0
+  SETTABLEKS R17 R17 K29 ["__index"]
+  DUPCLOSURE R18 K30 [PROTO_0]
+  CAPTURE VAL R17
+  SETTABLEKS R18 R17 K31 ["new"]
+  DUPCLOSURE R18 K32 [PROTO_1]
+  SETTABLEKS R18 R17 K33 ["withSocialServiceAndLocalPlayer"]
+  DUPCLOSURE R18 K34 [PROTO_2]
+  SETTABLEKS R18 R17 K35 ["withAnalytics"]
+  DUPCLOSURE R18 K36 [PROTO_4]
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R6
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  SETTABLEKS R18 R17 K37 ["_createTree"]
+  DUPCLOSURE R18 K38 [PROTO_6]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R16
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  SETTABLEKS R18 R17 K39 ["show"]
+  DUPCLOSURE R18 K40 [PROTO_7]
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  SETTABLEKS R18 R17 K41 ["hide"]
+  DUPCLOSURE R18 K42 [PROTO_8]
+  CAPTURE VAL R5
+  SETTABLEKS R18 R17 K43 ["destruct"]
+  RETURN R17 1

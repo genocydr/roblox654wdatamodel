@@ -1,0 +1,57 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  CALL R2 1 1
+  GETUPVAL R3 2
+  MOVE R4 R2
+  MOVE R5 R0
+  MOVE R6 R1
+  CALL R3 3 1
+  NAMECALL R3 R3 K0 ["await"]
+  CALL R3 1 2
+  JUMPIFNOT R3 [+13]
+  JUMPIFNOT R4 [+12]
+  GETTABLEKS R5 R4 K1 ["responseBody"]
+  JUMPIFNOT R5 [+9]
+  GETTABLEKS R6 R4 K1 ["responseBody"]
+  GETTABLEKS R5 R6 K2 ["canPrompt"]
+  GETTABLEKS R7 R4 K1 ["responseBody"]
+  GETTABLEKS R6 R7 K3 ["canCustomize"]
+  RETURN R5 2
+  LOADB R5 0
+  LOADB R6 0
+  RETURN R5 2
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Workspace"]
+  GETTABLEKS R3 R4 K7 ["Packages"]
+  GETTABLEKS R2 R3 K8 ["GameInvite"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K9 ["GetCanSendAndCanCustomizeInvites"]
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K10 ["HttpRbxApiService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K11 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  LOADK R7 K12 ["RobloxGui"]
+  NAMECALL R5 R4 K13 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R9 R5 K14 ["Modules"]
+  GETTABLEKS R8 R9 K15 ["Common"]
+  GETTABLEKS R7 R8 K16 ["httpRequest"]
+  CALL R6 1 1
+  DUPCLOSURE R7 K17 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  RETURN R7 1

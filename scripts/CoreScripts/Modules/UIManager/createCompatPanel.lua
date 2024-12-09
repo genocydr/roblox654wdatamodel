@@ -27,14 +27,13 @@ local defaultSpatialPanelProps: Constants.SpatialUIProps = {
 	virtualScreenSize = Constants.DEFAULT_VR_PANEL_SIZE * Constants.VR_PANEL_RESOLUTION_MULTIPLIER,
 	cframe = CFrame.new(0, 0, 0),
 	alwaysOnTop = true,
-	parent = workspace,
 	hidden = false,
 	curvature = 1, -- On by default to obtain anti-aliasing, disable with 0
 }
 
 local function createPanelPart(spatialPanelProps: Constants.SpatialUIProps)
 	local part = Instance.new("Part")
-	part.Parent = if spatialPanelProps.parent then spatialPanelProps.parent else workspace
+	part.Parent = workspace
 	part.Name = spatialPanelProps.name .. "_Part"
 	part.CFrame = spatialPanelProps.cframe :: CFrame
 	part.Size = Vector3.new(spatialPanelProps.partSize.X, spatialPanelProps.partSize.Y, 0.002)

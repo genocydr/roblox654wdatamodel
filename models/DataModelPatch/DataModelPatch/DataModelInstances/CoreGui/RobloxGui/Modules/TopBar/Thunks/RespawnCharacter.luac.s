@@ -1,0 +1,36 @@
+PROTO_0:
+  NAMECALL R1 R0 K0 ["getState"]
+  CALL R1 1 1
+  GETTABLEKS R3 R1 K1 ["respawn"]
+  GETTABLEKS R2 R3 K2 ["customCallback"]
+  JUMPIFNOT R2 [+8]
+  GETTABLEKS R3 R1 K1 ["respawn"]
+  GETTABLEKS R2 R3 K2 ["customCallback"]
+  NAMECALL R2 R2 K3 ["Fire"]
+  CALL R2 1 0
+  RETURN R0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["LocalPlayer"]
+  GETTABLEKS R2 R3 K5 ["Character"]
+  JUMPIFEQKNIL R2 [+15]
+  LOADK R5 K6 ["Humanoid"]
+  NAMECALL R3 R2 K7 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIFEQKNIL R3 [+9]
+  LOADK R6 K6 ["Humanoid"]
+  NAMECALL R4 R3 K8 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+3]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K9 ["Health"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  DUPCLOSURE R1 K4 [PROTO_0]
+  CAPTURE VAL R0
+  RETURN R1 1

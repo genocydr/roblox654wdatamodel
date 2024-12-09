@@ -1,0 +1,719 @@
+PROTO_0:
+  RETURN R0 0
+
+PROTO_1:
+  JUMPIF R0 [+1]
+  GETUPVAL R0 0
+  FASTCALL2K ASSERT R0 K0 [+5]
+  MOVE R2 R0
+  LOADK R3 K0 ["Analytics impl must not be nil."]
+  GETIMPORT R1 K2 [assert]
+  CALL R1 2 0
+  DUPTABLE R1 K4 [{"_impl"}]
+  SETTABLEKS R0 R1 K3 ["_impl"]
+  GETUPVAL R4 1
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K6 [setmetatable]
+  CALL R2 2 1
+  RETURN R2 1
+
+PROTO_2:
+  RETURN R0 0
+
+PROTO_3:
+  DUPTABLE R0 K7 [{"SetRBXEvent", "SetRBXEventStream", "SendEventDeferred", "ReportCounter", "ReportStats", "ReportInfluxSeries", "GetSessionId"}]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K0 ["SetRBXEvent"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K1 ["SetRBXEventStream"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K2 ["SendEventDeferred"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K3 ["ReportCounter"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K4 ["ReportStats"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K5 ["ReportInfluxSeries"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K6 ["GetSessionId"]
+  RETURN R0 1
+
+PROTO_4:
+  SETTABLEKS R1 R0 K0 ["_impl"]
+  RETURN R0 0
+
+PROTO_5:
+  LOADK R5 K0 ["client"]
+  GETUPVAL R6 0
+  NAMECALL R6 R6 K1 ["IsStudio"]
+  CALL R6 1 1
+  JUMPIFNOT R6 [+1]
+  LOADK R5 K2 ["studio"]
+  GETTABLEKS R6 R0 K3 ["_impl"]
+  MOVE R8 R5
+  MOVE R9 R1
+  MOVE R10 R2
+  MOVE R11 R4
+  NAMECALL R6 R6 K4 ["SendEventDeferred"]
+  CALL R6 5 0
+  RETURN R0 0
+
+PROTO_6:
+  GETGLOBAL R2 K0 ["debugPrint"]
+  LOADK R4 K1 ["Self View: Analytics:reportMicState, newState: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R15 R1
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R5 R14
+  LOADK R6 K4 [",universeid: "]
+  GETIMPORT R16 K6 [game]
+  GETTABLEKS R15 R16 K7 ["GameId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R7 R14
+  LOADK R8 K8 [",pid: "]
+  GETIMPORT R16 K6 [game]
+  GETTABLEKS R15 R16 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R9 R14
+  LOADK R10 K10 [",uid: "]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K11 ["LocalPlayer"]
+  GETTABLEKS R15 R16 K12 ["UserId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R11 R14
+  LOADK R12 K13 [",sessionid: "]
+  GETTABLEKS R14 R0 K14 ["_impl"]
+  NAMECALL R14 R14 K15 ["GetSessionId"]
+  CALL R14 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R13 K3 [tostring]
+  CALL R13 -1 1
+  CONCAT R3 R4 R13
+  CALL R2 1 0
+  GETUPVAL R4 1
+  LOADK R5 K16 ["inExperienceMicState"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K3 [tostring]
+  CALL R6 1 1
+  DUPTABLE R7 K22 [{"state", "universeid", "pid", "uid", "sessionid"}]
+  SETTABLEKS R1 R7 K17 ["state"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K7 ["GameId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["universeid"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K19 ["pid"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K11 ["LocalPlayer"]
+  GETTABLEKS R9 R10 K12 ["UserId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K20 ["uid"]
+  GETTABLEKS R9 R0 K14 ["_impl"]
+  NAMECALL R9 R9 K23 ["GetPlaySessionId"]
+  CALL R9 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 -1 1
+  SETTABLEKS R8 R7 K21 ["sessionid"]
+  NAMECALL R2 R0 K24 ["_report"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_7:
+  GETGLOBAL R2 K0 ["debugPrint"]
+  LOADK R4 K1 ["Self View: Analytics:reporCamState, newState: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R15 R1
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R5 R14
+  LOADK R6 K4 [",universeid: "]
+  GETIMPORT R16 K6 [game]
+  GETTABLEKS R15 R16 K7 ["GameId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R7 R14
+  LOADK R8 K8 [",pid: "]
+  GETIMPORT R16 K6 [game]
+  GETTABLEKS R15 R16 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R9 R14
+  LOADK R10 K10 [",uid: "]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K11 ["LocalPlayer"]
+  GETTABLEKS R15 R16 K12 ["UserId"]
+  FASTCALL1 TOSTRING R15 [+2]
+  GETIMPORT R14 K3 [tostring]
+  CALL R14 1 1
+  MOVE R11 R14
+  LOADK R12 K13 [",sessionid: "]
+  GETTABLEKS R14 R0 K14 ["_impl"]
+  NAMECALL R14 R14 K15 ["GetSessionId"]
+  CALL R14 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R13 K3 [tostring]
+  CALL R13 -1 1
+  CONCAT R3 R4 R13
+  CALL R2 1 0
+  GETUPVAL R4 1
+  LOADK R5 K16 ["inExperienceCamState"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K3 [tostring]
+  CALL R6 1 1
+  DUPTABLE R7 K22 [{"state", "universeid", "pid", "uid", "sessionid"}]
+  SETTABLEKS R1 R7 K17 ["state"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K7 ["GameId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["universeid"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K19 ["pid"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K11 ["LocalPlayer"]
+  GETTABLEKS R9 R10 K12 ["UserId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K20 ["uid"]
+  GETTABLEKS R9 R0 K14 ["_impl"]
+  NAMECALL R9 R9 K23 ["GetPlaySessionId"]
+  CALL R9 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 -1 1
+  SETTABLEKS R8 R7 K21 ["sessionid"]
+  NAMECALL R2 R0 K24 ["_report"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_8:
+  GETGLOBAL R2 K0 ["debugPrint"]
+  LOADK R4 K1 ["Self View: Analytics:reportSelfViewEnabledInCoreGuiState, newState: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R13 R1
+  GETIMPORT R12 K3 [tostring]
+  CALL R12 1 1
+  MOVE R5 R12
+  LOADK R6 K4 [",universeid: "]
+  GETIMPORT R14 K6 [game]
+  GETTABLEKS R13 R14 K7 ["GameId"]
+  FASTCALL1 TOSTRING R13 [+2]
+  GETIMPORT R12 K3 [tostring]
+  CALL R12 1 1
+  MOVE R7 R12
+  LOADK R8 K8 [",pid: "]
+  GETIMPORT R14 K6 [game]
+  GETTABLEKS R13 R14 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R13 [+2]
+  GETIMPORT R12 K3 [tostring]
+  CALL R12 1 1
+  MOVE R9 R12
+  LOADK R10 K10 [",sessionid: "]
+  GETTABLEKS R12 R0 K11 ["_impl"]
+  NAMECALL R12 R12 K12 ["GetSessionId"]
+  CALL R12 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R11 K3 [tostring]
+  CALL R11 -1 1
+  CONCAT R3 R4 R11
+  CALL R2 1 0
+  LOADK R4 K13 ["SelfView"]
+  LOADK R5 K14 ["enabledinCoreGuiState"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K3 [tostring]
+  CALL R6 1 1
+  DUPTABLE R7 K19 [{"state", "universeid", "pid", "sessionid"}]
+  SETTABLEKS R1 R7 K15 ["state"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K7 ["GameId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K16 ["universeid"]
+  GETIMPORT R10 K6 [game]
+  GETTABLEKS R9 R10 K9 ["PlaceId"]
+  FASTCALL1 TOSTRING R9 [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K17 ["pid"]
+  GETTABLEKS R9 R0 K11 ["_impl"]
+  NAMECALL R9 R9 K20 ["GetPlaySessionId"]
+  CALL R9 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R8 K3 [tostring]
+  CALL R8 -1 1
+  SETTABLEKS R8 R7 K18 ["sessionid"]
+  NAMECALL R2 R0 K21 ["_report"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_9:
+  GETGLOBAL R9 K0 ["debugPrint"]
+  LOADK R11 K1 ["Self View: Analytics:reportSelfViewSessionStarted,universeid: "]
+  GETIMPORT R35 K3 [game]
+  GETTABLEKS R34 R35 K4 ["GameId"]
+  FASTCALL1 TOSTRING R34 [+2]
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R12 R33
+  LOADK R13 K7 [",pid: "]
+  GETIMPORT R35 K3 [game]
+  GETTABLEKS R34 R35 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R34 [+2]
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R14 R33
+  LOADK R15 K9 [",sessionid: "]
+  GETTABLEKS R34 R0 K10 ["_impl"]
+  NAMECALL R34 R34 K11 ["GetSessionId"]
+  CALL R34 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 -1 1
+  MOVE R16 R33
+  LOADK R17 K12 [",x: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R34 R1
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R18 R33
+  LOADK R19 K13 [",y: "]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R34 R2
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R20 R33
+  LOADK R21 K14 [",width: "]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R34 R3
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R22 R33
+  LOADK R23 K15 [",height: "]
+  FASTCALL1 TOSTRING R4 [+3]
+  MOVE R34 R4
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R24 R33
+  LOADK R25 K16 [",x_relative: "]
+  FASTCALL1 TOSTRING R5 [+3]
+  MOVE R34 R5
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R26 R33
+  LOADK R27 K17 [",y_relative: "]
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R34 R6
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R28 R33
+  LOADK R29 K18 [",width_relative: "]
+  FASTCALL1 TOSTRING R7 [+3]
+  MOVE R34 R7
+  GETIMPORT R33 K6 [tostring]
+  CALL R33 1 1
+  MOVE R30 R33
+  LOADK R31 K19 [",height_relative: "]
+  FASTCALL1 TOSTRING R8 [+3]
+  MOVE R33 R8
+  GETIMPORT R32 K6 [tostring]
+  CALL R32 1 1
+  CONCAT R10 R11 R32
+  CALL R9 1 0
+  LOADK R11 K20 ["SelfView"]
+  LOADK R12 K21 ["sessionStarted"]
+  LOADK R13 K22 ["true"]
+  DUPTABLE R14 K34 [{"universeid", "pid", "sessionid", "x", "y", "width", "height", "x_relative", "y_relative", "width_relative", "height_relative"}]
+  GETIMPORT R17 K3 [game]
+  GETTABLEKS R16 R17 K4 ["GameId"]
+  FASTCALL1 TOSTRING R16 [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K23 ["universeid"]
+  GETIMPORT R17 K3 [game]
+  GETTABLEKS R16 R17 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R16 [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K24 ["pid"]
+  GETTABLEKS R16 R0 K10 ["_impl"]
+  NAMECALL R16 R16 K35 ["GetPlaySessionId"]
+  CALL R16 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 -1 1
+  SETTABLEKS R15 R14 K25 ["sessionid"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R16 R1
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K26 ["x"]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R16 R2
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K27 ["y"]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R16 R3
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K28 ["width"]
+  FASTCALL1 TOSTRING R4 [+3]
+  MOVE R16 R4
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K29 ["height"]
+  FASTCALL1 TOSTRING R5 [+3]
+  MOVE R16 R5
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K30 ["x_relative"]
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R16 R6
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K31 ["y_relative"]
+  FASTCALL1 TOSTRING R7 [+3]
+  MOVE R16 R7
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K32 ["width_relative"]
+  FASTCALL1 TOSTRING R8 [+3]
+  MOVE R16 R8
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K33 ["height_relative"]
+  NAMECALL R9 R0 K36 ["_report"]
+  CALL R9 5 0
+  GETUPVAL R9 0
+  JUMPIFNOT R9 [+6]
+  GETUPVAL R9 1
+  LOADK R11 K37 ["feature/avatarChat/selfViewOn"]
+  LOADN R12 1
+  NAMECALL R9 R9 K38 ["AddGlobalPointsField"]
+  CALL R9 3 0
+  RETURN R0 0
+
+PROTO_10:
+  GETGLOBAL R1 K0 ["debugPrint"]
+  LOADK R3 K1 ["Self View: Analytics:reportSelfViewSessionStopped,universeid: "]
+  GETIMPORT R11 K3 [game]
+  GETTABLEKS R10 R11 K4 ["GameId"]
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  MOVE R4 R9
+  LOADK R5 K7 [",pid: "]
+  GETIMPORT R11 K3 [game]
+  GETTABLEKS R10 R11 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  MOVE R6 R9
+  LOADK R7 K9 [",sessionid: "]
+  GETTABLEKS R9 R0 K10 ["_impl"]
+  NAMECALL R9 R9 K11 ["GetSessionId"]
+  CALL R9 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R8 K6 [tostring]
+  CALL R8 -1 1
+  CONCAT R2 R3 R8
+  CALL R1 1 0
+  LOADK R3 K12 ["SelfView"]
+  LOADK R4 K13 ["sessionStopped"]
+  LOADK R5 K14 ["true"]
+  DUPTABLE R6 K18 [{"universeid", "pid", "sessionid"}]
+  GETIMPORT R9 K3 [game]
+  GETTABLEKS R8 R9 K4 ["GameId"]
+  FASTCALL1 TOSTRING R8 [+2]
+  GETIMPORT R7 K6 [tostring]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K15 ["universeid"]
+  GETIMPORT R9 K3 [game]
+  GETTABLEKS R8 R9 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R8 [+2]
+  GETIMPORT R7 K6 [tostring]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K16 ["pid"]
+  GETTABLEKS R8 R0 K10 ["_impl"]
+  NAMECALL R8 R8 K19 ["GetPlaySessionId"]
+  CALL R8 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R7 K6 [tostring]
+  CALL R7 -1 1
+  SETTABLEKS R7 R6 K17 ["sessionid"]
+  NAMECALL R1 R0 K20 ["_report"]
+  CALL R1 5 0
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 1
+  LOADK R3 K21 ["feature/avatarChat/selfViewOn"]
+  LOADN R4 0
+  NAMECALL R1 R1 K22 ["AddGlobalPointsField"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_11:
+  GETGLOBAL R3 K0 ["debugPrint"]
+  LOADK R5 K1 ["Self View: Analytics:reportUserAccountSettings,universeid: "]
+  GETIMPORT R17 K3 [game]
+  GETTABLEKS R16 R17 K4 ["GameId"]
+  FASTCALL1 TOSTRING R16 [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  MOVE R6 R15
+  LOADK R7 K7 [",pid: "]
+  GETIMPORT R17 K3 [game]
+  GETTABLEKS R16 R17 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R16 [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  MOVE R8 R15
+  LOADK R9 K9 [",sessionid: "]
+  GETTABLEKS R16 R0 K10 ["_impl"]
+  NAMECALL R16 R16 K11 ["GetSessionId"]
+  CALL R16 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 -1 1
+  MOVE R10 R15
+  LOADK R11 K12 [",userAccount_videoEnabled: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R16 R1
+  GETIMPORT R15 K6 [tostring]
+  CALL R15 1 1
+  MOVE R12 R15
+  LOADK R13 K13 [",userAccount_audioEnabled: "]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R15 R2
+  GETIMPORT R14 K6 [tostring]
+  CALL R14 1 1
+  CONCAT R4 R5 R14
+  CALL R3 1 0
+  LOADK R5 K14 ["SelfView"]
+  LOADK R6 K15 ["userAccountSettings"]
+  LOADK R7 K16 ["true"]
+  DUPTABLE R8 K22 [{"universeid", "pid", "sessionid", "videoenabled", "audioenabled"}]
+  GETIMPORT R11 K3 [game]
+  GETTABLEKS R10 R11 K4 ["GameId"]
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K17 ["universeid"]
+  GETIMPORT R11 K3 [game]
+  GETTABLEKS R10 R11 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K18 ["pid"]
+  GETTABLEKS R10 R0 K10 ["_impl"]
+  NAMECALL R10 R10 K23 ["GetPlaySessionId"]
+  CALL R10 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 -1 1
+  SETTABLEKS R9 R8 K19 ["sessionid"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R10 R1
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K20 ["videoenabled"]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R10 R2
+  GETIMPORT R9 K6 [tostring]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K21 ["audioenabled"]
+  NAMECALL R3 R0 K24 ["_report"]
+  CALL R3 5 0
+  RETURN R0 0
+
+PROTO_12:
+  GETGLOBAL R4 K0 ["debugPrint"]
+  LOADK R6 K1 ["Self View: Analytics:reportExperienceSettings,universeid: "]
+  GETIMPORT R20 K3 [game]
+  GETTABLEKS R19 R20 K4 ["GameId"]
+  FASTCALL1 TOSTRING R19 [+2]
+  GETIMPORT R18 K6 [tostring]
+  CALL R18 1 1
+  MOVE R7 R18
+  LOADK R8 K7 [",pid: "]
+  GETIMPORT R20 K3 [game]
+  GETTABLEKS R19 R20 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R19 [+2]
+  GETIMPORT R18 K6 [tostring]
+  CALL R18 1 1
+  MOVE R9 R18
+  LOADK R10 K9 [",sessionid: "]
+  GETTABLEKS R19 R0 K10 ["_impl"]
+  NAMECALL R19 R19 K11 ["GetSessionId"]
+  CALL R19 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R18 K6 [tostring]
+  CALL R18 -1 1
+  MOVE R11 R18
+  LOADK R12 K12 [",experienceSettings_placeEnabled: "]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R19 R1
+  GETIMPORT R18 K6 [tostring]
+  CALL R18 1 1
+  MOVE R13 R18
+  LOADK R14 K13 [",experienceSettings_videoEnabled: "]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R19 R2
+  GETIMPORT R18 K6 [tostring]
+  CALL R18 1 1
+  MOVE R15 R18
+  LOADK R16 K14 [",experienceSettings_audioEnabled: "]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R18 R3
+  GETIMPORT R17 K6 [tostring]
+  CALL R17 1 1
+  CONCAT R5 R6 R17
+  CALL R4 1 0
+  LOADK R6 K15 ["SelfView"]
+  LOADK R7 K16 ["experienceSettings"]
+  LOADK R8 K17 ["true"]
+  DUPTABLE R9 K24 [{"universeid", "pid", "sessionid", "placeenabled", "videoenabled", "audioenabled"}]
+  GETIMPORT R12 K3 [game]
+  GETTABLEKS R11 R12 K4 ["GameId"]
+  FASTCALL1 TOSTRING R11 [+2]
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K18 ["universeid"]
+  GETIMPORT R12 K3 [game]
+  GETTABLEKS R11 R12 K8 ["PlaceId"]
+  FASTCALL1 TOSTRING R11 [+2]
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K19 ["pid"]
+  GETTABLEKS R11 R0 K10 ["_impl"]
+  NAMECALL R11 R11 K25 ["GetPlaySessionId"]
+  CALL R11 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 -1 1
+  SETTABLEKS R10 R9 K20 ["sessionid"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R11 R1
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K21 ["placeenabled"]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R11 R2
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K22 ["videoenabled"]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R11 R3
+  GETIMPORT R10 K6 [tostring]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K23 ["audioenabled"]
+  NAMECALL R4 R0 K26 ["_report"]
+  CALL R4 5 0
+  RETURN R0 0
+
+PROTO_13:
+  SETUPVAL R1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  DUPCLOSURE R0 K0 [PROTO_0]
+  SETGLOBAL R0 K1 ["debugPrint"]
+  GETGLOBAL R0 K1 ["debugPrint"]
+  LOADK R1 K2 ["Self View Analytics 10-19-2022__1"]
+  CALL R0 1 0
+  GETIMPORT R0 K4 [game]
+  LOADK R2 K5 ["AvatarChatIncludeSelfViewOnTelemetry"]
+  LOADB R3 0
+  NAMECALL R0 R0 K6 ["DefineFastFlag"]
+  CALL R0 3 1
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K7 ["RbxAnalyticsService"]
+  NAMECALL R1 R1 K8 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K9 ["Players"]
+  NAMECALL R2 R2 K8 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K4 [game]
+  LOADK R5 K10 ["RunService"]
+  NAMECALL R3 R3 K8 ["GetService"]
+  CALL R3 2 1
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R4 K11 ["__index"]
+  LOADK R5 K12 ["info"]
+  SETTABLEKS R5 R4 K13 ["INFO"]
+  LOADK R5 K14 ["warning"]
+  SETTABLEKS R5 R4 K15 ["WARNING"]
+  LOADK R5 K16 ["error"]
+  SETTABLEKS R5 R4 K17 ["ERROR"]
+  LOADK R5 K18 ["SelfView"]
+  DUPCLOSURE R6 K19 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  SETTABLEKS R6 R4 K20 ["new"]
+  DUPCLOSURE R6 K21 [PROTO_2]
+  DUPCLOSURE R7 K22 [PROTO_3]
+  CAPTURE VAL R6
+  SETTABLEKS R7 R4 K23 ["stubService"]
+  DUPCLOSURE R7 K24 [PROTO_4]
+  SETTABLEKS R7 R4 K25 ["setImpl"]
+  DUPCLOSURE R7 K26 [PROTO_5]
+  CAPTURE VAL R3
+  SETTABLEKS R7 R4 K27 ["_report"]
+  NEWCLOSURE R7 P6
+  CAPTURE VAL R2
+  CAPTURE REF R5
+  SETTABLEKS R7 R4 K28 ["reportMicState"]
+  NEWCLOSURE R7 P7
+  CAPTURE VAL R2
+  CAPTURE REF R5
+  SETTABLEKS R7 R4 K29 ["reportCamState"]
+  DUPCLOSURE R7 K30 [PROTO_8]
+  SETTABLEKS R7 R4 K31 ["reportSelfViewEnabledInCoreGuiState"]
+  DUPCLOSURE R7 K32 [PROTO_9]
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  SETTABLEKS R7 R4 K33 ["reportSelfViewSessionStarted"]
+  DUPCLOSURE R7 K34 [PROTO_10]
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  SETTABLEKS R7 R4 K35 ["reportSelfViewSessionStopped"]
+  DUPCLOSURE R7 K36 [PROTO_11]
+  SETTABLEKS R7 R4 K37 ["reportUserAccountSettings"]
+  DUPCLOSURE R7 K38 [PROTO_12]
+  SETTABLEKS R7 R4 K39 ["reportExperienceSettings"]
+  NEWCLOSURE R7 P13
+  CAPTURE REF R5
+  SETTABLEKS R7 R4 K40 ["setLastCtx"]
+  CLOSEUPVALS R5
+  RETURN R4 1

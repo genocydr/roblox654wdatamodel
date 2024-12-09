@@ -1,0 +1,87 @@
+PROTO_0:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["fetchTitle"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+5]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["hasActiveWindow"]
+  JUMPIFNOT R3 [+1]
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["new"]
+  MOVE R4 R1
+  MOVE R5 R0
+  CALL R3 2 1
+  SETUPVAL R3 0
+  GETUPVAL R3 0
+  JUMPIFNOTEQKNIL R3 [+6]
+  GETIMPORT R3 K3 [error]
+  LOADK R4 K4 ["Error in instantiating handler for adteleportprompt."]
+  CALL R3 1 0
+  RETURN R0 0
+  GETUPVAL R5 0
+  JUMPIFNOTEQKNIL R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K5 [+4]
+  LOADK R5 K5 ["Appeasing the type checking"]
+  GETIMPORT R3 K7 [assert]
+  CALL R3 2 0
+  GETIMPORT R3 K9 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U0
+  CALL R3 1 2
+  JUMPIFNOT R3 [+2]
+  JUMPIFNOTEQKNIL R4 [+12]
+  GETUPVAL R5 0
+  LOADB R7 0
+  LOADB R8 0
+  NAMECALL R5 R5 K10 ["rejectPrompt"]
+  CALL R5 3 0
+  GETIMPORT R5 K3 [error]
+  LOADK R6 K11 ["Error: Marketplace service failed to get placename for ad portal prompt."]
+  CALL R5 1 0
+  RETURN R0 0
+  GETUPVAL R5 0
+  MOVE R7 R4
+  MOVE R8 R2
+  NAMECALL R5 R5 K12 ["instantiatePrompt"]
+  CALL R5 3 0
+  GETUPVAL R5 0
+  NAMECALL R5 R5 K13 ["updateCreateTime"]
+  CALL R5 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["AdService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["Ads"]
+  GETTABLEKS R4 R5 K11 ["AdTeleportPromptHandler"]
+  CALL R3 1 1
+  LOADNIL R4
+  NEWCLOSURE R5 P0
+  CAPTURE REF R4
+  CAPTURE VAL R3
+  SETGLOBAL R5 K12 ["onPortalPrompt"]
+  GETTABLEKS R5 R0 K13 ["PortalPrompt"]
+  GETGLOBAL R7 K12 ["onPortalPrompt"]
+  NAMECALL R5 R5 K14 ["Connect"]
+  CALL R5 2 0
+  CLOSEUPVALS R4
+  RETURN R0 0

@@ -1,0 +1,157 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["getIsActive"]
+  CALL R0 0 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["onToggleActivationFromChrome"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["get"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  LOADK R2 K0 ["icons/controls/cameraOff"]
+  LOADK R3 K1 ["icons/controls/cameraOn"]
+  GETUPVAL R4 1
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["availability"]
+  JUMPIFNOT R0 [+4]
+  NAMECALL R2 R1 K1 ["available"]
+  CALL R2 1 0
+  RETURN R0 0
+  NAMECALL R2 R1 K2 ["unavailable"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R2 K3 [Enum.CoreGuiType.All]
+  JUMPIFEQ R0 R2 [+5]
+  GETIMPORT R2 K5 [Enum.CoreGuiType.Captures]
+  JUMPIFNOTEQ R0 R2 [+13]
+  GETUPVAL R2 0
+  JUMPIFNOTEQKNIL R2 [+2]
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["setCoreGuiAvailability"]
+  MOVE R4 R2
+  MOVE R5 R0
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R2
+  CALL R3 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CoreGui"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K5 [game]
+  LOADK R4 K8 ["StarterGui"]
+  NAMECALL R2 R2 K7 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K9 ["RobloxGui"]
+  NAMECALL R3 R1 K10 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K12 [require]
+  GETTABLEKS R5 R0 K13 ["Service"]
+  CALL R4 1 1
+  GETIMPORT R5 K12 [require]
+  GETTABLEKS R7 R0 K14 ["Integrations"]
+  GETTABLEKS R6 R7 K15 ["CommonIcon"]
+  CALL R5 1 1
+  GETIMPORT R6 K12 [require]
+  GETTABLEKS R9 R0 K16 ["ChromeShared"]
+  GETTABLEKS R8 R9 K13 ["Service"]
+  GETTABLEKS R7 R8 K17 ["ChromeUtils"]
+  CALL R6 1 1
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R10 R3 K18 ["Modules"]
+  GETTABLEKS R9 R10 K19 ["Screenshots"]
+  GETTABLEKS R8 R9 K20 ["ScreenshotsApp"]
+  CALL R7 1 1
+  GETTABLEKS R8 R6 K21 ["MappedSignal"]
+  GETIMPORT R9 K12 [require]
+  GETTABLEKS R11 R0 K22 ["Flags"]
+  GETTABLEKS R10 R11 K23 ["GetFFlagFixCapturesAvailability"]
+  CALL R9 1 1
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R12 R0 K22 ["Flags"]
+  GETTABLEKS R11 R12 K24 ["GetFFlagAddChromeActivatedEvents"]
+  CALL R10 1 1
+  GETTABLEKS R12 R4 K25 ["AvailabilitySignal"]
+  GETTABLEKS R11 R12 K26 ["Available"]
+  GETIMPORT R14 K30 [Enum.CoreGuiType.All]
+  NAMECALL R12 R2 K31 ["GetCoreGuiEnabled"]
+  CALL R12 2 1
+  JUMPIF R12 [+6]
+  GETIMPORT R14 K33 [Enum.CoreGuiType.Captures]
+  NAMECALL R12 R2 K31 ["GetCoreGuiEnabled"]
+  CALL R12 2 1
+  JUMPIFNOT R12 [+5]
+  GETTABLEKS R12 R4 K25 ["AvailabilitySignal"]
+  GETTABLEKS R11 R12 K26 ["Available"]
+  JUMP [+4]
+  GETTABLEKS R12 R4 K25 ["AvailabilitySignal"]
+  GETTABLEKS R11 R12 K34 ["Unavailable"]
+  GETTABLEKS R12 R8 K35 ["new"]
+  GETTABLEKS R13 R7 K36 ["onIsActiveChanged"]
+  DUPCLOSURE R14 K37 [PROTO_0]
+  CAPTURE VAL R7
+  CALL R12 2 1
+  DUPTABLE R15 K44 [{"initialAvailability", "id", "label", "activated", "isActivated", "components"}]
+  SETTABLEKS R11 R15 K38 ["initialAvailability"]
+  LOADK R16 K45 ["camera_entrypoint"]
+  SETTABLEKS R16 R15 K39 ["id"]
+  LOADK R16 K46 ["Feature.SettingsHub.Label.Captures"]
+  SETTABLEKS R16 R15 K40 ["label"]
+  DUPCLOSURE R16 K47 [PROTO_1]
+  CAPTURE VAL R7
+  SETTABLEKS R16 R15 K41 ["activated"]
+  MOVE R17 R10
+  CALL R17 0 1
+  JUMPIFNOT R17 [+3]
+  DUPCLOSURE R16 K48 [PROTO_2]
+  CAPTURE VAL R12
+  JUMP [+1]
+  LOADNIL R16
+  SETTABLEKS R16 R15 K42 ["isActivated"]
+  DUPTABLE R16 K50 [{"Icon"}]
+  DUPCLOSURE R17 K51 [PROTO_3]
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  SETTABLEKS R17 R16 K49 ["Icon"]
+  SETTABLEKS R16 R15 K43 ["components"]
+  NAMECALL R13 R4 K52 ["register"]
+  CALL R13 2 1
+  MOVE R14 R9
+  CALL R14 0 1
+  JUMPIFNOT R14 [+7]
+  GETTABLEKS R14 R6 K53 ["setCoreGuiAvailability"]
+  MOVE R15 R13
+  GETIMPORT R16 K33 [Enum.CoreGuiType.Captures]
+  CALL R14 2 0
+  RETURN R13 1
+  GETTABLEKS R14 R2 K54 ["CoreGuiChangedSignal"]
+  DUPCLOSURE R16 K55 [PROTO_5]
+  CAPTURE VAL R13
+  CAPTURE VAL R6
+  NAMECALL R14 R14 K56 ["Connect"]
+  CALL R14 2 0
+  RETURN R13 1

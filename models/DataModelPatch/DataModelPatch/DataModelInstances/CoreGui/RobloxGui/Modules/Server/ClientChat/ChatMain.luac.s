@@ -1,0 +1,2496 @@
+PROTO_0:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserHandleFriendJoinNotifierOnClient"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserIsChatTranslationEnabled2"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_2:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserAddBetterConsoleCheckForLegacyChat"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_3:
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R3 K3 [game]
+  LOADK R5 K4 ["Chat"]
+  NAMECALL R3 R3 K5 ["GetService"]
+  CALL R3 2 1
+  GETTABLEKS R2 R3 K6 ["ClientChatModules"]
+  GETTABLEKS R1 R2 K7 ["ChatLocalization"]
+  CALL R0 1 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_4:
+  RETURN R2 1
+
+PROTO_5:
+  GETTABLEKS R1 R0 K0 ["Name"]
+  JUMPIFNOTEQKS R1 K1 ["ChatTranslationEnabled"] [+6]
+  SETUPVAL R0 0
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K2 ["Disconnect"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R3 R0 K0 ["Name"]
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+20]
+  GETUPVAL R4 0
+  GETTABLEKS R5 R0 K0 ["Name"]
+  GETTABLE R3 R4 R5
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["Name"]
+  LOADNIL R3
+  SETTABLE R3 R1 R2
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K0 ["Name"]
+  SETTABLE R0 R1 R2
+  GETUPVAL R2 2
+  SUBK R1 R2 K2 [1]
+  SETUPVAL R1 2
+  RETURN R0 0
+
+PROTO_7:
+  GETGLOBAL R1 K0 ["TryRemoveChildWithVerifyingIsCorrectType"]
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R1 0
+  LOADN R2 1
+  JUMPIFNOTLT R1 R2 [+5]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K1 ["Fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETIMPORT R0 K1 [require]
+  GETUPVAL R1 0
+  LOADK R3 K2 ["CurveUtil"]
+  NAMECALL R1 R1 K3 ["WaitForChild"]
+  CALL R1 2 -1
+  CALL R0 -1 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["ChatAnimationFPS"]
+  ORK R1 R2 K4 [20]
+  DIVRK R2 R6 K1 [require]
+  GETIMPORT R3 K8 [tick]
+  CALL R3 0 1
+  GETIMPORT R4 K8 [tick]
+  CALL R4 0 1
+  SUB R5 R4 R3
+  MOVE R8 R5
+  NAMECALL R6 R0 K9 ["DeltaTimeToTimescale"]
+  CALL R6 2 1
+  JUMPIFEQKN R6 K10 [0] [+6]
+  GETUPVAL R7 2
+  MOVE R9 R6
+  NAMECALL R7 R7 K11 ["Update"]
+  CALL R7 2 0
+  MOVE R3 R4
+  GETIMPORT R7 K13 [wait]
+  MOVE R8 R2
+  CALL R7 1 0
+  JUMPBACK [-21]
+  RETURN R0 0
+
+PROTO_9:
+  LOADB R3 0
+  GETTABLEKS R4 R1 K0 ["X"]
+  GETTABLEKS R5 R0 K0 ["X"]
+  JUMPIFNOTLE R4 R5 [+23]
+  LOADB R3 0
+  GETTABLEKS R4 R0 K0 ["X"]
+  GETTABLEKS R5 R2 K0 ["X"]
+  JUMPIFNOTLE R4 R5 [+16]
+  LOADB R3 0
+  GETTABLEKS R4 R1 K1 ["Y"]
+  GETTABLEKS R5 R0 K1 ["Y"]
+  JUMPIFNOTLE R4 R5 [+9]
+  GETTABLEKS R4 R0 K1 ["Y"]
+  GETTABLEKS R5 R2 K1 ["Y"]
+  JUMPIFLE R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_10:
+  GETIMPORT R1 K1 [tick]
+  CALL R1 0 1
+  SETUPVAL R1 0
+  LOADB R1 0
+  SETUPVAL R1 1
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K2 ["Fire"]
+  CALL R1 1 0
+  GETUPVAL R1 3
+  MOVE R3 R0
+  JUMPIF R3 [+3]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K3 ["ChatDefaultFadeDuration"]
+  NAMECALL R1 R1 K4 ["FadeInBackground"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  NAMECALL R1 R1 K5 ["GetCurrentChannel"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+11]
+  GETUPVAL R3 5
+  GETTABLEKS R2 R3 K6 ["Scroller"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K7 ["ScrollingEnabled"]
+  GETUPVAL R4 6
+  GETTABLEKS R3 R4 K8 ["ScrollBarThickness"]
+  SETTABLEKS R3 R2 K8 ["ScrollBarThickness"]
+  RETURN R0 0
+
+PROTO_11:
+  GETIMPORT R1 K1 [tick]
+  CALL R1 0 1
+  SETUPVAL R1 0
+  LOADB R1 1
+  SETUPVAL R1 1
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K2 ["Fire"]
+  CALL R1 1 0
+  GETUPVAL R1 3
+  MOVE R3 R0
+  JUMPIF R3 [+3]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K3 ["ChatDefaultFadeDuration"]
+  NAMECALL R1 R1 K4 ["FadeOutBackground"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  NAMECALL R1 R1 K5 ["GetCurrentChannel"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R3 5
+  GETTABLEKS R2 R3 K6 ["Scroller"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K7 ["ScrollingEnabled"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K8 ["ScrollBarThickness"]
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R1 K1 [tick]
+  CALL R1 0 1
+  SETUPVAL R1 0
+  LOADB R1 0
+  SETUPVAL R1 1
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K2 ["Fire"]
+  CALL R1 1 0
+  GETUPVAL R1 3
+  MOVE R4 R0
+  JUMPIF R4 [+3]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K4 ["ChatDefaultFadeDuration"]
+  MULK R3 R4 K3 [0]
+  NAMECALL R1 R1 K5 ["FadeInText"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETIMPORT R1 K1 [tick]
+  CALL R1 0 1
+  SETUPVAL R1 0
+  LOADB R1 1
+  SETUPVAL R1 1
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K2 ["Fire"]
+  CALL R1 1 0
+  GETUPVAL R1 3
+  MOVE R3 R0
+  JUMPIF R3 [+3]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K3 ["ChatDefaultFadeDuration"]
+  NAMECALL R1 R1 K4 ["FadeOutText"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_14:
+  GETGLOBAL R0 K0 ["DoTextFadeIn"]
+  CALL R0 0 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K1 ["ChatShouldFadeInFromNewInformation"]
+  JUMPIFNOT R0 [+3]
+  GETGLOBAL R0 K2 ["DoBackgroundFadeIn"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_15:
+  GETGLOBAL R0 K0 ["DoBackgroundFadeIn"]
+  LOADN R1 0
+  CALL R0 1 0
+  GETGLOBAL R0 K1 ["DoTextFadeIn"]
+  LOADN R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_16:
+  GETGLOBAL R0 K0 ["DoBackgroundFadeOut"]
+  LOADN R1 0
+  CALL R0 1 0
+  GETGLOBAL R0 K1 ["DoTextFadeOut"]
+  LOADN R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_17:
+  SETUPVAL R0 0
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K0 ["Fire"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K1 ["IsFocused"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  JUMPIFNOT R0 [+7]
+  GETGLOBAL R1 K2 ["DoBackgroundFadeIn"]
+  CALL R1 0 0
+  GETGLOBAL R1 K3 ["DoTextFadeIn"]
+  CALL R1 0 0
+  RETURN R0 0
+  GETGLOBAL R1 K2 ["DoBackgroundFadeIn"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["RenderStepped"]
+  NAMECALL R0 R0 K1 ["wait"]
+  CALL R0 1 0
+  GETUPVAL R0 1
+  JUMPIF R0 [+5]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["IsFocused"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+20]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K3 ["Event"]
+  NAMECALL R0 R0 K1 ["wait"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["IsFocused"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 4
+  GETTABLEKS R0 R1 K3 ["Event"]
+  NAMECALL R0 R0 K1 ["wait"]
+  CALL R0 1 0
+  JUMPBACK [-27]
+  GETUPVAL R0 5
+  JUMPIF R0 [+14]
+  GETIMPORT R1 K5 [tick]
+  CALL R1 0 1
+  GETUPVAL R2 6
+  SUB R0 R1 R2
+  GETUPVAL R2 7
+  GETTABLEKS R1 R2 K6 ["ChatWindowBackgroundFadeOutTime"]
+  JUMPIFNOTLT R1 R0 [+27]
+  GETGLOBAL R1 K7 ["DoBackgroundFadeOut"]
+  CALL R1 0 0
+  JUMP [+22]
+  GETUPVAL R0 8
+  JUMPIF R0 [+14]
+  GETIMPORT R1 K5 [tick]
+  CALL R1 0 1
+  GETUPVAL R2 9
+  SUB R0 R1 R2
+  GETUPVAL R2 7
+  GETTABLEKS R1 R2 K8 ["ChatWindowTextFadeOutTime"]
+  JUMPIFNOTLT R1 R0 [+11]
+  GETGLOBAL R1 K9 ["DoTextFadeOut"]
+  CALL R1 0 0
+  JUMP [+6]
+  GETUPVAL R1 10
+  GETTABLEKS R0 R1 K3 ["Event"]
+  NAMECALL R0 R0 K1 ["wait"]
+  CALL R0 1 0
+  JUMPBACK [-72]
+  RETURN R0 0
+
+PROTO_19:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["ClassicChatEnabled"]
+  JUMPIFEQKNIL R0 [+5]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["ClassicChatEnabled"]
+  RETURN R0 1
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["ClassicChat"]
+  RETURN R0 1
+
+PROTO_20:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["BubbleChatEnabled"]
+  JUMPIFEQKNIL R0 [+5]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["BubbleChatEnabled"]
+  RETURN R0 1
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["BubbleChat"]
+  RETURN R0 1
+
+PROTO_21:
+  GETGLOBAL R1 K0 ["getClassicChatEnabled"]
+  CALL R1 0 1
+  NOT R0 R1
+  JUMPIFNOT R0 [+3]
+  GETGLOBAL R0 K1 ["getBubbleChatEnabled"]
+  CALL R0 0 1
+  RETURN R0 1
+
+PROTO_22:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Visible"]
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["IsCoreGuiEnabled"]
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["TopbarEnabled"]
+  JUMPIF R1 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K3 ["ChatOnWithTopBarOff"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETGLOBAL R1 K4 ["bubbleChatOnly"]
+  CALL R1 0 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K5 ["GuiObject"]
+  GETTABLEKS R1 R2 K6 ["AbsolutePosition"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K5 ["GuiObject"]
+  GETTABLEKS R2 R3 K7 ["AbsoluteSize"]
+  GETGLOBAL R3 K8 ["CheckIfPointIsInSquare"]
+  MOVE R4 R0
+  MOVE R5 R1
+  ADD R6 R1 R2
+  CALL R3 3 1
+  GETUPVAL R4 3
+  JUMPIFEQ R3 R4 [+5]
+  GETGLOBAL R4 K9 ["UpdateFadingForMouseState"]
+  MOVE R5 R3
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_23:
+  GETTABLEKS R2 R0 K0 ["UserInputType"]
+  GETIMPORT R3 K3 [Enum.UserInputType.MouseMovement]
+  JUMPIFNOTEQ R2 R3 [+16]
+  GETIMPORT R2 K6 [Vector2.new]
+  GETTABLEKS R4 R0 K7 ["Position"]
+  GETTABLEKS R3 R4 K8 ["X"]
+  GETTABLEKS R5 R0 K7 ["Position"]
+  GETTABLEKS R4 R5 K9 ["Y"]
+  CALL R2 2 1
+  GETGLOBAL R3 K10 ["UpdateMousePosition"]
+  MOVE R4 R2
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_24:
+  GETGLOBAL R2 K0 ["UpdateMousePosition"]
+  GETTABLEN R3 R0 1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_25:
+  GETIMPORT R2 K2 [Vector2.new]
+  GETTABLEKS R4 R0 K3 ["Position"]
+  GETTABLEKS R3 R4 K4 ["X"]
+  GETTABLEKS R5 R0 K3 ["Position"]
+  GETTABLEKS R4 R5 K5 ["Y"]
+  CALL R2 2 1
+  GETGLOBAL R3 K6 ["UpdateMousePosition"]
+  MOVE R4 R2
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_26:
+  JUMPIFNOTEQKS R0 K0 ["MouseBehavior"] [+33]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseBehavior"]
+  GETIMPORT R2 K3 [Enum.MouseBehavior.LockCenter]
+  JUMPIFNOTEQ R1 R2 [+26]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["GuiObject"]
+  GETTABLEKS R1 R2 K5 ["AbsolutePosition"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["GuiObject"]
+  GETTABLEKS R2 R3 K6 ["AbsoluteSize"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K6 ["AbsoluteSize"]
+  GETGLOBAL R4 K7 ["CheckIfPointIsInSquare"]
+  DIVK R5 R3 K8 [2]
+  MOVE R6 R1
+  ADD R7 R1 R2
+  CALL R4 3 1
+  JUMPIFNOT R4 [+5]
+  GETUPVAL R5 0
+  GETIMPORT R6 K10 [Enum.MouseBehavior.Default]
+  SETTABLEKS R6 R5 K0 ["MouseBehavior"]
+  RETURN R0 0
+
+PROTO_27:
+  PREPVARARGS 1
+  NEWTABLE R1 0 0
+  GETVARARGS R2 -1
+  SETLIST R1 R2 -1 [1]
+  SETUPVAL R1 0
+  LOADK R2 K0 ["#"]
+  FASTCALL1 SELECT_VARARG R2 [+3]
+  GETIMPORT R1 K2 [select]
+  GETVARARGS R3 -1
+  CALL R1 -1 1
+  SETUPVAL R1 1
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K3 ["Fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_28:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  LOADN R3 1
+  GETUPVAL R4 2
+  FASTCALL TABLE_UNPACK [+2]
+  GETIMPORT R1 K1 [unpack]
+  CALL R1 3 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_29:
+  JUMPIF R1 [+5]
+  GETIMPORT R2 K1 [error]
+  LOADK R3 K2 ["connect(nil)"]
+  LOADN R4 2
+  CALL R2 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["Event"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  NAMECALL R2 R2 K4 ["connect"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_30:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Event"]
+  NAMECALL R1 R1 K1 ["wait"]
+  CALL R1 1 0
+  GETUPVAL R2 1
+  FASTCALL2K ASSERT R2 K2 [+4]
+  LOADK R3 K2 ["Missing arg data, likely due to :TweenSize/Position corrupting threadrefs."]
+  GETIMPORT R1 K4 [assert]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  LOADN R3 1
+  GETUPVAL R4 2
+  FASTCALL TABLE_UNPACK [+2]
+  GETIMPORT R1 K6 [unpack]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_31:
+  NEWTABLE R0 4 0
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableEvent"]
+  CALL R1 1 1
+  LOADNIL R2
+  LOADNIL R3
+  NEWCLOSURE R4 P0
+  CAPTURE REF R2
+  CAPTURE REF R3
+  CAPTURE VAL R1
+  SETTABLEKS R4 R0 K4 ["fire"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R1
+  CAPTURE REF R2
+  CAPTURE REF R3
+  SETTABLEKS R4 R0 K5 ["connect"]
+  NEWCLOSURE R4 P2
+  CAPTURE VAL R1
+  CAPTURE REF R2
+  CAPTURE REF R3
+  SETTABLEKS R4 R0 K6 ["wait"]
+  CLOSEUPVALS R2
+  RETURN R0 1
+
+PROTO_32:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["SetVisible"]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["VisibilityStateChanged"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K2 ["fire"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  SETTABLEKS R0 R1 K3 ["Visible"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["IsCoreGuiEnabled"]
+  JUMPIFNOT R1 [+8]
+  JUMPIFNOT R0 [+4]
+  GETGLOBAL R1 K5 ["InstantFadeIn"]
+  CALL R1 0 0
+  RETURN R0 0
+  GETGLOBAL R1 K6 ["InstantFadeOut"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_33:
+  GETGLOBAL R1 K0 ["SetVisibility"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K1 ["GetVisible"]
+  CALL R3 1 1
+  NOT R2 R3
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_34:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["GetVisible"]
+  CALL R2 1 1
+  JUMPIFEQ R2 R1 [+5]
+  GETGLOBAL R2 K1 ["SetVisibility"]
+  MOVE R3 R1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_35:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["CaptureFocus"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_36:
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["EnterWhisperState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_37:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetVisible"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_38:
+  GETTABLEKS R1 R0 K0 ["MessageCount"]
+  RETURN R1 1
+
+PROTO_39:
+  SETTABLEKS R1 R0 K0 ["TopbarEnabled"]
+  GETTABLEKS R2 R0 K1 ["CoreGuiEnabled"]
+  GETIMPORT R4 K3 [game]
+  LOADK R6 K4 ["StarterGui"]
+  NAMECALL R4 R4 K5 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R6 K9 [Enum.CoreGuiType.Chat]
+  NAMECALL R4 R4 K10 ["GetCoreGuiEnabled"]
+  CALL R4 2 -1
+  NAMECALL R2 R2 K11 ["fire"]
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_40:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["IsFocused"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_41:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["GuiObject"]
+  GETTABLEKS R1 R2 K1 ["Position"]
+  RETURN R1 1
+
+PROTO_42:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["GuiObject"]
+  GETTABLEKS R1 R2 K1 ["Size"]
+  RETURN R1 1
+
+PROTO_43:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["GetEnabled"]
+  CALL R2 1 1
+  NOT R1 R2
+  RETURN R1 1
+
+PROTO_44:
+  GETIMPORT R3 K3 [Enum.SpecialKey.ChatHotkey]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+2]
+  GETUPVAL R3 1
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_45:
+  GETUPVAL R1 0
+  SETTABLEKS R0 R1 K0 ["IsCoreGuiEnabled"]
+  MOVE R1 R0
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["TopbarEnabled"]
+  JUMPIF R1 [+3]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["ChatOnWithTopBarOff"]
+  MOVE R0 R1
+  GETUPVAL R1 2
+  MOVE R3 R0
+  NAMECALL R1 R1 K3 ["SetCoreGuiEnabled"]
+  CALL R1 2 0
+  JUMPIF R0 [+8]
+  GETUPVAL R1 3
+  NAMECALL R1 R1 K4 ["ReleaseFocus"]
+  CALL R1 1 0
+  GETGLOBAL R1 K5 ["InstantFadeOut"]
+  CALL R1 0 0
+  RETURN R0 0
+  GETGLOBAL R1 K6 ["InstantFadeIn"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_46:
+  LENGTH R1 R0
+  LOADN R2 0
+  JUMPIFNOTLT R2 R1 [+11]
+  LOADK R4 K0 ["^%s"]
+  MOVE R5 R1
+  NAMECALL R2 R0 K1 ["find"]
+  CALL R2 3 1
+  JUMPIFNOT R2 [+4]
+  SUBK R1 R1 K2 [1]
+  JUMP [+1]
+  JUMP [+1]
+  JUMPBACK [-13]
+  LOADN R4 1
+  MOVE R5 R1
+  NAMECALL R2 R0 K3 ["sub"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_47:
+  GETTABLEKS R1 R0 K0 ["Text"]
+  JUMPIFNOT R1 [+100]
+  GETTABLEKS R2 R0 K0 ["Text"]
+  FASTCALL1 TYPE R2 [+2]
+  GETIMPORT R1 K2 [type]
+  CALL R1 1 1
+  JUMPIFNOTEQKS R1 K3 ["string"] [+93]
+  GETUPVAL R1 0
+  JUMPIF R1 [+4]
+  GETIMPORT R1 K5 [wait]
+  CALL R1 0 0
+  JUMPBACK [-6]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["GeneralChannelName"]
+  GETUPVAL R2 2
+  MOVE R4 R1
+  NAMECALL R2 R2 K7 ["GetChannel"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+77]
+  DUPTABLE R3 K19 [{"ID", "FromSpeaker", "SpeakerUserId", "OriginalChannel", "IsFiltered", "MessageLength", "MessageLengthUtf8", "Message", "MessageType", "Time", "ExtraData"}]
+  LOADN R4 255
+  SETTABLEKS R4 R3 K8 ["ID"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K9 ["FromSpeaker"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K10 ["SpeakerUserId"]
+  SETTABLEKS R1 R3 K11 ["OriginalChannel"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K12 ["IsFiltered"]
+  GETTABLEKS R5 R0 K0 ["Text"]
+  FASTCALL1 STRING_LEN R5 [+2]
+  GETIMPORT R4 K21 [string.len]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K13 ["MessageLength"]
+  GETIMPORT R4 K23 [utf8.len]
+  GETIMPORT R5 K25 [utf8.nfcnormalize]
+  GETTABLEKS R6 R0 K0 ["Text"]
+  CALL R5 1 -1
+  CALL R4 -1 1
+  SETTABLEKS R4 R3 K14 ["MessageLengthUtf8"]
+  GETGLOBAL R4 K26 ["trimTrailingSpaces"]
+  GETTABLEKS R5 R0 K0 ["Text"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K15 ["Message"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K27 ["MessageTypeSetCore"]
+  SETTABLEKS R4 R3 K16 ["MessageType"]
+  GETIMPORT R4 K30 [os.time]
+  CALL R4 0 1
+  SETTABLEKS R4 R3 K17 ["Time"]
+  SETTABLEKS R0 R3 K18 ["ExtraData"]
+  MOVE R6 R3
+  NAMECALL R4 R2 K31 ["AddMessageToChannel"]
+  CALL R4 2 0
+  GETUPVAL R4 4
+  MOVE R6 R1
+  NAMECALL R4 R4 K32 ["UpdateMessagePostedInChannel"]
+  CALL R4 2 0
+  GETUPVAL R4 5
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K34 ["MessageCount"]
+  ADDK R5 R6 K33 [1]
+  SETTABLEKS R5 R4 K34 ["MessageCount"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K35 ["MessagesChanged"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K34 ["MessageCount"]
+  NAMECALL R4 R4 K36 ["fire"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_48:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R1 1
+  NOT R3 R0
+  NAMECALL R1 R1 K0 ["SetEnabled"]
+  CALL R1 2 0
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K1 ["ReleaseFocus"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_49:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GuiObject"]
+  SETTABLEKS R0 R1 K1 ["Size"]
+  RETURN R0 0
+
+PROTO_50:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GuiObject"]
+  SETTABLEKS R0 R1 K1 ["Position"]
+  RETURN R0 0
+
+PROTO_51:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetCoreGuiEnabled"]
+  CALL R0 1 1
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K1 ["GetEnabled"]
+  CALL R0 1 1
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K2 ["IsFocused"]
+  CALL R0 1 1
+  JUMPIF R0 [+24]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K3 ["GetVisible"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+19]
+  GETUPVAL R0 2
+  LOADB R2 1
+  NAMECALL R0 R0 K4 ["SetVisible"]
+  CALL R0 2 0
+  GETGLOBAL R0 K5 ["InstantFadeIn"]
+  CALL R0 0 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K6 ["CaptureFocus"]
+  CALL R0 1 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K7 ["ChatBarFocusChanged"]
+  LOADB R2 1
+  NAMECALL R0 R0 K8 ["fire"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_52:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ChatBarFocusChanged"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K1 ["fire"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_53:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["GetChannel"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K1 ["SwitchCurrentChannel"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_54:
+  GETUPVAL R3 0
+  MOVE R5 R1
+  NAMECALL R3 R3 K0 ["GetChannel"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+53]
+  DUPTABLE R4 K12 [{"ID", "FromSpeaker", "SpeakerUserId", "OriginalChannel", "IsFiltered", "MessageLength", "MessageLengthUtf8", "Message", "MessageType", "Time", "ExtraData"}]
+  LOADN R5 255
+  SETTABLEKS R5 R4 K1 ["ID"]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K2 ["FromSpeaker"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K3 ["SpeakerUserId"]
+  SETTABLEKS R1 R4 K4 ["OriginalChannel"]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K5 ["IsFiltered"]
+  FASTCALL1 STRING_LEN R0 [+3]
+  MOVE R6 R0
+  GETIMPORT R5 K15 [string.len]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K6 ["MessageLength"]
+  GETIMPORT R5 K17 [utf8.len]
+  GETIMPORT R6 K19 [utf8.nfcnormalize]
+  MOVE R7 R0
+  CALL R6 1 -1
+  CALL R5 -1 1
+  SETTABLEKS R5 R4 K7 ["MessageLengthUtf8"]
+  GETGLOBAL R5 K20 ["trimTrailingSpaces"]
+  MOVE R6 R0
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K8 ["Message"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K21 ["MessageTypeSystem"]
+  SETTABLEKS R5 R4 K9 ["MessageType"]
+  GETIMPORT R5 K24 [os.time]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K10 ["Time"]
+  SETTABLEKS R2 R4 K11 ["ExtraData"]
+  MOVE R7 R4
+  NAMECALL R5 R3 K25 ["AddMessageToChannel"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_55:
+  GETUPVAL R0 0
+  JUMPIF R0 [+8]
+  GETGLOBAL R0 K0 ["DoBackgroundFadeIn"]
+  CALL R0 0 0
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+3]
+  GETGLOBAL R0 K1 ["DoTextFadeIn"]
+  CALL R0 0 0
+  GETUPVAL R0 2
+  LOADB R2 1
+  NAMECALL R0 R0 K2 ["Fire"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_56:
+  GETGLOBAL R2 K0 ["DoBackgroundFadeIn"]
+  CALL R2 0 0
+  GETUPVAL R2 0
+  LOADB R4 0
+  NAMECALL R2 R2 K1 ["Fire"]
+  CALL R2 2 0
+  JUMPIFNOT R0 [+122]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K2 ["GetTextBox"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K3 ["Text"]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K4 ["IsInCustomState"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+17]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K5 ["GetCustomMessage"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+1]
+  MOVE R2 R3
+  GETUPVAL R4 1
+  MOVE R6 R2
+  NAMECALL R4 R4 K6 ["CustomStateProcessCompletedMessage"]
+  CALL R4 2 1
+  GETUPVAL R5 1
+  NAMECALL R5 R5 K7 ["ResetCustomState"]
+  CALL R5 1 0
+  JUMPIFNOT R4 [+1]
+  RETURN R0 0
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K2 ["GetTextBox"]
+  CALL R3 1 1
+  LOADK R4 K8 [""]
+  SETTABLEKS R4 R3 K3 ["Text"]
+  JUMPIFEQKS R2 K8 [""] [+86]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K9 ["MessagePosted"]
+  MOVE R5 R2
+  NAMECALL R3 R3 K10 ["fire"]
+  CALL R3 2 0
+  GETUPVAL R3 3
+  MOVE R5 R2
+  GETUPVAL R6 4
+  NAMECALL R3 R3 K11 ["ProcessCompletedChatMessage"]
+  CALL R3 3 1
+  JUMPIF R3 [+71]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K12 ["DisallowedWhiteSpace"]
+  JUMPIFNOT R3 [+35]
+  LOADN R5 1
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K12 ["DisallowedWhiteSpace"]
+  LENGTH R3 R6
+  LOADN R4 1
+  FORNPREP R3
+  GETUPVAL R8 5
+  GETTABLEKS R7 R8 K12 ["DisallowedWhiteSpace"]
+  GETTABLE R6 R7 R5
+  JUMPIFNOTEQKS R6 K13 ["	"] [+12]
+  GETIMPORT R6 K16 [string.gsub]
+  MOVE R7 R2
+  GETUPVAL R10 5
+  GETTABLEKS R9 R10 K12 ["DisallowedWhiteSpace"]
+  GETTABLE R8 R9 R5
+  LOADK R9 K17 [" "]
+  CALL R6 3 1
+  MOVE R2 R6
+  JUMP [+10]
+  GETIMPORT R6 K16 [string.gsub]
+  MOVE R7 R2
+  GETUPVAL R10 5
+  GETTABLEKS R9 R10 K12 ["DisallowedWhiteSpace"]
+  GETTABLE R8 R9 R5
+  LOADK R9 K8 [""]
+  CALL R6 3 1
+  MOVE R2 R6
+  FORNLOOP R3
+  GETIMPORT R3 K16 [string.gsub]
+  MOVE R4 R2
+  LOADK R5 K18 ["
+"]
+  LOADK R6 K8 [""]
+  CALL R3 3 1
+  MOVE R2 R3
+  GETIMPORT R3 K16 [string.gsub]
+  MOVE R4 R2
+  LOADK R5 K19 ["[ ]+"]
+  LOADK R6 K17 [" "]
+  CALL R3 3 1
+  MOVE R2 R3
+  GETUPVAL R3 4
+  NAMECALL R3 R3 K20 ["GetTargetMessageChannel"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+7]
+  GETUPVAL R4 6
+  MOVE R6 R2
+  MOVE R7 R3
+  NAMECALL R4 R4 K21 ["SendMessage"]
+  CALL R4 3 0
+  RETURN R0 0
+  GETUPVAL R4 6
+  MOVE R6 R2
+  LOADNIL R7
+  NAMECALL R4 R4 K21 ["SendMessage"]
+  CALL R4 3 0
+  RETURN R0 0
+
+PROTO_57:
+  LOADN R2 1
+  GETUPVAL R3 0
+  LENGTH R0 R3
+  LOADN R1 1
+  FORNPREP R0
+  GETUPVAL R4 0
+  GETTABLE R3 R4 R2
+  NAMECALL R3 R3 K0 ["Disconnect"]
+  CALL R3 1 0
+  FORNLOOP R0
+  NEWTABLE R0 0 0
+  SETUPVAL R0 0
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K1 ["GetTextBox"]
+  CALL R1 1 1
+  GETTABLEKS R0 R1 K2 ["FocusLost"]
+  GETGLOBAL R2 K3 ["chatBarFocusLost"]
+  NAMECALL R0 R0 K4 ["connect"]
+  CALL R0 2 1
+  GETUPVAL R2 0
+  FASTCALL2 TABLE_INSERT R2 R0 [+4]
+  MOVE R3 R0
+  GETIMPORT R1 K7 [table.insert]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K1 ["GetTextBox"]
+  CALL R2 1 1
+  GETTABLEKS R1 R2 K8 ["Focused"]
+  GETGLOBAL R3 K9 ["chatBarFocused"]
+  NAMECALL R1 R1 K4 ["connect"]
+  CALL R1 2 1
+  GETUPVAL R3 0
+  FASTCALL2 TABLE_INSERT R3 R1 [+4]
+  MOVE R4 R1
+  GETIMPORT R2 K7 [table.insert]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_58:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["EchoMessagesInGeneralChannel"]
+  JUMPIFNOTEQKNIL R0 [+3]
+  LOADB R0 1
+  RETURN R0 1
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["EchoMessagesInGeneralChannel"]
+  RETURN R0 1
+
+PROTO_59:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShowUserOwnFilteredMessage"]
+  JUMPIF R1 [+8]
+  GETTABLEKS R1 R0 K1 ["FromSpeaker"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["Name"]
+  JUMPIFNOTEQ R1 R2 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K3 ["OriginalChannel"]
+  GETUPVAL R2 2
+  MOVE R4 R1
+  NAMECALL R2 R2 K4 ["GetChannel"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+4]
+  MOVE R5 R0
+  NAMECALL R3 R2 K5 ["UpdateMessageFiltered"]
+  CALL R3 2 0
+  GETGLOBAL R3 K6 ["getEchoMessagesInGeneral"]
+  CALL R3 0 1
+  JUMPIFNOT R3 [+21]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K7 ["GeneralChannelName"]
+  JUMPIFNOT R3 [+17]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K7 ["GeneralChannelName"]
+  JUMPIFEQ R1 R3 [+13]
+  GETUPVAL R3 2
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["GeneralChannelName"]
+  NAMECALL R3 R3 K4 ["GetChannel"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+4]
+  MOVE R6 R0
+  NAMECALL R4 R3 K5 ["UpdateMessageFiltered"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_60:
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["GetChannel"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+60]
+  MOVE R5 R0
+  NAMECALL R3 R2 K1 ["AddMessageToChannel"]
+  CALL R3 2 0
+  GETTABLEKS R3 R0 K2 ["FromSpeaker"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["Name"]
+  JUMPIFEQ R3 R4 [+6]
+  GETUPVAL R3 2
+  MOVE R5 R1
+  NAMECALL R3 R3 K4 ["UpdateMessagePostedInChannel"]
+  CALL R3 2 0
+  GETGLOBAL R3 K5 ["getEchoMessagesInGeneral"]
+  CALL R3 0 1
+  JUMPIFNOT R3 [+21]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K6 ["GeneralChannelName"]
+  JUMPIFNOT R3 [+17]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K6 ["GeneralChannelName"]
+  JUMPIFEQ R1 R3 [+13]
+  GETUPVAL R3 0
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K6 ["GeneralChannelName"]
+  NAMECALL R3 R3 K0 ["GetChannel"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+4]
+  MOVE R6 R0
+  NAMECALL R4 R3 K1 ["AddMessageToChannel"]
+  CALL R4 2 0
+  GETUPVAL R3 4
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K8 ["MessageCount"]
+  ADDK R4 R5 K7 [1]
+  SETTABLEKS R4 R3 K8 ["MessageCount"]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K9 ["MessagesChanged"]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K8 ["MessageCount"]
+  NAMECALL R3 R3 K10 ["fire"]
+  CALL R3 2 0
+  GETGLOBAL R3 K11 ["DoFadeInFromNewInformation"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_61:
+  ORK R1 R1 K0 ["System"]
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K1 ["GetChannel"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+54]
+  MOVE R5 R0
+  NAMECALL R3 R2 K2 ["AddMessageToChannel"]
+  CALL R3 2 0
+  GETUPVAL R3 1
+  MOVE R5 R1
+  NAMECALL R3 R3 K3 ["UpdateMessagePostedInChannel"]
+  CALL R3 2 0
+  GETUPVAL R3 2
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K5 ["MessageCount"]
+  ADDK R4 R5 K4 [1]
+  SETTABLEKS R4 R3 K5 ["MessageCount"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K6 ["MessagesChanged"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K5 ["MessageCount"]
+  NAMECALL R3 R3 K7 ["fire"]
+  CALL R3 2 0
+  GETGLOBAL R3 K8 ["DoFadeInFromNewInformation"]
+  CALL R3 0 0
+  GETGLOBAL R3 K9 ["getEchoMessagesInGeneral"]
+  CALL R3 0 1
+  JUMPIFNOT R3 [+30]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K10 ["GeneralChannelName"]
+  JUMPIFNOT R3 [+26]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K10 ["GeneralChannelName"]
+  JUMPIFEQ R1 R3 [+22]
+  GETUPVAL R3 0
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K10 ["GeneralChannelName"]
+  NAMECALL R3 R3 K1 ["GetChannel"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+13]
+  MOVE R6 R0
+  NAMECALL R4 R3 K2 ["AddMessageToChannel"]
+  CALL R4 2 0
+  RETURN R0 0
+  GETIMPORT R3 K12 [warn]
+  GETIMPORT R4 K15 [string.format]
+  LOADK R5 K16 ["Just received system message for channel I'm not in [%s]"]
+  MOVE R6 R1
+  CALL R4 2 -1
+  CALL R3 -1 0
+  RETURN R0 0
+
+PROTO_62:
+  GETUPVAL R6 0
+  MOVE R8 R0
+  NAMECALL R6 R6 K0 ["GetChannel"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+5]
+  GETUPVAL R6 0
+  MOVE R8 R0
+  NAMECALL R6 R6 K1 ["RemoveChannel"]
+  CALL R6 2 0
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K2 ["GeneralChannelName"]
+  JUMPIFNOTEQ R0 R6 [+3]
+  LOADB R6 1
+  SETUPVAL R6 2
+  JUMPIFNOT R3 [+6]
+  GETUPVAL R6 3
+  MOVE R8 R0
+  MOVE R9 R3
+  NAMECALL R6 R6 K3 ["SetChannelNameColor"]
+  CALL R6 3 0
+  GETUPVAL R6 0
+  MOVE R8 R0
+  NAMECALL R6 R6 K4 ["AddChannel"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+219]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K2 ["GeneralChannelName"]
+  JUMPIFNOTEQ R0 R7 [+5]
+  GETGLOBAL R7 K5 ["DoSwitchCurrentChannel"]
+  MOVE R8 R0
+  CALL R7 1 0
+  JUMPIFNOT R2 [+48]
+  LOADN R7 1
+  LENGTH R8 R2
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K6 ["MessageHistoryLengthPerChannel"]
+  JUMPIFNOTLT R9 R8 [+6]
+  LENGTH R8 R2
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K6 ["MessageHistoryLengthPerChannel"]
+  SUB R7 R8 R9
+  MOVE R10 R7
+  LENGTH R8 R2
+  LOADN R9 1
+  FORNPREP R8
+  GETTABLE R13 R2 R10
+  NAMECALL R11 R6 K7 ["AddMessageToChannel"]
+  CALL R11 2 0
+  FORNLOOP R8
+  GETGLOBAL R8 K8 ["getEchoMessagesInGeneral"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+23]
+  JUMPIFNOT R4 [+22]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K2 ["GeneralChannelName"]
+  JUMPIFNOT R8 [+18]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K2 ["GeneralChannelName"]
+  JUMPIFEQ R0 R8 [+14]
+  GETUPVAL R8 0
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K2 ["GeneralChannelName"]
+  NAMECALL R8 R8 K0 ["GetChannel"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+5]
+  MOVE R11 R2
+  MOVE R12 R7
+  NAMECALL R9 R8 K9 ["AddMessagesToChannelByTimeStamp"]
+  CALL R9 3 0
+  JUMPIFEQKS R1 K10 [""] [+81]
+  DUPTABLE R7 K22 [{"ID", "FromSpeaker", "SpeakerUserId", "OriginalChannel", "IsFiltered", "MessageLength", "MessageLengthUtf8", "Message", "MessageType", "Time", "ExtraData"}]
+  LOADN R8 255
+  SETTABLEKS R8 R7 K11 ["ID"]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K12 ["FromSpeaker"]
+  LOADN R8 0
+  SETTABLEKS R8 R7 K13 ["SpeakerUserId"]
+  SETTABLEKS R0 R7 K14 ["OriginalChannel"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K15 ["IsFiltered"]
+  FASTCALL1 STRING_LEN R1 [+3]
+  MOVE R9 R1
+  GETIMPORT R8 K25 [string.len]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K16 ["MessageLength"]
+  GETIMPORT R8 K27 [utf8.len]
+  GETIMPORT R9 K29 [utf8.nfcnormalize]
+  MOVE R10 R1
+  CALL R9 1 -1
+  CALL R8 -1 1
+  SETTABLEKS R8 R7 K17 ["MessageLengthUtf8"]
+  GETGLOBAL R8 K30 ["trimTrailingSpaces"]
+  MOVE R9 R1
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["Message"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K31 ["MessageTypeWelcome"]
+  SETTABLEKS R8 R7 K19 ["MessageType"]
+  GETIMPORT R8 K34 [os.time]
+  CALL R8 0 1
+  SETTABLEKS R8 R7 K20 ["Time"]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K21 ["ExtraData"]
+  MOVE R10 R7
+  NAMECALL R8 R6 K7 ["AddMessageToChannel"]
+  CALL R8 2 0
+  GETGLOBAL R8 K8 ["getEchoMessagesInGeneral"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+22]
+  JUMPIFNOT R5 [+21]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K35 ["ShowChannelsBar"]
+  JUMPIF R8 [+17]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K2 ["GeneralChannelName"]
+  JUMPIFEQ R0 R8 [+13]
+  GETUPVAL R8 0
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K2 ["GeneralChannelName"]
+  NAMECALL R8 R8 K0 ["GetChannel"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+4]
+  MOVE R11 R7
+  NAMECALL R9 R8 K7 ["AddMessageToChannel"]
+  CALL R9 2 0
+  GETUPVAL R7 5
+  LOADK R9 K36 ["GameChat_ChatMain_ChatTranslationOnboarding"]
+  LOADK R10 K37 ["Text chat will be translated into your language. Tap the symbol in front of the message to see the original. You can turn off translations in the Settings menu."]
+  NAMECALL R7 R7 K38 ["Get"]
+  CALL R7 3 1
+  GETUPVAL R8 6
+  JUMPIFNOT R8 [+68]
+  JUMPIFEQKS R7 K10 [""] [+67]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K2 ["GeneralChannelName"]
+  JUMPIFNOTEQ R0 R8 [+62]
+  GETUPVAL R8 7
+  JUMPIFEQKNIL R8 [+59]
+  GETUPVAL R9 7
+  GETTABLEKS R8 R9 K39 ["Value"]
+  JUMPIFNOT R8 [+54]
+  DUPTABLE R8 K22 [{"ID", "FromSpeaker", "SpeakerUserId", "OriginalChannel", "IsFiltered", "MessageLength", "MessageLengthUtf8", "Message", "MessageType", "Time", "ExtraData"}]
+  LOADN R9 254
+  SETTABLEKS R9 R8 K11 ["ID"]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K12 ["FromSpeaker"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K13 ["SpeakerUserId"]
+  SETTABLEKS R0 R8 K14 ["OriginalChannel"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K15 ["IsFiltered"]
+  FASTCALL1 STRING_LEN R7 [+3]
+  MOVE R10 R7
+  GETIMPORT R9 K25 [string.len]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K16 ["MessageLength"]
+  GETIMPORT R9 K27 [utf8.len]
+  GETIMPORT R10 K29 [utf8.nfcnormalize]
+  MOVE R11 R7
+  CALL R10 1 -1
+  CALL R9 -1 1
+  SETTABLEKS R9 R8 K17 ["MessageLengthUtf8"]
+  GETGLOBAL R9 K30 ["trimTrailingSpaces"]
+  MOVE R10 R7
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K18 ["Message"]
+  GETUPVAL R10 4
+  GETTABLEKS R9 R10 K31 ["MessageTypeWelcome"]
+  SETTABLEKS R9 R8 K19 ["MessageType"]
+  GETIMPORT R9 K34 [os.time]
+  CALL R9 0 1
+  SETTABLEKS R9 R8 K20 ["Time"]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K21 ["ExtraData"]
+  MOVE R11 R8
+  NAMECALL R9 R6 K7 ["AddMessageToChannel"]
+  CALL R9 2 0
+  GETGLOBAL R8 K40 ["DoFadeInFromNewInformation"]
+  CALL R8 0 0
+  RETURN R0 0
+
+PROTO_63:
+  GETGLOBAL R4 K0 ["HandleChannelJoined"]
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  MOVE R8 R3
+  LOADB R9 0
+  LOADB R10 1
+  CALL R4 6 0
+  RETURN R0 0
+
+PROTO_64:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["RemoveChannel"]
+  CALL R1 2 0
+  GETGLOBAL R1 K1 ["DoFadeInFromNewInformation"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_65:
+  RETURN R0 0
+
+PROTO_66:
+  RETURN R0 0
+
+PROTO_67:
+  GETGLOBAL R1 K0 ["DoSwitchCurrentChannel"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_68:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  MOVE R5 R1
+  NAMECALL R2 R2 K0 ["SetChannelNameColor"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_69:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["ChannelNameColorUpdated"]
+  LOADN R3 5
+  NAMECALL R0 R0 K1 ["WaitForChild"]
+  CALL R0 3 1
+  JUMPIFNOT R0 [+7]
+  GETTABLEKS R1 R0 K2 ["OnClientEvent"]
+  DUPCLOSURE R3 K3 [PROTO_68]
+  CAPTURE UPVAL U1
+  NAMECALL R1 R1 K4 ["connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_70:
+  GETUPVAL R0 1
+  LOADK R2 K0 ["PlayerBlockedEvent"]
+  NAMECALL R0 R0 K1 ["GetCore"]
+  CALL R0 2 1
+  SETUPVAL R0 0
+  GETUPVAL R0 1
+  LOADK R2 K2 ["PlayerMutedEvent"]
+  NAMECALL R0 R0 K1 ["GetCore"]
+  CALL R0 2 1
+  SETUPVAL R0 2
+  GETUPVAL R0 1
+  LOADK R2 K3 ["PlayerUnblockedEvent"]
+  NAMECALL R0 R0 K1 ["GetCore"]
+  CALL R0 2 1
+  SETUPVAL R0 3
+  GETUPVAL R0 1
+  LOADK R2 K4 ["PlayerUnmutedEvent"]
+  NAMECALL R0 R0 K1 ["GetCore"]
+  CALL R0 2 1
+  SETUPVAL R0 4
+  RETURN R0 0
+
+PROTO_71:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetCurrentChannel"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+56]
+  DUPTABLE R2 K12 [{"ID", "FromSpeaker", "SpeakerUserId", "OriginalChannel", "IsFiltered", "MessageLength", "MessageLengthUtf8", "Message", "MessageType", "Time", "ExtraData"}]
+  LOADN R3 255
+  SETTABLEKS R3 R2 K1 ["ID"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K2 ["FromSpeaker"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K3 ["SpeakerUserId"]
+  GETTABLEKS R3 R1 K13 ["Name"]
+  SETTABLEKS R3 R2 K4 ["OriginalChannel"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K5 ["IsFiltered"]
+  FASTCALL1 STRING_LEN R0 [+3]
+  MOVE R4 R0
+  GETIMPORT R3 K16 [string.len]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K6 ["MessageLength"]
+  GETIMPORT R3 K18 [utf8.len]
+  GETIMPORT R4 K20 [utf8.nfcnormalize]
+  MOVE R5 R0
+  CALL R4 1 -1
+  CALL R3 -1 1
+  SETTABLEKS R3 R2 K7 ["MessageLengthUtf8"]
+  GETGLOBAL R3 K21 ["trimTrailingSpaces"]
+  MOVE R4 R0
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K8 ["Message"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K22 ["MessageTypeSystem"]
+  SETTABLEKS R3 R2 K9 ["MessageType"]
+  GETIMPORT R3 K25 [os.time]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K10 ["Time"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K11 ["ExtraData"]
+  MOVE R5 R2
+  NAMECALL R3 R1 K26 ["AddMessageToChannel"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_72:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["MutePlayerRequest"]
+  NAMECALL R1 R1 K1 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+6]
+  GETTABLEKS R4 R0 K2 ["Name"]
+  NAMECALL R2 R1 K3 ["InvokeServer"]
+  CALL R2 2 -1
+  RETURN R2 -1
+  LOADB R2 0
+  RETURN R2 1
+
+PROTO_73:
+  GETGLOBAL R1 K0 ["MutePlayer"]
+  MOVE R2 R0
+  CALL R1 1 1
+  JUMPIFNOT R1 [+26]
+  LOADNIL R1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R1 R0 K2 ["DisplayName"]
+  JUMP [+2]
+  GETTABLEKS R1 R0 K3 ["Name"]
+  GETGLOBAL R2 K4 ["SendSystemMessageToSelf"]
+  GETUPVAL R3 1
+  LOADK R5 K5 ["GameChat_ChatMain_SpeakerHasBeenBlocked"]
+  GETIMPORT R6 K8 [string.format]
+  LOADK R7 K9 ["Speaker '%s' has been blocked."]
+  MOVE R8 R1
+  CALL R6 2 1
+  DUPTABLE R7 K11 [{"RBX_NAME"}]
+  SETTABLEKS R1 R7 K10 ["RBX_NAME"]
+  NAMECALL R3 R3 K12 ["Get"]
+  CALL R3 4 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_74:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["ShowFriendJoinNotification"]
+  JUMPIFEQKNIL R0 [+5]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["ShowFriendJoinNotification"]
+  RETURN R0 1
+  LOADB R0 0
+  RETURN R0 1
+
+PROTO_75:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["UserId"]
+  NAMECALL R0 R0 K1 ["IsFriendsWith"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_76:
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CALL R1 1 2
+  JUMPIFNOT R1 [+25]
+  JUMPIFNOT R2 [+24]
+  GETTABLEKS R3 R0 K2 ["Name"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R4 [+2]
+  GETTABLEKS R3 R0 K4 ["DisplayName"]
+  GETUPVAL R4 2
+  LOADK R6 K5 ["GameChat_FriendChatNotifier_JoinMessage"]
+  GETIMPORT R7 K8 [string.format]
+  LOADK R8 K9 ["Your friend %s has joined the game."]
+  MOVE R9 R3
+  CALL R7 2 1
+  LOADK R8 K10 ["RBX_NAME"]
+  MOVE R9 R3
+  NAMECALL R4 R4 K11 ["FormatMessageToSend"]
+  CALL R4 5 1
+  GETGLOBAL R5 K12 ["SendSystemMessageToSelf"]
+  MOVE R6 R4
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_77:
+  GETGLOBAL R1 K0 ["MutePlayer"]
+  MOVE R2 R0
+  CALL R1 1 1
+  JUMPIFNOT R1 [+26]
+  LOADNIL R1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R1 R0 K2 ["DisplayName"]
+  JUMP [+2]
+  GETTABLEKS R1 R0 K3 ["Name"]
+  GETGLOBAL R2 K4 ["SendSystemMessageToSelf"]
+  GETUPVAL R3 1
+  LOADK R5 K5 ["GameChat_ChatMain_SpeakerHasBeenMuted"]
+  GETIMPORT R6 K8 [string.format]
+  LOADK R7 K9 ["Speaker '%s' has been muted."]
+  MOVE R8 R1
+  CALL R6 2 1
+  DUPTABLE R7 K11 [{"RBX_NAME"}]
+  SETTABLEKS R1 R7 K10 ["RBX_NAME"]
+  NAMECALL R3 R3 K12 ["Get"]
+  CALL R3 4 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_78:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["UnMutePlayerRequest"]
+  NAMECALL R1 R1 K1 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+6]
+  GETTABLEKS R4 R0 K2 ["Name"]
+  NAMECALL R2 R1 K3 ["InvokeServer"]
+  CALL R2 2 -1
+  RETURN R2 -1
+  LOADB R2 0
+  RETURN R2 1
+
+PROTO_79:
+  GETGLOBAL R1 K0 ["UnmutePlayer"]
+  MOVE R2 R0
+  CALL R1 1 1
+  JUMPIFNOT R1 [+26]
+  LOADNIL R1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R1 R0 K2 ["DisplayName"]
+  JUMP [+2]
+  GETTABLEKS R1 R0 K3 ["Name"]
+  GETGLOBAL R2 K4 ["SendSystemMessageToSelf"]
+  GETUPVAL R3 1
+  LOADK R5 K5 ["GameChat_ChatMain_SpeakerHasBeenUnBlocked"]
+  GETIMPORT R6 K8 [string.format]
+  LOADK R7 K9 ["Speaker '%s' has been unblocked."]
+  MOVE R8 R1
+  CALL R6 2 1
+  DUPTABLE R7 K11 [{"RBX_NAME"}]
+  SETTABLEKS R1 R7 K10 ["RBX_NAME"]
+  NAMECALL R3 R3 K12 ["Get"]
+  CALL R3 4 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_80:
+  GETGLOBAL R1 K0 ["UnmutePlayer"]
+  MOVE R2 R0
+  CALL R1 1 1
+  JUMPIFNOT R1 [+26]
+  LOADNIL R1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R1 R0 K2 ["DisplayName"]
+  JUMP [+2]
+  GETTABLEKS R1 R0 K3 ["Name"]
+  GETGLOBAL R2 K4 ["SendSystemMessageToSelf"]
+  GETUPVAL R3 1
+  LOADK R5 K5 ["GameChat_ChatMain_SpeakerHasBeenUnMuted"]
+  GETIMPORT R6 K8 [string.format]
+  LOADK R7 K9 ["Speaker '%s' has been unmuted."]
+  MOVE R8 R1
+  CALL R6 2 1
+  DUPTABLE R7 K11 [{"RBX_NAME"}]
+  SETTABLEKS R1 R7 K10 ["RBX_NAME"]
+  NAMECALL R3 R3 K12 ["Get"]
+  CALL R3 4 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_81:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["GetBlockedUserIds"]
+  NAMECALL R0 R0 K1 ["GetCore"]
+  CALL R0 2 1
+  LENGTH R1 R0
+  LOADN R2 0
+  JUMPIFNOTLT R2 R1 [+11]
+  GETUPVAL R1 1
+  LOADK R3 K2 ["SetBlockedUserIdsRequest"]
+  NAMECALL R1 R1 K3 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+4]
+  MOVE R4 R0
+  NAMECALL R2 R1 K4 ["FireServer"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_82:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["UserId"]
+  LOADN R1 0
+  JUMPIFNOTLT R1 R0 [+7]
+  GETIMPORT R0 K2 [pcall]
+  DUPCLOSURE R1 K3 [PROTO_81]
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_83:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["UserId"]
+  NAMECALL R0 R0 K1 ["CanUserChatAsync"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_84:
+  GETIMPORT R0 K1 [pcall]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CALL R0 1 2
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R3 3
+  NAMECALL R3 R3 K2 ["IsStudio"]
+  CALL R3 1 1
+  OR R2 R3 R1
+  SETUPVAL R2 2
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  NEWTABLE R0 32 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["Visible"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["IsCoreGuiEnabled"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["TopbarEnabled"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K3 ["VisibilityStateChanged"]
+  LOADB R1 0
+  GETIMPORT R2 K5 [pcall]
+  DUPCLOSURE R3 K6 [PROTO_0]
+  CALL R2 1 2
+  JUMPIFNOT R2 [+1]
+  MOVE R1 R3
+  LOADB R2 0
+  GETIMPORT R3 K5 [pcall]
+  DUPCLOSURE R4 K7 [PROTO_1]
+  CALL R3 1 2
+  AND R2 R3 R4
+  LOADNIL R3
+  GETIMPORT R4 K5 [pcall]
+  DUPCLOSURE R5 K8 [PROTO_2]
+  CALL R4 1 2
+  AND R3 R4 R5
+  GETIMPORT R4 K10 [game]
+  LOADK R6 K11 ["RunService"]
+  NAMECALL R4 R4 K12 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [game]
+  LOADK R7 K13 ["ReplicatedStorage"]
+  NAMECALL R5 R5 K12 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K10 [game]
+  LOADK R8 K14 ["Chat"]
+  NAMECALL R6 R6 K12 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K10 [game]
+  LOADK R9 K15 ["StarterGui"]
+  NAMECALL R7 R7 K12 ["GetService"]
+  CALL R7 2 1
+  GETIMPORT R8 K10 [game]
+  LOADK R10 K16 ["ContextActionService"]
+  NAMECALL R8 R8 K12 ["GetService"]
+  CALL R8 2 1
+  LOADK R11 K17 ["DefaultChatSystemChatEvents"]
+  NAMECALL R9 R5 K18 ["WaitForChild"]
+  CALL R9 2 1
+  LOADK R12 K17 ["DefaultChatSystemChatEvents"]
+  NAMECALL R10 R5 K18 ["WaitForChild"]
+  CALL R10 2 1
+  LOADK R13 K19 ["ClientChatModules"]
+  NAMECALL R11 R6 K18 ["WaitForChild"]
+  CALL R11 2 1
+  GETIMPORT R12 K21 [require]
+  LOADK R15 K22 ["ChatConstants"]
+  NAMECALL R13 R11 K18 ["WaitForChild"]
+  CALL R13 2 -1
+  CALL R12 -1 1
+  GETIMPORT R13 K21 [require]
+  LOADK R16 K23 ["ChatSettings"]
+  NAMECALL R14 R11 K18 ["WaitForChild"]
+  CALL R14 2 -1
+  CALL R13 -1 1
+  LOADK R16 K24 ["MessageCreatorModules"]
+  NAMECALL R14 R11 K18 ["WaitForChild"]
+  CALL R14 2 1
+  GETIMPORT R15 K21 [require]
+  LOADK R18 K25 ["Util"]
+  NAMECALL R16 R14 K18 ["WaitForChild"]
+  CALL R16 2 -1
+  CALL R15 -1 1
+  LOADNIL R16
+  GETIMPORT R17 K5 [pcall]
+  NEWCLOSURE R18 P3
+  CAPTURE REF R16
+  CALL R17 1 0
+  JUMPIFNOTEQKNIL R16 [+6]
+  NEWTABLE R16 0 0
+  DUPCLOSURE R17 K26 [PROTO_4]
+  SETTABLEKS R17 R16 K27 ["Get"]
+  LOADNIL R17
+  JUMPIFNOT R2 [+22]
+  GETIMPORT R18 K29 [script]
+  LOADK R20 K30 ["ChatTranslationEnabled"]
+  NAMECALL R18 R18 K31 ["FindFirstChild"]
+  CALL R18 2 1
+  MOVE R17 R18
+  JUMPIFNOTEQKNIL R17 [+14]
+  LOADNIL R18
+  GETIMPORT R20 K29 [script]
+  GETTABLEKS R19 R20 K32 ["ChildAdded"]
+  NEWCLOSURE R21 P5
+  CAPTURE REF R17
+  CAPTURE REF R18
+  NAMECALL R19 R19 K33 ["Connect"]
+  CALL R19 2 1
+  MOVE R18 R19
+  CLOSEUPVALS R18
+  LOADN R18 10
+  DUPTABLE R19 K44 [{"OnNewMessage", "OnMessageDoneFiltering", "OnNewSystemMessage", "OnChannelJoined", "OnChannelLeft", "OnMuted", "OnUnmuted", "OnMainChannelSet", "SayMessageRequest", "GetInitDataRequest"}]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K34 ["OnNewMessage"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K35 ["OnMessageDoneFiltering"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K36 ["OnNewSystemMessage"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K37 ["OnChannelJoined"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K38 ["OnChannelLeft"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K39 ["OnMuted"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K40 ["OnUnmuted"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K41 ["OnMainChannelSet"]
+  LOADK R20 K45 ["RemoteEvent"]
+  SETTABLEKS R20 R19 K42 ["SayMessageRequest"]
+  LOADK R20 K46 ["RemoteFunction"]
+  SETTABLEKS R20 R19 K43 ["GetInitDataRequest"]
+  NEWTABLE R20 0 0
+  GETIMPORT R21 K49 [Instance.new]
+  LOADK R22 K50 ["BindableEvent"]
+  CALL R21 1 1
+  NEWCLOSURE R22 P6
+  CAPTURE VAL R19
+  CAPTURE VAL R20
+  CAPTURE REF R18
+  SETGLOBAL R22 K51 ["TryRemoveChildWithVerifyingIsCorrectType"]
+  GETIMPORT R22 K53 [pairs]
+  NAMECALL R23 R10 K54 ["GetChildren"]
+  CALL R23 1 -1
+  CALL R22 -1 3
+  FORGPREP_NEXT R22
+  GETGLOBAL R27 K51 ["TryRemoveChildWithVerifyingIsCorrectType"]
+  MOVE R28 R26
+  CALL R27 1 0
+  FORGLOOP R22 2 [-5]
+  LOADN R22 0
+  JUMPIFNOTLT R22 R18 [+20]
+  GETTABLEKS R22 R10 K32 ["ChildAdded"]
+  NEWCLOSURE R24 P7
+  CAPTURE REF R18
+  CAPTURE VAL R21
+  NAMECALL R22 R22 K55 ["connect"]
+  CALL R22 2 1
+  GETTABLEKS R23 R21 K56 ["Event"]
+  NAMECALL R23 R23 K57 ["wait"]
+  CALL R23 1 0
+  NAMECALL R23 R22 K58 ["disconnect"]
+  CALL R23 1 0
+  NAMECALL R23 R21 K59 ["Destroy"]
+  CALL R23 1 0
+  MOVE R10 R20
+  GETIMPORT R22 K10 [game]
+  LOADK R24 K60 ["UserInputService"]
+  NAMECALL R22 R22 K12 ["GetService"]
+  CALL R22 2 1
+  GETIMPORT R23 K10 [game]
+  LOADK R25 K11 ["RunService"]
+  NAMECALL R23 R23 K12 ["GetService"]
+  CALL R23 2 1
+  GETIMPORT R24 K10 [game]
+  LOADK R26 K61 ["Players"]
+  NAMECALL R24 R24 K12 ["GetService"]
+  CALL R24 2 1
+  GETTABLEKS R25 R24 K62 ["LocalPlayer"]
+  JUMPIF R25 [+8]
+  GETTABLEKS R26 R24 K32 ["ChildAdded"]
+  NAMECALL R26 R26 K57 ["wait"]
+  CALL R26 1 0
+  GETTABLEKS R25 R24 K62 ["LocalPlayer"]
+  JUMPBACK [-9]
+  LOADB R26 1
+  LOADN R27 6
+  GETTABLEKS R28 R13 K63 ["ScreenGuiDisplayOrder"]
+  JUMPIFEQKNIL R28 [+3]
+  GETTABLEKS R27 R13 K63 ["ScreenGuiDisplayOrder"]
+  LOADK R30 K64 ["PlayerGui"]
+  NAMECALL R28 R25 K18 ["WaitForChild"]
+  CALL R28 2 1
+  GETIMPORT R29 K49 [Instance.new]
+  LOADK R30 K65 ["ScreenGui"]
+  CALL R29 1 1
+  LOADK R30 K14 ["Chat"]
+  SETTABLEKS R30 R29 K66 ["Name"]
+  LOADB R30 0
+  SETTABLEKS R30 R29 K67 ["ResetOnSpawn"]
+  SETTABLEKS R27 R29 K68 ["DisplayOrder"]
+  SETTABLEKS R28 R29 K69 ["Parent"]
+  JUMPIFNOT R3 [+13]
+  GETIMPORT R30 K10 [game]
+  LOADK R32 K70 ["GuiService"]
+  NAMECALL R30 R30 K12 ["GetService"]
+  CALL R30 2 1
+  NAMECALL R30 R30 K71 ["IsTenFootInterface"]
+  CALL R30 1 1
+  JUMPIFNOT R30 [+3]
+  LOADB R30 0
+  SETTABLEKS R30 R29 K72 ["Enabled"]
+  LOADB R30 0
+  GETIMPORT R31 K29 [script]
+  GETIMPORT R32 K21 [require]
+  LOADK R35 K73 ["ChatWindow"]
+  NAMECALL R33 R31 K18 ["WaitForChild"]
+  CALL R33 2 -1
+  CALL R32 -1 1
+  GETIMPORT R33 K21 [require]
+  LOADK R36 K74 ["ChatBar"]
+  NAMECALL R34 R31 K18 ["WaitForChild"]
+  CALL R34 2 -1
+  CALL R33 -1 1
+  GETIMPORT R34 K21 [require]
+  LOADK R37 K75 ["ChannelsBar"]
+  NAMECALL R35 R31 K18 ["WaitForChild"]
+  CALL R35 2 -1
+  CALL R34 -1 1
+  GETIMPORT R35 K21 [require]
+  LOADK R38 K76 ["MessageLabelCreator"]
+  NAMECALL R36 R31 K18 ["WaitForChild"]
+  CALL R36 2 -1
+  CALL R35 -1 1
+  GETIMPORT R36 K21 [require]
+  LOADK R39 K77 ["MessageLogDisplay"]
+  NAMECALL R37 R31 K18 ["WaitForChild"]
+  CALL R37 2 -1
+  CALL R36 -1 1
+  GETIMPORT R37 K21 [require]
+  LOADK R40 K78 ["ChatChannel"]
+  NAMECALL R38 R31 K18 ["WaitForChild"]
+  CALL R38 2 -1
+  CALL R37 -1 1
+  GETIMPORT R38 K21 [require]
+  LOADK R41 K79 ["CommandProcessor"]
+  NAMECALL R39 R31 K18 ["WaitForChild"]
+  CALL R39 2 -1
+  CALL R38 -1 1
+  GETTABLEKS R39 R32 K48 ["new"]
+  CALL R39 0 1
+  GETTABLEKS R40 R34 K48 ["new"]
+  CALL R40 0 1
+  GETTABLEKS R41 R36 K48 ["new"]
+  CALL R41 0 1
+  GETTABLEKS R42 R38 K48 ["new"]
+  CALL R42 0 1
+  GETTABLEKS R43 R33 K48 ["new"]
+  MOVE R44 R42
+  MOVE R45 R39
+  CALL R43 2 1
+  MOVE R46 R29
+  NAMECALL R44 R39 K80 ["CreateGuiObjects"]
+  CALL R44 2 0
+  MOVE R46 R43
+  NAMECALL R44 R39 K81 ["RegisterChatBar"]
+  CALL R44 2 0
+  MOVE R46 R40
+  NAMECALL R44 R39 K82 ["RegisterChannelsBar"]
+  CALL R44 2 0
+  MOVE R46 R41
+  NAMECALL R44 R39 K83 ["RegisterMessageLogDisplay"]
+  CALL R44 2 0
+  MOVE R46 R39
+  NAMECALL R44 R15 K84 ["RegisterChatWindow"]
+  CALL R44 2 0
+  GETIMPORT R44 K21 [require]
+  LOADK R47 K85 ["MessageSender"]
+  NAMECALL R45 R31 K18 ["WaitForChild"]
+  CALL R45 2 -1
+  CALL R44 -1 1
+  GETTABLEKS R47 R10 K42 ["SayMessageRequest"]
+  NAMECALL R45 R44 K86 ["RegisterSayMessageFunction"]
+  CALL R45 2 0
+  GETTABLEKS R45 R22 K87 ["TouchEnabled"]
+  JUMPIFNOT R45 [+9]
+  LOADK R49 K88 ["GameChat_ChatMain_ChatBarTextTouch"]
+  LOADK R50 K89 ["Tap here to chat"]
+  NAMECALL R47 R16 K27 ["Get"]
+  CALL R47 3 -1
+  NAMECALL R45 R43 K90 ["SetTextLabelText"]
+  CALL R45 -1 0
+  JUMP [+8]
+  LOADK R49 K91 ["GameChat_ChatMain_ChatBarText"]
+  LOADK R50 K92 ["To chat click here or press \"/\" key"]
+  NAMECALL R47 R16 K27 ["Get"]
+  CALL R47 3 -1
+  NAMECALL R45 R43 K90 ["SetTextLabelText"]
+  CALL R45 -1 0
+  GETIMPORT R45 K94 [spawn]
+  DUPCLOSURE R46 K95 [PROTO_8]
+  CAPTURE VAL R31
+  CAPTURE VAL R13
+  CAPTURE VAL R39
+  CALL R45 1 0
+  DUPCLOSURE R45 K96 [PROTO_9]
+  SETGLOBAL R45 K97 ["CheckIfPointIsInSquare"]
+  LOADB R45 0
+  LOADB R46 0
+  LOADN R47 0
+  LOADN R48 0
+  GETIMPORT R49 K49 [Instance.new]
+  LOADK R50 K50 ["BindableEvent"]
+  CALL R49 1 1
+  GETIMPORT R50 K49 [Instance.new]
+  LOADK R51 K50 ["BindableEvent"]
+  CALL R50 1 1
+  GETIMPORT R51 K49 [Instance.new]
+  LOADK R52 K50 ["BindableEvent"]
+  CALL R51 1 1
+  NEWCLOSURE R52 P10
+  CAPTURE REF R48
+  CAPTURE REF R45
+  CAPTURE VAL R49
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  CAPTURE VAL R41
+  CAPTURE VAL R36
+  SETGLOBAL R52 K98 ["DoBackgroundFadeIn"]
+  NEWCLOSURE R52 P11
+  CAPTURE REF R48
+  CAPTURE REF R45
+  CAPTURE VAL R49
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  CAPTURE VAL R41
+  SETGLOBAL R52 K99 ["DoBackgroundFadeOut"]
+  NEWCLOSURE R52 P12
+  CAPTURE REF R47
+  CAPTURE REF R46
+  CAPTURE VAL R49
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  SETGLOBAL R52 K100 ["DoTextFadeIn"]
+  NEWCLOSURE R52 P13
+  CAPTURE REF R47
+  CAPTURE REF R46
+  CAPTURE VAL R49
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  SETGLOBAL R52 K101 ["DoTextFadeOut"]
+  DUPCLOSURE R52 K102 [PROTO_14]
+  CAPTURE VAL R13
+  SETGLOBAL R52 K103 ["DoFadeInFromNewInformation"]
+  DUPCLOSURE R52 K104 [PROTO_15]
+  SETGLOBAL R52 K105 ["InstantFadeIn"]
+  DUPCLOSURE R52 K106 [PROTO_16]
+  SETGLOBAL R52 K107 ["InstantFadeOut"]
+  LOADNIL R52
+  NEWCLOSURE R53 P17
+  CAPTURE REF R52
+  CAPTURE VAL R50
+  CAPTURE VAL R43
+  SETGLOBAL R53 K108 ["UpdateFadingForMouseState"]
+  GETIMPORT R53 K94 [spawn]
+  NEWCLOSURE R54 P18
+  CAPTURE VAL R23
+  CAPTURE REF R52
+  CAPTURE VAL R43
+  CAPTURE VAL R50
+  CAPTURE VAL R51
+  CAPTURE REF R45
+  CAPTURE REF R48
+  CAPTURE VAL R13
+  CAPTURE REF R46
+  CAPTURE REF R47
+  CAPTURE VAL R49
+  CALL R53 1 0
+  DUPCLOSURE R53 K109 [PROTO_19]
+  CAPTURE VAL R13
+  CAPTURE VAL R24
+  SETGLOBAL R53 K110 ["getClassicChatEnabled"]
+  DUPCLOSURE R53 K111 [PROTO_20]
+  CAPTURE VAL R13
+  CAPTURE VAL R24
+  SETGLOBAL R53 K112 ["getBubbleChatEnabled"]
+  DUPCLOSURE R53 K113 [PROTO_21]
+  SETGLOBAL R53 K114 ["bubbleChatOnly"]
+  NEWCLOSURE R53 P22
+  CAPTURE VAL R0
+  CAPTURE VAL R13
+  CAPTURE VAL R39
+  CAPTURE REF R52
+  SETGLOBAL R53 K115 ["UpdateMousePosition"]
+  GETTABLEKS R53 R22 K116 ["InputChanged"]
+  DUPCLOSURE R55 K117 [PROTO_23]
+  NAMECALL R53 R53 K55 ["connect"]
+  CALL R53 2 0
+  GETTABLEKS R53 R22 K118 ["TouchTap"]
+  DUPCLOSURE R55 K119 [PROTO_24]
+  NAMECALL R53 R53 K55 ["connect"]
+  CALL R53 2 0
+  GETTABLEKS R53 R22 K120 ["TouchMoved"]
+  DUPCLOSURE R55 K121 [PROTO_25]
+  NAMECALL R53 R53 K55 ["connect"]
+  CALL R53 2 0
+  GETTABLEKS R53 R22 K122 ["Changed"]
+  DUPCLOSURE R55 K123 [PROTO_26]
+  CAPTURE VAL R22
+  CAPTURE VAL R39
+  CAPTURE VAL R29
+  NAMECALL R53 R53 K55 ["connect"]
+  CALL R53 2 0
+  GETGLOBAL R53 K108 ["UpdateFadingForMouseState"]
+  LOADB R54 1
+  CALL R53 1 0
+  GETGLOBAL R53 K108 ["UpdateFadingForMouseState"]
+  LOADB R54 0
+  CALL R53 1 0
+  NEWTABLE R53 1 0
+  DUPCLOSURE R54 K124 [PROTO_31]
+  SETTABLEKS R54 R53 K125 ["Signal"]
+  DUPCLOSURE R54 K126 [PROTO_32]
+  CAPTURE VAL R39
+  CAPTURE VAL R0
+  SETGLOBAL R54 K127 ["SetVisibility"]
+  LOADNIL R54
+  LOADB R55 1
+  SETTABLEKS R55 R0 K2 ["TopbarEnabled"]
+  LOADN R55 0
+  SETTABLEKS R55 R0 K128 ["MessageCount"]
+  LOADB R55 1
+  SETTABLEKS R55 R0 K0 ["Visible"]
+  LOADB R55 1
+  SETTABLEKS R55 R0 K1 ["IsCoreGuiEnabled"]
+  DUPCLOSURE R55 K129 [PROTO_33]
+  CAPTURE VAL R39
+  SETTABLEKS R55 R0 K130 ["ToggleVisibility"]
+  DUPCLOSURE R55 K131 [PROTO_34]
+  CAPTURE VAL R39
+  SETTABLEKS R55 R0 K132 ["SetVisible"]
+  DUPCLOSURE R55 K133 [PROTO_35]
+  CAPTURE VAL R43
+  SETTABLEKS R55 R0 K134 ["FocusChatBar"]
+  DUPCLOSURE R55 K135 [PROTO_36]
+  CAPTURE VAL R43
+  SETTABLEKS R55 R0 K136 ["EnterWhisperState"]
+  DUPCLOSURE R55 K137 [PROTO_37]
+  CAPTURE VAL R39
+  SETTABLEKS R55 R0 K138 ["GetVisibility"]
+  DUPCLOSURE R55 K139 [PROTO_38]
+  SETTABLEKS R55 R0 K140 ["GetMessageCount"]
+  DUPCLOSURE R55 K141 [PROTO_39]
+  SETTABLEKS R55 R0 K142 ["TopbarEnabledChanged"]
+  DUPCLOSURE R55 K143 [PROTO_40]
+  CAPTURE VAL R43
+  SETTABLEKS R55 R0 K144 ["IsFocused"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K145 ["ChatBarFocusChanged"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K3 ["VisibilityStateChanged"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K146 ["MessagesChanged"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K147 ["MessagePosted"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K148 ["CoreGuiEnabled"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K149 ["ChatMakeSystemMessageEvent"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K150 ["ChatWindowPositionEvent"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K151 ["ChatWindowSizeEvent"]
+  GETTABLEKS R55 R53 K125 ["Signal"]
+  CALL R55 0 1
+  SETTABLEKS R55 R0 K152 ["ChatBarDisabledEvent"]
+  DUPCLOSURE R55 K153 [PROTO_41]
+  CAPTURE VAL R39
+  SETTABLEKS R55 R0 K154 ["fChatWindowPosition"]
+  DUPCLOSURE R55 K155 [PROTO_42]
+  CAPTURE VAL R39
+  SETTABLEKS R55 R0 K156 ["fChatWindowSize"]
+  DUPCLOSURE R55 K157 [PROTO_43]
+  CAPTURE VAL R43
+  SETTABLEKS R55 R0 K158 ["fChatBarDisabled"]
+  NEWCLOSURE R55 P40
+  CAPTURE REF R26
+  CAPTURE REF R54
+  SETTABLEKS R55 R0 K159 ["SpecialKeyPressed"]
+  GETTABLEKS R55 R0 K148 ["CoreGuiEnabled"]
+  DUPCLOSURE R57 K160 [PROTO_45]
+  CAPTURE VAL R0
+  CAPTURE VAL R13
+  CAPTURE VAL R39
+  CAPTURE VAL R43
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  DUPCLOSURE R55 K161 [PROTO_46]
+  SETGLOBAL R55 K162 ["trimTrailingSpaces"]
+  GETTABLEKS R55 R0 K149 ["ChatMakeSystemMessageEvent"]
+  NEWCLOSURE R57 P43
+  CAPTURE REF R30
+  CAPTURE VAL R13
+  CAPTURE VAL R39
+  CAPTURE VAL R12
+  CAPTURE VAL R40
+  CAPTURE VAL R0
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  GETTABLEKS R55 R0 K152 ["ChatBarDisabledEvent"]
+  NEWCLOSURE R57 P44
+  CAPTURE REF R26
+  CAPTURE VAL R43
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  GETTABLEKS R55 R0 K151 ["ChatWindowSizeEvent"]
+  DUPCLOSURE R57 K163 [PROTO_49]
+  CAPTURE VAL R39
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  GETTABLEKS R55 R0 K150 ["ChatWindowPositionEvent"]
+  DUPCLOSURE R57 K164 [PROTO_50]
+  CAPTURE VAL R39
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  DUPCLOSURE R54 K165 [PROTO_51]
+  CAPTURE VAL R39
+  CAPTURE VAL R43
+  CAPTURE VAL R0
+  GETTABLEKS R55 R51 K56 ["Event"]
+  DUPCLOSURE R57 K166 [PROTO_52]
+  CAPTURE VAL R0
+  NAMECALL R55 R55 K55 ["connect"]
+  CALL R55 2 0
+  DUPCLOSURE R55 K167 [PROTO_53]
+  CAPTURE VAL R39
+  SETGLOBAL R55 K168 ["DoSwitchCurrentChannel"]
+  DUPCLOSURE R55 K169 [PROTO_54]
+  CAPTURE VAL R39
+  CAPTURE VAL R12
+  SETGLOBAL R55 K170 ["SendMessageToSelfInTargetChannel"]
+  NEWCLOSURE R55 P51
+  CAPTURE REF R52
+  CAPTURE REF R46
+  CAPTURE VAL R51
+  SETGLOBAL R55 K171 ["chatBarFocused"]
+  DUPCLOSURE R55 K172 [PROTO_56]
+  CAPTURE VAL R51
+  CAPTURE VAL R43
+  CAPTURE VAL R0
+  CAPTURE VAL R42
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  CAPTURE VAL R44
+  SETGLOBAL R55 K173 ["chatBarFocusLost"]
+  NEWTABLE R55 0 0
+  NEWCLOSURE R56 P53
+  CAPTURE REF R55
+  CAPTURE VAL R43
+  SETGLOBAL R56 K174 ["setupChatBarConnections"]
+  GETGLOBAL R56 K174 ["setupChatBarConnections"]
+  CALL R56 0 0
+  GETTABLEKS R56 R43 K175 ["GuiObjectsChanged"]
+  GETGLOBAL R58 K174 ["setupChatBarConnections"]
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  DUPCLOSURE R56 K176 [PROTO_58]
+  CAPTURE VAL R13
+  SETGLOBAL R56 K177 ["getEchoMessagesInGeneral"]
+  GETTABLEKS R57 R10 K35 ["OnMessageDoneFiltering"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  NEWCLOSURE R58 P55
+  CAPTURE VAL R13
+  CAPTURE REF R25
+  CAPTURE VAL R39
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K34 ["OnNewMessage"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  NEWCLOSURE R58 P56
+  CAPTURE VAL R39
+  CAPTURE REF R25
+  CAPTURE VAL R40
+  CAPTURE VAL R13
+  CAPTURE VAL R0
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K36 ["OnNewSystemMessage"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K179 [PROTO_61]
+  CAPTURE VAL R39
+  CAPTURE VAL R40
+  CAPTURE VAL R0
+  CAPTURE VAL R13
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  NEWCLOSURE R56 P58
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  CAPTURE REF R30
+  CAPTURE VAL R43
+  CAPTURE VAL R12
+  CAPTURE REF R16
+  CAPTURE REF R2
+  CAPTURE REF R17
+  SETGLOBAL R56 K180 ["HandleChannelJoined"]
+  GETTABLEKS R57 R10 K37 ["OnChannelJoined"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K181 [PROTO_63]
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K38 ["OnChannelLeft"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K182 [PROTO_64]
+  CAPTURE VAL R39
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K39 ["OnMuted"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K183 [PROTO_65]
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K40 ["OnUnmuted"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K184 [PROTO_66]
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETTABLEKS R57 R10 K41 ["OnMainChannelSet"]
+  GETTABLEKS R56 R57 K178 ["OnClientEvent"]
+  DUPCLOSURE R58 K185 [PROTO_67]
+  NAMECALL R56 R56 K55 ["connect"]
+  CALL R56 2 0
+  GETIMPORT R56 K188 [coroutine.wrap]
+  DUPCLOSURE R57 K189 [PROTO_69]
+  CAPTURE VAL R9
+  CAPTURE VAL R43
+  CALL R56 1 1
+  CALL R56 0 0
+  LOADNIL R56
+  LOADNIL R57
+  LOADNIL R58
+  LOADNIL R59
+  GETIMPORT R60 K5 [pcall]
+  NEWCLOSURE R61 P65
+  CAPTURE REF R56
+  CAPTURE VAL R7
+  CAPTURE REF R57
+  CAPTURE REF R58
+  CAPTURE REF R59
+  CALL R60 1 0
+  DUPCLOSURE R60 K190 [PROTO_71]
+  CAPTURE VAL R39
+  CAPTURE VAL R12
+  SETGLOBAL R60 K191 ["SendSystemMessageToSelf"]
+  DUPCLOSURE R60 K192 [PROTO_72]
+  CAPTURE VAL R9
+  SETGLOBAL R60 K193 ["MutePlayer"]
+  JUMPIFNOT R56 [+8]
+  GETTABLEKS R60 R56 K56 ["Event"]
+  NEWCLOSURE R62 P68
+  CAPTURE VAL R13
+  CAPTURE REF R16
+  NAMECALL R60 R60 K55 ["connect"]
+  CALL R60 2 0
+  JUMPIFNOT R1 [+20]
+  DUPCLOSURE R60 K194 [PROTO_74]
+  CAPTURE VAL R13
+  GETTABLEKS R62 R13 K195 ["ShowFriendJoinNotification"]
+  JUMPIFEQKNIL R62 [+4]
+  GETTABLEKS R61 R13 K195 ["ShowFriendJoinNotification"]
+  JUMP [+1]
+  LOADB R61 0
+  JUMPIFNOT R61 [+9]
+  GETTABLEKS R61 R24 K196 ["PlayerAdded"]
+  NEWCLOSURE R63 P70
+  CAPTURE REF R25
+  CAPTURE VAL R13
+  CAPTURE REF R16
+  NAMECALL R61 R61 K33 ["Connect"]
+  CALL R61 2 0
+  JUMPIFNOT R57 [+8]
+  GETTABLEKS R60 R57 K56 ["Event"]
+  NEWCLOSURE R62 P71
+  CAPTURE VAL R13
+  CAPTURE REF R16
+  NAMECALL R60 R60 K55 ["connect"]
+  CALL R60 2 0
+  DUPCLOSURE R60 K197 [PROTO_78]
+  CAPTURE VAL R9
+  SETGLOBAL R60 K198 ["UnmutePlayer"]
+  JUMPIFNOT R58 [+8]
+  GETTABLEKS R60 R58 K56 ["Event"]
+  NEWCLOSURE R62 P73
+  CAPTURE VAL R13
+  CAPTURE REF R16
+  NAMECALL R60 R60 K55 ["connect"]
+  CALL R60 2 0
+  JUMPIFNOT R59 [+8]
+  GETTABLEKS R60 R59 K56 ["Event"]
+  NEWCLOSURE R62 P74
+  CAPTURE VAL R13
+  CAPTURE REF R16
+  NAMECALL R60 R60 K55 ["connect"]
+  CALL R60 2 0
+  GETIMPORT R60 K94 [spawn]
+  NEWCLOSURE R61 P75
+  CAPTURE REF R25
+  CAPTURE VAL R7
+  CAPTURE VAL R9
+  CALL R60 1 0
+  GETIMPORT R60 K94 [spawn]
+  NEWCLOSURE R61 P76
+  CAPTURE VAL R6
+  CAPTURE REF R25
+  CAPTURE REF R26
+  CAPTURE VAL R23
+  CALL R60 1 0
+  GETTABLEKS R60 R10 K43 ["GetInitDataRequest"]
+  NAMECALL R60 R60 K199 ["InvokeServer"]
+  CALL R60 1 1
+  GETIMPORT R61 K53 [pairs]
+  GETTABLEKS R62 R60 K200 ["Channels"]
+  CALL R61 1 3
+  FORGPREP_NEXT R61
+  GETTABLEN R66 R65 1
+  GETTABLEKS R67 R13 K201 ["GeneralChannelName"]
+  JUMPIFNOTEQ R66 R67 [+10]
+  GETGLOBAL R66 K180 ["HandleChannelJoined"]
+  GETTABLEN R67 R65 1
+  GETTABLEN R68 R65 2
+  GETTABLEN R69 R65 3
+  GETTABLEN R70 R65 4
+  LOADB R71 1
+  LOADB R72 0
+  CALL R66 6 0
+  FORGLOOP R61 2 [-15]
+  GETIMPORT R61 K53 [pairs]
+  GETTABLEKS R62 R60 K200 ["Channels"]
+  CALL R61 1 3
+  FORGPREP_NEXT R61
+  GETTABLEN R66 R65 1
+  GETTABLEKS R67 R13 K201 ["GeneralChannelName"]
+  JUMPIFEQ R66 R67 [+10]
+  GETGLOBAL R66 K180 ["HandleChannelJoined"]
+  GETTABLEN R67 R65 1
+  GETTABLEN R68 R65 2
+  GETTABLEN R69 R65 3
+  GETTABLEN R70 R65 4
+  LOADB R71 1
+  LOADB R72 0
+  CALL R66 6 0
+  FORGLOOP R61 2 [-15]
+  CLOSEUPVALS R2
+  RETURN R0 1

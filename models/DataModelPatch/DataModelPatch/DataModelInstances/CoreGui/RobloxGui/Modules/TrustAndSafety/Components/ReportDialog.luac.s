@@ -1,0 +1,1415 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useContext"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Context"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K2 ["voiceEnabled"]
+  JUMPIF R2 [+2]
+  LOADNIL R2
+  RETURN R2 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  GETUPVAL R3 2
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K4 ["Dictionary"]
+  GETTABLEKS R4 R5 K5 ["join"]
+  MOVE R5 R0
+  NEWTABLE R6 0 0
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"reasonText"}]
+  SETTABLEKS R0 R3 K0 ["reasonText"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"descriptionText"}]
+  SETTABLEKS R0 R3 K0 ["descriptionText"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["getReason"]
+  CALL R2 1 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["sendReport"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["props"]
+  GETTABLEKS R4 R5 K3 ["reportType"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["props"]
+  GETTABLEKS R5 R6 K4 ["targetPlayer"]
+  MOVE R6 R2
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K5 ["state"]
+  GETTABLEKS R7 R8 K6 ["descriptionText"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K1 ["props"]
+  GETTABLEKS R8 R9 K7 ["reportCategory"]
+  MOVE R9 R0
+  MOVE R10 R1
+  CALL R3 7 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["navigateBack"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["state"]
+  GETTABLEKS R1 R2 K3 ["reasonText"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["state"]
+  GETTABLEKS R3 R4 K4 ["descriptionText"]
+  JUMPIFNOTEQKS R3 K5 [""] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["closeDialog"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["state"]
+  GETTABLEKS R1 R2 K3 ["reasonText"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["state"]
+  GETTABLEKS R3 R4 K4 ["descriptionText"]
+  JUMPIFNOTEQKS R3 K5 [""] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["screenshotAnnotated"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["reportCategory"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["reportType"]
+  MOVE R4 R0
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_7:
+  DUPTABLE R1 K2 [{"reasonText", "descriptionText"}]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K0 ["reasonText"]
+  LOADK R2 K3 [""]
+  SETTABLEKS R2 R1 K1 ["descriptionText"]
+  SETTABLEKS R1 R0 K4 ["state"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["onReasonChanged"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K6 ["onTextChanged"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K7 ["onReport"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K8 ["navigateBack"]
+  NEWCLOSURE R1 P4
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K9 ["onCancel"]
+  NEWCLOSURE R1 P5
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K10 ["onScreenshotAnnotated"]
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["reportType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["ReportType"]
+  GETTABLEKS R2 R3 K3 ["Player"]
+  JUMPIFNOTEQ R1 R2 [+6]
+  GETTABLEKS R2 R0 K4 ["state"]
+  GETTABLEKS R1 R2 K5 ["reasonText"]
+  RETURN R1 1
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["reportType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["ReportType"]
+  GETTABLEKS R2 R3 K6 ["Place"]
+  JUMPIFNOTEQ R1 R2 [+3]
+  LOADK R1 K7 ["Inappropriate Content"]
+  RETURN R1 1
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_9:
+  NAMECALL R2 R0 K0 ["getReason"]
+  CALL R2 1 1
+  JUMPIFNOTEQKNIL R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETIMPORT R2 K3 [utf8.len]
+  GETIMPORT R3 K5 [utf8.nfcnormalize]
+  GETTABLEKS R5 R0 K6 ["state"]
+  GETTABLEKS R4 R5 K7 ["descriptionText"]
+  CALL R3 1 -1
+  CALL R2 -1 1
+  LOADB R3 0
+  LOADN R4 0
+  JUMPIFNOTLE R4 R2 [+6]
+  LOADN R4 160
+  JUMPIFLE R2 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  AND R4 R1 R3
+  RETURN R4 1
+
+PROTO_10:
+  GETUPVAL R0 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["targetPlayer"]
+  GETTABLEKS R2 R3 K2 ["UserId"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K3 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K4 ["REPORT_MENU"]
+  NAMECALL R0 R0 K5 ["ToggleMutePlayer"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETTABLEKS R2 R0 K2 ["Theme"]
+  GETUPVAL R3 1
+  CALL R1 2 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"Theme"}]
+  SETTABLEKS R1 R4 K2 ["Theme"]
+  CALL R2 2 1
+  LOADN R3 0
+  GETUPVAL R4 2
+  JUMPIFNOT R4 [+7]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K4 ["props"]
+  GETTABLEKS R4 R5 K5 ["isReportDialogOpen"]
+  JUMPIFNOT R4 [+1]
+  ADDK R3 R3 K6 [1]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  GETUPVAL R5 5
+  DUPTABLE R6 K9 [{"style"}]
+  SETTABLEKS R2 R6 K8 ["style"]
+  NEWTABLE R7 0 1
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  GETUPVAL R9 6
+  DUPTABLE R10 K19 [{"userId", "username", "displayName", "hasVerifiedBadge", "isOnline", "isSelected", "LayoutOrder", "key", "memoKey"}]
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K4 ["props"]
+  GETTABLEKS R12 R13 K20 ["targetPlayer"]
+  GETTABLEKS R11 R12 K21 ["UserId"]
+  SETTABLEKS R11 R10 K10 ["userId"]
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K4 ["props"]
+  GETTABLEKS R12 R13 K20 ["targetPlayer"]
+  GETTABLEKS R11 R12 K22 ["Name"]
+  SETTABLEKS R11 R10 K11 ["username"]
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K4 ["props"]
+  GETTABLEKS R12 R13 K20 ["targetPlayer"]
+  GETTABLEKS R11 R12 K23 ["DisplayName"]
+  SETTABLEKS R11 R10 K12 ["displayName"]
+  GETUPVAL R11 7
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K4 ["props"]
+  GETTABLEKS R12 R13 K20 ["targetPlayer"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K13 ["hasVerifiedBadge"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K14 ["isOnline"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K15 ["isSelected"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K16 ["LayoutOrder"]
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K4 ["props"]
+  GETTABLEKS R13 R14 K20 ["targetPlayer"]
+  GETTABLEKS R12 R13 K21 ["UserId"]
+  FASTCALL1 TOSTRING R12 [+2]
+  GETIMPORT R11 K25 [tostring]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K17 ["key"]
+  SETTABLEKS R3 R10 K18 ["memoKey"]
+  DUPTABLE R11 K27 [{"VoiceIndicator"}]
+  GETUPVAL R13 2
+  JUMPIFNOT R13 [+45]
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K4 ["props"]
+  GETTABLEKS R13 R14 K5 ["isReportDialogOpen"]
+  JUMPIFNOT R13 [+39]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K7 ["createElement"]
+  GETUPVAL R13 8
+  DUPTABLE R14 K32 [{"userId", "hideOnError", "iconStyle", "size", "onClicked"}]
+  GETUPVAL R19 3
+  GETTABLEKS R18 R19 K4 ["props"]
+  GETTABLEKS R17 R18 K20 ["targetPlayer"]
+  GETTABLEKS R16 R17 K21 ["UserId"]
+  FASTCALL1 TOSTRING R16 [+2]
+  GETIMPORT R15 K25 [tostring]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K10 ["userId"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K28 ["hideOnError"]
+  LOADK R15 K33 ["SpeakerLight"]
+  SETTABLEKS R15 R14 K29 ["iconStyle"]
+  GETIMPORT R15 K36 [UDim2.fromOffset]
+  LOADN R16 36
+  LOADN R17 36
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K30 ["size"]
+  NEWCLOSURE R15 P0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U10
+  SETTABLEKS R15 R14 K31 ["onClicked"]
+  CALL R12 2 1
+  JUMPIF R12 [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K26 ["VoiceIndicator"]
+  CALL R8 3 -1
+  SETLIST R7 R8 -1 [1]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_12:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["reportCategory"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Category"]
+  GETTABLEKS R3 R4 K3 ["Voice"]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R2 1
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_13:
+  GETUPVAL R2 0
+  GETTABLE R1 R2 R0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["onReasonChanged"]
+  MOVE R3 R1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_14:
+  NEWTABLE R1 0 0
+  NEWTABLE R2 0 0
+  GETIMPORT R3 K1 [ipairs]
+  GETUPVAL R4 0
+  CALL R3 1 3
+  FORGPREP_INEXT R3
+  LOADK R10 K2 ["menu"]
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R12 R6
+  GETIMPORT R11 K4 [tostring]
+  CALL R11 1 1
+  CONCAT R9 R10 R11
+  GETTABLE R8 R0 R9
+  DUPTABLE R11 K6 [{"text"}]
+  SETTABLEKS R8 R11 K5 ["text"]
+  FASTCALL2 TABLE_INSERT R1 R11 [+4]
+  MOVE R10 R1
+  GETIMPORT R9 K9 [table.insert]
+  CALL R9 2 0
+  SETTABLE R7 R2 R8
+  FORGLOOP R3 2 [inext] [-19]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R2
+  CAPTURE UPVAL U1
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K10 ["createElement"]
+  GETUPVAL R5 3
+  DUPTABLE R6 K18 [{"placeholder", "onChange", "height", "screenSize", "cellDatas", "showDropShadow", "fixedListHeight"}]
+  GETTABLEKS R7 R0 K19 ["placeHolderText"]
+  SETTABLEKS R7 R6 K11 ["placeholder"]
+  SETTABLEKS R3 R6 K12 ["onChange"]
+  GETIMPORT R7 K22 [UDim.new]
+  LOADN R8 0
+  LOADN R9 48
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K13 ["height"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K23 ["props"]
+  GETTABLEKS R7 R8 K14 ["screenSize"]
+  SETTABLEKS R7 R6 K14 ["screenSize"]
+  SETTABLEKS R1 R6 K15 ["cellDatas"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K16 ["showDropShadow"]
+  LOADN R7 171
+  SETTABLEKS R7 R6 K17 ["fixedListHeight"]
+  CALL R4 2 -1
+  RETURN R4 -1
+
+PROTO_15:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isReportDialogOpen"]
+  JUMPIF R1 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createElement"]
+  LOADK R2 K3 ["Frame"]
+  DUPTABLE R3 K8 [{"BackgroundTransparency", "Position", "Size", "ZIndex"}]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["BackgroundTransparency"]
+  GETIMPORT R4 K11 [UDim2.fromOffset]
+  LOADN R5 0
+  LOADN R6 72
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K5 ["Position"]
+  GETIMPORT R4 K13 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 48
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K6 ["Size"]
+  LOADN R4 10
+  SETTABLEKS R4 R3 K7 ["ZIndex"]
+  DUPTABLE R4 K15 [{"DropDown"}]
+  GETUPVAL R5 1
+  DUPTABLE R6 K25 [{"menu1", "menu2", "menu3", "menu4", "menu5", "menu6", "menu7", "menu8", "placeHolderText"}]
+  LOADK R7 K26 ["CoreScripts.InGameMenu.Report.AbuseSwearing"]
+  SETTABLEKS R7 R6 K16 ["menu1"]
+  LOADK R7 K27 ["CoreScripts.InGameMenu.Report.AbuseUsername"]
+  SETTABLEKS R7 R6 K17 ["menu2"]
+  LOADK R7 K28 ["CoreScripts.InGameMenu.Report.AbuseBullying"]
+  SETTABLEKS R7 R6 K18 ["menu3"]
+  LOADK R7 K29 ["CoreScripts.InGameMenu.Report.AbuseScamming"]
+  SETTABLEKS R7 R6 K19 ["menu4"]
+  LOADK R7 K30 ["CoreScripts.InGameMenu.Report.AbuseDating"]
+  SETTABLEKS R7 R6 K20 ["menu5"]
+  LOADK R7 K31 ["CoreScripts.InGameMenu.Report.AbuseExploiting"]
+  SETTABLEKS R7 R6 K21 ["menu6"]
+  LOADK R7 K32 ["CoreScripts.InGameMenu.Report.AbusePersonalQuestion"]
+  SETTABLEKS R7 R6 K22 ["menu7"]
+  LOADK R7 K33 ["CoreScripts.InGameMenu.Report.AbuseOffsiteLink"]
+  SETTABLEKS R7 R6 K23 ["menu8"]
+  LOADK R7 K34 ["CoreScripts.InGameMenu.Report.AbuseTypePlaceHolder"]
+  SETTABLEKS R7 R6 K24 ["placeHolderText"]
+  CALL R5 1 1
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K14 ["DropDown"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_16:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K4 [{"PlayerInfo", "DropDownMenu", "TextField"}]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K5 ["renderPlayerInfo"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K1 ["PlayerInfo"]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K6 ["renderDropDownMenu"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K2 ["DropDownMenu"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K7 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K16 [{"enabled", "text", "textChanged", "maxTextLength", "autoFocusOnEnabled", "PlaceholderText", "Position", "Size"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K17 ["props"]
+  GETTABLEKS R6 R7 K18 ["isReportDialogOpen"]
+  SETTABLEKS R6 R5 K8 ["enabled"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K19 ["state"]
+  GETTABLEKS R6 R7 K20 ["descriptionText"]
+  SETTABLEKS R6 R5 K9 ["text"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K21 ["onTextChanged"]
+  SETTABLEKS R6 R5 K10 ["textChanged"]
+  LOADN R6 160
+  SETTABLEKS R6 R5 K11 ["maxTextLength"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K12 ["autoFocusOnEnabled"]
+  GETTABLEKS R6 R0 K22 ["placeHolderText"]
+  SETTABLEKS R6 R5 K13 ["PlaceholderText"]
+  GETIMPORT R6 K25 [UDim2.fromOffset]
+  LOADN R7 0
+  LOADN R8 132
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K14 ["Position"]
+  GETIMPORT R6 K27 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 1
+  LOADN R10 124
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K15 ["Size"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K3 ["TextField"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_17:
+  GETUPVAL R1 0
+  DUPTABLE R2 K1 [{"placeHolderText"}]
+  LOADK R3 K2 ["CoreScripts.InGameMenu.Report.AbuseDetailsPlaceHolder"]
+  SETTABLEKS R3 R2 K0 ["placeHolderText"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_18:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"PlaceInfo", "TextField"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  LOADK R4 K5 ["Frame"]
+  DUPTABLE R5 K9 [{"BackgroundTransparency", "Position", "Size"}]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K6 ["BackgroundTransparency"]
+  GETIMPORT R6 K12 [UDim2.fromOffset]
+  LOADN R7 0
+  LOADN R8 24
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K7 ["Position"]
+  GETIMPORT R6 K14 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 64
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K8 ["Size"]
+  DUPTABLE R6 K17 [{"GameIcon", "Label"}]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 1
+  DUPTABLE R9 K21 [{"gameId", "iconSize", "cornerRadius"}]
+  GETIMPORT R11 K23 [game]
+  GETTABLEKS R10 R11 K24 ["GameId"]
+  SETTABLEKS R10 R9 K18 ["gameId"]
+  LOADN R10 64
+  SETTABLEKS R10 R9 K19 ["iconSize"]
+  GETIMPORT R10 K26 [UDim.new]
+  LOADN R11 0
+  LOADN R12 8
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K20 ["cornerRadius"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K15 ["GameIcon"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 2
+  DUPTABLE R9 K33 [{"fontKey", "themeKey", "AnchorPoint", "BackgroundTransparency", "Position", "Size", "Text", "TextWrapped", "TextXAlignment"}]
+  LOADK R10 K34 ["Body"]
+  SETTABLEKS R10 R9 K27 ["fontKey"]
+  LOADK R10 K35 ["TextDefault"]
+  SETTABLEKS R10 R9 K28 ["themeKey"]
+  GETIMPORT R10 K37 [Vector2.new]
+  LOADN R11 0
+  LOADK R12 K38 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K29 ["AnchorPoint"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K6 ["BackgroundTransparency"]
+  GETIMPORT R10 K14 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 76
+  LOADK R13 K38 [0.5]
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K7 ["Position"]
+  GETIMPORT R10 K14 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 180
+  LOADN R13 0
+  LOADN R14 40
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K8 ["Size"]
+  GETTABLEKS R10 R0 K39 ["labelText"]
+  SETTABLEKS R10 R9 K30 ["Text"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K31 ["TextWrapped"]
+  GETIMPORT R10 K42 [Enum.TextXAlignment.Left]
+  SETTABLEKS R10 R9 K32 ["TextXAlignment"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K16 ["Label"]
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K1 ["PlaceInfo"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 3
+  DUPTABLE R5 K49 [{"enabled", "text", "textChanged", "maxTextLength", "autoFocusOnEnabled", "PlaceholderText", "Position", "Size"}]
+  GETUPVAL R8 4
+  GETTABLEKS R7 R8 K50 ["props"]
+  GETTABLEKS R6 R7 K51 ["isReportDialogOpen"]
+  SETTABLEKS R6 R5 K43 ["enabled"]
+  GETUPVAL R8 4
+  GETTABLEKS R7 R8 K52 ["state"]
+  GETTABLEKS R6 R7 K53 ["descriptionText"]
+  SETTABLEKS R6 R5 K44 ["text"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K54 ["onTextChanged"]
+  SETTABLEKS R6 R5 K45 ["textChanged"]
+  LOADN R6 160
+  SETTABLEKS R6 R5 K46 ["maxTextLength"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K47 ["autoFocusOnEnabled"]
+  GETTABLEKS R6 R0 K55 ["placeHolderText"]
+  SETTABLEKS R6 R5 K48 ["PlaceholderText"]
+  GETIMPORT R6 K12 [UDim2.fromOffset]
+  LOADN R7 0
+  LOADN R8 112
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K7 ["Position"]
+  GETIMPORT R6 K14 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 1
+  LOADN R10 144
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K8 ["Size"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["TextField"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_19:
+  GETUPVAL R1 0
+  DUPTABLE R2 K2 [{"labelText", "placeHolderText"}]
+  NEWTABLE R3 1 1
+  LOADK R4 K3 ["CoreScripts.InGameMenu.Report.ReportingGame"]
+  SETLIST R3 R4 1 [1]
+  GETTABLEKS R6 R0 K4 ["props"]
+  GETTABLEKS R5 R6 K5 ["placeName"]
+  SETTABLEKS R5 R3 K6 ["RBX_NAME"]
+  SETTABLEKS R3 R2 K0 ["labelText"]
+  LOADK R3 K7 ["CoreScripts.InGameMenu.Report.AbuseDetailsPlaceHolder"]
+  SETTABLEKS R3 R2 K1 ["placeHolderText"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_20:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["reportType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["ReportType"]
+  GETTABLEKS R2 R3 K3 ["Player"]
+  JUMPIFNOTEQ R1 R2 [+5]
+  NAMECALL R1 R0 K4 ["renderPlayerContents"]
+  CALL R1 1 -1
+  RETURN R1 -1
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["reportType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["ReportType"]
+  GETTABLEKS R2 R3 K5 ["Place"]
+  JUMPIFNOTEQ R1 R2 [+5]
+  NAMECALL R1 R0 K6 ["renderPlaceContents"]
+  CALL R1 1 -1
+  RETURN R1 -1
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_21:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["reportType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["ReportType"]
+  GETTABLEKS R2 R3 K3 ["Place"]
+  JUMPIFNOTEQ R1 R2 [+9]
+  GETUPVAL R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["Category"]
+  GETTABLEKS R3 R4 K5 ["Experience"]
+  GETTABLE R1 R2 R3
+  RETURN R1 1
+  GETUPVAL R3 1
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K7 ["reportCategory"]
+  GETTABLE R2 R3 R4
+  ORK R1 R2 K6 ["CoreScripts.InGameMenu.Report.ReportTitle"]
+  RETURN R1 1
+
+PROTO_22:
+  RETURN R0 0
+
+PROTO_23:
+  RETURN R0 0
+
+PROTO_24:
+  RETURN R0 0
+
+PROTO_25:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["onReport"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["toastDefaultTitle"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["toastDefaultDescription"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_26:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+94]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["currentPage"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K2 ["Page"]
+  GETTABLEKS R2 R3 K3 ["ScreenshotDialog"]
+  JUMPIFNOTEQ R1 R2 [+83]
+  GETUPVAL R1 3
+  CALL R1 0 1
+  JUMPIFNOT R1 [+33]
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K4 ["createElement"]
+  GETUPVAL R2 5
+  DUPTABLE R3 K12 [{"dismissAction", "titleText", "entryPoint", "screenshot", "skipAnnotationAction", "restartAction", "reportAction"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K13 ["onCancel"]
+  SETTABLEKS R4 R3 K5 ["dismissAction"]
+  LOADK R4 K14 ["Highlight What's Wrong"]
+  SETTABLEKS R4 R3 K6 ["titleText"]
+  LOADK R4 K15 ["experience"]
+  SETTABLEKS R4 R3 K7 ["entryPoint"]
+  GETUPVAL R4 6
+  NAMECALL R4 R4 K16 ["GetScreenshotContentId"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K8 ["screenshot"]
+  DUPCLOSURE R4 K17 [PROTO_22]
+  SETTABLEKS R4 R3 K9 ["skipAnnotationAction"]
+  DUPCLOSURE R4 K18 [PROTO_23]
+  SETTABLEKS R4 R3 K10 ["restartAction"]
+  DUPCLOSURE R4 K19 [PROTO_24]
+  SETTABLEKS R4 R3 K11 ["reportAction"]
+  CALL R1 2 -1
+  RETURN R1 -1
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K4 ["createElement"]
+  GETUPVAL R2 7
+  DUPTABLE R3 K22 [{"screenshot", "titleText", "backAction", "dismissAction", "reportAction", "initialAnnotationPoints"}]
+  GETUPVAL R4 6
+  NAMECALL R4 R4 K16 ["GetScreenshotContentId"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K8 ["screenshot"]
+  LOADK R4 K14 ["Highlight What's Wrong"]
+  SETTABLEKS R4 R3 K6 ["titleText"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["props"]
+  GETTABLEKS R5 R6 K23 ["canNavigateBack"]
+  JUMPIFNOT R5 [+4]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K24 ["navigateBack"]
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K20 ["backAction"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K13 ["onCancel"]
+  SETTABLEKS R4 R3 K5 ["dismissAction"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K25 ["onScreenshotAnnotated"]
+  SETTABLEKS R4 R3 K11 ["reportAction"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K26 ["screenshotAnnotationPoints"]
+  SETTABLEKS R4 R3 K21 ["initialAnnotationPoints"]
+  CALL R1 2 -1
+  RETURN R1 -1
+  GETUPVAL R2 8
+  GETTABLEKS R1 R2 K4 ["createElement"]
+  GETUPVAL R2 9
+  DUPTABLE R3 K33 [{"visible", "screenSize", "titleText", "contents", "actionButtons", "onDismiss", "onBackButtonActivated"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K34 ["isReportDialogOpen"]
+  SETTABLEKS R4 R3 K27 ["visible"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K28 ["screenSize"]
+  SETTABLEKS R4 R3 K28 ["screenSize"]
+  GETTABLEKS R4 R0 K6 ["titleText"]
+  SETTABLEKS R4 R3 K6 ["titleText"]
+  GETUPVAL R5 8
+  GETTABLEKS R4 R5 K4 ["createElement"]
+  LOADK R5 K35 ["Frame"]
+  DUPTABLE R6 K38 [{"BackgroundTransparency", "Size"}]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K36 ["BackgroundTransparency"]
+  GETIMPORT R7 K41 [UDim2.fromScale]
+  LOADN R8 1
+  LOADN R9 1
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K37 ["Size"]
+  DUPTABLE R7 K44 [{"Padding", "Contents"}]
+  GETUPVAL R9 8
+  GETTABLEKS R8 R9 K4 ["createElement"]
+  LOADK R9 K45 ["UIPadding"]
+  DUPTABLE R10 K48 [{"PaddingLeft", "PaddingRight"}]
+  GETIMPORT R11 K51 [UDim.new]
+  LOADN R12 0
+  LOADN R13 24
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K46 ["PaddingLeft"]
+  GETIMPORT R11 K51 [UDim.new]
+  LOADN R12 0
+  LOADN R13 24
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K47 ["PaddingRight"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K42 ["Padding"]
+  GETUPVAL R8 1
+  NAMECALL R8 R8 K52 ["renderContents"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K43 ["Contents"]
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K29 ["contents"]
+  GETUPVAL R5 8
+  GETTABLEKS R4 R5 K4 ["createElement"]
+  GETUPVAL R5 10
+  DUPTABLE R6 K55 [{"buttonHeight", "buttons"}]
+  LOADN R7 48
+  SETTABLEKS R7 R6 K53 ["buttonHeight"]
+  NEWTABLE R7 0 2
+  DUPTABLE R8 K57 [{"buttonType", "props"}]
+  GETUPVAL R10 11
+  GETTABLEKS R9 R10 K58 ["Secondary"]
+  SETTABLEKS R9 R8 K56 ["buttonType"]
+  DUPTABLE R9 K61 [{"onActivated", "text"}]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K13 ["onCancel"]
+  SETTABLEKS R10 R9 K59 ["onActivated"]
+  GETTABLEKS R10 R0 K62 ["cancelText"]
+  SETTABLEKS R10 R9 K60 ["text"]
+  SETTABLEKS R9 R8 K0 ["props"]
+  DUPTABLE R9 K57 [{"buttonType", "props"}]
+  GETUPVAL R11 11
+  GETTABLEKS R10 R11 K63 ["PrimarySystem"]
+  SETTABLEKS R10 R9 K56 ["buttonType"]
+  DUPTABLE R10 K65 [{"isDisabled", "onActivated", "text"}]
+  GETUPVAL R12 1
+  NAMECALL R12 R12 K66 ["canReport"]
+  CALL R12 1 1
+  NOT R11 R12
+  SETTABLEKS R11 R10 K64 ["isDisabled"]
+  NEWCLOSURE R11 P3
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  SETTABLEKS R11 R10 K59 ["onActivated"]
+  GETTABLEKS R11 R0 K67 ["reportText"]
+  SETTABLEKS R11 R10 K60 ["text"]
+  SETTABLEKS R10 R9 K0 ["props"]
+  SETLIST R7 R8 2 [1]
+  SETTABLEKS R7 R6 K54 ["buttons"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K30 ["actionButtons"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K13 ["onCancel"]
+  SETTABLEKS R4 R3 K31 ["onDismiss"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["props"]
+  GETTABLEKS R5 R6 K23 ["canNavigateBack"]
+  JUMPIFNOT R5 [+4]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K24 ["navigateBack"]
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K32 ["onBackButtonActivated"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_27:
+  GETUPVAL R1 0
+  DUPTABLE R2 K5 [{"titleText", "cancelText", "reportText", "toastDefaultTitle", "toastDefaultDescription"}]
+  NAMECALL R3 R0 K6 ["categoryTitle"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K0 ["titleText"]
+  LOADK R3 K7 ["CoreScripts.InGameMenu.Cancel"]
+  SETTABLEKS R3 R2 K1 ["cancelText"]
+  LOADK R3 K8 ["CoreScripts.InGameMenu.Report.SendReport"]
+  SETTABLEKS R3 R2 K2 ["reportText"]
+  LOADK R3 K9 ["CoreScripts.InGameMenu.Report.Confirmation.ThanksForReport"]
+  SETTABLEKS R3 R2 K3 ["toastDefaultTitle"]
+  LOADK R3 K10 ["CoreScripts.InGameMenu.Report.Confirmation.ThanksForReportDescription"]
+  SETTABLEKS R3 R2 K4 ["toastDefaultDescription"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_28:
+  GETTABLEKS R2 R1 K0 ["isReportDialogOpen"]
+  JUMPIFNOT R2 [+17]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K0 ["isReportDialogOpen"]
+  JUMPIF R2 [+12]
+  DUPTABLE R4 K4 [{"reasonText", "descriptionText"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K5 ["None"]
+  SETTABLEKS R5 R4 K2 ["reasonText"]
+  LOADK R5 K6 [""]
+  SETTABLEKS R5 R4 K3 ["descriptionText"]
+  NAMECALL R2 R0 K7 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_29:
+  DUPTABLE R2 K9 [{"reportCategory", "isReportDialogOpen", "currentPage", "reportType", "targetPlayer", "canNavigateBack", "placeName", "screenSize", "screenshotAnnotationPoints"}]
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K0 ["reportCategory"]
+  SETTABLEKS R3 R2 K0 ["reportCategory"]
+  GETTABLEKS R5 R0 K10 ["report"]
+  GETTABLEKS R4 R5 K2 ["currentPage"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K11 ["Page"]
+  GETTABLEKS R5 R6 K12 ["ReportForm"]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K1 ["isReportDialogOpen"]
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K2 ["currentPage"]
+  SETTABLEKS R3 R2 K2 ["currentPage"]
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K3 ["reportType"]
+  SETTABLEKS R3 R2 K3 ["reportType"]
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K4 ["targetPlayer"]
+  SETTABLEKS R3 R2 K4 ["targetPlayer"]
+  GETTABLEKS R6 R0 K10 ["report"]
+  GETTABLEKS R5 R6 K13 ["history"]
+  LENGTH R4 R5
+  LOADN R5 1
+  JUMPIFLT R5 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K5 ["canNavigateBack"]
+  GETTABLEKS R4 R0 K14 ["placeInfo"]
+  GETTABLEKS R3 R4 K15 ["name"]
+  SETTABLEKS R3 R2 K6 ["placeName"]
+  GETTABLEKS R4 R0 K16 ["displayOptions"]
+  GETTABLEKS R3 R4 K7 ["screenSize"]
+  SETTABLEKS R3 R2 K7 ["screenSize"]
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K8 ["screenshotAnnotationPoints"]
+  SETTABLEKS R3 R2 K8 ["screenshotAnnotationPoints"]
+  RETURN R2 1
+
+PROTO_30:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  CALL R3 0 -1
+  CALL R2 -1 0
+  GETUPVAL R2 2
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K0 ["Page"]
+  GETTABLEKS R3 R4 K1 ["ReportForm"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K2 ["Analytics"]
+  GETTABLEKS R4 R5 K3 ["ReportFlowBack"]
+  DUPTABLE R5 K7 [{"source", "reason", "descriptionTextChanged"}]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K0 ["Page"]
+  GETTABLEKS R6 R7 K1 ["ReportForm"]
+  SETTABLEKS R6 R5 K4 ["source"]
+  SETTABLEKS R0 R5 K5 ["reason"]
+  SETTABLEKS R1 R5 K6 ["descriptionTextChanged"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_31:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  CALL R3 0 -1
+  CALL R2 -1 0
+  GETUPVAL R2 2
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K0 ["Page"]
+  GETTABLEKS R3 R4 K1 ["ReportForm"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K2 ["Analytics"]
+  GETTABLEKS R4 R5 K3 ["ReportFlowAbandoned"]
+  DUPTABLE R5 K7 [{"source", "reason", "descriptionTextChanged"}]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K0 ["Page"]
+  GETTABLEKS R6 R7 K1 ["ReportForm"]
+  SETTABLEKS R6 R5 K4 ["source"]
+  SETTABLEKS R0 R5 K5 ["reason"]
+  SETTABLEKS R1 R5 K6 ["descriptionTextChanged"]
+  CALL R2 3 0
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K8 ["endAbuseReportSession"]
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_32:
+  GETUPVAL R3 0
+  GETUPVAL R4 1
+  MOVE R5 R2
+  CALL R4 1 -1
+  CALL R3 -1 0
+  GETUPVAL R3 0
+  GETUPVAL R4 2
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  CALL R4 3 -1
+  CALL R3 -1 0
+  RETURN R0 0
+
+PROTO_33:
+  GETUPVAL R7 0
+  GETUPVAL R8 1
+  MOVE R9 R0
+  MOVE R10 R1
+  MOVE R11 R2
+  MOVE R12 R3
+  MOVE R13 R4
+  MOVE R14 R5
+  MOVE R15 R6
+  CALL R8 7 -1
+  CALL R7 -1 0
+  RETURN R0 0
+
+PROTO_34:
+  DUPTABLE R1 K4 [{"navigateBack", "closeDialog", "screenshotAnnotated", "sendReport"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R1 K0 ["navigateBack"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U4
+  SETTABLEKS R2 R1 K1 ["closeDialog"]
+  NEWCLOSURE R2 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R2 R1 K2 ["screenshotAnnotated"]
+  NEWCLOSURE R2 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U7
+  SETTABLEKS R2 R1 K3 ["sendReport"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R0 K6 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["UIBlox"]
+  CALL R5 1 1
+  GETIMPORT R8 K13 [script]
+  GETTABLEKS R7 R8 K14 ["Parent"]
+  GETTABLEKS R6 R7 K14 ["Parent"]
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R6 K15 ["Dependencies"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R7 K16 ["GameIcon"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R10 R7 K17 ["PlayerCell"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R11 R7 K18 ["ThemedTextLabel"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETTABLEKS R12 R7 K19 ["withLocalization"]
+  CALL R11 1 1
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R13 R7 K20 ["playerInterface"]
+  CALL R12 1 1
+  GETIMPORT R13 K5 [require]
+  GETTABLEKS R15 R6 K21 ["Actions"]
+  GETTABLEKS R14 R15 K22 ["NavigateBack"]
+  CALL R13 1 1
+  GETIMPORT R14 K5 [require]
+  GETTABLEKS R16 R6 K21 ["Actions"]
+  GETTABLEKS R15 R16 K23 ["EndReportFlow"]
+  CALL R14 1 1
+  GETIMPORT R15 K5 [require]
+  GETTABLEKS R17 R6 K24 ["Resources"]
+  GETTABLEKS R16 R17 K25 ["Constants"]
+  CALL R15 1 1
+  GETIMPORT R16 K5 [require]
+  GETTABLEKS R18 R6 K26 ["Thunks"]
+  GETTABLEKS R17 R18 K27 ["SendReport"]
+  CALL R16 1 1
+  GETIMPORT R17 K5 [require]
+  GETTABLEKS R19 R6 K28 ["Components"]
+  GETTABLEKS R18 R19 K29 ["TextEntryField"]
+  CALL R17 1 1
+  GETIMPORT R18 K5 [require]
+  GETTABLEKS R20 R6 K28 ["Components"]
+  GETTABLEKS R19 R20 K30 ["ModalDialog"]
+  CALL R18 1 1
+  GETIMPORT R19 K5 [require]
+  GETTABLEKS R22 R6 K28 ["Components"]
+  GETTABLEKS R21 R22 K31 ["ReportAnything"]
+  GETTABLEKS R20 R21 K32 ["ScreenshotDialog"]
+  CALL R19 1 1
+  GETIMPORT R20 K5 [require]
+  GETTABLEKS R23 R6 K28 ["Components"]
+  GETTABLEKS R22 R23 K31 ["ReportAnything"]
+  GETTABLEKS R21 R22 K33 ["ScreenshotFlowStepHandler"]
+  CALL R20 1 1
+  GETIMPORT R21 K5 [require]
+  GETTABLEKS R23 R6 K34 ["Utility"]
+  GETTABLEKS R22 R23 K35 ["SendAnalytics"]
+  CALL R21 1 1
+  GETIMPORT R22 K5 [require]
+  GETTABLEKS R24 R6 K34 ["Utility"]
+  GETTABLEKS R23 R24 K36 ["SessionUtility"]
+  CALL R22 1 1
+  GETIMPORT R23 K5 [require]
+  GETTABLEKS R25 R6 K34 ["Utility"]
+  GETTABLEKS R24 R25 K37 ["ScreenshotHelper"]
+  CALL R23 1 1
+  GETIMPORT R24 K5 [require]
+  GETTABLEKS R26 R6 K38 ["Flags"]
+  GETTABLEKS R25 R26 K39 ["GetFFlagReportAnythingScreenshot"]
+  CALL R24 1 1
+  GETIMPORT R25 K5 [require]
+  GETTABLEKS R27 R6 K38 ["Flags"]
+  GETTABLEKS R26 R27 K40 ["GetFFlagReportAnythingMultistepScreenshot"]
+  CALL R25 1 1
+  GETIMPORT R26 K5 [require]
+  GETTABLEKS R28 R6 K21 ["Actions"]
+  GETTABLEKS R27 R28 K41 ["ScreenshotAnnotated"]
+  CALL R26 1 1
+  GETIMPORT R27 K5 [require]
+  GETTABLEKS R29 R6 K26 ["Thunks"]
+  GETTABLEKS R28 R29 K42 ["FilterIdentifiedAvatars"]
+  CALL R27 1 1
+  GETTABLEKS R30 R5 K43 ["Core"]
+  GETTABLEKS R29 R30 K44 ["Style"]
+  GETTABLEKS R28 R29 K45 ["Provider"]
+  GETTABLEKS R31 R5 K43 ["Core"]
+  GETTABLEKS R30 R31 K44 ["Style"]
+  GETTABLEKS R29 R30 K46 ["withStyle"]
+  GETTABLEKS R32 R5 K47 ["App"]
+  GETTABLEKS R31 R32 K48 ["Button"]
+  GETTABLEKS R30 R31 K49 ["ButtonStack"]
+  GETTABLEKS R34 R5 K47 ["App"]
+  GETTABLEKS R33 R34 K48 ["Button"]
+  GETTABLEKS R32 R33 K50 ["Enum"]
+  GETTABLEKS R31 R32 K51 ["ButtonType"]
+  GETTABLEKS R34 R5 K47 ["App"]
+  GETTABLEKS R33 R34 K44 ["Style"]
+  GETTABLEKS R32 R33 K52 ["Colors"]
+  GETTABLEKS R35 R5 K47 ["App"]
+  GETTABLEKS R34 R35 K53 ["Menu"]
+  GETTABLEKS R33 R34 K54 ["DropdownMenu"]
+  GETIMPORT R34 K5 [require]
+  GETTABLEKS R37 R0 K55 ["Workspace"]
+  GETTABLEKS R36 R37 K6 ["Packages"]
+  GETTABLEKS R35 R36 K56 ["UserLib"]
+  CALL R34 1 1
+  GETTABLEKS R36 R34 K57 ["Utils"]
+  GETTABLEKS R35 R36 K58 ["isPlayerVerified"]
+  GETIMPORT R36 K1 [game]
+  LOADK R38 K59 ["CoreGui"]
+  NAMECALL R36 R36 K3 ["GetService"]
+  CALL R36 2 1
+  LOADK R39 K60 ["RobloxGui"]
+  NAMECALL R37 R36 K61 ["WaitForChild"]
+  CALL R37 2 1
+  GETIMPORT R39 K5 [require]
+  GETTABLEKS R42 R37 K62 ["Modules"]
+  GETTABLEKS R41 R42 K63 ["VoiceChat"]
+  GETTABLEKS R40 R41 K64 ["VoiceChatServiceManager"]
+  CALL R39 1 1
+  GETTABLEKS R38 R39 K65 ["default"]
+  GETIMPORT R39 K5 [require]
+  GETTABLEKS R43 R37 K62 ["Modules"]
+  GETTABLEKS R42 R43 K63 ["VoiceChat"]
+  GETTABLEKS R41 R42 K28 ["Components"]
+  GETTABLEKS R40 R41 K66 ["VoiceIndicatorFunc"]
+  CALL R39 1 1
+  GETIMPORT R40 K5 [require]
+  GETTABLEKS R43 R37 K62 ["Modules"]
+  GETTABLEKS R42 R43 K63 ["VoiceChat"]
+  GETTABLEKS R41 R42 K67 ["VoiceStateContext"]
+  CALL R40 1 1
+  GETIMPORT R41 K5 [require]
+  GETTABLEKS R44 R37 K62 ["Modules"]
+  GETTABLEKS R43 R44 K63 ["VoiceChat"]
+  GETTABLEKS R42 R43 K25 ["Constants"]
+  CALL R41 1 1
+  GETIMPORT R42 K5 [require]
+  GETTABLEKS R44 R0 K6 ["Packages"]
+  GETTABLEKS R43 R44 K68 ["React"]
+  CALL R42 1 1
+  DUPCLOSURE R43 K69 [PROTO_0]
+  CAPTURE VAL R42
+  CAPTURE VAL R40
+  CAPTURE VAL R39
+  CAPTURE VAL R1
+  NEWTABLE R44 0 8
+  LOADK R45 K70 ["Swearing"]
+  LOADK R46 K71 ["Inappropriate Username"]
+  LOADK R47 K72 ["Bullying"]
+  LOADK R48 K73 ["Scamming"]
+  LOADK R49 K74 ["Dating"]
+  LOADK R50 K75 ["Cheating/Exploiting"]
+  LOADK R51 K76 ["Personal Question"]
+  LOADK R52 K77 ["Offsite Links"]
+  SETLIST R44 R45 8 [1]
+  DUPTABLE R45 K81 [{"BackgroundDefault", "BackgroundOnHover", "BackgroundOnPress"}]
+  DUPTABLE R46 K84 [{"Color", "Transparency"}]
+  GETTABLEKS R47 R32 K85 ["Flint"]
+  SETTABLEKS R47 R46 K82 ["Color"]
+  LOADN R47 1
+  SETTABLEKS R47 R46 K83 ["Transparency"]
+  SETTABLEKS R46 R45 K78 ["BackgroundDefault"]
+  DUPTABLE R46 K84 [{"Color", "Transparency"}]
+  GETTABLEKS R47 R32 K85 ["Flint"]
+  SETTABLEKS R47 R46 K82 ["Color"]
+  LOADN R47 1
+  SETTABLEKS R47 R46 K83 ["Transparency"]
+  SETTABLEKS R46 R45 K79 ["BackgroundOnHover"]
+  DUPTABLE R46 K84 [{"Color", "Transparency"}]
+  GETTABLEKS R47 R32 K85 ["Flint"]
+  SETTABLEKS R47 R46 K82 ["Color"]
+  LOADN R47 1
+  SETTABLEKS R47 R46 K83 ["Transparency"]
+  SETTABLEKS R46 R45 K80 ["BackgroundOnPress"]
+  GETTABLEKS R46 R2 K86 ["PureComponent"]
+  LOADK R48 K87 ["ReportDialog"]
+  NAMECALL R46 R46 K88 ["extend"]
+  CALL R46 2 1
+  GETTABLEKS R47 R4 K89 ["strictInterface"]
+  DUPTABLE R48 K103 [{"isReportDialogOpen", "reportType", "targetPlayer", "placeName", "screenSize", "screenshotAnnotationPoints", "navigateBack", "canNavigateBack", "sendReport", "closeDialog", "screenshotAnnotated", "reportCategory", "currentPage"}]
+  GETTABLEKS R49 R4 K104 ["boolean"]
+  SETTABLEKS R49 R48 K90 ["isReportDialogOpen"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K106 ["valueOf"]
+  GETTABLEKS R51 R15 K107 ["ReportType"]
+  CALL R50 1 -1
+  CALL R49 -1 1
+  SETTABLEKS R49 R48 K91 ["reportType"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  MOVE R50 R12
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K92 ["targetPlayer"]
+  GETTABLEKS R49 R4 K108 ["string"]
+  SETTABLEKS R49 R48 K93 ["placeName"]
+  GETTABLEKS R49 R4 K109 ["Vector2"]
+  SETTABLEKS R49 R48 K94 ["screenSize"]
+  GETTABLEKS R49 R4 K110 ["array"]
+  GETTABLEKS R50 R4 K109 ["Vector2"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K95 ["screenshotAnnotationPoints"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K111 ["callback"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K96 ["navigateBack"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K104 ["boolean"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K97 ["canNavigateBack"]
+  GETTABLEKS R49 R4 K111 ["callback"]
+  SETTABLEKS R49 R48 K98 ["sendReport"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K111 ["callback"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K99 ["closeDialog"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K111 ["callback"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K100 ["screenshotAnnotated"]
+  GETTABLEKS R49 R4 K105 ["optional"]
+  GETTABLEKS R50 R4 K108 ["string"]
+  CALL R49 1 1
+  SETTABLEKS R49 R48 K101 ["reportCategory"]
+  GETTABLEKS R49 R4 K108 ["string"]
+  SETTABLEKS R49 R48 K102 ["currentPage"]
+  CALL R47 1 1
+  SETTABLEKS R47 R46 K112 ["validateProps"]
+  DUPCLOSURE R47 K113 [PROTO_7]
+  SETTABLEKS R47 R46 K114 ["init"]
+  DUPCLOSURE R47 K115 [PROTO_8]
+  CAPTURE VAL R15
+  SETTABLEKS R47 R46 K116 ["getReason"]
+  DUPCLOSURE R47 K117 [PROTO_9]
+  SETTABLEKS R47 R46 K118 ["canReport"]
+  DUPCLOSURE R47 K119 [PROTO_12]
+  CAPTURE VAL R15
+  CAPTURE VAL R29
+  CAPTURE VAL R1
+  CAPTURE VAL R45
+  CAPTURE VAL R2
+  CAPTURE VAL R28
+  CAPTURE VAL R9
+  CAPTURE VAL R35
+  CAPTURE VAL R43
+  CAPTURE VAL R38
+  CAPTURE VAL R41
+  SETTABLEKS R47 R46 K120 ["renderPlayerInfo"]
+  DUPCLOSURE R47 K121 [PROTO_15]
+  CAPTURE VAL R2
+  CAPTURE VAL R11
+  CAPTURE VAL R44
+  CAPTURE VAL R33
+  SETTABLEKS R47 R46 K122 ["renderDropDownMenu"]
+  DUPCLOSURE R47 K123 [PROTO_17]
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  CAPTURE VAL R17
+  SETTABLEKS R47 R46 K124 ["renderPlayerContents"]
+  DUPCLOSURE R47 K125 [PROTO_19]
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R10
+  CAPTURE VAL R17
+  SETTABLEKS R47 R46 K126 ["renderPlaceContents"]
+  DUPCLOSURE R47 K127 [PROTO_20]
+  CAPTURE VAL R15
+  SETTABLEKS R47 R46 K128 ["renderContents"]
+  NEWTABLE R47 4 0
+  GETTABLEKS R49 R15 K129 ["Category"]
+  GETTABLEKS R48 R49 K130 ["Voice"]
+  LOADK R49 K131 ["CoreScripts.InGameMenu.Report.Title.VoiceChat"]
+  SETTABLE R49 R47 R48
+  GETTABLEKS R49 R15 K129 ["Category"]
+  GETTABLEKS R48 R49 K132 ["Text"]
+  LOADK R49 K133 ["CoreScripts.InGameMenu.Report.Title.TextChat"]
+  SETTABLE R49 R47 R48
+  GETTABLEKS R49 R15 K129 ["Category"]
+  GETTABLEKS R48 R49 K134 ["Other"]
+  LOADK R49 K135 ["CoreScripts.InGameMenu.Report.Title.Other"]
+  SETTABLE R49 R47 R48
+  GETTABLEKS R49 R15 K129 ["Category"]
+  GETTABLEKS R48 R49 K136 ["Experience"]
+  LOADK R49 K137 ["CoreScripts.InGameMenu.Report.Title.Experience"]
+  SETTABLE R49 R47 R48
+  DUPCLOSURE R48 K138 [PROTO_21]
+  CAPTURE VAL R15
+  CAPTURE VAL R47
+  SETTABLEKS R48 R46 K139 ["categoryTitle"]
+  DUPCLOSURE R48 K140 [PROTO_27]
+  CAPTURE VAL R11
+  CAPTURE VAL R24
+  CAPTURE VAL R15
+  CAPTURE VAL R25
+  CAPTURE VAL R42
+  CAPTURE VAL R20
+  CAPTURE VAL R23
+  CAPTURE VAL R19
+  CAPTURE VAL R2
+  CAPTURE VAL R18
+  CAPTURE VAL R30
+  CAPTURE VAL R31
+  SETTABLEKS R48 R46 K141 ["render"]
+  DUPCLOSURE R48 K142 [PROTO_28]
+  CAPTURE VAL R2
+  SETTABLEKS R48 R46 K143 ["didUpdate"]
+  GETTABLEKS R48 R3 K144 ["UNSTABLE_connect2"]
+  DUPCLOSURE R49 K145 [PROTO_29]
+  CAPTURE VAL R15
+  DUPCLOSURE R50 K146 [PROTO_34]
+  CAPTURE VAL R13
+  CAPTURE VAL R21
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R22
+  CAPTURE VAL R27
+  CAPTURE VAL R26
+  CAPTURE VAL R16
+  CALL R48 2 1
+  MOVE R49 R46
+  CALL R48 1 -1
+  RETURN R48 -1

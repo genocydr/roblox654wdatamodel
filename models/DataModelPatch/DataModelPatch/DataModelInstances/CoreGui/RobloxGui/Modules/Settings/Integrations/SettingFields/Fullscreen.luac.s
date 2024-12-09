@@ -1,0 +1,107 @@
+PROTO_0:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["InFullScreen"]
+  CALL R1 1 1
+  JUMPIFNOTEQ R0 R1 [+2]
+  RETURN R0 0
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K1 ["ToggleFullscreen"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_1:
+  LOADB R0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["getDeviceType"]
+  CALL R1 0 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["DeviceTypes"]
+  GETTABLEKS R2 R3 K2 ["Desktop"]
+  JUMPIFEQ R1 R2 [+14]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["getDeviceType"]
+  CALL R1 0 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["DeviceTypes"]
+  GETTABLEKS R2 R3 K3 ["Unknown"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Settings"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [UserSettings]
+  CALL R2 0 1
+  GETTABLEKS R3 R2 K10 ["GameSettings"]
+  GETIMPORT R4 K5 [game]
+  LOADK R6 K11 ["GuiService"]
+  NAMECALL R4 R4 K7 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K13 [require]
+  GETTABLEKS R8 R1 K14 ["Workspace"]
+  GETTABLEKS R7 R8 K15 ["Packages"]
+  GETTABLEKS R6 R7 K16 ["SettingsService"]
+  CALL R5 1 1
+  GETTABLEKS R6 R5 K17 ["ValueChangedSignal"]
+  GETTABLEKS R7 R5 K18 ["AvailabilitySignal"]
+  GETTABLEKS R8 R5 K19 ["FieldType"]
+  GETIMPORT R9 K13 [require]
+  GETTABLEKS R11 R0 K20 ["Integrations"]
+  GETTABLEKS R10 R11 K21 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R10 K13 [require]
+  GETTABLEKS R12 R0 K20 ["Integrations"]
+  GETTABLEKS R11 R12 K22 ["Utils"]
+  CALL R10 1 1
+  GETTABLEKS R12 R9 K23 ["GAMESETTINGS"]
+  GETTABLEKS R11 R12 K24 ["LAYOUT_ORDER"]
+  GETTABLEKS R12 R6 K25 ["new"]
+  NAMECALL R13 R3 K26 ["InFullScreen"]
+  CALL R13 1 -1
+  CALL R12 -1 1
+  DUPCLOSURE R15 K27 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  LOADB R16 1
+  NAMECALL R13 R12 K28 ["connect"]
+  CALL R13 3 0
+  DUPCLOSURE R13 K29 [PROTO_1]
+  CAPTURE VAL R10
+  GETTABLEKS R14 R7 K25 ["new"]
+  LOADB R15 1
+  GETTABLEKS R16 R10 K30 ["getDeviceType"]
+  CALL R16 0 1
+  GETTABLEKS R18 R10 K31 ["DeviceTypes"]
+  GETTABLEKS R17 R18 K32 ["Desktop"]
+  JUMPIFEQ R16 R17 [+12]
+  GETTABLEKS R16 R10 K30 ["getDeviceType"]
+  CALL R16 0 1
+  GETTABLEKS R18 R10 K31 ["DeviceTypes"]
+  GETTABLEKS R17 R18 K33 ["Unknown"]
+  JUMPIFEQ R16 R17 [+2]
+  LOADB R15 0 +1
+  LOADB R15 1
+  CALL R14 1 1
+  DUPTABLE R15 K41 [{"id", "field_type", "label", "layoutOrder", "onChanged", "alreadyLocalized", "availability"}]
+  LOADK R16 K42 ["fullscreen"]
+  SETTABLEKS R16 R15 K34 ["id"]
+  GETTABLEKS R16 R8 K43 ["Toggle"]
+  SETTABLEKS R16 R15 K35 ["field_type"]
+  LOADK R16 K44 ["CoreScripts.InGameMenu.GameSettings.FullScreen"]
+  SETTABLEKS R16 R15 K36 ["label"]
+  GETTABLEKS R16 R11 K45 ["FullScreenFrame"]
+  SETTABLEKS R16 R15 K37 ["layoutOrder"]
+  SETTABLEKS R12 R15 K38 ["onChanged"]
+  LOADB R16 0
+  SETTABLEKS R16 R15 K39 ["alreadyLocalized"]
+  SETTABLEKS R14 R15 K40 ["availability"]
+  RETURN R15 1

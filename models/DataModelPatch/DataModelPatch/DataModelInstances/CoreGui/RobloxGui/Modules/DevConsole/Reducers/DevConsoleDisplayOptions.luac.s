@@ -1,0 +1,152 @@
+PROTO_0:
+  MOVE R2 R0
+  JUMPIF R2 [+31]
+  DUPTABLE R2 K6 [{"formFactor", "isVisible", "isMinimized", "position", "size", "visibleStartTime"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["FormFactor"]
+  GETTABLEKS R3 R4 K8 ["Large"]
+  SETTABLEKS R3 R2 K0 ["formFactor"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["isVisible"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K2 ["isMinimized"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K9 ["MainWindowInit"]
+  GETTABLEKS R3 R4 K10 ["Position"]
+  SETTABLEKS R3 R2 K3 ["position"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K9 ["MainWindowInit"]
+  GETTABLEKS R3 R4 K11 ["Size"]
+  SETTABLEKS R3 R2 K4 ["size"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K5 ["visibleStartTime"]
+  GETTABLEKS R3 R1 K12 ["type"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K13 ["name"]
+  JUMPIFNOTEQ R3 R4 [+24]
+  DUPTABLE R3 K14 [{"isVisible"}]
+  GETTABLEKS R4 R1 K1 ["isVisible"]
+  SETTABLEKS R4 R3 K1 ["isVisible"]
+  GETTABLEKS R4 R3 K1 ["isVisible"]
+  JUMPIFNOT R4 [+8]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K2 ["isMinimized"]
+  GETIMPORT R4 K16 [tick]
+  CALL R4 0 1
+  SETTABLEKS R4 R3 K5 ["visibleStartTime"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K17 ["JoinDictionaries"]
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 -1
+  RETURN R4 -1
+  GETTABLEKS R3 R1 K12 ["type"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K13 ["name"]
+  JUMPIFNOTEQ R3 R4 [+10]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K18 ["Set"]
+  MOVE R4 R2
+  LOADK R5 K3 ["position"]
+  GETTABLEKS R6 R1 K3 ["position"]
+  CALL R3 3 1
+  RETURN R3 1
+  GETTABLEKS R3 R1 K12 ["type"]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K13 ["name"]
+  JUMPIFNOTEQ R3 R4 [+10]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K18 ["Set"]
+  MOVE R4 R2
+  LOADK R5 K2 ["isMinimized"]
+  GETTABLEKS R6 R1 K2 ["isMinimized"]
+  CALL R3 3 1
+  RETURN R3 1
+  GETTABLEKS R3 R1 K12 ["type"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K13 ["name"]
+  JUMPIFNOTEQ R3 R4 [+20]
+  GETTABLEKS R3 R2 K0 ["formFactor"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["FormFactor"]
+  GETTABLEKS R4 R5 K8 ["Large"]
+  JUMPIFNOTEQ R3 R4 [+26]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K18 ["Set"]
+  MOVE R4 R2
+  LOADK R5 K4 ["size"]
+  GETTABLEKS R6 R1 K19 ["newSize"]
+  CALL R3 3 1
+  RETURN R3 1
+  RETURN R2 1
+  GETTABLEKS R3 R1 K12 ["type"]
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K13 ["name"]
+  JUMPIFNOTEQ R3 R4 [+9]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K18 ["Set"]
+  MOVE R4 R2
+  LOADK R5 K2 ["isMinimized"]
+  LOADB R6 0
+  CALL R3 3 1
+  RETURN R3 1
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R4 K3 [script]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K4 ["Parent"]
+  GETTABLEKS R1 R2 K5 ["Immutable"]
+  CALL R0 1 1
+  GETIMPORT R1 K1 [require]
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K6 ["Constants"]
+  CALL R1 1 1
+  GETIMPORT R2 K1 [require]
+  GETIMPORT R7 K3 [script]
+  GETTABLEKS R6 R7 K4 ["Parent"]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  GETTABLEKS R4 R5 K7 ["Actions"]
+  GETTABLEKS R3 R4 K8 ["SetDevConsoleVisibility"]
+  CALL R2 1 1
+  GETIMPORT R3 K1 [require]
+  GETIMPORT R8 K3 [script]
+  GETTABLEKS R7 R8 K4 ["Parent"]
+  GETTABLEKS R6 R7 K4 ["Parent"]
+  GETTABLEKS R5 R6 K7 ["Actions"]
+  GETTABLEKS R4 R5 K9 ["SetDevConsoleMinimized"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [require]
+  GETIMPORT R9 K3 [script]
+  GETTABLEKS R8 R9 K4 ["Parent"]
+  GETTABLEKS R7 R8 K4 ["Parent"]
+  GETTABLEKS R6 R7 K7 ["Actions"]
+  GETTABLEKS R5 R6 K10 ["ChangeDevConsoleSize"]
+  CALL R4 1 1
+  GETIMPORT R5 K1 [require]
+  GETIMPORT R10 K3 [script]
+  GETTABLEKS R9 R10 K4 ["Parent"]
+  GETTABLEKS R8 R9 K4 ["Parent"]
+  GETTABLEKS R7 R8 K7 ["Actions"]
+  GETTABLEKS R6 R7 K11 ["SetDevConsolePosition"]
+  CALL R5 1 1
+  GETIMPORT R6 K1 [require]
+  GETIMPORT R11 K3 [script]
+  GETTABLEKS R10 R11 K4 ["Parent"]
+  GETTABLEKS R9 R10 K4 ["Parent"]
+  GETTABLEKS R8 R9 K7 ["Actions"]
+  GETTABLEKS R7 R8 K12 ["SetActiveTab"]
+  CALL R6 1 1
+  DUPCLOSURE R7 K13 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R0
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  RETURN R7 1

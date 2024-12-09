@@ -1,0 +1,65 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["text"]
+  GETTABLEKS R2 R0 K1 ["size"]
+  GETTABLEKS R3 R0 K2 ["pos"]
+  GETTABLEKS R4 R0 K3 ["bold"]
+  GETTABLEKS R5 R0 K4 ["layoutOrder"]
+  GETTABLEKS R6 R0 K5 ["richText"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K6 ["createElement"]
+  LOADK R8 K7 ["TextLabel"]
+  DUPTABLE R9 K19 [{"Text", "TextSize", "TextColor3", "TextXAlignment", "TextWrapped", "Font", "Size", "Position", "BackgroundTransparency", "LayoutOrder", "RichText"}]
+  SETTABLEKS R1 R9 K8 ["Text"]
+  GETUPVAL R10 1
+  SETTABLEKS R10 R9 K9 ["TextSize"]
+  GETUPVAL R10 2
+  SETTABLEKS R10 R9 K10 ["TextColor3"]
+  GETIMPORT R10 K22 [Enum.TextXAlignment.Left]
+  SETTABLEKS R10 R9 K11 ["TextXAlignment"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K12 ["TextWrapped"]
+  JUMPIFNOT R4 [+2]
+  GETUPVAL R10 3
+  JUMPIF R10 [+1]
+  GETUPVAL R10 4
+  SETTABLEKS R10 R9 K13 ["Font"]
+  SETTABLEKS R2 R9 K14 ["Size"]
+  SETTABLEKS R3 R9 K15 ["Position"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K16 ["BackgroundTransparency"]
+  SETTABLEKS R5 R9 K17 ["LayoutOrder"]
+  SETTABLEKS R6 R9 K18 ["RichText"]
+  CALL R7 2 -1
+  RETURN R7 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETIMPORT R6 K9 [script]
+  GETTABLEKS R5 R6 K10 ["Parent"]
+  GETTABLEKS R4 R5 K10 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Constants"]
+  CALL R2 1 1
+  GETTABLEKS R4 R2 K12 ["DefaultFontSize"]
+  GETTABLEKS R3 R4 K13 ["MainWindow"]
+  GETTABLEKS R5 R2 K14 ["Color"]
+  GETTABLEKS R4 R5 K15 ["Text"]
+  GETTABLEKS R6 R2 K16 ["Font"]
+  GETTABLEKS R5 R6 K13 ["MainWindow"]
+  GETTABLEKS R7 R2 K16 ["Font"]
+  GETTABLEKS R6 R7 K17 ["MainWindowBold"]
+  DUPCLOSURE R7 K18 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  RETURN R7 1

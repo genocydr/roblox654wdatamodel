@@ -1,0 +1,44 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["GenerateLink"]
+  GETTABLEKS R1 R2 K1 ["API"]
+  DUPTABLE R2 K3 [{"linkType"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K4 ["Enums"]
+  GETTABLEKS R5 R6 K5 ["LinkType"]
+  GETTABLEKS R4 R5 K6 ["ExperienceInvite"]
+  GETTABLEKS R3 R4 K7 ["rawValue"]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K2 ["linkType"]
+  CALL R1 1 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_1:
+  DUPTABLE R1 K1 [{"fetchShareInviteLink"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K0 ["fetchShareInviteLink"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Workspace"]
+  GETTABLEKS R4 R5 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["NotificationsCommon"]
+  CALL R2 1 1
+  GETTABLEKS R1 R2 K9 ["ReducerDependencies"]
+  GETTABLEKS R2 R1 K10 ["NetworkingShareLinks"]
+  GETTABLEKS R3 R1 K11 ["RoduxShareLinks"]
+  DUPCLOSURE R4 K12 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  RETURN R4 1

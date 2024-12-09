@@ -1,0 +1,287 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["AnalyticsInGameMenuName"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["AnalyticsLeaveGameName"]
+  DUPTABLE R3 K3 [{"confirmed"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["AnalyticsConfirmedName"]
+  SETTABLEKS R4 R3 K2 ["confirmed"]
+  CALL R0 3 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K5 ["Heartbeat"]
+  NAMECALL R0 R0 K6 ["Wait"]
+  CALL R0 1 0
+  GETIMPORT R0 K8 [game]
+  NAMECALL R0 R0 K9 ["Shutdown"]
+  CALL R0 1 0
+  GETIMPORT R1 K11 [settings]
+  CALL R1 0 1
+  GETTABLEKS R0 R1 K12 ["Rendering"]
+  GETUPVAL R1 3
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K13 ["QualityLevel"]
+  RETURN R0 0
+
+PROTO_1:
+  DUPCLOSURE R1 K0 [PROTO_0]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  SETTABLEKS R1 R0 K1 ["leaveGameConfirm"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K9 [{"titleText", "bodyText", "confirmText", "cancelText", "onConfirm", "onCancel", "canGamepadCaptureFocus", "canKeyboardCaptureFocus"}]
+  GETTABLEKS R4 R0 K1 ["titleText"]
+  SETTABLEKS R4 R3 K1 ["titleText"]
+  GETTABLEKS R4 R0 K2 ["bodyText"]
+  SETTABLEKS R4 R3 K2 ["bodyText"]
+  GETTABLEKS R4 R0 K3 ["confirmText"]
+  SETTABLEKS R4 R3 K3 ["confirmText"]
+  GETTABLEKS R4 R0 K4 ["cancelText"]
+  SETTABLEKS R4 R3 K4 ["cancelText"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K10 ["props"]
+  GETTABLEKS R4 R5 K5 ["onConfirm"]
+  JUMPIF R4 [+3]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["leaveGameConfirm"]
+  SETTABLEKS R4 R3 K5 ["onConfirm"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K10 ["props"]
+  GETTABLEKS R4 R5 K12 ["closeMenu"]
+  SETTABLEKS R4 R3 K6 ["onCancel"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K10 ["props"]
+  GETTABLEKS R4 R5 K7 ["canGamepadCaptureFocus"]
+  SETTABLEKS R4 R3 K7 ["canGamepadCaptureFocus"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K10 ["props"]
+  GETTABLEKS R4 R5 K8 ["canKeyboardCaptureFocus"]
+  SETTABLEKS R4 R3 K8 ["canKeyboardCaptureFocus"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  DUPTABLE R2 K4 [{"titleText", "bodyText", "confirmText", "cancelText"}]
+  LOADK R3 K5 ["CoreScripts.InGameMenu.Prompt.LeaveGameTitle"]
+  SETTABLEKS R3 R2 K0 ["titleText"]
+  GETUPVAL R4 1
+  CALL R4 0 1
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R4 2
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K6 ["QuestVR"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+2]
+  LOADK R3 K7 ["CoreScripts.InGameMenu.Prompt.VRFTUXLeaveGameBodyText"]
+  JUMP [+1]
+  LOADK R3 K8 ["CoreScripts.InGameMenu.Prompt.LeaveGameBodyText"]
+  SETTABLEKS R3 R2 K1 ["bodyText"]
+  LOADK R3 K9 ["CoreScripts.InGameMenu.Prompt.LeaveGame"]
+  SETTABLEKS R3 R2 K2 ["confirmText"]
+  LOADK R3 K10 ["CoreScripts.InGameMenu.Prompt.ResumeGame"]
+  SETTABLEKS R3 R2 K3 ["cancelText"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_4:
+  LOADB R2 0
+  GETTABLEKS R3 R0 K0 ["menuPage"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["LeaveGamePromptPageKey"]
+  JUMPIFNOTEQ R3 R4 [+25]
+  LOADB R2 0
+  GETTABLEKS R4 R0 K2 ["displayOptions"]
+  GETTABLEKS R3 R4 K3 ["inputType"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["InputType"]
+  GETTABLEKS R4 R5 K5 ["Gamepad"]
+  JUMPIFNOTEQ R3 R4 [+13]
+  GETTABLEKS R4 R0 K6 ["respawn"]
+  GETTABLEKS R3 R4 K7 ["dialogOpen"]
+  NOT R2 R3
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R3 R0 K8 ["currentZone"]
+  JUMPIFEQKN R3 K9 [1] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  LOADB R3 0
+  GETTABLEKS R4 R0 K0 ["menuPage"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["LeaveGamePromptPageKey"]
+  JUMPIFNOTEQ R4 R5 [+18]
+  LOADB R3 0
+  GETTABLEKS R5 R0 K2 ["displayOptions"]
+  GETTABLEKS R4 R5 K3 ["inputType"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K4 ["InputType"]
+  GETTABLEKS R5 R6 K10 ["MouseAndKeyboard"]
+  JUMPIFNOTEQ R4 R5 [+6]
+  GETTABLEKS R5 R0 K6 ["respawn"]
+  GETTABLEKS R4 R5 K7 ["dialogOpen"]
+  NOT R3 R4
+  DUPTABLE R4 K13 [{"canGamepadCaptureFocus", "canKeyboardCaptureFocus"}]
+  SETTABLEKS R2 R4 K11 ["canGamepadCaptureFocus"]
+  SETTABLEKS R3 R4 K12 ["canKeyboardCaptureFocus"]
+  RETURN R4 1
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R0 1 0
+  GETUPVAL R0 2
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K0 ["AnalyticsInGameMenuName"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K1 ["AnalyticsLeaveGameName"]
+  DUPTABLE R3 K3 [{"confirmed"}]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K4 ["AnalyticsCancelledName"]
+  SETTABLEKS R4 R3 K2 ["confirmed"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"closeMenu"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R1 K0 ["closeMenu"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["RunService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R4 K6 ["RobloxGui"]
+  NAMECALL R2 R2 K7 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Packages"]
+  GETTABLEKS R4 R5 K11 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K12 ["Roact"]
+  GETTABLEKS R5 R3 K13 ["RoactRodux"]
+  GETTABLEKS R6 R3 K14 ["t"]
+  GETIMPORT R7 K9 [require]
+  GETIMPORT R10 K16 [script]
+  GETTABLEKS R9 R10 K17 ["Parent"]
+  GETTABLEKS R8 R9 K18 ["LeavePrompt"]
+  CALL R7 1 1
+  GETIMPORT R12 K16 [script]
+  GETTABLEKS R11 R12 K17 ["Parent"]
+  GETTABLEKS R10 R11 K17 ["Parent"]
+  GETTABLEKS R9 R10 K17 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Parent"]
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R8 K19 ["Localization"]
+  GETTABLEKS R10 R11 K20 ["withLocalization"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETTABLEKS R12 R8 K21 ["Resources"]
+  GETTABLEKS R11 R12 K22 ["Constants"]
+  CALL R10 1 1
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R13 R8 K23 ["Thunks"]
+  GETTABLEKS R12 R13 K24 ["CloseMenu"]
+  CALL R11 1 1
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R14 R8 K25 ["Utility"]
+  GETTABLEKS R13 R14 K26 ["SendAnalytics"]
+  CALL R12 1 1
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R17 R1 K27 ["Workspace"]
+  GETTABLEKS R16 R17 K10 ["Packages"]
+  GETTABLEKS R15 R16 K28 ["AppCommonLib"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K29 ["GetDefaultQualityLevel"]
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R18 R2 K30 ["Modules"]
+  GETTABLEKS R17 R18 K31 ["FTUX"]
+  GETTABLEKS R16 R17 K32 ["Flags"]
+  GETTABLEKS R15 R16 K33 ["GetFFlagEnableVRFTUXExperience"]
+  CALL R14 1 1
+  GETIMPORT R15 K9 [require]
+  GETTABLEKS R19 R2 K30 ["Modules"]
+  GETTABLEKS R18 R19 K31 ["FTUX"]
+  GETTABLEKS R17 R18 K25 ["Utility"]
+  GETTABLEKS R16 R17 K34 ["IsFTUXExperience"]
+  CALL R15 1 1
+  GETIMPORT R16 K9 [require]
+  GETTABLEKS R20 R2 K30 ["Modules"]
+  GETTABLEKS R19 R20 K31 ["FTUX"]
+  GETTABLEKS R18 R19 K35 ["Enums"]
+  GETTABLEKS R17 R18 K36 ["PlatformEnum"]
+  CALL R16 1 1
+  GETTABLEKS R17 R4 K37 ["PureComponent"]
+  LOADK R19 K38 ["LeaveGamePrompt"]
+  NAMECALL R17 R17 K39 ["extend"]
+  CALL R17 2 1
+  GETTABLEKS R18 R6 K40 ["strictInterface"]
+  DUPTABLE R19 K45 [{"closeMenu", "canGamepadCaptureFocus", "canKeyboardCaptureFocus", "onConfirm"}]
+  GETTABLEKS R20 R6 K46 ["callback"]
+  SETTABLEKS R20 R19 K41 ["closeMenu"]
+  GETTABLEKS R20 R6 K47 ["optional"]
+  GETTABLEKS R21 R6 K48 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K42 ["canGamepadCaptureFocus"]
+  GETTABLEKS R20 R6 K47 ["optional"]
+  GETTABLEKS R21 R6 K48 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K43 ["canKeyboardCaptureFocus"]
+  GETTABLEKS R20 R6 K47 ["optional"]
+  GETTABLEKS R21 R6 K46 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K44 ["onConfirm"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K49 ["validateProps"]
+  DUPCLOSURE R18 K50 [PROTO_1]
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R0
+  CAPTURE VAL R13
+  SETTABLEKS R18 R17 K51 ["init"]
+  DUPCLOSURE R18 K52 [PROTO_3]
+  CAPTURE VAL R9
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  SETTABLEKS R18 R17 K53 ["render"]
+  GETTABLEKS R18 R5 K54 ["UNSTABLE_connect2"]
+  DUPCLOSURE R19 K55 [PROTO_4]
+  CAPTURE VAL R10
+  DUPCLOSURE R20 K56 [PROTO_6]
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CALL R18 2 1
+  MOVE R19 R17
+  CALL R18 1 -1
+  RETURN R18 -1

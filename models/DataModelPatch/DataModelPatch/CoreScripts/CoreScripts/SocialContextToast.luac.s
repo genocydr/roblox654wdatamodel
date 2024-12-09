@@ -1,0 +1,118 @@
+PROTO_0:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["requestFunctions"]
+  GETTABLEKS R3 R4 K1 ["HttpRbxApi"]
+  MOVE R4 R0
+  MOVE R5 R1
+  MOVE R6 R2
+  CALL R3 3 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K2 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R7 K6 ["RobloxGui"]
+  NAMECALL R5 R3 K7 ["WaitForChild"]
+  CALL R5 2 1
+  GETTABLEKS R4 R5 K8 ["Modules"]
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K9 ["EventIngestService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R9 R1 K12 ["Workspace"]
+  GETTABLEKS R8 R9 K13 ["Packages"]
+  GETTABLEKS R7 R8 K14 ["SocialContextToasts"]
+  CALL R6 1 1
+  GETTABLEKS R7 R6 K15 ["SocialContextToastContainer"]
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R12 R1 K12 ["Workspace"]
+  GETTABLEKS R11 R12 K13 ["Packages"]
+  GETTABLEKS R10 R11 K16 ["SharedFlags"]
+  CALL R9 1 1
+  GETTABLEKS R8 R9 K17 ["GetFFlagSocialContextToastEventStream"]
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R11 R1 K13 ["Packages"]
+  GETTABLEKS R10 R11 K18 ["HttpRequest"]
+  CALL R9 1 1
+  GETTABLEKS R10 R9 K19 ["config"]
+  DUPTABLE R11 K21 [{"requestFunction"}]
+  DUPCLOSURE R12 K22 [PROTO_0]
+  CAPTURE VAL R9
+  SETTABLEKS R12 R11 K20 ["requestFunction"]
+  CALL R10 1 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R14 R3 K6 ["RobloxGui"]
+  GETTABLEKS R13 R14 K8 ["Modules"]
+  GETTABLEKS R12 R13 K23 ["ApolloClient"]
+  CALL R11 1 1
+  GETIMPORT R13 K11 [require]
+  GETTABLEKS R16 R1 K12 ["Workspace"]
+  GETTABLEKS R15 R16 K13 ["Packages"]
+  GETTABLEKS R14 R15 K24 ["Analytics"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K24 ["Analytics"]
+  GETIMPORT R15 K11 [require]
+  GETTABLEKS R18 R1 K12 ["Workspace"]
+  GETTABLEKS R17 R18 K13 ["Packages"]
+  GETTABLEKS R16 R17 K24 ["Analytics"]
+  CALL R15 1 1
+  GETTABLEKS R14 R15 K25 ["AnalyticsReporters"]
+  GETTABLEKS R13 R14 K26 ["EventIngest"]
+  GETIMPORT R14 K11 [require]
+  GETTABLEKS R16 R4 K27 ["Common"]
+  GETTABLEKS R15 R16 K28 ["IXPServiceWrapper"]
+  CALL R14 1 1
+  DUPTABLE R15 K35 [{"networking", "playersService", "apolloClient", "analytics", "ixpService", "eventIngest"}]
+  SETTABLEKS R10 R15 K29 ["networking"]
+  SETTABLEKS R2 R15 K30 ["playersService"]
+  SETTABLEKS R11 R15 K31 ["apolloClient"]
+  GETTABLEKS R16 R12 K36 ["new"]
+  CALL R16 0 1
+  SETTABLEKS R16 R15 K32 ["analytics"]
+  SETTABLEKS R14 R15 K33 ["ixpService"]
+  GETTABLEKS R16 R13 K36 ["new"]
+  MOVE R17 R5
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K34 ["eventIngest"]
+  MOVE R16 R7
+  MOVE R17 R15
+  MOVE R19 R8
+  CALL R19 0 1
+  JUMPIFNOT R19 [+9]
+  GETIMPORT R20 K1 [game]
+  GETTABLEKS R19 R20 K37 ["GameId"]
+  FASTCALL1 TOSTRING R19 [+2]
+  GETIMPORT R18 K39 [tostring]
+  CALL R18 1 1
+  JUMP [+4]
+  GETIMPORT R19 K1 [game]
+  GETTABLEKS R18 R19 K37 ["GameId"]
+  MOVE R20 R8
+  CALL R20 0 1
+  JUMPIFNOT R20 [+9]
+  GETIMPORT R21 K1 [game]
+  GETTABLEKS R20 R21 K40 ["PlaceId"]
+  FASTCALL1 TOSTRING R20 [+2]
+  GETIMPORT R19 K39 [tostring]
+  CALL R19 1 1
+  JUMP [+4]
+  GETIMPORT R20 K1 [game]
+  GETTABLEKS R19 R20 K40 ["PlaceId"]
+  CALL R16 3 0
+  RETURN R0 0

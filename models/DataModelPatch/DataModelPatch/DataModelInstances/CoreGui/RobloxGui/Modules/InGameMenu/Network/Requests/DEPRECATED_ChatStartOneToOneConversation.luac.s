@@ -1,0 +1,37 @@
+PROTO_0:
+  GETUPVAL R3 0
+  DUPTABLE R5 K1 [{"participantuserId"}]
+  SETTABLEKS R1 R5 K0 ["participantuserId"]
+  NAMECALL R3 R3 K2 ["JSONEncode"]
+  CALL R3 2 1
+  GETIMPORT R4 K5 [string.format]
+  LOADK R5 K6 ["%s/start-one-to-one-conversation"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K7 ["CHAT_URL"]
+  CALL R4 2 1
+  MOVE R5 R0
+  MOVE R6 R4
+  LOADK R7 K8 ["POST"]
+  DUPTABLE R8 K10 [{"postBody"}]
+  SETTABLEKS R3 R8 K9 ["postBody"]
+  CALL R5 3 -1
+  RETURN R5 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["HttpService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R4 K5 [script]
+  GETTABLEKS R3 R4 K6 ["Parent"]
+  GETTABLEKS R2 R3 K6 ["Parent"]
+  GETTABLEKS R1 R2 K6 ["Parent"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R1 K9 ["Network"]
+  GETTABLEKS R3 R4 K10 ["Url"]
+  CALL R2 1 1
+  DUPCLOSURE R3 K11 [PROTO_0]
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  RETURN R3 1

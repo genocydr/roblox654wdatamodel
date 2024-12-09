@@ -31,7 +31,6 @@ local NoFriendsPage = require(ShareGame.Components.NoFriendsPage)
 local PlayerSearchPredicate = require(CoreGui.RobloxGui.Modules.InGameMenu.Utility.PlayerSearchPredicate)
 local GetFFlagAbuseReportAnalyticsHasLaunchData =
 	require(Modules.Settings.Flags.GetFFlagAbuseReportAnalyticsHasLaunchData)
-local GetFFlagInviteFriendsDesignUpdates = require(Modules.Settings.Flags.GetFFlagInviteFriendsDesignUpdates)
 local GetFFlagEnableNewInviteMenu = require(Modules.Flags.GetFFlagEnableNewInviteMenu)
 local GetFFlagEnableNewInviteSendEndpoint = require(Modules.Flags.GetFFlagEnableNewInviteSendEndpoint)
 
@@ -196,7 +195,7 @@ function ConversationList:render()
 		BackgroundTransparency = 1,
 		LayoutOrder = layoutOrder,
 		Size = size,
-		BorderSizePixel = if GetFFlagInviteFriendsDesignUpdates() then 0 else nil,
+		BorderSizePixel = 0,
 		Position = UDim2.new(0, 0, 0, topPadding),
 		CanvasSize = if newInviteMenuEnabled
 			then UDim2.new()

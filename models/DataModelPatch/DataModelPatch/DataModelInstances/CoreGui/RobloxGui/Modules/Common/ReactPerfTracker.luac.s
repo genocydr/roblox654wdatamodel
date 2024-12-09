@@ -1,0 +1,344 @@
+PROTO_0:
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["AppStorageService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  JUMPIF R0 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  LOADK R3 K4 ["AppInstallationId"]
+  NAMECALL R1 R0 K5 ["GetItem"]
+  CALL R1 2 1
+  FASTCALL1 TYPEOF R1 [+3]
+  MOVE R3 R1
+  GETIMPORT R2 K7 [typeof]
+  CALL R2 1 1
+  JUMPIFNOTEQKS R2 K8 ["number"] [+8]
+  FASTCALL1 TONUMBER R1 [+3]
+  MOVE R5 R1
+  GETIMPORT R4 K11 [tonumber]
+  CALL R4 1 1
+  ORK R3 R4 K9 []
+  RETURN R3 1
+  JUMPIFNOTEQKS R2 K12 ["string"] [+32]
+  FASTCALL1 STRING_LEN R1 [+3]
+  MOVE R4 R1
+  GETIMPORT R3 K14 [string.len]
+  CALL R3 1 1
+  LOADN R4 0
+  JUMPIFNOTLE R3 R4 [+3]
+  LOADNIL R3
+  RETURN R3 1
+  LOADN R5 232
+  FASTCALL1 TOSTRING R5 [+2]
+  GETIMPORT R4 K16 [tostring]
+  CALL R4 1 1
+  FASTCALL1 STRING_LEN R4 [+2]
+  GETIMPORT R3 K14 [string.len]
+  CALL R3 1 1
+  MINUS R7 R3
+  FASTCALL2 STRING_SUB R1 R7 [+4]
+  MOVE R6 R1
+  GETIMPORT R5 K18 [string.sub]
+  CALL R5 2 1
+  FASTCALL1 TONUMBER R5 [+2]
+  GETIMPORT R4 K11 [tonumber]
+  CALL R4 1 1
+  RETURN R4 1
+  LOADNIL R3
+  RETURN R3 1
+
+PROTO_1:
+  NEWTABLE R0 8 0
+  LOADN R1 0
+  SETTABLEKS R1 R0 K0 ["totalTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K1 ["componentTotalTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K2 ["componentMaxTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K3 ["componentCount"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K4 ["sampleCount"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K5 ["default"]
+  SETTABLEKS R1 R0 K6 ["loggingProtocol"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K7 ["outgoingEvents"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K8 ["nextSendTime"]
+  GETUPVAL R3 1
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K10 [setmetatable]
+  CALL R1 2 1
+  RETURN R1 1
+
+PROTO_2:
+  GETIMPORT R0 K2 [table.remove]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["outgoingEvents"]
+  LOADN R2 1
+  CALL R0 2 1
+  JUMPIFNOT R0 [+14]
+  GETIMPORT R1 K5 [wait]
+  CALL R1 0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K6 ["loggingProtocol"]
+  GETUPVAL R3 1
+  NEWTABLE R4 0 0
+  MOVE R5 R0
+  NAMECALL R1 R1 K7 ["logRobloxTelemetryEvent"]
+  CALL R1 4 0
+  JUMP [+3]
+  GETIMPORT R1 K10 [coroutine.yield]
+  CALL R1 0 0
+  JUMPBACK [-26]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["id"]
+  GETTABLEKS R4 R0 K2 ["endTime"]
+  GETTABLEKS R5 R0 K3 ["startTime"]
+  SUB R3 R4 R5
+  MULK R2 R3 K1 [1000]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["componentTotalTime"]
+  GETTABLE R3 R4 R1
+  JUMPIF R3 [+15]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["componentTotalTime"]
+  LOADN R4 0
+  SETTABLE R4 R3 R1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["componentMaxTime"]
+  LOADN R4 0
+  SETTABLE R4 R3 R1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K6 ["componentCount"]
+  LOADN R4 0
+  SETTABLE R4 R3 R1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["componentTotalTime"]
+  GETTABLE R4 R3 R1
+  ADD R4 R4 R2
+  SETTABLE R4 R3 R1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K6 ["componentCount"]
+  GETTABLE R4 R3 R1
+  ADDK R4 R4 K7 [1]
+  SETTABLE R4 R3 R1
+  GETUPVAL R3 0
+  GETTABLEKS R4 R3 K8 ["sampleCount"]
+  ADDK R4 R4 K7 [1]
+  SETTABLEKS R4 R3 K8 ["sampleCount"]
+  GETUPVAL R3 0
+  GETTABLEKS R4 R3 K9 ["totalTime"]
+  ADD R4 R4 R2
+  SETTABLEKS R4 R3 K9 ["totalTime"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["componentMaxTime"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K5 ["componentMaxTime"]
+  GETTABLE R5 R6 R1
+  FASTCALL2 MATH_MAX R5 R2 [+4]
+  MOVE R6 R2
+  GETIMPORT R4 K12 [math.max]
+  CALL R4 2 1
+  SETTABLE R4 R3 R1
+  GETTABLEKS R3 R0 K3 ["startTime"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K13 ["nextSendTime"]
+  JUMPIFNOTLE R4 R3 [+17]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K13 ["nextSendTime"]
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+5]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K14 ["sendEvents"]
+  CALL R3 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R5 R0 K3 ["startTime"]
+  ADDK R4 R5 K15 [30]
+  SETTABLEKS R4 R3 K13 ["nextSendTime"]
+  RETURN R0 0
+
+PROTO_4:
+  GETIMPORT R1 K2 [coroutine.create]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K3 ["eventSender"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["robloxReactProfiling"]
+  GETTABLEKS R1 R2 K5 ["startTimerSampling"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R1 R0 K0 ["componentCount"]
+  LOADNIL R2
+  LOADNIL R3
+  FORGPREP R1
+  GETTABLEKS R7 R0 K1 ["outgoingEvents"]
+  DUPTABLE R8 K10 [{"sessionid", "component", "time_ms_max", "time_ms_avg", "total_time_ms", "total_time_pct", "count", "count_pct"}]
+  GETUPVAL R10 0
+  JUMPIFNOT R10 [+5]
+  GETUPVAL R9 0
+  NAMECALL R9 R9 K11 ["GetSessionId"]
+  CALL R9 1 1
+  JUMP [+1]
+  LOADK R9 K12 [""]
+  SETTABLEKS R9 R8 K2 ["sessionid"]
+  SETTABLEKS R4 R8 K3 ["component"]
+  GETTABLEKS R10 R0 K13 ["componentMaxTime"]
+  GETTABLE R9 R10 R4
+  SETTABLEKS R9 R8 K4 ["time_ms_max"]
+  GETTABLEKS R11 R0 K14 ["componentTotalTime"]
+  GETTABLE R10 R11 R4
+  GETTABLEKS R12 R0 K0 ["componentCount"]
+  GETTABLE R11 R12 R4
+  DIV R9 R10 R11
+  SETTABLEKS R9 R8 K5 ["time_ms_avg"]
+  GETTABLEKS R10 R0 K14 ["componentTotalTime"]
+  GETTABLE R9 R10 R4
+  SETTABLEKS R9 R8 K6 ["total_time_ms"]
+  GETTABLEKS R11 R0 K14 ["componentTotalTime"]
+  GETTABLE R10 R11 R4
+  GETTABLEKS R11 R0 K15 ["totalTime"]
+  DIV R9 R10 R11
+  SETTABLEKS R9 R8 K7 ["total_time_pct"]
+  GETTABLEKS R10 R0 K0 ["componentCount"]
+  GETTABLE R9 R10 R4
+  SETTABLEKS R9 R8 K8 ["count"]
+  GETTABLEKS R11 R0 K0 ["componentCount"]
+  GETTABLE R10 R11 R4
+  GETTABLEKS R11 R0 K16 ["sampleCount"]
+  DIV R9 R10 R11
+  SETTABLEKS R9 R8 K9 ["count_pct"]
+  FASTCALL2 TABLE_INSERT R7 R8 [+3]
+  GETIMPORT R6 K19 [table.insert]
+  CALL R6 2 0
+  FORGLOOP R1 2 [-61]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["sampleCount"]
+  JUMPIFNOTEQKN R1 K1 [0] [+2]
+  RETURN R0 0
+  NAMECALL R1 R0 K2 ["genEvents"]
+  CALL R1 1 0
+  NAMECALL R1 R0 K3 ["resetCounts"]
+  CALL R1 1 0
+  GETIMPORT R1 K6 [coroutine.resume]
+  GETTABLEKS R2 R0 K7 ["eventSender"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_7:
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K0 ["componentTotalTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K1 ["componentMaxTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K2 ["componentCount"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K3 ["sampleCount"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K4 ["totalTime"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ReactPerfTrackerKibana"]
+  LOADN R3 0
+  NAMECALL R0 R0 K3 ["DefineFastInt"]
+  CALL R0 3 1
+  DUPCLOSURE R1 K4 [PROTO_0]
+  SETGLOBAL R1 K5 ["applicationId"]
+  MOVE R1 R0
+  LOADN R3 0
+  JUMPIFLT R3 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIF R2 [+2]
+  LOADNIL R3
+  RETURN R3 1
+  GETIMPORT R3 K8 [math.random]
+  LOADN R4 0
+  LOADN R5 232
+  CALL R3 2 1
+  GETGLOBAL R4 K5 ["applicationId"]
+  CALL R4 0 1
+  JUMPIFEQKNIL R4 [+3]
+  ADDK R5 R4 K10 [327]
+  MODK R3 R5 K9 [1000]
+  JUMPIFNOTLT R3 R1 [+2]
+  JUMP [+1]
+  LOADN R1 0
+  LOADN R5 0
+  JUMPIFLT R5 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIF R2 [+2]
+  LOADNIL R5
+  RETURN R5 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K11 ["CorePackages"]
+  NAMECALL R5 R5 K12 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K14 [require]
+  GETTABLEKS R9 R5 K15 ["Workspace"]
+  GETTABLEKS R8 R9 K16 ["Packages"]
+  GETTABLEKS R7 R8 K17 ["LoggingProtocol"]
+  CALL R6 1 1
+  GETIMPORT R7 K14 [require]
+  GETTABLEKS R9 R5 K16 ["Packages"]
+  GETTABLEKS R8 R9 K18 ["ReactRoblox"]
+  CALL R7 1 1
+  GETIMPORT R8 K1 [game]
+  LOADK R10 K19 ["RbxAnalyticsService"]
+  NAMECALL R8 R8 K12 ["GetService"]
+  CALL R8 2 1
+  DUPTABLE R9 K26 [{"eventName", "backends", "throttlingPercentage", "lastUpdated", "description", "links"}]
+  LOADK R10 K27 ["ReactCoreScriptPerformance"]
+  SETTABLEKS R10 R9 K20 ["eventName"]
+  NEWTABLE R10 0 1
+  GETTABLEKS R12 R6 K28 ["TelemetryBackends"]
+  GETTABLEKS R11 R12 K29 ["Points"]
+  SETLIST R10 R11 1 [1]
+  SETTABLEKS R10 R9 K21 ["backends"]
+  LOADN R10 16
+  SETTABLEKS R10 R9 K22 ["throttlingPercentage"]
+  NEWTABLE R10 0 3
+  LOADN R11 24
+  LOADN R12 10
+  LOADN R13 4
+  SETLIST R10 R11 3 [1]
+  SETTABLEKS R10 R9 K23 ["lastUpdated"]
+  LOADK R10 K30 ["Reporting the time utilization of React in CoreScripts"]
+  SETTABLEKS R10 R9 K24 ["description"]
+  LOADK R10 K31 [""]
+  SETTABLEKS R10 R9 K25 ["links"]
+  NEWTABLE R10 8 0
+  SETTABLEKS R10 R10 K32 ["__index"]
+  DUPCLOSURE R11 K33 [PROTO_1]
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  SETTABLEKS R11 R10 K34 ["new"]
+  DUPCLOSURE R11 K35 [PROTO_4]
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  SETTABLEKS R11 R10 K36 ["start"]
+  DUPCLOSURE R11 K37 [PROTO_5]
+  CAPTURE VAL R8
+  SETTABLEKS R11 R10 K38 ["genEvents"]
+  DUPCLOSURE R11 K39 [PROTO_6]
+  SETTABLEKS R11 R10 K40 ["sendEvents"]
+  DUPCLOSURE R11 K41 [PROTO_7]
+  SETTABLEKS R11 R10 K42 ["resetCounts"]
+  RETURN R10 1

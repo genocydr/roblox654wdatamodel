@@ -20,6 +20,7 @@ local RobloxReplicatedStorage = game:GetService("RobloxReplicatedStorage")
 local ScriptContext = game:GetService("ScriptContext")
 local CoreGui = game:GetService("CoreGui")
 local GetFFlagDisplayServerChannel = require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagDisplayServerChannel
+local getFFlagExpChatAlwaysRunTCS = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagExpChatAlwaysRunTCS
 
 local RobloxGui = CoreGui:WaitForChild("RobloxGui", math.huge)
 assert(RobloxGui ~= nil, "RobloxGui should exist")
@@ -128,13 +129,11 @@ end
 
 require(game:GetService("CoreGui").RobloxGui.Modules.Server.ServerSound.SoundDispatcherInstaller)()
 
-if game:GetEngineFeature("AssetServiceUGCValidation") then
-	require(game:GetService("CoreGui").RobloxGui.Modules.Server.UGCValidation.UGCValidationFunctionInstaller)()
-end
+require(game:GetService("CoreGui").RobloxGui.Modules.Server.UGCValidation.UGCValidationFunctionInstaller)()
 
 local TextChatService = game:GetService("TextChatService")
 local chatVersion = TextChatService.ChatVersion
-if chatVersion == Enum.ChatVersion.TextChatService then
+if getFFlagExpChatAlwaysRunTCS() or chatVersion == Enum.ChatVersion.TextChatService then
 	local ExperienceChatServer = require(CorePackages.Workspace.Packages.ExpChatServer)
 	ExperienceChatServer.mountServerApp({})
 end
@@ -167,9 +166,3 @@ end
 
 -- controls avatar gestures using VR controls
 require(game:GetService("CoreGui").RobloxGui.Modules.Server.VR.VRAvatarGesturesServer).new()
-
-local GetFFlagEnableConnectCaptureEvents = require(RobloxGui.Modules.Common.Flags.GetFFlagEnableConnectCaptureEvents)
-
-if GetFFlagEnableConnectCaptureEvents() then
-	ScriptContext:AddCoreScriptLocal("ServerCoreScripts/ServerConnectCaptureEvents", script.Parent)
-end

@@ -1,0 +1,558 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  GETIMPORT R3 K3 [Enum.UserInputType.Touch]
+  JUMPIFNOTEQ R2 R3 [+25]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["onMouseLeave"]
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["onMouseLeave"]
+  CALL R2 0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K6 ["onInputEnded"]
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K6 ["onInputEnded"]
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["statName"]
+  NAMECALL R1 R1 K2 ["TranslateGameText"]
+  CALL R1 3 1
+  LOADNIL R2
+  LOADNIL R3
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K3 ["IsTenFoot"]
+  JUMPIF R4 [+18]
+  GETTABLEKS R5 R0 K4 ["Font"]
+  GETTABLEKS R4 R5 K5 ["CaptionHeader"]
+  GETTABLEKS R2 R4 K4 ["Font"]
+  GETTABLEKS R6 R0 K4 ["Font"]
+  GETTABLEKS R5 R6 K5 ["CaptionHeader"]
+  GETTABLEKS R4 R5 K6 ["RelativeSize"]
+  GETTABLEKS R6 R0 K4 ["Font"]
+  GETTABLEKS R5 R6 K7 ["BaseSize"]
+  MUL R3 R4 R5
+  JUMP [+25]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K8 ["StatTextSize"]
+  GETUPVAL R4 3
+  GETTABLEKS R2 R4 K9 ["StatFont"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K10 ["isTitleEntry"]
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R4 3
+  GETTABLEKS R2 R4 K11 ["TitleStatFont"]
+  JUMP [+9]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K12 ["isTeamEntry"]
+  JUMPIFNOT R4 [+3]
+  GETUPVAL R4 3
+  GETTABLEKS R2 R4 K13 ["TeamStatFont"]
+  GETUPVAL R4 4
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K0 ["props"]
+  GETTABLEKS R5 R6 K14 ["statValue"]
+  CALL R4 1 1
+  NEWTABLE R5 0 0
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K3 ["IsTenFoot"]
+  JUMPIFNOT R6 [+51]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["createElement"]
+  LOADK R7 K16 ["ImageLabel"]
+  DUPTABLE R8 K23 [{"BackgroundTransparency", "Image", "Position", "Size", "ScaleType", "SliceCenter"}]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K17 ["BackgroundTransparency"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K24 ["ShadowImage"]
+  SETTABLEKS R9 R8 K18 ["Image"]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 0
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K28 ["ShadowSize"]
+  MINUS R11 R12
+  LOADN R12 0
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K19 ["Position"]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 1
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K28 ["ShadowSize"]
+  MULK R11 R12 K29 [2]
+  LOADN R12 1
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K28 ["ShadowSize"]
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K20 ["Size"]
+  GETIMPORT R9 K32 [Enum.ScaleType.Slice]
+  SETTABLEKS R9 R8 K21 ["ScaleType"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K33 ["ShadowSliceRect"]
+  SETTABLEKS R9 R8 K22 ["SliceCenter"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K34 ["Shadow"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["createElement"]
+  LOADK R7 K35 ["TextLabel"]
+  DUPTABLE R8 K44 [{"Size", "Position", "BackgroundTransparency", "Font", "TextSize", "TextColor3", "TextTransparency", "TextStrokeColor3", "TextStrokeTransparency", "Text", "TextTruncate", "Active"}]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K10 ["isTitleEntry"]
+  JUMPIFNOT R10 [+8]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADK R12 K45 [0.5]
+  LOADN R13 0
+  CALL R9 4 1
+  JUMPIF R9 [+7]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K20 ["Size"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K10 ["isTitleEntry"]
+  JUMPIFNOT R10 [+8]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 0
+  LOADK R12 K45 [0.5]
+  LOADN R13 0
+  CALL R9 4 1
+  JUMPIF R9 [+7]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K19 ["Position"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K17 ["BackgroundTransparency"]
+  SETTABLEKS R2 R8 K4 ["Font"]
+  SETTABLEKS R3 R8 K36 ["TextSize"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K47 ["Color"]
+  SETTABLEKS R9 R8 K37 ["TextColor3"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K48 ["Transparency"]
+  SETTABLEKS R9 R8 K38 ["TextTransparency"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K49 ["StrokeColor"]
+  SETTABLEKS R9 R8 K39 ["TextStrokeColor3"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K50 ["StrokeTransparency"]
+  SETTABLEKS R9 R8 K40 ["TextStrokeTransparency"]
+  SETTABLEKS R4 R8 K41 ["Text"]
+  GETIMPORT R9 K52 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R9 R8 K42 ["TextTruncate"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K43 ["Active"]
+  NEWTABLE R9 0 1
+  GETUPVAL R12 5
+  GETTABLEKS R11 R12 K15 ["createElement"]
+  LOADK R12 K54 ["UIPadding"]
+  DUPTABLE R13 K56 [{"PaddingLeft"}]
+  GETIMPORT R14 K58 [UDim.new]
+  LOADN R15 0
+  GETUPVAL R17 3
+  GETTABLEKS R16 R17 K59 ["StatTextPadding"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K55 ["PaddingLeft"]
+  CALL R11 2 1
+  ORK R10 R11 K53 []
+  SETLIST R9 R10 1 [1]
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K60 ["StatText"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K0 ["props"]
+  GETTABLEKS R6 R7 K10 ["isTitleEntry"]
+  JUMPIFNOT R6 [+80]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["createElement"]
+  LOADK R7 K35 ["TextLabel"]
+  DUPTABLE R8 K62 [{"Size", "Position", "BackgroundTransparency", "Font", "TextSize", "TextColor3", "TextTransparency", "TextStrokeColor3", "TextStrokeTransparency", "Text", "Active", "ClipsDescendants"}]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADK R12 K45 [0.5]
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K20 ["Size"]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K19 ["Position"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K17 ["BackgroundTransparency"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K63 ["StatNameFont"]
+  SETTABLEKS R9 R8 K4 ["Font"]
+  SETTABLEKS R3 R8 K36 ["TextSize"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K47 ["Color"]
+  SETTABLEKS R9 R8 K37 ["TextColor3"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K48 ["Transparency"]
+  SETTABLEKS R9 R8 K38 ["TextTransparency"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K49 ["StrokeColor"]
+  SETTABLEKS R9 R8 K39 ["TextStrokeColor3"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K46 ["textStyle"]
+  GETTABLEKS R9 R10 K50 ["StrokeTransparency"]
+  SETTABLEKS R9 R8 K40 ["TextStrokeTransparency"]
+  SETTABLEKS R1 R8 K41 ["Text"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K43 ["Active"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K61 ["ClipsDescendants"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K64 ["StatName"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["createElement"]
+  LOADK R7 K65 ["TextButton"]
+  NEWTABLE R8 32 0
+  LOADK R9 K66 [""]
+  SETTABLEKS R9 R8 K41 ["Text"]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K0 ["props"]
+  GETTABLEKS R9 R10 K67 ["layoutOrder"]
+  SETTABLEKS R9 R8 K68 ["LayoutOrder"]
+  GETIMPORT R9 K27 [UDim2.new]
+  LOADN R10 0
+  GETUPVAL R12 3
+  GETTABLEKS R11 R12 K69 ["StatEntrySizeX"]
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K20 ["Size"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K70 ["backgroundStyle"]
+  GETTABLEKS R9 R10 K48 ["Transparency"]
+  SETTABLEKS R9 R8 K17 ["BackgroundTransparency"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K70 ["backgroundStyle"]
+  GETTABLEKS R9 R10 K47 ["Color"]
+  SETTABLEKS R9 R8 K71 ["BackgroundColor3"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K72 ["BorderSizePixel"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K73 ["AutoLocalize"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K74 ["AutoButtonColor"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K75 ["Selectable"]
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K77 ["Activated"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K78 ["onActivated"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K79 ["SelectionGained"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K80 ["onSelectionGained"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K81 ["SelectionLost"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K82 ["onSelectionLost"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K83 ["MouseEnter"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K84 ["onMouseEnter"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K85 ["MouseLeave"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K86 ["onMouseLeave"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K87 ["MouseButton1Down"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K88 ["onMouseDown"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K89 ["MouseButton1Up"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R10 R11 K90 ["onInputEnded"]
+  SETTABLE R10 R8 R9
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K76 ["Event"]
+  GETTABLEKS R9 R10 K91 ["InputEnded"]
+  NEWCLOSURE R10 P0
+  CAPTURE UPVAL U2
+  SETTABLE R10 R8 R9
+  DUPTABLE R9 K94 [{"DoubleOverLay", "OverlayFrame"}]
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K15 ["createElement"]
+  LOADK R11 K95 ["Frame"]
+  DUPTABLE R12 K98 [{"ZIndex", "Visible", "Size", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K96 ["ZIndex"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K0 ["props"]
+  GETTABLEKS R13 R14 K99 ["doubleOverlay"]
+  SETTABLEKS R13 R12 K97 ["Visible"]
+  GETIMPORT R13 K27 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K20 ["Size"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K0 ["props"]
+  GETTABLEKS R14 R15 K100 ["overlayStyle"]
+  GETTABLEKS R13 R14 K48 ["Transparency"]
+  SETTABLEKS R13 R12 K17 ["BackgroundTransparency"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K0 ["props"]
+  GETTABLEKS R14 R15 K100 ["overlayStyle"]
+  GETTABLEKS R13 R14 K47 ["Color"]
+  SETTABLEKS R13 R12 K71 ["BackgroundColor3"]
+  LOADN R13 0
+  SETTABLEKS R13 R12 K72 ["BorderSizePixel"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K92 ["DoubleOverLay"]
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K15 ["createElement"]
+  LOADK R11 K95 ["Frame"]
+  DUPTABLE R12 K101 [{"ZIndex", "Size", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  LOADN R13 2
+  SETTABLEKS R13 R12 K96 ["ZIndex"]
+  GETIMPORT R13 K27 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K20 ["Size"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K0 ["props"]
+  GETTABLEKS R14 R15 K100 ["overlayStyle"]
+  GETTABLEKS R13 R14 K48 ["Transparency"]
+  SETTABLEKS R13 R12 K17 ["BackgroundTransparency"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K0 ["props"]
+  GETTABLEKS R14 R15 K100 ["overlayStyle"]
+  GETTABLEKS R13 R14 K47 ["Color"]
+  SETTABLEKS R13 R12 K71 ["BackgroundColor3"]
+  LOADN R13 0
+  SETTABLEKS R13 R12 K72 ["BorderSizePixel"]
+  MOVE R13 R5
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K93 ["OverlayFrame"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["t"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETTABLEKS R6 R4 K11 ["Style"]
+  GETTABLEKS R5 R6 K12 ["withStyle"]
+  LOADK R8 K13 ["RobloxGui"]
+  NAMECALL R6 R1 K14 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K15 ["Modules"]
+  GETTABLEKS R8 R9 K16 ["GameTranslator"]
+  CALL R7 1 1
+  GETIMPORT R10 K18 [script]
+  GETTABLEKS R9 R10 K19 ["Parent"]
+  GETTABLEKS R8 R9 K19 ["Parent"]
+  GETTABLEKS R9 R8 K20 ["Connection"]
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R11 R9 K21 ["LayoutValues"]
+  CALL R10 1 1
+  GETTABLEKS R11 R10 K22 ["WithLayoutValues"]
+  GETTABLEKS R12 R8 K19 ["Parent"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R14 R12 K23 ["FormatStatString"]
+  CALL R13 1 1
+  GETTABLEKS R14 R2 K24 ["PureComponent"]
+  LOADK R16 K25 ["StatEntry"]
+  NAMECALL R14 R14 K26 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R3 K27 ["strictInterface"]
+  DUPTABLE R16 K44 [{"statName", "statValue", "isTitleEntry", "isTeamEntry", "layoutOrder", "backgroundStyle", "overlayStyle", "doubleOverlay", "textStyle", "onActivated", "onSelectionGained", "onSelectionLost", "onMouseEnter", "onMouseLeave", "onMouseDown", "onInputEnded"}]
+  GETTABLEKS R17 R3 K45 ["string"]
+  SETTABLEKS R17 R16 K28 ["statName"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K47 ["any"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K29 ["statValue"]
+  GETTABLEKS R17 R3 K48 ["boolean"]
+  SETTABLEKS R17 R16 K30 ["isTitleEntry"]
+  GETTABLEKS R17 R3 K48 ["boolean"]
+  SETTABLEKS R17 R16 K31 ["isTeamEntry"]
+  GETTABLEKS R17 R3 K49 ["integer"]
+  SETTABLEKS R17 R16 K32 ["layoutOrder"]
+  GETTABLEKS R17 R3 K27 ["strictInterface"]
+  DUPTABLE R18 K52 [{"Color", "Transparency"}]
+  GETTABLEKS R19 R3 K53 ["Color3"]
+  SETTABLEKS R19 R18 K50 ["Color"]
+  GETTABLEKS R19 R3 K54 ["number"]
+  SETTABLEKS R19 R18 K51 ["Transparency"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K33 ["backgroundStyle"]
+  GETTABLEKS R17 R3 K27 ["strictInterface"]
+  DUPTABLE R18 K52 [{"Color", "Transparency"}]
+  GETTABLEKS R19 R3 K53 ["Color3"]
+  SETTABLEKS R19 R18 K50 ["Color"]
+  GETTABLEKS R19 R3 K54 ["number"]
+  SETTABLEKS R19 R18 K51 ["Transparency"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K34 ["overlayStyle"]
+  GETTABLEKS R17 R3 K48 ["boolean"]
+  SETTABLEKS R17 R16 K35 ["doubleOverlay"]
+  GETTABLEKS R17 R3 K27 ["strictInterface"]
+  DUPTABLE R18 K57 [{"Color", "Transparency", "StrokeColor", "StrokeTransparency"}]
+  GETTABLEKS R19 R3 K53 ["Color3"]
+  SETTABLEKS R19 R18 K50 ["Color"]
+  GETTABLEKS R19 R3 K54 ["number"]
+  SETTABLEKS R19 R18 K51 ["Transparency"]
+  GETTABLEKS R19 R3 K46 ["optional"]
+  GETTABLEKS R20 R3 K53 ["Color3"]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K55 ["StrokeColor"]
+  GETTABLEKS R19 R3 K46 ["optional"]
+  GETTABLEKS R20 R3 K54 ["number"]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K56 ["StrokeTransparency"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K36 ["textStyle"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K37 ["onActivated"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K38 ["onSelectionGained"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K39 ["onSelectionLost"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K40 ["onMouseEnter"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K41 ["onMouseLeave"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K42 ["onMouseDown"]
+  GETTABLEKS R17 R3 K46 ["optional"]
+  GETTABLEKS R18 R3 K58 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K43 ["onInputEnded"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K59 ["validateProps"]
+  DUPCLOSURE R15 K60 [PROTO_3]
+  CAPTURE VAL R11
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  CAPTURE VAL R13
+  CAPTURE VAL R2
+  SETTABLEKS R15 R14 K61 ["render"]
+  RETURN R14 1

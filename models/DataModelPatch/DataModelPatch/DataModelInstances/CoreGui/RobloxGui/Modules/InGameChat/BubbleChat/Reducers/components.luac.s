@@ -1,0 +1,73 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"bubbleChatEnabled"}]
+  GETTABLEKS R5 R1 K4 ["enabled"]
+  SETTABLEKS R5 R4 K2 ["bubbleChatEnabled"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"voiceEnabled"}]
+  GETTABLEKS R5 R1 K4 ["enabled"]
+  SETTABLEKS R5 R4 K2 ["voiceEnabled"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Cryo"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["Rodux"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R9 R2 K12 ["Modules"]
+  GETTABLEKS R8 R9 K13 ["VoiceChat"]
+  GETTABLEKS R7 R8 K14 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["VoiceEnabledChanged"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETIMPORT R11 K17 [script]
+  GETTABLEKS R10 R11 K18 ["Parent"]
+  GETTABLEKS R9 R10 K18 ["Parent"]
+  GETTABLEKS R8 R9 K14 ["Actions"]
+  GETTABLEKS R7 R8 K19 ["BubbleChatEnabledChanged"]
+  CALL R6 1 1
+  GETTABLEKS R7 R4 K20 ["createReducer"]
+  DUPTABLE R8 K23 [{"bubbleChatEnabled", "voiceEnabled"}]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K21 ["bubbleChatEnabled"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K22 ["voiceEnabled"]
+  NEWTABLE R9 2 0
+  GETTABLEKS R10 R6 K24 ["name"]
+  DUPCLOSURE R11 K25 [PROTO_0]
+  CAPTURE VAL R3
+  SETTABLE R11 R9 R10
+  GETTABLEKS R10 R5 K24 ["name"]
+  DUPCLOSURE R11 K26 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLE R11 R9 R10
+  CALL R7 2 1
+  RETURN R7 1

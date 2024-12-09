@@ -1,0 +1,71 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["AnalyticsInGameMenuName"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["AnalyticsLeaveGameName"]
+  DUPTABLE R3 K3 [{"confirmed"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["AnalyticsConfirmedName"]
+  SETTABLEKS R4 R3 K2 ["confirmed"]
+  CALL R0 3 0
+  GETUPVAL R0 2
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["SelectedCoreObject"]
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K6 ["RenderStepped"]
+  NAMECALL R0 R0 K7 ["Wait"]
+  CALL R0 1 0
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K6 ["RenderStepped"]
+  NAMECALL R0 R0 K7 ["Wait"]
+  CALL R0 1 0
+  GETIMPORT R0 K9 [game]
+  NAMECALL R0 R0 K10 ["Shutdown"]
+  CALL R0 1 0
+  GETIMPORT R1 K12 [settings]
+  CALL R1 0 1
+  GETTABLEKS R0 R1 K13 ["Rendering"]
+  GETUPVAL R1 4
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K14 ["QualityLevel"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["RunService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K8 ["Parent"]
+  GETIMPORT R5 K10 [require]
+  GETTABLEKS R8 R2 K11 ["Workspace"]
+  GETTABLEKS R7 R8 K12 ["Packages"]
+  GETTABLEKS R6 R7 K13 ["AppCommonLib"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K14 ["GetDefaultQualityLevel"]
+  GETIMPORT R5 K10 [require]
+  GETTABLEKS R7 R3 K15 ["Utility"]
+  GETTABLEKS R6 R7 K16 ["SendAnalytics"]
+  CALL R5 1 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R3 K17 ["Resources"]
+  GETTABLEKS R7 R8 K18 ["Constants"]
+  CALL R6 1 1
+  DUPCLOSURE R7 K19 [PROTO_0]
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE VAL R4
+  RETURN R7 1

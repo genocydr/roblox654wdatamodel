@@ -1,0 +1,116 @@
+PROTO_0:
+  LOADK R3 K0 ["^(%w+)[-_]"]
+  NAMECALL R1 R0 K1 ["match"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  DUPTABLE R1 K1 [{"_translations"}]
+  SETTABLEKS R0 R1 K0 ["_translations"]
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K3 [setmetatable]
+  CALL R2 2 0
+  RETURN R1 1
+
+PROTO_2:
+  SETTABLEKS R1 R0 K0 ["_translations"]
+  RETURN R0 0
+
+PROTO_3:
+  NEWTABLE R1 0 0
+  FASTCALL2 TABLE_INSERT R1 R0 [+5]
+  MOVE R3 R1
+  MOVE R4 R0
+  GETIMPORT R2 K2 [table.insert]
+  CALL R2 2 0
+  LOADK R4 K3 ["^(%w+)[-_]"]
+  NAMECALL R2 R0 K4 ["match"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+7]
+  FASTCALL2 TABLE_INSERT R1 R2 [+5]
+  MOVE R4 R1
+  MOVE R5 R2
+  GETIMPORT R3 K2 [table.insert]
+  CALL R3 2 0
+  FASTCALL2K TABLE_INSERT R1 K5 [+5]
+  MOVE R4 R1
+  LOADK R5 K5 ["en-us"]
+  GETIMPORT R3 K2 [table.insert]
+  CALL R3 2 0
+  RETURN R1 1
+
+PROTO_4:
+  GETTABLEKS R4 R0 K0 ["_translations"]
+  GETTABLE R3 R4 R1
+  JUMPIF R3 [+2]
+  LOADNIL R4
+  RETURN R4 1
+  GETTABLE R4 R3 R2
+  RETURN R4 1
+
+PROTO_5:
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R4 R0 K0 ["_getSourceString"]
+  CALL R4 3 1
+  LOADK R7 K1 ["^(%w+)[-_]"]
+  NAMECALL R5 R1 K2 ["match"]
+  CALL R5 2 1
+  LOADNIL R6
+  JUMPIFNOT R5 [+6]
+  MOVE R9 R5
+  MOVE R10 R2
+  NAMECALL R7 R0 K0 ["_getSourceString"]
+  CALL R7 3 1
+  MOVE R6 R7
+  LOADK R9 K3 ["en-us"]
+  MOVE R10 R2
+  NAMECALL R7 R0 K0 ["_getSourceString"]
+  CALL R7 3 1
+  MOVE R8 R4
+  JUMPIF R8 [+3]
+  MOVE R8 R6
+  JUMPIF R8 [+1]
+  MOVE R8 R7
+  JUMPIF R8 [+15]
+  LOADK R10 K4 ["Couldn't find value for translation key %q!
+"]
+  LOADK R11 K5 ["Tried these languages: %s, %s, %s"]
+  CONCAT R9 R10 R11
+  MOVE R11 R2
+  MOVE R12 R1
+  MOVE R13 R5
+  LOADK R14 K3 ["en-us"]
+  NAMECALL R9 R9 K6 ["format"]
+  CALL R9 5 1
+  GETIMPORT R10 K8 [error]
+  MOVE R11 R9
+  LOADN R12 2
+  CALL R10 2 0
+  JUMPIFNOT R3 [+6]
+  LOADK R11 K9 ["{(.-)}"]
+  MOVE R12 R3
+  NAMECALL R9 R8 K10 ["gsub"]
+  CALL R9 3 1
+  RETURN R9 1
+  RETURN R8 1
+
+MAIN:
+  PREPVARARGS 0
+  DUPCLOSURE R0 K0 [PROTO_0]
+  NEWTABLE R1 8 0
+  SETTABLEKS R1 R1 K1 ["__index"]
+  DUPCLOSURE R2 K2 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLEKS R2 R1 K3 ["new"]
+  DUPCLOSURE R2 K4 [PROTO_2]
+  SETTABLEKS R2 R1 K5 ["addTranslations"]
+  DUPCLOSURE R2 K6 [PROTO_3]
+  SETTABLEKS R2 R1 K7 ["getRelevantLanguages"]
+  DUPCLOSURE R2 K8 [PROTO_4]
+  SETTABLEKS R2 R1 K9 ["_getSourceString"]
+  DUPCLOSURE R2 K10 [PROTO_5]
+  SETTABLEKS R2 R1 K11 ["getString"]
+  RETURN R1 1

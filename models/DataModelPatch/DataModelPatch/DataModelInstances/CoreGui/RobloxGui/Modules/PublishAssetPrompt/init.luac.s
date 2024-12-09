@@ -1,0 +1,153 @@
+PROTO_0:
+  NEWTABLE R1 4 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["createElement"]
+  GETUPVAL R2 2
+  CALL R1 1 1
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K3 ["Store"]
+  GETTABLEKS R2 R3 K4 ["new"]
+  GETUPVAL R3 4
+  LOADNIL R4
+  NEWTABLE R5 0 1
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K5 ["thunkMiddleware"]
+  SETLIST R5 R6 1 [1]
+  CALL R2 3 1
+  SETTABLEKS R2 R0 K6 ["store"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K7 ["StoreProvider"]
+  DUPTABLE R4 K8 [{"store"}]
+  GETTABLEKS R5 R0 K6 ["store"]
+  SETTABLEKS R5 R4 K6 ["store"]
+  DUPTABLE R5 K10 [{"ThemeProvider"}]
+  GETUPVAL R6 6
+  DUPTABLE R7 K13 [{"LocalizationProvider", "PublishAssetPromptApp"}]
+  GETUPVAL R9 7
+  JUMPIFNOT R9 [+19]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K2 ["createElement"]
+  GETUPVAL R9 8
+  DUPTABLE R10 K15 [{"localization"}]
+  GETUPVAL R12 9
+  GETTABLEKS R11 R12 K4 ["new"]
+  GETUPVAL R13 10
+  GETTABLEKS R12 R13 K16 ["RobloxLocaleId"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K14 ["localization"]
+  DUPTABLE R11 K17 [{"PublishAssetPromptApp"}]
+  SETTABLEKS R1 R11 K12 ["PublishAssetPromptApp"]
+  CALL R8 3 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K11 ["LocalizationProvider"]
+  GETUPVAL R9 7
+  JUMPIF R9 [+2]
+  MOVE R8 R1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K12 ["PublishAssetPromptApp"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K9 ["ThemeProvider"]
+  CALL R2 3 1
+  SETTABLEKS R2 R0 K18 ["root"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K19 ["mount"]
+  GETTABLEKS R3 R0 K18 ["root"]
+  GETUPVAL R4 11
+  LOADK R5 K20 ["PublishAssetPrompt"]
+  CALL R2 3 1
+  SETTABLEKS R2 R0 K21 ["element"]
+  GETUPVAL R2 12
+  GETTABLEKS R3 R0 K6 ["store"]
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K22 ["serviceConnections"]
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["LocalizationService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETIMPORT R7 K9 [script]
+  GETTABLEKS R6 R7 K10 ["Parent"]
+  GETTABLEKS R5 R6 K11 ["Common"]
+  GETTABLEKS R4 R5 K12 ["renderWithCoreScriptsStyleProvider"]
+  CALL R3 1 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R0 K13 ["Workspace"]
+  GETTABLEKS R7 R8 K14 ["Packages"]
+  GETTABLEKS R6 R7 K15 ["InExperienceLocales"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K16 ["Localization"]
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R9 R0 K13 ["Workspace"]
+  GETTABLEKS R8 R9 K14 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["Localization"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K17 ["LocalizationProvider"]
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R8 R0 K14 ["Packages"]
+  GETTABLEKS R7 R8 K18 ["Roact"]
+  CALL R6 1 1
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R9 R0 K14 ["Packages"]
+  GETTABLEKS R8 R9 K19 ["Rodux"]
+  CALL R7 1 1
+  GETIMPORT R8 K7 [require]
+  GETTABLEKS R10 R0 K14 ["Packages"]
+  GETTABLEKS R9 R10 K20 ["RoactRodux"]
+  CALL R8 1 1
+  GETIMPORT R9 K7 [require]
+  GETIMPORT R12 K9 [script]
+  GETTABLEKS R11 R12 K21 ["Components"]
+  GETTABLEKS R10 R11 K22 ["PublishAssetPromptApp"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETIMPORT R12 K9 [script]
+  GETTABLEKS R11 R12 K23 ["Reducer"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETIMPORT R13 K9 [script]
+  GETTABLEKS R12 R13 K24 ["ConnectAssetServiceEvents"]
+  CALL R11 1 1
+  GETIMPORT R12 K7 [require]
+  GETIMPORT R14 K9 [script]
+  GETTABLEKS R13 R14 K25 ["FFlagPublishAvatarPromptEnabled"]
+  CALL R12 1 1
+  NEWTABLE R13 2 0
+  SETTABLEKS R13 R13 K26 ["__index"]
+  DUPCLOSURE R14 K27 [PROTO_0]
+  CAPTURE VAL R13
+  CAPTURE VAL R6
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  CAPTURE VAL R3
+  CAPTURE VAL R12
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  SETTABLEKS R14 R13 K28 ["new"]
+  GETTABLEKS R14 R13 K28 ["new"]
+  CALL R14 0 -1
+  RETURN R14 -1

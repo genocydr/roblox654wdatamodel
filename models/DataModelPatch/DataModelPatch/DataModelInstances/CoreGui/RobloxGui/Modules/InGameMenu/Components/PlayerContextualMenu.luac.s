@@ -1,0 +1,446 @@
+PROTO_0:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"firstOptionRef"}]
+  SETTABLEKS R0 R3 K0 ["firstOptionRef"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"containerRef"}]
+  SETTABLEKS R0 R3 K0 ["containerRef"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R3 K1 [game]
+  NAMECALL R1 R0 K2 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 0
+  DUPTABLE R3 K4 [{"isRooted"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K3 ["isRooted"]
+  NAMECALL R1 R1 K5 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+13]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["firstOptionRef"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K2 ["containerRef"]
+  RETURN R0 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["firstOptionRef"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["containerRef"]
+  DUPTABLE R1 K4 [{"isRooted", "firstOptionRef", "containerRef"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K3 ["isRooted"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K1 ["firstOptionRef"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K2 ["containerRef"]
+  SETTABLEKS R1 R0 K5 ["state"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K6 ["setFirstOptionRef"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K7 ["setContainerRef"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K8 ["onAncestryChanged"]
+  RETURN R0 0
+
+PROTO_4:
+  GETIMPORT R2 K3 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R1 R2 [+16]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["onClose"]
+  JUMPIFNOT R2 [+9]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["onClose"]
+  CALL R2 0 0
+  GETIMPORT R2 K8 [Enum.ContextActionResult.Sink]
+  RETURN R2 1
+  GETIMPORT R2 K10 [Enum.ContextActionResult.Pass]
+  RETURN R2 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["player_contextual_menu_close_action"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.ButtonB]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R1 2
+  LOADK R3 K6 ["player_contextual_menu_selection_parent"]
+  NAMECALL R1 R1 K7 ["RemoveSelectionGroup"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  CALL R1 0 1
+  JUMPIFNOT R1 [+36]
+  GETUPVAL R1 2
+  LOADK R3 K6 ["player_contextual_menu_selection_parent"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K8 ["containerRef"]
+  NAMECALL R4 R4 K9 ["getValue"]
+  CALL R4 1 -1
+  NAMECALL R1 R1 K10 ["AddSelectionParent"]
+  CALL R1 -1 0
+  GETUPVAL R1 4
+  CALL R1 0 1
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 2
+  MOVE R2 R0
+  JUMPIF R2 [+6]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K11 ["firstOptionRef"]
+  NAMECALL R2 R2 K9 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K12 ["SelectedCoreObject"]
+  RETURN R0 0
+  GETUPVAL R1 2
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K11 ["firstOptionRef"]
+  NAMECALL R2 R2 K9 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K12 ["SelectedCoreObject"]
+  RETURN R0 0
+  GETUPVAL R1 2
+  LOADK R3 K6 ["player_contextual_menu_selection_parent"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K13 ["state"]
+  GETTABLEKS R4 R5 K8 ["containerRef"]
+  NAMECALL R1 R1 K10 ["AddSelectionParent"]
+  CALL R1 3 0
+  GETUPVAL R1 4
+  CALL R1 0 1
+  JUMPIFNOT R1 [+11]
+  GETUPVAL R1 2
+  MOVE R2 R0
+  JUMPIF R2 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K13 ["state"]
+  GETTABLEKS R2 R3 K11 ["firstOptionRef"]
+  SETTABLEKS R2 R1 K12 ["SelectedCoreObject"]
+  RETURN R0 0
+  GETUPVAL R1 2
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K13 ["state"]
+  GETTABLEKS R2 R3 K11 ["firstOptionRef"]
+  SETTABLEKS R2 R1 K12 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["player_contextual_menu_close_action"]
+  NAMECALL R0 R0 K1 ["UnbindCoreAction"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_7:
+  LOADNIL R3
+  GETUPVAL R4 0
+  CALL R4 0 1
+  JUMPIFNOT R4 [+6]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["canCaptureFocus"]
+  AND R3 R4 R1
+  JUMP [+20]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["canCaptureFocus"]
+  JUMPIFNOT R4 [+14]
+  GETTABLEKS R5 R0 K2 ["state"]
+  GETTABLEKS R4 R5 K3 ["isRooted"]
+  JUMPIFNOT R4 [+9]
+  GETTABLEKS R5 R0 K2 ["state"]
+  GETTABLEKS R4 R5 K4 ["firstOptionRef"]
+  JUMPIFNOT R4 [+4]
+  GETTABLEKS R5 R0 K2 ["state"]
+  GETTABLEKS R4 R5 K5 ["containerRef"]
+  MOVE R3 R4
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K10 [{"isFocused", "didFocus", "didBlur"}]
+  SETTABLEKS R3 R6 K7 ["isFocused"]
+  NEWCLOSURE R7 P0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  SETTABLEKS R7 R6 K8 ["didFocus"]
+  DUPCLOSURE R7 K11 [PROTO_6]
+  CAPTURE UPVAL U3
+  SETTABLEKS R7 R6 K9 ["didBlur"]
+  GETUPVAL R8 0
+  CALL R8 0 1
+  JUMPIFNOT R8 [+2]
+  MOVE R7 R2
+  JUMPIF R7 [+1]
+  LOADNIL R7
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_8:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  DUPTABLE R4 K1 [{"MoreActionsMenu"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K2 ["createElement"]
+  LOADK R6 K3 ["Frame"]
+  NEWTABLE R7 4 0
+  GETIMPORT R8 K6 [UDim2.fromScale]
+  LOADN R9 1
+  LOADN R10 1
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K7 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K8 ["BackgroundTransparency"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K9 ["Ref"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K10 ["containerRef"]
+  SETTABLE R9 R7 R8
+  DUPTABLE R8 K12 [{"BaseMenu"}]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K2 ["createElement"]
+  GETUPVAL R10 2
+  DUPTABLE R11 K17 [{"buttonProps", "setFirstItemRef", "width", "position"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K18 ["props"]
+  GETTABLEKS R12 R13 K19 ["moreActions"]
+  SETTABLEKS R12 R11 K13 ["buttonProps"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K20 ["firstOptionRef"]
+  SETTABLEKS R12 R11 K14 ["setFirstItemRef"]
+  GETIMPORT R12 K23 [UDim.new]
+  LOADN R13 0
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K18 ["props"]
+  GETTABLEKS R14 R15 K24 ["actionWidth"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K15 ["width"]
+  GETIMPORT R12 K26 [UDim2.fromOffset]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K18 ["props"]
+  GETTABLEKS R13 R14 K27 ["xOffset"]
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K18 ["props"]
+  GETTABLEKS R14 R15 K28 ["yOffset"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K16 ["position"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K11 ["BaseMenu"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K0 ["MoreActionsMenu"]
+  NAMECALL R1 R1 K29 ["renderContextualMenuFocusHandler"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["Portal"]
+  DUPTABLE R3 K3 [{"target"}]
+  GETUPVAL R4 1
+  SETTABLEKS R4 R3 K2 ["target"]
+  DUPTABLE R4 K5 [{"InGameMenuContextGui"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K6 ["ScreenGui"]
+  DUPTABLE R7 K9 [{"DisplayOrder", "ZIndexBehavior"}]
+  LOADN R8 2
+  SETTABLEKS R8 R7 K7 ["DisplayOrder"]
+  GETIMPORT R8 K12 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R8 R7 K8 ["ZIndexBehavior"]
+  DUPTABLE R8 K16 [{"FocusHandler", "MoreActionsMenu", "RootedConnection"}]
+  GETUPVAL R10 2
+  CALL R10 0 1
+  JUMPIF R10 [+4]
+  NAMECALL R9 R0 K17 ["renderContextualMenuFocusHandler"]
+  CALL R9 1 1
+  JUMPIF R9 [+1]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K13 ["FocusHandler"]
+  GETUPVAL R10 2
+  CALL R10 0 1
+  JUMPIF R10 [+74]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K18 ["Frame"]
+  NEWTABLE R11 4 0
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K19 ["Event"]
+  GETTABLEKS R12 R13 K20 ["AncestryChanged"]
+  GETTABLEKS R13 R0 K21 ["onAncestryChanged"]
+  SETTABLE R13 R11 R12
+  GETIMPORT R12 K24 [UDim2.fromScale]
+  LOADN R13 1
+  LOADN R14 1
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K25 ["Size"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K26 ["BackgroundTransparency"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K27 ["Ref"]
+  GETTABLEKS R13 R0 K28 ["setContainerRef"]
+  SETTABLE R13 R11 R12
+  DUPTABLE R12 K30 [{"BaseMenu"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 3
+  DUPTABLE R15 K35 [{"buttonProps", "setFirstItemRef", "width", "position"}]
+  GETTABLEKS R17 R0 K36 ["props"]
+  GETTABLEKS R16 R17 K37 ["moreActions"]
+  SETTABLEKS R16 R15 K31 ["buttonProps"]
+  GETTABLEKS R16 R0 K38 ["setFirstOptionRef"]
+  SETTABLEKS R16 R15 K32 ["setFirstItemRef"]
+  GETIMPORT R16 K41 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R19 R0 K36 ["props"]
+  GETTABLEKS R18 R19 K42 ["actionWidth"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K33 ["width"]
+  GETIMPORT R16 K44 [UDim2.fromOffset]
+  GETTABLEKS R18 R0 K36 ["props"]
+  GETTABLEKS R17 R18 K45 ["xOffset"]
+  GETTABLEKS R19 R0 K36 ["props"]
+  GETTABLEKS R18 R19 K46 ["yOffset"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K34 ["position"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K29 ["BaseMenu"]
+  CALL R9 3 1
+  JUMPIF R9 [+1]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K14 ["MoreActionsMenu"]
+  GETUPVAL R10 2
+  CALL R10 0 1
+  JUMPIFNOT R10 [+13]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  GETUPVAL R10 4
+  DUPTABLE R11 K48 [{"render"}]
+  NEWCLOSURE R12 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  SETTABLEKS R12 R11 K47 ["render"]
+  CALL R9 2 1
+  JUMPIF R9 [+1]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K15 ["RootedConnection"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K4 ["InGameMenuContextGui"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["ContextActionService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["GuiService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["InGameMenuDependencies"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K11 ["Roact"]
+  GETTABLEKS R6 R4 K12 ["UIBlox"]
+  GETTABLEKS R7 R4 K13 ["t"]
+  GETTABLEKS R10 R6 K14 ["App"]
+  GETTABLEKS R9 R10 K15 ["Menu"]
+  GETTABLEKS R8 R9 K16 ["BaseMenu"]
+  GETIMPORT R11 K18 [script]
+  GETTABLEKS R10 R11 K19 ["Parent"]
+  GETTABLEKS R9 R10 K19 ["Parent"]
+  GETIMPORT R10 K8 [require]
+  GETIMPORT R14 K18 [script]
+  GETTABLEKS R13 R14 K19 ["Parent"]
+  GETTABLEKS R12 R13 K20 ["Connection"]
+  GETTABLEKS R11 R12 K21 ["FocusHandler"]
+  CALL R10 1 1
+  GETIMPORT R11 K8 [require]
+  GETIMPORT R15 K18 [script]
+  GETTABLEKS R14 R15 K19 ["Parent"]
+  GETTABLEKS R13 R14 K20 ["Connection"]
+  GETTABLEKS R12 R13 K22 ["RootedConnection"]
+  CALL R11 1 1
+  GETTABLEKS R12 R9 K23 ["Flags"]
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R14 R12 K24 ["GetFFlagIGMRefactorPlayerContextualMenuGamepadSupport"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R15 R12 K25 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R14 1 1
+  GETTABLEKS R15 R5 K26 ["PureComponent"]
+  LOADK R17 K27 ["PlayerContextualMenu"]
+  NAMECALL R15 R15 K28 ["extend"]
+  CALL R15 2 1
+  GETTABLEKS R16 R7 K29 ["strictInterface"]
+  DUPTABLE R17 K36 [{"moreActions", "actionWidth", "xOffset", "yOffset", "onClose", "canCaptureFocus"}]
+  GETTABLEKS R18 R7 K37 ["table"]
+  SETTABLEKS R18 R17 K30 ["moreActions"]
+  GETTABLEKS R18 R7 K38 ["number"]
+  SETTABLEKS R18 R17 K31 ["actionWidth"]
+  GETTABLEKS R18 R7 K38 ["number"]
+  SETTABLEKS R18 R17 K32 ["xOffset"]
+  GETTABLEKS R18 R7 K38 ["number"]
+  SETTABLEKS R18 R17 K33 ["yOffset"]
+  GETTABLEKS R18 R7 K39 ["callback"]
+  SETTABLEKS R18 R17 K34 ["onClose"]
+  GETTABLEKS R18 R7 K40 ["boolean"]
+  SETTABLEKS R18 R17 K35 ["canCaptureFocus"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K41 ["validateProps"]
+  DUPCLOSURE R16 K42 [PROTO_3]
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  SETTABLEKS R16 R15 K43 ["init"]
+  DUPCLOSURE R16 K44 [PROTO_7]
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R10
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R14
+  SETTABLEKS R16 R15 K45 ["renderContextualMenuFocusHandler"]
+  DUPCLOSURE R16 K46 [PROTO_9]
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  CAPTURE VAL R13
+  CAPTURE VAL R8
+  CAPTURE VAL R11
+  SETTABLEKS R16 R15 K47 ["render"]
+  RETURN R15 1

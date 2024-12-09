@@ -37,10 +37,8 @@ local BadgeOver13 = require(Presentation.BadgeOver13)
 
 local Chrome = script.Parent.Parent.Parent.Chrome
 
-local ExperienceMenuABTestManager = require(script.Parent.Parent.Parent.ExperienceMenuABTestManager)
-local IsExperienceMenuABTestEnabled = require(script.Parent.Parent.Parent.IsExperienceMenuABTestEnabled)
 local ChromeEnabled = require(Chrome.Enabled)
-local UnibarConstants = require(Chrome.ChromeShared.Unibar.Constants)
+local GetShouldShowPlatformChatBasedOnPolicy = require(Chrome.Flags.GetShouldShowPlatformChatBasedOnPolicy)
 local PeekConstants = require(Chrome.Integrations.MusicUtility.Constants)
 
 local FFlagEnableChromeAnalytics = require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableChromeAnalytics()
@@ -76,7 +74,6 @@ local SetScreenSize = require(TopBar.Actions.SetScreenSize)
 local SetKeepOutArea = require(TopBar.Actions.SetKeepOutArea)
 local RemoveKeepOutArea = require(TopBar.Actions.RemoveKeepOutArea)
 
-local RobloxGui = CoreGui:WaitForChild("RobloxGui")
 local TenFootInterface = require(RobloxGui.Modules.TenFootInterface)
 local isNewInGameMenuEnabled = require(RobloxGui.Modules.isNewInGameMenuEnabled)
 local isNewTiltIconEnabled = require(RobloxGui.Modules.isNewTiltIconEnabled)
@@ -131,7 +128,7 @@ function TopBarApp:init()
 		self.setCloseButtonState(newControlState)
 	end
 	if ChromeEnabled() then
-		local ChromeService = require(Chrome.ChromeShared.Service)
+		local ChromeService = require(Chrome.Service)
 		self:setState({
 			unibarAlignment = ChromeService:orderAlignment():get(),
 		})
@@ -156,7 +153,7 @@ end
 
 function TopBarApp:didMount()
 	if ChromeEnabled() then
-		local ChromeService = require(Chrome.ChromeShared.Service)
+		local ChromeService = require(Chrome.Service)
 		self.orderAlignmentConnection = ChromeService:orderAlignment():connect(function()
 			self:setState({
 				unibarAlignment = ChromeService:orderAlignment():get(),
@@ -587,14 +584,17 @@ function TopBarApp:renderWithStyle(style)
 					showBadgeOver12 = self.props.showBadgeOver12,
 				}),
 
-				ConnectIcon = not chromeEnabled and GetFFlagEnablePartyIconInNonChrome() and Roact.createElement(
-					ConnectIcon,
-					{
-						setKeepOutArea = self.props.setKeepOutArea,
-						removeKeepOutArea = self.props.removeKeepOutArea,
-						layoutOrder = 2,
-					}
-				) or nil,
+				ConnectIcon = not chromeEnabled
+					and GetFFlagEnablePartyIconInNonChrome()
+					and GetShouldShowPlatformChatBasedOnPolicy()
+					and Roact.createElement(
+						ConnectIcon,
+						{
+							setKeepOutArea = self.props.setKeepOutArea,
+							removeKeepOutArea = self.props.removeKeepOutArea,
+							layoutOrder = 2,
+						}
+					) or nil,
 
 				ChatIcon = not chromeEnabled and Roact.createElement(ChatIcon, {
 					layoutOrder = 3,

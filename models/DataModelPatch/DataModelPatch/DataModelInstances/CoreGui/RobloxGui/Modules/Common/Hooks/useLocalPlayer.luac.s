@@ -1,0 +1,27 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  LOADK R2 K0 ["LocalPlayer"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Workspace"]
+  GETTABLEKS R5 R6 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["GuiObjectUtils"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K10 ["useProperty"]
+  DUPCLOSURE R3 K11 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  RETURN R3 1

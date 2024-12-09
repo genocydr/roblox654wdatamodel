@@ -1,0 +1,677 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"AssetId"}]
+  SETTABLEKS R0 R3 K2 ["AssetId"]
+  CALL R1 2 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["resolve"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"AssetId"}]
+  SETTABLEKS R0 R3 K2 ["AssetId"]
+  CALL R1 2 1
+  GETTABLEKS R2 R1 K4 ["Creator"]
+  LOADN R3 2
+  SETTABLEKS R3 R2 K5 ["Id"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["resolve"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K4 [{"Id", "ItemType"}]
+  SETTABLEKS R0 R4 K2 ["Id"]
+  SETTABLEKS R1 R4 K3 ["ItemType"]
+  CALL R2 2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K5 ["resolve"]
+  MOVE R4 R2
+  CALL R3 1 -1
+  RETURN R3 -1
+
+PROTO_3:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"AssetId"}]
+  SETTABLEKS R0 R3 K2 ["AssetId"]
+  CALL R1 2 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["resolve"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"universeId"}]
+  SETTABLEKS R0 R3 K2 ["universeId"]
+  CALL R1 2 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["resolve"]
+  NEWTABLE R3 0 1
+  MOVE R4 R1
+  SETLIST R3 R4 1 [1]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_5:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"id"}]
+  SETTABLEKS R0 R3 K2 ["id"]
+  CALL R1 2 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["resolve"]
+  DUPTABLE R3 K6 [{"data"}]
+  NEWTABLE R4 0 1
+  MOVE R5 R1
+  SETLIST R4 R5 1 [1]
+  SETTABLEKS R4 R3 K5 ["data"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  GETUPVAL R2 1
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  LOADK R2 K1 ["TEST"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_10:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_11:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_12:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  LOADN R2 120
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_13:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  LOADN R2 120
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_14:
+  JUMPIFNOTEQKS R0 K0 ["GetFavoriteModel"] [+7]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["resolve"]
+  GETUPVAL R2 1
+  CALL R1 1 -1
+  RETURN R1 -1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["resolve"]
+  LOADK R2 K2 ["null"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_15:
+  JUMPIFNOTEQKS R0 K0 ["GetFavoriteModel"] [+7]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["resolve"]
+  GETUPVAL R2 1
+  CALL R1 1 -1
+  RETURN R1 -1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["resolve"]
+  LOADK R2 K2 ["null"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_16:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  GETUPVAL R2 1
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_17:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["resolve"]
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_18:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["reject"]
+  LOADK R3 K1 ["Failed to access network service"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_19:
+  LOADK R0 K0 ["MockService(Network)"]
+  RETURN R0 1
+
+PROTO_20:
+  LOADNIL R2
+  JUMPIFNOT R0 [+54]
+  DUPTABLE R3 K17 [{"getProductInfo", "getPlayerName", "getAssetBundles", "createFavoriteForAsset", "createFavoriteForBundle", "deleteFavoriteForAsset", "deleteFavoriteForBundle", "getAssetFavoriteCount", "getBundleFavoriteCount", "getFavoriteForAsset", "getFavoriteForBundle", "getEconomyProductInfo", "getModelFromUserId", "getVersionInfo", "getExperiencePlayability", "getExperienceInfo", "getItemDetails"}]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K0 ["getProductInfo"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K1 ["getPlayerName"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K2 ["getAssetBundles"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K3 ["createFavoriteForAsset"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K4 ["createFavoriteForBundle"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K5 ["deleteFavoriteForAsset"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K6 ["deleteFavoriteForBundle"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K7 ["getAssetFavoriteCount"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K8 ["getBundleFavoriteCount"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K9 ["getFavoriteForAsset"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K10 ["getFavoriteForBundle"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K11 ["getEconomyProductInfo"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K12 ["getModelFromUserId"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K13 ["getVersionInfo"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K14 ["getExperiencePlayability"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K15 ["getExperienceInfo"]
+  GETUPVAL R4 0
+  SETTABLEKS R4 R3 K16 ["getItemDetails"]
+  MOVE R2 R3
+  JUMP [+56]
+  DUPTABLE R3 K17 [{"getProductInfo", "getPlayerName", "getAssetBundles", "createFavoriteForAsset", "createFavoriteForBundle", "deleteFavoriteForAsset", "deleteFavoriteForBundle", "getAssetFavoriteCount", "getBundleFavoriteCount", "getFavoriteForAsset", "getFavoriteForBundle", "getEconomyProductInfo", "getModelFromUserId", "getVersionInfo", "getExperiencePlayability", "getExperienceInfo", "getItemDetails"}]
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R4 1
+  JUMPIF R4 [+1]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K0 ["getProductInfo"]
+  GETUPVAL R4 3
+  SETTABLEKS R4 R3 K1 ["getPlayerName"]
+  GETUPVAL R4 4
+  SETTABLEKS R4 R3 K2 ["getAssetBundles"]
+  GETUPVAL R4 5
+  SETTABLEKS R4 R3 K3 ["createFavoriteForAsset"]
+  GETUPVAL R4 6
+  SETTABLEKS R4 R3 K4 ["createFavoriteForBundle"]
+  GETUPVAL R4 7
+  SETTABLEKS R4 R3 K5 ["deleteFavoriteForAsset"]
+  GETUPVAL R4 8
+  SETTABLEKS R4 R3 K6 ["deleteFavoriteForBundle"]
+  GETUPVAL R4 9
+  SETTABLEKS R4 R3 K7 ["getAssetFavoriteCount"]
+  GETUPVAL R4 10
+  SETTABLEKS R4 R3 K8 ["getBundleFavoriteCount"]
+  GETUPVAL R4 11
+  SETTABLEKS R4 R3 K9 ["getFavoriteForAsset"]
+  GETUPVAL R4 12
+  SETTABLEKS R4 R3 K10 ["getFavoriteForBundle"]
+  GETUPVAL R4 13
+  SETTABLEKS R4 R3 K11 ["getEconomyProductInfo"]
+  GETUPVAL R4 14
+  SETTABLEKS R4 R3 K12 ["getModelFromUserId"]
+  GETUPVAL R4 15
+  SETTABLEKS R4 R3 K13 ["getVersionInfo"]
+  GETUPVAL R4 16
+  SETTABLEKS R4 R3 K14 ["getExperiencePlayability"]
+  GETUPVAL R4 17
+  SETTABLEKS R4 R3 K15 ["getExperienceInfo"]
+  GETUPVAL R4 18
+  SETTABLEKS R4 R3 K16 ["getItemDetails"]
+  MOVE R2 R3
+  DUPTABLE R5 K19 [{"__tostring"}]
+  DUPCLOSURE R6 K20 [PROTO_19]
+  SETTABLEKS R6 R5 K18 ["__tostring"]
+  FASTCALL2 SETMETATABLE R2 R5 [+4]
+  MOVE R4 R2
+  GETIMPORT R3 K22 [setmetatable]
+  CALL R3 2 0
+  RETURN R2 1
+
+PROTO_21:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_22:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_23:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_24:
+  LOADK R0 K0 ["TEST"]
+  RETURN R0 1
+
+PROTO_25:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_26:
+  LOADN R0 120
+  RETURN R0 1
+
+PROTO_27:
+  LOADK R0 K0 ["GetFavoriteModel"]
+  RETURN R0 1
+
+PROTO_28:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_29:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_30:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_31:
+  GETUPVAL R0 0
+  RETURN R0 1
+
+PROTO_32:
+  NEWTABLE R0 0 1
+  GETUPVAL R1 0
+  SETLIST R0 R1 1 [1]
+  RETURN R0 1
+
+PROTO_33:
+  DUPTABLE R0 K1 [{"data"}]
+  NEWTABLE R1 0 1
+  GETUPVAL R2 0
+  SETLIST R1 R2 1 [1]
+  SETTABLEKS R1 R0 K0 ["data"]
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Promise"]
+  CALL R2 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R8 R0 K9 ["Workspace"]
+  GETTABLEKS R7 R8 K6 ["Packages"]
+  GETTABLEKS R6 R7 K10 ["PlayabilityRodux"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K11 ["Enums"]
+  GETTABLEKS R3 R4 K12 ["PlayabilityStatusEnum"]
+  NEWTABLE R4 0 3
+  DUPTABLE R5 K16 [{"id", "name", "assetType"}]
+  LOADK R6 K17 [100425207]
+  SETTABLEKS R6 R5 K13 ["id"]
+  LOADK R6 K18 ["Reinforced Wizard"]
+  SETTABLEKS R6 R5 K14 ["name"]
+  DUPTABLE R6 K19 [{"id", "name"}]
+  LOADN R7 8
+  SETTABLEKS R7 R6 K13 ["id"]
+  LOADK R7 K20 ["Hat"]
+  SETTABLEKS R7 R6 K14 ["name"]
+  SETTABLEKS R6 R5 K15 ["assetType"]
+  SETTABLEN R5 R4 1
+  DUPTABLE R5 K16 [{"id", "name", "assetType"}]
+  LOADK R6 K21 [2510238627]
+  SETTABLEKS R6 R5 K13 ["id"]
+  LOADK R6 K22 ["Rthro Run"]
+  SETTABLEKS R6 R5 K14 ["name"]
+  DUPTABLE R6 K19 [{"id", "name"}]
+  LOADN R7 53
+  SETTABLEKS R7 R6 K13 ["id"]
+  LOADK R7 K23 ["Run Animation"]
+  SETTABLEKS R7 R6 K14 ["name"]
+  SETTABLEKS R6 R5 K15 ["assetType"]
+  SETTABLEN R5 R4 2
+  DUPTABLE R5 K16 [{"id", "name", "assetType"}]
+  LOADK R6 K24 [2807164805]
+  SETTABLEKS R6 R5 K13 ["id"]
+  LOADK R6 K25 ["Mech Golem - Head"]
+  SETTABLEKS R6 R5 K14 ["name"]
+  DUPTABLE R6 K19 [{"id", "name"}]
+  LOADN R7 17
+  SETTABLEKS R7 R6 K13 ["id"]
+  LOADK R7 K26 ["Head"]
+  SETTABLEKS R7 R6 K14 ["name"]
+  SETTABLEKS R6 R5 K15 ["assetType"]
+  SETTABLEN R5 R4 3
+  DUPTABLE R5 K28 [{"data"}]
+  NEWTABLE R6 0 1
+  DUPTABLE R7 K34 [{"id", "name", "description", "bundleType", "items", "creator", "product"}]
+  LOADN R8 195
+  SETTABLEKS R8 R7 K13 ["id"]
+  LOADK R8 K35 ["test name"]
+  SETTABLEKS R8 R7 K14 ["name"]
+  LOADK R8 K36 ["test description"]
+  SETTABLEKS R8 R7 K29 ["description"]
+  LOADK R8 K37 ["testBundleType"]
+  SETTABLEKS R8 R7 K30 ["bundleType"]
+  NEWTABLE R8 0 3
+  DUPTABLE R9 K39 [{"owned", "id", "name"}]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K38 ["owned"]
+  LOADK R10 K40 [2510230574]
+  SETTABLEKS R10 R9 K13 ["id"]
+  LOADK R10 K41 ["test asset name"]
+  SETTABLEKS R10 R9 K14 ["name"]
+  SETTABLEN R9 R8 1
+  DUPTABLE R9 K39 [{"owned", "id", "name"}]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K38 ["owned"]
+  LOADK R10 K42 [2510233257]
+  SETTABLEKS R10 R9 K13 ["id"]
+  LOADK R10 K43 ["test asset name 2"]
+  SETTABLEKS R10 R9 K14 ["name"]
+  SETTABLEN R9 R8 2
+  DUPTABLE R9 K45 [{"owned", "type", "id", "name"}]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K38 ["owned"]
+  LOADK R10 K46 ["UserOutfit"]
+  SETTABLEKS R10 R9 K44 ["type"]
+  LOADK R10 K47 [2510233258]
+  SETTABLEKS R10 R9 K13 ["id"]
+  LOADK R10 K48 ["Outfit"]
+  SETTABLEKS R10 R9 K14 ["name"]
+  SETTABLEN R9 R8 3
+  SETTABLEKS R8 R7 K31 ["items"]
+  DUPTABLE R8 K19 [{"id", "name"}]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K13 ["id"]
+  LOADK R9 K49 ["test creator name"]
+  SETTABLEKS R9 R8 K14 ["name"]
+  SETTABLEKS R8 R7 K32 ["creator"]
+  DUPTABLE R8 K52 [{"id", "isForSale", "priceInRobux"}]
+  LOADK R9 K53 [480872498]
+  SETTABLEKS R9 R8 K13 ["id"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K50 ["isForSale"]
+  LOADN R9 250
+  SETTABLEKS R9 R8 K51 ["priceInRobux"]
+  SETTABLEKS R8 R7 K33 ["product"]
+  SETTABLEN R7 R6 1
+  SETTABLEKS R6 R5 K27 ["data"]
+  GETIMPORT R6 K56 [Instance.new]
+  LOADK R7 K57 ["HumanoidDescription"]
+  CALL R6 1 1
+  LOADN R7 1
+  SETTABLEKS R7 R6 K58 ["HatAccessory"]
+  LOADN R7 2
+  SETTABLEKS R7 R6 K59 ["LeftArm"]
+  LOADN R7 3
+  SETTABLEKS R7 R6 K60 ["ClimbAnimation"]
+  LOADK R7 K61 [0.3]
+  SETTABLEKS R7 R6 K62 ["BodyTypeScale"]
+  GETIMPORT R7 K64 [Color3.new]
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K65 ["LeftLegColor"]
+  LOADN R7 4
+  SETTABLEKS R7 R6 K66 ["GraphicTShirt"]
+  GETIMPORT R7 K56 [Instance.new]
+  LOADK R8 K57 ["HumanoidDescription"]
+  CALL R7 1 1
+  NEWTABLE R8 4 0
+  NEWTABLE R9 0 1
+  LOADN R10 1
+  SETLIST R9 R10 1 [1]
+  SETTABLEKS R9 R8 K67 ["Wave"]
+  NEWTABLE R9 0 1
+  LOADN R10 2
+  SETLIST R9 R10 1 [1]
+  SETTABLEKS R9 R8 K68 ["Laugh"]
+  NEWTABLE R9 0 1
+  LOADN R10 3
+  SETLIST R9 R10 1 [1]
+  SETTABLEKS R9 R8 K69 ["Cheer"]
+  MOVE R11 R8
+  NAMECALL R9 R7 K70 ["SetEmotes"]
+  CALL R9 2 0
+  GETIMPORT R9 K56 [Instance.new]
+  LOADK R10 K57 ["HumanoidDescription"]
+  CALL R9 1 1
+  DUPTABLE R10 K74 [{"assetId", "userId", "created"}]
+  LOADN R11 123
+  SETTABLEKS R11 R10 K71 ["assetId"]
+  LOADK R11 K75 [401784814]
+  SETTABLEKS R11 R10 K72 ["userId"]
+  LOADK R11 K76 [""]
+  SETTABLEKS R11 R10 K73 ["created"]
+  DUPTABLE R11 K84 [{"Name", "Description", "PriceInRobux", "Creator", "AssetId", "AssetTypeId", "ProductId"}]
+  LOADK R12 K35 ["test name"]
+  SETTABLEKS R12 R11 K77 ["Name"]
+  LOADK R12 K36 ["test description"]
+  SETTABLEKS R12 R11 K78 ["Description"]
+  LOADN R12 100
+  SETTABLEKS R12 R11 K79 ["PriceInRobux"]
+  DUPTABLE R12 K86 [{"Id", "Name"}]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K85 ["Id"]
+  LOADK R13 K87 ["TEST CREATOR"]
+  SETTABLEKS R13 R12 K77 ["Name"]
+  SETTABLEKS R12 R11 K80 ["Creator"]
+  LOADK R12 K17 [100425207]
+  SETTABLEKS R12 R11 K81 ["AssetId"]
+  LOADN R12 8
+  SETTABLEKS R12 R11 K82 ["AssetTypeId"]
+  LOADK R12 K88 [18929548]
+  SETTABLEKS R12 R11 K83 ["ProductId"]
+  DUPTABLE R12 K92 [{"Owned", "IsPurchasable", "Id", "ItemType"}]
+  LOADB R13 1
+  SETTABLEKS R13 R12 K89 ["Owned"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K90 ["IsPurchasable"]
+  LOADK R13 K17 [100425207]
+  SETTABLEKS R13 R12 K85 ["Id"]
+  LOADK R13 K93 ["Asset"]
+  SETTABLEKS R13 R12 K91 ["ItemType"]
+  DUPTABLE R13 K97 [{"purchasable", "reason", "price", "assetId"}]
+  LOADB R14 0
+  SETTABLEKS R14 R13 K94 ["purchasable"]
+  LOADK R14 K98 ["InsufficientFunds"]
+  SETTABLEKS R14 R13 K95 ["reason"]
+  LOADN R14 200
+  SETTABLEKS R14 R13 K96 ["price"]
+  LOADN R14 10
+  SETTABLEKS R14 R13 K71 ["assetId"]
+  DUPTABLE R14 K102 [{"playabilityStatus", "universeId", "isPlayable"}]
+  GETTABLEKS R15 R3 K103 ["Playable"]
+  SETTABLEKS R15 R14 K99 ["playabilityStatus"]
+  LOADN R15 13
+  SETTABLEKS R15 R14 K100 ["universeId"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K101 ["isPlayable"]
+  DUPTABLE R15 K105 [{"name", "id", "rootPlaceId"}]
+  LOADK R16 K106 ["fakename"]
+  SETTABLEKS R16 R15 K14 ["name"]
+  LOADN R16 13
+  SETTABLEKS R16 R15 K13 ["id"]
+  LOADN R16 17
+  SETTABLEKS R16 R15 K104 ["rootPlaceId"]
+  DUPCLOSURE R16 K107 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  DUPCLOSURE R17 K108 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  DUPCLOSURE R18 K109 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R12
+  CAPTURE VAL R2
+  DUPTABLE R19 K28 [{"data"}]
+  NEWTABLE R20 0 1
+  DUPTABLE R21 K111 [{"assetId", "creatingUniverseId"}]
+  LOADN R22 17
+  SETTABLEKS R22 R21 K71 ["assetId"]
+  LOADN R22 13
+  SETTABLEKS R22 R21 K110 ["creatingUniverseId"]
+  SETLIST R20 R21 1 [1]
+  SETTABLEKS R20 R19 K27 ["data"]
+  DUPCLOSURE R20 K112 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R19
+  CAPTURE VAL R2
+  DUPCLOSURE R21 K113 [PROTO_4]
+  CAPTURE VAL R1
+  CAPTURE VAL R14
+  CAPTURE VAL R2
+  DUPCLOSURE R22 K114 [PROTO_5]
+  CAPTURE VAL R1
+  CAPTURE VAL R15
+  CAPTURE VAL R2
+  DUPCLOSURE R23 K115 [PROTO_6]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  DUPCLOSURE R24 K116 [PROTO_7]
+  CAPTURE VAL R2
+  DUPCLOSURE R25 K117 [PROTO_8]
+  CAPTURE VAL R2
+  DUPCLOSURE R26 K118 [PROTO_9]
+  CAPTURE VAL R2
+  DUPCLOSURE R27 K119 [PROTO_10]
+  CAPTURE VAL R2
+  DUPCLOSURE R28 K120 [PROTO_11]
+  CAPTURE VAL R2
+  DUPCLOSURE R29 K121 [PROTO_12]
+  CAPTURE VAL R2
+  DUPCLOSURE R30 K122 [PROTO_13]
+  CAPTURE VAL R2
+  DUPCLOSURE R31 K123 [PROTO_14]
+  CAPTURE VAL R2
+  CAPTURE VAL R10
+  DUPCLOSURE R32 K124 [PROTO_15]
+  CAPTURE VAL R2
+  CAPTURE VAL R10
+  DUPCLOSURE R33 K125 [PROTO_16]
+  CAPTURE VAL R2
+  CAPTURE VAL R13
+  DUPCLOSURE R34 K126 [PROTO_17]
+  CAPTURE VAL R2
+  DUPCLOSURE R35 K127 [PROTO_18]
+  CAPTURE VAL R2
+  NEWTABLE R36 16 0
+  SETTABLEKS R36 R36 K128 ["__index"]
+  DUPCLOSURE R37 K129 [PROTO_20]
+  CAPTURE VAL R35
+  CAPTURE VAL R17
+  CAPTURE VAL R16
+  CAPTURE VAL R24
+  CAPTURE VAL R23
+  CAPTURE VAL R25
+  CAPTURE VAL R26
+  CAPTURE VAL R27
+  CAPTURE VAL R28
+  CAPTURE VAL R29
+  CAPTURE VAL R30
+  CAPTURE VAL R31
+  CAPTURE VAL R32
+  CAPTURE VAL R33
+  CAPTURE VAL R34
+  CAPTURE VAL R20
+  CAPTURE VAL R21
+  CAPTURE VAL R22
+  CAPTURE VAL R18
+  SETTABLEKS R37 R36 K55 ["new"]
+  DUPCLOSURE R37 K130 [PROTO_21]
+  CAPTURE VAL R4
+  SETTABLEKS R37 R36 K131 ["GetMockAssetData"]
+  DUPCLOSURE R37 K132 [PROTO_22]
+  CAPTURE VAL R6
+  SETTABLEKS R37 R36 K133 ["GetMockHumanoidDescription"]
+  DUPCLOSURE R37 K134 [PROTO_23]
+  CAPTURE VAL R9
+  SETTABLEKS R37 R36 K135 ["GetMockHumanoidDescriptionEmpty"]
+  DUPCLOSURE R37 K136 [PROTO_24]
+  SETTABLEKS R37 R36 K137 ["GetMockPlayerName"]
+  DUPCLOSURE R37 K138 [PROTO_25]
+  CAPTURE VAL R5
+  SETTABLEKS R37 R36 K139 ["GetMockAssetBundlesData"]
+  DUPCLOSURE R37 K140 [PROTO_26]
+  SETTABLEKS R37 R36 K141 ["GetMockFavoriteCount"]
+  DUPCLOSURE R37 K142 [PROTO_27]
+  SETTABLEKS R37 R36 K143 ["GetFavoriteModelId"]
+  DUPCLOSURE R37 K144 [PROTO_28]
+  CAPTURE VAL R11
+  SETTABLEKS R37 R36 K145 ["GetProductInfo"]
+  DUPCLOSURE R37 K146 [PROTO_29]
+  CAPTURE VAL R13
+  SETTABLEKS R37 R36 K147 ["GetEconomyProductInfo"]
+  DUPCLOSURE R37 K148 [PROTO_30]
+  CAPTURE VAL R7
+  SETTABLEKS R37 R36 K149 ["GetMockHumanoidDescriptionEmotes"]
+  DUPCLOSURE R37 K150 [PROTO_31]
+  CAPTURE VAL R19
+  SETTABLEKS R37 R36 K151 ["GetVersionInfo"]
+  DUPCLOSURE R37 K152 [PROTO_32]
+  CAPTURE VAL R14
+  SETTABLEKS R37 R36 K153 ["GetExperiencePlayability"]
+  DUPCLOSURE R37 K154 [PROTO_33]
+  CAPTURE VAL R15
+  SETTABLEKS R37 R36 K155 ["GetExperienceInfo"]
+  RETURN R36 1

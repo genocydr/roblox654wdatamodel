@@ -1,0 +1,265 @@
+PROTO_0:
+  LOADNIL R1
+  LOADN R2 5
+  JUMPIFNOTLE R0 R2 [+5]
+  LOADK R3 K1 [0.198]
+  MUL R2 R3 R0
+  ADDK R1 R2 K0 [0.01]
+  JUMP [+3]
+  LOADK R3 K3 [0.6]
+  MUL R2 R3 R0
+  SUBK R1 R2 K2 [2]
+  LOADN R4 0
+  LOADN R5 10
+  FASTCALL3 MATH_CLAMP R1 R4 R5
+  MOVE R3 R1
+  GETIMPORT R2 K6 [math.clamp]
+  CALL R2 3 1
+  RETURN R2 1
+
+PROTO_1:
+  LOADNIL R1
+  LOADN R2 1
+  JUMPIFNOTLE R0 R2 [+4]
+  SUBK R2 R0 K1 [0.01]
+  DIVK R1 R2 K0 [0.198]
+  JUMP [+2]
+  ADDK R2 R0 K3 [2]
+  DIVK R1 R2 K2 [0.6]
+  DIVK R4 R1 K1 [0.01]
+  ADDK R3 R4 K4 [0.5]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K7 [math.floor]
+  CALL R2 1 1
+  MULK R1 R2 K1 [0.01]
+  LOADN R4 0
+  LOADN R5 10
+  FASTCALL3 MATH_CLAMP R1 R4 R5
+  MOVE R3 R1
+  GETIMPORT R2 K9 [math.clamp]
+  CALL R2 3 1
+  RETURN R2 1
+
+PROTO_2:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"engineSensitivity"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R3 R4 K3 ["X"]
+  SETTABLEKS R3 R2 K0 ["engineSensitivity"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R1 R0 K0 ["onSensitivityChanged"]
+  GETTABLEKS R1 R0 K0 ["onSensitivityChanged"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_4:
+  LOADNIL R2
+  LOADN R3 5
+  JUMPIFNOTLE R0 R3 [+5]
+  LOADK R4 K1 [0.198]
+  MUL R3 R4 R0
+  ADDK R2 R3 K0 [0.01]
+  JUMP [+3]
+  LOADK R4 K3 [0.6]
+  MUL R3 R4 R0
+  SUBK R2 R3 K2 [2]
+  LOADN R5 0
+  LOADN R6 10
+  FASTCALL3 MATH_CLAMP R2 R5 R6
+  MOVE R4 R2
+  GETIMPORT R3 K6 [math.clamp]
+  CALL R3 3 1
+  MOVE R1 R3
+  GETIMPORT R2 K9 [Vector2.new]
+  MOVE R3 R1
+  MOVE R4 R1
+  CALL R2 2 1
+  GETUPVAL R3 0
+  SETTABLEKS R2 R3 K10 ["MouseSensitivityFirstPerson"]
+  GETUPVAL R3 0
+  SETTABLEKS R2 R3 K11 ["MouseSensitivityThirdPerson"]
+  GETUPVAL R3 1
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K12 ["AnalyticsSettingsChangeName"]
+  LOADNIL R5
+  NEWTABLE R6 0 0
+  LOADB R7 1
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_5:
+  DUPTABLE R1 K1 [{"CameraSensitivityMouseSlider"}]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K13 [{"LayoutOrder", "labelKey", "value", "min", "max", "stepInterval", "keyboardInputStepInterval", "valueChanged", "canCaptureFocus", "isMenuOpen"}]
+  GETTABLEKS R6 R0 K14 ["props"]
+  GETTABLEKS R5 R6 K3 ["LayoutOrder"]
+  SETTABLEKS R5 R4 K3 ["LayoutOrder"]
+  LOADK R5 K15 ["CoreScripts.InGameMenu.GameSettings.CameraSensitivity"]
+  SETTABLEKS R5 R4 K4 ["labelKey"]
+  GETTABLEKS R7 R0 K16 ["state"]
+  GETTABLEKS R6 R7 K17 ["engineSensitivity"]
+  LOADNIL R7
+  LOADN R8 1
+  JUMPIFNOTLE R6 R8 [+4]
+  SUBK R8 R6 K19 [0.01]
+  DIVK R7 R8 K18 [0.198]
+  JUMP [+2]
+  ADDK R8 R6 K21 [2]
+  DIVK R7 R8 K20 [0.6]
+  DIVK R10 R7 K19 [0.01]
+  ADDK R9 R10 K22 [0.5]
+  FASTCALL1 MATH_FLOOR R9 [+2]
+  GETIMPORT R8 K25 [math.floor]
+  CALL R8 1 1
+  MULK R7 R8 K19 [0.01]
+  LOADN R10 0
+  LOADN R11 10
+  FASTCALL3 MATH_CLAMP R7 R10 R11
+  MOVE R9 R7
+  GETIMPORT R8 K27 [math.clamp]
+  CALL R8 3 1
+  MOVE R5 R8
+  SETTABLEKS R5 R4 K5 ["value"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K6 ["min"]
+  LOADN R5 10
+  SETTABLEKS R5 R4 K7 ["max"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K8 ["stepInterval"]
+  LOADK R5 K19 [0.01]
+  SETTABLEKS R5 R4 K9 ["keyboardInputStepInterval"]
+  DUPCLOSURE R5 K28 [PROTO_4]
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  SETTABLEKS R5 R4 K10 ["valueChanged"]
+  GETTABLEKS R6 R0 K14 ["props"]
+  GETTABLEKS R5 R6 K11 ["canCaptureFocus"]
+  SETTABLEKS R5 R4 K11 ["canCaptureFocus"]
+  GETTABLEKS R6 R0 K14 ["props"]
+  GETTABLEKS R5 R6 K12 ["isMenuOpen"]
+  SETTABLEKS R5 R4 K12 ["isMenuOpen"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K0 ["CameraSensitivityMouseSlider"]
+  GETIMPORT R2 K30 [ipairs]
+  GETUPVAL R3 5
+  CALL R2 1 3
+  FORGPREP_INEXT R2
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R11 R6
+  GETIMPORT R10 K32 [tostring]
+  CALL R10 1 1
+  MOVE R8 R10
+  LOADK R9 K33 ["CameraSensitivityControlConnection"]
+  CONCAT R7 R8 R9
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K2 ["createElement"]
+  GETUPVAL R9 6
+  DUPTABLE R10 K36 [{"event", "callback"}]
+  SETTABLEKS R6 R10 K34 ["event"]
+  GETTABLEKS R11 R0 K37 ["onSensitivityChanged"]
+  SETTABLEKS R11 R10 K35 ["callback"]
+  CALL R8 2 1
+  SETTABLE R8 R1 R7
+  FORGLOOP R2 2 [inext] [-22]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K38 ["createFragment"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserGameSettings"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R1 K9 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["InGameMenuDependencies"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K11 ["Roact"]
+  GETTABLEKS R4 R2 K12 ["t"]
+  NEWTABLE R5 0 4
+  LOADK R8 K13 ["GamepadCameraSensitivity"]
+  NAMECALL R6 R0 K14 ["GetPropertyChangedSignal"]
+  CALL R6 2 1
+  LOADK R9 K15 ["MouseSensitivity"]
+  NAMECALL R7 R0 K14 ["GetPropertyChangedSignal"]
+  CALL R7 2 1
+  LOADK R10 K16 ["MouseSensitivityFirstPerson"]
+  NAMECALL R8 R0 K14 ["GetPropertyChangedSignal"]
+  CALL R8 2 1
+  LOADK R11 K17 ["MouseSensitivityThirdPerson"]
+  NAMECALL R9 R0 K14 ["GetPropertyChangedSignal"]
+  CALL R9 2 -1
+  SETLIST R5 R6 -1 [1]
+  GETIMPORT R9 K19 [script]
+  GETTABLEKS R8 R9 K20 ["Parent"]
+  GETTABLEKS R7 R8 K20 ["Parent"]
+  GETTABLEKS R6 R7 K20 ["Parent"]
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R6 K21 ["Utility"]
+  GETTABLEKS R8 R9 K22 ["ExternalEventConnection"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETIMPORT R11 K19 [script]
+  GETTABLEKS R10 R11 K20 ["Parent"]
+  GETTABLEKS R9 R10 K23 ["SliderEntry"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R6 K21 ["Utility"]
+  GETTABLEKS R10 R11 K24 ["SendAnalytics"]
+  CALL R9 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R12 R6 K25 ["Resources"]
+  GETTABLEKS R11 R12 K26 ["Constants"]
+  CALL R10 1 1
+  DUPCLOSURE R11 K27 [PROTO_0]
+  DUPCLOSURE R12 K28 [PROTO_1]
+  GETTABLEKS R13 R3 K29 ["PureComponent"]
+  LOADK R15 K30 ["CameraSensitivityEntry"]
+  NAMECALL R13 R13 K31 ["extend"]
+  CALL R13 2 1
+  GETTABLEKS R14 R4 K32 ["strictInterface"]
+  DUPTABLE R15 K36 [{"LayoutOrder", "canCaptureFocus", "isMenuOpen"}]
+  GETTABLEKS R16 R4 K37 ["integer"]
+  SETTABLEKS R16 R15 K33 ["LayoutOrder"]
+  GETTABLEKS R16 R4 K38 ["optional"]
+  GETTABLEKS R17 R4 K39 ["boolean"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K34 ["canCaptureFocus"]
+  GETTABLEKS R16 R4 K38 ["optional"]
+  GETTABLEKS R17 R4 K39 ["boolean"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K35 ["isMenuOpen"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K40 ["validateProps"]
+  DUPCLOSURE R14 K41 [PROTO_3]
+  CAPTURE VAL R0
+  SETTABLEKS R14 R13 K42 ["init"]
+  DUPCLOSURE R14 K43 [PROTO_5]
+  CAPTURE VAL R3
+  CAPTURE VAL R8
+  CAPTURE VAL R0
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  SETTABLEKS R14 R13 K44 ["render"]
+  RETURN R13 1

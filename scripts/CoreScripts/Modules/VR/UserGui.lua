@@ -26,8 +26,6 @@ local PanelType = require(UIManagerFolder.Constants).PanelType
 local UIManager = require(UIManagerFolder.UIManager)
 local Constants = require(UIManagerFolder.Constants)
 
-local FFlagVRShowUIOnGuiSelection = game:DefineFastFlag("VRShowUIOnGuiSelection", false)
-
 local FFlagEnableSpatialRobloxGui = require(RobloxGui.Modules.Flags.FFlagEnableSpatialRobloxGui)
 
 -- this var moves the gui and bottom bar together
@@ -172,18 +170,16 @@ GuiService.PurchasePromptShown:Connect(function()
 	end
 end)
 
-if FFlagVRShowUIOnGuiSelection then
-	local function onGuiSelectedObjectChanged(newObject)
-		if (GuiService.SelectedObject or GuiService.SelectedCoreObject) and not VRHub.ShowTopBar then
-			VRHub:SetShowTopBar(true)
-		end
-		GuiService.SelectedObject = nil
-		GuiService.SelectedCoreObject = nil
+local function onGuiSelectedObjectChanged(newObject)
+	if (GuiService.SelectedObject or GuiService.SelectedCoreObject) and not VRHub.ShowTopBar then
+		VRHub:SetShowTopBar(true)
 	end
-
-	GuiService:GetPropertyChangedSignal("SelectedCoreObject"):Connect(onGuiSelectedObjectChanged)
-	GuiService:GetPropertyChangedSignal("SelectedObject"):Connect(onGuiSelectedObjectChanged)
+	GuiService.SelectedObject = nil
+	GuiService.SelectedCoreObject = nil
 end
+
+GuiService:GetPropertyChangedSignal("SelectedCoreObject"):Connect(onGuiSelectedObjectChanged)
+GuiService:GetPropertyChangedSignal("SelectedObject"):Connect(onGuiSelectedObjectChanged)
 
 local InGameMenu = require(RobloxGui.Modules.InGameMenu)
 local function handleAction(actionName, inputState, inputObject)

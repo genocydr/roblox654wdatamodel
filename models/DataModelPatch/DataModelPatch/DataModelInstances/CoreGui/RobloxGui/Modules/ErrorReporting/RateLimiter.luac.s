@@ -1,0 +1,145 @@
+PROTO_0:
+  GETUPVAL R2 0
+  MOVE R3 R0
+  CALL R2 1 -1
+  FASTCALL ASSERT [+2]
+  GETIMPORT R1 K1 [assert]
+  CALL R1 -1 0
+  DUPTABLE R2 K8 [{"_period", "_threshold", "_processInterval", "_lastProcessed", "_counts", "_lastOccurrences"}]
+  GETTABLEKS R3 R0 K9 ["period"]
+  SETTABLEKS R3 R2 K2 ["_period"]
+  GETTABLEKS R3 R0 K10 ["threshold"]
+  SETTABLEKS R3 R2 K3 ["_threshold"]
+  GETTABLEKS R3 R0 K11 ["processInterval"]
+  SETTABLEKS R3 R2 K4 ["_processInterval"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K5 ["_lastProcessed"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K6 ["_counts"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K7 ["_lastOccurrences"]
+  GETUPVAL R3 1
+  FASTCALL2 SETMETATABLE R2 R3 [+3]
+  GETIMPORT R1 K13 [setmetatable]
+  CALL R1 2 1
+  RETURN R1 1
+
+PROTO_1:
+  MOVE R3 R2
+  JUMPIF R3 [+3]
+  GETIMPORT R3 K2 [os.clock]
+  CALL R3 0 1
+  MOVE R2 R3
+  GETTABLEKS R3 R0 K3 ["_lastOccurrences"]
+  SETTABLE R2 R3 R1
+  GETTABLEKS R4 R0 K4 ["_counts"]
+  GETTABLE R3 R4 R1
+  JUMPIFNOTEQKNIL R3 [+6]
+  GETTABLEKS R3 R0 K4 ["_counts"]
+  LOADN R4 1
+  SETTABLE R4 R3 R1
+  RETURN R0 0
+  GETTABLEKS R3 R0 K4 ["_counts"]
+  GETTABLE R4 R3 R1
+  ADDK R4 R4 K5 [1]
+  SETTABLE R4 R3 R1
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R3 R0 K0 ["_counts"]
+  GETTABLE R2 R3 R1
+  LOADB R3 0
+  JUMPIFEQKNIL R2 [+7]
+  GETTABLEKS R4 R0 K1 ["_threshold"]
+  JUMPIFLT R4 R2 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_3:
+  GETUPVAL R0 0
+  GETIMPORT R2 K2 [os.clock]
+  CALL R2 0 -1
+  NAMECALL R0 R0 K3 ["stepDecrementClock"]
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Heartbeat"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K1 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K2 ["_decrementConnection"]
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R3 R0 K0 ["_lastProcessed"]
+  SUB R2 R1 R3
+  GETTABLEKS R3 R0 K1 ["_processInterval"]
+  JUMPIFNOTLT R3 R2 [+35]
+  GETIMPORT R2 K3 [pairs]
+  GETTABLEKS R3 R0 K4 ["_lastOccurrences"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  SUB R7 R1 R6
+  GETTABLEKS R8 R0 K5 ["_period"]
+  JUMPIFNOTLT R8 R7 [+20]
+  GETTABLEKS R7 R0 K6 ["_counts"]
+  GETTABLE R8 R7 R5
+  SUBK R8 R8 K7 [1]
+  SETTABLE R8 R7 R5
+  GETTABLEKS R8 R0 K6 ["_counts"]
+  GETTABLE R7 R8 R5
+  LOADN R8 0
+  JUMPIFNOTLE R7 R8 [+9]
+  GETTABLEKS R7 R0 K6 ["_counts"]
+  LOADNIL R8
+  SETTABLE R8 R7 R5
+  GETTABLEKS R7 R0 K4 ["_lastOccurrences"]
+  LOADNIL R8
+  SETTABLE R8 R7 R5
+  FORGLOOP R2 2 [-25]
+  SETTABLEKS R1 R0 K0 ["_lastProcessed"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RunService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["t"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["strictInterface"]
+  DUPTABLE R4 K13 [{"period", "threshold", "processInterval"}]
+  GETTABLEKS R5 R2 K14 ["number"]
+  SETTABLEKS R5 R4 K10 ["period"]
+  GETTABLEKS R5 R2 K14 ["number"]
+  SETTABLEKS R5 R4 K11 ["threshold"]
+  GETTABLEKS R5 R2 K14 ["number"]
+  SETTABLEKS R5 R4 K12 ["processInterval"]
+  CALL R3 1 1
+  NEWTABLE R4 8 0
+  SETTABLEKS R4 R4 K15 ["__index"]
+  DUPCLOSURE R5 K16 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  SETTABLEKS R5 R4 K17 ["new"]
+  DUPCLOSURE R5 K18 [PROTO_1]
+  SETTABLEKS R5 R4 K19 ["increment"]
+  DUPCLOSURE R5 K20 [PROTO_2]
+  SETTABLEKS R5 R4 K21 ["isRateLimited"]
+  DUPCLOSURE R5 K22 [PROTO_4]
+  CAPTURE VAL R1
+  SETTABLEKS R5 R4 K23 ["startDecrementClock"]
+  DUPCLOSURE R5 K24 [PROTO_5]
+  SETTABLEKS R5 R4 K25 ["stepDecrementClock"]
+  RETURN R4 1

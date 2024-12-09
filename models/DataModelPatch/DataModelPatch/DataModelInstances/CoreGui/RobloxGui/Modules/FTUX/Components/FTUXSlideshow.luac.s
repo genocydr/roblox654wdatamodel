@@ -1,0 +1,412 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  ADDK R1 R2 K0 [1]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["StopEvents"]
+  GETUPVAL R1 1
+  GETUPVAL R2 2
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["StartEvents"]
+  GETUPVAL R1 1
+  GETUPVAL R2 2
+  GETUPVAL R3 3
+  CALL R0 3 0
+  NEWCLOSURE R0 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  RETURN R0 1
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useState"]
+  LOADN R2 1
+  CALL R1 1 2
+  GETTABLEKS R3 R0 K1 ["platform"]
+  GETUPVAL R5 1
+  GETTABLE R4 R5 R3
+  GETUPVAL R7 2
+  GETTABLE R6 R7 R3
+  GETTABLEKS R5 R6 K2 ["PanelConstants"]
+  GETTABLE R6 R4 R1
+  GETTABLEKS R7 R5 K3 ["CONTENT_HEIGHT_RATIO"]
+  GETTABLEKS R8 R5 K4 ["FOOTER_HEIGHT_RATIO"]
+  GETTABLEKS R10 R5 K5 ["CONTENT_PADDING"]
+  GETTABLEKS R11 R5 K6 ["SLIDESHOW_FRAME_WIDTH"]
+  DIV R9 R10 R11
+  LOADN R12 2
+  MUL R11 R12 R9
+  SUBRK R10 R7 K11 ["Frame"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K8 ["useCallback"]
+  NEWCLOSURE R12 P0
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  NEWTABLE R13 0 1
+  MOVE R14 R1
+  SETLIST R13 R14 1 [1]
+  CALL R11 2 1
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K9 ["useEffect"]
+  NEWCLOSURE R13 P1
+  CAPTURE UPVAL U3
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  NEWTABLE R14 0 1
+  MOVE R15 R1
+  SETLIST R14 R15 1 [1]
+  CALL R12 2 0
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K10 ["createElement"]
+  LOADK R13 K11 ["Frame"]
+  DUPTABLE R14 K15 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K12 ["BackgroundTransparency"]
+  GETIMPORT R15 K18 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 1
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K13 ["Size"]
+  GETIMPORT R15 K18 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K14 ["Position"]
+  DUPTABLE R15 K24 [{"UICorner", "SlideshowLayout", "Header", "ContentFrame", "FooterFrame"}]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K10 ["createElement"]
+  LOADK R17 K19 ["UICorner"]
+  DUPTABLE R18 K26 [{"CornerRadius"}]
+  GETIMPORT R19 K28 [UDim.new]
+  LOADK R20 K29 [0.05]
+  LOADN R21 0
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K25 ["CornerRadius"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K19 ["UICorner"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K10 ["createElement"]
+  LOADK R17 K30 ["UIListLayout"]
+  DUPTABLE R18 K35 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R19 K28 [UDim.new]
+  LOADK R20 K29 [0.05]
+  LOADN R21 0
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K31 ["Padding"]
+  GETIMPORT R19 K38 [Enum.FillDirection.Vertical]
+  SETTABLEKS R19 R18 K32 ["FillDirection"]
+  GETIMPORT R19 K40 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R19 R18 K33 ["HorizontalAlignment"]
+  GETIMPORT R19 K42 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R19 R18 K34 ["SortOrder"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K20 ["SlideshowLayout"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K10 ["createElement"]
+  GETUPVAL R17 4
+  DUPTABLE R18 K43 [{"platform"}]
+  SETTABLEKS R3 R18 K1 ["platform"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K21 ["Header"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K10 ["createElement"]
+  LOADK R17 K11 ["Frame"]
+  DUPTABLE R18 K44 [{"LayoutOrder", "BackgroundTransparency", "Size", "Position"}]
+  LOADN R19 2
+  SETTABLEKS R19 R18 K41 ["LayoutOrder"]
+  LOADN R19 1
+  SETTABLEKS R19 R18 K12 ["BackgroundTransparency"]
+  GETIMPORT R19 K18 [UDim2.new]
+  LOADN R20 1
+  LOADN R21 0
+  MOVE R22 R7
+  LOADN R23 0
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K13 ["Size"]
+  GETIMPORT R19 K18 [UDim2.new]
+  LOADN R20 0
+  LOADN R21 0
+  LOADN R22 0
+  LOADN R23 0
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K14 ["Position"]
+  DUPTABLE R19 K46 [{"Content"}]
+  GETUPVAL R21 0
+  GETTABLEKS R20 R21 K10 ["createElement"]
+  LOADK R21 K11 ["Frame"]
+  DUPTABLE R22 K15 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R23 1
+  SETTABLEKS R23 R22 K12 ["BackgroundTransparency"]
+  GETIMPORT R23 K18 [UDim2.new]
+  MOVE R24 R10
+  LOADN R25 0
+  LOADN R26 1
+  LOADN R27 0
+  CALL R23 4 1
+  SETTABLEKS R23 R22 K13 ["Size"]
+  GETIMPORT R23 K18 [UDim2.new]
+  MOVE R24 R9
+  LOADN R25 0
+  LOADN R26 0
+  LOADN R27 0
+  CALL R23 4 1
+  SETTABLEKS R23 R22 K14 ["Position"]
+  DUPTABLE R23 K51 [{"ContentLayout", "Title", "Description", "ImageFrame"}]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  LOADK R25 K30 ["UIListLayout"]
+  DUPTABLE R26 K35 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R27 K28 [UDim.new]
+  LOADK R28 K29 [0.05]
+  LOADN R29 0
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K31 ["Padding"]
+  GETIMPORT R27 K38 [Enum.FillDirection.Vertical]
+  SETTABLEKS R27 R26 K32 ["FillDirection"]
+  GETIMPORT R27 K40 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R27 R26 K33 ["HorizontalAlignment"]
+  GETIMPORT R27 K42 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R27 R26 K34 ["SortOrder"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K47 ["ContentLayout"]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  GETUPVAL R25 5
+  DUPTABLE R26 K53 [{"platform", "currentIndex"}]
+  SETTABLEKS R3 R26 K1 ["platform"]
+  SETTABLEKS R1 R26 K52 ["currentIndex"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K48 ["Title"]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  GETUPVAL R25 6
+  DUPTABLE R26 K53 [{"platform", "currentIndex"}]
+  SETTABLEKS R3 R26 K1 ["platform"]
+  SETTABLEKS R1 R26 K52 ["currentIndex"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K49 ["Description"]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  LOADK R25 K11 ["Frame"]
+  DUPTABLE R26 K44 [{"LayoutOrder", "BackgroundTransparency", "Size", "Position"}]
+  LOADN R27 3
+  SETTABLEKS R27 R26 K41 ["LayoutOrder"]
+  LOADN R27 1
+  SETTABLEKS R27 R26 K12 ["BackgroundTransparency"]
+  GETIMPORT R27 K18 [UDim2.new]
+  LOADK R28 K54 [1.2]
+  LOADN R29 0
+  LOADK R30 K55 [0.4]
+  LOADN R31 0
+  CALL R27 4 1
+  SETTABLEKS R27 R26 K13 ["Size"]
+  GETIMPORT R27 K18 [UDim2.new]
+  LOADN R28 0
+  LOADN R29 0
+  LOADN R30 0
+  LOADN R31 0
+  CALL R27 4 1
+  SETTABLEKS R27 R26 K14 ["Position"]
+  DUPTABLE R27 K57 [{"Image"}]
+  GETUPVAL R29 0
+  GETTABLEKS R28 R29 K10 ["createElement"]
+  LOADK R29 K58 ["ImageLabel"]
+  DUPTABLE R30 K60 [{"Image", "BackgroundTransparency", "Size", "LayoutOrder", "ScaleType"}]
+  GETTABLEKS R31 R6 K61 ["image"]
+  SETTABLEKS R31 R30 K56 ["Image"]
+  LOADN R31 1
+  SETTABLEKS R31 R30 K12 ["BackgroundTransparency"]
+  GETIMPORT R31 K18 [UDim2.new]
+  LOADN R32 1
+  LOADN R33 0
+  LOADN R34 1
+  LOADN R35 0
+  CALL R31 4 1
+  SETTABLEKS R31 R30 K13 ["Size"]
+  LOADN R31 3
+  SETTABLEKS R31 R30 K41 ["LayoutOrder"]
+  GETIMPORT R31 K63 [Enum.ScaleType.Fit]
+  SETTABLEKS R31 R30 K59 ["ScaleType"]
+  CALL R28 2 1
+  SETTABLEKS R28 R27 K56 ["Image"]
+  CALL R24 3 1
+  SETTABLEKS R24 R23 K50 ["ImageFrame"]
+  CALL R20 3 1
+  SETTABLEKS R20 R19 K45 ["Content"]
+  CALL R16 3 1
+  SETTABLEKS R16 R15 K22 ["ContentFrame"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K10 ["createElement"]
+  LOADK R17 K11 ["Frame"]
+  DUPTABLE R18 K44 [{"LayoutOrder", "BackgroundTransparency", "Size", "Position"}]
+  LOADN R19 3
+  SETTABLEKS R19 R18 K41 ["LayoutOrder"]
+  LOADN R19 1
+  SETTABLEKS R19 R18 K12 ["BackgroundTransparency"]
+  GETIMPORT R19 K18 [UDim2.new]
+  LOADN R20 1
+  LOADN R21 0
+  MOVE R22 R8
+  LOADN R23 0
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K13 ["Size"]
+  GETIMPORT R19 K18 [UDim2.new]
+  LOADN R20 0
+  LOADN R21 0
+  LOADN R22 0
+  LOADN R23 0
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K14 ["Position"]
+  DUPTABLE R19 K65 [{"Footer"}]
+  GETUPVAL R21 0
+  GETTABLEKS R20 R21 K10 ["createElement"]
+  LOADK R21 K11 ["Frame"]
+  DUPTABLE R22 K15 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R23 1
+  SETTABLEKS R23 R22 K12 ["BackgroundTransparency"]
+  GETIMPORT R23 K18 [UDim2.new]
+  MOVE R24 R10
+  LOADN R25 0
+  LOADN R26 1
+  LOADN R27 0
+  CALL R23 4 1
+  SETTABLEKS R23 R22 K13 ["Size"]
+  GETIMPORT R23 K18 [UDim2.new]
+  MOVE R24 R9
+  LOADN R25 0
+  LOADN R26 0
+  LOADN R27 0
+  CALL R23 4 1
+  SETTABLEKS R23 R22 K14 ["Position"]
+  DUPTABLE R23 K68 [{"ContentLayout", "Stepper", "EndItem"}]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  LOADK R25 K30 ["UIListLayout"]
+  DUPTABLE R26 K35 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  LENGTH R28 R4
+  JUMPIFEQ R1 R28 [+7]
+  GETIMPORT R27 K28 [UDim.new]
+  LOADK R28 K69 [0.2]
+  LOADN R29 0
+  CALL R27 2 1
+  JUMPIF R27 [+5]
+  GETIMPORT R27 K28 [UDim.new]
+  LOADN R28 0
+  LOADN R29 0
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K31 ["Padding"]
+  GETIMPORT R27 K38 [Enum.FillDirection.Vertical]
+  SETTABLEKS R27 R26 K32 ["FillDirection"]
+  GETIMPORT R27 K40 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R27 R26 K33 ["HorizontalAlignment"]
+  GETIMPORT R27 K42 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R27 R26 K34 ["SortOrder"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K47 ["ContentLayout"]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  GETUPVAL R25 7
+  DUPTABLE R26 K73 [{"layoutOrder", "numberActivated", "numberOfSteps"}]
+  LOADN R27 1
+  SETTABLEKS R27 R26 K70 ["layoutOrder"]
+  SETTABLEKS R1 R26 K71 ["numberActivated"]
+  LENGTH R27 R4
+  SETTABLEKS R27 R26 K72 ["numberOfSteps"]
+  NEWTABLE R27 0 0
+  CALL R24 3 1
+  SETTABLEKS R24 R23 K66 ["Stepper"]
+  GETUPVAL R25 0
+  GETTABLEKS R24 R25 K10 ["createElement"]
+  GETUPVAL R25 8
+  DUPTABLE R26 K75 [{"platform", "currentIndex", "increaseCurrentIndex"}]
+  SETTABLEKS R3 R26 K1 ["platform"]
+  SETTABLEKS R1 R26 K52 ["currentIndex"]
+  SETTABLEKS R11 R26 K74 ["increaseCurrentIndex"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K67 ["EndItem"]
+  CALL R20 3 1
+  SETTABLEKS R20 R19 K64 ["Footer"]
+  CALL R16 3 1
+  SETTABLEKS R16 R15 K23 ["FooterFrame"]
+  CALL R12 3 -1
+  RETURN R12 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["React"]
+  CALL R1 1 1
+  GETIMPORT R4 K9 [script]
+  GETTABLEKS R3 R4 K10 ["Parent"]
+  GETTABLEKS R2 R3 K10 ["Parent"]
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R2 K11 ["Resources"]
+  GETTABLEKS R4 R5 K12 ["FTUXSlideshowData"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R2 K11 ["Resources"]
+  GETTABLEKS R5 R6 K13 ["FTUXConstants"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R2 K14 ["Enums"]
+  GETTABLEKS R6 R7 K15 ["PlatformEnum"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R9 R2 K16 ["Components"]
+  GETTABLEKS R8 R9 K17 ["Slideshow"]
+  GETTABLEKS R7 R8 K18 ["Header"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R10 R2 K16 ["Components"]
+  GETTABLEKS R9 R10 K17 ["Slideshow"]
+  GETTABLEKS R8 R9 K19 ["Stepper"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R11 R2 K16 ["Components"]
+  GETTABLEKS R10 R11 K17 ["Slideshow"]
+  GETTABLEKS R9 R10 K20 ["Title"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R12 R2 K16 ["Components"]
+  GETTABLEKS R11 R12 K17 ["Slideshow"]
+  GETTABLEKS R10 R11 K21 ["Description"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R13 R2 K16 ["Components"]
+  GETTABLEKS R12 R13 K17 ["Slideshow"]
+  GETTABLEKS R11 R12 K22 ["EndItem"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETTABLEKS R13 R2 K23 ["Events"]
+  GETTABLEKS R12 R13 K24 ["EventHandler"]
+  CALL R11 1 1
+  DUPCLOSURE R12 K25 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R11
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R10
+  RETURN R12 1

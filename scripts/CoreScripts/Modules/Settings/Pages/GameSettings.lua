@@ -58,6 +58,7 @@ local GetFFlagAlwaysShowVRToggle = require(RobloxGui.Modules.Flags.GetFFlagAlway
 local FFlagInExperienceSettingsRefactorAnalytics =
 	require(RobloxGui.Modules.Flags.FFlagInExperienceSettingsRefactorAnalytics)
 local GetFFlagAddHapticsToggle = SharedFlags.GetFFlagAddHapticsToggle
+local GetFFlagEnableCrossExpVoiceVolumeIXPCheck = SharedFlags.GetFFlagEnableCrossExpVoiceVolumeIXPCheck
 local GetFFlagEnablePreferredTextSizeSettingInMenus = SharedFlags.GetFFlagEnablePreferredTextSizeSettingInMenus
 local FFlagCameraSensitivityPadding = game:DefineFastFlag("CameraSensitivityPadding2", false)
 local GetFFlagDebounceConnectDisconnectButton = require(RobloxGui.Modules.Flags.GetFFlagDebounceConnectDisconnectButton)
@@ -66,10 +67,13 @@ local FFlagInExperienceMenuReorderFirstVariant1 =
 	require(RobloxGui.Modules.Settings.Flags.FFlagInExperienceMenuReorderFirstVariant1)
 local FFlagOverrideInExperienceMenuReorderFirstVariant1 =
 	require(RobloxGui.Modules.Settings.Flags.FFlagOverrideInExperienceMenuReorderFirstVariant1)
+local FFlagCameraToggleInitBugFix = game:DefineFastFlag("CameraToggleInitBugFix", false)
+
+local CrossExpVoiceIXPManager = require(CorePackages.Workspace.Packages.CrossExperienceVoice).IXPManager.default
 
 local GameSettingsConstants
 
-local PartyVoiceVolumeFeatureAvailable = game:GetEngineFeature("PartyVoiceVolume")
+local hasPartyVoiceVolume = GetFFlagEnableCrossExpVoiceVolumeIXPCheck() and CrossExpVoiceIXPManager and CrossExpVoiceIXPManager.getHasPartyVoiceVolume()
 
 -------------- CONSTANTS --------------
 local GRAPHICS_QUALITY_LEVELS = 10
@@ -158,7 +162,7 @@ else
 		["DeviceFrameInput"] = 60,
 		["DeviceFrameOutput"] = 61,
 		["VolumeFrame"] = 62,
-		["HapticsFrame"] = if PartyVoiceVolumeFeatureAvailable then 64 else 63,
+		["HapticsFrame"] = if hasPartyVoiceVolume then 64 else 63,
 		-- Graphics
 		["FullScreenFrame"] = 70,
 		["GraphicsEnablerFrame"] = 71,
@@ -184,7 +188,7 @@ else
 		["InformationFrame"] = 999, -- Reserved to be last
 	}
 
-	if PartyVoiceVolumeFeatureAvailable then
+	if hasPartyVoiceVolume then
 		SETTINGS_MENU_LAYOUT_ORDER["PartyVoiceVolumeFrame"] = 63
 	end
 end
@@ -1215,14 +1219,26 @@ local function Initialize()
 				end
 
 				if currentSavedMode > -1 then
-					currentSavedMode = currentSavedMode + 1
-					local savedEnum = nil
-					local exists = pcall(function()
-						savedEnum = enumsToAdd[currentSavedMode]
-					end)
-					if exists and savedEnum then
-						updateCurrentCameraMovementIndex(savedEnum.Value + 1)
-						this.CameraMode:SetSelectionIndex(savedEnum.Value + 1)
+					-- https://roblox.atlassian.net/browse/APPEXP-2133, seems that algorithm relies
+					-- on any enum to have value -1 of corresponding key index in cameraEnumNames.
+					-- CameraToggle, specifically (and only) does not follow this pattern.
+					-- Temporary fix due to https://roblox.atlassian.net/browse/APPEXP-2069 being planned soon
+					if FFlagCameraToggleInitBugFix then
+						if UserInputService.TouchEnabled or GameSettings.ComputerCameraMovementMode ~= Enum.ComputerCameraMovementMode.CameraToggle then
+							currentSavedMode = currentSavedMode + 1
+						end
+						updateCurrentCameraMovementIndex(currentSavedMode)
+						this.CameraMode:SetSelectionIndex(currentSavedMode)
+					else
+						currentSavedMode = currentSavedMode + 1
+						local savedEnum = nil
+						local exists = pcall(function()
+							savedEnum = enumsToAdd[currentSavedMode]
+						end)
+						if exists and savedEnum then
+							updateCurrentCameraMovementIndex(savedEnum.Value + 1)
+							this.CameraMode:SetSelectionIndex(savedEnum.Value + 1)
+						end
 					end
 				end
 			end
@@ -3635,7 +3651,7 @@ local function Initialize()
 	end
 
 	createVolumeOptions()
-	if PartyVoiceVolumeFeatureAvailable then
+	if hasPartyVoiceVolume then
 		createPartyVoiceVolumeOptions()
 	end
 	if GetFFlagAddHapticsToggle() then

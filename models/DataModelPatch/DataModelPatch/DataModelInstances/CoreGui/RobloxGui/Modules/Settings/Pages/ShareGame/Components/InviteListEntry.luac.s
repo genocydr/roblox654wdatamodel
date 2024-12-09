@@ -1,0 +1,555 @@
+PROTO_0:
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  NEWTABLE R1 0 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["id"]
+  SETLIST R1 R2 1 [1]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["LocalPlayer"]
+  JUMPIFNOT R2 [+13]
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["LocalPlayer"]
+  GETUPVAL R3 2
+  GETTABLEKS R5 R2 K2 ["UserId"]
+  GETTABLEKS R6 R0 K3 ["conversationId"]
+  MOVE R7 R1
+  NAMECALL R3 R3 K4 ["onActivatedInviteSent"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_1:
+  RETURN R0 0
+
+PROTO_2:
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["inviteUser"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["inviteStatus"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["analytics"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["Failed"]
+  JUMPIFEQ R1 R3 [+2]
+  RETURN R0 0
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R2
+  GETUPVAL R4 4
+  CALL R4 0 1
+  JUMPIFNOT R4 [+57]
+  LOADB R4 0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["launchData"]
+  JUMPIFEQKNIL R5 [+8]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["launchData"]
+  JUMPIFNOTEQKS R5 K5 [""] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K6 ["trigger"]
+  GETUPVAL R9 5
+  GETTABLEKS R8 R9 K7 ["SendInvite"]
+  DUPTABLE R9 K10 [{"recipient", "isLaunchDataProvided"}]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K11 ["id"]
+  SETTABLEKS R10 R9 K8 ["recipient"]
+  GETUPVAL R11 6
+  CALL R11 0 1
+  JUMPIFNOT R11 [+2]
+  MOVE R10 R4
+  JUMP [+1]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K9 ["isLaunchDataProvided"]
+  NAMECALL R5 R2 K12 ["sendEvent"]
+  CALL R5 4 0
+  MOVE R5 R0
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K11 ["id"]
+  MOVE R7 R2
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K6 ["trigger"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K13 ["inviteMessageId"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K4 ["launchData"]
+  CALL R5 5 1
+  MOVE R7 R3
+  DUPCLOSURE R8 K14 [PROTO_1]
+  NAMECALL R5 R5 K15 ["andThen"]
+  CALL R5 3 0
+  RETURN R0 0
+  MOVE R4 R0
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K11 ["id"]
+  CALL R4 1 1
+  MOVE R6 R3
+  DUPCLOSURE R7 K16 [PROTO_2]
+  NAMECALL R4 R4 K15 ["andThen"]
+  CALL R4 3 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["user"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["useCallback"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  NEWTABLE R4 0 4
+  GETTABLEKS R5 R0 K2 ["inviteUser"]
+  GETTABLEKS R6 R0 K3 ["inviteStatus"]
+  GETTABLEKS R7 R0 K4 ["analytics"]
+  MOVE R8 R1
+  SETLIST R4 R5 4 [1]
+  CALL R2 2 1
+  GETUPVAL R3 6
+  CALL R3 0 1
+  JUMPIFNOT R3 [+15]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["useCallback"]
+  GETUPVAL R4 7
+  GETUPVAL R5 8
+  CALL R5 0 1
+  MOVE R6 R2
+  CALL R4 2 1
+  NEWTABLE R5 0 1
+  MOVE R6 R2
+  SETLIST R5 R6 1 [1]
+  CALL R3 2 1
+  MOVE R2 R3
+  GETTABLEKS R3 R0 K5 ["visible"]
+  JUMPIF R3 [+1]
+  RETURN R0 0
+  GETUPVAL R4 9
+  GETTABLEKS R3 R4 K6 ["UIBloxThemeEnabled"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  LOADK R5 K8 ["ImageButton"]
+  NEWTABLE R6 16 0
+  GETIMPORT R7 K11 [UDim2.new]
+  LOADN R8 1
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 60
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K12 ["Size"]
+  JUMPIF R3 [+2]
+  LOADK R7 K13 ["rbxasset://textures/ui/dialog_white.png"]
+  JUMP [+1]
+  LOADNIL R7
+  SETTABLEKS R7 R6 K14 ["Image"]
+  JUMPIF R3 [+3]
+  GETIMPORT R7 K18 [Enum.ScaleType.Slice]
+  JUMPIF R7 [+2]
+  GETIMPORT R7 K20 [Enum.ScaleType.Stretch]
+  SETTABLEKS R7 R6 K16 ["ScaleType"]
+  GETUPVAL R7 10
+  SETTABLEKS R7 R6 K21 ["SliceCenter"]
+  GETUPVAL R8 9
+  GETTABLEKS R7 R8 K22 ["color"]
+  LOADK R8 K23 ["PlayerRowFrame"]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K24 ["BackgroundColor3"]
+  GETUPVAL R8 9
+  GETTABLEKS R7 R8 K25 ["transparency"]
+  LOADK R8 K23 ["PlayerRowFrame"]
+  LOADN R9 1
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K26 ["BackgroundTransparency"]
+  LOADK R7 K27 [0.85]
+  SETTABLEKS R7 R6 K28 ["ImageTransparency"]
+  GETTABLEKS R7 R0 K29 ["layoutOrder"]
+  SETTABLEKS R7 R6 K30 ["LayoutOrder"]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K31 ["Event"]
+  GETTABLEKS R7 R8 K32 ["Activated"]
+  GETTABLEKS R9 R0 K33 ["isFullRowActivatable"]
+  JUMPIFNOT R9 [+2]
+  MOVE R8 R2
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLE R8 R6 R7
+  DUPTABLE R7 K39 [{"UICorner", "Padding", "Thumbnail", "UserInfo", "InviteButton"}]
+  JUMPIFNOT R3 [+12]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  LOADK R9 K34 ["UICorner"]
+  DUPTABLE R10 K41 [{"CornerRadius"}]
+  GETUPVAL R12 9
+  GETTABLEKS R11 R12 K42 ["MenuContainerCornerRadius"]
+  SETTABLEKS R11 R10 K40 ["CornerRadius"]
+  CALL R8 2 1
+  JUMPIF R8 [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K34 ["UICorner"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  LOADK R9 K43 ["UIPadding"]
+  DUPTABLE R10 K46 [{"PaddingRight", "PaddingLeft"}]
+  GETIMPORT R11 K48 [UDim.new]
+  LOADN R12 0
+  LOADN R13 16
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K44 ["PaddingRight"]
+  GETIMPORT R11 K48 [UDim.new]
+  LOADN R12 0
+  LOADN R13 8
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K45 ["PaddingLeft"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K35 ["Padding"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  GETUPVAL R9 12
+  DUPTABLE R10 K52 [{"user", "size", "position", "anchorPoint"}]
+  SETTABLEKS R1 R10 K0 ["user"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 44
+  LOADN R14 0
+  LOADN R15 44
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K49 ["size"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADK R14 K53 [0.5]
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K50 ["position"]
+  GETIMPORT R11 K55 [Vector2.new]
+  LOADN R12 0
+  LOADK R13 K53 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K51 ["anchorPoint"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K36 ["Thumbnail"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  LOADK R9 K56 ["Frame"]
+  DUPTABLE R10 K59 [{"Position", "Size", "BackgroundTransparency", "ClipsDescendants"}]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 44
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K57 ["Position"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 138
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K12 ["Size"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K26 ["BackgroundTransparency"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K58 ["ClipsDescendants"]
+  DUPTABLE R11 K63 [{"Padding", "ListLayout", "DisplayNameWrapper", "Username"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K7 ["createElement"]
+  LOADK R13 K43 ["UIPadding"]
+  DUPTABLE R14 K64 [{"PaddingLeft"}]
+  GETIMPORT R15 K48 [UDim.new]
+  LOADN R16 0
+  LOADN R17 8
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K45 ["PaddingLeft"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K35 ["Padding"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K7 ["createElement"]
+  LOADK R13 K65 ["UIListLayout"]
+  DUPTABLE R14 K68 [{"FillDirection", "VerticalAlignment", "Padding"}]
+  GETIMPORT R15 K70 [Enum.FillDirection.Vertical]
+  SETTABLEKS R15 R14 K66 ["FillDirection"]
+  GETIMPORT R15 K72 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R15 R14 K67 ["VerticalAlignment"]
+  GETIMPORT R15 K48 [UDim.new]
+  LOADN R16 0
+  LOADN R17 4
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K35 ["Padding"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K60 ["ListLayout"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K7 ["createElement"]
+  LOADK R13 K56 ["Frame"]
+  DUPTABLE R14 K73 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R15 K11 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 16
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K12 ["Size"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K26 ["BackgroundTransparency"]
+  DUPTABLE R15 K77 [{"PresenceIconLayout", "Icon", "DisplayName"}]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K7 ["createElement"]
+  LOADK R17 K65 ["UIListLayout"]
+  DUPTABLE R18 K80 [{"FillDirection", "HorizontalAlignment", "VerticalAlignment", "SortOrder", "Padding"}]
+  GETIMPORT R19 K82 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R19 R18 K66 ["FillDirection"]
+  GETIMPORT R19 K84 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R19 R18 K78 ["HorizontalAlignment"]
+  GETIMPORT R19 K72 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R19 R18 K67 ["VerticalAlignment"]
+  GETIMPORT R19 K85 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R19 R18 K79 ["SortOrder"]
+  GETIMPORT R19 K48 [UDim.new]
+  LOADN R20 0
+  LOADN R21 4
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K35 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K74 ["PresenceIconLayout"]
+  GETUPVAL R17 13
+  GETTABLEKS R16 R17 K86 ["GetIcon"]
+  GETTABLEKS R17 R1 K87 ["presence"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K75 ["Icon"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K7 ["createElement"]
+  LOADK R17 K88 ["TextLabel"]
+  DUPTABLE R18 K94 [{"Size", "Text", "TextSize", "TextColor3", "Font", "BackgroundTransparency", "TextXAlignment", "LayoutOrder"}]
+  GETIMPORT R19 K11 [UDim2.new]
+  LOADN R20 0
+  LOADN R21 0
+  LOADN R22 0
+  LOADN R23 16
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K12 ["Size"]
+  GETTABLEKS R19 R1 K95 ["displayName"]
+  SETTABLEKS R19 R18 K89 ["Text"]
+  LOADN R19 16
+  SETTABLEKS R19 R18 K90 ["TextSize"]
+  GETUPVAL R21 14
+  GETTABLEKS R20 R21 K96 ["COLORS"]
+  GETTABLEKS R19 R20 K97 ["WHITE"]
+  SETTABLEKS R19 R18 K91 ["TextColor3"]
+  GETUPVAL R20 15
+  GETTABLEKS R19 R20 K98 ["default"]
+  NAMECALL R19 R19 K99 ["getMedium"]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K92 ["Font"]
+  LOADN R19 1
+  SETTABLEKS R19 R18 K26 ["BackgroundTransparency"]
+  GETIMPORT R19 K100 [Enum.TextXAlignment.Left]
+  SETTABLEKS R19 R18 K93 ["TextXAlignment"]
+  LOADN R19 2
+  SETTABLEKS R19 R18 K30 ["LayoutOrder"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K76 ["DisplayName"]
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K61 ["DisplayNameWrapper"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K7 ["createElement"]
+  LOADK R13 K88 ["TextLabel"]
+  DUPTABLE R14 K102 [{"Size", "Text", "TextSize", "TextColor3", "Font", "BackgroundTransparency", "TextXAlignment", "OpenTypeFeatures"}]
+  GETIMPORT R15 K11 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 16
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K12 ["Size"]
+  LOADK R16 K103 ["@"]
+  GETTABLEKS R17 R1 K104 ["name"]
+  CONCAT R15 R16 R17
+  SETTABLEKS R15 R14 K89 ["Text"]
+  LOADN R15 16
+  SETTABLEKS R15 R14 K90 ["TextSize"]
+  GETUPVAL R17 14
+  GETTABLEKS R16 R17 K96 ["COLORS"]
+  GETTABLEKS R15 R16 K105 ["PUMICE"]
+  SETTABLEKS R15 R14 K91 ["TextColor3"]
+  GETUPVAL R16 15
+  GETTABLEKS R15 R16 K98 ["default"]
+  NAMECALL R15 R15 K106 ["getDefault"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K92 ["Font"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K26 ["BackgroundTransparency"]
+  GETIMPORT R15 K100 [Enum.TextXAlignment.Left]
+  SETTABLEKS R15 R14 K93 ["TextXAlignment"]
+  GETUPVAL R16 16
+  CALL R16 0 1
+  JUMPIFNOT R16 [+5]
+  GETUPVAL R15 17
+  NAMECALL R15 R15 K107 ["getUserNameStylisticAlternative"]
+  CALL R15 1 1
+  JUMP [+1]
+  LOADNIL R15
+  SETTABLEKS R15 R14 K101 ["OpenTypeFeatures"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K62 ["Username"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K37 ["UserInfo"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["createElement"]
+  GETUPVAL R9 18
+  DUPTABLE R10 K109 [{"size", "position", "anchorPoint", "onInvite", "inviteStatus"}]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 66
+  LOADN R14 0
+  LOADN R15 36
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K49 ["size"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADK R14 K53 [0.5]
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K50 ["position"]
+  GETIMPORT R11 K55 [Vector2.new]
+  LOADN R12 1
+  LOADK R13 K53 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K51 ["anchorPoint"]
+  SETTABLEKS R2 R10 K108 ["onInvite"]
+  GETTABLEKS R11 R0 K3 ["inviteStatus"]
+  SETTABLEKS R11 R10 K3 ["inviteStatus"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K38 ["InviteButton"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["ReactRoblox"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K10 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETTABLEKS R6 R4 K11 ["RobloxGui"]
+  GETTABLEKS R5 R6 K12 ["Modules"]
+  GETTABLEKS R8 R5 K13 ["Settings"]
+  GETTABLEKS R7 R8 K14 ["Pages"]
+  GETTABLEKS R6 R7 K15 ["ShareGame"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R0 K7 ["Packages"]
+  GETTABLEKS R8 R9 K16 ["UIBlox"]
+  CALL R7 1 1
+  GETTABLEKS R9 R7 K17 ["Utility"]
+  GETTABLEKS R8 R9 K18 ["OpenTypeSupport"]
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R11 R5 K19 ["Common"]
+  GETTABLEKS R10 R11 K20 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R5 K13 ["Settings"]
+  GETTABLEKS R11 R12 K21 ["Theme"]
+  CALL R10 1 1
+  GETIMPORT R12 K6 [require]
+  GETTABLEKS R15 R0 K22 ["Workspace"]
+  GETTABLEKS R14 R15 K7 ["Packages"]
+  GETTABLEKS R13 R14 K23 ["Style"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K24 ["AppFonts"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R16 R0 K22 ["Workspace"]
+  GETTABLEKS R15 R16 K7 ["Packages"]
+  GETTABLEKS R14 R15 K25 ["GameInvite"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K26 ["GameInviteEvents"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R14 R6 K20 ["Constants"]
+  CALL R13 1 1
+  GETIMPORT R14 K6 [require]
+  GETTABLEKS R15 R6 K27 ["PresenceUtil"]
+  CALL R14 1 1
+  GETIMPORT R15 K6 [require]
+  GETTABLEKS R17 R6 K28 ["Components"]
+  GETTABLEKS R16 R17 K29 ["SingleUserThumbnail"]
+  CALL R15 1 1
+  GETIMPORT R16 K6 [require]
+  GETTABLEKS R18 R6 K28 ["Components"]
+  GETTABLEKS R17 R18 K30 ["InviteButton"]
+  CALL R16 1 1
+  GETTABLEKS R17 R13 K31 ["InviteStatus"]
+  GETIMPORT R18 K6 [require]
+  GETTABLEKS R19 R6 K32 ["ThrottleFunctionCall"]
+  CALL R18 1 1
+  GETIMPORT R19 K6 [require]
+  GETTABLEKS R22 R5 K13 ["Settings"]
+  GETTABLEKS R21 R22 K33 ["Flags"]
+  GETTABLEKS R20 R21 K34 ["GetFFlagAbuseReportAnalyticsHasLaunchData"]
+  CALL R19 1 1
+  GETIMPORT R20 K6 [require]
+  GETTABLEKS R22 R5 K33 ["Flags"]
+  GETTABLEKS R21 R22 K35 ["GetFFlagEnableNewInviteSendEndpoint"]
+  CALL R20 1 1
+  GETIMPORT R21 K6 [require]
+  GETTABLEKS R23 R5 K33 ["Flags"]
+  GETTABLEKS R22 R23 K36 ["GetFFlagThrottleInviteSendEndpoint"]
+  CALL R21 1 1
+  GETIMPORT R22 K6 [require]
+  GETTABLEKS R24 R5 K33 ["Flags"]
+  GETTABLEKS R23 R24 K37 ["GetFIntThrottleInviteSendEndpointDelay"]
+  CALL R22 1 1
+  GETIMPORT R24 K6 [require]
+  GETTABLEKS R27 R0 K22 ["Workspace"]
+  GETTABLEKS R26 R27 K7 ["Packages"]
+  GETTABLEKS R25 R26 K38 ["SharedFlags"]
+  CALL R24 1 1
+  GETTABLEKS R23 R24 K39 ["GetFFlagLuaAppEnableOpenTypeSupport"]
+  GETIMPORT R24 K42 [Rect.new]
+  LOADN R25 10
+  LOADN R26 10
+  LOADN R27 10
+  LOADN R28 10
+  CALL R24 4 1
+  DUPCLOSURE R25 K43 [PROTO_4]
+  CAPTURE VAL R2
+  CAPTURE VAL R17
+  CAPTURE VAL R1
+  CAPTURE VAL R20
+  CAPTURE VAL R12
+  CAPTURE VAL R19
+  CAPTURE VAL R21
+  CAPTURE VAL R18
+  CAPTURE VAL R22
+  CAPTURE VAL R10
+  CAPTURE VAL R24
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R9
+  CAPTURE VAL R11
+  CAPTURE VAL R23
+  CAPTURE VAL R8
+  CAPTURE VAL R16
+  RETURN R25 1

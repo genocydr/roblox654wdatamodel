@@ -1,0 +1,174 @@
+PROTO_0:
+  GETTABLEKS R6 R0 K0 ["ProductType"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["ProductType"]
+  GETTABLEKS R7 R8 K1 ["CollectibleItem"]
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  GETTABLEKS R7 R0 K2 ["CollectiblesItemDetails"]
+  JUMPIFNOT R7 [+5]
+  GETTABLEKS R7 R0 K2 ["CollectiblesItemDetails"]
+  GETTABLEKS R6 R7 K3 ["IsLimited"]
+  JUMP [+1]
+  LOADNIL R6
+  JUMPIFNOT R5 [+8]
+  JUMPIF R6 [+13]
+  JUMPIFNOT R1 [+12]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K4 ["AlreadyOwn"]
+  RETURN R7 2
+  JUMP [+6]
+  JUMPIFNOT R1 [+5]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K4 ["AlreadyOwn"]
+  RETURN R7 2
+  JUMPIFNOTEQKNIL R4 [+12]
+  GETTABLEKS R7 R0 K5 ["IsForSale"]
+  JUMPIF R7 [+8]
+  GETTABLEKS R7 R0 K6 ["IsPublicDomain"]
+  JUMPIF R7 [+5]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K7 ["NotForSale"]
+  RETURN R7 2
+  JUMPIFNOTEQKNIL R4 [+14]
+  GETTABLEKS R7 R3 K8 ["GetFFlagEnableRestrictedAssetSaleLocationPurchasePrompt"]
+  CALL R7 0 1
+  JUMPIFNOT R7 [+9]
+  GETTABLEKS R7 R0 K9 ["CanBeSoldInThisGame"]
+  JUMPIFNOTEQKB R7 FALSE [+6]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K10 ["NotForSaleHere"]
+  RETURN R7 2
+  JUMPIFNOTEQKNIL R4 [+22]
+  JUMPIFNOT R5 [+1]
+  JUMPIF R6 [+6]
+  GETTABLEKS R7 R0 K3 ["IsLimited"]
+  JUMPIF R7 [+3]
+  GETTABLEKS R7 R0 K11 ["IsLimitedUnique"]
+  JUMPIFNOT R7 [+13]
+  GETTABLEKS R7 R0 K12 ["Remaining"]
+  JUMPIFEQKNIL R7 [+5]
+  GETTABLEKS R7 R0 K12 ["Remaining"]
+  JUMPIFNOTEQKN R7 K13 [0] [+6]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K14 ["Limited"]
+  RETURN R7 2
+  GETTABLEKS R7 R0 K15 ["MinimumMembershipLevel"]
+  GETIMPORT R9 K19 [Enum.MembershipType.Premium]
+  GETTABLEKS R8 R9 K20 ["Value"]
+  JUMPIFNOTEQ R7 R8 [+15]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K21 ["LocalPlayer"]
+  GETTABLEKS R7 R8 K17 ["MembershipType"]
+  GETIMPORT R8 K19 [Enum.MembershipType.Premium]
+  JUMPIFEQ R7 R8 [+6]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K22 ["PremiumOnly"]
+  RETURN R7 2
+  GETTABLEKS R7 R0 K23 ["ContentRatingTypeId"]
+  JUMPIFNOTEQKN R7 K24 [1] [+13]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K21 ["LocalPlayer"]
+  NAMECALL R7 R7 K25 ["GetUnder13"]
+  CALL R7 1 1
+  JUMPIFNOT R7 [+5]
+  LOADB R7 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K26 ["Under13"]
+  RETURN R7 2
+  LOADB R7 1
+  GETTABLEKS R8 R3 K27 ["getLuaUseThirdPartyPermissions"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+5]
+  GETTABLEKS R8 R3 K28 ["isThirdPartyPurchaseAllowed"]
+  CALL R8 0 1
+  MOVE R7 R8
+  JUMP [+3]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K29 ["AllowThirdPartySales"]
+  GETTABLEKS R8 R0 K0 ["ProductType"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K0 ["ProductType"]
+  GETTABLEKS R9 R10 K30 ["DeveloperProduct"]
+  JUMPIFEQ R8 R9 [+58]
+  JUMPIFNOT R2 [+56]
+  JUMPIF R7 [+55]
+  GETIMPORT R10 K32 [game]
+  GETTABLEKS R9 R10 K33 ["CreatorType"]
+  GETIMPORT R10 K35 [Enum.CreatorType.Group]
+  JUMPIFEQ R9 R10 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  GETTABLEKS R11 R0 K36 ["Creator"]
+  GETTABLEKS R10 R11 K33 ["CreatorType"]
+  JUMPIFEQKS R10 K34 ["Group"] [+2]
+  LOADB R9 0 +1
+  LOADB R9 1
+  GETTABLEKS R12 R0 K36 ["Creator"]
+  GETTABLEKS R11 R12 K37 ["CreatorTargetId"]
+  FASTCALL1 TONUMBER R11 [+2]
+  GETIMPORT R10 K39 [tonumber]
+  CALL R10 1 1
+  JUMPIFEQKN R10 K24 [1] [+28]
+  JUMPIFNOTEQ R8 R9 [+7]
+  GETIMPORT R12 K32 [game]
+  GETTABLEKS R11 R12 K40 ["CreatorId"]
+  JUMPIFEQ R10 R11 [+20]
+  GETIMPORT R11 K42 [warn]
+  GETUPVAL R12 4
+  GETTABLEKS R14 R0 K43 ["AssetId"]
+  MOVE R15 R10
+  JUMPIFNOT R8 [+2]
+  LOADK R16 K44 ["group"]
+  JUMP [+1]
+  LOADK R16 K45 ["user"]
+  NAMECALL R12 R12 K46 ["format"]
+  CALL R12 4 -1
+  CALL R11 -1 0
+  LOADB R11 0
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K47 ["ThirdPartyDisabled"]
+  RETURN R11 2
+  LOADB R8 1
+  LOADNIL R9
+  RETURN R8 2
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["Players"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["Workspace"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K10 ["Misc"]
+  GETTABLEKS R4 R5 K11 ["Constants"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K12 ["Enums"]
+  GETTABLEKS R5 R6 K13 ["PurchaseError"]
+  CALL R4 1 1
+  LOADK R6 K14 ["AllowThirdPartySales has blocked the purchase"]
+  LOADK R7 K15 [" prompt for %d created by %d. To sell this asset made by a"]
+  LOADK R8 K16 [" different %s, you will need to enable AllowThirdPartySales."]
+  CONCAT R5 R6 R8
+  DUPCLOSURE R6 K17 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  RETURN R6 1

@@ -1,0 +1,69 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"feedbackFlowState"}]
+  GETTABLEKS R5 R1 K2 ["feedbackFlowState"]
+  SETTABLEKS R5 R4 K2 ["feedbackFlowState"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"feedbackReason"}]
+  GETTABLEKS R5 R1 K2 ["feedbackReason"]
+  SETTABLEKS R5 R4 K2 ["feedbackReason"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Rodux"]
+  CALL R2 1 1
+  GETIMPORT R5 K10 [script]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K12 ["Resources"]
+  GETTABLEKS R5 R6 K13 ["Constants"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R3 K14 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["SetFeedbackFlowState"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R3 K14 ["Actions"]
+  GETTABLEKS R7 R8 K16 ["SetFeedbackReason"]
+  CALL R6 1 1
+  GETTABLEKS R7 R2 K17 ["createReducer"]
+  DUPTABLE R8 K20 [{"feedbackFlowState", "feedbackReason"}]
+  GETTABLEKS R10 R4 K21 ["State"]
+  GETTABLEKS R9 R10 K22 ["Default"]
+  SETTABLEKS R9 R8 K18 ["feedbackFlowState"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K19 ["feedbackReason"]
+  NEWTABLE R9 2 0
+  GETTABLEKS R10 R5 K23 ["name"]
+  DUPCLOSURE R11 K24 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLE R11 R9 R10
+  GETTABLEKS R10 R6 K23 ["name"]
+  DUPCLOSURE R11 K25 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLE R11 R9 R10
+  CALL R7 2 -1
+  RETURN R7 -1

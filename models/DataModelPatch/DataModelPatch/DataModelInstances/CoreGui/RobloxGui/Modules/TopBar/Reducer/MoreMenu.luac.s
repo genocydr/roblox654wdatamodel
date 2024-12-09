@@ -1,0 +1,130 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"open"}]
+  GETTABLEKS R5 R1 K2 ["open"]
+  SETTABLEKS R5 R4 K2 ["open"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"open", "backpackOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["open"]
+  GETTABLEKS R5 R1 K2 ["open"]
+  SETTABLEKS R5 R4 K3 ["backpackOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"open", "emotesOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["open"]
+  GETTABLEKS R5 R1 K2 ["open"]
+  SETTABLEKS R5 R4 K3 ["emotesOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"emotesEnabled"}]
+  GETTABLEKS R5 R1 K4 ["enabled"]
+  SETTABLEKS R5 R4 K2 ["emotesEnabled"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"open", "leaderboardOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["open"]
+  GETTABLEKS R5 R1 K2 ["open"]
+  SETTABLEKS R5 R4 K3 ["leaderboardOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Rodux"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Cryo"]
+  CALL R2 1 1
+  GETIMPORT R6 K10 [script]
+  GETTABLEKS R5 R6 K11 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K12 ["Actions"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R5 R3 K13 ["SetMoreMenuOpen"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R3 K14 ["SetBackpackOpen"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R3 K15 ["SetEmotesOpen"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R3 K16 ["SetLeaderboardOpen"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R3 K17 ["SetEmotesEnabled"]
+  CALL R8 1 1
+  DUPTABLE R9 K23 [{"open", "backpackOpen", "leaderboardOpen", "emotesOpen", "emotesEnabled"}]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K18 ["open"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K19 ["backpackOpen"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K20 ["leaderboardOpen"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K21 ["emotesOpen"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K22 ["emotesEnabled"]
+  GETTABLEKS R10 R1 K24 ["createReducer"]
+  MOVE R11 R9
+  NEWTABLE R12 8 0
+  GETTABLEKS R13 R4 K25 ["name"]
+  DUPCLOSURE R14 K26 [PROTO_0]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R5 K25 ["name"]
+  DUPCLOSURE R14 K27 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R6 K25 ["name"]
+  DUPCLOSURE R14 K28 [PROTO_2]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R8 K25 ["name"]
+  DUPCLOSURE R14 K29 [PROTO_3]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R7 K25 ["name"]
+  DUPCLOSURE R14 K30 [PROTO_4]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  CALL R10 2 1
+  RETURN R10 1

@@ -1,0 +1,170 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["visible"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["anchorPoint"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["position"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["size"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["zIndex"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K6 ["onClick"]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K7 ["iconHorizontalAlignment"]
+  JUMPIF R7 [+2]
+  GETIMPORT R7 K11 [Enum.HorizontalAlignment.Center]
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K12 ["iconVerticalAlignment"]
+  JUMPIF R8 [+2]
+  GETIMPORT R8 K14 [Enum.VerticalAlignment.Center]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K15 ["iconSpritePath"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K16 ["iconSpriteFrame"]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K18 ["horizontalInset"]
+  ORK R11 R12 K17 [12]
+  LOADN R12 0
+  LOADN R13 1
+  GETIMPORT R14 K11 [Enum.HorizontalAlignment.Center]
+  JUMPIFNOTEQ R7 R14 [+3]
+  LOADN R11 0
+  JUMP [+53]
+  GETIMPORT R14 K20 [Enum.HorizontalAlignment.Left]
+  JUMPIFNOTEQ R7 R14 [+23]
+  GETIMPORT R14 K23 [UDim2.new]
+  GETTABLEKS R16 R3 K24 ["X"]
+  GETTABLEKS R15 R16 K25 ["Scale"]
+  GETTABLEKS R18 R3 K24 ["X"]
+  GETTABLEKS R17 R18 K26 ["Offset"]
+  SUB R16 R17 R11
+  GETTABLEKS R18 R3 K27 ["Y"]
+  GETTABLEKS R17 R18 K25 ["Scale"]
+  GETTABLEKS R19 R3 K27 ["Y"]
+  GETTABLEKS R18 R19 K26 ["Offset"]
+  CALL R14 4 1
+  MOVE R3 R14
+  JUMP [+27]
+  GETIMPORT R14 K29 [Enum.HorizontalAlignment.Right]
+  JUMPIFNOTEQ R7 R14 [+24]
+  GETIMPORT R14 K23 [UDim2.new]
+  GETTABLEKS R16 R3 K24 ["X"]
+  GETTABLEKS R15 R16 K25 ["Scale"]
+  GETTABLEKS R18 R3 K24 ["X"]
+  GETTABLEKS R17 R18 K26 ["Offset"]
+  ADD R16 R17 R11
+  GETTABLEKS R18 R3 K27 ["Y"]
+  GETTABLEKS R17 R18 K25 ["Scale"]
+  GETTABLEKS R19 R3 K27 ["Y"]
+  GETTABLEKS R18 R19 K26 ["Offset"]
+  CALL R14 4 1
+  MOVE R3 R14
+  LOADN R12 1
+  LOADN R13 0
+  GETIMPORT R14 K23 [UDim2.new]
+  GETTABLEKS R16 R4 K24 ["X"]
+  GETTABLEKS R15 R16 K25 ["Scale"]
+  GETTABLEKS R18 R4 K24 ["X"]
+  GETTABLEKS R17 R18 K26 ["Offset"]
+  ADD R16 R17 R11
+  GETTABLEKS R18 R4 K27 ["Y"]
+  GETTABLEKS R17 R18 K25 ["Scale"]
+  GETTABLEKS R19 R4 K27 ["Y"]
+  GETTABLEKS R18 R19 K26 ["Offset"]
+  CALL R14 4 1
+  MOVE R4 R14
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K30 ["createElement"]
+  LOADK R15 K31 ["ImageButton"]
+  NEWTABLE R16 8 0
+  SETTABLEKS R1 R16 K32 ["Visible"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K33 ["BackgroundTransparency"]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K34 ["BorderSizePixel"]
+  SETTABLEKS R2 R16 K35 ["AnchorPoint"]
+  SETTABLEKS R3 R16 K36 ["Position"]
+  SETTABLEKS R4 R16 K37 ["Size"]
+  SETTABLEKS R5 R16 K38 ["ZIndex"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K39 ["Event"]
+  GETTABLEKS R17 R18 K40 ["Activated"]
+  SETTABLE R6 R16 R17
+  DUPTABLE R17 K43 [{"IconLayout", "Offset", "BackIcon"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K30 ["createElement"]
+  LOADK R19 K44 ["UIListLayout"]
+  DUPTABLE R20 K47 [{"HorizontalAlignment", "VerticalAlignment", "FillDirection", "SortOrder"}]
+  SETTABLEKS R7 R20 K9 ["HorizontalAlignment"]
+  SETTABLEKS R8 R20 K13 ["VerticalAlignment"]
+  GETIMPORT R21 K49 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R21 R20 K45 ["FillDirection"]
+  GETIMPORT R21 K51 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R21 R20 K46 ["SortOrder"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K41 ["IconLayout"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K30 ["createElement"]
+  LOADK R19 K52 ["Frame"]
+  DUPTABLE R20 K53 [{"BorderSizePixel", "LayoutOrder", "Size"}]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K34 ["BorderSizePixel"]
+  SETTABLEKS R12 R20 K50 ["LayoutOrder"]
+  GETIMPORT R21 K23 [UDim2.new]
+  LOADN R22 0
+  MOVE R23 R11
+  LOADN R24 0
+  LOADN R25 0
+  CALL R21 4 1
+  SETTABLEKS R21 R20 K37 ["Size"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K26 ["Offset"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K30 ["createElement"]
+  LOADK R19 K54 ["ImageLabel"]
+  DUPTABLE R20 K58 [{"BackgroundTransparency", "BorderSizePixel", "Size", "Image", "ImageRectOffset", "ImageRectSize", "ZIndex", "LayoutOrder"}]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K33 ["BackgroundTransparency"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K34 ["BorderSizePixel"]
+  GETIMPORT R21 K23 [UDim2.new]
+  LOADN R22 0
+  GETTABLEKS R24 R10 K4 ["size"]
+  GETTABLEKS R23 R24 K24 ["X"]
+  LOADN R24 0
+  GETTABLEKS R26 R10 K4 ["size"]
+  GETTABLEKS R25 R26 K27 ["Y"]
+  CALL R21 4 1
+  SETTABLEKS R21 R20 K37 ["Size"]
+  SETTABLEKS R9 R20 K55 ["Image"]
+  GETTABLEKS R21 R10 K59 ["offset"]
+  SETTABLEKS R21 R20 K56 ["ImageRectOffset"]
+  GETTABLEKS R21 R10 K4 ["size"]
+  SETTABLEKS R21 R20 K57 ["ImageRectSize"]
+  SETTABLEKS R5 R20 K38 ["ZIndex"]
+  SETTABLEKS R13 R20 K50 ["LayoutOrder"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K42 ["BackIcon"]
+  CALL R14 3 -1
+  RETURN R14 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["PureComponent"]
+  LOADK R4 K9 ["IconButton"]
+  NAMECALL R2 R2 K10 ["extend"]
+  CALL R2 2 1
+  DUPCLOSURE R3 K11 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLEKS R3 R2 K12 ["render"]
+  RETURN R2 1

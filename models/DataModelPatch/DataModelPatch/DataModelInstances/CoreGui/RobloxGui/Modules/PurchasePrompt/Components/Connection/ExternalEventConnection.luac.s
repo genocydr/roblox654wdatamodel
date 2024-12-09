@@ -1,0 +1,89 @@
+PROTO_0:
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["connection"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["oneChild"]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Children"]
+  GETTABLE R2 R3 R4
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["event"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["callback"]
+  MOVE R5 R2
+  NAMECALL R3 R1 K3 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R0 K4 ["connection"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["event"]
+  GETTABLEKS R3 R1 K1 ["event"]
+  JUMPIFNOTEQ R2 R3 [+9]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["callback"]
+  GETTABLEKS R3 R1 K2 ["callback"]
+  JUMPIFEQ R2 R3 [+19]
+  GETTABLEKS R2 R0 K3 ["connection"]
+  NAMECALL R2 R2 K4 ["Disconnect"]
+  CALL R2 1 0
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["event"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K2 ["callback"]
+  NAMECALL R2 R2 K5 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K3 ["connection"]
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["connection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["connection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["connection"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R5 R1 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["PurchasePromptDeps"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K12 ["Roact"]
+  GETTABLEKS R4 R3 K13 ["Component"]
+  LOADK R6 K14 ["ExternalEventConnection"]
+  NAMECALL R4 R4 K15 ["extend"]
+  CALL R4 2 1
+  DUPCLOSURE R5 K16 [PROTO_0]
+  SETTABLEKS R5 R4 K17 ["init"]
+  DUPCLOSURE R5 K18 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLEKS R5 R4 K19 ["render"]
+  DUPCLOSURE R5 K20 [PROTO_2]
+  SETTABLEKS R5 R4 K21 ["didMount"]
+  DUPCLOSURE R5 K22 [PROTO_3]
+  SETTABLEKS R5 R4 K23 ["didUpdate"]
+  DUPCLOSURE R5 K24 [PROTO_4]
+  SETTABLEKS R5 R4 K25 ["willUnmount"]
+  RETURN R4 1

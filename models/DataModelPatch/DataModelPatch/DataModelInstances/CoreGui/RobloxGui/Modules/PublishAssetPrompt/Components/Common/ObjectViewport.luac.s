@@ -1,0 +1,556 @@
+PROTO_0:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["Camera"]
+  CALL R1 1 1
+  GETIMPORT R2 K7 [Enum.CameraType.Scriptable]
+  SETTABLEKS R2 R1 K5 ["CameraType"]
+  GETTABLEKS R2 R0 K8 ["worldModelRef"]
+  NAMECALL R2 R2 K9 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K10 ["Parent"]
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+6]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K11 ["HeadLocked"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K12 ["VRTiltAndRollEnabled"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["worldModelRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createBinding"]
+  LOADNIL R2
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K3 ["camera"]
+  SETTABLEKS R2 R0 K4 ["updateCamera"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K5 ["isMounted"]
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  NAMECALL R1 R1 K2 ["Clone"]
+  CALL R1 1 1
+  GETTABLEKS R3 R1 K3 ["PrimaryPart"]
+  FASTCALL2K ASSERT R3 K4 [+4]
+  LOADK R4 K4 ["The Model should have a PrimaryPart for setting up Camera"]
+  GETIMPORT R2 K6 [assert]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K7 ["worldModelRef"]
+  NAMECALL R2 R2 K8 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K9 ["Parent"]
+  LOADK R4 K10 [{0, 0, 0}]
+  NAMECALL R2 R1 K11 ["MoveTo"]
+  CALL R2 2 0
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K12 ["useFullBodyCameraSettings"]
+  JUMPIFNOT R2 [+15]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K13 ["SetPlayerCharacterPoseWithMoodFallback"]
+  MOVE R4 R1
+  CALL R3 1 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K14 ["PostSimulation"]
+  NAMECALL R3 R3 K15 ["Wait"]
+  CALL R3 1 0
+  GETTABLEKS R3 R0 K16 ["isMounted"]
+  JUMPIF R3 [+1]
+  RETURN R0 0
+  NAMECALL R3 R0 K17 ["createCamera"]
+  CALL R3 1 1
+  LOADNIL R4
+  JUMPIFNOT R2 [+19]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K18 ["CalculateTargetCFrame"]
+  GETTABLEKS R7 R1 K19 ["Head"]
+  GETTABLEKS R6 R7 K20 ["CFrame"]
+  CALL R5 1 1
+  GETTABLEKS R7 R5 K21 ["Position"]
+  SUB R6 R5 R7
+  GETTABLEKS R9 R1 K3 ["PrimaryPart"]
+  GETTABLEKS R8 R9 K20 ["CFrame"]
+  GETTABLEKS R7 R8 K21 ["Position"]
+  ADD R4 R6 R7
+  JUMP [+4]
+  GETTABLEKS R5 R1 K3 ["PrimaryPart"]
+  GETTABLEKS R4 R5 K20 ["CFrame"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K22 ["CalculateModelExtents"]
+  MOVE R6 R1
+  MOVE R7 R4
+  CALL R5 2 2
+  DUPTABLE R7 K28 [{"optFieldOfView", "targetCFrame", "minExtent", "maxExtent", "extentScale"}]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K29 ["fieldOfView"]
+  JUMPIFNOT R9 [+5]
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K29 ["fieldOfView"]
+  JUMP [+1]
+  LOADN R8 30
+  SETTABLEKS R8 R7 K23 ["optFieldOfView"]
+  SETTABLEKS R4 R7 K24 ["targetCFrame"]
+  SETTABLEKS R5 R7 K25 ["minExtent"]
+  SETTABLEKS R6 R7 K26 ["maxExtent"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K27 ["extentScale"]
+  JUMPIFNOT R2 [+16]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K30 ["XRotForFullBody"]
+  SETTABLEKS R8 R7 K31 ["optCameraXRot"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K32 ["DistanceScaleForFullBody"]
+  SETTABLEKS R8 R7 K33 ["optCameraDistanceScale"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K34 ["DefaultBodyMarginScale"]
+  SETTABLEKS R8 R7 K27 ["extentScale"]
+  JUMP [+3]
+  LOADN R8 25
+  SETTABLEKS R8 R7 K35 ["optCameraYRot"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K36 ["SetupCamera"]
+  MOVE R9 R3
+  MOVE R10 R7
+  CALL R8 2 0
+  GETTABLEKS R8 R0 K37 ["updateCamera"]
+  MOVE R9 R3
+  CALL R8 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["isLoading"]
+  JUMPIF R0 [+4]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K2 ["setupViewport"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  GETIMPORT R1 K3 [task.spawn]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["setupViewport"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R2 R1 K0 ["isLoading"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K0 ["isLoading"]
+  NOT R2 R3
+  JUMPIFNOT R2 [+5]
+  GETIMPORT R3 K4 [task.spawn]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R1 R0 K0 ["Theme"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["props"]
+  GETTABLEKS R2 R3 K2 ["isLoading"]
+  JUMPIF R2 [+262]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  LOADK R3 K4 ["Frame"]
+  DUPTABLE R4 K11 [{"BackgroundColor3", "BackgroundTransparency", "Size", "Position", "AnchorPoint", "LayoutOrder"}]
+  GETIMPORT R5 K14 [Color3.fromRGB]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K5 ["BackgroundColor3"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K6 ["BackgroundTransparency"]
+  GETIMPORT R5 K17 [UDim2.new]
+  LOADN R6 1
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K19 ["PromptSidePadding"]
+  MULK R7 R8 K18 [2]
+  LOADN R8 0
+  LOADN R9 240
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K7 ["Size"]
+  GETIMPORT R5 K21 [UDim2.fromScale]
+  LOADK R6 K22 [0.5]
+  LOADK R7 K22 [0.5]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K8 ["Position"]
+  GETIMPORT R5 K24 [Vector2.new]
+  LOADK R6 K22 [0.5]
+  LOADK R7 K22 [0.5]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["AnchorPoint"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["props"]
+  GETTABLEKS R5 R6 K10 ["LayoutOrder"]
+  SETTABLEKS R5 R4 K10 ["LayoutOrder"]
+  DUPTABLE R5 K29 [{"ViewportFrame", "ExpandPreviewButton", "Gradient", "DropShadow"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K3 ["createElement"]
+  LOADK R7 K25 ["ViewportFrame"]
+  DUPTABLE R8 K34 [{"BackgroundTransparency", "Size", "Position", "AnchorPoint", "LightColor", "Ambient", "LightDirection", "CurrentCamera"}]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K6 ["BackgroundTransparency"]
+  GETIMPORT R9 K21 [UDim2.fromScale]
+  LOADN R10 1
+  LOADN R11 1
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K7 ["Size"]
+  GETIMPORT R9 K21 [UDim2.fromScale]
+  LOADK R10 K22 [0.5]
+  LOADK R11 K22 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K8 ["Position"]
+  GETIMPORT R9 K24 [Vector2.new]
+  LOADK R10 K22 [0.5]
+  LOADK R11 K22 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K9 ["AnchorPoint"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K35 ["ViewportLightColor"]
+  SETTABLEKS R9 R8 K30 ["LightColor"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K36 ["ViewportLightAmbient"]
+  SETTABLEKS R9 R8 K31 ["Ambient"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K37 ["ViewportLightDirection"]
+  SETTABLEKS R9 R8 K32 ["LightDirection"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K38 ["camera"]
+  SETTABLEKS R9 R8 K33 ["CurrentCamera"]
+  DUPTABLE R9 K40 [{"WorldModel"}]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K3 ["createElement"]
+  LOADK R11 K39 ["WorldModel"]
+  NEWTABLE R12 1 0
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K41 ["Ref"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K42 ["worldModelRef"]
+  SETTABLE R14 R12 R13
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K39 ["WorldModel"]
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K25 ["ViewportFrame"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K1 ["props"]
+  GETTABLEKS R6 R7 K43 ["openPreviewView"]
+  JUMPIFNOT R6 [+40]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K3 ["createElement"]
+  GETUPVAL R7 3
+  DUPTABLE R8 K49 [{"position", "anchorPoint", "icon", "iconSize", "onActivated"}]
+  GETIMPORT R9 K17 [UDim2.new]
+  LOADN R10 1
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K19 ["PromptSidePadding"]
+  MINUS R11 R12
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K44 ["position"]
+  GETIMPORT R9 K24 [Vector2.new]
+  LOADN R10 1
+  LOADN R11 1
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K45 ["anchorPoint"]
+  GETUPVAL R9 4
+  SETTABLEKS R9 R8 K46 ["icon"]
+  GETUPVAL R10 5
+  GETTABLEKS R9 R10 K50 ["Medium"]
+  SETTABLEKS R9 R8 K47 ["iconSize"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K1 ["props"]
+  GETTABLEKS R9 R10 K43 ["openPreviewView"]
+  SETTABLEKS R9 R8 K48 ["onActivated"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K26 ["ExpandPreviewButton"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K3 ["createElement"]
+  LOADK R7 K51 ["UIGradient"]
+  DUPTABLE R8 K55 [{"Rotation", "Color", "Transparency"}]
+  LOADN R9 90
+  SETTABLEKS R9 R8 K52 ["Rotation"]
+  GETIMPORT R9 K57 [ColorSequence.new]
+  NEWTABLE R10 0 2
+  GETIMPORT R11 K59 [ColorSequenceKeypoint.new]
+  LOADN R12 0
+  GETTABLEKS R14 R1 K60 ["BackgroundMuted"]
+  GETTABLEKS R13 R14 K53 ["Color"]
+  CALL R11 2 1
+  GETIMPORT R12 K59 [ColorSequenceKeypoint.new]
+  LOADN R13 1
+  GETTABLEKS R15 R1 K60 ["BackgroundMuted"]
+  GETTABLEKS R14 R15 K53 ["Color"]
+  CALL R12 2 -1
+  SETLIST R10 R11 -1 [1]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K53 ["Color"]
+  GETIMPORT R9 K62 [NumberSequence.new]
+  NEWTABLE R10 0 3
+  GETIMPORT R11 K64 [NumberSequenceKeypoint.new]
+  LOADN R12 0
+  LOADN R13 1
+  CALL R11 2 1
+  GETIMPORT R12 K64 [NumberSequenceKeypoint.new]
+  LOADK R13 K65 [0.7]
+  LOADK R14 K66 [0.75]
+  CALL R12 2 1
+  GETIMPORT R13 K64 [NumberSequenceKeypoint.new]
+  LOADN R14 1
+  LOADN R15 1
+  CALL R13 2 -1
+  SETLIST R10 R11 -1 [1]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K54 ["Transparency"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K27 ["Gradient"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K3 ["createElement"]
+  GETUPVAL R7 6
+  DUPTABLE R8 K70 [{"Position", "AnchorPoint", "Image", "BackgroundTransparency", "ImageTransparency", "Size", "ZIndex"}]
+  GETUPVAL R9 7
+  SETTABLEKS R9 R8 K8 ["Position"]
+  GETIMPORT R9 K24 [Vector2.new]
+  LOADK R10 K22 [0.5]
+  LOADN R11 1
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K9 ["AnchorPoint"]
+  GETUPVAL R9 8
+  SETTABLEKS R9 R8 K67 ["Image"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K6 ["BackgroundTransparency"]
+  LOADK R9 K22 [0.5]
+  SETTABLEKS R9 R8 K68 ["ImageTransparency"]
+  GETUPVAL R9 9
+  SETTABLEKS R9 R8 K7 ["Size"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K69 ["ZIndex"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K28 ["DropShadow"]
+  CALL R2 3 -1
+  RETURN R2 -1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  GETUPVAL R3 10
+  DUPTABLE R4 K71 [{"Size", "Position", "AnchorPoint", "LayoutOrder"}]
+  GETIMPORT R5 K17 [UDim2.new]
+  LOADN R6 1
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K19 ["PromptSidePadding"]
+  MULK R7 R8 K18 [2]
+  LOADN R8 0
+  LOADN R9 240
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K7 ["Size"]
+  GETIMPORT R5 K21 [UDim2.fromScale]
+  LOADK R6 K22 [0.5]
+  LOADK R7 K22 [0.5]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K8 ["Position"]
+  GETIMPORT R5 K24 [Vector2.new]
+  LOADK R6 K22 [0.5]
+  LOADK R7 K22 [0.5]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["AnchorPoint"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["props"]
+  GETTABLEKS R5 R6 K10 ["LayoutOrder"]
+  SETTABLEKS R5 R4 K10 ["LayoutOrder"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_8:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_9:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RunService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["UIBlox"]
+  CALL R3 1 1
+  GETTABLEKS R5 R3 K10 ["Style"]
+  GETTABLEKS R4 R5 K11 ["withStyle"]
+  GETTABLEKS R7 R3 K12 ["Core"]
+  GETTABLEKS R6 R7 K13 ["ImageSet"]
+  GETTABLEKS R5 R6 K14 ["ImageSetLabel"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R0 K7 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["t"]
+  CALL R6 1 1
+  GETTABLEKS R9 R3 K16 ["App"]
+  GETTABLEKS R8 R9 K13 ["ImageSet"]
+  GETTABLEKS R7 R8 K17 ["Images"]
+  GETTABLEKS R10 R3 K16 ["App"]
+  GETTABLEKS R9 R10 K18 ["Loading"]
+  GETTABLEKS R8 R9 K19 ["ShimmerPanel"]
+  GETIMPORT R9 K6 [require]
+  GETIMPORT R14 K21 [script]
+  GETTABLEKS R13 R14 K22 ["Parent"]
+  GETTABLEKS R12 R13 K22 ["Parent"]
+  GETTABLEKS R11 R12 K22 ["Parent"]
+  GETTABLEKS R10 R11 K23 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R11 K6 [require]
+  GETTABLEKS R13 R0 K7 ["Packages"]
+  GETTABLEKS R12 R13 K24 ["Thumbnailing"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K25 ["CharacterUtility"]
+  GETIMPORT R12 K6 [require]
+  GETTABLEKS R14 R0 K7 ["Packages"]
+  GETTABLEKS R13 R14 K24 ["Thumbnailing"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K26 ["CameraUtility"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R15 R0 K7 ["Packages"]
+  GETTABLEKS R14 R15 K24 ["Thumbnailing"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K27 ["CFrameUtility"]
+  GETIMPORT R14 K6 [require]
+  GETTABLEKS R16 R0 K7 ["Packages"]
+  GETTABLEKS R15 R16 K24 ["Thumbnailing"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K28 ["EmoteUtility"]
+  GETTABLEKS R16 R3 K16 ["App"]
+  GETTABLEKS R15 R16 K29 ["Button"]
+  GETTABLEKS R14 R15 K30 ["IconButton"]
+  GETTABLEKS R18 R3 K16 ["App"]
+  GETTABLEKS R17 R18 K13 ["ImageSet"]
+  GETTABLEKS R16 R17 K31 ["Enum"]
+  GETTABLEKS R15 R16 K32 ["IconSize"]
+  GETTABLEKS R16 R7 K33 ["icons/actions/previewExpand"]
+  GETTABLEKS R17 R7 K34 ["component_assets/dropshadow_25"]
+  GETIMPORT R18 K6 [require]
+  GETIMPORT R23 K21 [script]
+  GETTABLEKS R22 R23 K22 ["Parent"]
+  GETTABLEKS R21 R22 K22 ["Parent"]
+  GETTABLEKS R20 R21 K22 ["Parent"]
+  GETTABLEKS R19 R20 K35 ["FFlagFixPublishAvatarVRViewports"]
+  CALL R18 1 1
+  GETIMPORT R19 K38 [UDim2.new]
+  LOADK R20 K39 [0.4]
+  LOADN R21 50
+  LOADK R22 K40 [0.15]
+  LOADN R23 10
+  CALL R19 4 1
+  GETIMPORT R20 K38 [UDim2.new]
+  LOADK R21 K41 [0.5]
+  LOADN R22 0
+  LOADN R23 1
+  LOADN R24 0
+  CALL R20 4 1
+  GETTABLEKS R21 R2 K42 ["PureComponent"]
+  LOADK R23 K43 ["ObjectViewport"]
+  NAMECALL R21 R21 K44 ["extend"]
+  CALL R21 2 1
+  GETTABLEKS R22 R6 K45 ["strictInterface"]
+  DUPTABLE R23 K52 [{"model", "fieldOfView", "isLoading", "useFullBodyCameraSettings", "openPreviewView", "LayoutOrder"}]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K54 ["instanceOf"]
+  LOADK R26 K55 ["Model"]
+  CALL R25 1 -1
+  CALL R24 -1 1
+  SETTABLEKS R24 R23 K46 ["model"]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K56 ["number"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K47 ["fieldOfView"]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K57 ["boolean"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K48 ["isLoading"]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K57 ["boolean"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K49 ["useFullBodyCameraSettings"]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K58 ["callback"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K50 ["openPreviewView"]
+  GETTABLEKS R24 R6 K53 ["optional"]
+  GETTABLEKS R25 R6 K56 ["number"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K51 ["LayoutOrder"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K59 ["validateProps"]
+  DUPCLOSURE R22 K60 [PROTO_0]
+  CAPTURE VAL R18
+  SETTABLEKS R22 R21 K61 ["createCamera"]
+  DUPCLOSURE R22 K62 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLEKS R22 R21 K63 ["init"]
+  DUPCLOSURE R22 K64 [PROTO_2]
+  CAPTURE VAL R13
+  CAPTURE VAL R1
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  SETTABLEKS R22 R21 K65 ["setupViewport"]
+  DUPCLOSURE R22 K66 [PROTO_4]
+  SETTABLEKS R22 R21 K67 ["didMount"]
+  DUPCLOSURE R22 K68 [PROTO_6]
+  SETTABLEKS R22 R21 K69 ["didUpdate"]
+  DUPCLOSURE R22 K70 [PROTO_8]
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  CAPTURE VAL R14
+  CAPTURE VAL R16
+  CAPTURE VAL R15
+  CAPTURE VAL R5
+  CAPTURE VAL R20
+  CAPTURE VAL R17
+  CAPTURE VAL R19
+  CAPTURE VAL R8
+  SETTABLEKS R22 R21 K71 ["render"]
+  DUPCLOSURE R22 K72 [PROTO_9]
+  SETTABLEKS R22 R21 K73 ["willUnmount"]
+  RETURN R21 1

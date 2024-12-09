@@ -1,0 +1,73 @@
+PROTO_0:
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["LeaderboardUserProfileApiRollout"]
+  NAMECALL R0 R0 K3 ["GetFastInt"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["LeaderboardUserProfileApiEnabledForAll"]
+  NAMECALL R0 R0 K3 ["GetFastFlag"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_2:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIF R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R0 1
+  JUMPIF R0 [+4]
+  GETUPVAL R0 2
+  GETUPVAL R1 3
+  CALL R0 1 1
+  SETUPVAL R0 1
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["LeaderboardUserProfileApiEnabledForAll"]
+  NAMECALL R0 R0 K3 ["GetFastFlag"]
+  CALL R0 2 1
+  JUMPIF R0 [+2]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Workspace"]
+  GETTABLEKS R4 R5 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["AppCommonLib"]
+  CALL R2 1 1
+  GETTABLEKS R1 R2 K9 ["rolloutByApplicationId"]
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Workspace"]
+  GETTABLEKS R5 R6 K7 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["SharedFlags"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K11 ["isCharacterNameHandlerEnabled"]
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K12 ["LeaderboardUserProfileApiRollout"]
+  LOADN R6 0
+  NAMECALL R3 R3 K13 ["DefineFastInt"]
+  CALL R3 3 0
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K14 ["LeaderboardUserProfileApiEnabledForAll"]
+  LOADB R6 0
+  NAMECALL R3 R3 K15 ["DefineFastFlag"]
+  CALL R3 3 0
+  DUPCLOSURE R3 K16 [PROTO_0]
+  DUPCLOSURE R4 K17 [PROTO_1]
+  LOADNIL R5
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R2
+  CAPTURE REF R5
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CLOSEUPVALS R5
+  RETURN R6 1

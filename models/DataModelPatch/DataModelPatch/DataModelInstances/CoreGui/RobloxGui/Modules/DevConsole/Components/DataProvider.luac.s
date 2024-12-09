@@ -1,0 +1,220 @@
+PROTO_0:
+  DUPTABLE R3 K1 [{"DevConsoleData"}]
+  DUPTABLE R4 K15 [{"ClientLogData", "ServerLogData", "ClientMemoryData", "ServerMemoryData", "ClientNetworkData", "ServerNetworkData", "ServerScriptsData", "DataStoresData", "ServerStatsData", "ActionBindingsData", "ServerJobsData", "DebugVisualizationsData", "LuauHeapData"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K16 ["new"]
+  LOADB R6 1
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K2 ["ClientLogData"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K16 ["new"]
+  LOADB R6 0
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K3 ["ServerLogData"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K4 ["ClientMemoryData"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K5 ["ServerMemoryData"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K16 ["new"]
+  LOADB R6 1
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K6 ["ClientNetworkData"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K16 ["new"]
+  LOADB R6 0
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K7 ["ServerNetworkData"]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K8 ["ServerScriptsData"]
+  GETUPVAL R6 5
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K9 ["DataStoresData"]
+  GETUPVAL R6 6
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K10 ["ServerStatsData"]
+  GETUPVAL R6 7
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K11 ["ActionBindingsData"]
+  GETUPVAL R6 8
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K12 ["ServerJobsData"]
+  GETUPVAL R6 9
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K13 ["DebugVisualizationsData"]
+  GETUPVAL R6 10
+  GETTABLEKS R5 R6 K16 ["new"]
+  CALL R5 0 1
+  SETTABLEKS R5 R4 K14 ["LuauHeapData"]
+  SETTABLEKS R4 R3 K0 ["DevConsoleData"]
+  NAMECALL R1 R0 K17 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["DevConsoleData"]
+  GETTABLEKS R1 R2 K2 ["ClientLogData"]
+  NAMECALL R1 R1 K3 ["start"]
+  CALL R1 1 0
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["DevConsoleData"]
+  GETTABLEKS R1 R2 K4 ["ClientMemoryData"]
+  NAMECALL R1 R1 K3 ["start"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R3 R1 K0 ["isDeveloperView"]
+  JUMPIFNOT R3 [+22]
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K0 ["isDeveloperView"]
+  JUMPIF R3 [+17]
+  GETIMPORT R3 K3 [pairs]
+  GETTABLEKS R6 R0 K4 ["state"]
+  GETTABLEKS R4 R6 K5 ["DevConsoleData"]
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  NAMECALL R8 R7 K6 ["isRunning"]
+  CALL R8 1 1
+  JUMPIF R8 [+3]
+  NAMECALL R8 R7 K7 ["start"]
+  CALL R8 1 0
+  FORGLOOP R3 2 [-8]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Provider"]
+  DUPTABLE R3 K3 [{"value"}]
+  GETTABLEKS R5 R0 K4 ["state"]
+  GETTABLEKS R4 R5 K5 ["DevConsoleData"]
+  SETTABLEKS R4 R3 K2 ["value"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["oneChild"]
+  GETTABLEKS R6 R0 K7 ["props"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K8 ["Children"]
+  GETTABLE R5 R6 R7
+  CALL R4 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_4:
+  DUPTABLE R2 K1 [{"isDeveloperView"}]
+  GETTABLEKS R4 R0 K2 ["MainView"]
+  GETTABLEKS R3 R4 K0 ["isDeveloperView"]
+  SETTABLEKS R3 R2 K0 ["isDeveloperView"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R6 K10 [script]
+  GETTABLEKS R5 R6 K11 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K12 ["Components"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K13 ["Log"]
+  GETTABLEKS R5 R6 K14 ["LogData"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R3 K15 ["Memory"]
+  GETTABLEKS R6 R7 K16 ["ClientMemoryData"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R3 K15 ["Memory"]
+  GETTABLEKS R7 R8 K17 ["ServerMemoryData"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R3 K18 ["Network"]
+  GETTABLEKS R8 R9 K19 ["NetworkData"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R3 K20 ["Scripts"]
+  GETTABLEKS R9 R10 K21 ["ServerScriptsData"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R11 R3 K22 ["DataStores"]
+  GETTABLEKS R10 R11 K23 ["DataStoresData"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R3 K24 ["ServerStats"]
+  GETTABLEKS R11 R12 K25 ["ServerStatsData"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETTABLEKS R13 R3 K26 ["ActionBindings"]
+  GETTABLEKS R12 R13 K27 ["ActionBindingsData"]
+  CALL R11 1 1
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R14 R3 K28 ["ServerJobs"]
+  GETTABLEKS R13 R14 K29 ["ServerJobsData"]
+  CALL R12 1 1
+  GETIMPORT R13 K5 [require]
+  GETTABLEKS R15 R3 K30 ["DebugVisualizations"]
+  GETTABLEKS R14 R15 K31 ["DebugVisualizationsData"]
+  CALL R13 1 1
+  GETIMPORT R14 K5 [require]
+  GETTABLEKS R16 R3 K32 ["LuauHeap"]
+  GETTABLEKS R15 R16 K33 ["LuauHeapData"]
+  CALL R14 1 1
+  GETIMPORT R15 K5 [require]
+  GETTABLEKS R16 R3 K34 ["DataContext"]
+  CALL R15 1 1
+  GETTABLEKS R16 R1 K35 ["Component"]
+  LOADK R18 K36 ["DataProvider"]
+  NAMECALL R16 R16 K37 ["extend"]
+  CALL R16 2 1
+  DUPCLOSURE R17 K38 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  SETTABLEKS R17 R16 K39 ["init"]
+  DUPCLOSURE R17 K40 [PROTO_1]
+  SETTABLEKS R17 R16 K41 ["didMount"]
+  DUPCLOSURE R17 K42 [PROTO_2]
+  SETTABLEKS R17 R16 K43 ["willUpdate"]
+  DUPCLOSURE R17 K44 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R15
+  SETTABLEKS R17 R16 K45 ["render"]
+  DUPCLOSURE R17 K46 [PROTO_4]
+  GETTABLEKS R18 R2 K47 ["UNSTABLE_connect2"]
+  MOVE R19 R17
+  LOADNIL R20
+  CALL R18 2 1
+  MOVE R19 R16
+  CALL R18 1 -1
+  RETURN R18 -1

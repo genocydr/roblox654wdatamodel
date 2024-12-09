@@ -1,0 +1,187 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["JSONDecode"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  NAMECALL R2 R2 K0 ["GetItem"]
+  CALL R2 2 1
+  GETUPVAL R3 0
+  LOADK R5 K1 ["UserId"]
+  NAMECALL R3 R3 K0 ["GetItem"]
+  CALL R3 2 1
+  GETIMPORT R4 K3 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R2
+  CALL R4 1 2
+  JUMPIFNOT R4 [+7]
+  FASTCALL1 TYPE R5 [+3]
+  MOVE R7 R5
+  GETIMPORT R6 K5 [type]
+  CALL R6 1 1
+  JUMPIFEQKS R6 K6 ["table"] [+3]
+  NEWTABLE R5 0 0
+  GETTABLE R6 R5 R3
+  FASTCALL1 TYPE R6 [+3]
+  MOVE R8 R6
+  GETIMPORT R7 K5 [type]
+  CALL R7 1 1
+  JUMPIFEQKS R7 K7 ["number"] [+2]
+  LOADN R6 0
+  ADDK R7 R6 K8 [1]
+  SETTABLE R7 R5 R3
+  JUMPIFLT R6 R1 [+2]
+  LOADB R7 0 +1
+  LOADB R7 1
+  GETUPVAL R8 1
+  MOVE R10 R5
+  NAMECALL R8 R8 K9 ["JSONEncode"]
+  CALL R8 2 -1
+  RETURN R7 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["onCleanup"]
+  RETURN R0 1
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useEffect"]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  NEWTABLE R3 0 0
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["createElement"]
+  LOADK R2 K2 ["TextButton"]
+  NEWTABLE R3 8 0
+  LOADK R4 K3 [""]
+  SETTABLEKS R4 R3 K4 ["Text"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K5 ["BackgroundTransparency"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K6 ["BorderSizePixel"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K10 ["Size"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K11 ["Event"]
+  GETTABLEKS R4 R5 K12 ["Activated"]
+  GETTABLEKS R5 R0 K13 ["onDismissed"]
+  SETTABLE R5 R3 R4
+  DUPTABLE R4 K15 [{"GamepadNavigationDialog"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["createElement"]
+  GETUPVAL R6 1
+  DUPTABLE R7 K17 [{"selectButtonDismissesGamepadNavigationDialog", "onDismissed"}]
+  GETTABLEKS R8 R0 K16 ["selectButtonDismissesGamepadNavigationDialog"]
+  SETTABLEKS R8 R7 K16 ["selectButtonDismissesGamepadNavigationDialog"]
+  GETTABLEKS R8 R0 K13 ["onDismissed"]
+  SETTABLEKS R8 R7 K13 ["onDismissed"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K14 ["GamepadNavigationDialog"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["SetGamepadNavigationDialogOpen"]
+  LOADB R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["appStorageKey"]
+  GETUPVAL R3 2
+  NAMECALL R0 R0 K1 ["SetItem"]
+  CALL R0 3 0
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K2 ["Flush"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["isGamepadNavigationDialogEnabled"]
+  JUMPIFNOT R1 [+3]
+  GETTABLEKS R1 R0 K1 ["isGamepadNavigationDialogOpen"]
+  JUMPIF R1 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K2 ["appStorageKey"]
+  GETTABLEKS R3 R0 K3 ["maxShownCount"]
+  CALL R1 2 2
+  JUMPIF R1 [+2]
+  LOADNIL R3
+  RETURN R3 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K8 [{"selectButtonDismissesGamepadNavigationDialog", "onDismissed", "onCleanup"}]
+  GETTABLEKS R6 R0 K5 ["selectButtonDismissesGamepadNavigationDialog"]
+  SETTABLEKS R6 R5 K5 ["selectButtonDismissesGamepadNavigationDialog"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K6 ["onDismissed"]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  SETTABLEKS R6 R5 K7 ["onCleanup"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["AppStorageService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["HttpService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["React"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K8 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETIMPORT R5 K7 [require]
+  GETIMPORT R8 K12 [script]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K14 ["GamepadNavigationDialog"]
+  CALL R5 1 1
+  GETTABLEKS R6 R3 K15 ["PureComponent"]
+  LOADK R8 K16 ["GamepadNavigationDialogShowCounter"]
+  NAMECALL R6 R6 K17 ["extend"]
+  CALL R6 2 1
+  DUPCLOSURE R7 K18 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  DUPCLOSURE R8 K19 [PROTO_3]
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  DUPCLOSURE R9 K20 [PROTO_6]
+  CAPTURE VAL R7
+  CAPTURE VAL R3
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  RETURN R9 1

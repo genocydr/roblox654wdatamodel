@@ -8,7 +8,7 @@ if not ChromeEnabled() then
 end
 
 local ChromeAnalytics = require(Chrome.ChromeShared.Analytics.ChromeAnalytics)
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local PartyConstants = require(Chrome.Integrations.Party.Constants)
 local isConnectUnibarEnabled = require(Chrome.Integrations.Connect.isConnectUnibarEnabled)
 local isConnectDropdownEnabled = require(Chrome.Integrations.Connect.isConnectDropdownEnabled)
@@ -26,6 +26,10 @@ local GetFFlagEnablePartyMicIconInChrome =
 local GetFFlagEnableSongbirdInChrome = require(Chrome.Flags.GetFFlagEnableSongbirdInChrome)
 local GetFFlagEnableJoinVoiceOnUnibar =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableJoinVoiceOnUnibar
+
+local function initializeIntegrations()
+	require(Chrome.Integrations)
+end
 
 local function configureUnibar()
 	-- Configure the menu.  Top level ordering, integration availability.
@@ -109,6 +113,7 @@ local function configurePeek()
 	end
 end
 
+initializeIntegrations()
 configureUnibar()
 configurePeek()
 

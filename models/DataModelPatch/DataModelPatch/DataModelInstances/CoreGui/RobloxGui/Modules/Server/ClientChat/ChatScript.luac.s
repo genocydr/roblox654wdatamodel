@@ -1,0 +1,593 @@
+PROTO_0:
+  PREPVARARGS 0
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  GETTABLE R0 R1 R2
+  GETUPVAL R1 0
+  GETVARARGS R2 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["ChatWindow"]
+  SETTABLE R1 R2 R0
+  GETTABLEKS R2 R1 K6 ["Event"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K7 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_2:
+  PREPVARARGS 0
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  GETTABLE R0 R1 R2
+  GETUPVAL R1 0
+  GETVARARGS R2 -1
+  CALL R0 -1 -1
+  RETURN R0 -1
+
+PROTO_3:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableFunction"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["ChatWindow"]
+  SETTABLE R1 R2 R0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K6 ["OnInvoke"]
+  RETURN R0 0
+
+PROTO_4:
+  PREPVARARGS 0
+  GETUPVAL R0 0
+  GETVARARGS R2 -1
+  NAMECALL R0 R0 K0 ["Fire"]
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["ChatWindow"]
+  SETTABLE R1 R2 R0
+  GETUPVAL R3 1
+  GETTABLE R2 R3 R0
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R1
+  NAMECALL R2 R2 K6 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_6:
+  PREPVARARGS 0
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  GETTABLE R0 R1 R2
+  GETVARARGS R2 -1
+  NAMECALL R0 R0 K0 ["fire"]
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["ChatWindow"]
+  SETTABLE R1 R2 R0
+  GETTABLEKS R2 R1 K6 ["Event"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K7 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_8:
+  PREPVARARGS 0
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  LOADK R4 K0 ["Event"]
+  CONCAT R2 R3 R4
+  GETTABLE R0 R1 R2
+  GETVARARGS R2 -1
+  NAMECALL R0 R0 K1 ["fire"]
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["SetCore"]
+  SETTABLE R1 R2 R0
+  GETTABLEKS R2 R1 K6 ["Event"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K7 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_10:
+  PREPVARARGS 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["f"]
+  GETUPVAL R4 1
+  CONCAT R2 R3 R4
+  GETTABLE R0 R1 R2
+  GETVARARGS R1 -1
+  CALL R0 -1 -1
+  RETURN R0 -1
+
+PROTO_11:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["BindableFunction"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K4 ["Name"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["GetCore"]
+  SETTABLE R1 R2 R0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K6 ["OnInvoke"]
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R1 K3 [script]
+  LOADK R3 K4 ["ChatMain"]
+  NAMECALL R1 R1 K5 ["WaitForChild"]
+  CALL R1 2 -1
+  CALL R0 -1 1
+  NEWTABLE R1 4 0
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K6 ["ChatWindow"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K7 ["SetCore"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K8 ["GetCore"]
+  GETTABLEKS R2 R1 K6 ["ChatWindow"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K9 ["ChatTypes"]
+  GETTABLEKS R3 R1 K6 ["ChatWindow"]
+  GETTABLEKS R2 R3 K9 ["ChatTypes"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K10 ["BubbleChatEnabled"]
+  SETTABLEKS R3 R2 K10 ["BubbleChatEnabled"]
+  GETTABLEKS R3 R1 K6 ["ChatWindow"]
+  GETTABLEKS R2 R3 K9 ["ChatTypes"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K11 ["ClassicChatEnabled"]
+  SETTABLEKS R3 R2 K11 ["ClassicChatEnabled"]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  NEWCLOSURE R4 P2
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  NEWCLOSURE R5 P3
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  NEWCLOSURE R6 P4
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  NEWCLOSURE R7 P5
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K16 ["ToggleVisibility"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K16 ["ToggleVisibility"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K16 ["ToggleVisibility"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K20 ["SetVisible"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K20 ["SetVisible"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K20 ["SetVisible"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K21 ["FocusChatBar"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K21 ["FocusChatBar"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K21 ["FocusChatBar"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K22 ["EnterWhisperState"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K22 ["EnterWhisperState"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K22 ["EnterWhisperState"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K24 ["GetVisibility"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K24 ["GetVisibility"]
+  LOADK R10 K24 ["GetVisibility"]
+  NEWCLOSURE R9 P7
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K26 ["GetMessageCount"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K26 ["GetMessageCount"]
+  LOADK R10 K26 ["GetMessageCount"]
+  NEWCLOSURE R9 P7
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K27 ["TopbarEnabledChanged"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K27 ["TopbarEnabledChanged"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K27 ["TopbarEnabledChanged"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K28 ["IsFocused"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K28 ["IsFocused"]
+  LOADK R10 K28 ["IsFocused"]
+  NEWCLOSURE R9 P7
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K29 ["ChatBarFocusChanged"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K29 ["ChatBarFocusChanged"]
+  GETTABLEKS R9 R0 K29 ["ChatBarFocusChanged"]
+  NEWCLOSURE R11 P8
+  CAPTURE VAL R8
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K30 ["VisibilityStateChanged"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K30 ["VisibilityStateChanged"]
+  GETTABLEKS R9 R0 K30 ["VisibilityStateChanged"]
+  NEWCLOSURE R11 P8
+  CAPTURE VAL R8
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K31 ["MessagesChanged"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K31 ["MessagesChanged"]
+  GETTABLEKS R9 R0 K31 ["MessagesChanged"]
+  NEWCLOSURE R11 P8
+  CAPTURE VAL R8
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K32 ["MessagePosted"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K32 ["MessagePosted"]
+  GETTABLEKS R9 R0 K32 ["MessagePosted"]
+  NEWCLOSURE R11 P8
+  CAPTURE VAL R8
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K33 ["CoreGuiEnabled"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K33 ["CoreGuiEnabled"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K33 ["CoreGuiEnabled"]
+  NEWCLOSURE R11 P9
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K34 ["ChatMakeSystemMessage"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K7 ["SetCore"]
+  SETTABLEKS R8 R9 K34 ["ChatMakeSystemMessage"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K34 ["ChatMakeSystemMessage"]
+  NEWCLOSURE R11 P10
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K35 ["ChatWindowPosition"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K7 ["SetCore"]
+  SETTABLEKS R8 R9 K35 ["ChatWindowPosition"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K35 ["ChatWindowPosition"]
+  NEWCLOSURE R11 P10
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K36 ["ChatWindowSize"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K7 ["SetCore"]
+  SETTABLEKS R8 R9 K36 ["ChatWindowSize"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K36 ["ChatWindowSize"]
+  NEWCLOSURE R11 P10
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K35 ["ChatWindowPosition"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K8 ["GetCore"]
+  SETTABLEKS R8 R9 K35 ["ChatWindowPosition"]
+  LOADK R10 K35 ["ChatWindowPosition"]
+  NEWCLOSURE R9 P11
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K36 ["ChatWindowSize"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K8 ["GetCore"]
+  SETTABLEKS R8 R9 K36 ["ChatWindowSize"]
+  LOADK R10 K36 ["ChatWindowSize"]
+  NEWCLOSURE R9 P11
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K37 ["ChatBarDisabled"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K7 ["SetCore"]
+  SETTABLEKS R8 R9 K37 ["ChatBarDisabled"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K37 ["ChatBarDisabled"]
+  NEWCLOSURE R11 P10
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K23 ["BindableFunction"]
+  CALL R8 1 1
+  LOADK R9 K37 ["ChatBarDisabled"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K8 ["GetCore"]
+  SETTABLEKS R8 R9 K37 ["ChatBarDisabled"]
+  LOADK R10 K37 ["ChatBarDisabled"]
+  NEWCLOSURE R9 P11
+  CAPTURE VAL R0
+  CAPTURE VAL R10
+  SETTABLEKS R9 R8 K25 ["OnInvoke"]
+  GETIMPORT R8 K14 [Instance.new]
+  LOADK R9 K15 ["BindableEvent"]
+  CALL R8 1 1
+  LOADK R9 K38 ["SpecialKeyPressed"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  GETTABLEKS R9 R1 K6 ["ChatWindow"]
+  SETTABLEKS R8 R9 K38 ["SpecialKeyPressed"]
+  GETTABLEKS R9 R8 K18 ["Event"]
+  LOADK R12 K38 ["SpecialKeyPressed"]
+  NEWCLOSURE R11 P6
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  NAMECALL R9 R9 K19 ["connect"]
+  CALL R9 2 0
+  GETGLOBAL R8 K39 ["SetCoreGuiChatConnections"]
+  MOVE R9 R1
+  CALL R8 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["CoreGuiChatConnections"]
+  GETUPVAL R3 1
+  NAMECALL R0 R0 K1 ["SetCore"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_14:
+  LOADN R1 0
+  LOADN R2 10
+  JUMPIFNOTLT R1 R2 [+22]
+  ADDK R1 R1 K0 [1]
+  GETIMPORT R2 K2 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CALL R2 1 2
+  JUMPIF R2 [+13]
+  JUMPIF R2 [+8]
+  JUMPIFNOTEQKN R1 K3 [10] [+7]
+  GETIMPORT R4 K5 [error]
+  LOADK R6 K6 ["Error calling SetCore CoreGuiChatConnections: "]
+  MOVE R7 R3
+  CONCAT R5 R6 R7
+  CALL R4 1 0
+  GETIMPORT R4 K8 [wait]
+  CALL R4 0 0
+  JUMPBACK [-24]
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["BubbleChatEnabled"]
+  JUMPIFEQKNIL R0 [+15]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K1 ["ClassicChatEnabled"]
+  JUMPIFEQKNIL R0 [+10]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["BubbleChatEnabled"]
+  JUMPIF R1 [+3]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["ClassicChatEnabled"]
+  NOT R0 R1
+  RETURN R0 1
+  LOADB R0 0
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["StarterGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Chat"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["ReplicatedStorage"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["ClientChatModules"]
+  NAMECALL R4 R2 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [require]
+  LOADK R8 K11 ["ChatSettings"]
+  NAMECALL R6 R4 K8 ["WaitForChild"]
+  CALL R6 2 -1
+  CALL R5 -1 1
+  DUPCLOSURE R6 K12 [PROTO_12]
+  CAPTURE VAL R5
+  DUPCLOSURE R7 K13 [PROTO_14]
+  CAPTURE VAL R0
+  SETGLOBAL R7 K14 ["SetCoreGuiChatConnections"]
+  DUPCLOSURE R7 K15 [PROTO_15]
+  CAPTURE VAL R5
+  SETGLOBAL R7 K16 ["checkBothChatTypesDisabled"]
+  NAMECALL R7 R1 K17 ["IsTenFootInterface"]
+  CALL R7 1 1
+  JUMPIF R7 [+38]
+  GETGLOBAL R7 K16 ["checkBothChatTypesDisabled"]
+  CALL R7 0 1
+  JUMPIF R7 [+3]
+  MOVE R7 R6
+  CALL R7 0 0
+  RETURN R0 0
+  NEWTABLE R7 1 0
+  NEWTABLE R8 0 0
+  SETTABLEKS R8 R7 K18 ["ChatWindow"]
+  GETTABLEKS R8 R7 K18 ["ChatWindow"]
+  NEWTABLE R9 0 0
+  SETTABLEKS R9 R8 K19 ["ChatTypes"]
+  GETTABLEKS R9 R7 K18 ["ChatWindow"]
+  GETTABLEKS R8 R9 K19 ["ChatTypes"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K20 ["BubbleChatEnabled"]
+  GETTABLEKS R9 R7 K18 ["ChatWindow"]
+  GETTABLEKS R8 R9 K19 ["ChatTypes"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K21 ["ClassicChatEnabled"]
+  GETGLOBAL R8 K14 ["SetCoreGuiChatConnections"]
+  MOVE R9 R7
+  CALL R8 1 0
+  RETURN R0 0
+  LOADK R9 K22 ["DefaultChatSystemChatEvents"]
+  NAMECALL R7 R3 K8 ["WaitForChild"]
+  CALL R7 2 1
+  GETTABLEKS R8 R7 K23 ["GetInitDataRequest"]
+  NAMECALL R8 R8 K24 ["InvokeServer"]
+  CALL R8 1 0
+  RETURN R0 0

@@ -1,0 +1,562 @@
+PROTO_0:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserIsChatTranslationEnabled2"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["WaitForChild"]
+  CALL R3 2 1
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+8]
+  GETTABLEKS R4 R3 K1 ["ClassName"]
+  JUMPIFEQKS R4 K2 ["ModuleScript"] [+5]
+  NAMECALL R4 R3 K3 ["Clone"]
+  CALL R4 1 -1
+  RETURN R4 -1
+  GETIMPORT R4 K6 [Instance.new]
+  LOADK R5 K7 ["LocalScript"]
+  CALL R4 1 1
+  SETTABLEKS R1 R4 K8 ["Name"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K9 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R5 0 1
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K10 ["getSourceForServerScript"]
+  MOVE R6 R3
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K11 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R5 R3 K11 ["Source"]
+  SETTABLEKS R5 R4 K11 ["Source"]
+  SETTABLEKS R2 R4 K12 ["Parent"]
+  RETURN R4 1
+
+PROTO_2:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["WaitForChild"]
+  CALL R3 2 1
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+8]
+  GETTABLEKS R4 R3 K1 ["ClassName"]
+  JUMPIFEQKS R4 K2 ["ModuleScript"] [+5]
+  NAMECALL R4 R3 K3 ["Clone"]
+  CALL R4 1 -1
+  RETURN R4 -1
+  GETIMPORT R4 K6 [Instance.new]
+  LOADK R5 K2 ["ModuleScript"]
+  CALL R4 1 1
+  SETTABLEKS R1 R4 K7 ["Name"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K8 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R5 0 1
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K9 ["getSourceForServerScript"]
+  MOVE R6 R3
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K10 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R5 R3 K10 ["Source"]
+  SETTABLEKS R5 R4 K10 ["Source"]
+  SETTABLEKS R2 R4 K11 ["Parent"]
+  RETURN R4 1
+
+PROTO_3:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+8]
+  LOADK R6 K1 ["BoolValue"]
+  NAMECALL R4 R3 K2 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R4 R3 K3 ["Value"]
+  RETURN R4 1
+  RETURN R2 1
+
+PROTO_4:
+  NEWTABLE R0 0 0
+  LOADB R1 1
+  GETUPVAL R2 0
+  LOADK R4 K0 ["ChatScript"]
+  NAMECALL R2 R2 K1 ["FindFirstChild"]
+  CALL R2 2 1
+  JUMPIF R2 [+127]
+  LOADB R1 0
+  GETUPVAL R3 1
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  LOADK R5 K0 ["ChatScript"]
+  GETUPVAL R6 0
+  CALL R3 3 1
+  MOVE R2 R3
+  GETUPVAL R3 2
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  LOADK R5 K5 ["ChatMain"]
+  MOVE R6 R2
+  CALL R3 3 1
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K6 ["ChannelsBar"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K7 ["ChatBar"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K8 ["ChatChannel"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K9 ["MessageLogDisplay"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K10 ["ChatWindow"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K11 ["MessageLabelCreator"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K12 ["CommandProcessor"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K13 ["ChannelsTab"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R9 K3 [script]
+  GETTABLEKS R8 R9 K4 ["Parent"]
+  GETTABLEKS R7 R8 K4 ["Parent"]
+  GETTABLEKS R6 R7 K4 ["Parent"]
+  GETTABLEKS R5 R6 K14 ["Common"]
+  LOADK R6 K15 ["ObjectPool"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K16 ["MessageSender"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 2
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  LOADK R6 K17 ["CurveUtil"]
+  MOVE R7 R3
+  CALL R4 3 0
+  GETUPVAL R4 3
+  JUMPIFNOT R4 [+18]
+  GETIMPORT R4 K20 [Instance.new]
+  LOADK R5 K21 ["BoolValue"]
+  CALL R4 1 1
+  LOADK R5 K22 ["ChatTranslationEnabled"]
+  SETTABLEKS R5 R4 K23 ["Name"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K24 ["Value"]
+  SETTABLEKS R3 R4 K4 ["Parent"]
+  JUMP [+5]
+  GETUPVAL R3 4
+  JUMPIFNOT R3 [+3]
+  LOADK R3 K25 ["True"]
+  SETTABLEKS R3 R0 K0 ["ChatScript"]
+  LOADB R3 1
+  GETUPVAL R4 0
+  LOADK R6 K26 ["BubbleChat"]
+  NAMECALL R4 R4 K1 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+13]
+  LOADB R3 0
+  GETUPVAL R5 1
+  GETIMPORT R8 K3 [script]
+  GETTABLEKS R7 R8 K4 ["Parent"]
+  GETTABLEKS R6 R7 K26 ["BubbleChat"]
+  LOADK R7 K26 ["BubbleChat"]
+  GETUPVAL R8 0
+  CALL R5 3 1
+  MOVE R4 R5
+  JUMP [+5]
+  GETUPVAL R5 4
+  JUMPIFNOT R5 [+3]
+  LOADK R5 K25 ["True"]
+  SETTABLEKS R5 R0 K26 ["BubbleChat"]
+  GETUPVAL R5 0
+  LOADK R7 K27 ["ClientChatModules"]
+  NAMECALL R5 R5 K1 ["FindFirstChild"]
+  CALL R5 2 1
+  JUMPIF R5 [+15]
+  GETIMPORT R6 K20 [Instance.new]
+  LOADK R7 K28 ["Folder"]
+  CALL R6 1 1
+  MOVE R5 R6
+  LOADK R6 K27 ["ClientChatModules"]
+  SETTABLEKS R6 R5 K23 ["Name"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K29 ["Archivable"]
+  GETUPVAL R6 0
+  SETTABLEKS R6 R5 K4 ["Parent"]
+  JUMP [+5]
+  GETUPVAL R6 4
+  JUMPIFNOT R6 [+3]
+  LOADK R6 K25 ["True"]
+  SETTABLEKS R6 R0 K27 ["ClientChatModules"]
+  LOADK R8 K30 ["ChatSettings"]
+  NAMECALL R6 R5 K1 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIF R6 [+11]
+  GETUPVAL R7 2
+  GETIMPORT R10 K3 [script]
+  GETTABLEKS R9 R10 K4 ["Parent"]
+  GETTABLEKS R8 R9 K31 ["DefaultClientChatModules"]
+  LOADK R9 K30 ["ChatSettings"]
+  MOVE R10 R5
+  CALL R7 3 0
+  JUMP [+5]
+  GETUPVAL R7 4
+  JUMPIFNOT R7 [+3]
+  LOADK R7 K25 ["True"]
+  SETTABLEKS R7 R0 K30 ["ChatSettings"]
+  LOADK R9 K32 ["ChatConstants"]
+  NAMECALL R7 R5 K1 ["FindFirstChild"]
+  CALL R7 2 1
+  JUMPIF R7 [+11]
+  GETUPVAL R8 2
+  GETIMPORT R11 K3 [script]
+  GETTABLEKS R10 R11 K4 ["Parent"]
+  GETTABLEKS R9 R10 K31 ["DefaultClientChatModules"]
+  LOADK R10 K32 ["ChatConstants"]
+  MOVE R11 R5
+  CALL R8 3 0
+  JUMP [+5]
+  GETUPVAL R8 4
+  JUMPIFNOT R8 [+3]
+  LOADK R8 K25 ["True"]
+  SETTABLEKS R8 R0 K32 ["ChatConstants"]
+  LOADK R10 K33 ["ChatLocalization"]
+  NAMECALL R8 R5 K1 ["FindFirstChild"]
+  CALL R8 2 1
+  JUMPIF R8 [+11]
+  GETUPVAL R9 2
+  GETIMPORT R12 K3 [script]
+  GETTABLEKS R11 R12 K4 ["Parent"]
+  GETTABLEKS R10 R11 K31 ["DefaultClientChatModules"]
+  LOADK R11 K33 ["ChatLocalization"]
+  MOVE R12 R5
+  CALL R9 3 0
+  JUMP [+5]
+  GETUPVAL R9 4
+  JUMPIFNOT R9 [+3]
+  LOADK R9 K25 ["True"]
+  SETTABLEKS R9 R0 K33 ["ChatLocalization"]
+  LOADK R11 K34 ["MessageCreatorModules"]
+  NAMECALL R9 R5 K1 ["FindFirstChild"]
+  CALL R9 2 1
+  JUMPIF R9 [+25]
+  GETIMPORT R10 K20 [Instance.new]
+  LOADK R11 K28 ["Folder"]
+  CALL R10 1 1
+  MOVE R9 R10
+  LOADK R10 K34 ["MessageCreatorModules"]
+  SETTABLEKS R10 R9 K23 ["Name"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K29 ["Archivable"]
+  GETIMPORT R10 K20 [Instance.new]
+  LOADK R11 K21 ["BoolValue"]
+  CALL R10 1 1
+  LOADK R11 K35 ["InsertDefaultModules"]
+  SETTABLEKS R11 R10 K23 ["Name"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K24 ["Value"]
+  SETTABLEKS R9 R10 K4 ["Parent"]
+  SETTABLEKS R5 R9 K4 ["Parent"]
+  MOVE R11 R9
+  LOADK R14 K35 ["InsertDefaultModules"]
+  NAMECALL R12 R11 K1 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMPIFNOT R12 [+8]
+  LOADK R15 K21 ["BoolValue"]
+  NAMECALL R13 R12 K36 ["IsA"]
+  CALL R13 2 1
+  JUMPIFNOT R13 [+3]
+  GETTABLEKS R10 R12 K24 ["Value"]
+  JUMP [+1]
+  LOADB R10 0
+  JUMPIFNOT R10 [+45]
+  GETIMPORT R14 K3 [script]
+  GETTABLEKS R13 R14 K4 ["Parent"]
+  GETTABLEKS R12 R13 K31 ["DefaultClientChatModules"]
+  GETTABLEKS R11 R12 K34 ["MessageCreatorModules"]
+  NAMECALL R11 R11 K37 ["GetChildren"]
+  CALL R11 1 1
+  LOADN R14 1
+  LENGTH R12 R11
+  LOADN R13 1
+  FORNPREP R12
+  GETTABLE R18 R11 R14
+  GETTABLEKS R17 R18 K23 ["Name"]
+  NAMECALL R15 R9 K1 ["FindFirstChild"]
+  CALL R15 2 1
+  JUMPIF R15 [+15]
+  GETUPVAL R15 2
+  GETIMPORT R19 K3 [script]
+  GETTABLEKS R18 R19 K4 ["Parent"]
+  GETTABLEKS R17 R18 K31 ["DefaultClientChatModules"]
+  GETTABLEKS R16 R17 K34 ["MessageCreatorModules"]
+  GETTABLE R18 R11 R14
+  GETTABLEKS R17 R18 K23 ["Name"]
+  MOVE R18 R9
+  CALL R15 3 0
+  JUMP [+7]
+  GETUPVAL R15 4
+  JUMPIFNOT R15 [+5]
+  GETTABLE R16 R11 R14
+  GETTABLEKS R15 R16 K23 ["Name"]
+  LOADK R16 K25 ["True"]
+  SETTABLE R16 R0 R15
+  FORNLOOP R12
+  LOADK R13 K38 ["CommandModules"]
+  NAMECALL R11 R5 K1 ["FindFirstChild"]
+  CALL R11 2 1
+  JUMPIF R11 [+25]
+  GETIMPORT R12 K20 [Instance.new]
+  LOADK R13 K28 ["Folder"]
+  CALL R12 1 1
+  MOVE R11 R12
+  LOADK R12 K38 ["CommandModules"]
+  SETTABLEKS R12 R11 K23 ["Name"]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K29 ["Archivable"]
+  GETIMPORT R12 K20 [Instance.new]
+  LOADK R13 K21 ["BoolValue"]
+  CALL R12 1 1
+  LOADK R13 K35 ["InsertDefaultModules"]
+  SETTABLEKS R13 R12 K23 ["Name"]
+  LOADB R13 1
+  SETTABLEKS R13 R12 K24 ["Value"]
+  SETTABLEKS R11 R12 K4 ["Parent"]
+  SETTABLEKS R5 R11 K4 ["Parent"]
+  MOVE R13 R11
+  LOADK R16 K35 ["InsertDefaultModules"]
+  NAMECALL R14 R13 K1 ["FindFirstChild"]
+  CALL R14 2 1
+  JUMPIFNOT R14 [+8]
+  LOADK R17 K21 ["BoolValue"]
+  NAMECALL R15 R14 K36 ["IsA"]
+  CALL R15 2 1
+  JUMPIFNOT R15 [+3]
+  GETTABLEKS R12 R14 K24 ["Value"]
+  JUMP [+1]
+  LOADB R12 0
+  JUMPIFNOT R12 [+45]
+  GETIMPORT R16 K3 [script]
+  GETTABLEKS R15 R16 K4 ["Parent"]
+  GETTABLEKS R14 R15 K31 ["DefaultClientChatModules"]
+  GETTABLEKS R13 R14 K38 ["CommandModules"]
+  NAMECALL R13 R13 K37 ["GetChildren"]
+  CALL R13 1 1
+  LOADN R16 1
+  LENGTH R14 R13
+  LOADN R15 1
+  FORNPREP R14
+  GETTABLE R20 R13 R16
+  GETTABLEKS R19 R20 K23 ["Name"]
+  NAMECALL R17 R11 K1 ["FindFirstChild"]
+  CALL R17 2 1
+  JUMPIF R17 [+15]
+  GETUPVAL R17 2
+  GETIMPORT R21 K3 [script]
+  GETTABLEKS R20 R21 K4 ["Parent"]
+  GETTABLEKS R19 R20 K31 ["DefaultClientChatModules"]
+  GETTABLEKS R18 R19 K38 ["CommandModules"]
+  GETTABLE R20 R13 R16
+  GETTABLEKS R19 R20 K23 ["Name"]
+  MOVE R20 R11
+  CALL R17 3 0
+  JUMP [+7]
+  GETUPVAL R17 4
+  JUMPIFNOT R17 [+5]
+  GETTABLE R18 R13 R16
+  GETTABLEKS R17 R18 K23 ["Name"]
+  LOADK R18 K25 ["True"]
+  SETTABLE R18 R0 R17
+  FORNLOOP R14
+  GETUPVAL R13 5
+  LOADK R15 K0 ["ChatScript"]
+  NAMECALL R13 R13 K1 ["FindFirstChild"]
+  CALL R13 2 1
+  JUMPIF R13 [+46]
+  NAMECALL R13 R2 K39 ["Clone"]
+  CALL R13 1 1
+  GETUPVAL R14 5
+  SETTABLEKS R14 R13 K4 ["Parent"]
+  LOADB R14 0
+  SETTABLEKS R14 R13 K29 ["Archivable"]
+  GETUPVAL R14 6
+  NAMECALL R14 R14 K40 ["GetPlayers"]
+  CALL R14 1 1
+  GETIMPORT R15 K42 [pairs]
+  MOVE R16 R14
+  CALL R15 1 3
+  FORGPREP_NEXT R15
+  LOADK R22 K43 ["PlayerGui"]
+  NAMECALL R20 R19 K44 ["FindFirstChildOfClass"]
+  CALL R20 2 1
+  JUMPIFNOT R20 [+21]
+  GETUPVAL R20 1
+  GETIMPORT R22 K3 [script]
+  GETTABLEKS R21 R22 K4 ["Parent"]
+  LOADK R22 K45 ["ChatInstallVerifier"]
+  GETTABLEKS R23 R19 K43 ["PlayerGui"]
+  CALL R20 3 1
+  GETIMPORT R21 K20 [Instance.new]
+  LOADK R22 K46 ["StringValue"]
+  CALL R21 1 1
+  LOADK R22 K47 ["ScriptToVerify"]
+  SETTABLEKS R22 R21 K23 ["Name"]
+  LOADK R22 K0 ["ChatScript"]
+  SETTABLEKS R22 R21 K24 ["Value"]
+  SETTABLEKS R20 R21 K4 ["Parent"]
+  FORGLOOP R15 2 [-27]
+  SETTABLEKS R1 R2 K29 ["Archivable"]
+  GETUPVAL R13 5
+  LOADK R15 K26 ["BubbleChat"]
+  NAMECALL R13 R13 K1 ["FindFirstChild"]
+  CALL R13 2 1
+  JUMPIF R13 [+46]
+  NAMECALL R13 R4 K39 ["Clone"]
+  CALL R13 1 1
+  GETUPVAL R14 5
+  SETTABLEKS R14 R13 K4 ["Parent"]
+  LOADB R14 0
+  SETTABLEKS R14 R13 K29 ["Archivable"]
+  GETUPVAL R14 6
+  NAMECALL R14 R14 K40 ["GetPlayers"]
+  CALL R14 1 1
+  GETIMPORT R15 K42 [pairs]
+  MOVE R16 R14
+  CALL R15 1 3
+  FORGPREP_NEXT R15
+  LOADK R22 K43 ["PlayerGui"]
+  NAMECALL R20 R19 K44 ["FindFirstChildOfClass"]
+  CALL R20 2 1
+  JUMPIFNOT R20 [+21]
+  GETUPVAL R20 1
+  GETIMPORT R22 K3 [script]
+  GETTABLEKS R21 R22 K4 ["Parent"]
+  LOADK R22 K45 ["ChatInstallVerifier"]
+  GETTABLEKS R23 R19 K43 ["PlayerGui"]
+  CALL R20 3 1
+  GETIMPORT R21 K20 [Instance.new]
+  LOADK R22 K46 ["StringValue"]
+  CALL R21 1 1
+  LOADK R22 K47 ["ScriptToVerify"]
+  SETTABLEKS R22 R21 K23 ["Name"]
+  LOADK R22 K26 ["BubbleChat"]
+  SETTABLEKS R22 R21 K24 ["Value"]
+  SETTABLEKS R20 R21 K4 ["Parent"]
+  FORGLOOP R15 2 [-27]
+  SETTABLEKS R3 R4 K29 ["Archivable"]
+  GETUPVAL R13 4
+  JUMPIFNOT R13 [+4]
+  GETUPVAL R13 7
+  LOADK R14 K48 ["LoadClientDefaultChatForkedModules"]
+  MOVE R15 R0
+  CALL R13 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Chat"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["StarterPlayer"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R4 K6 ["StarterPlayerScripts"]
+  NAMECALL R2 R2 K7 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K8 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R5 K9 ["RobloxGui"]
+  NAMECALL R3 R3 K7 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K11 [require]
+  GETTABLEKS R8 R3 K12 ["Modules"]
+  GETTABLEKS R7 R8 K13 ["Common"]
+  GETTABLEKS R6 R7 K14 ["Flags"]
+  GETTABLEKS R5 R6 K15 ["FFlagEnableForkedChatAnalytics"]
+  CALL R4 1 1
+  GETIMPORT R5 K11 [require]
+  GETTABLEKS R8 R3 K12 ["Modules"]
+  GETTABLEKS R7 R8 K16 ["Server"]
+  GETTABLEKS R6 R7 K17 ["ServerUtil"]
+  CALL R5 1 1
+  LOADNIL R6
+  JUMPIFNOT R4 [+10]
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R10 R3 K12 ["Modules"]
+  GETTABLEKS R9 R10 K16 ["Server"]
+  GETTABLEKS R8 R9 K18 ["SendChatAnalytics"]
+  CALL R7 1 1
+  MOVE R6 R7
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K19 ["ChatWindowInstallerCheckClassName"]
+  LOADB R10 0
+  NAMECALL R7 R7 K20 ["DefineFastFlag"]
+  CALL R7 3 1
+  LOADB R8 0
+  GETIMPORT R9 K22 [pcall]
+  DUPCLOSURE R10 K23 [PROTO_0]
+  CALL R9 1 2
+  AND R8 R9 R10
+  DUPCLOSURE R9 K24 [PROTO_1]
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  DUPCLOSURE R10 K25 [PROTO_2]
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  DUPCLOSURE R11 K26 [PROTO_3]
+  NEWCLOSURE R12 P4
+  CAPTURE VAL R0
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE REF R8
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE REF R6
+  CLOSEUPVALS R6
+  RETURN R12 1

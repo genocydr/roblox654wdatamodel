@@ -1,0 +1,106 @@
+PROTO_0:
+  NEWTABLE R0 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETUPVAL R2 1
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K1 ["evenStream"]
+  GETUPVAL R3 2
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K3 [setmetatable]
+  CALL R1 2 0
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R1 1
+  LOADK R3 K0 ["ResetButtonCallback"]
+  NAMECALL R1 R1 K1 ["GetCore"]
+  CALL R1 2 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R0 K3 [tostring]
+  CALL R0 -1 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R1 K3 [{"placeid", "universeid", "sessionid"}]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K6 ["PlaceId"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K8 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K0 ["placeid"]
+  GETIMPORT R4 K5 [game]
+  GETTABLEKS R3 R4 K9 ["GameId"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K8 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K1 ["universeid"]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K10 ["GetSessionId"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K2 ["sessionid"]
+  GETIMPORT R2 K13 [Enum.CoreGuiType]
+  NAMECALL R2 R2 K14 ["GetEnumItems"]
+  CALL R2 1 3
+  FORGPREP R2
+  GETTABLEKS R7 R6 K15 ["Name"]
+  GETUPVAL R9 1
+  MOVE R11 R6
+  NAMECALL R9 R9 K16 ["GetCoreGuiEnabled"]
+  CALL R9 2 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R8 K8 [tostring]
+  CALL R8 -1 1
+  SETTABLE R8 R1 R7
+  FORGLOOP R2 2 [-13]
+  LOADK R2 K17 [""]
+  GETIMPORT R3 K19 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE REF R2
+  CAPTURE UPVAL U1
+  CALL R3 1 0
+  SETTABLEKS R2 R1 K20 ["ResetButtonCallback"]
+  GETTABLEKS R3 R0 K21 ["evenStream"]
+  LOADK R5 K22 ["core_gui_final_state"]
+  LOADK R6 K22 ["core_gui_final_state"]
+  MOVE R7 R1
+  NAMECALL R3 R3 K23 ["sendEventDeferred"]
+  CALL R3 4 0
+  CLOSEUPVALS R2
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["StarterGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RbxAnalyticsService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R2 K8 ["Workspace"]
+  GETTABLEKS R7 R8 K9 ["Packages"]
+  GETTABLEKS R6 R7 K10 ["Analytics"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K11 ["AnalyticsReporters"]
+  GETTABLEKS R3 R4 K12 ["EventStream"]
+  NEWTABLE R4 4 0
+  SETTABLEKS R4 R4 K13 ["__index"]
+  DUPCLOSURE R5 K14 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  SETTABLEKS R5 R4 K15 ["new"]
+  DUPCLOSURE R5 K16 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K17 ["sendCoreGuiFinalAnalytic"]
+  RETURN R4 1

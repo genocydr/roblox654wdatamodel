@@ -1,0 +1,169 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R4 R0 K0 ["overlay"]
+  GETTABLEKS R3 R4 K0 ["overlay"]
+  GETTABLE R1 R2 R3
+  RETURN R1 1
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["overlay"]
+  GETTABLEKS R1 R2 K1 ["overlayProps"]
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  CALL R1 1 1
+  GETUPVAL R2 0
+  GETUPVAL R3 2
+  CALL R2 1 1
+  GETUPVAL R3 3
+  CALL R3 0 1
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K0 ["createElement"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K1 ["FocusNavigationContext"]
+  GETTABLEKS R5 R6 K2 ["Provider"]
+  DUPTABLE R6 K4 [{"value"}]
+  GETUPVAL R7 6
+  SETTABLEKS R7 R6 K3 ["value"]
+  DUPTABLE R7 K6 [{"FocusNavigationRegistryProvider"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 7
+  LOADNIL R10
+  DUPTABLE R11 K8 [{"FocusNavigationEffects"}]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K0 ["createElement"]
+  GETUPVAL R13 8
+  DUPTABLE R14 K11 [{"selectionGroupName", "focusNavigableSurfaceIdentifier"}]
+  LOADK R15 K12 ["InspectAndBuyOverlay"]
+  SETTABLEKS R15 R14 K9 ["selectionGroupName"]
+  GETUPVAL R16 9
+  GETTABLEKS R15 R16 K13 ["CentralOverlay"]
+  SETTABLEKS R15 R14 K10 ["focusNavigableSurfaceIdentifier"]
+  DUPTABLE R15 K15 [{"OverlayContainer"}]
+  GETUPVAL R17 4
+  GETTABLEKS R16 R17 K0 ["createElement"]
+  LOADK R17 K16 ["Frame"]
+  DUPTABLE R18 K22 [{"BackgroundTransparency", "BackgroundColor3", "BorderSizePixel", "Size", "Visible"}]
+  GETTABLEKS R24 R3 K23 ["Tokens"]
+  GETTABLEKS R23 R24 K24 ["Semantic"]
+  GETTABLEKS R22 R23 K25 ["Color"]
+  GETTABLEKS R21 R22 K26 ["Common"]
+  GETTABLEKS R20 R21 K27 ["Overlay"]
+  GETTABLEKS R19 R20 K28 ["Transparency"]
+  SETTABLEKS R19 R18 K17 ["BackgroundTransparency"]
+  GETUPVAL R20 10
+  GETTABLEKS R19 R20 K29 ["Black"]
+  SETTABLEKS R19 R18 K18 ["BackgroundColor3"]
+  LOADN R19 0
+  SETTABLEKS R19 R18 K19 ["BorderSizePixel"]
+  GETIMPORT R19 K32 [UDim2.fromScale]
+  LOADN R20 1
+  LOADN R21 1
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K20 ["Size"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  LOADB R19 0 +1
+  LOADB R19 1
+  SETTABLEKS R19 R18 K21 ["Visible"]
+  DUPTABLE R19 K33 [{"Overlay"}]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R21 4
+  GETTABLEKS R20 R21 K0 ["createElement"]
+  MOVE R21 R1
+  MOVE R22 R2
+  CALL R20 2 1
+  JUMPIF R20 [+1]
+  LOADNIL R20
+  SETTABLEKS R20 R19 K27 ["Overlay"]
+  CALL R16 3 1
+  SETTABLEKS R16 R15 K14 ["OverlayContainer"]
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K7 ["FocusNavigationEffects"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K5 ["FocusNavigationRegistryProvider"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R2 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["React"]
+  CALL R3 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R10 R2 K11 ["Workspace"]
+  GETTABLEKS R9 R10 K9 ["Packages"]
+  GETTABLEKS R8 R9 K12 ["RoactUtils"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K13 ["Hooks"]
+  GETTABLEKS R5 R6 K14 ["RoactRodux"]
+  GETTABLEKS R4 R5 K15 ["useSelector"]
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R2 K9 ["Packages"]
+  GETTABLEKS R6 R7 K16 ["UIBlox"]
+  CALL R5 1 1
+  GETTABLEKS R8 R5 K17 ["Core"]
+  GETTABLEKS R7 R8 K18 ["Style"]
+  GETTABLEKS R6 R7 K19 ["useStyle"]
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R2 K9 ["Packages"]
+  GETTABLEKS R8 R9 K20 ["ReactFocusNavigation"]
+  CALL R7 1 1
+  GETTABLEKS R9 R7 K21 ["FocusNavigationService"]
+  GETTABLEKS R8 R9 K22 ["new"]
+  GETTABLEKS R10 R7 K23 ["EngineInterface"]
+  GETTABLEKS R9 R10 K2 ["CoreGui"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R12 R2 K11 ["Workspace"]
+  GETTABLEKS R11 R12 K9 ["Packages"]
+  GETTABLEKS R10 R11 K24 ["FocusNavigationUtils"]
+  CALL R9 1 1
+  GETTABLEKS R10 R9 K25 ["FocusNavigableSurfaceRegistry"]
+  GETTABLEKS R11 R10 K26 ["Provider"]
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R15 R1 K27 ["Modules"]
+  GETTABLEKS R14 R15 K28 ["Common"]
+  GETTABLEKS R13 R14 K29 ["FocusNavigationEffectsWrapper"]
+  CALL R12 1 1
+  GETTABLEKS R13 R9 K30 ["FocusNavigableSurfaceIdentifierEnum"]
+  GETIMPORT R16 K32 [script]
+  GETTABLEKS R15 R16 K33 ["Parent"]
+  GETTABLEKS R14 R15 K33 ["Parent"]
+  GETIMPORT R15 K8 [require]
+  GETTABLEKS R16 R14 K34 ["Colors"]
+  CALL R15 1 1
+  GETIMPORT R16 K8 [require]
+  GETTABLEKS R18 R14 K35 ["Components"]
+  GETTABLEKS R17 R18 K36 ["OverlayComponents"]
+  CALL R16 1 1
+  DUPCLOSURE R17 K37 [PROTO_0]
+  CAPTURE VAL R16
+  DUPCLOSURE R18 K38 [PROTO_1]
+  DUPCLOSURE R19 K39 [PROTO_2]
+  CAPTURE VAL R4
+  CAPTURE VAL R17
+  CAPTURE VAL R18
+  CAPTURE VAL R6
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R15
+  RETURN R19 1

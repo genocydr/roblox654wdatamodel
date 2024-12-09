@@ -1,0 +1,146 @@
+PROTO_0:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  NAMECALL R2 R2 K0 ["FindFirstChild"]
+  CALL R2 2 1
+  JUMPIF R2 [+10]
+  GETIMPORT R3 K3 [Instance.new]
+  MOVE R4 R1
+  CALL R3 1 1
+  MOVE R2 R3
+  SETTABLEKS R0 R2 K4 ["Name"]
+  GETUPVAL R3 0
+  SETTABLEKS R3 R2 K5 ["Parent"]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R5 0
+  GETTABLE R4 R5 R0
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R4 1
+  MOVE R6 R0
+  MOVE R7 R1
+  MOVE R8 R2
+  MOVE R9 R3
+  NAMECALL R4 R4 K0 ["FireClient"]
+  CALL R4 5 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  LOADB R2 1
+  SETTABLE R2 R1 R0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  LOADNIL R2
+  SETTABLE R2 R1 R0
+  RETURN R0 0
+
+PROTO_4:
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["ReplicatedStorage"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  NEWTABLE R2 0 0
+  LOADK R5 K5 ["DefaultSoundEvents"]
+  NAMECALL R3 R1 K6 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIF R3 [+13]
+  GETIMPORT R4 K9 [Instance.new]
+  LOADK R5 K10 ["Folder"]
+  CALL R4 1 1
+  MOVE R3 R4
+  LOADK R4 K5 ["DefaultSoundEvents"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K12 ["Archivable"]
+  SETTABLEKS R1 R3 K13 ["Parent"]
+  NEWCLOSURE R4 P0
+  CAPTURE REF R3
+  LOADK R8 K14 ["DefaultServerSoundEvent"]
+  NAMECALL R6 R3 K6 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIF R6 [+10]
+  GETIMPORT R7 K9 [Instance.new]
+  LOADK R8 K15 ["RemoteEvent"]
+  CALL R7 1 1
+  MOVE R6 R7
+  LOADK R7 K14 ["DefaultServerSoundEvent"]
+  SETTABLEKS R7 R6 K11 ["Name"]
+  SETTABLEKS R3 R6 K13 ["Parent"]
+  MOVE R5 R6
+  LOADK R9 K16 ["AddCharacterLoadedEvent"]
+  NAMECALL R7 R3 K6 ["FindFirstChild"]
+  CALL R7 2 1
+  JUMPIF R7 [+10]
+  GETIMPORT R8 K9 [Instance.new]
+  LOADK R9 K15 ["RemoteEvent"]
+  CALL R8 1 1
+  MOVE R7 R8
+  LOADK R8 K16 ["AddCharacterLoadedEvent"]
+  SETTABLEKS R8 R7 K11 ["Name"]
+  SETTABLEKS R3 R7 K13 ["Parent"]
+  MOVE R6 R7
+  LOADK R10 K17 ["RemoveCharacterEvent"]
+  NAMECALL R8 R3 K6 ["FindFirstChild"]
+  CALL R8 2 1
+  JUMPIF R8 [+10]
+  GETIMPORT R9 K9 [Instance.new]
+  LOADK R10 K15 ["RemoteEvent"]
+  CALL R9 1 1
+  MOVE R8 R9
+  LOADK R9 K17 ["RemoveCharacterEvent"]
+  SETTABLEKS R9 R8 K11 ["Name"]
+  SETTABLEKS R3 R8 K13 ["Parent"]
+  MOVE R7 R8
+  DUPCLOSURE R8 K18 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  DUPCLOSURE R9 K19 [PROTO_2]
+  CAPTURE VAL R2
+  DUPCLOSURE R10 K20 [PROTO_3]
+  CAPTURE VAL R2
+  LOADK R14 K21 ["SoundDispatcher"]
+  NAMECALL R12 R3 K6 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMPIF R12 [+10]
+  GETIMPORT R13 K9 [Instance.new]
+  LOADK R14 K22 ["BindableEvent"]
+  CALL R13 1 1
+  MOVE R12 R13
+  LOADK R13 K21 ["SoundDispatcher"]
+  SETTABLEKS R13 R12 K11 ["Name"]
+  SETTABLEKS R3 R12 K13 ["Parent"]
+  MOVE R11 R12
+  GETTABLEKS R12 R11 K23 ["Event"]
+  MOVE R14 R8
+  NAMECALL R12 R12 K24 ["Connect"]
+  CALL R12 2 0
+  GETTABLEKS R12 R5 K25 ["OnServerEvent"]
+  DUPCLOSURE R14 K26 [PROTO_4]
+  NAMECALL R12 R12 K24 ["Connect"]
+  CALL R12 2 0
+  GETTABLEKS R12 R6 K25 ["OnServerEvent"]
+  MOVE R14 R9
+  NAMECALL R12 R12 K24 ["Connect"]
+  CALL R12 2 0
+  GETTABLEKS R12 R7 K25 ["OnServerEvent"]
+  MOVE R14 R10
+  NAMECALL R12 R12 K24 ["Connect"]
+  CALL R12 2 0
+  GETTABLEKS R12 R0 K27 ["PlayerRemoving"]
+  MOVE R14 R10
+  NAMECALL R12 R12 K24 ["Connect"]
+  CALL R12 2 0
+  CLOSEUPVALS R3
+  RETURN R0 0

@@ -1,0 +1,136 @@
+PROTO_0:
+  GETUPVAL R1 0
+  DUPTABLE R2 K2 [{"type", "screenshotContentId"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["ReportAnythingActions"]
+  GETTABLEKS R3 R4 K4 ["SetScreenshotContentId"]
+  SETTABLEKS R3 R2 K0 ["type"]
+  SETTABLEKS R0 R2 K1 ["screenshotContentId"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R2 K2 [{"type", "screenshotId"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["ReportAnythingActions"]
+  GETTABLEKS R3 R4 K4 ["SetScreenshotId"]
+  SETTABLEKS R3 R2 K0 ["type"]
+  SETTABLEKS R0 R2 K1 ["screenshotId"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  DUPTABLE R2 K2 [{"type", "identificationResults"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["ReportAnythingActions"]
+  GETTABLEKS R3 R4 K4 ["SetIdentificationResults"]
+  SETTABLEKS R3 R2 K0 ["type"]
+  SETTABLEKS R0 R2 K1 ["identificationResults"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  GETUPVAL R2 2
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["getReportAnythingAvatarEnabled"]
+  CALL R4 0 1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["getReportAnythingExperienceEnabled"]
+  CALL R5 0 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K2 ["useReducer"]
+  GETUPVAL R7 2
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K3 ["ReportAnythingInitialState"]
+  CALL R6 2 2
+  JUMPIF R4 [+2]
+  MOVE R8 R5
+  JUMPIFNOT R8 [+6]
+  GETTABLEKS R9 R6 K4 ["screenshotContentId"]
+  JUMPIFEQKS R9 K5 [""] [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  GETUPVAL R9 4
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K6 ["useCallback"]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R7
+  CAPTURE UPVAL U3
+  CALL R10 1 1
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K6 ["useCallback"]
+  NEWCLOSURE R12 P1
+  CAPTURE VAL R7
+  CAPTURE UPVAL U3
+  CALL R11 1 1
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K6 ["useCallback"]
+  NEWCLOSURE R13 P2
+  CAPTURE VAL R7
+  CAPTURE UPVAL U3
+  CALL R12 1 -1
+  CALL R9 -1 1
+  NEWCLOSURE R10 P3
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  GETUPVAL R11 5
+  MOVE R12 R8
+  MOVE R13 R0
+  MOVE R14 R1
+  MOVE R15 R2
+  MOVE R16 R9
+  MOVE R17 R10
+  CALL R11 6 0
+  RETURN R6 2
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K12 ["Components"]
+  GETTABLEKS R4 R5 K13 ["Constants"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K14 ["Hooks"]
+  GETTABLEKS R5 R6 K15 ["useHideForScreenshot"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K14 ["Hooks"]
+  GETTABLEKS R6 R7 K16 ["useCaptureScreenshot"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R0 K17 ["Reducers"]
+  GETTABLEKS R7 R8 K18 ["reportAnythingReducer"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K19 ["IXP"]
+  GETTABLEKS R8 R9 K20 ["TnSIXPWrapper"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K21 [PROTO_4]
+  CAPTURE VAL R7
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  RETURN R8 1

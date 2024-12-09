@@ -5,6 +5,7 @@ local React = require(CorePackages.Packages.React)
 local CrossExperienceVoice = require(CorePackages.Workspace.Packages.CrossExperienceVoice)
 local SquadsCore = require(CorePackages.Workspace.Packages.SquadsCore)
 local RoactUtils = require(CorePackages.Workspace.Packages.RoactUtils)
+local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
 
 local getColorFromUserId = SquadsCore.Common.getColorFromUserId
 local useLastActiveParticipant = CrossExperienceVoice.Hooks.useLastActiveParticipant
@@ -19,6 +20,8 @@ type AnimationStep = CrossExperienceVoice.AnimationStep
 
 local FIntActivityIndicatorAnimationMs = game:DefineFastInt("PartyVoiceTopbarActivityIndicatorAnimationMs", 50)
 local FIntActivityIndicatorDebounceMs = game:DefineFastInt("PartyVoiceTopbarActivityIndicatorDebounceMs", 50)
+
+local GetFFlagEnableCrossExpVoice = SharedFlags.GetFFlagEnableCrossExpVoice
 
 type Animations = {
 	ICON_OUT_ANIMATION: AnimationStep,
@@ -60,31 +63,44 @@ function getDisplayImage(userId: number, defaultIcon: string)
 end
 
 function usePartyIcon(iconSize: number, avatarSize: number, defaultIcon: string)
-	local latestActiveParticipant = useLastActiveParticipant()
+	if GetFFlagEnableCrossExpVoice() then
+		local latestActiveParticipant = useLastActiveParticipant()
 
-	local lastActiveUserId = latestActiveParticipant and latestActiveParticipant.userId or -1
+		local lastActiveUserId = latestActiveParticipant and latestActiveParticipant.userId or -1
 
-	local previousLastActiveUserId = usePrevious(lastActiveUserId)
-	local displayImage, setDisplayImage = React.useState(getDisplayImage(lastActiveUserId, defaultIcon))
-	local animatedIconSize, setAnimatedIconSize =
-		useSequentialAnimation(if lastActiveUserId == -1 then iconSize else avatarSize)
+		local previousLastActiveUserId = usePrevious(lastActiveUserId)
+		local displayImage, setDisplayImage = React.useState(getDisplayImage(lastActiveUserId, defaultIcon))
+		local animatedIconSize, setAnimatedIconSize =
+			useSequentialAnimation(if lastActiveUserId == -1 then iconSize else avatarSize)
 
-	local animations = React.useMemo(function()
-		return createAnimations(iconSize, avatarSize)
-	end, { iconSize, avatarSize })
+		local animations = React.useMemo(function()
+			return createAnimations(iconSize, avatarSize)
+		end, { iconSize, avatarSize })
 
-	local updateDisplayImage = React.useCallback(function(userId: number)
-		setDisplayImage(getDisplayImage(userId, defaultIcon))
-	end, { defaultIcon, setDisplayImage } :: { unknown })
+		local updateDisplayImage = React.useCallback(function(userId: number)
+			setDisplayImage(function(prevState)
+				local newDisplayImage = getDisplayImage(userId, defaultIcon)
+				if
+					prevState.thumbnail == newDisplayImage.thumbnail
+					and prevState.backgroundColor == newDisplayImage.backgroundColor
+				then
+					return prevState
+				end
 
-	local setIconSizeDebounce = React.useMemo(function()
-		return CrossExperienceVoice.Utils.debounce(function(steps: { AnimationStep }, onStepCompleted: (number) -> ())
-			setAnimatedIconSize(steps, onStepCompleted)
-		end, FIntActivityIndicatorDebounceMs)
-	end, { setAnimatedIconSize })
+				return newDisplayImage
+			end)
+		end, { defaultIcon, setDisplayImage } :: { any })
 
-	React.useEffect(
-		function()
+		local setIconSizeDebounce = React.useMemo(function()
+			return CrossExperienceVoice.Utils.debounce(
+				function(steps: { AnimationStep }, onStepCompleted: (number) -> ())
+					setAnimatedIconSize(steps, onStepCompleted)
+				end,
+				FIntActivityIndicatorDebounceMs
+			)
+		end, {})
+
+		React.useEffect(function()
 			if previousLastActiveUserId ~= nil and lastActiveUserId ~= previousLastActiveUserId then
 				setIconSizeDebounce.cancel()
 				if lastActiveUserId == -1 then
@@ -108,14 +124,24 @@ function usePartyIcon(iconSize: number, avatarSize: number, defaultIcon: string)
 				-- It was caused by default icon changing or it's the first render.
 				updateDisplayImage(lastActiveUserId)
 			end
-		end,
-		{ lastActiveUserId, previousLastActiveUserId, defaultIcon, updateDisplayImage, setIconSizeDebounce, animations } :: { unknown }
-	)
+		end, {
+			lastActiveUserId,
+			updateDisplayImage,
+			setIconSizeDebounce,
+			animations,
+		} :: { any })
 
-	return {
-		image = displayImage,
-		size = animatedIconSize,
-	}
+		return {
+			image = displayImage,
+			size = animatedIconSize,
+		}
+	else
+		local animatedIconSize, _ = React.createBinding(iconSize)
+		return {
+			image = getDisplayImage(-1, defaultIcon),
+			size = animatedIconSize,
+		}
+	end
 end
 
 return usePartyIcon

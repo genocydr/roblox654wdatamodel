@@ -1,0 +1,374 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["X"]
+  GETTABLEKS R3 R1 K1 ["Y"]
+  GETTABLEKS R4 R1 K2 ["Z"]
+  FASTCALL3 MATH_MAX R2 R3 R4
+  MOVE R6 R2
+  MOVE R7 R3
+  MOVE R8 R4
+  GETIMPORT R5 K5 [math.max]
+  CALL R5 3 1
+  FASTCALL1 MATH_RAD R0 [+3]
+  MOVE R10 R0
+  GETIMPORT R9 K9 [math.rad]
+  CALL R9 1 1
+  DIVK R8 R9 K7 [2]
+  FASTCALL1 MATH_TAN R8 [+2]
+  GETIMPORT R7 K11 [math.tan]
+  CALL R7 1 1
+  DIVRK R6 R6 K7 [2]
+  DIVK R7 R5 K7 [2]
+  MUL R9 R7 R6
+  DIVK R10 R4 K7 [2]
+  ADD R8 R9 R10
+  RETURN R8 1
+
+PROTO_1:
+  GETIMPORT R3 K2 [CFrame.fromAxisAngle]
+  MOVE R4 R2
+  MOVE R5 R1
+  CALL R3 2 1
+  MOVE R5 R0
+  NAMECALL R3 R3 K3 ["VectorToWorldSpace"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["cameraRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K2 ["worldModelRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["createBinding"]
+  GETIMPORT R2 K6 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K7 ["cameraCFrameBinding"]
+  SETTABLEKS R2 R0 K8 ["updateCameraCFrameBinding"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["createBinding"]
+  LOADN R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K9 ["cameraRotationBinding"]
+  SETTABLEKS R2 R0 K10 ["updateCameraRotationBinding"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["createBinding"]
+  GETIMPORT R2 K6 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K11 ["cameraFocusBinding"]
+  SETTABLEKS R2 R0 K12 ["updateCameraFocusBinding"]
+  NAMECALL R1 R0 K13 ["OnModelChanged"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  JUMPIFEQKNIL R1 [+47]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  NAMECALL R1 R1 K2 ["GetModelCFrame"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K3 ["modelCFrame"]
+  GETTABLEKS R2 R0 K3 ["modelCFrame"]
+  GETTABLEKS R1 R2 K4 ["lookVector"]
+  SETTABLEKS R1 R0 K5 ["initialLookVector"]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  NAMECALL R1 R1 K6 ["GetExtentsSize"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K7 ["modelExtentsSize"]
+  GETTABLEKS R2 R0 K7 ["modelExtentsSize"]
+  GETTABLEKS R3 R2 K8 ["X"]
+  GETTABLEKS R4 R2 K9 ["Y"]
+  GETTABLEKS R5 R2 K10 ["Z"]
+  FASTCALL3 MATH_MAX R3 R4 R5
+  MOVE R7 R3
+  MOVE R8 R4
+  MOVE R9 R5
+  GETIMPORT R6 K13 [math.max]
+  CALL R6 3 1
+  DIVK R7 R6 K14 [2]
+  MULK R8 R7 K15 [1.42814800674211]
+  DIVK R9 R5 K14 [2]
+  ADD R1 R8 R9
+  SETTABLEKS R1 R0 K16 ["cameraDistance"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["updateCameraRotationBinding"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["cameraRotationBinding"]
+  NAMECALL R2 R2 K3 ["getValue"]
+  CALL R2 1 1
+  ADDK R1 R2 K1 [0.01]
+  CALL R0 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["initialLookVector"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["cameraRotationBinding"]
+  NAMECALL R2 R2 K3 ["getValue"]
+  CALL R2 1 1
+  GETIMPORT R3 K7 [CFrame.fromAxisAngle]
+  LOADK R4 K8 [{0, 1, 0}]
+  MOVE R5 R2
+  CALL R3 2 1
+  MOVE R5 R1
+  NAMECALL R3 R3 K9 ["VectorToWorldSpace"]
+  CALL R3 2 1
+  MOVE R0 R3
+  GETIMPORT R1 K11 [CFrame.new]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K12 ["modelCFrame"]
+  GETTABLEKS R3 R4 K13 ["p"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K14 ["cameraDistance"]
+  MUL R4 R0 R5
+  ADD R2 R3 R4
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K12 ["modelCFrame"]
+  GETTABLEKS R3 R4 K13 ["p"]
+  CALL R1 2 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K15 ["updateCameraCFrameBinding"]
+  MOVE R3 R1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K6 [{"BackgroundTransparency", "Position", "AnchorPoint", "Size"}]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  GETIMPORT R4 K9 [UDim2.fromScale]
+  LOADN R5 0
+  LOADN R6 0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["Position"]
+  GETIMPORT R4 K12 [Vector2.new]
+  LOADN R5 0
+  LOADN R6 0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K4 ["AnchorPoint"]
+  GETIMPORT R4 K9 [UDim2.fromScale]
+  LOADN R5 1
+  LOADN R6 1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K5 ["Size"]
+  DUPTABLE R4 K15 [{"AspectRatioConstraint", "ViewportFrame"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K16 ["UIAspectRatioConstraint"]
+  DUPTABLE R7 K20 [{"AspectRatio", "AspectType", "DominantAxis"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K17 ["AspectRatio"]
+  GETIMPORT R8 K23 [Enum.AspectType.FitWithinMaxSize]
+  SETTABLEKS R8 R7 K18 ["AspectType"]
+  GETIMPORT R8 K25 [Enum.DominantAxis.Width]
+  SETTABLEKS R8 R7 K19 ["DominantAxis"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K13 ["AspectRatioConstraint"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K14 ["ViewportFrame"]
+  DUPTABLE R7 K31 [{"BackgroundTransparency", "BackgroundColor3", "Size", "Position", "AnchorPoint", "LightColor", "LightDirection", "Ambient", "CurrentCamera"}]
+  LOADN R8 0
+  SETTABLEKS R8 R7 K2 ["BackgroundTransparency"]
+  GETIMPORT R8 K33 [Color3.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K26 ["BackgroundColor3"]
+  GETIMPORT R8 K9 [UDim2.fromScale]
+  LOADN R9 1
+  LOADN R10 1
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K5 ["Size"]
+  GETIMPORT R8 K9 [UDim2.fromScale]
+  LOADK R9 K34 [0.5]
+  LOADK R10 K34 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K3 ["Position"]
+  GETIMPORT R8 K12 [Vector2.new]
+  LOADK R9 K34 [0.5]
+  LOADK R10 K34 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K4 ["AnchorPoint"]
+  GETIMPORT R8 K36 [Color3.fromRGB]
+  LOADN R9 240
+  LOADN R10 240
+  LOADN R11 240
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K27 ["LightColor"]
+  LOADK R8 K37 [{1, 1, 1}]
+  SETTABLEKS R8 R7 K28 ["LightDirection"]
+  GETIMPORT R8 K36 [Color3.fromRGB]
+  LOADN R9 240
+  LOADN R10 240
+  LOADN R11 240
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K29 ["Ambient"]
+  GETTABLEKS R8 R0 K38 ["cameraRef"]
+  SETTABLEKS R8 R7 K30 ["CurrentCamera"]
+  DUPTABLE R8 K42 [{"Camera", "WorldModel", "RenderSteppedConnection"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K39 ["Camera"]
+  NEWTABLE R11 8 0
+  GETIMPORT R12 K45 [Enum.CameraType.Scriptable]
+  SETTABLEKS R12 R11 K43 ["CameraType"]
+  LOADN R12 70
+  SETTABLEKS R12 R11 K46 ["FieldOfView"]
+  GETTABLEKS R12 R0 K47 ["cameraCFrameBinding"]
+  SETTABLEKS R12 R11 K48 ["CFrame"]
+  GETTABLEKS R12 R0 K49 ["cameraFocusBinding"]
+  SETTABLEKS R12 R11 K50 ["Focus"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K51 ["Ref"]
+  GETTABLEKS R13 R0 K38 ["cameraRef"]
+  SETTABLE R13 R11 R12
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K39 ["Camera"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K40 ["WorldModel"]
+  NEWTABLE R11 1 0
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K51 ["Ref"]
+  GETTABLEKS R13 R0 K52 ["worldModelRef"]
+  SETTABLE R13 R11 R12
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K40 ["WorldModel"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  GETUPVAL R10 1
+  DUPTABLE R11 K55 [{"event", "callback"}]
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K56 ["RenderStepped"]
+  SETTABLEKS R12 R11 K53 ["event"]
+  NEWCLOSURE R12 P0
+  CAPTURE VAL R0
+  SETTABLEKS R12 R11 K54 ["callback"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K41 ["RenderSteppedConnection"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K14 ["ViewportFrame"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["worldModelRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+17]
+  GETTABLEKS R2 R0 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["model"]
+  JUMPIFEQKNIL R1 [+12]
+  GETTABLEKS R2 R0 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["model"]
+  GETTABLEKS R2 R0 K0 ["worldModelRef"]
+  NAMECALL R2 R2 K1 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K4 ["Parent"]
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["model"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K2 ["Parent"]
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["model"]
+  GETTABLEKS R4 R1 K1 ["model"]
+  JUMPIFNOTEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIFNOT R2 [+29]
+  GETTABLEKS R3 R1 K1 ["model"]
+  JUMPIFEQKNIL R3 [+6]
+  GETTABLEKS R3 R1 K1 ["model"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K2 ["Parent"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["model"]
+  JUMPIFEQKNIL R3 [+12]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["model"]
+  GETTABLEKS R4 R0 K3 ["worldModelRef"]
+  NAMECALL R4 R4 K4 ["getValue"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K2 ["Parent"]
+  NAMECALL R3 R0 K5 ["OnModelChanged"]
+  CALL R3 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["t"]
+  CALL R2 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R0 K9 ["Workspace"]
+  GETTABLEKS R6 R7 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["RoactUtils"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K11 ["ExternalEventConnection"]
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K12 ["RunService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETTABLEKS R5 R1 K13 ["PureComponent"]
+  LOADK R7 K14 ["ObjectViewport"]
+  NAMECALL R5 R5 K15 ["extend"]
+  CALL R5 2 1
+  GETTABLEKS R6 R2 K16 ["strictInterface"]
+  DUPTABLE R7 K18 [{"model"}]
+  GETTABLEKS R8 R2 K19 ["instanceOf"]
+  LOADK R9 K20 ["Model"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K17 ["model"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K21 ["validateProps"]
+  DUPCLOSURE R6 K22 [PROTO_0]
+  DUPCLOSURE R7 K23 [PROTO_1]
+  DUPCLOSURE R8 K24 [PROTO_2]
+  CAPTURE VAL R1
+  SETTABLEKS R8 R5 K25 ["init"]
+  DUPCLOSURE R8 K26 [PROTO_3]
+  SETTABLEKS R8 R5 K27 ["OnModelChanged"]
+  DUPCLOSURE R8 K28 [PROTO_5]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  SETTABLEKS R8 R5 K29 ["render"]
+  DUPCLOSURE R8 K30 [PROTO_6]
+  SETTABLEKS R8 R5 K31 ["didMount"]
+  DUPCLOSURE R8 K32 [PROTO_7]
+  SETTABLEKS R8 R5 K33 ["willUnmount"]
+  DUPCLOSURE R8 K34 [PROTO_8]
+  SETTABLEKS R8 R5 K35 ["didUpdate"]
+  RETURN R5 1

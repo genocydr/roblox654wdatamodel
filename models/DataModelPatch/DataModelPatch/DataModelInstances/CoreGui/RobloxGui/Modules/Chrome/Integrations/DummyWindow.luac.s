@@ -1,0 +1,206 @@
+PROTO_0:
+  GETUPVAL R1 0
+  LOADK R2 K0 ["icons/menu/avatar_on"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+13]
+  GETUPVAL R0 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K0 ["DEFAULT_WIDTH"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K1 ["DEFAULT_HEIGHT"]
+  NAMECALL R0 R0 K2 ["requestSize"]
+  CALL R0 3 0
+  LOADB R0 0
+  SETUPVAL R0 0
+  RETURN R0 0
+  GETUPVAL R0 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K3 ["DEFAULT_WIDTH_LARGE"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["DEFAULT_HEIGHT_LARGE"]
+  NAMECALL R0 R0 K2 ["requestSize"]
+  CALL R0 3 0
+  LOADB R0 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K4 [{"BackgroundTransparency", "Size"}]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  GETIMPORT R4 K7 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K3 ["Size"]
+  DUPTABLE R4 K10 [{"Corner", "SizeIcon"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K11 ["UICorner"]
+  DUPTABLE R7 K13 [{"CornerRadius"}]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K14 ["CORNER_RADIUS"]
+  SETTABLEKS R8 R7 K12 ["CornerRadius"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K8 ["Corner"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 2
+  DUPTABLE R7 K21 [{"icon", "iconSize", "anchorPoint", "position", "backgroundTransparency", "onActivated"}]
+  GETUPVAL R8 3
+  SETTABLEKS R8 R7 K15 ["icon"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K22 ["CLOSE_ICON_SIZE"]
+  SETTABLEKS R8 R7 K16 ["iconSize"]
+  GETIMPORT R8 K24 [Vector2.new]
+  LOADK R9 K25 [0.5]
+  LOADN R10 1
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K17 ["anchorPoint"]
+  GETIMPORT R8 K7 [UDim2.new]
+  LOADK R9 K25 [0.5]
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K18 ["position"]
+  LOADK R8 K25 [0.5]
+  SETTABLEKS R8 R7 K19 ["backgroundTransparency"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U1
+  SETTABLEKS R8 R7 K20 ["onActivated"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["SizeIcon"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R4 R0 K12 ["Service"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K13 ["Integrations"]
+  GETTABLEKS R5 R6 K14 ["CommonIcon"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K15 ["ChromeShared"]
+  GETTABLEKS R7 R8 K16 ["Unibar"]
+  GETTABLEKS R6 R7 K17 ["Constants"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R0 K15 ["ChromeShared"]
+  GETTABLEKS R8 R9 K12 ["Service"]
+  GETTABLEKS R7 R8 K18 ["WindowSizeSignal"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R1 K10 ["Packages"]
+  GETTABLEKS R8 R9 K19 ["UIBlox"]
+  CALL R7 1 1
+  GETTABLEKS R10 R7 K20 ["App"]
+  GETTABLEKS R9 R10 K21 ["ImageSet"]
+  GETTABLEKS R8 R9 K22 ["Images"]
+  GETTABLEKS R11 R7 K20 ["App"]
+  GETTABLEKS R10 R11 K23 ["Button"]
+  GETTABLEKS R9 R10 K24 ["IconButton"]
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R14 R1 K25 ["Workspace"]
+  GETTABLEKS R13 R14 K10 ["Packages"]
+  GETTABLEKS R12 R13 K26 ["SharedFlags"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K27 ["GetFFlagDebugEnableUnibarDummyIntegrations"]
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R13 R0 K28 ["Flags"]
+  GETTABLEKS R12 R13 K29 ["GetFFlagChromeTrackWindowPosition"]
+  CALL R11 1 1
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R14 R0 K28 ["Flags"]
+  GETTABLEKS R13 R14 K30 ["GetFFlagChromeTrackWindowStatus"]
+  CALL R12 1 1
+  GETTABLEKS R13 R8 K31 ["icons/navigation/cycleUp"]
+  LOADB R14 0
+  GETTABLEKS R15 R6 K32 ["new"]
+  GETTABLEKS R16 R5 K33 ["DEFAULT_WIDTH"]
+  GETTABLEKS R17 R5 K34 ["DEFAULT_HEIGHT"]
+  CALL R15 2 1
+  GETIMPORT R16 K36 [UDim2.new]
+  LOADN R17 1
+  LOADN R18 161
+  LOADN R19 0
+  LOADN R20 165
+  CALL R16 4 1
+  MOVE R17 R11
+  CALL R17 0 1
+  JUMPIF R17 [+5]
+  LOADK R19 K37 ["dummy_window"]
+  MOVE R20 R16
+  NAMECALL R17 R3 K38 ["updateWindowPosition"]
+  CALL R17 3 0
+  DUPTABLE R19 K48 [{"initialAvailability", "id", "label", "draggable", "cachePosition", "startingWindowPosition", "windowSize", "persistWindowState", "components"}]
+  MOVE R21 R10
+  CALL R21 0 1
+  JUMPIFNOT R21 [+5]
+  GETTABLEKS R21 R3 K49 ["AvailabilitySignal"]
+  GETTABLEKS R20 R21 K50 ["Available"]
+  JUMP [+4]
+  GETTABLEKS R21 R3 K49 ["AvailabilitySignal"]
+  GETTABLEKS R20 R21 K51 ["Unavailable"]
+  SETTABLEKS R20 R19 K39 ["initialAvailability"]
+  LOADK R20 K37 ["dummy_window"]
+  SETTABLEKS R20 R19 K40 ["id"]
+  LOADK R20 K52 ["CoreScripts.TopBar.Menu"]
+  SETTABLEKS R20 R19 K41 ["label"]
+  LOADB R20 1
+  SETTABLEKS R20 R19 K42 ["draggable"]
+  LOADB R20 1
+  SETTABLEKS R20 R19 K43 ["cachePosition"]
+  SETTABLEKS R16 R19 K44 ["startingWindowPosition"]
+  SETTABLEKS R15 R19 K45 ["windowSize"]
+  MOVE R20 R11
+  CALL R20 0 1
+  JUMPIF R20 [+4]
+  MOVE R20 R12
+  CALL R20 0 1
+  JUMPIF R20 [+1]
+  LOADNIL R20
+  SETTABLEKS R20 R19 K46 ["persistWindowState"]
+  DUPTABLE R20 K55 [{"Icon", "Window"}]
+  DUPCLOSURE R21 K56 [PROTO_0]
+  CAPTURE VAL R4
+  SETTABLEKS R21 R20 K53 ["Icon"]
+  NEWCLOSURE R21 P1
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R9
+  CAPTURE VAL R13
+  CAPTURE REF R14
+  CAPTURE VAL R15
+  SETTABLEKS R21 R20 K54 ["Window"]
+  SETTABLEKS R20 R19 K47 ["components"]
+  NAMECALL R17 R3 K57 ["register"]
+  CALL R17 2 1
+  CLOSEUPVALS R14
+  RETURN R17 1

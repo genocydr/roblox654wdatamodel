@@ -1,0 +1,326 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["Children"]
+  GETTABLE R1 R2 R3
+  JUMPIF R1 [+2]
+  NEWTABLE R1 0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["Dictionary"]
+  GETTABLEKS R2 R3 K3 ["join"]
+  MOVE R3 R1
+  DUPTABLE R4 K5 [{"List"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K6 ["createElement"]
+  LOADK R6 K7 ["UIListLayout"]
+  DUPTABLE R7 K13 [{"FillDirection", "HorizontalAlignment", "SortOrder", "VerticalAlignment", "Padding"}]
+  GETIMPORT R8 K16 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R8 R7 K8 ["FillDirection"]
+  GETIMPORT R8 K18 [Enum.HorizontalAlignment.Right]
+  SETTABLEKS R8 R7 K9 ["HorizontalAlignment"]
+  GETIMPORT R8 K20 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R8 R7 K10 ["SortOrder"]
+  GETIMPORT R8 K22 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R8 R7 K11 ["VerticalAlignment"]
+  GETIMPORT R8 K25 [UDim.new]
+  LOADN R9 0
+  LOADN R10 12
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K12 ["Padding"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K4 ["List"]
+  CALL R2 2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["TextButton"]
+  NEWTABLE R3 16 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["Tag"]
+  LOADK R5 K3 ["data-testid=experienceLabel"]
+  SETTABLE R5 R3 R4
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["BackgroundTransparency"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K5 ["props"]
+  GETTABLEKS R4 R5 K6 ["LayoutOrder"]
+  SETTABLEKS R4 R3 K6 ["LayoutOrder"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 70
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K10 ["Size"]
+  LOADK R4 K11 [""]
+  SETTABLEKS R4 R3 K12 ["Text"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K13 ["AutoButtonColor"]
+  GETUPVAL R4 3
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K14 ["Square"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K15 ["SelectionImageObject"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K16 ["Ref"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["props"]
+  GETTABLEKS R5 R6 K17 ["buttonRef"]
+  SETTABLE R5 R3 R4
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K18 ["Event"]
+  GETTABLEKS R4 R5 K19 ["Activated"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["props"]
+  GETTABLEKS R5 R6 K20 ["onActivated"]
+  SETTABLE R5 R3 R4
+  DUPTABLE R4 K24 [{"GameIcon", "GameNameLabel", "ButtonContainer"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 5
+  DUPTABLE R7 K28 [{"AnchorPoint", "Position", "Size", "BackgroundTransparency", "Image"}]
+  GETIMPORT R8 K30 [Vector2.new]
+  LOADN R9 0
+  LOADK R10 K31 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K25 ["AnchorPoint"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 24
+  LOADK R11 K31 [0.5]
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K26 ["Position"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 44
+  LOADN R11 0
+  LOADN R12 44
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K10 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K4 ["BackgroundTransparency"]
+  GETUPVAL R8 6
+  SETTABLEKS R8 R7 K27 ["Image"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K21 ["GameIcon"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 7
+  DUPTABLE R7 K36 [{"fontKey", "themeKey", "AnchorPoint", "Position", "Size", "Text", "TextXAlignment", "TextTruncate"}]
+  LOADK R8 K37 ["Header2"]
+  SETTABLEKS R8 R7 K32 ["fontKey"]
+  LOADK R8 K38 ["TextEmphasis"]
+  SETTABLEKS R8 R7 K33 ["themeKey"]
+  GETIMPORT R8 K30 [Vector2.new]
+  LOADN R9 0
+  LOADK R10 K31 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K25 ["AnchorPoint"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 80
+  LOADK R11 K31 [0.5]
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K26 ["Position"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 219
+  LOADN R11 0
+  LOADN R12 22
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K10 ["Size"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K5 ["props"]
+  GETTABLEKS R8 R9 K39 ["gameName"]
+  SETTABLEKS R8 R7 K12 ["Text"]
+  GETIMPORT R8 K42 [Enum.TextXAlignment.Left]
+  SETTABLEKS R8 R7 K34 ["TextXAlignment"]
+  GETIMPORT R8 K44 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R8 R7 K35 ["TextTruncate"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K22 ["GameNameLabel"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K45 ["Frame"]
+  DUPTABLE R7 K46 [{"AnchorPoint", "BackgroundTransparency", "Position", "Size"}]
+  GETIMPORT R8 K30 [Vector2.new]
+  LOADN R9 1
+  LOADN R10 0
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K25 ["AnchorPoint"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K4 ["BackgroundTransparency"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 232
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K26 ["Position"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K10 ["Size"]
+  GETUPVAL R8 2
+  NAMECALL R8 R8 K47 ["renderButtons"]
+  CALL R8 1 -1
+  CALL R5 -1 1
+  SETTABLEKS R5 R4 K23 ["ButtonContainer"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["gameId"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Images"]
+  GETTABLEKS R3 R4 K3 ["PlaceholderGameIcon"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["gameId"]
+  LOADN R5 0
+  JUMPIFNOTLT R5 R4 [+5]
+  LOADK R4 K4 ["rbxthumb://type=GameIcon&id="]
+  MOVE R5 R2
+  LOADK R6 K5 ["&w=150&h=150"]
+  CONCAT R3 R4 R6
+  GETUPVAL R4 1
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE REF R3
+  CAPTURE UPVAL U6
+  CALL R4 1 -1
+  CLOSEUPVALS R3
+  RETURN R4 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["renderWithSelectionCursor"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_5:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K1 ["Dictionary"]
+  GETTABLEKS R4 R5 K2 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K4 [{"buttonRef"}]
+  SETTABLEKS R1 R6 K3 ["buttonRef"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["UIBlox"]
+  GETTABLEKS R4 R1 K10 ["t"]
+  GETTABLEKS R5 R1 K11 ["Cryo"]
+  GETTABLEKS R8 R3 K12 ["Core"]
+  GETTABLEKS R7 R8 K13 ["Style"]
+  GETTABLEKS R6 R7 K14 ["withStyle"]
+  GETTABLEKS R9 R3 K15 ["App"]
+  GETTABLEKS R8 R9 K16 ["SelectionImage"]
+  GETTABLEKS R7 R8 K17 ["withSelectionCursorProvider"]
+  GETTABLEKS R10 R3 K15 ["App"]
+  GETTABLEKS R9 R10 K16 ["SelectionImage"]
+  GETTABLEKS R8 R9 K18 ["CursorKind"]
+  GETIMPORT R12 K20 [script]
+  GETTABLEKS R11 R12 K21 ["Parent"]
+  GETTABLEKS R10 R11 K21 ["Parent"]
+  GETTABLEKS R9 R10 K21 ["Parent"]
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R9 K22 ["Components"]
+  GETTABLEKS R11 R12 K23 ["ThemedTextLabel"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETTABLEKS R13 R9 K24 ["Resources"]
+  GETTABLEKS R12 R13 K25 ["Assets"]
+  CALL R11 1 1
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R14 R0 K6 ["Packages"]
+  GETTABLEKS R13 R14 K26 ["React"]
+  CALL R12 1 1
+  GETTABLEKS R15 R3 K12 ["Core"]
+  GETTABLEKS R14 R15 K27 ["ImageSet"]
+  GETTABLEKS R13 R14 K28 ["ImageSetLabel"]
+  GETTABLEKS R14 R2 K29 ["PureComponent"]
+  LOADK R16 K30 ["GameLabel"]
+  NAMECALL R14 R14 K31 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R4 K32 ["strictInterface"]
+  NEWTABLE R16 8 0
+  GETTABLEKS R17 R4 K33 ["number"]
+  SETTABLEKS R17 R16 K34 ["gameId"]
+  GETTABLEKS R17 R4 K35 ["string"]
+  SETTABLEKS R17 R16 K36 ["gameName"]
+  GETTABLEKS R17 R4 K37 ["integer"]
+  SETTABLEKS R17 R16 K38 ["LayoutOrder"]
+  GETTABLEKS R17 R4 K39 ["optional"]
+  GETTABLEKS R18 R4 K40 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K41 ["onActivated"]
+  GETTABLEKS R17 R2 K42 ["Children"]
+  GETTABLEKS R18 R4 K39 ["optional"]
+  GETTABLEKS R19 R4 K43 ["table"]
+  CALL R18 1 1
+  SETTABLE R18 R16 R17
+  GETTABLEKS R17 R4 K39 ["optional"]
+  GETTABLEKS R18 R4 K43 ["table"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K44 ["buttonRef"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K45 ["validateProps"]
+  DUPCLOSURE R15 K46 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  SETTABLEKS R15 R14 K47 ["renderButtons"]
+  DUPCLOSURE R15 K48 [PROTO_2]
+  CAPTURE VAL R11
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R12
+  CAPTURE VAL R8
+  CAPTURE VAL R13
+  CAPTURE VAL R10
+  SETTABLEKS R15 R14 K49 ["renderWithSelectionCursor"]
+  DUPCLOSURE R15 K50 [PROTO_4]
+  CAPTURE VAL R7
+  SETTABLEKS R15 R14 K51 ["render"]
+  GETTABLEKS R15 R2 K52 ["forwardRef"]
+  DUPCLOSURE R16 K53 [PROTO_5]
+  CAPTURE VAL R2
+  CAPTURE VAL R14
+  CAPTURE VAL R5
+  CALL R15 1 -1
+  RETURN R15 -1

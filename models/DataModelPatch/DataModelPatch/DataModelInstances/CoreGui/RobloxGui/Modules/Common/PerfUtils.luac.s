@@ -1,0 +1,468 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+2]
+  LOADN R0 2
+  RETURN R0 1
+  LOADN R0 1
+  RETURN R0 1
+
+PROTO_1:
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShieldOpenAnimationTweenTime"]
+  RETURN R1 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["ShieldCloseAnimationTweenTime"]
+  RETURN R1 1
+
+PROTO_2:
+  GETIMPORT R0 K2 [os.clock]
+  CALL R0 0 -1
+  RETURN R0 -1
+
+PROTO_3:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["GetValue"]
+  CALL R1 1 1
+  DIVRK R0 R0 K1 ["GetValue"]
+  RETURN R0 1
+  LOADNIL R0
+  RETURN R0 1
+
+PROTO_4:
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+6]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K1 ["GetValue"]
+  CALL R3 1 1
+  DIVRK R2 R0 K3 ["menu_version"]
+  JUMP [+2]
+  LOADNIL R2
+  JUMP [0]
+  SETTABLEKS R2 R1 K2 ["fps"]
+  GETUPVAL R3 1
+  CALL R3 0 1
+  JUMPIFNOT R3 [+2]
+  LOADN R2 2
+  JUMP [+1]
+  LOADN R2 1
+  SETTABLEKS R2 R1 K3 ["menu_version"]
+  GETUPVAL R2 2
+  JUMPIFNOT R2 [+5]
+  MOVE R2 R0
+  LOADK R3 K4 ["_v"]
+  GETTABLEKS R4 R1 K3 ["menu_version"]
+  CONCAT R0 R2 R4
+  GETTABLEKS R2 R1 K5 ["menu_session"]
+  JUMPIFNOT R2 [+16]
+  GETUPVAL R2 2
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 3
+  MOVE R4 R0
+  MOVE R5 R1
+  NAMECALL R2 R2 K6 ["logEvent"]
+  CALL R2 3 0
+  RETURN R0 0
+  GETUPVAL R2 4
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K7 ["AnalyticsInGameMenuName"]
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["AnalyticsGameMenuOpenStart"]
+  JUMP [+3]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["AnalyticsPerfMenuOpening"]
+  DUPTABLE R1 K6 [{"menu_session", "game_session", "count", "interrupted_closing"}]
+  GETUPVAL R2 2
+  SETTABLEKS R2 R1 K2 ["menu_session"]
+  GETUPVAL R2 3
+  SETTABLEKS R2 R1 K3 ["game_session"]
+  GETUPVAL R2 4
+  SETTABLEKS R2 R1 K4 ["count"]
+  GETUPVAL R2 5
+  SETTABLEKS R2 R1 K5 ["interrupted_closing"]
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R2 6
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["AnalyticsGameMenuFlowStart"]
+  MOVE R4 R1
+  CALL R2 2 0
+  GETUPVAL R2 6
+  MOVE R3 R0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["AnalyticsGameMenuOpenEnd"]
+  JUMP [+3]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["AnalyticsPerfMenuStarted"]
+  GETUPVAL R3 2
+  MOVE R4 R2
+  DUPTABLE R5 K5 [{"menu_session", "transition_time_total", "transition_time_normalized"}]
+  GETUPVAL R6 3
+  SETTABLEKS R6 R5 K2 ["menu_session"]
+  SETTABLEKS R0 R5 K3 ["transition_time_total"]
+  SETTABLEKS R1 R5 K4 ["transition_time_normalized"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["AnalyticsGameMenuCloseEnd"]
+  JUMP [+3]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["AnalyticsPerfMenuClosed"]
+  DUPTABLE R3 K5 [{"menu_session", "transition_time_total", "transition_time_normalized"}]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K2 ["menu_session"]
+  SETTABLEKS R0 R3 K3 ["transition_time_total"]
+  SETTABLEKS R1 R3 K4 ["transition_time_normalized"]
+  GETUPVAL R4 3
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R4 3
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["AnalyticsGameMenuFlowEnd"]
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_8:
+  JUMPIFNOT R1 [+2]
+  LOADK R2 K0 ["leaving"]
+  JUMP [+1]
+  LOADK R2 K1 ["resume"]
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["AnalyticsGameMenuCloseStart"]
+  JUMP [+3]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["AnalyticsPerfMenuEnding"]
+  GETUPVAL R4 2
+  MOVE R5 R3
+  DUPTABLE R6 K8 [{"menu_session", "session_time", "reason", "interrupted_opening"}]
+  GETUPVAL R7 3
+  SETTABLEKS R7 R6 K4 ["menu_session"]
+  SETTABLEKS R0 R6 K5 ["session_time"]
+  SETTABLEKS R2 R6 K6 ["reason"]
+  GETUPVAL R7 4
+  SETTABLEKS R7 R6 K7 ["interrupted_opening"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  ADDK R0 R1 K0 [1]
+  SETUPVAL R0 1
+  GETIMPORT R0 K3 [os.clock]
+  CALL R0 0 1
+  SETUPVAL R0 2
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K4 ["GenerateGUID"]
+  CALL R0 1 1
+  SETUPVAL R0 0
+  GETUPVAL R0 4
+  CALL R0 0 0
+  LOADB R0 1
+  SETUPVAL R0 5
+  LOADB R0 0
+  SETUPVAL R0 6
+  RETURN R0 0
+
+PROTO_10:
+  GETIMPORT R0 K2 [os.clock]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  SUB R1 R0 R2
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["ShieldOpenAnimationTweenTime"]
+  JUMP [+3]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["ShieldCloseAnimationTweenTime"]
+  SUB R2 R1 R3
+  GETUPVAL R4 2
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K5 ["AnalyticsGameMenuOpenEnd"]
+  JUMP [+3]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K6 ["AnalyticsPerfMenuStarted"]
+  GETUPVAL R4 4
+  MOVE R5 R3
+  DUPTABLE R6 K10 [{"menu_session", "transition_time_total", "transition_time_normalized"}]
+  GETUPVAL R7 5
+  SETTABLEKS R7 R6 K7 ["menu_session"]
+  SETTABLEKS R1 R6 K8 ["transition_time_total"]
+  SETTABLEKS R2 R6 K9 ["transition_time_normalized"]
+  CALL R4 2 0
+  LOADB R3 0
+  SETUPVAL R3 6
+  RETURN R0 0
+
+PROTO_11:
+  GETIMPORT R0 K2 [os.clock]
+  CALL R0 0 1
+  SETUPVAL R0 0
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  SUB R0 R1 R2
+  GETUPVAL R2 2
+  JUMPIFNOT R2 [+4]
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K3 ["AnalyticsGameMenuCloseStart"]
+  JUMP [+3]
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K4 ["AnalyticsPerfMenuEnding"]
+  GETUPVAL R2 4
+  MOVE R3 R1
+  DUPTABLE R4 K9 [{"menu_session", "session_time", "reason", "interrupted_opening"}]
+  GETUPVAL R5 5
+  SETTABLEKS R5 R4 K5 ["menu_session"]
+  SETTABLEKS R0 R4 K6 ["session_time"]
+  LOADK R5 K10 ["resume"]
+  SETTABLEKS R5 R4 K7 ["reason"]
+  GETUPVAL R5 6
+  SETTABLEKS R5 R4 K8 ["interrupted_opening"]
+  CALL R2 2 0
+  GETUPVAL R1 5
+  SETUPVAL R1 7
+  LOADNIL R1
+  SETUPVAL R1 5
+  LOADB R1 0
+  SETUPVAL R1 6
+  LOADB R1 1
+  SETUPVAL R1 8
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R0 K2 [os.clock]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  SUB R1 R0 R2
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["ShieldCloseAnimationTweenTime"]
+  SUB R2 R1 R3
+  GETUPVAL R3 2
+  MOVE R4 R1
+  MOVE R5 R2
+  CALL R3 2 0
+  LOADNIL R3
+  SETUPVAL R3 3
+  LOADB R3 0
+  SETUPVAL R3 4
+  RETURN R0 0
+
+PROTO_13:
+  GETIMPORT R0 K2 [os.clock]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  SUB R1 R0 R2
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K3 ["AnalyticsGameMenuCloseStart"]
+  JUMP [+3]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["AnalyticsPerfMenuEnding"]
+  GETUPVAL R3 3
+  MOVE R4 R2
+  DUPTABLE R5 K9 [{"menu_session", "session_time", "reason", "interrupted_opening"}]
+  GETUPVAL R6 4
+  SETTABLEKS R6 R5 K5 ["menu_session"]
+  SETTABLEKS R1 R5 K6 ["session_time"]
+  LOADK R6 K10 ["leaving"]
+  SETTABLEKS R6 R5 K7 ["reason"]
+  GETUPVAL R6 5
+  SETTABLEKS R6 R5 K8 ["interrupted_opening"]
+  CALL R3 2 0
+  LOADNIL R2
+  SETUPVAL R2 4
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["HttpService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Stats"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R3 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETTABLEKS R6 R4 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["InGameMenu"]
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R10 R1 K13 ["Workspace"]
+  GETTABLEKS R9 R10 K14 ["Packages"]
+  GETTABLEKS R8 R9 K15 ["LoggingProtocol"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K16 ["default"]
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R9 R4 K9 ["Modules"]
+  GETTABLEKS R8 R9 K17 ["isNewInGameMenuEnabled"]
+  CALL R7 1 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R10 R5 K18 ["Utility"]
+  GETTABLEKS R9 R10 K19 ["SendAnalytics"]
+  CALL R8 1 1
+  GETIMPORT R9 K12 [require]
+  GETIMPORT R12 K21 [script]
+  GETTABLEKS R11 R12 K22 ["Parent"]
+  GETTABLEKS R10 R11 K23 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R12 R5 K24 ["Resources"]
+  GETTABLEKS R11 R12 K23 ["Constants"]
+  CALL R10 1 1
+  GETIMPORT R11 K12 [require]
+  GETIMPORT R15 K21 [script]
+  GETTABLEKS R14 R15 K22 ["Parent"]
+  GETTABLEKS R13 R14 K25 ["Flags"]
+  GETTABLEKS R12 R13 K26 ["GetFFlagEnableInGameMenuDurationLogger"]
+  CALL R11 1 1
+  CALL R11 0 1
+  JUMPIFNOT R2 [+5]
+  LOADK R14 K27 ["FrameRateManager"]
+  NAMECALL R12 R2 K28 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  JUMPIFNOT R12 [+5]
+  LOADK R15 K29 ["RenderAverage"]
+  NAMECALL R13 R12 K28 ["FindFirstChild"]
+  CALL R13 2 1
+  JUMP [+1]
+  LOADNIL R13
+  DUPCLOSURE R14 K30 [PROTO_0]
+  CAPTURE VAL R7
+  DUPCLOSURE R15 K31 [PROTO_1]
+  CAPTURE VAL R10
+  DUPCLOSURE R16 K32 [PROTO_2]
+  DUPCLOSURE R17 K33 [PROTO_3]
+  CAPTURE VAL R13
+  NAMECALL R18 R0 K34 ["GenerateGUID"]
+  CALL R18 1 1
+  GETIMPORT R19 K37 [os.clock]
+  CALL R19 0 1
+  GETIMPORT R20 K37 [os.clock]
+  CALL R20 0 1
+  LOADNIL R21
+  LOADNIL R22
+  LOADB R23 0
+  LOADB R24 0
+  LOADN R25 0
+  DUPCLOSURE R26 K38 [PROTO_4]
+  CAPTURE VAL R13
+  CAPTURE VAL R7
+  CAPTURE VAL R11
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  NEWCLOSURE R27 P5
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE REF R21
+  CAPTURE VAL R18
+  CAPTURE REF R25
+  CAPTURE REF R23
+  CAPTURE VAL R26
+  NEWCLOSURE R28 P6
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R26
+  CAPTURE REF R21
+  NEWCLOSURE R29 P7
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE REF R22
+  CAPTURE VAL R26
+  NEWCLOSURE R30 P8
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R26
+  CAPTURE REF R21
+  CAPTURE REF R24
+  DUPTABLE R31 K45 [{"menuOpenBegin", "menuOpenComplete", "menuClose", "menuCloseComplete", "leavingGame", "getFps"}]
+  NEWCLOSURE R32 P9
+  CAPTURE REF R21
+  CAPTURE REF R25
+  CAPTURE REF R19
+  CAPTURE VAL R0
+  CAPTURE VAL R27
+  CAPTURE REF R24
+  CAPTURE REF R23
+  SETTABLEKS R32 R31 K39 ["menuOpenBegin"]
+  NEWCLOSURE R32 P10
+  CAPTURE REF R19
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R26
+  CAPTURE REF R21
+  CAPTURE REF R24
+  SETTABLEKS R32 R31 K40 ["menuOpenComplete"]
+  NEWCLOSURE R32 P11
+  CAPTURE REF R20
+  CAPTURE REF R19
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R26
+  CAPTURE REF R21
+  CAPTURE REF R24
+  CAPTURE REF R22
+  CAPTURE REF R23
+  SETTABLEKS R32 R31 K41 ["menuClose"]
+  NEWCLOSURE R32 P12
+  CAPTURE REF R20
+  CAPTURE VAL R10
+  CAPTURE VAL R29
+  CAPTURE REF R22
+  CAPTURE REF R23
+  SETTABLEKS R32 R31 K42 ["menuCloseComplete"]
+  NEWCLOSURE R32 P13
+  CAPTURE REF R19
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R26
+  CAPTURE REF R21
+  CAPTURE REF R24
+  SETTABLEKS R32 R31 K43 ["leavingGame"]
+  SETTABLEKS R17 R31 K44 ["getFps"]
+  CLOSEUPVALS R19
+  RETURN R31 1

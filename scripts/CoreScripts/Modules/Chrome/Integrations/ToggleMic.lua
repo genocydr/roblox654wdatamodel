@@ -19,7 +19,7 @@ local FFlagEnableChromeAudioFocusManagement = game:DefineFastFlag("EnableChromeA
 local FFlagFixTopBarSlowLoad = require(CorePackages.Workspace.Packages.SharedFlags).FFlagFixTopBarSlowLoad
 local EnableChromeAudioFocusManagement = AudioFocusManagementEnabled and FFlagEnableChromeAudioFocusManagement
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local RedVoiceDot = require(Chrome.Integrations.RedVoiceDot)
 
 local Constants = require(Chrome.ChromeShared.Unibar.Constants)

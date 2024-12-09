@@ -1,0 +1,956 @@
+PROTO_0:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserRemoveMessageOnTextFilterFailures"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserIsChatTranslationEnabled2"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_2:
+  NEWTABLE R1 0 0
+  GETIMPORT R2 K1 [pairs]
+  MOVE R3 R0
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  SETTABLE R6 R1 R5
+  FORGLOOP R2 2 [-2]
+  RETURN R1 1
+
+PROTO_3:
+  GETUPVAL R3 0
+  FASTCALL2 RAWGET R3 R1 [+4]
+  MOVE R4 R1
+  GETIMPORT R2 K1 [rawget]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+1]
+  RETURN R2 1
+  GETUPVAL R4 1
+  GETTABLE R3 R4 R1
+  JUMPIFNOT R3 [+18]
+  FASTCALL2 RAWGET R0 R1 [+5]
+  MOVE R4 R0
+  MOVE R5 R1
+  GETIMPORT R3 K1 [rawget]
+  CALL R3 2 1
+  JUMPIF R3 [+10]
+  MOVE R4 R0
+  MOVE R5 R1
+  GETIMPORT R6 K4 [Instance.new]
+  LOADK R7 K5 ["BindableEvent"]
+  CALL R6 1 -1
+  FASTCALL RAWSET [+2]
+  GETIMPORT R3 K7 [rawset]
+  CALL R3 -1 0
+  GETUPVAL R4 2
+  GETTABLE R3 R4 R1
+  JUMPIFNOT R3 [+42]
+  FASTCALL2 RAWGET R0 R1 [+5]
+  MOVE R5 R0
+  MOVE R6 R1
+  GETIMPORT R4 K1 [rawget]
+  CALL R4 2 1
+  JUMPIF R4 [+34]
+  FASTCALL2 RAWGET R0 R3 [+5]
+  MOVE R5 R0
+  MOVE R6 R3
+  GETIMPORT R4 K1 [rawget]
+  CALL R4 2 1
+  JUMPIF R4 [+10]
+  MOVE R5 R0
+  MOVE R6 R3
+  GETIMPORT R7 K4 [Instance.new]
+  LOADK R8 K5 ["BindableEvent"]
+  CALL R7 1 -1
+  FASTCALL RAWSET [+2]
+  GETIMPORT R4 K7 [rawset]
+  CALL R4 -1 0
+  FASTCALL2 RAWGET R0 R3 [+5]
+  MOVE R9 R0
+  MOVE R10 R3
+  GETIMPORT R8 K1 [rawget]
+  CALL R8 2 1
+  GETTABLEKS R7 R8 K8 ["Event"]
+  FASTCALL3 RAWSET R0 R1 R7
+  MOVE R5 R0
+  MOVE R6 R1
+  GETIMPORT R4 K7 [rawset]
+  CALL R4 3 0
+  FASTCALL2 RAWGET R0 R1 [+5]
+  MOVE R5 R0
+  MOVE R6 R1
+  GETIMPORT R4 K1 [rawget]
+  CALL R4 2 1
+  RETURN R4 1
+
+PROTO_4:
+  PREPVARARGS 2
+  FASTCALL2 RAWGET R0 R1 [+5]
+  MOVE R3 R0
+  MOVE R4 R1
+  GETIMPORT R2 K1 [rawget]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+4]
+  GETVARARGS R5 -1
+  NAMECALL R3 R2 K2 ["Fire"]
+  CALL R3 -1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eSaidMessage"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R4 R0 K0 ["ChatService"]
+  GETTABLEKS R6 R0 K1 ["Name"]
+  MOVE R7 R1
+  MOVE R8 R2
+  NAMECALL R4 R4 K2 ["InternalDoProcessCommands"]
+  CALL R4 4 1
+  JUMPIFNOT R4 [+1]
+  RETURN R0 0
+  JUMPIF R2 [+1]
+  RETURN R0 0
+  GETTABLEKS R5 R0 K3 ["Channels"]
+  NAMECALL R6 R2 K4 ["lower"]
+  CALL R6 1 1
+  GETTABLE R4 R5 R6
+  JUMPIF R4 [+1]
+  RETURN R0 0
+  MOVE R7 R0
+  MOVE R8 R1
+  MOVE R9 R3
+  NAMECALL R5 R4 K5 ["InternalPostMessage"]
+  CALL R5 4 1
+  JUMPIFNOT R5 [+7]
+  GETIMPORT R6 K7 [pcall]
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CALL R6 1 0
+  RETURN R5 1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["eChannelJoined"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Name"]
+  GETUPVAL R3 1
+  GETUPVAL R5 0
+  NAMECALL R3 R3 K2 ["GetWelcomeMessageForSpeaker"]
+  CALL R3 2 -1
+  NAMECALL R0 R0 K3 ["Fire"]
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R3 R0 K0 ["Channels"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  GETTABLE R2 R3 R4
+  JUMPIFNOT R2 [+8]
+  GETIMPORT R2 K3 [warn]
+  LOADK R4 K4 ["Speaker is already in channel \""]
+  MOVE R5 R1
+  LOADK R6 K5 ["\""]
+  CONCAT R3 R4 R6
+  CALL R2 1 0
+  RETURN R0 0
+  GETTABLEKS R2 R0 K6 ["ChatService"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K7 ["GetChannel"]
+  CALL R2 2 1
+  JUMPIF R2 [+7]
+  GETIMPORT R3 K9 [error]
+  LOADK R5 K10 ["Channel \""]
+  MOVE R6 R1
+  LOADK R7 K11 ["\" does not exist!"]
+  CONCAT R4 R5 R7
+  CALL R3 1 0
+  GETTABLEKS R3 R0 K0 ["Channels"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  SETTABLE R2 R3 R4
+  MOVE R5 R0
+  NAMECALL R3 R2 K12 ["InternalAddSpeaker"]
+  CALL R3 2 0
+  GETIMPORT R3 K14 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CALL R3 1 2
+  JUMPIF R3 [+7]
+  JUMPIFNOT R4 [+6]
+  GETIMPORT R5 K16 [print]
+  LOADK R7 K17 ["Error joining channel: "]
+  MOVE R8 R4
+  CONCAT R6 R7 R8
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eChannelLeft"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["Name"]
+  NAMECALL R0 R0 K2 ["LazyFire"]
+  CALL R0 3 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["PlayerObj"]
+  JUMPIFNOT R0 [+14]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["EventFolder"]
+  GETTABLEKS R0 R1 K5 ["OnChannelLeft"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["PlayerObj"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["Name"]
+  NAMECALL R0 R0 K6 ["FireClient"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R3 R0 K0 ["Channels"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  GETTABLE R2 R3 R4
+  JUMPIF R2 [+8]
+  GETIMPORT R2 K3 [warn]
+  LOADK R4 K4 ["Speaker is not in channel \""]
+  MOVE R5 R1
+  LOADK R6 K5 ["\""]
+  CONCAT R3 R4 R6
+  CALL R2 1 0
+  RETURN R0 0
+  GETTABLEKS R3 R0 K0 ["Channels"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  GETTABLE R2 R3 R4
+  GETTABLEKS R3 R0 K0 ["Channels"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  LOADNIL R5
+  SETTABLE R5 R3 R4
+  MOVE R5 R0
+  NAMECALL R3 R2 K6 ["InternalRemoveSpeaker"]
+  CALL R3 2 0
+  GETIMPORT R3 K8 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CALL R3 1 2
+  JUMPIF R3 [+7]
+  JUMPIFNOT R4 [+6]
+  GETIMPORT R5 K10 [print]
+  LOADK R7 K11 ["Error leaving channel: "]
+  MOVE R8 R4
+  CONCAT R6 R7 R8
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R4 R0 K0 ["Channels"]
+  NAMECALL R5 R1 K1 ["lower"]
+  CALL R5 1 1
+  GETTABLE R3 R4 R5
+  JUMPIFNOTEQKNIL R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_12:
+  NEWTABLE R1 0 0
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["Channels"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R9 R6 K3 ["Name"]
+  FASTCALL2 TABLE_INSERT R1 R9 [+4]
+  MOVE R8 R1
+  GETIMPORT R7 K6 [table.insert]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-9]
+  RETURN R1 1
+
+PROTO_13:
+  GETTABLEKS R6 R0 K0 ["Channels"]
+  NAMECALL R7 R2 K1 ["lower"]
+  CALL R7 1 1
+  GETTABLE R5 R6 R7
+  JUMPIFNOT R5 [+9]
+  MOVE R8 R1
+  GETTABLEKS R9 R0 K2 ["Name"]
+  MOVE R10 R3
+  MOVE R11 R4
+  NAMECALL R6 R5 K3 ["SendMessageToSpeaker"]
+  CALL R6 5 0
+  RETURN R0 0
+  GETUPVAL R6 0
+  NAMECALL R6 R6 K4 ["IsStudio"]
+  CALL R6 1 1
+  JUMPIFNOT R6 [+10]
+  GETIMPORT R6 K6 [warn]
+  GETIMPORT R7 K9 [string.format]
+  LOADK R8 K10 ["Speaker '%s' is not in channel '%s' and cannot receive a message in it."]
+  GETTABLEKS R9 R0 K2 ["Name"]
+  MOVE R10 R2
+  CALL R7 3 -1
+  CALL R6 -1 0
+  RETURN R0 0
+
+PROTO_14:
+  GETTABLEKS R5 R0 K0 ["Channels"]
+  NAMECALL R6 R2 K1 ["lower"]
+  CALL R6 1 1
+  GETTABLE R4 R5 R6
+  JUMPIFNOT R4 [+8]
+  MOVE R7 R1
+  GETTABLEKS R8 R0 K2 ["Name"]
+  MOVE R9 R3
+  NAMECALL R5 R4 K3 ["SendSystemMessageToSpeaker"]
+  CALL R5 4 0
+  RETURN R0 0
+  GETUPVAL R5 0
+  NAMECALL R5 R5 K4 ["IsStudio"]
+  CALL R5 1 1
+  JUMPIFNOT R5 [+10]
+  GETIMPORT R5 K6 [warn]
+  GETIMPORT R6 K9 [string.format]
+  LOADK R7 K10 ["Speaker '%s' is not in channel '%s' and cannot receive a system message in it."]
+  GETTABLEKS R8 R0 K2 ["Name"]
+  MOVE R9 R2
+  CALL R6 3 -1
+  CALL R5 -1 0
+  RETURN R0 0
+
+PROTO_15:
+  GETTABLEKS R1 R0 K0 ["PlayerObj"]
+  RETURN R1 1
+
+PROTO_16:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R1 [+10]
+  NAMECALL R1 R0 K1 ["GetPlayer"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+3]
+  GETTABLEKS R2 R1 K2 ["DisplayName"]
+  RETURN R2 1
+  GETTABLEKS R2 R0 K3 ["Name"]
+  RETURN R2 1
+  GETTABLEKS R1 R0 K3 ["Name"]
+  RETURN R1 1
+
+PROTO_17:
+  GETTABLEKS R3 R0 K0 ["ExtraData"]
+  SETTABLE R2 R3 R1
+  LOADK R5 K1 ["eExtraDataUpdated"]
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R0 K2 ["LazyFire"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_18:
+  GETTABLEKS R3 R0 K0 ["ExtraData"]
+  GETTABLE R2 R3 R1
+  RETURN R2 1
+
+PROTO_19:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eMainChannelSet"]
+  GETUPVAL R3 1
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 3 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["PlayerObj"]
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["EventFolder"]
+  GETTABLEKS R0 R1 K4 ["OnMainChannelSet"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["PlayerObj"]
+  GETUPVAL R3 1
+  NAMECALL R0 R0 K5 ["FireClient"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_20:
+  GETIMPORT R2 K1 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CALL R2 1 2
+  JUMPIF R2 [+7]
+  JUMPIFNOT R3 [+6]
+  GETIMPORT R4 K3 [print]
+  LOADK R6 K4 ["Error setting main channel: "]
+  MOVE R7 R3
+  CONCAT R5 R6 R7
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_21:
+  GETTABLEKS R2 R0 K0 ["MutedSpeakers"]
+  NAMECALL R3 R1 K1 ["lower"]
+  CALL R3 1 1
+  LOADB R4 1
+  SETTABLE R4 R2 R3
+  RETURN R0 0
+
+PROTO_22:
+  GETTABLEKS R2 R0 K0 ["MutedSpeakers"]
+  NAMECALL R3 R1 K1 ["lower"]
+  CALL R3 1 1
+  LOADB R4 0
+  SETTABLE R4 R2 R3
+  RETURN R0 0
+
+PROTO_23:
+  GETTABLEKS R3 R0 K0 ["MutedSpeakers"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  GETTABLE R2 R3 R4
+  RETURN R2 1
+
+PROTO_24:
+  GETIMPORT R1 K1 [pairs]
+  GETTABLEKS R2 R0 K2 ["Channels"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  MOVE R8 R0
+  NAMECALL R6 R5 K3 ["InternalRemoveSpeaker"]
+  CALL R6 2 0
+  FORGLOOP R1 2 [-5]
+  GETTABLEKS R1 R0 K4 ["eDestroyed"]
+  NAMECALL R1 R1 K5 ["Fire"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K6 ["EventFolder"]
+  GETTABLEKS R1 R0 K4 ["eDestroyed"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K8 ["eSaidMessage"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K9 ["eReceivedMessage"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K10 ["eReceivedUnfilteredMessage"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K11 ["eMessageDoneFiltering"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K12 ["eReceivedSystemMessage"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K13 ["eChannelJoined"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K14 ["eChannelLeft"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K15 ["eMuted"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K16 ["eUnmuted"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K17 ["eExtraDataUpdated"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K18 ["eMainChannelSet"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K19 ["eChannelNameColorUpdated"]
+  NAMECALL R1 R1 K7 ["Destroy"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_25:
+  SETTABLEKS R1 R0 K0 ["PlayerObj"]
+  RETURN R0 0
+
+PROTO_26:
+  SETTABLEKS R1 R0 K0 ["EventFolder"]
+  RETURN R0 0
+
+PROTO_27:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eReceivedUnfilteredMessage"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 4 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["PlayerObj"]
+  JUMPIFNOT R0 [+13]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["EventFolder"]
+  GETTABLEKS R0 R1 K4 ["OnNewMessage"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["PlayerObj"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K5 ["FireClient"]
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_28:
+  GETIMPORT R3 K1 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CALL R3 1 2
+  JUMPIF R3 [+7]
+  JUMPIFNOT R4 [+6]
+  GETIMPORT R5 K3 [print]
+  LOADK R7 K4 ["Error sending internal message: "]
+  MOVE R8 R4
+  CONCAT R6 R7 R8
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_29:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eReceivedMessage"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 4 0
+  GETUPVAL R0 0
+  LOADK R2 K2 ["eMessageDoneFiltering"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 4 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["PlayerObj"]
+  JUMPIFNOT R0 [+13]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["EventFolder"]
+  GETTABLEKS R0 R1 K5 ["OnMessageDoneFiltering"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["PlayerObj"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K6 ["FireClient"]
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_30:
+  GETIMPORT R3 K1 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CALL R3 1 2
+  JUMPIF R3 [+7]
+  JUMPIFNOT R4 [+6]
+  GETIMPORT R5 K3 [print]
+  LOADK R7 K4 ["Error sending internal filtered message: "]
+  MOVE R8 R4
+  CONCAT R6 R7 R8
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_31:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["IsFilterResult"]
+  JUMPIFNOT R0 [+34]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+19]
+  GETUPVAL R0 3
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["UserId"]
+  NAMECALL R0 R0 K2 ["GetChatForUserAsync"]
+  CALL R0 2 1
+  SETUPVAL R0 2
+  GETUPVAL R0 4
+  JUMPIFNOT R0 [+24]
+  GETUPVAL R0 4
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["UserId"]
+  NAMECALL R0 R0 K2 ["GetChatForUserAsync"]
+  CALL R0 2 1
+  SETUPVAL R0 5
+  RETURN R0 0
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K3 ["GetNonChatStringForBroadcastAsync"]
+  CALL R0 1 1
+  SETUPVAL R0 2
+  GETUPVAL R0 4
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 4
+  NAMECALL R0 R0 K3 ["GetNonChatStringForBroadcastAsync"]
+  CALL R0 1 1
+  SETUPVAL R0 5
+  RETURN R0 0
+  GETUPVAL R0 3
+  SETUPVAL R0 2
+  RETURN R0 0
+
+PROTO_32:
+  NEWTABLE R5 0 0
+  GETIMPORT R6 K1 [pairs]
+  MOVE R7 R1
+  CALL R6 1 3
+  FORGPREP_NEXT R6
+  SETTABLE R10 R5 R9
+  FORGLOOP R6 2 [-2]
+  MOVE R4 R5
+  GETTABLEKS R5 R4 K2 ["FilterResult"]
+  NAMECALL R6 R0 K3 ["GetPlayer"]
+  CALL R6 1 1
+  JUMPIFEQKNIL R6 [+7]
+  GETTABLEKS R9 R6 K4 ["LocaleId"]
+  NAMECALL R7 R3 K5 ["GetTranslationForLocale"]
+  CALL R7 2 1
+  JUMP [+1]
+  LOADNIL R7
+  LOADK R8 K6 [""]
+  LOADNIL R9
+  GETIMPORT R10 K8 [pcall]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE REF R8
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE REF R9
+  CALL R10 1 0
+  GETUPVAL R10 0
+  JUMPIFNOT R10 [+14]
+  SETTABLEKS R8 R4 K9 ["Message"]
+  JUMPIFNOT R9 [+2]
+  SETTABLEKS R9 R4 K10 ["TranslatedMessage"]
+  LOADNIL R10
+  SETTABLEKS R10 R4 K2 ["FilterResult"]
+  MOVE R12 R4
+  MOVE R13 R2
+  NAMECALL R10 R0 K11 ["InternalSendFilteredMessage"]
+  CALL R10 3 0
+  JUMP [+17]
+  LENGTH R10 R8
+  LOADN R11 0
+  JUMPIFNOTLT R11 R10 [+14]
+  SETTABLEKS R8 R4 K9 ["Message"]
+  JUMPIFNOT R9 [+2]
+  SETTABLEKS R9 R4 K10 ["TranslatedMessage"]
+  LOADNIL R10
+  SETTABLEKS R10 R4 K2 ["FilterResult"]
+  MOVE R12 R4
+  MOVE R13 R2
+  NAMECALL R10 R0 K11 ["InternalSendFilteredMessage"]
+  CALL R10 3 0
+  CLOSEUPVALS R8
+  RETURN R0 0
+
+PROTO_33:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["IsFilterResult"]
+  JUMPIFNOT R0 [+17]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+9]
+  GETUPVAL R0 3
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["UserId"]
+  NAMECALL R0 R0 K2 ["GetChatForUserAsync"]
+  CALL R0 2 1
+  SETUPVAL R0 2
+  RETURN R0 0
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K3 ["GetNonChatStringForBroadcastAsync"]
+  CALL R0 1 1
+  SETUPVAL R0 2
+  RETURN R0 0
+  GETUPVAL R0 3
+  SETUPVAL R0 2
+  RETURN R0 0
+
+PROTO_34:
+  NEWTABLE R4 0 0
+  GETIMPORT R5 K1 [pairs]
+  MOVE R6 R1
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  SETTABLE R9 R4 R8
+  FORGLOOP R5 2 [-2]
+  MOVE R3 R4
+  GETTABLEKS R4 R3 K2 ["FilterResult"]
+  NAMECALL R5 R0 K3 ["GetPlayer"]
+  CALL R5 1 1
+  LOADK R6 K4 [""]
+  GETIMPORT R7 K6 [pcall]
+  NEWCLOSURE R8 P0
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE REF R6
+  CAPTURE VAL R4
+  CALL R7 1 0
+  GETUPVAL R7 0
+  JUMPIFNOT R7 [+11]
+  SETTABLEKS R6 R3 K7 ["Message"]
+  LOADNIL R7
+  SETTABLEKS R7 R3 K2 ["FilterResult"]
+  MOVE R9 R3
+  MOVE R10 R2
+  NAMECALL R7 R0 K8 ["InternalSendFilteredMessage"]
+  CALL R7 3 0
+  JUMP [+14]
+  LENGTH R7 R6
+  LOADN R8 0
+  JUMPIFNOTLT R8 R7 [+11]
+  SETTABLEKS R6 R3 K7 ["Message"]
+  LOADNIL R7
+  SETTABLEKS R7 R3 K2 ["FilterResult"]
+  MOVE R9 R3
+  MOVE R10 R2
+  NAMECALL R7 R0 K8 ["InternalSendFilteredMessage"]
+  CALL R7 3 0
+  CLOSEUPVALS R6
+  RETURN R0 0
+
+PROTO_35:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["eReceivedSystemMessage"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K1 ["LazyFire"]
+  CALL R0 4 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["PlayerObj"]
+  JUMPIFNOT R0 [+13]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["EventFolder"]
+  GETTABLEKS R0 R1 K4 ["OnNewSystemMessage"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["PlayerObj"]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  NAMECALL R0 R0 K5 ["FireClient"]
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_36:
+  GETIMPORT R3 K1 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CALL R3 1 2
+  JUMPIF R3 [+7]
+  JUMPIFNOT R4 [+6]
+  GETIMPORT R5 K3 [print]
+  LOADK R7 K4 ["Error sending internal system message: "]
+  MOVE R8 R4
+  CONCAT R6 R7 R8
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_37:
+  LOADK R5 K0 ["eChannelNameColorUpdated"]
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R0 K1 ["LazyFire"]
+  CALL R3 4 0
+  GETTABLEKS R3 R0 K2 ["PlayerObj"]
+  JUMPIFNOT R3 [+11]
+  GETTABLEKS R4 R0 K3 ["EventFolder"]
+  GETTABLEKS R3 R4 K4 ["ChannelNameColorUpdated"]
+  GETTABLEKS R5 R0 K2 ["PlayerObj"]
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R3 K5 ["FireClient"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_38:
+  NEWTABLE R3 8 0
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R3 R4 [+3]
+  GETIMPORT R2 K1 [setmetatable]
+  CALL R2 2 1
+  SETTABLEKS R0 R2 K2 ["ChatService"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K3 ["PlayerObj"]
+  SETTABLEKS R1 R2 K4 ["Name"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K5 ["ExtraData"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K6 ["Channels"]
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R2 K7 ["MutedSpeakers"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K8 ["EventFolder"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  NEWTABLE R0 1 0
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K2 ["RunService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K4 ["Chat"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K5 ["ClientChatModules"]
+  NAMECALL R3 R2 K6 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K8 [require]
+  LOADK R7 K9 ["ChatSettings"]
+  NAMECALL R5 R3 K6 ["WaitForChild"]
+  CALL R5 2 -1
+  CALL R4 -1 1
+  GETIMPORT R6 K11 [script]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  LOADNIL R6
+  GETIMPORT R7 K14 [pcall]
+  DUPCLOSURE R8 K15 [PROTO_0]
+  CALL R7 1 2
+  AND R6 R7 R8
+  LOADB R7 0
+  GETIMPORT R8 K14 [pcall]
+  DUPCLOSURE R9 K16 [PROTO_1]
+  CALL R8 1 2
+  AND R7 R8 R9
+  DUPCLOSURE R8 K17 [PROTO_2]
+  NEWTABLE R9 32 0
+  DUPTABLE R10 K31 [{"eDestroyed", "eSaidMessage", "eReceivedMessage", "eReceivedUnfilteredMessage", "eMessageDoneFiltering", "eReceivedSystemMessage", "eChannelJoined", "eChannelLeft", "eMuted", "eUnmuted", "eExtraDataUpdated", "eMainChannelSet", "eChannelNameColorUpdated"}]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K18 ["eDestroyed"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K19 ["eSaidMessage"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K20 ["eReceivedMessage"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K21 ["eReceivedUnfilteredMessage"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K22 ["eMessageDoneFiltering"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K23 ["eReceivedSystemMessage"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K24 ["eChannelJoined"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K25 ["eChannelLeft"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K26 ["eMuted"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K27 ["eUnmuted"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K28 ["eExtraDataUpdated"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K29 ["eMainChannelSet"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K30 ["eChannelNameColorUpdated"]
+  DUPTABLE R11 K46 [{"Destroyed", "SaidMessage", "ReceivedMessage", "ReceivedUnfilteredMessage", "RecievedUnfilteredMessage", "MessageDoneFiltering", "ReceivedSystemMessage", "ChannelJoined", "ChannelLeft", "Muted", "Unmuted", "ExtraDataUpdated", "MainChannelSet", "ChannelNameColorUpdated"}]
+  LOADK R12 K18 ["eDestroyed"]
+  SETTABLEKS R12 R11 K32 ["Destroyed"]
+  LOADK R12 K19 ["eSaidMessage"]
+  SETTABLEKS R12 R11 K33 ["SaidMessage"]
+  LOADK R12 K20 ["eReceivedMessage"]
+  SETTABLEKS R12 R11 K34 ["ReceivedMessage"]
+  LOADK R12 K21 ["eReceivedUnfilteredMessage"]
+  SETTABLEKS R12 R11 K35 ["ReceivedUnfilteredMessage"]
+  LOADK R12 K21 ["eReceivedUnfilteredMessage"]
+  SETTABLEKS R12 R11 K36 ["RecievedUnfilteredMessage"]
+  LOADK R12 K22 ["eMessageDoneFiltering"]
+  SETTABLEKS R12 R11 K37 ["MessageDoneFiltering"]
+  LOADK R12 K23 ["eReceivedSystemMessage"]
+  SETTABLEKS R12 R11 K38 ["ReceivedSystemMessage"]
+  LOADK R12 K24 ["eChannelJoined"]
+  SETTABLEKS R12 R11 K39 ["ChannelJoined"]
+  LOADK R12 K25 ["eChannelLeft"]
+  SETTABLEKS R12 R11 K40 ["ChannelLeft"]
+  LOADK R12 K26 ["eMuted"]
+  SETTABLEKS R12 R11 K41 ["Muted"]
+  LOADK R12 K27 ["eUnmuted"]
+  SETTABLEKS R12 R11 K42 ["Unmuted"]
+  LOADK R12 K28 ["eExtraDataUpdated"]
+  SETTABLEKS R12 R11 K43 ["ExtraDataUpdated"]
+  LOADK R12 K29 ["eMainChannelSet"]
+  SETTABLEKS R12 R11 K44 ["MainChannelSet"]
+  LOADK R12 K30 ["eChannelNameColorUpdated"]
+  SETTABLEKS R12 R11 K45 ["ChannelNameColorUpdated"]
+  DUPCLOSURE R12 K47 [PROTO_3]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  SETTABLEKS R12 R9 K48 ["__index"]
+  DUPCLOSURE R12 K49 [PROTO_4]
+  SETTABLEKS R12 R9 K50 ["LazyFire"]
+  DUPCLOSURE R12 K51 [PROTO_6]
+  SETTABLEKS R12 R9 K52 ["SayMessage"]
+  DUPCLOSURE R12 K53 [PROTO_8]
+  SETTABLEKS R12 R9 K54 ["JoinChannel"]
+  DUPCLOSURE R12 K55 [PROTO_10]
+  SETTABLEKS R12 R9 K56 ["LeaveChannel"]
+  DUPCLOSURE R12 K57 [PROTO_11]
+  SETTABLEKS R12 R9 K58 ["IsInChannel"]
+  DUPCLOSURE R12 K59 [PROTO_12]
+  SETTABLEKS R12 R9 K60 ["GetChannelList"]
+  DUPCLOSURE R12 K61 [PROTO_13]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R9 K62 ["SendMessage"]
+  DUPCLOSURE R12 K63 [PROTO_14]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R9 K64 ["SendSystemMessage"]
+  DUPCLOSURE R12 K65 [PROTO_15]
+  SETTABLEKS R12 R9 K66 ["GetPlayer"]
+  DUPCLOSURE R12 K67 [PROTO_16]
+  CAPTURE VAL R4
+  SETTABLEKS R12 R9 K68 ["GetNameForDisplay"]
+  DUPCLOSURE R12 K69 [PROTO_17]
+  SETTABLEKS R12 R9 K70 ["SetExtraData"]
+  DUPCLOSURE R12 K71 [PROTO_18]
+  SETTABLEKS R12 R9 K72 ["GetExtraData"]
+  DUPCLOSURE R12 K73 [PROTO_20]
+  SETTABLEKS R12 R9 K74 ["SetMainChannel"]
+  DUPCLOSURE R12 K75 [PROTO_21]
+  SETTABLEKS R12 R9 K76 ["AddMutedSpeaker"]
+  DUPCLOSURE R12 K77 [PROTO_22]
+  SETTABLEKS R12 R9 K78 ["RemoveMutedSpeaker"]
+  DUPCLOSURE R12 K79 [PROTO_23]
+  SETTABLEKS R12 R9 K80 ["IsSpeakerMuted"]
+  DUPCLOSURE R12 K81 [PROTO_24]
+  SETTABLEKS R12 R9 K82 ["InternalDestroy"]
+  DUPCLOSURE R12 K83 [PROTO_25]
+  SETTABLEKS R12 R9 K84 ["InternalAssignPlayerObject"]
+  DUPCLOSURE R12 K85 [PROTO_26]
+  SETTABLEKS R12 R9 K86 ["InternalAssignEventFolder"]
+  DUPCLOSURE R12 K87 [PROTO_28]
+  SETTABLEKS R12 R9 K88 ["InternalSendMessage"]
+  DUPCLOSURE R12 K89 [PROTO_30]
+  SETTABLEKS R12 R9 K90 ["InternalSendFilteredMessage"]
+  NEWCLOSURE R12 P25
+  CAPTURE REF R6
+  SETTABLEKS R12 R9 K91 ["InternalSendFilteredMessageWithTranslatedFilterResult"]
+  NEWCLOSURE R12 P26
+  CAPTURE REF R6
+  SETTABLEKS R12 R9 K92 ["InternalSendFilteredMessageWithFilterResult"]
+  DUPCLOSURE R12 K93 [PROTO_36]
+  SETTABLEKS R12 R9 K94 ["InternalSendSystemMessage"]
+  DUPCLOSURE R12 K95 [PROTO_37]
+  SETTABLEKS R12 R9 K96 ["UpdateChannelNameColor"]
+  DUPCLOSURE R12 K97 [PROTO_38]
+  CAPTURE VAL R9
+  SETTABLEKS R12 R0 K98 ["new"]
+  CLOSEUPVALS R6
+  RETURN R0 1

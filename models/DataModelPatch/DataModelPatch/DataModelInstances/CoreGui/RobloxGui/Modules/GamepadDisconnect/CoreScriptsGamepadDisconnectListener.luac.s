@@ -1,0 +1,129 @@
+PROTO_0:
+  GETUPVAL R0 0
+  LOADB R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  LOADB R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["useState"]
+  LOADB R1 0
+  CALL R0 1 2
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["useCallback"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R1
+  NEWTABLE R4 0 1
+  MOVE R5 R1
+  SETLIST R4 R5 1 [1]
+  CALL R2 2 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["useCallback"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R1
+  NEWTABLE R5 0 1
+  MOVE R6 R1
+  SETLIST R5 R6 1 [1]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  CALL R4 0 1
+  JUMPIFNOT R4 [+7]
+  GETUPVAL R4 2
+  MOVE R5 R3
+  MOVE R6 R2
+  GETUPVAL R7 3
+  LOADK R8 K2 ["InExperience"]
+  CALL R4 4 0
+  JUMP [+4]
+  GETUPVAL R4 2
+  MOVE R5 R3
+  MOVE R6 R2
+  CALL R4 2 0
+  JUMPIFNOT R0 [+32]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["createElement"]
+  LOADK R5 K4 ["ScreenGui"]
+  DUPTABLE R6 K9 [{"DisplayOrder", "IgnoreGuiInset", "OnTopOfCoreBlur", "ZIndexBehavior"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K5 ["DisplayOrder"]
+  GETTABLEKS R7 R8 K10 ["HeadsetDisconnectedDialog"]
+  SETTABLEKS R7 R6 K5 ["DisplayOrder"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K6 ["IgnoreGuiInset"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K7 ["OnTopOfCoreBlur"]
+  GETIMPORT R7 K13 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R7 R6 K8 ["ZIndexBehavior"]
+  DUPTABLE R7 K15 [{"GamepadDisconnectedModal"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K3 ["createElement"]
+  GETUPVAL R9 5
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K14 ["GamepadDisconnectedModal"]
+  CALL R4 3 -1
+  RETURN R4 -1
+  LOADNIL R4
+  RETURN R4 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["EventIngestService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["React"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R7 R0 K10 ["Workspace"]
+  GETTABLEKS R6 R7 K8 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["InputUi"]
+  CALL R4 1 1
+  GETTABLEKS R6 R4 K12 ["Gamepad"]
+  GETTABLEKS R5 R6 K13 ["GamepadDisconnectedModal"]
+  GETTABLEKS R7 R4 K12 ["Gamepad"]
+  GETTABLEKS R6 R7 K14 ["useGamepadDisconnectOverlayEffect"]
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R10 R1 K15 ["RobloxGui"]
+  GETTABLEKS R9 R10 K16 ["Modules"]
+  GETTABLEKS R8 R9 K17 ["InGameMenuConstants"]
+  CALL R7 1 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R13 R0 K10 ["Workspace"]
+  GETTABLEKS R12 R13 K8 ["Packages"]
+  GETTABLEKS R11 R12 K18 ["Analytics"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K19 ["AnalyticsReporters"]
+  GETTABLEKS R8 R9 K20 ["EventIngest"]
+  GETTABLEKS R9 R8 K21 ["new"]
+  MOVE R10 R2
+  CALL R9 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R14 R0 K10 ["Workspace"]
+  GETTABLEKS R13 R14 K8 ["Packages"]
+  GETTABLEKS R12 R13 K22 ["SharedFlags"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K23 ["GetFFlagGamepadAnalytics"]
+  DUPCLOSURE R11 K24 [PROTO_2]
+  CAPTURE VAL R3
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  RETURN R11 1

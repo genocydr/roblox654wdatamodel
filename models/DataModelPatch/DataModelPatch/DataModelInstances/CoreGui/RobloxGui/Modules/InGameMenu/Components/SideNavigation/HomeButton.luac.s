@@ -1,0 +1,148 @@
+PROTO_0:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["on"]
+  JUMPIFNOT R3 [+2]
+  GETUPVAL R2 0
+  JUMPIF R2 [+1]
+  GETUPVAL R2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  LOADK R4 K3 ["Frame"]
+  DUPTABLE R5 K9 [{"AnchorPoint", "BackgroundTransparency", "Position", "Size", "LayoutOrder"}]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K10 ["anchorPoint"]
+  SETTABLEKS R6 R5 K4 ["AnchorPoint"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K5 ["BackgroundTransparency"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K11 ["position"]
+  SETTABLEKS R6 R5 K6 ["Position"]
+  GETIMPORT R6 K14 [UDim2.fromOffset]
+  LOADN R7 64
+  LOADN R8 64
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K7 ["Size"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K15 ["layoutOrder"]
+  SETTABLEKS R6 R5 K8 ["LayoutOrder"]
+  DUPTABLE R6 K17 [{"HomeButton"}]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R8 3
+  NEWTABLE R9 8 0
+  GETIMPORT R10 K20 [Vector2.new]
+  LOADK R11 K21 [0.5]
+  LOADK R12 K21 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K4 ["AnchorPoint"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K5 ["BackgroundTransparency"]
+  SETTABLEKS R2 R9 K22 ["Image"]
+  GETIMPORT R10 K24 [UDim2.fromScale]
+  LOADK R11 K21 [0.5]
+  LOADK R12 K21 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K6 ["Position"]
+  GETIMPORT R10 K14 [UDim2.fromOffset]
+  LOADN R11 32
+  LOADN R12 32
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K7 ["Size"]
+  MOVE R10 R1
+  GETUPVAL R12 4
+  GETTABLEKS R11 R12 K25 ["RoundedRect"]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K26 ["SelectionImageObject"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K27 ["Event"]
+  GETTABLEKS R10 R11 K28 ["Activated"]
+  GETTABLEKS R12 R0 K0 ["props"]
+  GETTABLEKS R11 R12 K29 ["onActivated"]
+  SETTABLE R11 R9 R10
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K16 ["HomeButton"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["renderWithSelectionCursor"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["t"]
+  GETTABLEKS R3 R1 K9 ["Roact"]
+  GETTABLEKS R4 R1 K10 ["UIBlox"]
+  GETTABLEKS R7 R4 K11 ["Core"]
+  GETTABLEKS R6 R7 K12 ["ImageSet"]
+  GETTABLEKS R5 R6 K13 ["ImageSetButton"]
+  GETTABLEKS R8 R4 K14 ["App"]
+  GETTABLEKS R7 R8 K12 ["ImageSet"]
+  GETTABLEKS R6 R7 K15 ["Images"]
+  GETTABLEKS R9 R4 K14 ["App"]
+  GETTABLEKS R8 R9 K16 ["SelectionImage"]
+  GETTABLEKS R7 R8 K17 ["withSelectionCursorProvider"]
+  GETTABLEKS R10 R4 K14 ["App"]
+  GETTABLEKS R9 R10 K16 ["SelectionImage"]
+  GETTABLEKS R8 R9 K18 ["CursorKind"]
+  GETTABLEKS R9 R6 K19 ["icons/menu/home_on"]
+  GETTABLEKS R10 R6 K20 ["icons/menu/home_off"]
+  GETTABLEKS R11 R3 K21 ["PureComponent"]
+  LOADK R13 K22 ["HomeButton"]
+  NAMECALL R11 R11 K23 ["extend"]
+  CALL R11 2 1
+  GETTABLEKS R12 R2 K24 ["strictInterface"]
+  DUPTABLE R13 K30 [{"on", "anchorPoint", "position", "layoutOrder", "onActivated"}]
+  GETTABLEKS R14 R2 K31 ["optional"]
+  GETTABLEKS R15 R2 K32 ["boolean"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K25 ["on"]
+  GETTABLEKS R14 R2 K31 ["optional"]
+  GETTABLEKS R15 R2 K33 ["Vector2"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K26 ["anchorPoint"]
+  GETTABLEKS R14 R2 K31 ["optional"]
+  GETTABLEKS R15 R2 K34 ["UDim2"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K27 ["position"]
+  GETTABLEKS R14 R2 K31 ["optional"]
+  GETTABLEKS R15 R2 K35 ["integer"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K28 ["layoutOrder"]
+  GETTABLEKS R14 R2 K36 ["callback"]
+  SETTABLEKS R14 R13 K29 ["onActivated"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K37 ["validateProps"]
+  DUPTABLE R12 K38 [{"on"}]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K25 ["on"]
+  SETTABLEKS R12 R11 K39 ["defaultProps"]
+  DUPCLOSURE R12 K40 [PROTO_0]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  SETTABLEKS R12 R11 K41 ["renderWithSelectionCursor"]
+  DUPCLOSURE R12 K42 [PROTO_2]
+  CAPTURE VAL R7
+  SETTABLEKS R12 R11 K43 ["render"]
+  RETURN R11 1

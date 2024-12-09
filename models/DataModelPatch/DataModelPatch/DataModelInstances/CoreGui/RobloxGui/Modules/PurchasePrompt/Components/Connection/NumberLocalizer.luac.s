@@ -1,0 +1,77 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["formatNumber"]
+  MOVE R3 R0
+  GETUPVAL R4 2
+  CALL R2 2 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["number"]
+  GETTABLEKS R2 R0 K1 ["render"]
+  FASTCALL1 TYPEOF R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K3 [typeof]
+  CALL R5 1 1
+  JUMPIFEQKS R5 K0 ["number"] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K4 [+4]
+  LOADK R5 K4 ["prop 'number' must be provided"]
+  GETIMPORT R3 K6 [assert]
+  CALL R3 2 0
+  FASTCALL1 TYPEOF R2 [+3]
+  MOVE R6 R2
+  GETIMPORT R5 K3 [typeof]
+  CALL R5 1 1
+  JUMPIFEQKS R5 K7 ["function"] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K8 [+4]
+  LOADK R5 K8 ["Render prop must be a function"]
+  GETIMPORT R3 K6 [assert]
+  CALL R3 2 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K9 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K10 [{"render"}]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R2
+  CAPTURE UPVAL U2
+  CAPTURE VAL R1
+  SETTABLEKS R6 R5 K1 ["render"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R5 R1 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["PurchasePromptDeps"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K12 ["Roact"]
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K13 ["Localization"]
+  GETTABLEKS R5 R6 K14 ["LocalizationService"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETIMPORT R8 K1 [script]
+  GETTABLEKS R7 R8 K2 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["LocalizationContextConsumer"]
+  CALL R5 1 1
+  DUPCLOSURE R6 K16 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  RETURN R6 1

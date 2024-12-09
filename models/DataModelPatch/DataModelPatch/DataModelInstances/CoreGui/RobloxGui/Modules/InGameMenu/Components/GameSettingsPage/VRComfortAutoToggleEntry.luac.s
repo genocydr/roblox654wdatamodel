@@ -1,0 +1,230 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["derivedValueKey"]
+  GETTABLE R0 R1 R2
+  GETUPVAL R1 2
+  DUPTABLE R3 K2 [{"checked"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K3 ["checkedValue"]
+  JUMPIFEQ R0 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K1 ["checked"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["vrComfortSetting"]
+  GETIMPORT R1 K5 [Enum.VRComfortSetting.Custom]
+  JUMPIFNOTEQ R0 R1 [+41]
+  GETUPVAL R2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K6 ["customValueKey"]
+  GETTABLE R1 R2 R3
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["checkedValue"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["customValueKey"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K7 ["checkedValue"]
+  NOT R3 R4
+  SETTABLE R3 R1 R2
+  JUMP [+8]
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["customValueKey"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K7 ["checkedValue"]
+  SETTABLE R3 R1 R2
+  GETUPVAL R1 3
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K8 ["AnalyticsSettingsChangeName"]
+  LOADNIL R3
+  NEWTABLE R4 0 0
+  LOADB R5 1
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R4 R1 K0 ["derivedValueKey"]
+  NAMECALL R2 R2 K1 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K2 ["derivedValueChangeEvent"]
+  DUPTABLE R4 K5 [{"checked", "vrComfortSetting"}]
+  GETUPVAL R7 0
+  GETTABLEKS R8 R1 K0 ["derivedValueKey"]
+  GETTABLE R6 R7 R8
+  GETTABLEKS R7 R1 K6 ["checkedValue"]
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  SETTABLEKS R5 R4 K3 ["checked"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["VRComfortSetting"]
+  SETTABLEKS R5 R4 K4 ["vrComfortSetting"]
+  NAMECALL R2 R0 K8 ["setState"]
+  CALL R2 2 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  SETTABLEKS R2 R0 K9 ["onExternalChange"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R0 K10 ["onToggled"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"vrComfortSetting"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["VRComfortSetting"]
+  SETTABLEKS R3 R2 K0 ["vrComfortSetting"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["createFragment"]
+  DUPTABLE R3 K5 [{"Toggle", "DerivedValueListener", "VRComfortSettingListener"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["createElement"]
+  GETUPVAL R5 1
+  DUPTABLE R6 K12 [{"checked", "labelKey", "LayoutOrder", "onToggled", "isDisabled"}]
+  GETTABLEKS R8 R0 K13 ["state"]
+  GETTABLEKS R7 R8 K7 ["checked"]
+  SETTABLEKS R7 R6 K7 ["checked"]
+  GETTABLEKS R7 R1 K8 ["labelKey"]
+  SETTABLEKS R7 R6 K8 ["labelKey"]
+  GETTABLEKS R7 R1 K9 ["LayoutOrder"]
+  SETTABLEKS R7 R6 K9 ["LayoutOrder"]
+  GETTABLEKS R7 R0 K10 ["onToggled"]
+  SETTABLEKS R7 R6 K10 ["onToggled"]
+  GETTABLEKS R9 R0 K13 ["state"]
+  GETTABLEKS R8 R9 K14 ["vrComfortSetting"]
+  GETIMPORT R9 K18 [Enum.VRComfortSetting.Custom]
+  JUMPIFNOTEQ R8 R9 [+2]
+  LOADB R7 0 +1
+  LOADB R7 1
+  SETTABLEKS R7 R6 K11 ["isDisabled"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["Toggle"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K21 [{"event", "callback"}]
+  GETTABLEKS R7 R0 K22 ["derivedValueChangeEvent"]
+  SETTABLEKS R7 R6 K19 ["event"]
+  GETTABLEKS R7 R0 K23 ["onExternalChange"]
+  SETTABLEKS R7 R6 K20 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["DerivedValueListener"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K21 [{"event", "callback"}]
+  GETUPVAL R7 3
+  SETTABLEKS R7 R6 K19 ["event"]
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R7 R6 K20 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K4 ["VRComfortSettingListener"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [UserSettings]
+  CALL R1 0 1
+  LOADK R3 K6 ["UserGameSettings"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R0 K9 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["InGameMenuDependencies"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K11 ["Roact"]
+  GETTABLEKS R4 R2 K12 ["t"]
+  GETIMPORT R8 K14 [script]
+  GETTABLEKS R7 R8 K15 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["Parent"]
+  GETTABLEKS R5 R6 K15 ["Parent"]
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R8 R5 K16 ["Utility"]
+  GETTABLEKS R7 R8 K17 ["ExternalEventConnection"]
+  CALL R6 1 1
+  GETIMPORT R7 K8 [require]
+  GETIMPORT R10 K14 [script]
+  GETTABLEKS R9 R10 K15 ["Parent"]
+  GETTABLEKS R8 R9 K18 ["ToggleEntry"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R10 R5 K16 ["Utility"]
+  GETTABLEKS R9 R10 K19 ["SendAnalytics"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R5 K20 ["Resources"]
+  GETTABLEKS R10 R11 K21 ["Constants"]
+  CALL R9 1 1
+  LOADK R12 K22 ["VRComfortSetting"]
+  NAMECALL R10 R1 K23 ["GetPropertyChangedSignal"]
+  CALL R10 2 1
+  GETTABLEKS R11 R3 K24 ["PureComponent"]
+  LOADK R13 K25 ["VRComfortAutoToggleEntry"]
+  NAMECALL R11 R11 K26 ["extend"]
+  CALL R11 2 1
+  GETTABLEKS R12 R4 K27 ["strictInterface"]
+  DUPTABLE R13 K33 [{"customValueKey", "derivedValueKey", "labelKey", "LayoutOrder", "checkedValue"}]
+  GETTABLEKS R14 R4 K34 ["string"]
+  SETTABLEKS R14 R13 K28 ["customValueKey"]
+  GETTABLEKS R14 R4 K34 ["string"]
+  SETTABLEKS R14 R13 K29 ["derivedValueKey"]
+  GETTABLEKS R14 R4 K34 ["string"]
+  SETTABLEKS R14 R13 K30 ["labelKey"]
+  GETTABLEKS R14 R4 K35 ["integer"]
+  SETTABLEKS R14 R13 K31 ["LayoutOrder"]
+  GETTABLEKS R14 R4 K36 ["optional"]
+  GETTABLEKS R15 R4 K37 ["any"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K32 ["checkedValue"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K38 ["validateProps"]
+  DUPTABLE R12 K39 [{"checkedValue"}]
+  LOADB R13 1
+  SETTABLEKS R13 R12 K32 ["checkedValue"]
+  SETTABLEKS R12 R11 K40 ["defaultProps"]
+  DUPCLOSURE R12 K41 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  SETTABLEKS R12 R11 K42 ["init"]
+  DUPCLOSURE R12 K43 [PROTO_4]
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K44 ["render"]
+  RETURN R11 1

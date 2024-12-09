@@ -1,0 +1,89 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K2 [{"style"}]
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R5 2
+  GETTABLEKS R6 R0 K3 ["theme"]
+  GETTABLE R4 R5 R6
+  JUMPIF R4 [+3]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K4 ["Default"]
+  SETTABLEKS R4 R3 K1 ["style"]
+  DUPTABLE R4 K6 [{"Child"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 3
+  MOVE R7 R0
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K5 ["Child"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["UIBlox"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["init"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R0 K10 ["Workspace"]
+  GETTABLEKS R6 R7 K6 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["RobloxAppUIBloxConfig"]
+  CALL R4 1 -1
+  CALL R3 -1 0
+  GETTABLEKS R5 R2 K12 ["App"]
+  GETTABLEKS R4 R5 K13 ["Style"]
+  GETTABLEKS R3 R4 K14 ["AppStyleProvider"]
+  GETTABLEKS R4 R1 K15 ["setGlobalConfig"]
+  DUPTABLE R5 K18 [{"elementTracing", "propValidation"}]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K16 ["elementTracing"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K17 ["propValidation"]
+  CALL R4 1 0
+  DUPTABLE R4 K22 [{"Default", "Light", "Dark"}]
+  DUPTABLE R5 K25 [{"themeName", "fontName"}]
+  LOADK R6 K20 ["Light"]
+  SETTABLEKS R6 R5 K23 ["themeName"]
+  LOADK R6 K26 ["Gotham"]
+  SETTABLEKS R6 R5 K24 ["fontName"]
+  SETTABLEKS R5 R4 K19 ["Default"]
+  DUPTABLE R5 K25 [{"themeName", "fontName"}]
+  LOADK R6 K20 ["Light"]
+  SETTABLEKS R6 R5 K23 ["themeName"]
+  LOADK R6 K26 ["Gotham"]
+  SETTABLEKS R6 R5 K24 ["fontName"]
+  SETTABLEKS R5 R4 K20 ["Light"]
+  DUPTABLE R5 K25 [{"themeName", "fontName"}]
+  LOADK R6 K21 ["Dark"]
+  SETTABLEKS R6 R5 K23 ["themeName"]
+  LOADK R6 K26 ["Gotham"]
+  SETTABLEKS R6 R5 K24 ["fontName"]
+  SETTABLEKS R5 R4 K21 ["Dark"]
+  DUPTABLE R5 K29 [{"roact", "mapStory"}]
+  SETTABLEKS R1 R5 K27 ["roact"]
+  DUPCLOSURE R6 K30 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  SETTABLEKS R6 R5 K28 ["mapStory"]
+  RETURN R5 1

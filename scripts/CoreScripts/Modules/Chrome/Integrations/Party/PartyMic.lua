@@ -7,7 +7,7 @@ local GetFFlagEnablePartyMicIconInChrome =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnablePartyMicIconInChrome
 local GetFFlagEnableCrossExpVoice = require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableCrossExpVoice
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local PartyMicIcon = require(Chrome.Integrations.Party.PartyMicIcon)
 local Constants = require(Chrome.Integrations.Party.Constants)
 local SignalLib = require(CorePackages.Workspace.Packages.AppCommonLib)

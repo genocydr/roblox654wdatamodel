@@ -1,0 +1,273 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setLeaderboardOpen"]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K2 ["GetSetVisible"]
+  CALL R2 1 -1
+  CALL R1 -1 0
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K3 ["setBackpackOpen"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["IsOpen"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K5 ["setEmotesOpen"]
+  GETUPVAL R2 2
+  NAMECALL R2 R2 K6 ["isOpen"]
+  CALL R2 1 -1
+  CALL R1 -1 0
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K7 ["setEmotesEnabled"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K8 ["MenuIsVisible"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setLeaderboardOpen"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setBackpackOpen"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setEmotesOpen"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setEmotesEnabled"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetSetVisibleChangedEvent"]
+  CALL R1 1 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["createFragment"]
+  DUPTABLE R3 K6 [{"LeaderboardOpenChangedConnection", "BackpackOpenChangedConnection", "EmotesOpenChangedConnection", "EmotesEnabledChangedConnection"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K10 [{"event", "callback"}]
+  GETTABLEKS R7 R1 K11 ["Event"]
+  SETTABLEKS R7 R6 K8 ["event"]
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K9 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["LeaderboardOpenChangedConnection"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K10 [{"event", "callback"}]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K12 ["StateChanged"]
+  GETTABLEKS R7 R8 K11 ["Event"]
+  SETTABLEKS R7 R6 K8 ["event"]
+  NEWCLOSURE R7 P1
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K9 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["BackpackOpenChangedConnection"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K10 [{"event", "callback"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K13 ["EmotesMenuToggled"]
+  GETTABLEKS R7 R8 K11 ["Event"]
+  SETTABLEKS R7 R6 K8 ["event"]
+  NEWCLOSURE R7 P2
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K9 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K4 ["EmotesOpenChangedConnection"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K7 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K10 [{"event", "callback"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K14 ["MenuVisibilityChanged"]
+  GETTABLEKS R7 R8 K11 ["Event"]
+  SETTABLEKS R7 R6 K8 ["event"]
+  NEWCLOSURE R7 P3
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K9 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K5 ["EmotesEnabledChangedConnection"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_8:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_9:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_10:
+  DUPTABLE R1 K4 [{"setBackpackOpen", "setEmotesOpen", "setLeaderboardOpen", "setEmotesEnabled"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setBackpackOpen"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["setEmotesOpen"]
+  NEWCLOSURE R2 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R1 K2 ["setLeaderboardOpen"]
+  NEWCLOSURE R2 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  SETTABLEKS R2 R1 K3 ["setEmotesEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R6 R5 K13 ["Parent"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K14 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["SetBackpackOpen"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R6 K14 ["Actions"]
+  GETTABLEKS R9 R10 K16 ["SetEmotesOpen"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R11 R6 K14 ["Actions"]
+  GETTABLEKS R10 R11 K17 ["SetLeaderboardOpen"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R6 K14 ["Actions"]
+  GETTABLEKS R11 R12 K18 ["SetEmotesEnabled"]
+  CALL R10 1 1
+  GETIMPORT R11 K6 [require]
+  GETTABLEKS R14 R6 K13 ["Parent"]
+  GETTABLEKS R13 R14 K19 ["Common"]
+  GETTABLEKS R12 R13 K20 ["EventConnection"]
+  CALL R11 1 1
+  LOADK R14 K21 ["RobloxGui"]
+  NAMECALL R12 R1 K22 ["WaitForChild"]
+  CALL R12 2 1
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R15 R12 K23 ["Modules"]
+  GETTABLEKS R14 R15 K24 ["BackpackScript"]
+  CALL R13 1 1
+  GETIMPORT R14 K6 [require]
+  GETTABLEKS R17 R12 K23 ["Modules"]
+  GETTABLEKS R16 R17 K25 ["EmotesMenu"]
+  GETTABLEKS R15 R16 K26 ["EmotesMenuMaster"]
+  CALL R14 1 1
+  GETIMPORT R15 K6 [require]
+  GETTABLEKS R18 R12 K23 ["Modules"]
+  GETTABLEKS R17 R18 K27 ["PlayerList"]
+  GETTABLEKS R16 R17 K28 ["PlayerListManager"]
+  CALL R15 1 1
+  GETTABLEKS R16 R2 K29 ["PureComponent"]
+  LOADK R18 K30 ["OpenUIConnector"]
+  NAMECALL R16 R16 K31 ["extend"]
+  CALL R16 2 1
+  GETTABLEKS R17 R4 K32 ["strictInterface"]
+  DUPTABLE R18 K37 [{"setBackpackOpen", "setEmotesOpen", "setLeaderboardOpen", "setEmotesEnabled"}]
+  GETTABLEKS R19 R4 K38 ["callback"]
+  SETTABLEKS R19 R18 K33 ["setBackpackOpen"]
+  GETTABLEKS R19 R4 K38 ["callback"]
+  SETTABLEKS R19 R18 K34 ["setEmotesOpen"]
+  GETTABLEKS R19 R4 K38 ["callback"]
+  SETTABLEKS R19 R18 K35 ["setLeaderboardOpen"]
+  GETTABLEKS R19 R4 K38 ["callback"]
+  SETTABLEKS R19 R18 K36 ["setEmotesEnabled"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K39 ["validateProps"]
+  DUPCLOSURE R17 K40 [PROTO_0]
+  CAPTURE VAL R15
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  SETTABLEKS R17 R16 K41 ["didMount"]
+  DUPCLOSURE R17 K42 [PROTO_5]
+  CAPTURE VAL R15
+  CAPTURE VAL R2
+  CAPTURE VAL R11
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  SETTABLEKS R17 R16 K43 ["render"]
+  DUPCLOSURE R17 K44 [PROTO_10]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  GETTABLEKS R18 R3 K45 ["UNSTABLE_connect2"]
+  LOADNIL R19
+  MOVE R20 R17
+  CALL R18 2 1
+  MOVE R19 R16
+  CALL R18 1 -1
+  RETURN R18 -1

@@ -1,0 +1,1221 @@
+PROTO_0:
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K0 ["inputState"]
+  GETUPVAL R3 0
+  SETTABLEKS R2 R3 K1 ["inputObject"]
+  GETIMPORT R3 K5 [Enum.ContextActionResult.Sink]
+  RETURN R3 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["closePrompt"]
+  CALL R0 0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["SetPromptVisibility"]
+  LOADB R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"showUnsavedDataWarning"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["showUnsavedDataWarning"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K3 ["sendButtonClicked"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["Section"]
+  GETTABLEKS R1 R2 K5 ["BuyCreationPage"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["Element"]
+  GETTABLEKS R2 R3 K7 ["X"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"showUnsavedDataWarning"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["showUnsavedDataWarning"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["guid"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["scopes"]
+  GETIMPORT R4 K6 [Enum.ScopeCheckResult.ConsentDenied]
+  NEWTABLE R5 0 0
+  NAMECALL R0 R0 K7 ["ScopeCheckUIComplete"]
+  CALL R0 5 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K8 ["closePrompt"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["canSubmit"]
+  CALL R0 0 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["onSubmit"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["swipeScrollingFrameRef"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["inputState"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K3 ["inputObject"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["connection"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["storeInput"]
+  DUPTABLE R3 K7 [{"showUnsavedDataWarning"}]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K6 ["showUnsavedDataWarning"]
+  NAMECALL R1 R0 K8 ["setState"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K9 ["closePrompt"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R1 R0 K6 ["showUnsavedDataWarning"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K10 ["cancelClosePrompt"]
+  NEWCLOSURE R1 P4
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K11 ["denyAndClose"]
+  NEWCLOSURE R1 P5
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K12 ["confirmAndUpload"]
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["inputState"]
+  GETIMPORT R2 K4 [Enum.UserInputState.Change]
+  JUMPIFNOTEQ R1 R2 [+51]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K5 ["inputObject"]
+  JUMPIFNOT R1 [+46]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["inputObject"]
+  GETTABLEKS R1 R2 K6 ["Position"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K7 ["swipeScrollingFrameRef"]
+  GETTABLEKS R2 R3 K8 ["current"]
+  GETTABLEKS R4 R2 K9 ["CanvasPosition"]
+  GETTABLEKS R3 R4 K10 ["Y"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K11 ["normalizeStickByDeadzone"]
+  MOVE R5 R1
+  CALL R4 1 1
+  GETTABLEKS R9 R4 K10 ["Y"]
+  MINUS R8 R9
+  MUL R7 R0 R8
+  MULK R6 R7 K12 [1000]
+  ADD R5 R3 R6
+  GETTABLEKS R7 R2 K13 ["AbsoluteSize"]
+  GETTABLEKS R6 R7 K10 ["Y"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K14 ["Scale"]
+  MUL R7 R6 R8
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K15 ["Offset"]
+  ADD R6 R7 R8
+  JUMPIFNOTLE R5 R6 [+8]
+  GETIMPORT R7 K18 [Vector2.new]
+  LOADN R8 0
+  MOVE R9 R5
+  CALL R7 2 1
+  SETTABLEKS R7 R2 K9 ["CanvasPosition"]
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GamepadEnabled"]
+  JUMPIFNOT R1 [+42]
+  GETUPVAL R1 1
+  LOADK R3 K1 ["ScrollPrompt"]
+  NAMECALL R1 R1 K2 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  LOADK R3 K1 ["ScrollPrompt"]
+  GETTABLEKS R4 R0 K3 ["storeInput"]
+  LOADB R5 0
+  GETIMPORT R6 K7 [Enum.KeyCode.Thumbstick2]
+  NAMECALL R1 R1 K8 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K9 ["RenderStepped"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  NAMECALL R1 R1 K10 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K11 ["connection"]
+  GETUPVAL R1 1
+  LOADK R3 K12 ["ClosePrompt"]
+  NAMECALL R1 R1 K2 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  LOADK R3 K12 ["ClosePrompt"]
+  GETTABLEKS R4 R0 K3 ["storeInput"]
+  LOADB R5 0
+  GETIMPORT R6 K14 [Enum.KeyCode.ButtonB]
+  NAMECALL R1 R1 K8 ["BindCoreAction"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["ClosePrompt"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K2 ["ScrollPrompt"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETTABLEKS R1 R0 K3 ["connection"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K3 ["connection"]
+  NAMECALL R1 R1 K4 ["Disconnect"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_10:
+  NAMECALL R1 R0 K0 ["setUpGamepad"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["SetPromptVisibility"]
+  LOADB R2 1
+  CALL R1 1 0
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["GamepadEnabled"]
+  JUMPIFNOT R2 [+3]
+  GETIMPORT R1 K7 [Enum.OverrideMouseIconBehavior.ForceHide]
+  JUMP [+2]
+  GETIMPORT R1 K9 [Enum.OverrideMouseIconBehavior.ForceShow]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K10 ["push"]
+  LOADK R3 K11 ["BasePublishPromptOverrideKey"]
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R2 R1 K0 ["promptVisible"]
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K0 ["promptVisible"]
+  JUMPIFEQ R2 R3 [+10]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K0 ["promptVisible"]
+  JUMPIFNOTEQKB R2 FALSE [+4]
+  GETTABLEKS R2 R0 K2 ["closePrompt"]
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R1 R0 K0 ["Font"]
+  GETTABLEKS R2 R1 K1 ["BaseSize"]
+  GETTABLEKS R3 R0 K2 ["Theme"]
+  GETTABLEKS R4 R1 K3 ["Footer"]
+  GETTABLEKS R6 R3 K4 ["TextDefault"]
+  GETTABLEKS R5 R6 K5 ["Color"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K6 ["createFragment"]
+  DUPTABLE R7 K10 [{"ScrollingFrame", "BottomGradient", "DisclaimerContainer"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  LOADK R9 K7 ["ScrollingFrame"]
+  NEWTABLE R10 8 0
+  LOADN R11 1
+  SETTABLEKS R11 R10 K12 ["BackgroundTransparency"]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 206
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K16 ["Size"]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K17 ["CanvasSize"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K18 ["ScrollBarThickness"]
+  GETIMPORT R11 K22 [Enum.ScrollingDirection.Y]
+  SETTABLEKS R11 R10 K20 ["ScrollingDirection"]
+  GETIMPORT R11 K24 [Enum.AutomaticSize.Y]
+  SETTABLEKS R11 R10 K25 ["AutomaticCanvasSize"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K26 ["Selectable"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K27 ["Ref"]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K28 ["swipeScrollingFrameRef"]
+  SETTABLE R12 R10 R11
+  DUPTABLE R11 K33 [{"layout", "padding", "NameInput", "PromptBody"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K34 ["UIListLayout"]
+  DUPTABLE R14 K38 [{"HorizontalAlignment", "SortOrder", "FillDirection"}]
+  GETIMPORT R15 K40 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R15 R14 K35 ["HorizontalAlignment"]
+  GETIMPORT R15 K42 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R15 R14 K36 ["SortOrder"]
+  GETIMPORT R15 K44 [Enum.FillDirection.Vertical]
+  SETTABLEKS R15 R14 K37 ["FillDirection"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K29 ["layout"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K45 ["UIPadding"]
+  DUPTABLE R14 K48 [{"PaddingLeft", "PaddingRight"}]
+  GETIMPORT R15 K50 [UDim.new]
+  LOADN R16 0
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K51 ["PromptSidePadding"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K46 ["PaddingLeft"]
+  GETIMPORT R15 K50 [UDim.new]
+  LOADN R16 0
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K51 ["PromptSidePadding"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K47 ["PaddingRight"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K30 ["padding"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  GETUPVAL R13 3
+  DUPTABLE R14 K57 [{"LayoutOrder", "labelText", "topPadding", "defaultText", "onTextUpdated", "textBoxHeight"}]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K41 ["LayoutOrder"]
+  GETUPVAL R17 1
+  GETTABLEKS R16 R17 K58 ["props"]
+  GETTABLEKS R15 R16 K59 ["nameLabel"]
+  SETTABLEKS R15 R14 K52 ["labelText"]
+  LOADN R15 24
+  SETTABLEKS R15 R14 K53 ["topPadding"]
+  GETUPVAL R17 1
+  GETTABLEKS R16 R17 K58 ["props"]
+  GETTABLEKS R15 R16 K60 ["defaultName"]
+  SETTABLEKS R15 R14 K54 ["defaultText"]
+  GETUPVAL R17 1
+  GETTABLEKS R16 R17 K58 ["props"]
+  GETTABLEKS R15 R16 K61 ["onNameUpdated"]
+  SETTABLEKS R15 R14 K55 ["onTextUpdated"]
+  LOADN R15 30
+  SETTABLEKS R15 R14 K56 ["textBoxHeight"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K31 ["NameInput"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K62 ["Frame"]
+  DUPTABLE R14 K63 [{"Size", "AutomaticSize", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R15 K65 [UDim2.fromScale]
+  LOADN R16 1
+  LOADN R17 0
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K16 ["Size"]
+  GETIMPORT R15 K24 [Enum.AutomaticSize.Y]
+  SETTABLEKS R15 R14 K23 ["AutomaticSize"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K12 ["BackgroundTransparency"]
+  LOADN R15 2
+  SETTABLEKS R15 R14 K41 ["LayoutOrder"]
+  GETUPVAL R17 1
+  GETTABLEKS R16 R17 K58 ["props"]
+  GETTABLEKS R15 R16 K66 ["promptBody"]
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K32 ["PromptBody"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K7 ["ScrollingFrame"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  LOADK R9 K62 ["Frame"]
+  DUPTABLE R10 K72 [{"Size", "AnchorPoint", "Position", "BackgroundColor3", "BackgroundTransparency", "BorderSizePixel", "ZIndex"}]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 5
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K16 ["Size"]
+  GETIMPORT R11 K74 [Vector2.new]
+  LOADN R12 0
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K67 ["AnchorPoint"]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 206
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K68 ["Position"]
+  GETIMPORT R11 K77 [Color3.fromRGB]
+  LOADN R12 255
+  LOADN R13 255
+  LOADN R14 255
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K69 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K12 ["BackgroundTransparency"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K70 ["BorderSizePixel"]
+  LOADN R11 2
+  SETTABLEKS R11 R10 K71 ["ZIndex"]
+  DUPTABLE R11 K79 [{"gradient"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K80 ["UIGradient"]
+  DUPTABLE R14 K83 [{"Rotation", "Color", "Transparency"}]
+  LOADN R15 14
+  SETTABLEKS R15 R14 K81 ["Rotation"]
+  GETIMPORT R15 K85 [ColorSequence.new]
+  NEWTABLE R16 0 2
+  GETIMPORT R17 K87 [ColorSequenceKeypoint.new]
+  LOADN R18 0
+  GETTABLEKS R20 R3 K88 ["BackgroundUIDefault"]
+  GETTABLEKS R19 R20 K5 ["Color"]
+  CALL R17 2 1
+  GETIMPORT R18 K87 [ColorSequenceKeypoint.new]
+  LOADN R19 1
+  GETTABLEKS R21 R3 K88 ["BackgroundUIDefault"]
+  GETTABLEKS R20 R21 K5 ["Color"]
+  CALL R18 2 -1
+  SETLIST R16 R17 -1 [1]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K5 ["Color"]
+  GETIMPORT R15 K90 [NumberSequence.new]
+  NEWTABLE R16 0 3
+  GETIMPORT R17 K92 [NumberSequenceKeypoint.new]
+  LOADN R18 0
+  GETTABLEKS R20 R3 K88 ["BackgroundUIDefault"]
+  GETTABLEKS R19 R20 K82 ["Transparency"]
+  CALL R17 2 1
+  GETIMPORT R18 K92 [NumberSequenceKeypoint.new]
+  LOADK R19 K93 [0.5]
+  GETTABLEKS R21 R3 K88 ["BackgroundUIDefault"]
+  GETTABLEKS R20 R21 K82 ["Transparency"]
+  CALL R18 2 1
+  GETIMPORT R19 K92 [NumberSequenceKeypoint.new]
+  LOADN R20 1
+  LOADN R21 1
+  CALL R19 2 -1
+  SETLIST R16 R17 -1 [1]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K82 ["Transparency"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K78 ["gradient"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K8 ["BottomGradient"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K11 ["createElement"]
+  LOADK R9 K62 ["Frame"]
+  DUPTABLE R10 K94 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K12 ["BackgroundTransparency"]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 50
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K16 ["Size"]
+  GETIMPORT R11 K15 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 206
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K68 ["Position"]
+  DUPTABLE R11 K96 [{"padding", "Disclaimer"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K45 ["UIPadding"]
+  DUPTABLE R14 K48 [{"PaddingLeft", "PaddingRight"}]
+  GETIMPORT R15 K50 [UDim.new]
+  LOADN R16 0
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K51 ["PromptSidePadding"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K46 ["PaddingLeft"]
+  GETIMPORT R15 K50 [UDim.new]
+  LOADN R16 0
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K51 ["PromptSidePadding"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K47 ["PaddingRight"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K30 ["padding"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K11 ["createElement"]
+  LOADK R13 K97 ["TextLabel"]
+  DUPTABLE R14 K102 [{"Size", "Text", "Font", "TextSize", "TextColor3", "BackgroundTransparency", "TextWrapped"}]
+  GETIMPORT R15 K65 [UDim2.fromScale]
+  LOADN R16 1
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K16 ["Size"]
+  GETUPVAL R16 4
+  GETTABLEKS R15 R16 K103 ["disclaimer"]
+  SETTABLEKS R15 R14 K98 ["Text"]
+  GETTABLEKS R15 R4 K0 ["Font"]
+  SETTABLEKS R15 R14 K0 ["Font"]
+  GETTABLEKS R16 R4 K104 ["RelativeSize"]
+  MUL R15 R2 R16
+  SETTABLEKS R15 R14 K99 ["TextSize"]
+  SETTABLEKS R5 R14 K100 ["TextColor3"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K12 ["BackgroundTransparency"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K101 ["TextWrapped"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K95 ["Disclaimer"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K9 ["DisclaimerContainer"]
+  CALL R6 1 -1
+  RETURN R6 -1
+
+PROTO_13:
+  GETUPVAL R2 0
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_14:
+  GETTABLEKS R1 R0 K0 ["Theme"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["priceInRobux"]
+  JUMPIFNOT R3 [+19]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["priceInRobux"]
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+12]
+  GETIMPORT R2 K5 [string.format]
+  LOADK R3 K6 ["%s %i"]
+  LOADK R4 K7 [""]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["props"]
+  GETTABLEKS R5 R6 K2 ["priceInRobux"]
+  CALL R2 3 1
+  JUMP [+3]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K8 ["submit"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K9 ["createFragment"]
+  DUPTABLE R4 K16 [{"BottomScrim", "PublishPrompt", "LeaveCreationAlert", "ValidationErrorAlert", "PreviewFrame", "TopScrim"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  LOADK R6 K18 ["Frame"]
+  DUPTABLE R7 K23 [{"Position", "Size", "ZIndex", "BackgroundTransparency"}]
+  GETUPVAL R8 3
+  SETTABLEKS R8 R7 K19 ["Position"]
+  GETUPVAL R8 4
+  SETTABLEKS R8 R7 K20 ["Size"]
+  LOADN R8 255
+  SETTABLEKS R8 R7 K21 ["ZIndex"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K22 ["BackgroundTransparency"]
+  DUPTABLE R8 K26 [{"Overlay", "InputSink"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["createElement"]
+  GETUPVAL R10 5
+  DUPTABLE R11 K28 [{"showGradient"}]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K27 ["showGradient"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K24 ["Overlay"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["createElement"]
+  LOADK R10 K29 ["TextButton"]
+  DUPTABLE R11 K32 [{"Size", "BackgroundTransparency", "Text", "Modal"}]
+  GETIMPORT R12 K35 [UDim2.fromScale]
+  LOADN R13 1
+  LOADN R14 1
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K20 ["Size"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K22 ["BackgroundTransparency"]
+  LOADK R12 K36 [""]
+  SETTABLEKS R12 R11 K30 ["Text"]
+  GETUPVAL R13 6
+  JUMPIFNOT R13 [+2]
+  LOADB R12 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K31 ["Modal"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K25 ["InputSink"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K10 ["BottomScrim"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  LOADK R6 K18 ["Frame"]
+  DUPTABLE R7 K38 [{"BackgroundTransparency", "Size", "Position", "Visible"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K22 ["BackgroundTransparency"]
+  GETIMPORT R8 K40 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  GETUPVAL R13 7
+  MINUS R12 R13
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K20 ["Size"]
+  GETIMPORT R8 K42 [UDim2.fromOffset]
+  LOADN R9 0
+  GETUPVAL R10 7
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K19 ["Position"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K43 ["state"]
+  GETTABLEKS R9 R10 K44 ["showUnsavedDataWarning"]
+  NOT R8 R9
+  JUMPIFNOT R8 [+13]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K1 ["props"]
+  GETTABLEKS R9 R10 K45 ["showingPreviewView"]
+  NOT R8 R9
+  JUMPIFNOT R8 [+6]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K1 ["props"]
+  GETTABLEKS R9 R10 K46 ["showTopScrim"]
+  NOT R8 R9
+  SETTABLEKS R8 R7 K37 ["Visible"]
+  DUPTABLE R8 K48 [{"FullPageModal"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["createElement"]
+  GETUPVAL R10 8
+  DUPTABLE R11 K55 [{"title", "onCloseClicked", "distanceFromTop", "marginSize", "screenSize", "buttonStackProps"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K1 ["props"]
+  GETTABLEKS R12 R13 K56 ["titleText"]
+  SETTABLEKS R12 R11 K49 ["title"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K44 ["showUnsavedDataWarning"]
+  SETTABLEKS R12 R11 K50 ["onCloseClicked"]
+  LOADN R12 4
+  SETTABLEKS R12 R11 K51 ["distanceFromTop"]
+  LOADN R12 0
+  SETTABLEKS R12 R11 K52 ["marginSize"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K1 ["props"]
+  GETTABLEKS R12 R13 K53 ["screenSize"]
+  SETTABLEKS R12 R11 K53 ["screenSize"]
+  DUPTABLE R12 K59 [{"buttons", "disableRoactGamepadButtonSelection"}]
+  NEWTABLE R13 0 1
+  DUPTABLE R14 K61 [{"buttonType", "props"}]
+  GETUPVAL R16 9
+  GETTABLEKS R15 R16 K62 ["PrimarySystem"]
+  SETTABLEKS R15 R14 K60 ["buttonType"]
+  DUPTABLE R15 K70 [{"isDisabled", "isDelayedInput", "enableInputDelayed", "delayInputSeconds", "onActivated", "text", "isLoading"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K1 ["props"]
+  GETTABLEKS R17 R18 K71 ["canSubmit"]
+  CALL R17 0 1
+  NOT R16 R17
+  SETTABLEKS R16 R15 K63 ["isDisabled"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K1 ["props"]
+  GETTABLEKS R16 R17 K64 ["isDelayedInput"]
+  SETTABLEKS R16 R15 K64 ["isDelayedInput"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K1 ["props"]
+  GETTABLEKS R16 R17 K65 ["enableInputDelayed"]
+  SETTABLEKS R16 R15 K65 ["enableInputDelayed"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K1 ["props"]
+  GETTABLEKS R16 R17 K66 ["delayInputSeconds"]
+  SETTABLEKS R16 R15 K66 ["delayInputSeconds"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K72 ["confirmAndUpload"]
+  SETTABLEKS R16 R15 K67 ["onActivated"]
+  SETTABLEKS R2 R15 K68 ["text"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K1 ["props"]
+  GETTABLEKS R17 R18 K2 ["priceInRobux"]
+  NOT R16 R17
+  SETTABLEKS R16 R15 K69 ["isLoading"]
+  SETTABLEKS R15 R14 K1 ["props"]
+  SETLIST R13 R14 1 [1]
+  SETTABLEKS R13 R12 K57 ["buttons"]
+  LOADB R13 1
+  SETTABLEKS R13 R12 K58 ["disableRoactGamepadButtonSelection"]
+  SETTABLEKS R12 R11 K54 ["buttonStackProps"]
+  DUPTABLE R12 K74 [{"middleContent"}]
+  GETUPVAL R13 0
+  GETUPVAL R15 1
+  NAMECALL R13 R13 K75 ["renderMiddle"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K73 ["middleContent"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K47 ["FullPageModal"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K11 ["PublishPrompt"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K43 ["state"]
+  GETTABLEKS R6 R7 K44 ["showUnsavedDataWarning"]
+  JUMPIFNOT R6 [+24]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  GETUPVAL R6 10
+  DUPTABLE R7 K78 [{"screenSize", "closePrompt", "cancelClosePrompt"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K1 ["props"]
+  GETTABLEKS R8 R9 K53 ["screenSize"]
+  SETTABLEKS R8 R7 K53 ["screenSize"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K79 ["denyAndClose"]
+  SETTABLEKS R8 R7 K76 ["closePrompt"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K77 ["cancelClosePrompt"]
+  SETTABLEKS R8 R7 K77 ["cancelClosePrompt"]
+  CALL R5 2 1
+  JUMP [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K12 ["LeaveCreationAlert"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K1 ["props"]
+  GETTABLEKS R6 R7 K80 ["errorMessage"]
+  JUMPIFNOT R6 [+19]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  GETUPVAL R6 11
+  DUPTABLE R7 K81 [{"screenSize", "closePrompt"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K1 ["props"]
+  GETTABLEKS R8 R9 K53 ["screenSize"]
+  SETTABLEKS R8 R7 K53 ["screenSize"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K76 ["closePrompt"]
+  SETTABLEKS R8 R7 K76 ["closePrompt"]
+  CALL R5 2 1
+  JUMP [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K13 ["ValidationErrorAlert"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K1 ["props"]
+  GETTABLEKS R6 R7 K45 ["showingPreviewView"]
+  JUMPIFNOT R6 [+65]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  LOADK R6 K18 ["Frame"]
+  DUPTABLE R7 K84 [{"Size", "BackgroundColor3", "AnchorPoint", "Position", "BackgroundTransparency"}]
+  GETIMPORT R8 K40 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K20 ["Size"]
+  GETTABLEKS R9 R1 K85 ["BackgroundUIDefault"]
+  GETTABLEKS R8 R9 K86 ["Color"]
+  SETTABLEKS R8 R7 K82 ["BackgroundColor3"]
+  GETIMPORT R8 K88 [Vector2.new]
+  LOADK R9 K89 [0.5]
+  LOADK R10 K89 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K83 ["AnchorPoint"]
+  GETIMPORT R8 K35 [UDim2.fromScale]
+  LOADK R9 K89 [0.5]
+  LOADK R10 K89 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K19 ["Position"]
+  GETTABLEKS R9 R1 K85 ["BackgroundUIDefault"]
+  GETTABLEKS R8 R9 K90 ["Transparency"]
+  SETTABLEKS R8 R7 K22 ["BackgroundTransparency"]
+  DUPTABLE R8 K92 [{"PreviewViewport"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["createElement"]
+  GETUPVAL R10 12
+  DUPTABLE R11 K95 [{"asset", "closePreviewView"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K1 ["props"]
+  GETTABLEKS R12 R13 K93 ["asset"]
+  SETTABLEKS R12 R11 K93 ["asset"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K1 ["props"]
+  GETTABLEKS R12 R13 K94 ["closePreviewView"]
+  SETTABLEKS R12 R11 K94 ["closePreviewView"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K91 ["PreviewViewport"]
+  CALL R5 3 1
+  JUMPIF R5 [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K14 ["PreviewFrame"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["createElement"]
+  LOADK R6 K18 ["Frame"]
+  DUPTABLE R7 K96 [{"Position", "Size", "ZIndex", "BackgroundTransparency", "Visible"}]
+  GETUPVAL R8 3
+  SETTABLEKS R8 R7 K19 ["Position"]
+  GETUPVAL R8 4
+  SETTABLEKS R8 R7 K20 ["Size"]
+  LOADN R8 2
+  SETTABLEKS R8 R7 K21 ["ZIndex"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K22 ["BackgroundTransparency"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K1 ["props"]
+  GETTABLEKS R8 R9 K46 ["showTopScrim"]
+  SETTABLEKS R8 R7 K37 ["Visible"]
+  DUPTABLE R8 K97 [{"InputSink"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["createElement"]
+  LOADK R10 K29 ["TextButton"]
+  DUPTABLE R11 K98 [{"Size", "BackgroundTransparency", "Text"}]
+  GETIMPORT R12 K35 [UDim2.fromScale]
+  LOADN R13 1
+  LOADN R14 1
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K20 ["Size"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K22 ["BackgroundTransparency"]
+  LOADK R12 K36 [""]
+  SETTABLEKS R12 R11 K30 ["Text"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K25 ["InputSink"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K15 ["TopScrim"]
+  CALL R3 1 -1
+  RETURN R3 -1
+
+PROTO_15:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["GetGuiInset"]
+  CALL R2 1 2
+  GETIMPORT R4 K3 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  GETTABLEKS R9 R2 K4 ["Y"]
+  MINUS R8 R9
+  CALL R4 4 1
+  GETIMPORT R5 K3 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 1
+  GETTABLEKS R9 R2 K4 ["Y"]
+  CALL R5 4 1
+  GETUPVAL R6 1
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CALL R6 1 -1
+  RETURN R6 -1
+
+PROTO_16:
+  NEWTABLE R0 0 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["CoreScripts.PublishAssetPrompt.Submit"]
+  NAMECALL R1 R1 K1 ["FormatByKey"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K2 ["submit"]
+  GETUPVAL R1 0
+  LOADK R3 K3 ["CoreScripts.PublishCommon.Disclaimer"]
+  NAMECALL R1 R1 K1 ["FormatByKey"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K4 ["disclaimer"]
+  RETURN R0 1
+
+PROTO_17:
+  NEWTABLE R2 0 0
+  GETUPVAL R3 0
+  LOADK R5 K0 ["CoreScripts.PublishAssetPrompt.Submit"]
+  NAMECALL R3 R3 K1 ["FormatByKey"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["submit"]
+  GETUPVAL R3 0
+  LOADK R5 K3 ["CoreScripts.PublishCommon.Disclaimer"]
+  NAMECALL R3 R3 K1 ["FormatByKey"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K4 ["disclaimer"]
+  MOVE R1 R2
+  MOVE R4 R1
+  NAMECALL R2 R0 K5 ["renderAlertLocalized"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_18:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["pop"]
+  LOADK R2 K1 ["BasePublishPromptOverrideKey"]
+  CALL R1 1 0
+  NAMECALL R1 R0 K2 ["cleanupGamepad"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K3 ["props"]
+  GETTABLEKS R1 R2 K4 ["SetPromptVisibility"]
+  LOADB R2 0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_19:
+  DUPTABLE R1 K4 [{"guid", "scopes", "errorMessage", "promptVisible"}]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K0 ["guid"]
+  SETTABLEKS R2 R1 K0 ["guid"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K1 ["scopes"]
+  SETTABLEKS R2 R1 K1 ["scopes"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K2 ["errorMessage"]
+  SETTABLEKS R2 R1 K2 ["errorMessage"]
+  GETTABLEKS R4 R0 K5 ["promptRequest"]
+  GETTABLEKS R3 R4 K6 ["promptInfo"]
+  GETTABLEKS R2 R3 K3 ["promptVisible"]
+  SETTABLEKS R2 R1 K3 ["promptVisible"]
+  RETURN R1 1
+
+PROTO_20:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R1 0 -1
+  CALL R0 -1 -1
+  RETURN R0 -1
+
+PROTO_21:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_22:
+  DUPTABLE R1 K2 [{"closePrompt", "SetPromptVisibility"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["closePrompt"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["SetPromptVisibility"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["ExperienceAuthService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["ContextActionService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["UserInputService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K8 ["RunService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K9 ["GuiService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R9 R0 K12 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["Roact"]
+  CALL R7 1 1
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R10 R0 K12 ["Packages"]
+  GETTABLEKS R9 R10 K14 ["RoactRodux"]
+  CALL R8 1 1
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R11 R0 K12 ["Packages"]
+  GETTABLEKS R10 R11 K15 ["t"]
+  CALL R9 1 1
+  LOADK R12 K16 ["RobloxGui"]
+  NAMECALL R10 R1 K17 ["WaitForChild"]
+  CALL R10 2 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R13 R10 K18 ["Modules"]
+  GETTABLEKS R12 R13 K19 ["RobloxTranslator"]
+  CALL R11 1 1
+  GETIMPORT R12 K11 [require]
+  GETTABLEKS R14 R0 K12 ["Packages"]
+  GETTABLEKS R13 R14 K20 ["UIBlox"]
+  CALL R12 1 1
+  GETTABLEKS R14 R12 K21 ["Style"]
+  GETTABLEKS R13 R14 K22 ["withStyle"]
+  GETTABLEKS R17 R12 K23 ["App"]
+  GETTABLEKS R16 R17 K24 ["Dialog"]
+  GETTABLEKS R15 R16 K25 ["Modal"]
+  GETTABLEKS R14 R15 K26 ["FullPageModal"]
+  GETTABLEKS R17 R12 K23 ["App"]
+  GETTABLEKS R16 R17 K24 ["Dialog"]
+  GETTABLEKS R15 R16 K27 ["Overlay"]
+  GETTABLEKS R19 R12 K23 ["App"]
+  GETTABLEKS R18 R19 K28 ["Button"]
+  GETTABLEKS R17 R18 K29 ["Enum"]
+  GETTABLEKS R16 R17 K30 ["ButtonType"]
+  GETIMPORT R19 K11 [require]
+  GETTABLEKS R22 R0 K31 ["Workspace"]
+  GETTABLEKS R21 R22 K12 ["Packages"]
+  GETTABLEKS R20 R21 K32 ["AppCommonLib"]
+  CALL R19 1 1
+  GETTABLEKS R18 R19 K33 ["Utils"]
+  GETTABLEKS R17 R18 K34 ["GamepadUtils"]
+  GETIMPORT R18 K11 [require]
+  GETTABLEKS R20 R0 K35 ["InGameServices"]
+  GETTABLEKS R19 R20 K36 ["MouseIconOverrideService"]
+  CALL R18 1 1
+  GETIMPORT R20 K38 [script]
+  GETTABLEKS R19 R20 K39 ["Parent"]
+  GETIMPORT R20 K11 [require]
+  GETTABLEKS R22 R19 K40 ["Common"]
+  GETTABLEKS R21 R22 K41 ["LabeledTextBox"]
+  CALL R20 1 1
+  GETIMPORT R21 K11 [require]
+  GETIMPORT R26 K38 [script]
+  GETTABLEKS R25 R26 K39 ["Parent"]
+  GETTABLEKS R24 R25 K39 ["Parent"]
+  GETTABLEKS R23 R24 K42 ["Actions"]
+  GETTABLEKS R22 R23 K43 ["CloseOpenPrompt"]
+  CALL R21 1 1
+  GETIMPORT R22 K11 [require]
+  GETIMPORT R27 K38 [script]
+  GETTABLEKS R26 R27 K39 ["Parent"]
+  GETTABLEKS R25 R26 K39 ["Parent"]
+  GETTABLEKS R24 R25 K42 ["Actions"]
+  GETTABLEKS R23 R24 K44 ["SetPromptVisibility"]
+  CALL R22 1 1
+  GETIMPORT R23 K11 [require]
+  GETIMPORT R26 K38 [script]
+  GETTABLEKS R25 R26 K39 ["Parent"]
+  GETTABLEKS R24 R25 K45 ["LeaveCreationAlert"]
+  CALL R23 1 1
+  GETIMPORT R24 K11 [require]
+  GETIMPORT R28 K38 [script]
+  GETTABLEKS R27 R28 K39 ["Parent"]
+  GETTABLEKS R26 R27 K39 ["Parent"]
+  GETTABLEKS R25 R26 K46 ["Constants"]
+  CALL R24 1 1
+  GETIMPORT R25 K11 [require]
+  GETTABLEKS R28 R10 K18 ["Modules"]
+  GETTABLEKS R27 R28 K47 ["TopBar"]
+  GETTABLEKS R26 R27 K46 ["Constants"]
+  CALL R25 1 1
+  GETIMPORT R26 K11 [require]
+  GETTABLEKS R28 R19 K40 ["Common"]
+  GETTABLEKS R27 R28 K48 ["PreviewViewport"]
+  CALL R26 1 1
+  GETIMPORT R27 K11 [require]
+  GETTABLEKS R28 R19 K49 ["ValidationErrorModal"]
+  CALL R27 1 1
+  GETIMPORT R28 K11 [require]
+  GETTABLEKS R30 R10 K18 ["Modules"]
+  GETTABLEKS R29 R30 K50 ["PurchasePrompt"]
+  CALL R28 1 1
+  GETTABLEKS R29 R28 K51 ["PublishAssetAnalytics"]
+  GETIMPORT R30 K11 [require]
+  GETTABLEKS R33 R10 K18 ["Modules"]
+  GETTABLEKS R32 R33 K52 ["Flags"]
+  GETTABLEKS R31 R32 K53 ["FFlagCoreScriptPublishPromptModal"]
+  CALL R30 1 1
+  GETTABLEKS R31 R25 K54 ["TopBarHeight"]
+  GETTABLEKS R32 R7 K55 ["PureComponent"]
+  LOADK R34 K56 ["BasePublishPrompt"]
+  NAMECALL R32 R32 K57 ["extend"]
+  CALL R32 2 1
+  GETIMPORT R33 K60 [UDim.new]
+  LOADK R34 K61 [1.5]
+  LOADN R35 0
+  CALL R33 2 1
+  GETTABLEKS R34 R9 K62 ["strictInterface"]
+  DUPTABLE R35 K84 [{"screenSize", "nameLabel", "defaultName", "promptBody", "titleText", "showingPreviewView", "closePreviewView", "asset", "onNameUpdated", "canSubmit", "onSubmit", "enableInputDelayed", "isDelayedInput", "delayInputSeconds", "priceInRobux", "showTopScrim", "guid", "scopes", "errorMessage", "promptVisible", "closePrompt", "SetPromptVisibility"}]
+  GETTABLEKS R36 R9 K85 ["Vector2"]
+  SETTABLEKS R36 R35 K63 ["screenSize"]
+  GETTABLEKS R36 R9 K86 ["string"]
+  SETTABLEKS R36 R35 K64 ["nameLabel"]
+  GETTABLEKS R36 R9 K86 ["string"]
+  SETTABLEKS R36 R35 K65 ["defaultName"]
+  GETTABLEKS R36 R9 K87 ["any"]
+  SETTABLEKS R36 R35 K66 ["promptBody"]
+  GETTABLEKS R36 R9 K86 ["string"]
+  SETTABLEKS R36 R35 K67 ["titleText"]
+  GETTABLEKS R36 R9 K88 ["boolean"]
+  SETTABLEKS R36 R35 K68 ["showingPreviewView"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K69 ["closePreviewView"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K91 ["union"]
+  GETTABLEKS R38 R9 K92 ["instanceOf"]
+  LOADK R39 K93 ["Model"]
+  CALL R38 1 1
+  GETTABLEKS R39 R9 K94 ["instanceIsA"]
+  LOADK R40 K95 ["AnimationClip"]
+  CALL R39 1 -1
+  CALL R37 -1 -1
+  CALL R36 -1 1
+  SETTABLEKS R36 R35 K70 ["asset"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K71 ["onNameUpdated"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K72 ["canSubmit"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K73 ["onSubmit"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K88 ["boolean"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K74 ["enableInputDelayed"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K88 ["boolean"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K75 ["isDelayedInput"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K96 ["number"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K76 ["delayInputSeconds"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K96 ["number"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K77 ["priceInRobux"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K88 ["boolean"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K78 ["showTopScrim"]
+  GETTABLEKS R36 R9 K87 ["any"]
+  SETTABLEKS R36 R35 K79 ["guid"]
+  GETTABLEKS R36 R9 K87 ["any"]
+  SETTABLEKS R36 R35 K80 ["scopes"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K86 ["string"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K81 ["errorMessage"]
+  GETTABLEKS R36 R9 K90 ["optional"]
+  GETTABLEKS R37 R9 K88 ["boolean"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K82 ["promptVisible"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K83 ["closePrompt"]
+  GETTABLEKS R36 R9 K89 ["callback"]
+  SETTABLEKS R36 R35 K44 ["SetPromptVisibility"]
+  CALL R34 1 1
+  SETTABLEKS R34 R32 K97 ["validateProps"]
+  DUPCLOSURE R34 K98 [PROTO_6]
+  CAPTURE VAL R7
+  CAPTURE VAL R29
+  CAPTURE VAL R2
+  SETTABLEKS R34 R32 K99 ["init"]
+  DUPCLOSURE R34 K100 [PROTO_8]
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R17
+  CAPTURE VAL R33
+  SETTABLEKS R34 R32 K101 ["setUpGamepad"]
+  DUPCLOSURE R34 K102 [PROTO_9]
+  CAPTURE VAL R3
+  SETTABLEKS R34 R32 K103 ["cleanupGamepad"]
+  DUPCLOSURE R34 K104 [PROTO_10]
+  CAPTURE VAL R30
+  CAPTURE VAL R4
+  CAPTURE VAL R18
+  SETTABLEKS R34 R32 K105 ["didMount"]
+  DUPCLOSURE R34 K106 [PROTO_11]
+  SETTABLEKS R34 R32 K107 ["didUpdate"]
+  DUPCLOSURE R34 K108 [PROTO_13]
+  CAPTURE VAL R13
+  CAPTURE VAL R7
+  CAPTURE VAL R24
+  CAPTURE VAL R20
+  SETTABLEKS R34 R32 K109 ["renderMiddle"]
+  DUPCLOSURE R34 K110 [PROTO_15]
+  CAPTURE VAL R6
+  CAPTURE VAL R13
+  CAPTURE VAL R7
+  CAPTURE VAL R15
+  CAPTURE VAL R30
+  CAPTURE VAL R31
+  CAPTURE VAL R14
+  CAPTURE VAL R16
+  CAPTURE VAL R23
+  CAPTURE VAL R27
+  CAPTURE VAL R26
+  SETTABLEKS R34 R32 K111 ["renderAlertLocalized"]
+  DUPCLOSURE R34 K112 [PROTO_16]
+  CAPTURE VAL R11
+  DUPCLOSURE R35 K113 [PROTO_17]
+  CAPTURE VAL R11
+  SETTABLEKS R35 R32 K114 ["render"]
+  DUPCLOSURE R35 K115 [PROTO_18]
+  CAPTURE VAL R30
+  CAPTURE VAL R18
+  SETTABLEKS R35 R32 K116 ["willUnmount"]
+  DUPCLOSURE R35 K117 [PROTO_19]
+  DUPCLOSURE R36 K118 [PROTO_22]
+  CAPTURE VAL R21
+  CAPTURE VAL R22
+  GETTABLEKS R37 R8 K119 ["connect"]
+  MOVE R38 R35
+  MOVE R39 R36
+  CALL R37 2 1
+  MOVE R38 R32
+  CALL R37 1 -1
+  RETURN R37 -1

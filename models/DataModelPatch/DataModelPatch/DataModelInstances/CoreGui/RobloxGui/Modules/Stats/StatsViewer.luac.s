@@ -1,0 +1,267 @@
+PROTO_0:
+  NEWTABLE R0 4 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 0
+  GETIMPORT R1 K4 [Instance.new]
+  LOADK R2 K5 ["ImageLabel"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  LOADK R2 K7 ["PS_Viewer"]
+  SETTABLEKS R2 R1 K8 ["Name"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  LOADK R2 K9 ["rbxasset://textures/ui/PerformanceStats/BackgroundRounded.png"]
+  SETTABLEKS R2 R1 K10 ["Image"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  GETIMPORT R2 K14 [Enum.ScaleType.Slice]
+  SETTABLEKS R2 R1 K12 ["ScaleType"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  GETIMPORT R2 K16 [Rect.new]
+  LOADN R3 10
+  LOADN R4 10
+  LOADN R5 22
+  LOADN R6 22
+  CALL R2 4 1
+  SETTABLEKS R2 R1 K17 ["SliceCenter"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  LOADN R2 1
+  SETTABLEKS R2 R1 K18 ["BackgroundTransparency"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K19 ["NormalColor"]
+  SETTABLEKS R2 R1 K20 ["ImageColor3"]
+  GETTABLEKS R1 R0 K6 ["_frameImageLabel"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K21 ["Transparency"]
+  SETTABLEKS R2 R1 K22 ["ImageTransparency"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K23 ["_textPanel"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K24 ["_statType"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K25 ["_graph"]
+  RETURN R0 1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["_graph"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K0 ["_graph"]
+  NAMECALL R1 R1 K1 ["OnPerformanceStatsShouldBeVisibleChanged"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["_textPanel"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K2 ["_textPanel"]
+  NAMECALL R1 R1 K1 ["OnPerformanceStatsShouldBeVisibleChanged"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["_textPanel"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K2 ["_textPanel"]
+  NAMECALL R1 R1 K3 ["OnVisibilityChanged"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R2 R0 K0 ["_frameImageLabel"]
+  GETTABLEKS R1 R2 K1 ["Visible"]
+  RETURN R1 1
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["_statType"]
+  RETURN R1 1
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["_frameImageLabel"]
+  SETTABLEKS R1 R3 K1 ["Size"]
+  GETTABLEKS R3 R0 K0 ["_frameImageLabel"]
+  SETTABLEKS R2 R3 K2 ["Position"]
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["_frameImageLabel"]
+  SETTABLEKS R1 R2 K1 ["Parent"]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["_frameImageLabel"]
+  SETTABLEKS R1 R2 K1 ["Visible"]
+  GETTABLEKS R2 R0 K2 ["_graph"]
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R2 R0 K2 ["_graph"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K3 ["SetVisible"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K4 ["_textPanel"]
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R2 R0 K4 ["_textPanel"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K3 ["SetVisible"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_7:
+  SETTABLEKS R1 R0 K0 ["_statType"]
+  GETTABLEKS R2 R0 K1 ["_frameImageLabel"]
+  NAMECALL R2 R2 K2 ["ClearAllChildren"]
+  CALL R2 1 0
+  GETTABLEKS R2 R0 K3 ["_textPanel"]
+  JUMPIFNOT R2 [+9]
+  GETTABLEKS R2 R0 K3 ["_textPanel"]
+  LOADB R4 0
+  NAMECALL R2 R2 K4 ["SetVisible"]
+  CALL R2 2 0
+  LOADNIL R2
+  SETTABLEKS R2 R0 K3 ["_textPanel"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["new"]
+  MOVE R3 R1
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K3 ["_textPanel"]
+  GETTABLEKS R2 R0 K3 ["_textPanel"]
+  GETTABLEKS R4 R0 K1 ["_frameImageLabel"]
+  GETUPVAL R5 1
+  GETUPVAL R6 2
+  NAMECALL R2 R2 K6 ["PlaceInParent"]
+  CALL R2 4 0
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K5 ["new"]
+  MOVE R3 R1
+  LOADB R4 1
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K7 ["_graph"]
+  GETTABLEKS R2 R0 K7 ["_graph"]
+  GETTABLEKS R4 R0 K1 ["_frameImageLabel"]
+  GETUPVAL R5 4
+  GETUPVAL R6 5
+  NAMECALL R2 R2 K6 ["PlaceInParent"]
+  CALL R2 4 0
+  GETTABLEKS R2 R0 K3 ["_textPanel"]
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K8 ["TextZIndex"]
+  NAMECALL R2 R2 K9 ["SetZIndex"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K7 ["_graph"]
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K10 ["GraphZIndex"]
+  NAMECALL R2 R2 K9 ["SetZIndex"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K7 ["_graph"]
+  GETTABLEKS R5 R0 K1 ["_frameImageLabel"]
+  GETTABLEKS R4 R5 K11 ["Visible"]
+  NAMECALL R2 R2 K4 ["SetVisible"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K3 ["_textPanel"]
+  GETTABLEKS R5 R0 K1 ["_frameImageLabel"]
+  GETTABLEKS R4 R5 K11 ["Visible"]
+  NAMECALL R2 R2 K4 ["SetVisible"]
+  CALL R2 2 0
+  NAMECALL R2 R0 K12 ["_applyStatsAggregator"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["_aggregator"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K1 ["_textPanel"]
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R1 R0 K1 ["_textPanel"]
+  GETTABLEKS R3 R0 K0 ["_aggregator"]
+  NAMECALL R1 R1 K2 ["SetStatsAggregator"]
+  CALL R1 2 0
+  GETTABLEKS R1 R0 K3 ["_graph"]
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R1 R0 K3 ["_graph"]
+  GETTABLEKS R3 R0 K0 ["_aggregator"]
+  NAMECALL R1 R1 K2 ["SetStatsAggregator"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_9:
+  SETTABLEKS R1 R0 K0 ["_aggregator"]
+  NAMECALL R2 R0 K1 ["_applyStatsAggregator"]
+  CALL R2 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R5 R0 K6 ["RobloxGui"]
+  GETTABLEKS R4 R5 K7 ["Modules"]
+  GETTABLEKS R3 R4 K8 ["Stats"]
+  GETTABLEKS R2 R3 K9 ["StatsUtils"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R6 R0 K6 ["RobloxGui"]
+  GETTABLEKS R5 R6 K7 ["Modules"]
+  GETTABLEKS R4 R5 K8 ["Stats"]
+  GETTABLEKS R3 R4 K10 ["StatsTextPanel"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R7 R0 K6 ["RobloxGui"]
+  GETTABLEKS R6 R7 K7 ["Modules"]
+  GETTABLEKS R5 R6 K8 ["Stats"]
+  GETTABLEKS R4 R5 K11 ["StatsAnnotatedGraph"]
+  CALL R3 1 1
+  GETIMPORT R4 K14 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  GETIMPORT R5 K14 [UDim2.new]
+  LOADK R6 K15 [0.4]
+  LOADN R7 0
+  LOADN R8 1
+  LOADN R9 0
+  CALL R5 4 1
+  GETIMPORT R6 K14 [UDim2.new]
+  LOADK R7 K15 [0.4]
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  CALL R6 4 1
+  GETIMPORT R7 K14 [UDim2.new]
+  LOADK R8 K16 [0.6]
+  LOADN R9 0
+  LOADN R10 1
+  LOADN R11 0
+  CALL R7 4 1
+  NEWTABLE R8 16 0
+  SETTABLEKS R8 R8 K17 ["__index"]
+  DUPCLOSURE R9 K18 [PROTO_0]
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K13 ["new"]
+  DUPCLOSURE R9 K19 [PROTO_1]
+  SETTABLEKS R9 R8 K20 ["OnPerformanceStatsShouldBeVisibleChanged"]
+  DUPCLOSURE R9 K21 [PROTO_2]
+  SETTABLEKS R9 R8 K22 ["GetIsVisible"]
+  DUPCLOSURE R9 K23 [PROTO_3]
+  SETTABLEKS R9 R8 K24 ["GetStatType"]
+  DUPCLOSURE R9 K25 [PROTO_4]
+  SETTABLEKS R9 R8 K26 ["SetSizeAndPosition"]
+  DUPCLOSURE R9 K27 [PROTO_5]
+  SETTABLEKS R9 R8 K28 ["SetParent"]
+  DUPCLOSURE R9 K29 [PROTO_6]
+  SETTABLEKS R9 R8 K30 ["SetVisible"]
+  DUPCLOSURE R9 K31 [PROTO_7]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K32 ["SetStatType"]
+  DUPCLOSURE R9 K33 [PROTO_8]
+  SETTABLEKS R9 R8 K34 ["_applyStatsAggregator"]
+  DUPCLOSURE R9 K35 [PROTO_9]
+  SETTABLEKS R9 R8 K36 ["SetStatsAggregator"]
+  RETURN R8 1

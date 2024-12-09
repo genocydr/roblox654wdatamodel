@@ -1,0 +1,32 @@
+PROTO_0:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["asyncInit"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R2 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Promise"]
+  CALL R3 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R8 R1 K11 ["Modules"]
+  GETTABLEKS R7 R8 K12 ["VoiceChat"]
+  GETTABLEKS R6 R7 K13 ["VoiceChatServiceManager"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K14 ["default"]
+  DUPCLOSURE R5 K15 [PROTO_0]
+  CAPTURE VAL R4
+  RETURN R5 1

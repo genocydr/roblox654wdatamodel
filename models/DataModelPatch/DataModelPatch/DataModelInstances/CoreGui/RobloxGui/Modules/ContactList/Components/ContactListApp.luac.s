@@ -1,0 +1,101 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["Iris"]
+  GETTABLEKS R2 R3 K1 ["Name"]
+  NAMECALL R0 R0 K2 ["CreateSoundGroup"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["useEffect"]
+  DUPCLOSURE R1 K1 [PROTO_0]
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  NEWTABLE R2 0 0
+  CALL R0 2 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["createElement"]
+  LOADK R1 K3 ["Folder"]
+  NEWTABLE R2 0 0
+  DUPTABLE R3 K8 [{"CallDialogContainer", "ContactListContainer", "PlayerMenuContainer", "CallBarContainer"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["createElement"]
+  GETUPVAL R5 3
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K4 ["CallDialogContainer"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["createElement"]
+  GETUPVAL R5 4
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K5 ["ContactListContainer"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["createElement"]
+  GETUPVAL R5 5
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K6 ["PlayerMenuContainer"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["createElement"]
+  GETUPVAL R5 6
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K7 ["CallBarContainer"]
+  CALL R0 3 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R1 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R7 R1 K9 ["Workspace"]
+  GETTABLEKS R6 R7 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["SoundManager"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K10 ["SoundManager"]
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R8 R1 K9 ["Workspace"]
+  GETTABLEKS R7 R8 K7 ["Packages"]
+  GETTABLEKS R6 R7 K10 ["SoundManager"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K11 ["SoundGroups"]
+  LOADK R7 K12 ["RobloxGui"]
+  NAMECALL R5 R0 K13 ["WaitForChild"]
+  CALL R5 2 1
+  GETTABLEKS R7 R5 K14 ["Modules"]
+  GETTABLEKS R6 R7 K15 ["ContactList"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K16 ["Components"]
+  GETTABLEKS R8 R9 K17 ["ContactListContainer"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R6 K16 ["Components"]
+  GETTABLEKS R9 R10 K18 ["CallBarContainer"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R11 R6 K16 ["Components"]
+  GETTABLEKS R10 R11 K19 ["CallDialogContainer"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R6 K16 ["Components"]
+  GETTABLEKS R11 R12 K20 ["PlayerMenuContainer"]
+  CALL R10 1 1
+  DUPCLOSURE R11 K21 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  RETURN R11 1

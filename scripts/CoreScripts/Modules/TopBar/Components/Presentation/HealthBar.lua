@@ -23,8 +23,8 @@ local GetFFlagFixChromeReferences = require(CorePackages.Workspace.Packages.Shar
 local Chrome = TopBar.Parent.Chrome
 local ChromeEnabled = require(Chrome.Enabled)
 local ChromeService = if GetFFlagFixChromeReferences() then
-	if ChromeEnabled() then require(Chrome.ChromeShared.Service) else nil
-	else if ChromeEnabled then require(Chrome.ChromeShared.Service) else nil
+	if ChromeEnabled() then require(Chrome.Service) else nil
+	else if ChromeEnabled then require(Chrome.Service) else nil
 
 local UseUpdatedHealthBar = ChromeEnabled()
 

@@ -1,0 +1,167 @@
+PROTO_0:
+  NEWTABLE R0 4 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["init"]
+  GETIMPORT R1 K5 [Instance.new]
+  LOADK R2 K6 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K7 ["captureEvent"]
+  GETIMPORT R1 K5 [Instance.new]
+  LOADK R2 K6 ["BindableEvent"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K8 ["permissionEvent"]
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K9 ["createElement"]
+  GETUPVAL R2 3
+  DUPTABLE R3 K10 [{"permissionEvent"}]
+  GETTABLEKS R4 R0 K8 ["permissionEvent"]
+  SETTABLEKS R4 R3 K8 ["permissionEvent"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K11 ["captureNotification"]
+  RETURN R0 1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["init"]
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["init"]
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["mount"]
+  GETTABLEKS R2 R0 K2 ["captureNotification"]
+  GETUPVAL R3 2
+  LOADK R4 K3 ["RobloxCaptureNotificationGui"]
+  CALL R1 3 1
+  SETTABLEKS R1 R0 K4 ["captureNotificationInstance"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["update"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["captureNotificationInstance"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 2
+  DUPTABLE R4 K5 [{"permissionEvent", "forceDismissToast"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K3 ["permissionEvent"]
+  SETTABLEKS R5 R4 K3 ["permissionEvent"]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K4 ["forceDismissToast"]
+  CALL R2 2 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["init"]
+  JUMPIF R1 [+5]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["Start"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+25]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K2 ["update"]
+  GETTABLEKS R2 R0 K3 ["captureNotificationInstance"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 3
+  DUPTABLE R5 K7 [{"permissionEvent", "forceDismissToast"}]
+  GETTABLEKS R6 R0 K5 ["permissionEvent"]
+  SETTABLEKS R6 R5 K5 ["permissionEvent"]
+  DUPTABLE R6 K9 [{"onDismissed"}]
+  NEWCLOSURE R7 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  SETTABLEKS R7 R6 K8 ["onDismissed"]
+  SETTABLEKS R6 R5 K6 ["forceDismissToast"]
+  CALL R3 2 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["init"]
+  JUMPIF R1 [+4]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["Start"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["permissionEvent"]
+  NAMECALL R1 R1 K3 ["Fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  NAMECALL R1 R0 K0 ["DismissNotification"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K1 ["captureEvent"]
+  NAMECALL R1 R1 K2 ["Fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R1 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  LOADK R5 K9 ["RobloxGui"]
+  NAMECALL R3 R0 K10 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R3 K11 ["Modules"]
+  GETTABLEKS R5 R6 K12 ["CaptureNotification"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R7 R3 K11 ["Modules"]
+  GETTABLEKS R6 R7 K13 ["shouldSaveScreenshotToAlbum"]
+  CALL R5 1 1
+  NEWTABLE R6 8 0
+  SETTABLEKS R6 R6 K14 ["__index"]
+  DUPCLOSURE R7 K15 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  SETTABLEKS R7 R6 K16 ["new"]
+  DUPCLOSURE R7 K17 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R0
+  SETTABLEKS R7 R6 K18 ["Start"]
+  GETTABLEKS R7 R6 K16 ["new"]
+  CALL R7 0 1
+  DUPCLOSURE R8 K19 [PROTO_3]
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  SETTABLEKS R8 R6 K20 ["DismissNotification"]
+  DUPCLOSURE R8 K21 [PROTO_4]
+  CAPTURE VAL R7
+  SETTABLEKS R8 R6 K22 ["ShowPermissionToast"]
+  DUPCLOSURE R8 K23 [PROTO_5]
+  SETTABLEKS R8 R6 K24 ["Capture"]
+  RETURN R7 1

@@ -1,0 +1,80 @@
+PROTO_0:
+  NAMECALL R1 R0 K0 ["getState"]
+  CALL R1 1 1
+  GETTABLEKS R3 R1 K1 ["respawn"]
+  GETTABLEKS R2 R3 K2 ["enabled"]
+  JUMPIFNOT R2 [+34]
+  GETTABLEKS R3 R1 K1 ["respawn"]
+  GETTABLEKS R2 R3 K3 ["customCallback"]
+  JUMPIFNOT R2 [+8]
+  GETTABLEKS R3 R1 K1 ["respawn"]
+  GETTABLEKS R2 R3 K3 ["customCallback"]
+  NAMECALL R2 R2 K4 ["Fire"]
+  CALL R2 1 0
+  JUMP [+21]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["LocalPlayer"]
+  GETTABLEKS R2 R3 K6 ["Character"]
+  JUMPIFEQKNIL R2 [+15]
+  LOADK R5 K7 ["Humanoid"]
+  NAMECALL R3 R2 K8 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIFEQKNIL R3 [+9]
+  LOADK R6 K7 ["Humanoid"]
+  NAMECALL R4 R3 K9 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+3]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K10 ["Health"]
+  GETUPVAL R4 1
+  LOADB R5 0
+  CALL R4 1 -1
+  NAMECALL R2 R0 K11 ["dispatch"]
+  CALL R2 -1 0
+  GETUPVAL R4 2
+  NAMECALL R2 R0 K11 ["dispatch"]
+  CALL R2 2 0
+  GETUPVAL R2 3
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K12 ["AnalyticsInGameMenuName"]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K13 ["AnalyticsRespawnCharacterName"]
+  DUPTABLE R5 K15 [{"confirmed"}]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K16 ["AnalyticsConfirmedName"]
+  SETTABLEKS R6 R5 K14 ["confirmed"]
+  CALL R2 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R3 K5 [script]
+  GETTABLEKS R2 R3 K6 ["Parent"]
+  GETTABLEKS R1 R2 K6 ["Parent"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R1 K9 ["Thunks"]
+  GETTABLEKS R3 R4 K10 ["CloseMenu"]
+  CALL R2 1 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R1 K11 ["Actions"]
+  GETTABLEKS R4 R5 K12 ["SetRespawning"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R1 K13 ["Utility"]
+  GETTABLEKS R5 R6 K14 ["SendAnalytics"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R1 K15 ["Resources"]
+  GETTABLEKS R6 R7 K16 ["Constants"]
+  CALL R5 1 1
+  DUPCLOSURE R6 K17 [PROTO_0]
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  RETURN R6 1

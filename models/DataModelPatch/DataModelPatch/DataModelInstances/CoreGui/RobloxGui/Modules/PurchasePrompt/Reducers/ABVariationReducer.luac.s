@@ -1,0 +1,63 @@
+PROTO_0:
+  GETTABLEKS R5 R1 K0 ["key"]
+  FASTCALL1 TYPE R5 [+2]
+  GETIMPORT R4 K2 [type]
+  CALL R4 1 1
+  JUMPIFEQKS R4 K3 ["string"] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  FASTCALL2K ASSERT R3 K4 [+4]
+  LOADK R4 K4 ["Expected 'key' to be a string"]
+  GETIMPORT R2 K6 [assert]
+  CALL R2 2 0
+  GETTABLEKS R5 R1 K7 ["variation"]
+  FASTCALL1 TYPE R5 [+2]
+  GETIMPORT R4 K2 [type]
+  CALL R4 1 1
+  JUMPIFEQKS R4 K3 ["string"] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  FASTCALL2K ASSERT R3 K8 [+4]
+  LOADK R4 K8 ["Expected 'variation' to be a string"]
+  GETIMPORT R2 K6 [assert]
+  CALL R2 2 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K9 ["Dictionary"]
+  GETTABLEKS R2 R3 K10 ["join"]
+  MOVE R3 R0
+  NEWTABLE R4 1 0
+  GETTABLEKS R5 R1 K0 ["key"]
+  GETTABLEKS R6 R1 K7 ["variation"]
+  SETTABLE R6 R4 R5
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R5 R1 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["PurchasePromptDeps"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K12 ["Rodux"]
+  GETTABLEKS R4 R2 K13 ["Cryo"]
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K14 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["SetABVariation"]
+  CALL R5 1 1
+  GETTABLEKS R6 R3 K16 ["createReducer"]
+  NEWTABLE R7 0 0
+  NEWTABLE R8 1 0
+  GETTABLEKS R9 R5 K17 ["name"]
+  DUPCLOSURE R10 K18 [PROTO_0]
+  CAPTURE VAL R4
+  SETTABLE R10 R8 R9
+  CALL R6 2 1
+  RETURN R6 1

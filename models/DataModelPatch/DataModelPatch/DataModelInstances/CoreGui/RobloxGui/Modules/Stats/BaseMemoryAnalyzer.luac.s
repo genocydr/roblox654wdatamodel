@@ -1,0 +1,715 @@
+PROTO_0:
+  GETIMPORT R1 K3 [Enum.TextXAlignment.Center]
+  SETTABLEKS R1 R0 K1 ["TextXAlignment"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K4 ["TextColor3"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K5 ["BackgroundTransparency"]
+  GETUPVAL R1 1
+  SETTABLEKS R1 R0 K6 ["BorderColor3"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K7 ["BorderSizePixel"]
+  GETUPVAL R1 2
+  SETTABLEKS R1 R0 K8 ["Position"]
+  GETUPVAL R1 3
+  SETTABLEKS R1 R0 K9 ["Size"]
+  RETURN R0 0
+
+PROTO_1:
+  GETIMPORT R1 K3 [Enum.TextXAlignment.Left]
+  SETTABLEKS R1 R0 K1 ["TextXAlignment"]
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K4 ["TextColor3"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K5 ["BackgroundTransparency"]
+  GETIMPORT R1 K8 [UDim2.new]
+  LOADN R2 0
+  LOADN R3 5
+  LOADN R4 0
+  LOADN R5 0
+  CALL R1 4 1
+  SETTABLEKS R1 R0 K9 ["Position"]
+  GETIMPORT R1 K8 [UDim2.new]
+  LOADN R2 1
+  LOADN R3 246
+  LOADN R4 1
+  LOADN R5 0
+  CALL R1 4 1
+  SETTABLEKS R1 R0 K10 ["Size"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K0 ["BorderColor3"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K1 ["BorderSizePixel"]
+  LOADK R1 K2 [0.6]
+  SETTABLEKS R1 R0 K3 ["BackgroundTransparency"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["__toggleExpansion"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  NEWTABLE R1 16 0
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K1 [setmetatable]
+  CALL R2 2 0
+  SETTABLEKS R0 R1 K2 ["_treeViewItem"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K3 ["_expanded"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K4 ["_expansionToggleCallback"]
+  GETIMPORT R2 K7 [Instance.new]
+  LOADK R3 K8 ["Frame"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K9 ["_frame"]
+  GETTABLEKS R2 R1 K9 ["_frame"]
+  LOADK R3 K10 ["MemoryAnalyzerRowClassFrame"]
+  SETTABLEKS R3 R2 K11 ["Name"]
+  GETTABLEKS R2 R1 K9 ["_frame"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K12 ["BackgroundTransparency"]
+  GETIMPORT R2 K7 [Instance.new]
+  LOADK R3 K8 ["Frame"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K13 ["_buttonFrame"]
+  GETTABLEKS R2 R1 K13 ["_buttonFrame"]
+  LOADK R3 K14 ["ButtonFrame"]
+  SETTABLEKS R3 R2 K11 ["Name"]
+  GETTABLEKS R2 R1 K13 ["_buttonFrame"]
+  GETTABLEKS R3 R1 K9 ["_frame"]
+  SETTABLEKS R3 R2 K15 ["Parent"]
+  GETTABLEKS R2 R1 K13 ["_buttonFrame"]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K16 ["Position"]
+  LOADN R4 1
+  NAMECALL R5 R0 K18 ["getStackDepth"]
+  CALL R5 1 1
+  ADD R3 R4 R5
+  MULK R2 R3 K17 [20]
+  GETTABLEKS R3 R1 K13 ["_buttonFrame"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 0
+  MOVE R6 R2
+  LOADN R7 0
+  LOADN R8 20
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Size"]
+  GETTABLEKS R3 R1 K13 ["_buttonFrame"]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K22 ["BorderColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K23 ["BorderSizePixel"]
+  LOADK R4 K24 [0.6]
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETIMPORT R3 K7 [Instance.new]
+  LOADK R4 K25 ["TextButton"]
+  CALL R3 1 1
+  SETTABLEKS R3 R1 K26 ["_button"]
+  GETTABLEKS R3 R1 K26 ["_button"]
+  LOADK R4 K27 ["Button"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  GETTABLEKS R3 R1 K26 ["_button"]
+  GETTABLEKS R4 R1 K13 ["_buttonFrame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R1 K26 ["_button"]
+  GETIMPORT R4 K31 [Enum.TextXAlignment.Center]
+  SETTABLEKS R4 R3 K29 ["TextXAlignment"]
+  GETUPVAL R4 3
+  SETTABLEKS R4 R3 K32 ["TextColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETUPVAL R4 4
+  SETTABLEKS R4 R3 K22 ["BorderColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K23 ["BorderSizePixel"]
+  GETUPVAL R4 5
+  SETTABLEKS R4 R3 K16 ["Position"]
+  GETUPVAL R4 6
+  SETTABLEKS R4 R3 K21 ["Size"]
+  GETTABLEKS R4 R1 K26 ["_button"]
+  GETTABLEKS R3 R4 K33 ["MouseButton1Click"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R1
+  NAMECALL R3 R3 K34 ["connect"]
+  CALL R3 2 0
+  NAMECALL R3 R1 K35 ["__updateButtonState"]
+  CALL R3 1 0
+  GETIMPORT R3 K7 [Instance.new]
+  LOADK R4 K8 ["Frame"]
+  CALL R3 1 1
+  SETTABLEKS R3 R1 K36 ["_labelFrame"]
+  GETTABLEKS R3 R1 K36 ["_labelFrame"]
+  LOADK R4 K37 ["LabelFrame"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  GETTABLEKS R3 R1 K36 ["_labelFrame"]
+  GETTABLEKS R4 R1 K9 ["_frame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R1 K36 ["_labelFrame"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 0
+  MOVE R6 R2
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K16 ["Position"]
+  GETTABLEKS R3 R1 K36 ["_labelFrame"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 1
+  MINUS R7 R2
+  SUBK R6 R7 K38 [100]
+  LOADN R7 0
+  LOADN R8 20
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Size"]
+  GETTABLEKS R3 R1 K36 ["_labelFrame"]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K22 ["BorderColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K23 ["BorderSizePixel"]
+  LOADK R4 K24 [0.6]
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETIMPORT R3 K7 [Instance.new]
+  LOADK R4 K39 ["TextLabel"]
+  CALL R3 1 1
+  SETTABLEKS R3 R1 K40 ["_labelTextLabel"]
+  GETTABLEKS R3 R1 K40 ["_labelTextLabel"]
+  LOADK R4 K41 ["Label"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  GETTABLEKS R3 R1 K40 ["_labelTextLabel"]
+  GETTABLEKS R4 R1 K36 ["_labelFrame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R1 K40 ["_labelTextLabel"]
+  GETIMPORT R4 K43 [Enum.TextXAlignment.Left]
+  SETTABLEKS R4 R3 K29 ["TextXAlignment"]
+  GETUPVAL R4 3
+  SETTABLEKS R4 R3 K32 ["TextColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 5
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K16 ["Position"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 246
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Size"]
+  GETTABLEKS R3 R1 K40 ["_labelTextLabel"]
+  NAMECALL R4 R0 K44 ["getLabel"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K45 ["Text"]
+  GETIMPORT R3 K7 [Instance.new]
+  LOADK R4 K8 ["Frame"]
+  CALL R3 1 1
+  SETTABLEKS R3 R1 K46 ["_valueFrame"]
+  GETTABLEKS R3 R1 K46 ["_valueFrame"]
+  LOADK R4 K47 ["ValueFrame"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  GETTABLEKS R3 R1 K46 ["_valueFrame"]
+  GETTABLEKS R4 R1 K9 ["_frame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R1 K46 ["_valueFrame"]
+  GETUPVAL R4 7
+  SETTABLEKS R4 R3 K16 ["Position"]
+  GETTABLEKS R3 R1 K46 ["_valueFrame"]
+  GETUPVAL R4 8
+  SETTABLEKS R4 R3 K21 ["Size"]
+  GETTABLEKS R3 R1 K46 ["_valueFrame"]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K22 ["BorderColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K23 ["BorderSizePixel"]
+  LOADK R4 K24 [0.6]
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETIMPORT R3 K7 [Instance.new]
+  LOADK R4 K39 ["TextLabel"]
+  CALL R3 1 1
+  SETTABLEKS R3 R1 K48 ["_valueTextLabel"]
+  GETTABLEKS R3 R1 K48 ["_valueTextLabel"]
+  LOADK R4 K49 ["Value"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  GETTABLEKS R3 R1 K48 ["_valueTextLabel"]
+  GETTABLEKS R4 R1 K46 ["_valueFrame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R1 K48 ["_valueTextLabel"]
+  GETIMPORT R4 K43 [Enum.TextXAlignment.Left]
+  SETTABLEKS R4 R3 K29 ["TextXAlignment"]
+  GETUPVAL R4 3
+  SETTABLEKS R4 R3 K32 ["TextColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K12 ["BackgroundTransparency"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 5
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K16 ["Position"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 246
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Size"]
+  LOADB R3 0
+  SETTABLEKS R3 R1 K50 ["_valueHasBeenNonZero"]
+  NAMECALL R3 R1 K51 ["updateValue"]
+  CALL R3 1 0
+  RETURN R1 1
+
+PROTO_5:
+  GETTABLEKS R1 R0 K0 ["_expanded"]
+  RETURN R1 1
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["_valueHasBeenNonZero"]
+  RETURN R1 1
+
+PROTO_7:
+  SETTABLEKS R1 R0 K0 ["_expansionToggleCallback"]
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R2 R0 K0 ["_expanded"]
+  NOT R1 R2
+  SETTABLEKS R1 R0 K0 ["_expanded"]
+  NAMECALL R1 R0 K1 ["__updateButtonState"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["_expansionToggleCallback"]
+  JUMPIFEQKNIL R1 [+4]
+  GETTABLEKS R1 R0 K2 ["_expansionToggleCallback"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R1 R0 K0 ["_treeViewItem"]
+  NAMECALL R1 R1 K1 ["getChildren"]
+  CALL R1 1 1
+  LENGTH R2 R1
+  JUMPIFNOTEQKN R2 K2 [0] [+7]
+  GETTABLEKS R2 R0 K3 ["_button"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K4 ["Visible"]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K3 ["_button"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K4 ["Visible"]
+  GETTABLEKS R2 R0 K5 ["_expanded"]
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R2 R0 K3 ["_button"]
+  LOADK R3 K6 ["-"]
+  SETTABLEKS R3 R2 K7 ["Text"]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K3 ["_button"]
+  LOADK R3 K8 ["+"]
+  SETTABLEKS R3 R2 K7 ["Text"]
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R1 R0 K0 ["_treeViewItem"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  LOADK R2 K2 [0.001]
+  JUMPIFNOTLE R2 R1 [+4]
+  LOADB R2 1
+  SETTABLEKS R2 R0 K3 ["_valueHasBeenNonZero"]
+  GETTABLEKS R2 R0 K4 ["_valueTextLabel"]
+  GETIMPORT R3 K7 [string.format]
+  LOADK R4 K8 ["%.3f"]
+  GETTABLEKS R5 R0 K0 ["_treeViewItem"]
+  NAMECALL R5 R5 K1 ["getValue"]
+  CALL R5 1 -1
+  CALL R3 -1 1
+  SETTABLEKS R3 R2 K9 ["Text"]
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R2 R0 K0 ["_frame"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K2 ["_labelTextLabel"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K3 ["_valueTextLabel"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R2 R0 K0 ["_valueTextLabel"]
+  GETIMPORT R3 K3 [string.format]
+  LOADK R4 K4 ["%.3f"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K5 ["Text"]
+  RETURN R0 0
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["_frame"]
+  RETURN R1 1
+
+PROTO_14:
+  MODK R2 R1 K0 [2]
+  JUMPIFNOTEQKN R2 K1 [1] [+17]
+  GETTABLEKS R2 R0 K2 ["_buttonFrame"]
+  GETUPVAL R3 0
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  GETTABLEKS R2 R0 K4 ["_labelFrame"]
+  GETUPVAL R3 0
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  GETTABLEKS R2 R0 K5 ["_valueFrame"]
+  GETUPVAL R3 0
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K2 ["_buttonFrame"]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  GETTABLEKS R2 R0 K4 ["_labelFrame"]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  GETTABLEKS R2 R0 K5 ["_valueFrame"]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K3 ["BackgroundColor3"]
+  RETURN R0 0
+
+PROTO_15:
+  NEWTABLE R1 8 0
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K1 [setmetatable]
+  CALL R2 2 0
+  GETIMPORT R2 K4 [Instance.new]
+  LOADK R3 K5 ["Frame"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K6 ["_frame"]
+  GETTABLEKS R2 R1 K6 ["_frame"]
+  LOADK R3 K7 ["MemoryAnalyzerClassFrame"]
+  SETTABLEKS R3 R2 K8 ["Name"]
+  GETTABLEKS R2 R1 K6 ["_frame"]
+  GETTABLEKS R3 R0 K9 ["ZIndex"]
+  SETTABLEKS R3 R2 K9 ["ZIndex"]
+  GETTABLEKS R2 R1 K6 ["_frame"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K10 ["BackgroundTransparency"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K11 ["_rowsByTreeViewItem"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K12 ["_layoutDirty"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K13 ["_heightChangedCallback"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K14 ["_heightInPix"]
+  GETTABLEKS R2 R1 K6 ["_frame"]
+  SETTABLEKS R0 R2 K15 ["Parent"]
+  RETURN R1 1
+
+PROTO_16:
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_17:
+  SETTABLEKS R1 R0 K0 ["_heightChangedCallback"]
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["__layoutRows"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_19:
+  GETTABLEKS R3 R0 K0 ["_rowsByTreeViewItem"]
+  GETTABLE R2 R3 R1
+  JUMPIFNOTEQKNIL R2 [+24]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["new"]
+  MOVE R3 R1
+  CALL R2 1 1
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  NAMECALL R3 R2 K2 ["setExpansionToggleCallback"]
+  CALL R3 2 0
+  NAMECALL R3 R2 K3 ["getFrame"]
+  CALL R3 1 1
+  GETTABLEKS R4 R0 K4 ["_frame"]
+  SETTABLEKS R4 R3 K5 ["Parent"]
+  GETTABLEKS R4 R0 K0 ["_rowsByTreeViewItem"]
+  SETTABLE R2 R4 R1
+  LOADB R4 1
+  SETTABLEKS R4 R0 K6 ["_layoutDirty"]
+  GETTABLEKS R3 R0 K0 ["_rowsByTreeViewItem"]
+  GETTABLE R2 R3 R1
+  RETURN R2 1
+
+PROTO_20:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["__getOrMakeRowForTreeViewItem"]
+  CALL R2 2 1
+  NAMECALL R3 R2 K1 ["updateValue"]
+  CALL R3 1 0
+  NAMECALL R3 R1 K2 ["getChildren"]
+  CALL R3 1 1
+  GETIMPORT R4 K4 [ipairs]
+  MOVE R5 R3
+  CALL R4 1 3
+  FORGPREP_INEXT R4
+  MOVE R11 R8
+  NAMECALL R9 R0 K5 ["__recursiveUpdateStatValue"]
+  CALL R9 2 0
+  FORGLOOP R4 2 [inext] [-5]
+  RETURN R0 0
+
+PROTO_21:
+  NAMECALL R1 R0 K0 ["getMemoryUsageTree"]
+  CALL R1 1 1
+  JUMPIFEQKNIL R1 [+5]
+  MOVE R4 R1
+  NAMECALL R2 R0 K1 ["__recursiveUpdateStatValue"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K2 ["_layoutDirty"]
+  JUMPIFNOT R2 [+3]
+  NAMECALL R2 R0 K3 ["__layoutRows"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_22:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["_layoutDirty"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K1 ["_heightInPix"]
+  NAMECALL R1 R0 K2 ["getMemoryUsageTree"]
+  CALL R1 1 1
+  JUMPIFEQKNIL R1 [+8]
+  NAMECALL R4 R0 K2 ["getMemoryUsageTree"]
+  CALL R4 1 1
+  LOADB R5 1
+  NAMECALL R2 R0 K3 ["__recursiveLayoutTreeViewItem"]
+  CALL R2 3 0
+  GETTABLEKS R2 R0 K4 ["_frame"]
+  GETIMPORT R3 K7 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 0
+  LOADN R6 0
+  GETTABLEKS R7 R0 K1 ["_heightInPix"]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K8 ["Size"]
+  GETTABLEKS R2 R0 K4 ["_frame"]
+  GETIMPORT R3 K7 [UDim2.new]
+  LOADN R4 0
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K9 ["Position"]
+  GETTABLEKS R2 R0 K10 ["_heightChangedCallback"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R2 R0 K10 ["_heightChangedCallback"]
+  GETTABLEKS R3 R0 K1 ["_heightInPix"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_23:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["__getOrMakeRowForTreeViewItem"]
+  CALL R3 2 1
+  NAMECALL R4 R3 K1 ["getFrame"]
+  CALL R4 1 1
+  MOVE R5 R2
+  JUMPIFNOT R5 [+3]
+  NAMECALL R5 R3 K2 ["valueHasBeenNonZero"]
+  CALL R5 1 1
+  MOVE R2 R5
+  JUMPIFNOT R2 [+41]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K3 ["Visible"]
+  GETIMPORT R5 K6 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 20
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K7 ["Size"]
+  GETIMPORT R5 K6 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  GETTABLEKS R9 R0 K8 ["_heightInPix"]
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K9 ["Position"]
+  GETTABLEKS R8 R0 K10 ["_frame"]
+  GETTABLEKS R7 R8 K11 ["ZIndex"]
+  NAMECALL R5 R3 K12 ["setZIndex"]
+  CALL R5 2 0
+  GETTABLEKS R8 R0 K8 ["_heightInPix"]
+  DIVK R7 R8 K13 [20]
+  NAMECALL R5 R3 K14 ["setRowNumber"]
+  CALL R5 2 0
+  GETTABLEKS R6 R0 K8 ["_heightInPix"]
+  ADDK R5 R6 K13 [20]
+  SETTABLEKS R5 R0 K8 ["_heightInPix"]
+  JUMP [+3]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K3 ["Visible"]
+  NAMECALL R5 R1 K15 ["getChildren"]
+  CALL R5 1 1
+  GETIMPORT R6 K17 [ipairs]
+  MOVE R7 R5
+  CALL R6 1 3
+  FORGPREP_INEXT R6
+  MOVE R13 R10
+  NAMECALL R15 R3 K18 ["isExpanded"]
+  CALL R15 1 1
+  AND R14 R15 R2
+  NAMECALL R11 R0 K19 ["__recursiveLayoutTreeViewItem"]
+  CALL R11 3 0
+  FORGLOOP R6 2 [inext] [-9]
+  RETURN R0 0
+
+PROTO_24:
+  GETTABLEKS R1 R0 K0 ["_heightInPix"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K2 [Color3.new]
+  LOADK R1 K3 [0.35]
+  LOADK R2 K4 [0.55]
+  LOADK R3 K3 [0.35]
+  CALL R0 3 1
+  GETIMPORT R1 K2 [Color3.new]
+  LOADK R2 K5 [0.15]
+  LOADK R3 K3 [0.35]
+  LOADK R4 K5 [0.15]
+  CALL R1 3 1
+  GETIMPORT R2 K2 [Color3.new]
+  LOADN R3 1
+  LOADN R4 1
+  LOADN R5 1
+  CALL R2 3 1
+  GETIMPORT R3 K2 [Color3.new]
+  LOADN R4 1
+  LOADN R5 1
+  LOADN R6 1
+  CALL R3 3 1
+  GETIMPORT R4 K2 [Color3.new]
+  LOADN R5 1
+  LOADN R6 1
+  LOADN R7 1
+  CALL R4 3 1
+  GETIMPORT R5 K7 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 0
+  CALL R5 4 1
+  GETIMPORT R6 K7 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 238
+  LOADN R9 0
+  LOADN R10 2
+  CALL R6 4 1
+  GETIMPORT R7 K7 [UDim2.new]
+  LOADN R8 0
+  LOADN R9 16
+  LOADN R10 0
+  LOADN R11 16
+  CALL R7 4 1
+  GETIMPORT R8 K7 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 156
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  GETIMPORT R9 K7 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 100
+  LOADN R12 0
+  LOADN R13 20
+  CALL R9 4 1
+  GETIMPORT R10 K9 [game]
+  LOADK R12 K10 ["CoreGui"]
+  NAMECALL R10 R10 K11 ["GetService"]
+  CALL R10 2 1
+  DUPCLOSURE R11 K12 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  DUPCLOSURE R12 K13 [PROTO_1]
+  CAPTURE VAL R2
+  DUPCLOSURE R13 K14 [PROTO_2]
+  CAPTURE VAL R3
+  NEWTABLE R14 16 0
+  SETTABLEKS R14 R14 K15 ["__index"]
+  DUPCLOSURE R15 K16 [PROTO_4]
+  CAPTURE VAL R14
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  SETTABLEKS R15 R14 K1 ["new"]
+  DUPCLOSURE R15 K17 [PROTO_5]
+  SETTABLEKS R15 R14 K18 ["isExpanded"]
+  DUPCLOSURE R15 K19 [PROTO_6]
+  SETTABLEKS R15 R14 K20 ["valueHasBeenNonZero"]
+  DUPCLOSURE R15 K21 [PROTO_7]
+  SETTABLEKS R15 R14 K22 ["setExpansionToggleCallback"]
+  DUPCLOSURE R15 K23 [PROTO_8]
+  SETTABLEKS R15 R14 K24 ["__toggleExpansion"]
+  DUPCLOSURE R15 K25 [PROTO_9]
+  SETTABLEKS R15 R14 K26 ["__updateButtonState"]
+  DUPCLOSURE R15 K27 [PROTO_10]
+  SETTABLEKS R15 R14 K28 ["updateValue"]
+  DUPCLOSURE R15 K29 [PROTO_11]
+  SETTABLEKS R15 R14 K30 ["setZIndex"]
+  DUPCLOSURE R15 K31 [PROTO_12]
+  SETTABLEKS R15 R14 K32 ["setRowValue"]
+  DUPCLOSURE R15 K33 [PROTO_13]
+  SETTABLEKS R15 R14 K34 ["getFrame"]
+  DUPCLOSURE R15 K35 [PROTO_14]
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  SETTABLEKS R15 R14 K36 ["setRowNumber"]
+  NEWTABLE R15 16 0
+  SETTABLEKS R15 R15 K15 ["__index"]
+  GETIMPORT R16 K39 [string.rep]
+  LOADK R17 K40 [" "]
+  LOADN R18 4
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K41 ["Indent"]
+  DUPCLOSURE R16 K42 [PROTO_15]
+  CAPTURE VAL R15
+  SETTABLEKS R16 R15 K1 ["new"]
+  DUPCLOSURE R16 K43 [PROTO_16]
+  SETTABLEKS R16 R15 K44 ["getMemoryUsageTree"]
+  DUPCLOSURE R16 K45 [PROTO_17]
+  SETTABLEKS R16 R15 K46 ["setHeightChangedCallback"]
+  DUPCLOSURE R16 K47 [PROTO_19]
+  CAPTURE VAL R14
+  SETTABLEKS R16 R15 K48 ["__getOrMakeRowForTreeViewItem"]
+  DUPCLOSURE R16 K49 [PROTO_20]
+  SETTABLEKS R16 R15 K50 ["__recursiveUpdateStatValue"]
+  DUPCLOSURE R16 K51 [PROTO_21]
+  SETTABLEKS R16 R15 K52 ["renderUpdates"]
+  DUPCLOSURE R16 K53 [PROTO_22]
+  SETTABLEKS R16 R15 K54 ["__layoutRows"]
+  DUPCLOSURE R16 K55 [PROTO_23]
+  SETTABLEKS R16 R15 K56 ["__recursiveLayoutTreeViewItem"]
+  DUPCLOSURE R16 K57 [PROTO_24]
+  SETTABLEKS R16 R15 K58 ["getHeightInPix"]
+  RETURN R15 1

@@ -1,0 +1,92 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K8 [{"Size", "LayoutOrder", "BackgroundTransparency", "Position", "Visible", "ZIndex"}]
+  GETIMPORT R4 K11 [UDim2.new]
+  LOADN R5 0
+  GETTABLEKS R7 R0 K12 ["containerWidthSlots"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K13 ["ICON_CELL_WIDTH"]
+  MUL R6 R7 R8
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K2 ["Size"]
+  GETTABLEKS R5 R0 K14 ["integration"]
+  GETTABLEKS R4 R5 K15 ["order"]
+  SETTABLEKS R4 R3 K3 ["LayoutOrder"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["BackgroundTransparency"]
+  GETTABLEKS R4 R0 K16 ["position"]
+  SETTABLEKS R4 R3 K5 ["Position"]
+  GETTABLEKS R4 R0 K17 ["visible"]
+  SETTABLEKS R4 R3 K6 ["Visible"]
+  GETTABLEKS R5 R0 K14 ["integration"]
+  GETTABLEKS R4 R5 K15 ["order"]
+  SETTABLEKS R4 R3 K7 ["ZIndex"]
+  DUPTABLE R4 K20 [{"Padding", "IntegrationContainer"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K21 ["UIPadding"]
+  DUPTABLE R7 K26 [{"PaddingTop", "PaddingRight", "PaddingBottom", "PaddingLeft"}]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K27 ["CONTAINER_PADDING_TOP_BOTTOM"]
+  SETTABLEKS R8 R7 K22 ["PaddingTop"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K28 ["CONTAINER_PADDING_LEFT_RIGHT"]
+  SETTABLEKS R8 R7 K23 ["PaddingRight"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K27 ["CONTAINER_PADDING_TOP_BOTTOM"]
+  SETTABLEKS R8 R7 K24 ["PaddingBottom"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K28 ["CONTAINER_PADDING_LEFT_RIGHT"]
+  SETTABLEKS R8 R7 K25 ["PaddingLeft"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K18 ["Padding"]
+  GETTABLEKS R7 R0 K14 ["integration"]
+  GETTABLEKS R6 R7 K14 ["integration"]
+  JUMPIFNOT R6 [+21]
+  GETTABLEKS R9 R0 K14 ["integration"]
+  GETTABLEKS R8 R9 K14 ["integration"]
+  GETTABLEKS R7 R8 K29 ["components"]
+  GETTABLEKS R6 R7 K30 ["Container"]
+  JUMPIFNOT R6 [+12]
+  GETTABLEKS R8 R0 K14 ["integration"]
+  GETTABLEKS R7 R8 K14 ["integration"]
+  GETTABLEKS R6 R7 K29 ["components"]
+  GETTABLEKS R5 R6 K30 ["Container"]
+  GETTABLEKS R6 R0 K14 ["integration"]
+  CALL R5 1 1
+  JUMP [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K19 ["IntegrationContainer"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["ChromeShared"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K12 ["Unibar"]
+  GETTABLEKS R4 R5 K13 ["Constants"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K14 ["Service"]
+  GETTABLEKS R5 R6 K15 ["Types"]
+  CALL R4 1 1
+  DUPCLOSURE R5 K16 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  RETURN R5 1

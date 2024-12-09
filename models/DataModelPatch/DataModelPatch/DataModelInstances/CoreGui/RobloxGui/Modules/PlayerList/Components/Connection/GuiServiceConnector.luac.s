@@ -1,0 +1,92 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setInspectMenuEnabled"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K2 [{"InspectMenuEnabledConnection"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K6 [{"event", "callback"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K7 ["InspectMenuEnabledChangedSignal"]
+  SETTABLEKS R6 R5 K4 ["event"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K5 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["InspectMenuEnabledConnection"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  DUPTABLE R1 K1 [{"setInspectMenuEnabled"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setInspectMenuEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R6 K11 [script]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETTABLEKS R5 R4 K12 ["Parent"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R5 K13 ["Actions"]
+  GETTABLEKS R7 R8 K14 ["SetInspectMenuEnabled"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETIMPORT R10 K11 [script]
+  GETTABLEKS R9 R10 K12 ["Parent"]
+  GETTABLEKS R8 R9 K15 ["EventConnection"]
+  CALL R7 1 1
+  GETTABLEKS R8 R2 K16 ["PureComponent"]
+  LOADK R10 K17 ["GuiServiceConnector"]
+  NAMECALL R8 R8 K18 ["extend"]
+  CALL R8 2 1
+  DUPCLOSURE R9 K19 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K20 ["render"]
+  DUPCLOSURE R9 K21 [PROTO_3]
+  CAPTURE VAL R6
+  GETTABLEKS R10 R3 K22 ["connect"]
+  LOADNIL R11
+  MOVE R12 R9
+  CALL R10 2 1
+  MOVE R11 R8
+  CALL R10 1 -1
+  RETURN R10 -1

@@ -1,0 +1,534 @@
+PROTO_0:
+  GETTABLEKS R3 R0 K0 ["name"]
+  GETTABLEKS R4 R1 K0 ["name"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETTABLEKS R5 R0 K0 ["dataStats"]
+  GETTABLEKS R4 R5 K1 ["dataSet"]
+  NAMECALL R4 R4 K2 ["back"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K3 ["data"]
+  GETTABLEKS R6 R1 K0 ["dataStats"]
+  GETTABLEKS R5 R6 K1 ["dataSet"]
+  NAMECALL R5 R5 K2 ["back"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K3 ["data"]
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_2:
+  NEWTABLE R0 16 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["_init"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K3 ["_isRunning"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K4 ["_totalMemory"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K5 ["_memoryData"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K6 ["_memoryDataSorted"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K7 ["_coreTreeData"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K8 ["_coreTreeDataSorted"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K9 ["_placeTreeData"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K10 ["_placeTreeDataSorted"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K11 ["_placeScriptTreeData"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K12 ["_placeScriptTreeDataSorted"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K13 ["_coreScriptTreeData"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K14 ["_coreScriptTreeDataSorted"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K15 ["new"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K16 ["_treeViewUpdated"]
+  GETUPVAL R2 2
+  GETTABLEN R1 R2 1
+  SETTABLEKS R1 R0 K17 ["_sortType"]
+  RETURN R0 1
+
+PROTO_3:
+  GETTABLE R5 R1 R3
+  JUMPIF R5 [+37]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["new"]
+  GETUPVAL R6 1
+  CALL R5 1 1
+  DUPTABLE R8 K3 [{"data", "time"}]
+  SETTABLEKS R4 R8 K1 ["data"]
+  GETTABLEKS R9 R0 K4 ["_lastUpdate"]
+  SETTABLEKS R9 R8 K2 ["time"]
+  NAMECALL R6 R5 K5 ["push_back"]
+  CALL R6 2 0
+  DUPTABLE R6 K9 [{"min", "max", "dataSet"}]
+  SETTABLEKS R4 R6 K6 ["min"]
+  SETTABLEKS R4 R6 K7 ["max"]
+  SETTABLEKS R5 R6 K8 ["dataSet"]
+  SETTABLE R6 R1 R3
+  DUPTABLE R6 K12 [{"name", "dataStats"}]
+  SETTABLEKS R3 R6 K10 ["name"]
+  GETTABLE R7 R1 R3
+  SETTABLEKS R7 R6 K11 ["dataStats"]
+  FASTCALL2 TABLE_INSERT R2 R6 [+5]
+  MOVE R8 R2
+  MOVE R9 R6
+  GETIMPORT R7 K15 [table.insert]
+  CALL R7 2 0
+  RETURN R0 0
+  GETTABLE R6 R1 R3
+  GETTABLEKS R5 R6 K7 ["max"]
+  GETTABLE R7 R1 R3
+  GETTABLEKS R6 R7 K6 ["min"]
+  DUPTABLE R7 K3 [{"data", "time"}]
+  SETTABLEKS R4 R7 K1 ["data"]
+  GETTABLEKS R8 R0 K4 ["_lastUpdate"]
+  SETTABLEKS R8 R7 K2 ["time"]
+  GETTABLE R9 R1 R3
+  GETTABLEKS R8 R9 K8 ["dataSet"]
+  MOVE R10 R7
+  NAMECALL R8 R8 K5 ["push_back"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+49]
+  GETTABLE R10 R1 R3
+  GETTABLEKS R9 R10 K8 ["dataSet"]
+  NAMECALL R9 R9 K16 ["iterator"]
+  CALL R9 1 1
+  NAMECALL R10 R9 K17 ["next"]
+  CALL R10 1 1
+  GETTABLEKS R11 R8 K1 ["data"]
+  JUMPIFNOTEQ R5 R11 [+17]
+  MOVE R5 R6
+  JUMPIFNOT R10 [+14]
+  GETTABLEKS R12 R10 K1 ["data"]
+  JUMPIFNOTLT R12 R5 [+3]
+  MOVE R11 R5
+  JUMPIF R11 [+2]
+  GETTABLEKS R11 R10 K1 ["data"]
+  MOVE R5 R11
+  NAMECALL R11 R9 K17 ["next"]
+  CALL R11 1 1
+  MOVE R10 R11
+  JUMPBACK [-15]
+  GETTABLEKS R11 R8 K1 ["data"]
+  JUMPIFNOTEQ R6 R11 [+17]
+  MOVE R6 R5
+  JUMPIFNOT R10 [+14]
+  GETTABLEKS R12 R10 K1 ["data"]
+  JUMPIFNOTLT R6 R12 [+3]
+  MOVE R11 R6
+  JUMPIF R11 [+2]
+  GETTABLEKS R11 R10 K1 ["data"]
+  MOVE R6 R11
+  NAMECALL R11 R9 K17 ["next"]
+  CALL R11 1 1
+  MOVE R10 R11
+  JUMPBACK [-15]
+  GETTABLE R9 R1 R3
+  JUMPIFNOTLT R5 R4 [+3]
+  MOVE R10 R4
+  JUMPIF R10 [+1]
+  MOVE R10 R5
+  SETTABLEKS R10 R9 K7 ["max"]
+  GETTABLE R9 R1 R3
+  JUMPIFNOTLT R6 R4 [+3]
+  MOVE R10 R6
+  JUMPIF R10 [+1]
+  MOVE R10 R4
+  SETTABLEKS R10 R9 K6 ["min"]
+  RETURN R0 0
+
+PROTO_4:
+  LOADN R4 0
+  GETIMPORT R5 K1 [pairs]
+  MOVE R6 R3
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  DIVK R10 R9 K2 [1048576]
+  ADD R4 R4 R10
+  MOVE R13 R1
+  MOVE R14 R2
+  MOVE R15 R8
+  MOVE R16 R10
+  NAMECALL R11 R0 K3 ["updateEntry"]
+  CALL R11 5 0
+  FORGLOOP R5 2 [-10]
+  GETIMPORT R5 K1 [pairs]
+  MOVE R6 R1
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  GETTABLE R10 R3 R8
+  JUMPIFNOTEQKNIL R10 [+20]
+  LOADNIL R10
+  SETTABLE R10 R1 R8
+  GETIMPORT R10 K5 [ipairs]
+  MOVE R11 R2
+  CALL R10 1 3
+  FORGPREP_INEXT R10
+  GETTABLEKS R15 R14 K6 ["name"]
+  JUMPIFNOTEQ R8 R15 [+7]
+  GETIMPORT R15 K9 [table.remove]
+  MOVE R16 R2
+  MOVE R17 R13
+  CALL R15 2 0
+  JUMP [+2]
+  FORGLOOP R10 2 [inext] [-11]
+  FORGLOOP R5 2 [-23]
+  RETURN R4 1
+
+PROTO_5:
+  DUPTABLE R2 K5 [{"PlaceMemory", "CoreMemory", "UntrackedMemory", "PlaceScriptMemory", "CoreScriptMemory"}]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K0 ["PlaceMemory"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K1 ["CoreMemory"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K2 ["UntrackedMemory"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K3 ["PlaceScriptMemory"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K4 ["CoreScriptMemory"]
+  GETIMPORT R3 K7 [pairs]
+  MOVE R4 R1
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  JUMPIFNOTEQKS R6 K8 ["totalServerMemory"] [+5]
+  DIVK R8 R7 K9 [1048576]
+  SETTABLEKS R8 R0 K10 ["_totalMemory"]
+  JUMP [+51]
+  JUMPIFNOTEQKS R6 K11 ["developerTags"] [+12]
+  GETTABLEKS R10 R0 K12 ["_placeTreeData"]
+  GETTABLEKS R11 R0 K13 ["_placeTreeDataSorted"]
+  MOVE R12 R7
+  NAMECALL R8 R0 K14 ["updateEntryList"]
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K0 ["PlaceMemory"]
+  JUMP [+38]
+  JUMPIFNOTEQKS R6 K15 ["internalCategories"] [+12]
+  GETTABLEKS R10 R0 K16 ["_coreTreeData"]
+  GETTABLEKS R11 R0 K17 ["_coreTreeDataSorted"]
+  MOVE R12 R7
+  NAMECALL R8 R0 K14 ["updateEntryList"]
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K1 ["CoreMemory"]
+  JUMP [+25]
+  JUMPIFNOTEQKS R6 K18 ["placeScriptMemoryCategories"] [+12]
+  GETTABLEKS R10 R0 K19 ["_placeScriptTreeData"]
+  GETTABLEKS R11 R0 K20 ["_placeScriptTreeDataSorted"]
+  MOVE R12 R7
+  NAMECALL R8 R0 K14 ["updateEntryList"]
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K3 ["PlaceScriptMemory"]
+  JUMP [+12]
+  JUMPIFNOTEQKS R6 K21 ["coreScriptMemoryCategories"] [+11]
+  GETTABLEKS R10 R0 K22 ["_coreScriptTreeData"]
+  GETTABLEKS R11 R0 K23 ["_coreScriptTreeDataSorted"]
+  MOVE R12 R7
+  NAMECALL R8 R0 K14 ["updateEntryList"]
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K4 ["CoreScriptMemory"]
+  FORGLOOP R3 2 [-58]
+  GETTABLEKS R5 R0 K10 ["_totalMemory"]
+  GETTABLEKS R6 R2 K0 ["PlaceMemory"]
+  SUB R4 R5 R6
+  GETTABLEKS R5 R2 K1 ["CoreMemory"]
+  SUB R3 R4 R5
+  SETTABLEKS R3 R2 K2 ["UntrackedMemory"]
+  GETTABLEKS R3 R0 K24 ["_init"]
+  JUMPIFNOT R3 [+35]
+  GETIMPORT R3 K7 [pairs]
+  MOVE R4 R2
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  GETTABLEKS R12 R0 K26 ["_memoryData"]
+  GETTABLEKS R11 R12 K25 ["Memory"]
+  GETTABLEKS R10 R11 K27 ["children"]
+  GETTABLEKS R13 R0 K26 ["_memoryData"]
+  GETTABLEKS R12 R13 K25 ["Memory"]
+  GETTABLEKS R11 R12 K28 ["sortedChildren"]
+  MOVE R12 R6
+  MOVE R13 R7
+  NAMECALL R8 R0 K29 ["updateEntry"]
+  CALL R8 5 0
+  FORGLOOP R3 2 [-18]
+  GETTABLEKS R5 R0 K26 ["_memoryData"]
+  GETTABLEKS R6 R0 K30 ["_memoryDataSorted"]
+  LOADK R7 K25 ["Memory"]
+  GETTABLEKS R8 R0 K10 ["_totalMemory"]
+  NAMECALL R3 R0 K29 ["updateEntry"]
+  CALL R3 5 0
+  RETURN R0 0
+  NEWTABLE R3 0 0
+  NEWTABLE R4 0 0
+  GETIMPORT R5 K7 [pairs]
+  MOVE R6 R2
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  MOVE R12 R3
+  MOVE R13 R4
+  MOVE R14 R8
+  MOVE R15 R9
+  NAMECALL R10 R0 K29 ["updateEntry"]
+  CALL R10 5 0
+  FORGLOOP R5 2 [-8]
+  GETTABLEKS R7 R0 K26 ["_memoryData"]
+  GETTABLEKS R8 R0 K30 ["_memoryDataSorted"]
+  LOADK R9 K25 ["Memory"]
+  GETTABLEKS R10 R0 K10 ["_totalMemory"]
+  NAMECALL R5 R0 K29 ["updateEntry"]
+  CALL R5 5 0
+  GETTABLEKS R5 R3 K0 ["PlaceMemory"]
+  GETTABLEKS R6 R0 K12 ["_placeTreeData"]
+  SETTABLEKS R6 R5 K27 ["children"]
+  GETTABLEKS R5 R3 K0 ["PlaceMemory"]
+  GETTABLEKS R6 R0 K13 ["_placeTreeDataSorted"]
+  SETTABLEKS R6 R5 K28 ["sortedChildren"]
+  GETTABLEKS R5 R3 K1 ["CoreMemory"]
+  GETTABLEKS R6 R0 K16 ["_coreTreeData"]
+  SETTABLEKS R6 R5 K27 ["children"]
+  GETTABLEKS R5 R3 K1 ["CoreMemory"]
+  GETTABLEKS R6 R0 K17 ["_coreTreeDataSorted"]
+  SETTABLEKS R6 R5 K28 ["sortedChildren"]
+  GETTABLEKS R5 R3 K3 ["PlaceScriptMemory"]
+  GETTABLEKS R6 R0 K19 ["_placeScriptTreeData"]
+  SETTABLEKS R6 R5 K27 ["children"]
+  GETTABLEKS R5 R3 K3 ["PlaceScriptMemory"]
+  GETTABLEKS R6 R0 K20 ["_placeScriptTreeDataSorted"]
+  SETTABLEKS R6 R5 K28 ["sortedChildren"]
+  GETTABLEKS R5 R3 K4 ["CoreScriptMemory"]
+  GETTABLEKS R6 R0 K22 ["_coreScriptTreeData"]
+  SETTABLEKS R6 R5 K27 ["children"]
+  GETTABLEKS R5 R3 K4 ["CoreScriptMemory"]
+  GETTABLEKS R6 R0 K23 ["_coreScriptTreeDataSorted"]
+  SETTABLEKS R6 R5 K28 ["sortedChildren"]
+  GETTABLEKS R6 R0 K26 ["_memoryData"]
+  GETTABLEKS R5 R6 K25 ["Memory"]
+  SETTABLEKS R3 R5 K27 ["children"]
+  GETTABLEKS R6 R0 K26 ["_memoryData"]
+  GETTABLEKS R5 R6 K25 ["Memory"]
+  SETTABLEKS R4 R5 K28 ["sortedChildren"]
+  LOADB R5 1
+  SETTABLEKS R5 R0 K24 ["_init"]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["_totalMemoryUpdated"]
+  RETURN R1 1
+
+PROTO_7:
+  GETTABLEKS R1 R0 K0 ["_treeViewUpdated"]
+  RETURN R1 1
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["_sortType"]
+  RETURN R1 1
+
+PROTO_9:
+  GETIMPORT R2 K2 [table.sort]
+  MOVE R3 R0
+  MOVE R4 R1
+  CALL R2 2 0
+  GETIMPORT R2 K4 [pairs]
+  MOVE R3 R0
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R8 R6 K5 ["dataStats"]
+  GETTABLEKS R7 R8 K6 ["sortedChildren"]
+  JUMPIFNOT R7 [+7]
+  GETUPVAL R7 0
+  GETTABLEKS R9 R6 K5 ["dataStats"]
+  GETTABLEKS R8 R9 K6 ["sortedChildren"]
+  MOVE R9 R1
+  CALL R7 2 0
+  FORGLOOP R2 2 [-13]
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R3 0
+  GETTABLE R2 R3 R1
+  JUMPIFNOT R2 [+11]
+  SETTABLEKS R1 R0 K0 ["_sortType"]
+  GETUPVAL R2 1
+  GETTABLEKS R3 R0 K1 ["_memoryDataSorted"]
+  GETUPVAL R5 0
+  GETTABLEKS R6 R0 K0 ["_sortType"]
+  GETTABLE R4 R5 R6
+  CALL R2 2 0
+  RETURN R0 0
+  GETIMPORT R2 K3 [error]
+  GETIMPORT R3 K6 [string.format]
+  LOADK R4 K7 ["attempted to pass invalid sortType: %s"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K9 [tostring]
+  CALL R5 1 1
+  CALL R3 2 1
+  LOADN R4 2
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["_memoryDataSorted"]
+  RETURN R1 1
+
+PROTO_12:
+  GETTABLEKS R1 R0 K0 ["_isRunning"]
+  RETURN R1 1
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["ServerMemoryTree"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETUPVAL R1 0
+  GETIMPORT R2 K3 [os.time]
+  CALL R2 0 1
+  SETTABLEKS R2 R1 K4 ["_lastUpdate"]
+  GETTABLEKS R1 R0 K0 ["ServerMemoryTree"]
+  JUMPIFNOT R1 [+14]
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K5 ["updateWithTreeStats"]
+  CALL R2 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K6 ["_treeViewUpdated"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["_memoryDataSorted"]
+  NAMECALL R2 R2 K8 ["Fire"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+19]
+  GETTABLEKS R2 R0 K0 ["_statsListenerConnection"]
+  JUMPIF R2 [+16]
+  GETTABLEKS R2 R1 K1 ["StatsReceived"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K2 ["connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K0 ["_statsListenerConnection"]
+  LOADB R4 1
+  NAMECALL R2 R1 K3 ["RequestServerStats"]
+  CALL R2 2 0
+  LOADB R2 1
+  SETTABLEKS R2 R0 K4 ["_isRunning"]
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+12]
+  LOADB R4 0
+  NAMECALL R2 R1 K0 ["RequestServerStats"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K1 ["_statsListenerConnection"]
+  NAMECALL R2 R2 K2 ["Disconnect"]
+  CALL R2 1 0
+  LOADB R2 0
+  SETTABLEKS R2 R0 K3 ["_isRunning"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K4 ["Parent"]
+  GETTABLEKS R1 R2 K5 ["Signal"]
+  CALL R0 1 1
+  GETIMPORT R1 K1 [require]
+  GETIMPORT R6 K3 [script]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K6 ["CircularBuffer"]
+  CALL R1 1 1
+  GETIMPORT R2 K1 [require]
+  GETIMPORT R7 K3 [script]
+  GETTABLEKS R6 R7 K4 ["Parent"]
+  GETTABLEKS R5 R6 K4 ["Parent"]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K7 ["Constants"]
+  CALL R2 1 1
+  GETTABLEKS R4 R2 K8 ["MemoryFormatting"]
+  GETTABLEKS R3 R4 K9 ["ChartHeaderNames"]
+  GETIMPORT R5 K11 [settings]
+  CALL R5 0 1
+  LOADK R7 K12 ["NewDevConsoleMaxGraphCount"]
+  NAMECALL R5 R5 K13 ["GetFVariable"]
+  CALL R5 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R4 K15 [tonumber]
+  CALL R4 -1 1
+  NEWTABLE R5 2 0
+  GETTABLEN R6 R3 1
+  DUPCLOSURE R7 K16 [PROTO_0]
+  SETTABLE R7 R5 R6
+  GETTABLEN R6 R3 2
+  DUPCLOSURE R7 K17 [PROTO_1]
+  SETTABLE R7 R5 R6
+  GETIMPORT R6 K1 [require]
+  GETIMPORT R12 K3 [script]
+  GETTABLEKS R11 R12 K4 ["Parent"]
+  GETTABLEKS R10 R11 K4 ["Parent"]
+  GETTABLEKS R9 R10 K4 ["Parent"]
+  GETTABLEKS R8 R9 K18 ["Util"]
+  GETTABLEKS R7 R8 K19 ["getClientReplicator"]
+  CALL R6 1 1
+  NEWTABLE R7 16 0
+  SETTABLEKS R7 R7 K20 ["__index"]
+  DUPCLOSURE R8 K21 [PROTO_2]
+  CAPTURE VAL R7
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  SETTABLEKS R8 R7 K22 ["new"]
+  DUPCLOSURE R8 K23 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  SETTABLEKS R8 R7 K24 ["updateEntry"]
+  DUPCLOSURE R8 K25 [PROTO_4]
+  SETTABLEKS R8 R7 K26 ["updateEntryList"]
+  DUPCLOSURE R8 K27 [PROTO_5]
+  SETTABLEKS R8 R7 K28 ["updateWithTreeStats"]
+  DUPCLOSURE R8 K29 [PROTO_6]
+  SETTABLEKS R8 R7 K30 ["totalMemSignal"]
+  DUPCLOSURE R8 K31 [PROTO_7]
+  SETTABLEKS R8 R7 K32 ["treeUpdatedSignal"]
+  DUPCLOSURE R8 K33 [PROTO_8]
+  SETTABLEKS R8 R7 K34 ["getSortType"]
+  DUPCLOSURE R8 K35 [PROTO_9]
+  CAPTURE VAL R8
+  DUPCLOSURE R9 K36 [PROTO_10]
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  SETTABLEKS R9 R7 K37 ["setSortType"]
+  DUPCLOSURE R9 K38 [PROTO_11]
+  SETTABLEKS R9 R7 K39 ["getMemoryData"]
+  DUPCLOSURE R9 K40 [PROTO_12]
+  SETTABLEKS R9 R7 K41 ["isRunning"]
+  DUPCLOSURE R9 K42 [PROTO_14]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R7 K43 ["start"]
+  DUPCLOSURE R9 K44 [PROTO_15]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R7 K45 ["stop"]
+  RETURN R7 1

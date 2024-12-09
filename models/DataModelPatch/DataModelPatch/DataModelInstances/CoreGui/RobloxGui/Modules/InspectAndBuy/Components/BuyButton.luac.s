@@ -1,0 +1,430 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["gamepadEnabled"]
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["visible"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["lastGamepadFocus"]
+  SETTABLEKS R1 R0 K4 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K0 ["selectedImage"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K1 ["connections"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["lastGamepadFocus"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R1 R0 K3 ["onPromptPurchaseFinished"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+31]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["gamepadEnabled"]
+  JUMPIFNOT R0 [+16]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["visible"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K3 ["SelectedCoreObject"]
+  SETTABLEKS R1 R0 K4 ["lastGamepadFocus"]
+  GETUPVAL R0 2
+  LOADNIL R1
+  SETTABLEKS R1 R0 K3 ["SelectedCoreObject"]
+  GETUPVAL R0 3
+  GETUPVAL R1 4
+  GETUPVAL R2 5
+  GETUPVAL R3 6
+  GETUPVAL R4 7
+  GETUPVAL R5 8
+  GETUPVAL R6 9
+  GETUPVAL R7 10
+  CALL R0 7 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["itemType"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["itemId"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["showRobuxIcon"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["forSale"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["promptPurchase"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K6 ["buyText"]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K7 ["buyButtonRef"]
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K8 ["collectibleItemId"]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K9 ["collectibleLowestAvailableResaleProductId"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K10 ["collectibleLowestAvailableResaleItemInstanceId"]
+  GETTABLEKS R12 R0 K0 ["props"]
+  GETTABLEKS R11 R12 K11 ["collectibleLowestResalePrice"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K12 ["isLimited2Point0_Or_LimitedCollectible"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K13 ["assetInfo"]
+  CALL R12 1 1
+  GETIMPORT R13 K16 [UDim2.new]
+  LOADN R14 0
+  MOVE R17 R6
+  NAMECALL R15 R0 K17 ["getBuyButtonTextSize"]
+  CALL R15 2 1
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  GETTABLEKS R15 R0 K0 ["props"]
+  GETTABLEKS R14 R15 K13 ["assetInfo"]
+  JUMPIFNOT R14 [+3]
+  GETTABLEKS R15 R14 K18 ["creatorId"]
+  JUMPIF R15 [+1]
+  LOADN R15 0
+  GETUPVAL R17 1
+  JUMPIFNOT R17 [+2]
+  LOADN R16 224
+  JUMP [+5]
+  JUMPIFNOTEQKS R15 K19 ["1"] [+3]
+  LOADN R16 224
+  JUMP [+1]
+  LOADN R16 251
+  LOADN R17 0
+  JUMPIF R4 [+1]
+  LOADK R17 K20 [0.5]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K21 ["createElement"]
+  LOADK R19 K22 ["ImageButton"]
+  NEWTABLE R20 16 0
+  GETIMPORT R21 K24 [Vector2.new]
+  LOADK R22 K20 [0.5]
+  LOADN R23 0
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K25 ["AnchorPoint"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K26 ["BackgroundTransparency"]
+  GETIMPORT R21 K16 [UDim2.new]
+  LOADK R22 K20 [0.5]
+  MOVE R23 R16
+  LOADN R24 0
+  LOADN R25 44
+  CALL R21 4 1
+  SETTABLEKS R21 R20 K27 ["Size"]
+  LOADK R21 K28 ["rbxasset://textures/ui/InspectMenu/Button_white.png"]
+  SETTABLEKS R21 R20 K29 ["Image"]
+  GETUPVAL R22 3
+  GETTABLEKS R21 R22 K30 ["Green"]
+  SETTABLEKS R21 R20 K31 ["ImageColor3"]
+  GETTABLEKS R21 R0 K32 ["selectedImage"]
+  SETTABLEKS R21 R20 K33 ["SelectionImageObject"]
+  LOADN R21 3
+  SETTABLEKS R21 R20 K34 ["LayoutOrder"]
+  SETTABLEKS R17 R20 K35 ["ImageTransparency"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K36 ["Ref"]
+  SETTABLE R7 R20 R21
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K37 ["Event"]
+  GETTABLEKS R21 R22 K38 ["Activated"]
+  NEWCLOSURE R22 P0
+  CAPTURE VAL R4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  SETTABLE R22 R20 R21
+  DUPTABLE R21 K42 [{"UIListLayout", "RobuxIcon", "BuyText"}]
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K21 ["createElement"]
+  LOADK R23 K39 ["UIListLayout"]
+  DUPTABLE R24 K47 [{"FillDirection", "SortOrder", "VerticalAlignment", "HorizontalAlignment"}]
+  GETIMPORT R25 K50 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R25 R24 K43 ["FillDirection"]
+  GETIMPORT R25 K51 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R25 R24 K44 ["SortOrder"]
+  GETIMPORT R25 K53 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R25 R24 K45 ["VerticalAlignment"]
+  GETIMPORT R25 K54 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R25 R24 K46 ["HorizontalAlignment"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K39 ["UIListLayout"]
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K21 ["createElement"]
+  LOADK R23 K55 ["ImageLabel"]
+  DUPTABLE R24 K57 [{"BackgroundTransparency", "Size", "Image", "ImageTransparency", "ImageColor3", "LayoutOrder", "Visible"}]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K26 ["BackgroundTransparency"]
+  GETIMPORT R25 K16 [UDim2.new]
+  LOADN R26 0
+  LOADN R27 16
+  LOADN R28 0
+  LOADN R29 16
+  CALL R25 4 1
+  SETTABLEKS R25 R24 K27 ["Size"]
+  LOADK R25 K58 ["rbxasset://textures/ui/common/robux_small.png"]
+  SETTABLEKS R25 R24 K29 ["Image"]
+  SETTABLEKS R17 R24 K35 ["ImageTransparency"]
+  GETUPVAL R26 3
+  GETTABLEKS R25 R26 K59 ["White"]
+  SETTABLEKS R25 R24 K31 ["ImageColor3"]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K34 ["LayoutOrder"]
+  SETTABLEKS R3 R24 K56 ["Visible"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K40 ["RobuxIcon"]
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K21 ["createElement"]
+  LOADK R23 K60 ["TextLabel"]
+  DUPTABLE R24 K67 [{"BackgroundTransparency", "Size", "Text", "Font", "TextSize", "TextColor3", "TextTransparency", "LayoutOrder", "TextXAlignment"}]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K26 ["BackgroundTransparency"]
+  SETTABLEKS R13 R24 K27 ["Size"]
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R26 R6
+  GETIMPORT R25 K69 [tostring]
+  CALL R25 1 1
+  SETTABLEKS R25 R24 K61 ["Text"]
+  GETUPVAL R26 5
+  GETTABLEKS R25 R26 K70 ["default"]
+  NAMECALL R25 R25 K71 ["getDefault"]
+  CALL R25 1 1
+  SETTABLEKS R25 R24 K62 ["Font"]
+  LOADN R25 16
+  SETTABLEKS R25 R24 K63 ["TextSize"]
+  GETUPVAL R26 3
+  GETTABLEKS R25 R26 K59 ["White"]
+  SETTABLEKS R25 R24 K64 ["TextColor3"]
+  SETTABLEKS R17 R24 K65 ["TextTransparency"]
+  LOADN R25 2
+  SETTABLEKS R25 R24 K34 ["LayoutOrder"]
+  GETIMPORT R25 K72 [Enum.TextXAlignment.Center]
+  SETTABLEKS R25 R24 K66 ["TextXAlignment"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K41 ["BuyText"]
+  CALL R18 3 -1
+  RETURN R18 -1
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["PromptPurchaseFinished"]
+  GETTABLEKS R3 R0 K1 ["onPromptPurchaseFinished"]
+  NAMECALL R1 R1 K2 ["Connect"]
+  CALL R1 2 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["PromptBundlePurchaseFinished"]
+  GETTABLEKS R4 R0 K1 ["onPromptPurchaseFinished"]
+  NAMECALL R2 R2 K2 ["Connect"]
+  CALL R2 2 1
+  GETTABLEKS R4 R0 K4 ["connections"]
+  FASTCALL2 TABLE_INSERT R4 R1 [+4]
+  MOVE R5 R1
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K4 ["connections"]
+  FASTCALL2 TABLE_INSERT R4 R2 [+4]
+  MOVE R5 R2
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R1 K1 [pairs]
+  GETTABLEKS R2 R0 K2 ["connections"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  NAMECALL R6 R5 K3 ["Disconnect"]
+  CALL R6 1 0
+  FORGLOOP R1 2 [-4]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["buyButtonRef"]
+  GETTABLEKS R2 R3 K2 ["current"]
+  JUMPIFNOT R2 [+54]
+  GETUPVAL R2 0
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R5 R1
+  GETIMPORT R4 K4 [tostring]
+  CALL R4 1 1
+  LOADN R5 16
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["default"]
+  NAMECALL R6 R6 K6 ["getDefault"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [Vector2.new]
+  GETTABLEKS R12 R0 K0 ["props"]
+  GETTABLEKS R11 R12 K1 ["buyButtonRef"]
+  GETTABLEKS R10 R11 K2 ["current"]
+  GETTABLEKS R9 R10 K10 ["AbsoluteSize"]
+  GETTABLEKS R8 R9 K11 ["X"]
+  LOADN R9 136
+  CALL R7 2 -1
+  NAMECALL R2 R2 K12 ["GetTextSize"]
+  CALL R2 -1 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["buyButtonRef"]
+  GETIMPORT R4 K14 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 1
+  LOADN R7 0
+  GETTABLEKS R8 R2 K15 ["Y"]
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K16 ["Size"]
+  GETTABLEKS R4 R2 K11 ["X"]
+  LOADN R5 32
+  JUMPIFNOTLT R5 R4 [+4]
+  GETTABLEKS R3 R2 K11 ["X"]
+  JUMPIF R3 [+1]
+  LOADN R3 32
+  RETURN R3 1
+  LOADN R2 0
+  RETURN R2 1
+
+PROTO_7:
+  GETTABLEKS R3 R0 K0 ["detailsInformation"]
+  GETTABLEKS R2 R3 K1 ["assetId"]
+  DUPTABLE R3 K7 [{"locale", "view", "assetInfo", "gamepadEnabled", "visible"}]
+  GETTABLEKS R4 R0 K2 ["locale"]
+  SETTABLEKS R4 R3 K2 ["locale"]
+  GETTABLEKS R4 R0 K3 ["view"]
+  SETTABLEKS R4 R3 K3 ["view"]
+  GETTABLEKS R5 R0 K8 ["assets"]
+  GETTABLE R4 R5 R2
+  SETTABLEKS R4 R3 K4 ["assetInfo"]
+  GETTABLEKS R4 R0 K5 ["gamepadEnabled"]
+  SETTABLEKS R4 R3 K5 ["gamepadEnabled"]
+  GETTABLEKS R4 R0 K6 ["visible"]
+  SETTABLEKS R4 R3 K6 ["visible"]
+  RETURN R3 1
+
+PROTO_8:
+  GETUPVAL R7 0
+  GETUPVAL R8 1
+  MOVE R9 R0
+  MOVE R10 R1
+  MOVE R11 R2
+  MOVE R12 R3
+  MOVE R13 R4
+  MOVE R14 R5
+  MOVE R15 R6
+  CALL R8 7 -1
+  CALL R7 -1 0
+  RETURN R0 0
+
+PROTO_9:
+  DUPTABLE R1 K1 [{"promptPurchase"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["promptPurchase"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["TextService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["MarketplaceService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K9 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R10 R0 K12 ["Workspace"]
+  GETTABLEKS R9 R10 K9 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["Style"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K14 ["AppFonts"]
+  GETIMPORT R9 K16 [script]
+  GETTABLEKS R8 R9 K17 ["Parent"]
+  GETTABLEKS R7 R8 K17 ["Parent"]
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R9 R7 K18 ["Colors"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R7 K19 ["Thunks"]
+  GETTABLEKS R10 R11 K20 ["PromptPurchase"]
+  CALL R9 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R11 R7 K21 ["getSelectionImageObjectRounded"]
+  CALL R10 1 1
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R13 R7 K22 ["Flags"]
+  GETTABLEKS R12 R13 K23 ["FFlagEnableFavoriteButtonForUgc"]
+  CALL R11 1 1
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R13 R7 K24 ["UtilityFunctions"]
+  CALL R12 1 1
+  GETTABLEKS R13 R4 K25 ["PureComponent"]
+  LOADK R15 K26 ["BuyButton"]
+  NAMECALL R13 R13 K27 ["extend"]
+  CALL R13 2 1
+  DUPCLOSURE R14 K28 [PROTO_1]
+  CAPTURE VAL R10
+  CAPTURE VAL R2
+  SETTABLEKS R14 R13 K29 ["init"]
+  DUPCLOSURE R14 K30 [PROTO_3]
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  CAPTURE VAL R4
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  SETTABLEKS R14 R13 K31 ["render"]
+  DUPCLOSURE R14 K32 [PROTO_4]
+  CAPTURE VAL R3
+  SETTABLEKS R14 R13 K33 ["didMount"]
+  DUPCLOSURE R14 K34 [PROTO_5]
+  SETTABLEKS R14 R13 K35 ["willUnmount"]
+  DUPCLOSURE R14 K36 [PROTO_6]
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  SETTABLEKS R14 R13 K37 ["getBuyButtonTextSize"]
+  GETTABLEKS R14 R5 K38 ["UNSTABLE_connect2"]
+  DUPCLOSURE R15 K39 [PROTO_7]
+  DUPCLOSURE R16 K40 [PROTO_9]
+  CAPTURE VAL R9
+  CALL R14 2 1
+  MOVE R15 R13
+  CALL R14 1 -1
+  RETURN R14 -1

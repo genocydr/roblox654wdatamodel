@@ -1,0 +1,158 @@
+PROTO_0:
+  DUPTABLE R1 K1 [{"localPlayer"}]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["LocalPlayer"]
+  SETTABLEKS R2 R1 K0 ["localPlayer"]
+  SETTABLEKS R1 R0 K3 ["state"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["LocalPlayer"]
+  JUMPIFNOTEQ R0 R1 [+9]
+  GETUPVAL R1 1
+  DUPTABLE R3 K2 [{"localPlayer"}]
+  SETTABLEKS R0 R3 K1 ["localPlayer"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["props"]
+  GETTABLEKS R1 R2 K5 ["setFriendStatus"]
+  GETTABLEKS R2 R0 K6 ["UserId"]
+  GETIMPORT R3 K10 [Enum.FriendStatus.Unknown]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setFriendStatus"]
+  GETTABLEKS R2 R0 K2 ["UserId"]
+  LOADNIL R3
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["setFriendStatus"]
+  GETTABLEKS R3 R0 K2 ["UserId"]
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K2 [{"PlayerAdded", "PlayerRemoving"}]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K6 [{"event", "callback"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["PlayerAdded"]
+  SETTABLEKS R5 R4 K4 ["event"]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K5 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K0 ["PlayerAdded"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K6 [{"event", "callback"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K1 ["PlayerRemoving"]
+  SETTABLEKS R5 R4 K4 ["event"]
+  NEWCLOSURE R5 P1
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K5 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K1 ["PlayerRemoving"]
+  GETTABLEKS R3 R0 K7 ["state"]
+  GETTABLEKS R2 R3 K8 ["localPlayer"]
+  JUMPIFNOT R2 [+19]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K6 [{"event", "callback"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K9 ["LocalPlayer"]
+  GETTABLEKS R5 R6 K10 ["FriendStatusChanged"]
+  SETTABLEKS R5 R4 K4 ["event"]
+  NEWCLOSURE R5 P2
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K5 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K10 ["FriendStatusChanged"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K11 ["createFragment"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"setFriendStatus"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setFriendStatus"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["InGameMenuDependencies"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["Roact"]
+  GETTABLEKS R4 R2 K10 ["RoactRodux"]
+  GETIMPORT R8 K12 [script]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R5 K14 ["Actions"]
+  GETTABLEKS R7 R8 K15 ["SetFriendStatus"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R5 K16 ["Utility"]
+  GETTABLEKS R8 R9 K17 ["ExternalEventConnection"]
+  CALL R7 1 1
+  GETTABLEKS R8 R3 K18 ["PureComponent"]
+  LOADK R10 K19 ["FriendStatusConnector"]
+  NAMECALL R8 R8 K20 ["extend"]
+  CALL R8 2 1
+  DUPCLOSURE R9 K21 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K22 ["init"]
+  DUPCLOSURE R9 K23 [PROTO_4]
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  SETTABLEKS R9 R8 K24 ["render"]
+  GETTABLEKS R9 R4 K25 ["UNSTABLE_connect2"]
+  LOADNIL R10
+  DUPCLOSURE R11 K26 [PROTO_6]
+  CAPTURE VAL R6
+  CALL R9 2 1
+  MOVE R10 R8
+  CALL R9 1 -1
+  RETURN R9 -1

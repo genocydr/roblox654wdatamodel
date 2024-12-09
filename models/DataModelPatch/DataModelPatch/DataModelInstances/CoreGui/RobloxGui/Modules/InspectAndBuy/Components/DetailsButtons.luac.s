@@ -1,0 +1,785 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["AnimationAssetTypes"]
+  GETTABLE R2 R3 R0
+  JUMPIFNOTEQKNIL R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+PROTO_1:
+  LOADNIL R4
+  GETTABLEKS R5 R0 K0 ["isLimited"]
+  JUMPIF R5 [+5]
+  GETUPVAL R5 0
+  CALL R5 0 1
+  JUMPIFNOT R5 [+2]
+  GETTABLEKS R5 R0 K1 ["isLimitedUnique"]
+  JUMPIFNOT R3 [+16]
+  GETUPVAL R6 1
+  LOADK R8 K2 ["InGame.InspectMenu.Action.FromResale"]
+  MOVE R9 R1
+  DUPTABLE R10 K4 [{"PRICE"}]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R12 R3
+  GETIMPORT R11 K6 [tostring]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K3 ["PRICE"]
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 4 1
+  MOVE R4 R6
+  RETURN R4 1
+  JUMPIFNOT R2 [+11]
+  GETTABLEKS R6 R0 K8 ["isForSale"]
+  JUMPIFNOT R6 [+8]
+  GETUPVAL R6 1
+  LOADK R8 K9 ["InGame.InspectMenu.Action.LimitReached"]
+  MOVE R9 R1
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 3 1
+  MOVE R4 R6
+  RETURN R4 1
+  GETTABLEKS R6 R0 K10 ["price"]
+  JUMPIFEQKNIL R6 [+16]
+  GETTABLEKS R6 R0 K11 ["productType"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K12 ["ProductType"]
+  GETTABLEKS R7 R8 K13 ["CollectibleItem"]
+  JUMPIFNOTEQ R6 R7 [+7]
+  GETTABLEKS R6 R0 K8 ["isForSale"]
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R4 R0 K10 ["price"]
+  RETURN R4 1
+  GETTABLEKS R6 R0 K14 ["owned"]
+  JUMPIFNOT R6 [+8]
+  GETUPVAL R6 1
+  LOADK R8 K15 ["InGame.InspectMenu.Label.Owned"]
+  MOVE R9 R1
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 3 1
+  MOVE R4 R6
+  RETURN R4 1
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R6 1
+  LOADK R8 K16 ["InGame.InspectMenu.Label.Limited"]
+  MOVE R9 R1
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 3 1
+  MOVE R4 R6
+  RETURN R4 1
+  GETTABLEKS R6 R0 K8 ["isForSale"]
+  JUMPIF R6 [+9]
+  JUMPIF R5 [+8]
+  GETUPVAL R6 1
+  LOADK R8 K17 ["InGame.InspectMenu.Label.Offsale"]
+  MOVE R9 R1
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 3 1
+  MOVE R4 R6
+  RETURN R4 1
+  GETTABLEKS R6 R0 K8 ["isForSale"]
+  JUMPIFNOT R6 [+35]
+  GETTABLEKS R6 R0 K18 ["premiumPricing"]
+  JUMPIFEQKNIL R6 [+30]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K19 ["LocalPlayer"]
+  GETTABLEKS R6 R7 K20 ["MembershipType"]
+  GETIMPORT R7 K23 [Enum.MembershipType.Premium]
+  JUMPIFNOTEQ R6 R7 [+6]
+  GETTABLEKS R6 R0 K18 ["premiumPricing"]
+  GETTABLEKS R4 R6 K24 ["premiumPriceInRobux"]
+  RETURN R4 1
+  GETTABLEKS R6 R0 K10 ["price"]
+  JUMPIFNOTEQKNIL R6 [+9]
+  GETUPVAL R6 1
+  LOADK R8 K25 ["InGame.InspectMenu.Label.PremiumOnly"]
+  MOVE R9 R1
+  NAMECALL R6 R6 K7 ["FormatByKeyForLocale"]
+  CALL R6 3 1
+  MOVE R4 R6
+  RETURN R4 1
+  GETTABLEKS R4 R0 K10 ["price"]
+  RETURN R4 1
+  GETTABLEKS R4 R0 K10 ["price"]
+  RETURN R4 1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["tryOnButtonRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K2 ["buyButtonRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["favoriteButtonRef"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["detailsInformation"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["gamepadEnabled"]
+  GETTABLEKS R4 R2 K3 ["viewingDetails"]
+  JUMPIFNOT R4 [+63]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["assetInfo"]
+  GETTABLEKS R8 R5 K5 ["assetTypeId"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K6 ["AnimationAssetTypes"]
+  GETTABLE R9 R10 R8
+  JUMPIFNOTEQKNIL R9 [+2]
+  LOADB R7 0 +1
+  LOADB R7 1
+  NOT R6 R7
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K7 ["visible"]
+  JUMPIFNOT R3 [+59]
+  JUMPIFNOT R7 [+58]
+  JUMPIFNOT R5 [+3]
+  GETTABLEKS R8 R5 K8 ["creatorId"]
+  JUMPIF R8 [+1]
+  LOADN R8 0
+  GETUPVAL R9 1
+  JUMPIFNOT R9 [+8]
+  GETUPVAL R9 2
+  GETTABLEKS R11 R0 K9 ["favoriteButtonRef"]
+  GETTABLEKS R10 R11 K10 ["current"]
+  SETTABLEKS R10 R9 K11 ["SelectedCoreObject"]
+  JUMP [+43]
+  JUMPIFNOTEQKS R8 K12 ["1"] [+9]
+  GETUPVAL R9 2
+  GETTABLEKS R11 R0 K9 ["favoriteButtonRef"]
+  GETTABLEKS R10 R11 K10 ["current"]
+  SETTABLEKS R10 R9 K11 ["SelectedCoreObject"]
+  JUMP [+33]
+  JUMPIFNOT R6 [+8]
+  GETUPVAL R9 2
+  GETTABLEKS R11 R0 K13 ["tryOnButtonRef"]
+  GETTABLEKS R10 R11 K10 ["current"]
+  SETTABLEKS R10 R9 K11 ["SelectedCoreObject"]
+  JUMP [+24]
+  GETUPVAL R9 2
+  GETTABLEKS R11 R0 K14 ["buyButtonRef"]
+  GETTABLEKS R10 R11 K10 ["current"]
+  SETTABLEKS R10 R9 K11 ["SelectedCoreObject"]
+  JUMP [+16]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K4 ["assetInfo"]
+  GETTABLEKS R5 R6 K15 ["bundlesAssetIsIn"]
+  JUMPIFNOTEQKNIL R5 [+9]
+  GETTABLEKS R5 R2 K3 ["viewingDetails"]
+  JUMPIFNOT R5 [+5]
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R5 2
+  LOADNIL R6
+  SETTABLEKS R6 R5 K11 ["SelectedCoreObject"]
+  GETUPVAL R5 3
+  JUMPIFNOT R5 [+24]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K16 ["overlay"]
+  GETTABLEKS R6 R1 K16 ["overlay"]
+  JUMPIFNOT R3 [+17]
+  JUMPIFNOT R5 [+16]
+  GETTABLEKS R7 R5 K16 ["overlay"]
+  JUMPIFNOTEQKNIL R7 [+13]
+  JUMPIFNOT R6 [+11]
+  GETTABLEKS R7 R6 K16 ["overlay"]
+  JUMPIFEQKNIL R7 [+8]
+  GETUPVAL R7 2
+  GETTABLEKS R9 R0 K13 ["tryOnButtonRef"]
+  GETTABLEKS R8 R9 K10 ["current"]
+  SETTABLEKS R8 R7 K11 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["isLimited2Point0_Or_LimitedCollectible"]
+  MOVE R5 R1
+  CALL R4 1 1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["isLimited1Point0"]
+  MOVE R6 R1
+  CALL R5 1 1
+  JUMPIF R5 [+5]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["isLimited1Point0_LimitedUnique"]
+  MOVE R6 R1
+  CALL R5 1 1
+  LOADNIL R6
+  LOADNIL R7
+  LOADNIL R8
+  LOADNIL R9
+  LOADNIL R10
+  JUMPIFNOT R4 [+107]
+  GETTABLEKS R3 R1 K3 ["isForSale"]
+  GETTABLEKS R12 R0 K4 ["props"]
+  GETTABLEKS R11 R12 K5 ["resellableInstances"]
+  MOVE R12 R11
+  JUMPIFNOT R12 [+11]
+  GETTABLEKS R13 R1 K6 ["collectibleItemId"]
+  GETTABLE R12 R11 R13
+  JUMPIFNOT R12 [+7]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K7 ["fieldCount"]
+  GETTABLEKS R14 R1 K6 ["collectibleItemId"]
+  GETTABLE R13 R11 R14
+  CALL R12 1 1
+  MOVE R13 R12
+  JUMPIFNOT R13 [+17]
+  LOADB R13 0
+  GETTABLEKS R14 R1 K8 ["collectibleQuantityLimitPerUser"]
+  JUMPIFEQKNIL R14 [+13]
+  LOADB R13 0
+  GETTABLEKS R14 R1 K8 ["collectibleQuantityLimitPerUser"]
+  LOADN R15 0
+  JUMPIFNOTLT R15 R14 [+7]
+  GETTABLEKS R14 R1 K8 ["collectibleQuantityLimitPerUser"]
+  JUMPIFLE R14 R12 [+2]
+  LOADB R13 0 +1
+  LOADB R13 1
+  MOVE R6 R13
+  GETTABLEKS R13 R1 K9 ["collectibleLowestAvailableResaleProductId"]
+  JUMPIFNOT R13 [+6]
+  GETTABLEKS R14 R1 K9 ["collectibleLowestAvailableResaleProductId"]
+  JUMPIFNOTEQKS R14 K10 [""] [+2]
+  LOADB R13 0 +1
+  LOADB R13 1
+  LOADB R14 0
+  GETUPVAL R15 2
+  JUMPIFNOT R15 [+27]
+  GETTABLEKS R16 R1 K11 ["remaining"]
+  LOADN R17 0
+  JUMPIFLT R17 R16 [+2]
+  LOADB R15 0 +1
+  LOADB R15 1
+  JUMPIFNOT R15 [+13]
+  MOVE R16 R13
+  JUMPIFNOT R16 [+9]
+  GETTABLEKS R18 R1 K13 ["price"]
+  ORK R17 R18 K12 [0]
+  GETTABLEKS R18 R1 K14 ["collectibleLowestResalePrice"]
+  JUMPIFLT R18 R17 [+2]
+  LOADB R16 0 +1
+  LOADB R16 1
+  MOVE R14 R16
+  JUMP [+18]
+  MOVE R16 R13
+  JUMPIFNOT R16 [+2]
+  GETTABLEKS R16 R1 K14 ["collectibleLowestResalePrice"]
+  MOVE R14 R16
+  JUMP [+12]
+  MOVE R15 R13
+  JUMPIFNOT R15 [+9]
+  GETTABLEKS R17 R1 K13 ["price"]
+  ORK R16 R17 K12 [0]
+  GETTABLEKS R17 R1 K14 ["collectibleLowestResalePrice"]
+  JUMPIFLT R17 R16 [+2]
+  LOADB R15 0 +1
+  LOADB R15 1
+  MOVE R14 R15
+  JUMPIFNOT R13 [+13]
+  JUMPIFNOT R3 [+2]
+  JUMPIF R6 [+1]
+  JUMPIFNOT R14 [+22]
+  GETTABLEKS R7 R1 K14 ["collectibleLowestResalePrice"]
+  GETTABLEKS R8 R1 K15 ["collectibleLowestAvailableResaleItemInstanceId"]
+  GETTABLEKS R9 R1 K9 ["collectibleLowestAvailableResaleProductId"]
+  GETTABLEKS R10 R1 K6 ["collectibleItemId"]
+  LOADB R3 1
+  JUMP [+12]
+  JUMPIFNOT R6 [+11]
+  LOADB R3 0
+  JUMP [+9]
+  GETTABLEKS R11 R1 K3 ["isForSale"]
+  JUMPIFNOT R11 [+5]
+  GETTABLEKS R12 R1 K16 ["owned"]
+  NOT R11 R12
+  JUMPIFNOT R11 [+1]
+  NOT R11 R5
+  MOVE R3 R11
+  JUMPIFNOT R3 [+19]
+  GETTABLEKS R11 R1 K13 ["price"]
+  JUMPIFNOTEQKNIL R11 [+16]
+  GETTABLEKS R11 R1 K17 ["premiumPricing"]
+  JUMPIFEQKNIL R11 [+12]
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K18 ["LocalPlayer"]
+  GETTABLEKS R11 R12 K19 ["MembershipType"]
+  GETIMPORT R12 K22 [Enum.MembershipType.Premium]
+  JUMPIFEQ R11 R12 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R11 4
+  MOVE R12 R1
+  MOVE R13 R2
+  MOVE R14 R6
+  MOVE R15 R7
+  CALL R11 4 1
+  GETTABLEKS R13 R1 K13 ["price"]
+  JUMPIFEQKNIL R13 [+6]
+  GETTABLEKS R13 R1 K16 ["owned"]
+  JUMPIF R13 [+2]
+  MOVE R12 R3
+  JUMPIF R12 [+19]
+  LOADB R12 1
+  JUMPIFNOTEQKNIL R7 [+17]
+  LOADB R12 0
+  GETTABLEKS R13 R1 K13 ["price"]
+  JUMPIFEQKNIL R13 [+12]
+  LOADB R12 0
+  GETTABLEKS R13 R1 K23 ["productType"]
+  GETUPVAL R16 5
+  GETTABLEKS R15 R16 K24 ["ProductType"]
+  GETTABLEKS R14 R15 K25 ["CollectibleItem"]
+  JUMPIFNOTEQ R13 R14 [+2]
+  MOVE R12 R3
+  DUPTABLE R13 K30 [{"buyText", "showRobuxIcon", "forSale", "collectibleQuantityLimitReached", "collectibleLowestResalePrice", "collectibleLowestAvailableResaleItemInstanceId", "collectibleLowestAvailableResaleProductId", "collectibleItemId"}]
+  SETTABLEKS R11 R13 K26 ["buyText"]
+  SETTABLEKS R12 R13 K27 ["showRobuxIcon"]
+  SETTABLEKS R3 R13 K28 ["forSale"]
+  SETTABLEKS R6 R13 K29 ["collectibleQuantityLimitReached"]
+  SETTABLEKS R7 R13 K14 ["collectibleLowestResalePrice"]
+  SETTABLEKS R8 R13 K15 ["collectibleLowestAvailableResaleItemInstanceId"]
+  SETTABLEKS R9 R13 K9 ["collectibleLowestAvailableResaleProductId"]
+  SETTABLEKS R10 R13 K6 ["collectibleItemId"]
+  RETURN R13 1
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["locale"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["assetInfo"]
+  LOADB R3 0
+  LOADB R4 0
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R5 R2 K3 ["creatorId"]
+  JUMPIF R5 [+1]
+  LOADN R5 0
+  LOADNIL R6
+  LOADNIL R7
+  LOADNIL R8
+  LOADNIL R9
+  LOADNIL R10
+  LOADNIL R11
+  LOADNIL R12
+  LOADNIL R13
+  LOADNIL R14
+  LOADNIL R15
+  LOADNIL R16
+  JUMPIFNOT R2 [+84]
+  GETTABLEKS R17 R2 K4 ["parentBundleId"]
+  JUMPIFNOTEQKNIL R17 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  MOVE R17 R8
+  JUMPIFNOT R17 [+3]
+  GETTABLEKS R18 R2 K5 ["isForSale"]
+  NOT R17 R18
+  MOVE R12 R17
+  MOVE R17 R8
+  JUMPIFNOT R17 [+13]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K6 ["getBundleId"]
+  MOVE R19 R2
+  CALL R18 1 1
+  MOVE R9 R18
+  GETUPVAL R19 1
+  GETTABLEKS R18 R19 K7 ["ItemType"]
+  GETTABLEKS R10 R18 K8 ["Bundle"]
+  MOVE R11 R9
+  JUMP [+7]
+  GETUPVAL R19 1
+  GETTABLEKS R18 R19 K7 ["ItemType"]
+  GETTABLEKS R10 R18 K9 ["Asset"]
+  GETTABLEKS R11 R2 K10 ["assetId"]
+  MOVE R20 R2
+  MOVE R21 R1
+  MOVE R22 R7
+  NAMECALL R18 R0 K11 ["calculateBuyStatusForLimitedItem"]
+  CALL R18 4 1
+  GETTABLEKS R6 R18 K12 ["buyText"]
+  GETTABLEKS R3 R18 K13 ["showRobuxIcon"]
+  GETTABLEKS R7 R18 K14 ["forSale"]
+  GETTABLEKS R19 R18 K15 ["collectibleQuantityLimitReached"]
+  GETTABLEKS R14 R18 K16 ["collectibleLowestResalePrice"]
+  GETTABLEKS R15 R18 K17 ["collectibleLowestAvailableResaleProductId"]
+  GETTABLEKS R16 R18 K18 ["collectibleLowestAvailableResaleItemInstanceId"]
+  GETTABLEKS R13 R18 K19 ["collectibleItemId"]
+  GETTABLEKS R21 R2 K20 ["assetTypeId"]
+  GETUPVAL R24 1
+  GETTABLEKS R23 R24 K21 ["AnimationAssetTypes"]
+  GETTABLE R22 R23 R21
+  JUMPIFNOTEQKNIL R22 [+2]
+  LOADB R20 0 +1
+  LOADB R20 1
+  NOT R4 R20
+  GETUPVAL R22 1
+  GETTABLEKS R21 R22 K22 ["AssetTypeIdStringToHumanoidDescriptionProp"]
+  GETTABLEKS R22 R2 K20 ["assetTypeId"]
+  GETTABLE R20 R21 R22
+  JUMPIFNOTEQKNIL R20 [+10]
+  GETUPVAL R22 1
+  GETTABLEKS R21 R22 K23 ["AssetTypeIdToAccessoryTypeEnum"]
+  GETTABLEKS R22 R2 K20 ["assetTypeId"]
+  GETTABLE R20 R21 R22
+  JUMPIFNOTEQKNIL R20 [+2]
+  LOADB R4 0
+  LOADNIL R17
+  GETUPVAL R18 2
+  CALL R18 0 1
+  JUMPIFNOT R18 [+21]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K24 ["isUnlimitedCollectibleAsset"]
+  MOVE R19 R10
+  MOVE R20 R2
+  CALL R18 2 1
+  JUMPIF R18 [+13]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K25 ["isLimitedBundle"]
+  MOVE R19 R10
+  MOVE R20 R2
+  CALL R18 2 1
+  JUMPIF R18 [+6]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K26 ["isUnlimitedCollectibleBundle"]
+  MOVE R19 R10
+  MOVE R20 R2
+  CALL R18 2 1
+  MOVE R17 R18
+  JUMPIFNOT R2 [+18]
+  GETTABLEKS R13 R2 K19 ["collectibleItemId"]
+  GETTABLEKS R20 R0 K0 ["props"]
+  GETTABLEKS R19 R20 K27 ["assetBundles"]
+  GETTABLEKS R20 R2 K10 ["assetId"]
+  GETTABLE R18 R19 R20
+  MOVE R19 R8
+  JUMPIFNOT R19 [+6]
+  LENGTH R20 R18
+  LOADN R21 1
+  JUMPIFLT R21 R20 [+2]
+  LOADB R19 0 +1
+  LOADB R19 1
+  MOVE R17 R19
+  GETTABLEKS R20 R0 K0 ["props"]
+  GETTABLEKS R19 R20 K28 ["detailsInformation"]
+  GETTABLEKS R18 R19 K29 ["viewingDetails"]
+  JUMPIFNOT R18 [+4]
+  GETTABLEKS R19 R0 K0 ["props"]
+  GETTABLEKS R18 R19 K30 ["gamepadEnabled"]
+  GETUPVAL R20 3
+  GETTABLEKS R19 R20 K31 ["createElement"]
+  LOADK R20 K32 ["Frame"]
+  DUPTABLE R21 K36 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K33 ["BackgroundTransparency"]
+  GETIMPORT R22 K39 [UDim2.new]
+  LOADN R23 1
+  LOADN R24 0
+  LOADN R25 0
+  LOADN R26 51
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K34 ["Size"]
+  GETIMPORT R22 K39 [UDim2.new]
+  LOADN R23 0
+  LOADN R24 0
+  LOADN R25 1
+  LOADN R26 205
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K35 ["Position"]
+  DUPTABLE R22 K46 [{"UIListLayout", "ControllerBar", "FavoriteButton", "TryOnButton", "TryOnFiller", "BuyButton"}]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  LOADK R24 K40 ["UIListLayout"]
+  DUPTABLE R25 K50 [{"Padding", "FillDirection", "SortOrder"}]
+  GETIMPORT R26 K52 [UDim.new]
+  LOADN R27 0
+  LOADN R28 10
+  CALL R26 2 1
+  SETTABLEKS R26 R25 K47 ["Padding"]
+  GETIMPORT R26 K55 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R26 R25 K48 ["FillDirection"]
+  GETIMPORT R26 K57 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R26 R25 K49 ["SortOrder"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K40 ["UIListLayout"]
+  MOVE R23 R18
+  JUMPIFNOT R23 [+30]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  GETUPVAL R24 4
+  DUPTABLE R25 K62 [{"showTryOn", "tryingOn", "showFavorite", "isFavorited"}]
+  SETTABLEKS R4 R25 K58 ["showTryOn"]
+  GETTABLEKS R27 R0 K0 ["props"]
+  GETTABLEKS R26 R27 K59 ["tryingOn"]
+  SETTABLEKS R26 R25 K59 ["tryingOn"]
+  GETUPVAL R27 5
+  JUMPIFNOT R27 [+2]
+  LOADB R26 1
+  JUMP [+4]
+  JUMPIFEQKS R5 K63 ["1"] [+2]
+  LOADB R26 0 +1
+  LOADB R26 1
+  SETTABLEKS R26 R25 K60 ["showFavorite"]
+  GETTABLEKS R27 R0 K0 ["props"]
+  GETTABLEKS R26 R27 K61 ["isFavorited"]
+  SETTABLEKS R26 R25 K61 ["isFavorited"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K41 ["ControllerBar"]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  GETUPVAL R24 6
+  DUPTABLE R25 K65 [{"favoriteButtonRef"}]
+  GETTABLEKS R26 R0 K64 ["favoriteButtonRef"]
+  SETTABLEKS R26 R25 K64 ["favoriteButtonRef"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K42 ["FavoriteButton"]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  GETUPVAL R24 7
+  DUPTABLE R25 K70 [{"showTryOn", "assetInfo", "partOfBundleAndOffsale", "bundleId", "tryOnButtonRef", "localPlayerModel"}]
+  SETTABLEKS R4 R25 K58 ["showTryOn"]
+  SETTABLEKS R2 R25 K2 ["assetInfo"]
+  SETTABLEKS R12 R25 K66 ["partOfBundleAndOffsale"]
+  SETTABLEKS R9 R25 K67 ["bundleId"]
+  GETTABLEKS R26 R0 K68 ["tryOnButtonRef"]
+  SETTABLEKS R26 R25 K68 ["tryOnButtonRef"]
+  GETTABLEKS R27 R0 K0 ["props"]
+  GETTABLEKS R26 R27 K69 ["localPlayerModel"]
+  SETTABLEKS R26 R25 K69 ["localPlayerModel"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K43 ["TryOnButton"]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  LOADK R24 K71 ["ImageLabel"]
+  DUPTABLE R25 K77 [{"AnchorPoint", "BackgroundTransparency", "Size", "Visible", "LayoutOrder", "Image", "ScaleType", "SliceCenter"}]
+  GETIMPORT R26 K79 [Vector2.new]
+  LOADK R27 K80 [0.5]
+  LOADN R28 0
+  CALL R26 2 1
+  SETTABLEKS R26 R25 K72 ["AnchorPoint"]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K33 ["BackgroundTransparency"]
+  GETIMPORT R26 K39 [UDim2.new]
+  LOADK R27 K80 [0.5]
+  LOADN R28 224
+  LOADN R29 0
+  LOADN R30 44
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K34 ["Size"]
+  NOT R26 R4
+  SETTABLEKS R26 R25 K73 ["Visible"]
+  LOADN R26 2
+  SETTABLEKS R26 R25 K56 ["LayoutOrder"]
+  LOADK R26 K81 [""]
+  SETTABLEKS R26 R25 K74 ["Image"]
+  GETIMPORT R26 K83 [Enum.ScaleType.Slice]
+  SETTABLEKS R26 R25 K75 ["ScaleType"]
+  GETIMPORT R26 K85 [Rect.new]
+  LOADN R27 5
+  LOADN R28 5
+  LOADN R29 120
+  LOADN R30 20
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K76 ["SliceCenter"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K44 ["TryOnFiller"]
+  GETUPVAL R24 2
+  CALL R24 0 1
+  JUMPIFNOT R24 [+3]
+  JUMPIFNOT R17 [+2]
+  LOADNIL R23
+  JUMP [+28]
+  GETUPVAL R24 3
+  GETTABLEKS R23 R24 K31 ["createElement"]
+  GETUPVAL R24 8
+  DUPTABLE R25 K89 [{"itemType", "itemId", "showRobuxIcon", "forSale", "buyText", "buyButtonRef", "collectibleItemId", "collectibleLowestAvailableResaleProductId", "collectibleLowestAvailableResaleItemInstanceId", "collectibleLowestResalePrice"}]
+  SETTABLEKS R10 R25 K86 ["itemType"]
+  SETTABLEKS R11 R25 K87 ["itemId"]
+  SETTABLEKS R3 R25 K13 ["showRobuxIcon"]
+  SETTABLEKS R7 R25 K14 ["forSale"]
+  SETTABLEKS R6 R25 K12 ["buyText"]
+  GETTABLEKS R26 R0 K88 ["buyButtonRef"]
+  SETTABLEKS R26 R25 K88 ["buyButtonRef"]
+  SETTABLEKS R13 R25 K19 ["collectibleItemId"]
+  SETTABLEKS R15 R25 K17 ["collectibleLowestAvailableResaleProductId"]
+  SETTABLEKS R16 R25 K18 ["collectibleLowestAvailableResaleItemInstanceId"]
+  SETTABLEKS R14 R25 K16 ["collectibleLowestResalePrice"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K45 ["BuyButton"]
+  CALL R19 3 -1
+  RETURN R19 -1
+
+PROTO_6:
+  GETTABLEKS R3 R0 K0 ["detailsInformation"]
+  GETTABLEKS R2 R3 K1 ["assetId"]
+  GETUPVAL R3 0
+  MOVE R4 R0
+  CALL R3 1 1
+  DUPTABLE R4 K12 [{"visible", "assetInfo", "assetBundles", "detailsInformation", "bundleInfo", "locale", "gamepadEnabled", "isFavorited", "tryingOn", "resellableInstances", "overlay"}]
+  GETTABLEKS R5 R0 K2 ["visible"]
+  SETTABLEKS R5 R4 K2 ["visible"]
+  GETTABLEKS R6 R0 K13 ["assets"]
+  GETTABLE R5 R6 R2
+  JUMPIF R5 [+2]
+  NEWTABLE R5 0 0
+  SETTABLEKS R5 R4 K3 ["assetInfo"]
+  GETTABLEKS R5 R0 K4 ["assetBundles"]
+  SETTABLEKS R5 R4 K4 ["assetBundles"]
+  GETTABLEKS R5 R0 K0 ["detailsInformation"]
+  SETTABLEKS R5 R4 K0 ["detailsInformation"]
+  GETTABLEKS R5 R0 K14 ["bundles"]
+  SETTABLEKS R5 R4 K5 ["bundleInfo"]
+  GETTABLEKS R5 R0 K6 ["locale"]
+  SETTABLEKS R5 R4 K6 ["locale"]
+  GETTABLEKS R5 R0 K7 ["gamepadEnabled"]
+  SETTABLEKS R5 R4 K7 ["gamepadEnabled"]
+  SETTABLEKS R3 R4 K8 ["isFavorited"]
+  GETTABLEKS R6 R0 K15 ["tryingOnInfo"]
+  GETTABLEKS R5 R6 K9 ["tryingOn"]
+  SETTABLEKS R5 R4 K9 ["tryingOn"]
+  GETTABLEKS R5 R0 K16 ["collectibleResellableInstances"]
+  SETTABLEKS R5 R4 K10 ["resellableInstances"]
+  GETUPVAL R6 1
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R5 R0 K11 ["overlay"]
+  JUMP [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K11 ["overlay"]
+  RETURN R4 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["Players"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R6 K8 [script]
+  GETTABLEKS R5 R6 K9 ["Parent"]
+  GETTABLEKS R4 R5 K9 ["Parent"]
+  GETIMPORT R5 K11 [require]
+  GETTABLEKS R7 R0 K12 ["Packages"]
+  GETTABLEKS R6 R7 K13 ["Roact"]
+  CALL R5 1 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R8 R0 K12 ["Packages"]
+  GETTABLEKS R7 R8 K14 ["RoactRodux"]
+  CALL R6 1 1
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R8 R4 K15 ["Constants"]
+  CALL R7 1 1
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R9 R4 K16 ["UtilityFunctions"]
+  CALL R8 1 1
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R11 R4 K17 ["Components"]
+  GETTABLEKS R10 R11 K18 ["FavoritesButton"]
+  CALL R9 1 1
+  GETIMPORT R10 K11 [require]
+  GETTABLEKS R12 R4 K17 ["Components"]
+  GETTABLEKS R11 R12 K19 ["TryOnButton"]
+  CALL R10 1 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R13 R4 K17 ["Components"]
+  GETTABLEKS R12 R13 K20 ["BuyButton"]
+  CALL R11 1 1
+  GETIMPORT R12 K11 [require]
+  GETTABLEKS R14 R4 K17 ["Components"]
+  GETTABLEKS R13 R14 K21 ["InspectAndBuyControllerBar"]
+  CALL R12 1 1
+  GETIMPORT R13 K11 [require]
+  GETTABLEKS R15 R4 K22 ["Selectors"]
+  GETTABLEKS R14 R15 K23 ["GetIsFavorite"]
+  CALL R13 1 1
+  GETIMPORT R14 K11 [require]
+  GETTABLEKS R17 R1 K24 ["RobloxGui"]
+  GETTABLEKS R16 R17 K25 ["Modules"]
+  GETTABLEKS R15 R16 K26 ["RobloxTranslator"]
+  CALL R14 1 1
+  GETIMPORT R15 K11 [require]
+  GETTABLEKS R17 R0 K12 ["Packages"]
+  GETTABLEKS R16 R17 K27 ["tutils"]
+  CALL R15 1 1
+  GETIMPORT R16 K11 [require]
+  GETTABLEKS R18 R4 K28 ["Flags"]
+  GETTABLEKS R17 R18 K29 ["FFlagEnableFavoriteButtonForUgc"]
+  CALL R16 1 1
+  GETIMPORT R17 K11 [require]
+  GETTABLEKS R19 R4 K28 ["Flags"]
+  GETTABLEKS R18 R19 K30 ["FFlagAttributionInInspectAndBuy"]
+  CALL R17 1 1
+  GETIMPORT R18 K11 [require]
+  GETTABLEKS R20 R4 K28 ["Flags"]
+  GETTABLEKS R19 R20 K31 ["GetFFlagIBGateUGC4ACollectibleAssetsBundles"]
+  CALL R18 1 1
+  GETIMPORT R19 K11 [require]
+  GETTABLEKS R21 R4 K28 ["Flags"]
+  GETTABLEKS R20 R21 K32 ["GetFFlagIBEnableCollectiblesSystemSupport"]
+  CALL R19 1 1
+  GETIMPORT R20 K1 [game]
+  LOADK R22 K33 ["IBFixResaleAfterQuantityLimit"]
+  LOADB R23 0
+  NAMECALL R20 R20 K34 ["DefineFastFlag"]
+  CALL R20 3 1
+  GETTABLEKS R21 R5 K35 ["PureComponent"]
+  LOADK R23 K36 ["DetailsButtons"]
+  NAMECALL R21 R21 K37 ["extend"]
+  CALL R21 2 1
+  DUPCLOSURE R22 K38 [PROTO_0]
+  CAPTURE VAL R7
+  DUPCLOSURE R23 K39 [PROTO_1]
+  CAPTURE VAL R19
+  CAPTURE VAL R14
+  CAPTURE VAL R7
+  CAPTURE VAL R3
+  DUPCLOSURE R24 K40 [PROTO_2]
+  CAPTURE VAL R5
+  SETTABLEKS R24 R21 K41 ["init"]
+  DUPCLOSURE R24 K42 [PROTO_3]
+  CAPTURE VAL R7
+  CAPTURE VAL R16
+  CAPTURE VAL R2
+  CAPTURE VAL R17
+  SETTABLEKS R24 R21 K43 ["didUpdate"]
+  DUPCLOSURE R24 K44 [PROTO_4]
+  CAPTURE VAL R8
+  CAPTURE VAL R15
+  CAPTURE VAL R20
+  CAPTURE VAL R3
+  CAPTURE VAL R23
+  CAPTURE VAL R7
+  SETTABLEKS R24 R21 K45 ["calculateBuyStatusForLimitedItem"]
+  DUPCLOSURE R24 K46 [PROTO_5]
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  CAPTURE VAL R18
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  CAPTURE VAL R16
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  SETTABLEKS R24 R21 K47 ["render"]
+  GETTABLEKS R24 R6 K48 ["UNSTABLE_connect2"]
+  DUPCLOSURE R25 K49 [PROTO_6]
+  CAPTURE VAL R13
+  CAPTURE VAL R17
+  CALL R24 1 1
+  MOVE R25 R21
+  CALL R24 1 -1
+  RETURN R24 -1

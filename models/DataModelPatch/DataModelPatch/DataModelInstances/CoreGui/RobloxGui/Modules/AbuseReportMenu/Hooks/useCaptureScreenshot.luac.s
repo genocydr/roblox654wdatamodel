@@ -1,0 +1,81 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETUPVAL R3 2
+  NAMECALL R0 R0 K0 ["TakeScreenshotWithCallback"]
+  CALL R0 3 0
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K1 ["getVisibleAvatars"]
+  CALL R0 0 2
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K2 ["getVisibleAds"]
+  CALL R2 0 2
+  GETUPVAL R4 5
+  DUPTABLE R5 K7 [{"identifiedAvatars", "identifiedAds", "avatarIDStats", "adIDStats"}]
+  SETTABLEKS R0 R5 K3 ["identifiedAvatars"]
+  SETTABLEKS R2 R5 K4 ["identifiedAds"]
+  SETTABLEKS R1 R5 K5 ["avatarIDStats"]
+  SETTABLEKS R3 R5 K6 ["adIDStats"]
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["useCallback"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R2
+  NEWTABLE R5 0 3
+  MOVE R6 R1
+  MOVE R7 R0
+  MOVE R8 R2
+  SETLIST R5 R6 3 [1]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K12 ["Components"]
+  GETTABLEKS R4 R5 K13 ["Types"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R7 R1 K14 ["Workspace"]
+  GETTABLEKS R6 R7 K10 ["Packages"]
+  GETTABLEKS R5 R6 K15 ["TnSAvatarIdentification"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R1 K14 ["Workspace"]
+  GETTABLEKS R7 R8 K10 ["Packages"]
+  GETTABLEKS R6 R7 K16 ["TnSAdIdentification"]
+  CALL R5 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R10 R1 K14 ["Workspace"]
+  GETTABLEKS R9 R10 K10 ["Packages"]
+  GETTABLEKS R8 R9 K17 ["TnSScreenshot"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K18 ["ScreenshotManager"]
+  GETTABLEKS R7 R4 K19 ["AvatarIdentification"]
+  GETTABLEKS R8 R5 K20 ["AdIdentification"]
+  DUPCLOSURE R9 K21 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  RETURN R9 1

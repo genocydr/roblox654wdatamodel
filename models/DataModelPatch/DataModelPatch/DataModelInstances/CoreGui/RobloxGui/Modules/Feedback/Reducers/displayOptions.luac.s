@@ -1,0 +1,48 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"screenSize"}]
+  GETTABLEKS R5 R1 K2 ["screenSize"]
+  SETTABLEKS R5 R4 K2 ["screenSize"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Rodux"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Cryo"]
+  CALL R2 1 1
+  GETIMPORT R5 K10 [script]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K12 ["Actions"]
+  GETTABLEKS R5 R6 K13 ["SetScreenSize"]
+  CALL R4 1 1
+  GETTABLEKS R5 R1 K14 ["createReducer"]
+  DUPTABLE R6 K17 [{"inputType", "screenSize"}]
+  LOADNIL R7
+  SETTABLEKS R7 R6 K15 ["inputType"]
+  GETIMPORT R7 K20 [Vector2.new]
+  LOADN R8 0
+  LOADN R9 0
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K16 ["screenSize"]
+  NEWTABLE R7 1 0
+  GETTABLEKS R8 R4 K21 ["name"]
+  DUPCLOSURE R9 K22 [PROTO_0]
+  CAPTURE VAL R2
+  SETTABLE R9 R7 R8
+  CALL R5 2 -1
+  RETURN R5 -1

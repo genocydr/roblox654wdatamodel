@@ -1,0 +1,623 @@
+PROTO_0:
+  DUPTABLE R3 K2 [{"microProfilerEnabled", "performanceStatsEnabled"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["OnScreenProfilerEnabled"]
+  SETTABLEKS R4 R3 K0 ["microProfilerEnabled"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["PerformanceStatsVisible"]
+  SETTABLEKS R4 R3 K1 ["performanceStatsEnabled"]
+  NAMECALL R1 R0 K5 ["setState"]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K7 ["backButtonRef"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K8 ["performanceToggleRef"]
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["canCaptureFocus"]
+  JUMPIFNOT R2 [+11]
+  GETTABLEKS R2 R1 K1 ["canCaptureFocus"]
+  JUMPIF R2 [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R3 R0 K2 ["performanceToggleRef"]
+  NAMECALL R3 R3 K3 ["getValue"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K4 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  JUMPIF R2 [+6]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["performanceToggleRef"]
+  NAMECALL R2 R2 K1 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K2 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["PerformanceStatsVisible"]
+  NOT R1 R2
+  SETTABLEKS R1 R0 K0 ["PerformanceStatsVisible"]
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K1 ["AnalyticsSettingsChangeName"]
+  LOADNIL R2
+  NEWTABLE R3 0 0
+  LOADB R4 1
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["OnScreenProfilerEnabled"]
+  NOT R1 R2
+  SETTABLEKS R1 R0 K0 ["OnScreenProfilerEnabled"]
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K1 ["AnalyticsSettingsChangeName"]
+  LOADNIL R2
+  NEWTABLE R3 0 0
+  LOADB R4 1
+  CALL R0 4 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  LOADB R2 1
+  NAMECALL R0 R0 K0 ["SetVisibility"]
+  CALL R0 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["props"]
+  GETTABLEKS R0 R1 K2 ["closeMenu"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["TextButton"]
+  NEWTABLE R3 16 0
+  LOADN R4 1
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 54
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K6 ["Size"]
+  GETTABLEKS R4 R0 K7 ["text"]
+  SETTABLEKS R4 R3 K8 ["Text"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K9 ["Theme"]
+  GETTABLEKS R5 R6 K10 ["TextEmphasis"]
+  GETTABLEKS R4 R5 K11 ["Color"]
+  SETTABLEKS R4 R3 K12 ["TextColor3"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K13 ["Font"]
+  GETTABLEKS R5 R6 K14 ["Header2"]
+  GETTABLEKS R4 R5 K13 ["Font"]
+  SETTABLEKS R4 R3 K13 ["Font"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K13 ["Font"]
+  GETTABLEKS R6 R7 K14 ["Header2"]
+  GETTABLEKS R5 R6 K15 ["RelativeSize"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K13 ["Font"]
+  GETTABLEKS R6 R7 K16 ["BaseSize"]
+  MUL R4 R5 R6
+  SETTABLEKS R4 R3 K17 ["TextSize"]
+  GETIMPORT R4 K21 [Enum.TextXAlignment.Left]
+  SETTABLEKS R4 R3 K19 ["TextXAlignment"]
+  LOADN R4 4
+  SETTABLEKS R4 R3 K22 ["LayoutOrder"]
+  GETUPVAL R4 2
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K23 ["Square"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K24 ["SelectionImageObject"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K25 ["Event"]
+  GETTABLEKS R4 R5 K26 ["Activated"]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  SETTABLE R5 R3 R4
+  DUPTABLE R4 K28 [{"Padding"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K29 ["UIPadding"]
+  DUPTABLE R7 K31 [{"PaddingLeft"}]
+  GETIMPORT R8 K33 [UDim.new]
+  LOADN R9 0
+  LOADN R10 24
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K30 ["PaddingLeft"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K27 ["Padding"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"microProfilerEnabled"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["OnScreenProfilerEnabled"]
+  SETTABLEKS R3 R2 K0 ["microProfilerEnabled"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"performanceStatsEnabled"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["PerformanceStatsVisible"]
+  SETTABLEKS R3 R2 K0 ["performanceStatsEnabled"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K6 [{"pageTitle", "zIndex", "position", "buttonRef", "NextSelectionDown"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K7 ["props"]
+  GETTABLEKS R4 R5 K1 ["pageTitle"]
+  SETTABLEKS R4 R3 K1 ["pageTitle"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K2 ["zIndex"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K7 ["props"]
+  GETTABLEKS R4 R5 K3 ["position"]
+  SETTABLEKS R4 R3 K3 ["position"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K8 ["backButtonRef"]
+  SETTABLEKS R4 R3 K4 ["buttonRef"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K9 ["performanceToggleRef"]
+  SETTABLEKS R4 R3 K5 ["NextSelectionDown"]
+  DUPTABLE R4 K20 [{"FocusHandler", "Layout", "AdvancedHeader", "PerformanceStats", "MicroProfiler", "DeveloperConsole", "Divider", "VersionReporter", "MicroProfilerVisibilityListener", "PerformanceStatsVisibilityListener"}]
+  GETUPVAL R6 3
+  CALL R6 0 1
+  JUMPIFNOT R6 [+41]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 4
+  DUPTABLE R7 K24 [{"isFocused", "shouldForgetPreviousSelection", "didFocus"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K7 ["props"]
+  GETTABLEKS R8 R9 K25 ["canCaptureFocus"]
+  SETTABLEKS R8 R7 K21 ["isFocused"]
+  LOADB R8 1
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K7 ["props"]
+  GETTABLEKS R9 R10 K26 ["currentPage"]
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K27 ["advancedSettingsPageKey"]
+  JUMPIFNOTEQ R9 R10 [+10]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K7 ["props"]
+  GETTABLEKS R9 R10 K28 ["currentZone"]
+  JUMPIFEQKN R9 K29 [0] [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K22 ["shouldForgetPreviousSelection"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U2
+  SETTABLEKS R8 R7 K23 ["didFocus"]
+  CALL R5 2 1
+  JUMPIF R5 [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K10 ["FocusHandler"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K30 ["UIListLayout"]
+  DUPTABLE R7 K34 [{"SortOrder", "HorizontalAlignment", "VerticalAlignment"}]
+  GETIMPORT R8 K37 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R8 R7 K31 ["SortOrder"]
+  GETIMPORT R8 K39 [Enum.HorizontalAlignment.Right]
+  SETTABLEKS R8 R7 K32 ["HorizontalAlignment"]
+  GETIMPORT R8 K41 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R8 R7 K33 ["VerticalAlignment"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K11 ["Layout"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 7
+  DUPTABLE R7 K43 [{"LayoutOrder", "localizationKey"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K36 ["LayoutOrder"]
+  LOADK R8 K44 ["CoreScripts.InGameMenu.GameSettings.AdvancedSettingsTitle"]
+  SETTABLEKS R8 R7 K42 ["localizationKey"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K12 ["AdvancedHeader"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 8
+  DUPTABLE R7 K49 [{"LayoutOrder", "labelKey", "checked", "onToggled", "buttonRef", "NextSelectionUp"}]
+  LOADN R8 2
+  SETTABLEKS R8 R7 K36 ["LayoutOrder"]
+  LOADK R8 K50 ["CoreScripts.InGameMenu.GameSettings.ShowPerfStats"]
+  SETTABLEKS R8 R7 K45 ["labelKey"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K51 ["state"]
+  GETTABLEKS R8 R9 K52 ["performanceStatsEnabled"]
+  SETTABLEKS R8 R7 K46 ["checked"]
+  DUPCLOSURE R8 K53 [PROTO_3]
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U5
+  SETTABLEKS R8 R7 K47 ["onToggled"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K9 ["performanceToggleRef"]
+  SETTABLEKS R8 R7 K4 ["buttonRef"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K8 ["backButtonRef"]
+  SETTABLEKS R8 R7 K48 ["NextSelectionUp"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K13 ["PerformanceStats"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 8
+  DUPTABLE R7 K54 [{"LayoutOrder", "labelKey", "checked", "onToggled"}]
+  LOADN R8 3
+  SETTABLEKS R8 R7 K36 ["LayoutOrder"]
+  LOADK R8 K55 ["CoreScripts.InGameMenu.GameSettings.ShowMicroProfiler"]
+  SETTABLEKS R8 R7 K45 ["labelKey"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K51 ["state"]
+  GETTABLEKS R8 R9 K56 ["microProfilerEnabled"]
+  SETTABLEKS R8 R7 K46 ["checked"]
+  DUPCLOSURE R8 K57 [PROTO_4]
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U5
+  SETTABLEKS R8 R7 K47 ["onToggled"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K14 ["MicroProfiler"]
+  GETUPVAL R5 11
+  DUPTABLE R6 K59 [{"text"}]
+  LOADK R7 K60 ["CoreScripts.InGameMenu.GameSettings.DeveloperConsole"]
+  SETTABLEKS R7 R6 K58 ["text"]
+  CALL R5 1 1
+  NEWCLOSURE R6 P3
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U2
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K15 ["DeveloperConsole"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 15
+  DUPTABLE R7 K62 [{"Size", "LayoutOrder"}]
+  GETIMPORT R8 K65 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 232
+  LOADN R11 0
+  LOADN R12 1
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K61 ["Size"]
+  LOADN R8 5
+  SETTABLEKS R8 R7 K36 ["LayoutOrder"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K16 ["Divider"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 16
+  DUPTABLE R7 K66 [{"LayoutOrder"}]
+  LOADN R8 6
+  SETTABLEKS R8 R7 K36 ["LayoutOrder"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K17 ["VersionReporter"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 17
+  DUPTABLE R7 K69 [{"event", "callback"}]
+  GETUPVAL R8 18
+  SETTABLEKS R8 R7 K67 ["event"]
+  NEWCLOSURE R8 P4
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U9
+  SETTABLEKS R8 R7 K68 ["callback"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K18 ["MicroProfilerVisibilityListener"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 17
+  DUPTABLE R7 K69 [{"event", "callback"}]
+  GETUPVAL R9 9
+  GETTABLEKS R8 R9 K70 ["PerformanceStatsVisibleChanged"]
+  SETTABLEKS R8 R7 K67 ["event"]
+  NEWCLOSURE R8 P5
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U9
+  SETTABLEKS R8 R7 K68 ["callback"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K19 ["PerformanceStatsVisibilityListener"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_10:
+  GETUPVAL R2 0
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE VAL R1
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_11:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["renderWithSelectionCursor"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_12:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_13:
+  LOADB R1 0
+  GETTABLEKS R2 R0 K0 ["menuPage"]
+  JUMPIFNOTEQKS R2 K1 ["AdvancedGameSettings"] [+25]
+  LOADB R1 0
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K3 ["inputType"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["InputType"]
+  GETTABLEKS R3 R4 K5 ["Gamepad"]
+  JUMPIFNOTEQ R2 R3 [+13]
+  GETTABLEKS R3 R0 K6 ["respawn"]
+  GETTABLEKS R2 R3 K7 ["dialogOpen"]
+  NOT R1 R2
+  JUMPIFNOT R1 [+6]
+  GETTABLEKS R2 R0 K8 ["currentZone"]
+  JUMPIFEQKN R2 K9 [1] [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  LOADNIL R2
+  GETUPVAL R3 1
+  CALL R3 0 1
+  JUMPIFNOT R3 [+2]
+  GETTABLEKS R2 R0 K8 ["currentZone"]
+  DUPTABLE R3 K12 [{"canCaptureFocus", "currentPage", "currentZone"}]
+  SETTABLEKS R1 R3 K10 ["canCaptureFocus"]
+  GETUPVAL R5 1
+  CALL R5 0 1
+  JUMPIFNOT R5 [+3]
+  GETTABLEKS R4 R0 K0 ["menuPage"]
+  JUMPIF R4 [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K11 ["currentPage"]
+  SETTABLEKS R2 R3 K8 ["currentZone"]
+  RETURN R3 1
+
+PROTO_14:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_15:
+  DUPTABLE R1 K1 [{"closeMenu"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["closeMenu"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [UserSettings]
+  CALL R3 0 1
+  LOADK R5 K8 ["UserGameSettings"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K9 ["OnScreenProfilerEnabled"]
+  NAMECALL R4 R3 K10 ["GetPropertyChangedSignal"]
+  CALL R4 2 1
+  GETIMPORT R5 K12 [require]
+  GETTABLEKS R7 R2 K13 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["InGameMenuDependencies"]
+  CALL R5 1 1
+  GETTABLEKS R6 R5 K15 ["Roact"]
+  GETTABLEKS R7 R5 K16 ["RoactRodux"]
+  GETTABLEKS R8 R5 K17 ["t"]
+  GETTABLEKS R9 R5 K18 ["UIBlox"]
+  GETTABLEKS R12 R9 K19 ["Core"]
+  GETTABLEKS R11 R12 K20 ["Style"]
+  GETTABLEKS R10 R11 K21 ["withStyle"]
+  GETTABLEKS R13 R9 K22 ["App"]
+  GETTABLEKS R12 R13 K23 ["SelectionImage"]
+  GETTABLEKS R11 R12 K24 ["withSelectionCursorProvider"]
+  GETTABLEKS R14 R9 K22 ["App"]
+  GETTABLEKS R13 R14 K23 ["SelectionImage"]
+  GETTABLEKS R12 R13 K25 ["CursorKind"]
+  GETIMPORT R13 K12 [require]
+  GETTABLEKS R16 R0 K26 ["RobloxGui"]
+  GETTABLEKS R15 R16 K27 ["Modules"]
+  GETTABLEKS R14 R15 K28 ["DevConsoleMaster"]
+  CALL R13 1 1
+  GETIMPORT R17 K30 [script]
+  GETTABLEKS R16 R17 K31 ["Parent"]
+  GETTABLEKS R15 R16 K31 ["Parent"]
+  GETTABLEKS R14 R15 K31 ["Parent"]
+  GETIMPORT R15 K12 [require]
+  GETTABLEKS R17 R14 K32 ["Components"]
+  GETTABLEKS R16 R17 K33 ["Divider"]
+  CALL R15 1 1
+  GETIMPORT R16 K12 [require]
+  GETTABLEKS R18 R14 K34 ["Utility"]
+  GETTABLEKS R17 R18 K35 ["ExternalEventConnection"]
+  CALL R16 1 1
+  GETIMPORT R17 K12 [require]
+  GETIMPORT R21 K30 [script]
+  GETTABLEKS R20 R21 K31 ["Parent"]
+  GETTABLEKS R19 R20 K31 ["Parent"]
+  GETTABLEKS R18 R19 K36 ["Page"]
+  CALL R17 1 1
+  GETIMPORT R18 K12 [require]
+  GETIMPORT R21 K30 [script]
+  GETTABLEKS R20 R21 K31 ["Parent"]
+  GETTABLEKS R19 R20 K37 ["CategoryHeader"]
+  CALL R18 1 1
+  GETIMPORT R19 K12 [require]
+  GETIMPORT R22 K30 [script]
+  GETTABLEKS R21 R22 K31 ["Parent"]
+  GETTABLEKS R20 R21 K38 ["ToggleEntry"]
+  CALL R19 1 1
+  GETIMPORT R20 K12 [require]
+  GETIMPORT R23 K30 [script]
+  GETTABLEKS R22 R23 K31 ["Parent"]
+  GETTABLEKS R21 R22 K39 ["VersionReporter"]
+  CALL R20 1 1
+  GETIMPORT R21 K12 [require]
+  GETTABLEKS R23 R14 K40 ["Thunks"]
+  GETTABLEKS R22 R23 K41 ["CloseMenu"]
+  CALL R21 1 1
+  GETIMPORT R22 K12 [require]
+  GETIMPORT R27 K30 [script]
+  GETTABLEKS R26 R27 K31 ["Parent"]
+  GETTABLEKS R25 R26 K31 ["Parent"]
+  GETTABLEKS R24 R25 K42 ["Connection"]
+  GETTABLEKS R23 R24 K43 ["FocusHandler"]
+  CALL R22 1 1
+  GETIMPORT R23 K12 [require]
+  GETTABLEKS R25 R14 K44 ["Localization"]
+  GETTABLEKS R24 R25 K45 ["withLocalization"]
+  CALL R23 1 1
+  GETIMPORT R24 K12 [require]
+  GETTABLEKS R26 R14 K34 ["Utility"]
+  GETTABLEKS R25 R26 K46 ["SendAnalytics"]
+  CALL R24 1 1
+  GETIMPORT R25 K12 [require]
+  GETTABLEKS R27 R14 K47 ["Resources"]
+  GETTABLEKS R26 R27 K48 ["Constants"]
+  CALL R25 1 1
+  GETTABLEKS R26 R14 K49 ["Flags"]
+  GETIMPORT R27 K12 [require]
+  GETTABLEKS R28 R26 K50 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R27 1 1
+  GETTABLEKS R28 R6 K51 ["PureComponent"]
+  LOADK R30 K52 ["AdvancedPage"]
+  NAMECALL R28 R28 K53 ["extend"]
+  CALL R28 2 1
+  GETTABLEKS R29 R8 K54 ["strictInterface"]
+  DUPTABLE R30 K60 [{"canCaptureFocus", "closeMenu", "pageTitle", "currentPage", "currentZone"}]
+  GETTABLEKS R31 R8 K61 ["boolean"]
+  SETTABLEKS R31 R30 K55 ["canCaptureFocus"]
+  GETTABLEKS R31 R8 K62 ["callback"]
+  SETTABLEKS R31 R30 K56 ["closeMenu"]
+  GETTABLEKS R31 R8 K63 ["string"]
+  SETTABLEKS R31 R30 K57 ["pageTitle"]
+  MOVE R32 R27
+  CALL R32 0 1
+  JUMPIFNOT R32 [+3]
+  GETTABLEKS R31 R8 K63 ["string"]
+  JUMPIF R31 [+1]
+  LOADNIL R31
+  SETTABLEKS R31 R30 K58 ["currentPage"]
+  MOVE R32 R27
+  CALL R32 0 1
+  JUMPIFNOT R32 [+6]
+  GETTABLEKS R31 R8 K64 ["optional"]
+  GETTABLEKS R32 R8 K65 ["number"]
+  CALL R31 1 1
+  JUMPIF R31 [+1]
+  LOADNIL R31
+  SETTABLEKS R31 R30 K59 ["currentZone"]
+  CALL R29 1 1
+  SETTABLEKS R29 R28 K66 ["validateProps"]
+  DUPCLOSURE R29 K67 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  SETTABLEKS R29 R28 K68 ["init"]
+  MOVE R29 R27
+  CALL R29 0 1
+  JUMPIF R29 [+4]
+  DUPCLOSURE R29 K69 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLEKS R29 R28 K70 ["didUpdate"]
+  DUPCLOSURE R29 K71 [PROTO_10]
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R17
+  CAPTURE VAL R27
+  CAPTURE VAL R22
+  CAPTURE VAL R25
+  CAPTURE VAL R1
+  CAPTURE VAL R18
+  CAPTURE VAL R19
+  CAPTURE VAL R3
+  CAPTURE VAL R24
+  CAPTURE VAL R23
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R15
+  CAPTURE VAL R20
+  CAPTURE VAL R16
+  CAPTURE VAL R4
+  SETTABLEKS R29 R28 K72 ["renderWithSelectionCursor"]
+  DUPCLOSURE R29 K73 [PROTO_12]
+  CAPTURE VAL R11
+  SETTABLEKS R29 R28 K74 ["render"]
+  GETTABLEKS R29 R7 K75 ["UNSTABLE_connect2"]
+  DUPCLOSURE R30 K76 [PROTO_13]
+  CAPTURE VAL R25
+  CAPTURE VAL R27
+  DUPCLOSURE R31 K77 [PROTO_15]
+  CAPTURE VAL R21
+  CALL R29 2 1
+  MOVE R30 R28
+  CALL R29 1 -1
+  RETURN R29 -1

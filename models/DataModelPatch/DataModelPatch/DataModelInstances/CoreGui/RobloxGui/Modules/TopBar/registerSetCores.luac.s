@@ -1,0 +1,59 @@
+PROTO_0:
+  FASTCALL1 TYPE R0 [+3]
+  MOVE R2 R0
+  GETIMPORT R1 K1 [type]
+  CALL R1 1 1
+  JUMPIFNOTEQKS R1 K2 ["boolean"] [+9]
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  CALL R3 1 -1
+  NAMECALL R1 R1 K3 ["dispatch"]
+  CALL R1 -1 0
+  RETURN R0 0
+  GETIMPORT R1 K5 [error]
+  LOADK R2 K6 ["SetCore TopbarEnabled argument must be a boolean"]
+  LOADN R3 2
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["getState"]
+  CALL R2 1 1
+  GETTABLEKS R1 R2 K1 ["displayOptions"]
+  GETTABLEKS R0 R1 K2 ["topbarEnabled"]
+  RETURN R0 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["TopbarEnabled"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  NAMECALL R1 R1 K1 ["RegisterSetCore"]
+  CALL R1 3 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["TopbarEnabled"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["RegisterGetCore"]
+  CALL R1 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["StarterGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K5 [script]
+  GETTABLEKS R1 R2 K6 ["Parent"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R1 K9 ["Actions"]
+  GETTABLEKS R3 R4 K10 ["SetTopBarEnabled"]
+  CALL R2 1 1
+  DUPCLOSURE R3 K11 [PROTO_2]
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  RETURN R3 1

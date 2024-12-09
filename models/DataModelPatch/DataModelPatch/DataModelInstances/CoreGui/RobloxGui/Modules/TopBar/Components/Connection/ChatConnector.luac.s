@@ -1,0 +1,180 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["updateChatVisible"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["updateChatMessages"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ChatVisible"]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K2 ["isSmallTouchScreen"]
+  JUMPIFNOT R2 [+1]
+  LOADB R1 0
+  GETUPVAL R2 1
+  MOVE R4 R1
+  NAMECALL R2 R2 K3 ["SetVisible"]
+  CALL R2 2 0
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K4 ["updateChatMessages"]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K5 ["GetMessageCount"]
+  CALL R3 1 -1
+  CALL R2 -1 0
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K6 ["updateChatVisible"]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K7 ["GetVisibility"]
+  CALL R3 1 -1
+  CALL R2 -1 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K8 ["VisibilityStateChanged"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K9 ["connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K10 ["chatVisibleConnection"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K11 ["MessagesChanged"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K9 ["connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K12 ["chatMessagesConnection"]
+  RETURN R0 0
+
+PROTO_3:
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["chatVisibleConnection"]
+  NAMECALL R1 R1 K1 ["disconnect"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["chatMessagesConnection"]
+  NAMECALL R1 R1 K1 ["disconnect"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  DUPTABLE R1 K1 [{"isSmallTouchScreen"}]
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K3 ["isSmallTouchDevice"]
+  SETTABLEKS R2 R1 K0 ["isSmallTouchScreen"]
+  RETURN R1 1
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_8:
+  DUPTABLE R1 K2 [{"updateChatVisible", "updateChatMessages"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["updateChatVisible"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["updateChatMessages"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R6 R5 K13 ["Parent"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K14 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["UpdateChatVisible"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R6 K14 ["Actions"]
+  GETTABLEKS R9 R10 K16 ["UpdateChatMessages"]
+  CALL R8 1 1
+  LOADK R11 K17 ["RobloxGui"]
+  NAMECALL R9 R1 K18 ["WaitForChild"]
+  CALL R9 2 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R9 K19 ["Modules"]
+  GETTABLEKS R11 R12 K20 ["ChatSelector"]
+  CALL R10 1 1
+  GETIMPORT R12 K22 [UserSettings]
+  CALL R12 0 1
+  GETTABLEKS R11 R12 K23 ["GameSettings"]
+  GETTABLEKS R12 R2 K24 ["PureComponent"]
+  LOADK R14 K25 ["ChatConnector"]
+  NAMECALL R12 R12 K26 ["extend"]
+  CALL R12 2 1
+  GETTABLEKS R13 R4 K27 ["strictInterface"]
+  DUPTABLE R14 K31 [{"isSmallTouchScreen", "updateChatVisible", "updateChatMessages"}]
+  GETTABLEKS R15 R4 K32 ["boolean"]
+  SETTABLEKS R15 R14 K28 ["isSmallTouchScreen"]
+  GETTABLEKS R15 R4 K33 ["callback"]
+  SETTABLEKS R15 R14 K29 ["updateChatVisible"]
+  GETTABLEKS R15 R4 K33 ["callback"]
+  SETTABLEKS R15 R14 K30 ["updateChatMessages"]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K34 ["validateProps"]
+  DUPCLOSURE R13 K35 [PROTO_2]
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  SETTABLEKS R13 R12 K36 ["didMount"]
+  DUPCLOSURE R13 K37 [PROTO_3]
+  SETTABLEKS R13 R12 K38 ["render"]
+  DUPCLOSURE R13 K39 [PROTO_4]
+  SETTABLEKS R13 R12 K40 ["willUnmount"]
+  DUPCLOSURE R13 K41 [PROTO_5]
+  DUPCLOSURE R14 K42 [PROTO_8]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  GETTABLEKS R15 R3 K43 ["UNSTABLE_connect2"]
+  MOVE R16 R13
+  MOVE R17 R14
+  CALL R15 2 1
+  MOVE R16 R12
+  CALL R15 1 -1
+  RETURN R15 -1

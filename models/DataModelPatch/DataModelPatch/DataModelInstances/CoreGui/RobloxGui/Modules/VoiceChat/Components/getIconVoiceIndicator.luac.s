@@ -1,0 +1,26 @@
+PROTO_0:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  MOVE R5 R1
+  NAMECALL R2 R2 K0 ["GetIcon"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R6 R1 K8 ["Modules"]
+  GETTABLEKS R5 R6 K9 ["VoiceChat"]
+  GETTABLEKS R4 R5 K10 ["VoiceChatServiceManager"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K11 ["default"]
+  DUPCLOSURE R3 K12 [PROTO_0]
+  CAPTURE VAL R2
+  RETURN R3 1

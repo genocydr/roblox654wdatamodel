@@ -1,0 +1,127 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["ScrollingFrame"]
+  DUPTABLE R3 K15 [{"BackgroundTransparency", "BorderSizePixel", "ScrollBarImageColor3", "ScrollBarImageTransparency", "BottomImage", "MidImage", "TopImage", "ClipsDescendants", "ScrollBarThickness", "Size", "AnchorPoint", "CanvasSize", "Position"}]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K3 ["BorderSizePixel"]
+  GETTABLEKS R6 R0 K16 ["Theme"]
+  GETTABLEKS R5 R6 K17 ["UIEmphasis"]
+  GETTABLEKS R4 R5 K18 ["Color"]
+  SETTABLEKS R4 R3 K4 ["ScrollBarImageColor3"]
+  GETTABLEKS R6 R0 K16 ["Theme"]
+  GETTABLEKS R5 R6 K17 ["UIEmphasis"]
+  GETTABLEKS R4 R5 K19 ["Transparency"]
+  SETTABLEKS R4 R3 K5 ["ScrollBarImageTransparency"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K20 ["Images"]
+  GETTABLEKS R4 R5 K21 ["ScrollBottom"]
+  SETTABLEKS R4 R3 K6 ["BottomImage"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K20 ["Images"]
+  GETTABLEKS R4 R5 K22 ["ScrollMid"]
+  SETTABLEKS R4 R3 K7 ["MidImage"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K20 ["Images"]
+  GETTABLEKS R4 R5 K23 ["ScrollTop"]
+  SETTABLEKS R4 R3 K8 ["TopImage"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K9 ["ClipsDescendants"]
+  LOADN R4 12
+  SETTABLEKS R4 R3 K10 ["ScrollBarThickness"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["Size"]
+  SETTABLEKS R4 R3 K11 ["Size"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K12 ["AnchorPoint"]
+  SETTABLEKS R4 R3 K12 ["AnchorPoint"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K13 ["CanvasSize"]
+  SETTABLEKS R4 R3 K13 ["CanvasSize"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K14 ["Position"]
+  SETTABLEKS R4 R3 K14 ["Position"]
+  GETUPVAL R5 2
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K24 ["Children"]
+  GETTABLE R4 R5 R6
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["propValidation"]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  FASTCALL ASSERT [+2]
+  GETIMPORT R1 K2 [assert]
+  CALL R1 -1 0
+  GETUPVAL R1 2
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["UIBlox"]
+  GETTABLEKS R4 R1 K10 ["t"]
+  GETTABLEKS R7 R3 K11 ["Core"]
+  GETTABLEKS R6 R7 K12 ["Style"]
+  GETTABLEKS R5 R6 K13 ["withStyle"]
+  GETIMPORT R8 K15 [script]
+  GETTABLEKS R7 R8 K16 ["Parent"]
+  GETTABLEKS R6 R7 K16 ["Parent"]
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R6 K17 ["Resources"]
+  GETTABLEKS R8 R9 K18 ["Assets"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R6 K19 ["GlobalConfig"]
+  CALL R8 1 1
+  GETTABLEKS R9 R4 K20 ["strictInterface"]
+  NEWTABLE R10 8 0
+  GETTABLEKS R11 R4 K21 ["optional"]
+  GETTABLEKS R12 R4 K22 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K23 ["Size"]
+  GETTABLEKS R11 R4 K21 ["optional"]
+  GETTABLEKS R12 R4 K22 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K24 ["AnchorPoint"]
+  GETTABLEKS R11 R4 K21 ["optional"]
+  GETTABLEKS R12 R4 K22 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K25 ["CanvasSize"]
+  GETTABLEKS R11 R4 K21 ["optional"]
+  GETTABLEKS R12 R4 K22 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K26 ["Position"]
+  GETTABLEKS R11 R2 K27 ["Children"]
+  GETTABLEKS R12 R4 K21 ["optional"]
+  GETTABLEKS R13 R4 K28 ["table"]
+  CALL R12 1 1
+  SETTABLE R12 R10 R11
+  CALL R9 1 1
+  DUPCLOSURE R10 K29 [PROTO_1]
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  RETURN R10 1

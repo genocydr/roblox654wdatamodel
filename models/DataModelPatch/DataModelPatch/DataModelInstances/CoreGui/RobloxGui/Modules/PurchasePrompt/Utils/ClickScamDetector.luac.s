@@ -1,0 +1,155 @@
+PROTO_0:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["_onInput"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  DUPTABLE R2 K6 [{"clickSpeedThreshold", "clickTimeWindow", "initialDelay", "buttonInput"}]
+  LOADN R3 3
+  SETTABLEKS R3 R2 K2 ["clickSpeedThreshold"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K3 ["clickTimeWindow"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K4 ["initialDelay"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K5 ["buttonInput"]
+  MOVE R3 R0
+  JUMPIF R3 [+2]
+  NEWTABLE R3 0 0
+  CALL R1 2 1
+  MOVE R0 R1
+  DUPTABLE R1 K11 [{"_inputConnection", "_clickCount", "_startTime", "_options"}]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K7 ["_inputConnection"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K8 ["_clickCount"]
+  GETIMPORT R2 K13 [tick]
+  CALL R2 0 1
+  SETTABLEKS R2 R1 K9 ["_startTime"]
+  SETTABLEKS R0 R1 K10 ["_options"]
+  GETUPVAL R4 1
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K15 [setmetatable]
+  CALL R2 2 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K16 ["InputBegan"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R1
+  NAMECALL R2 R2 K17 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K7 ["_inputConnection"]
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["_clickCount"]
+  SUBK R1 R2 K0 [1]
+  SETTABLEKS R1 R0 K1 ["_clickCount"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  LOADB R3 0
+  GETTABLEKS R5 R0 K1 ["_options"]
+  GETTABLEKS R4 R5 K2 ["buttonInput"]
+  JUMPIFEQKNIL R4 [+11]
+  GETTABLEKS R4 R1 K3 ["KeyCode"]
+  GETTABLEKS R6 R0 K1 ["_options"]
+  GETTABLEKS R5 R6 K2 ["buttonInput"]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  LOADB R4 1
+  GETIMPORT R5 K6 [Enum.UserInputType.MouseButton1]
+  JUMPIFEQ R2 R5 [+7]
+  GETIMPORT R5 K8 [Enum.UserInputType.Touch]
+  JUMPIFEQ R2 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  JUMPIF R3 [+1]
+  JUMPIFNOT R4 [+14]
+  GETTABLEKS R6 R0 K10 ["_clickCount"]
+  ADDK R5 R6 K9 [1]
+  SETTABLEKS R5 R0 K10 ["_clickCount"]
+  GETIMPORT R5 K12 [delay]
+  GETTABLEKS R7 R0 K1 ["_options"]
+  GETTABLEKS R6 R7 K13 ["clickTimeWindow"]
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R0
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseBehavior"]
+  GETIMPORT R2 K3 [Enum.MouseBehavior.LockCurrentPosition]
+  JUMPIFNOTEQ R1 R2 [+3]
+  LOADB R1 0
+  RETURN R1 1
+  GETIMPORT R2 K5 [tick]
+  CALL R2 0 1
+  GETTABLEKS R3 R0 K6 ["_startTime"]
+  SUB R1 R2 R3
+  GETTABLEKS R3 R0 K7 ["_options"]
+  GETTABLEKS R2 R3 K8 ["initialDelay"]
+  JUMPIFNOTLT R1 R2 [+3]
+  LOADB R1 0
+  RETURN R1 1
+  GETTABLEKS R3 R0 K9 ["_clickCount"]
+  GETTABLEKS R5 R0 K7 ["_options"]
+  GETTABLEKS R4 R5 K10 ["clickTimeWindow"]
+  DIV R2 R3 R4
+  GETTABLEKS R4 R0 K7 ["_options"]
+  GETTABLEKS R3 R4 K11 ["clickSpeedThreshold"]
+  JUMPIFLT R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+PROTO_5:
+  GETTABLEKS R1 R0 K0 ["_inputConnection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["UserInputService"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["CorePackages"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R2 K10 ["Workspace"]
+  GETTABLEKS R5 R6 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["PurchasePromptDeps"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["Cryo"]
+  NEWTABLE R5 8 0
+  SETTABLEKS R5 R5 K14 ["__index"]
+  DUPCLOSURE R6 K15 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  SETTABLEKS R6 R5 K16 ["new"]
+  DUPCLOSURE R6 K17 [PROTO_3]
+  SETTABLEKS R6 R5 K18 ["_onInput"]
+  DUPCLOSURE R6 K19 [PROTO_4]
+  CAPTURE VAL R1
+  SETTABLEKS R6 R5 K20 ["isClickValid"]
+  DUPCLOSURE R6 K21 [PROTO_5]
+  SETTABLEKS R6 R5 K22 ["destroy"]
+  RETURN R5 1

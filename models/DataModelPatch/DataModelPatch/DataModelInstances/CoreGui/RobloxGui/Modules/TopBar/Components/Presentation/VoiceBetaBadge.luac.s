@@ -1,0 +1,928 @@
+PROTO_0:
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K4 [{"title", "presentationStyle", "visible", "url"}]
+  GETIMPORT R5 K6 [game]
+  LOADK R7 K7 ["SetWebViewTitle"]
+  NAMECALL R5 R5 K8 ["GetEngineFeature"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+2]
+  LOADK R4 K9 ["Help Center"]
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K0 ["title"]
+  GETUPVAL R5 1
+  CALL R5 0 1
+  JUMPIFNOT R5 [+4]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K10 ["FormSheet"]
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K1 ["presentationStyle"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K2 ["visible"]
+  SETTABLEKS R0 R3 K3 ["url"]
+  NAMECALL R1 R1 K11 ["JSONEncode"]
+  CALL R1 2 1
+  GETUPVAL R2 3
+  LOADK R4 K12 ["Opening Webview with payload {}"]
+  MOVE R5 R1
+  NAMECALL R2 R2 K13 ["debug"]
+  CALL R2 3 0
+  GETUPVAL R2 4
+  MOVE R4 R1
+  LOADN R5 20
+  NAMECALL R2 R2 K14 ["BroadcastNotification"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"voiceChatServiceConnected"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["voiceChatServiceConnected"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"showPopup"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["state"]
+  GETTABLEKS R4 R5 K0 ["showPopup"]
+  NOT R3 R4
+  SETTABLEKS R3 R2 K0 ["showPopup"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K4 ["props"]
+  GETTABLEKS R1 R2 K5 ["Analytics"]
+  GETTABLEKS R0 R1 K6 ["EventStream"]
+  LOADK R2 K7 ["voiceChat"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["state"]
+  GETTABLEKS R4 R5 K0 ["showPopup"]
+  JUMPIF R4 [+2]
+  LOADK R3 K8 ["openBetaBadge"]
+  JUMP [+1]
+  LOADK R3 K9 ["closeBetaBadge"]
+  NAMECALL R0 R0 K10 ["setRBXEvent"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  GETGLOBAL R1 K0 ["openWebview"]
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["props"]
+  GETTABLEKS R2 R3 K2 ["Analytics"]
+  GETTABLEKS R1 R2 K3 ["EventStream"]
+  LOADK R3 K4 ["voiceChat"]
+  LOADK R4 K5 ["clickBetaBadgeLearnMore"]
+  NAMECALL R1 R1 K6 ["setRBXEvent"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["buttonRef"]
+  DUPTABLE R3 K6 [{"chromeMenuOpen", "vrShowMenuIcon", "voiceChatServiceConnected", "showPopup"}]
+  GETUPVAL R4 1
+  JUMPIFNOT R4 [+16]
+  GETUPVAL R5 1
+  NAMECALL R5 R5 K7 ["status"]
+  CALL R5 1 1
+  NAMECALL R5 R5 K8 ["get"]
+  CALL R5 1 1
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K9 ["MenuStatus"]
+  GETTABLEKS R6 R7 K10 ["Open"]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K2 ["chromeMenuOpen"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["VREnabled"]
+  JUMPIFNOT R4 [+3]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K12 ["GamepadCursorEnabled"]
+  SETTABLEKS R4 R3 K3 ["vrShowMenuIcon"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K4 ["voiceChatServiceConnected"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K5 ["showPopup"]
+  NAMECALL R1 R0 K13 ["setState"]
+  CALL R1 2 0
+  GETIMPORT R1 K15 [game]
+  LOADK R3 K16 ["VoiceChatSupported"]
+  NAMECALL R1 R1 K17 ["GetEngineFeature"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+13]
+  GETUPVAL R1 4
+  NAMECALL R1 R1 K18 ["asyncInit"]
+  CALL R1 1 1
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K19 ["andThen"]
+  CALL R1 2 1
+  GETUPVAL R3 5
+  NAMECALL R1 R1 K20 ["catch"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K21 ["menuIconActivated"]
+  NEWCLOSURE R1 P2
+  CAPTURE UPVAL U6
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K22 ["learnMore"]
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"chromeMenuOpen"}]
+  GETUPVAL R4 1
+  NAMECALL R4 R4 K2 ["status"]
+  CALL R4 1 1
+  NAMECALL R4 R4 K3 ["get"]
+  CALL R4 1 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K4 ["MenuStatus"]
+  GETTABLEKS R5 R6 K5 ["Open"]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["chromeMenuOpen"]
+  NAMECALL R0 R0 K6 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["status"]
+  CALL R1 1 1
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  NAMECALL R1 R1 K1 ["connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K2 ["chromeMenuStatusConn"]
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["chromeMenuStatusConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["chromeMenuStatusConn"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["chromeMenuStatusConn"]
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+39]
+  JUMPIFNOT R0 [+38]
+  GETIMPORT R1 K2 [Vector2.new]
+  GETTABLEKS R4 R0 K4 ["AbsolutePosition"]
+  GETTABLEKS R3 R4 K5 ["X"]
+  SUBK R2 R3 K3 [2]
+  GETTABLEKS R5 R0 K4 ["AbsolutePosition"]
+  GETTABLEKS R4 R5 K6 ["Y"]
+  SUBK R3 R4 K3 [2]
+  CALL R1 2 1
+  GETIMPORT R2 K2 [Vector2.new]
+  GETTABLEKS R5 R0 K8 ["AbsoluteSize"]
+  GETTABLEKS R4 R5 K5 ["X"]
+  ADDK R3 R4 K7 [4]
+  GETTABLEKS R6 R0 K8 ["AbsoluteSize"]
+  GETTABLEKS R5 R6 K6 ["Y"]
+  ADDK R4 R5 K7 [4]
+  CALL R2 2 1
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K9 ["props"]
+  GETTABLEKS R3 R4 K10 ["setKeepOutArea"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["VoiceBetaBadgeKeepOutAreaId"]
+  MOVE R5 R1
+  MOVE R6 R2
+  CALL R3 3 0
+  RETURN R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K9 ["props"]
+  GETTABLEKS R1 R2 K12 ["removeKeepOutArea"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K11 ["VoiceBetaBadgeKeepOutAreaId"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"vrShowMenuIcon"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["VREnabled"]
+  JUMPIFNOT R3 [+3]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["GamepadCursorEnabled"]
+  SETTABLEKS R3 R2 K0 ["vrShowMenuIcon"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R2 R0 K0 ["Font"]
+  GETTABLEKS R1 R2 K1 ["Footer"]
+  GETTABLEKS R2 R1 K0 ["Font"]
+  GETTABLEKS R5 R0 K0 ["Font"]
+  GETTABLEKS R4 R5 K2 ["BaseSize"]
+  GETTABLEKS R5 R1 K3 ["RelativeSize"]
+  MUL R3 R4 R5
+  GETTABLEKS R5 R0 K4 ["Theme"]
+  GETTABLEKS R4 R5 K5 ["BackgroundUIContrast"]
+  GETTABLEKS R6 R0 K4 ["Theme"]
+  GETTABLEKS R5 R6 K6 ["TextEmphasis"]
+  GETTABLEKS R7 R0 K4 ["Theme"]
+  GETTABLEKS R6 R7 K7 ["TextLink"]
+  GETIMPORT R7 K10 [Color3.fromRGB]
+  LOADN R8 238
+  LOADN R9 206
+  LOADN R10 83
+  CALL R7 3 1
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K11 ["createFragment"]
+  DUPTABLE R9 K14 [{"PopupWrapper", "Button"}]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K15 ["createElement"]
+  LOADK R11 K16 ["Frame"]
+  DUPTABLE R12 K21 [{"Visible", "BackgroundTransparency", "AutomaticSize", "LayoutOrder"}]
+  GETUPVAL R13 1
+  JUMPIFNOT R13 [+5]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K22 ["state"]
+  GETTABLEKS R13 R14 K23 ["showPopup"]
+  SETTABLEKS R13 R12 K17 ["Visible"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K18 ["BackgroundTransparency"]
+  GETIMPORT R13 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R13 R12 K19 ["AutomaticSize"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K28 ["props"]
+  GETTABLEKS R14 R15 K29 ["layoutOrder"]
+  ADDK R13 R14 K27 [1]
+  SETTABLEKS R13 R12 K20 ["LayoutOrder"]
+  DUPTABLE R13 K31 [{"Popup"}]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K15 ["createElement"]
+  LOADK R15 K16 ["Frame"]
+  DUPTABLE R16 K35 [{"Size", "Position", "BackgroundTransparency", "BackgroundColor3"}]
+  GETUPVAL R17 3
+  SETTABLEKS R17 R16 K32 ["Size"]
+  GETIMPORT R17 K38 [UDim2.fromOffset]
+  LOADN R18 0
+  LOADN R19 10
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K33 ["Position"]
+  GETTABLEKS R17 R4 K39 ["Transparency"]
+  SETTABLEKS R17 R16 K18 ["BackgroundTransparency"]
+  GETTABLEKS R17 R4 K40 ["Color"]
+  SETTABLEKS R17 R16 K34 ["BackgroundColor3"]
+  DUPTABLE R17 K46 [{"Layout", "Popup", "Text", "LearnMoreLink", "UICorner", "UIPadding"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K47 ["UIListLayout"]
+  DUPTABLE R20 K52 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R21 K55 [UDim.new]
+  LOADN R22 0
+  LOADN R23 8
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K48 ["Padding"]
+  GETIMPORT R21 K57 [Enum.FillDirection.Vertical]
+  SETTABLEKS R21 R20 K49 ["FillDirection"]
+  GETIMPORT R21 K59 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R21 R20 K50 ["HorizontalAlignment"]
+  GETIMPORT R21 K60 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R21 R20 K51 ["SortOrder"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K41 ["Layout"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K16 ["Frame"]
+  DUPTABLE R20 K61 [{"AutomaticSize", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R21 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R21 R20 K19 ["AutomaticSize"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K18 ["BackgroundTransparency"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K20 ["LayoutOrder"]
+  DUPTABLE R21 K64 [{"Layout", "Starter", "FirstBullet"}]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K15 ["createElement"]
+  LOADK R23 K47 ["UIListLayout"]
+  DUPTABLE R24 K52 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R25 K55 [UDim.new]
+  LOADN R26 0
+  LOADN R27 0
+  CALL R25 2 1
+  SETTABLEKS R25 R24 K48 ["Padding"]
+  GETIMPORT R25 K57 [Enum.FillDirection.Vertical]
+  SETTABLEKS R25 R24 K49 ["FillDirection"]
+  GETIMPORT R25 K59 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R25 R24 K50 ["HorizontalAlignment"]
+  GETIMPORT R25 K60 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R25 R24 K51 ["SortOrder"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K41 ["Layout"]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K15 ["createElement"]
+  LOADK R23 K65 ["TextLabel"]
+  DUPTABLE R24 K69 [{"Text", "TextSize", "Font", "LayoutOrder", "TextXAlignment", "TextColor3", "AutomaticSize", "BackgroundTransparency"}]
+  GETUPVAL R25 4
+  LOADK R27 K70 ["InGame.CommonUI.Badge.Popup.HeaderList"]
+  NAMECALL R25 R25 K71 ["FormatByKey"]
+  CALL R25 2 1
+  SETTABLEKS R25 R24 K42 ["Text"]
+  SETTABLEKS R3 R24 K66 ["TextSize"]
+  SETTABLEKS R2 R24 K0 ["Font"]
+  LOADN R25 0
+  SETTABLEKS R25 R24 K20 ["LayoutOrder"]
+  GETIMPORT R25 K72 [Enum.TextXAlignment.Left]
+  SETTABLEKS R25 R24 K67 ["TextXAlignment"]
+  GETTABLEKS R25 R5 K40 ["Color"]
+  SETTABLEKS R25 R24 K68 ["TextColor3"]
+  GETIMPORT R25 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R25 R24 K19 ["AutomaticSize"]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K18 ["BackgroundTransparency"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K62 ["Starter"]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K15 ["createElement"]
+  LOADK R23 K65 ["TextLabel"]
+  DUPTABLE R24 K69 [{"Text", "TextSize", "Font", "LayoutOrder", "TextXAlignment", "TextColor3", "AutomaticSize", "BackgroundTransparency"}]
+  LOADK R26 K73 ["• "]
+  GETUPVAL R27 4
+  LOADK R29 K74 ["InGame.CommonUI.Badge.Popup.VoiceChatBullet"]
+  NAMECALL R27 R27 K71 ["FormatByKey"]
+  CALL R27 2 1
+  CONCAT R25 R26 R27
+  SETTABLEKS R25 R24 K42 ["Text"]
+  SETTABLEKS R3 R24 K66 ["TextSize"]
+  SETTABLEKS R2 R24 K0 ["Font"]
+  LOADN R25 2
+  SETTABLEKS R25 R24 K20 ["LayoutOrder"]
+  GETIMPORT R25 K72 [Enum.TextXAlignment.Left]
+  SETTABLEKS R25 R24 K67 ["TextXAlignment"]
+  GETTABLEKS R25 R5 K40 ["Color"]
+  SETTABLEKS R25 R24 K68 ["TextColor3"]
+  GETIMPORT R25 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R25 R24 K19 ["AutomaticSize"]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K18 ["BackgroundTransparency"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K63 ["FirstBullet"]
+  CALL R18 3 1
+  SETTABLEKS R18 R17 K30 ["Popup"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K65 ["TextLabel"]
+  DUPTABLE R20 K76 [{"Text", "TextSize", "Font", "LayoutOrder", "TextXAlignment", "TextColor3", "AutomaticSize", "TextWrapped", "BackgroundTransparency"}]
+  GETUPVAL R21 4
+  LOADK R23 K77 ["InGame.CommonUI.Badge.Popup.DisclaimerText2"]
+  NAMECALL R21 R21 K71 ["FormatByKey"]
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K42 ["Text"]
+  SETTABLEKS R3 R20 K66 ["TextSize"]
+  SETTABLEKS R2 R20 K0 ["Font"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K20 ["LayoutOrder"]
+  GETIMPORT R21 K72 [Enum.TextXAlignment.Left]
+  SETTABLEKS R21 R20 K67 ["TextXAlignment"]
+  GETTABLEKS R21 R5 K40 ["Color"]
+  SETTABLEKS R21 R20 K68 ["TextColor3"]
+  GETIMPORT R21 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R21 R20 K19 ["AutomaticSize"]
+  LOADB R21 1
+  SETTABLEKS R21 R20 K75 ["TextWrapped"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K18 ["BackgroundTransparency"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K42 ["Text"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K78 ["TextButton"]
+  NEWTABLE R20 16 0
+  GETUPVAL R21 4
+  LOADK R23 K79 ["InGame.CommonUI.Badge.Popup.LearnMoreLink"]
+  NAMECALL R21 R21 K71 ["FormatByKey"]
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K42 ["Text"]
+  SETTABLEKS R3 R20 K66 ["TextSize"]
+  SETTABLEKS R2 R20 K0 ["Font"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K20 ["LayoutOrder"]
+  GETIMPORT R21 K72 [Enum.TextXAlignment.Left]
+  SETTABLEKS R21 R20 K67 ["TextXAlignment"]
+  GETTABLEKS R21 R6 K40 ["Color"]
+  SETTABLEKS R21 R20 K68 ["TextColor3"]
+  GETIMPORT R21 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R21 R20 K19 ["AutomaticSize"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K18 ["BackgroundTransparency"]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K80 ["Event"]
+  GETTABLEKS R21 R22 K81 ["Activated"]
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K82 ["learnMore"]
+  SETTABLE R22 R20 R21
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K43 ["LearnMoreLink"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K44 ["UICorner"]
+  DUPTABLE R20 K84 [{"CornerRadius"}]
+  GETIMPORT R21 K55 [UDim.new]
+  LOADN R22 0
+  LOADN R23 8
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K83 ["CornerRadius"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K44 ["UICorner"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K45 ["UIPadding"]
+  DUPTABLE R20 K89 [{"PaddingLeft", "PaddingRight", "PaddingBottom", "PaddingTop"}]
+  GETUPVAL R21 5
+  SETTABLEKS R21 R20 K85 ["PaddingLeft"]
+  GETUPVAL R21 5
+  SETTABLEKS R21 R20 K86 ["PaddingRight"]
+  GETUPVAL R21 5
+  SETTABLEKS R21 R20 K87 ["PaddingBottom"]
+  GETUPVAL R21 5
+  SETTABLEKS R21 R20 K88 ["PaddingTop"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K45 ["UIPadding"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K30 ["Popup"]
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K12 ["PopupWrapper"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K15 ["createElement"]
+  LOADK R11 K16 ["Frame"]
+  NEWTABLE R12 8 0
+  GETUPVAL R13 1
+  SETTABLEKS R13 R12 K17 ["Visible"]
+  GETIMPORT R13 K26 [Enum.AutomaticSize.XY]
+  SETTABLEKS R13 R12 K19 ["AutomaticSize"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K28 ["props"]
+  GETTABLEKS R13 R14 K29 ["layoutOrder"]
+  SETTABLEKS R13 R12 K20 ["LayoutOrder"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K18 ["BackgroundTransparency"]
+  GETIMPORT R13 K91 [UDim2.fromScale]
+  LOADN R14 0
+  LOADN R15 1
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K32 ["Size"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K92 ["Change"]
+  GETTABLEKS R13 R14 K93 ["AbsoluteSize"]
+  GETUPVAL R15 6
+  JUMPIFNOT R15 [+2]
+  GETUPVAL R14 7
+  JUMP [+1]
+  LOADNIL R14
+  SETTABLE R14 R12 R13
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K92 ["Change"]
+  GETTABLEKS R13 R14 K94 ["AbsolutePosition"]
+  GETUPVAL R15 6
+  JUMPIFNOT R15 [+2]
+  GETUPVAL R14 7
+  JUMP [+1]
+  LOADNIL R14
+  SETTABLE R14 R12 R13
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K95 ["Ref"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K96 ["buttonRef"]
+  SETTABLE R14 R12 R13
+  DUPTABLE R13 K98 [{"Layout", "ActualButton"}]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K15 ["createElement"]
+  LOADK R15 K47 ["UIListLayout"]
+  DUPTABLE R16 K100 [{"FillDirection", "VerticalAlignment", "SortOrder"}]
+  GETIMPORT R17 K57 [Enum.FillDirection.Vertical]
+  SETTABLEKS R17 R16 K49 ["FillDirection"]
+  GETIMPORT R17 K102 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R17 R16 K99 ["VerticalAlignment"]
+  GETIMPORT R17 K60 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R17 R16 K51 ["SortOrder"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K41 ["Layout"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K15 ["createElement"]
+  LOADK R15 K16 ["Frame"]
+  DUPTABLE R16 K103 [{"Visible", "BackgroundTransparency", "Size", "BackgroundColor3"}]
+  GETUPVAL R17 1
+  SETTABLEKS R17 R16 K17 ["Visible"]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K18 ["BackgroundTransparency"]
+  GETUPVAL R17 8
+  SETTABLEKS R17 R16 K32 ["Size"]
+  SETTABLEKS R7 R16 K34 ["BackgroundColor3"]
+  DUPTABLE R17 K106 [{"Button", "UICorner", "UIStroke", "VREnabledListener"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K78 ["TextButton"]
+  NEWTABLE R20 8 0
+  GETUPVAL R21 4
+  LOADK R23 K107 ["InGame.CommonUI.Badge.BadgeText"]
+  NAMECALL R21 R21 K71 ["FormatByKey"]
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K42 ["Text"]
+  GETUPVAL R22 9
+  GETTABLEKS R21 R22 K108 ["default"]
+  NAMECALL R21 R21 K109 ["getBold"]
+  CALL R21 1 1
+  SETTABLEKS R21 R20 K0 ["Font"]
+  LOADN R21 8
+  SETTABLEKS R21 R20 K66 ["TextSize"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K18 ["BackgroundTransparency"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K110 ["BorderSizePixel"]
+  GETUPVAL R21 8
+  SETTABLEKS R21 R20 K32 ["Size"]
+  GETTABLEKS R21 R4 K40 ["Color"]
+  SETTABLEKS R21 R20 K68 ["TextColor3"]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K80 ["Event"]
+  GETTABLEKS R21 R22 K81 ["Activated"]
+  GETUPVAL R23 2
+  GETTABLEKS R22 R23 K111 ["menuIconActivated"]
+  SETTABLE R22 R20 R21
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K13 ["Button"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K44 ["UICorner"]
+  DUPTABLE R20 K84 [{"CornerRadius"}]
+  GETIMPORT R21 K55 [UDim.new]
+  LOADN R22 0
+  LOADN R23 3
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K83 ["CornerRadius"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K44 ["UICorner"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  LOADK R19 K104 ["UIStroke"]
+  DUPTABLE R20 K113 [{"Thickness", "Color"}]
+  LOADN R21 2
+  SETTABLEKS R21 R20 K112 ["Thickness"]
+  GETTABLEKS R21 R5 K40 ["Color"]
+  SETTABLEKS R21 R20 K40 ["Color"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K104 ["UIStroke"]
+  GETUPVAL R18 10
+  JUMPIFNOT R18 [+20]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K15 ["createElement"]
+  GETUPVAL R19 11
+  DUPTABLE R20 K116 [{"event", "callback"}]
+  GETUPVAL R21 10
+  LOADK R23 K117 ["GamepadCursorEnabled"]
+  NAMECALL R21 R21 K118 ["GetPropertyChangedSignal"]
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K114 ["event"]
+  NEWCLOSURE R22 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U10
+  ORK R21 R22 K119 []
+  SETTABLEKS R21 R20 K115 ["callback"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K105 ["VREnabledListener"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K97 ["ActualButton"]
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K13 ["Button"]
+  CALL R8 1 -1
+  RETURN R8 -1
+
+PROTO_12:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["VREnabled"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R2 R0 K1 ["state"]
+  GETTABLEKS R1 R2 K2 ["vrShowMenuIcon"]
+  JUMPIFNOT R1 [+4]
+  GETTABLEKS R2 R0 K1 ["state"]
+  GETTABLEKS R1 R2 K3 ["voiceChatServiceConnected"]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  GETUPVAL R3 2
+  JUMPIFNOT R3 [+11]
+  GETTABLEKS R4 R0 K4 ["buttonRef"]
+  GETTABLEKS R3 R4 K5 ["current"]
+  JUMPIFNOT R3 [+6]
+  MOVE R3 R2
+  GETTABLEKS R5 R0 K4 ["buttonRef"]
+  GETTABLEKS R4 R5 K5 ["current"]
+  CALL R3 1 0
+  GETUPVAL R3 3
+  NEWCLOSURE R4 P1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U2
+  CAPTURE VAL R2
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U0
+  CALL R3 1 -1
+  RETURN R3 -1
+
+PROTO_13:
+  GETUPVAL R3 0
+  GETUPVAL R4 1
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  CALL R4 3 -1
+  CALL R3 -1 -1
+  RETURN R3 -1
+
+PROTO_14:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_15:
+  DUPTABLE R1 K2 [{"setKeepOutArea", "removeKeepOutArea"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setKeepOutArea"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["removeKeepOutArea"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["VRService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["GamepadService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["GuiService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K8 ["HttpService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R0 K11 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["Roact"]
+  CALL R6 1 1
+  GETIMPORT R7 K10 [require]
+  GETTABLEKS R9 R0 K11 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["RoactRodux"]
+  CALL R7 1 1
+  GETIMPORT R8 K10 [require]
+  GETTABLEKS R10 R0 K11 ["Packages"]
+  GETTABLEKS R9 R10 K14 ["t"]
+  CALL R8 1 1
+  GETIMPORT R9 K10 [require]
+  GETTABLEKS R11 R0 K11 ["Packages"]
+  GETTABLEKS R10 R11 K15 ["UIBlox"]
+  CALL R9 1 1
+  GETTABLEKS R12 R9 K16 ["Core"]
+  GETTABLEKS R11 R12 K17 ["Style"]
+  GETTABLEKS R10 R11 K18 ["withStyle"]
+  LOADK R13 K19 ["RobloxGui"]
+  NAMECALL R11 R1 K20 ["WaitForChild"]
+  CALL R11 2 1
+  GETIMPORT R12 K10 [require]
+  GETTABLEKS R14 R11 K21 ["Modules"]
+  GETTABLEKS R13 R14 K22 ["TenFootInterface"]
+  CALL R12 1 1
+  GETIMPORT R13 K10 [require]
+  GETTABLEKS R15 R11 K21 ["Modules"]
+  GETTABLEKS R14 R15 K23 ["isNewInGameMenuEnabled"]
+  CALL R13 1 1
+  GETIMPORT R14 K10 [require]
+  GETTABLEKS R16 R11 K21 ["Modules"]
+  GETTABLEKS R15 R16 K24 ["InGameMenuConstants"]
+  CALL R14 1 1
+  GETIMPORT R16 K10 [require]
+  GETTABLEKS R19 R11 K21 ["Modules"]
+  GETTABLEKS R18 R19 K25 ["VoiceChat"]
+  GETTABLEKS R17 R18 K26 ["VoiceChatServiceManager"]
+  CALL R16 1 1
+  GETTABLEKS R15 R16 K27 ["default"]
+  GETIMPORT R17 K10 [require]
+  GETTABLEKS R20 R0 K28 ["Workspace"]
+  GETTABLEKS R19 R20 K11 ["Packages"]
+  GETTABLEKS R18 R19 K29 ["CoreScriptsInitializer"]
+  CALL R17 1 1
+  GETTABLEKS R16 R17 K30 ["CoreLogger"]
+  GETIMPORT R19 K32 [script]
+  GETTABLEKS R18 R19 K33 ["Name"]
+  NAMECALL R16 R16 K34 ["new"]
+  CALL R16 2 1
+  GETIMPORT R18 K10 [require]
+  GETTABLEKS R21 R0 K28 ["Workspace"]
+  GETTABLEKS R20 R21 K11 ["Packages"]
+  GETTABLEKS R19 R20 K17 ["Style"]
+  CALL R18 1 1
+  GETTABLEKS R17 R18 K35 ["AppFonts"]
+  GETIMPORT R19 K10 [require]
+  GETTABLEKS R22 R0 K28 ["Workspace"]
+  GETTABLEKS R21 R22 K11 ["Packages"]
+  GETTABLEKS R20 R21 K36 ["RoactUtils"]
+  CALL R19 1 1
+  GETTABLEKS R18 R19 K37 ["ExternalEventConnection"]
+  GETTABLEKS R19 R6 K38 ["PureComponent"]
+  LOADK R21 K39 ["MenuIcon"]
+  NAMECALL R19 R19 K40 ["extend"]
+  CALL R19 2 1
+  GETIMPORT R20 K10 [require]
+  GETTABLEKS R23 R11 K21 ["Modules"]
+  GETTABLEKS R22 R23 K41 ["Flags"]
+  GETTABLEKS R21 R22 K42 ["GetFStringVoiceBetaBadgeLearnMore"]
+  CALL R20 1 1
+  GETIMPORT R21 K10 [require]
+  GETTABLEKS R24 R11 K21 ["Modules"]
+  GETTABLEKS R23 R24 K41 ["Flags"]
+  GETTABLEKS R22 R23 K43 ["GetFFlagBetaBadgeLearnMoreLinkFormview"]
+  CALL R21 1 1
+  GETIMPORT R25 K32 [script]
+  GETTABLEKS R24 R25 K44 ["Parent"]
+  GETTABLEKS R23 R24 K44 ["Parent"]
+  GETTABLEKS R22 R23 K44 ["Parent"]
+  GETIMPORT R23 K10 [require]
+  GETTABLEKS R25 R22 K41 ["Flags"]
+  GETTABLEKS R24 R25 K45 ["GetFFlagEnableChromeBackwardsSignalAPI"]
+  CALL R23 1 1
+  CALL R23 0 1
+  GETIMPORT R24 K10 [require]
+  GETTABLEKS R26 R22 K46 ["Actions"]
+  GETTABLEKS R25 R26 K47 ["SetKeepOutArea"]
+  CALL R24 1 1
+  GETIMPORT R25 K10 [require]
+  GETTABLEKS R27 R22 K46 ["Actions"]
+  GETTABLEKS R26 R27 K48 ["RemoveKeepOutArea"]
+  CALL R25 1 1
+  GETIMPORT R26 K10 [require]
+  GETTABLEKS R27 R22 K49 ["Constants"]
+  CALL R26 1 1
+  GETIMPORT R28 K10 [require]
+  GETTABLEKS R31 R0 K28 ["Workspace"]
+  GETTABLEKS R30 R31 K11 ["Packages"]
+  GETTABLEKS R29 R30 K50 ["SharedFlags"]
+  CALL R28 1 1
+  GETTABLEKS R27 R28 K51 ["GetFFlagFixChromeReferences"]
+  GETTABLEKS R29 R22 K44 ["Parent"]
+  GETTABLEKS R28 R29 K52 ["Chrome"]
+  GETIMPORT R29 K10 [require]
+  GETTABLEKS R30 R28 K53 ["Enabled"]
+  CALL R29 1 1
+  MOVE R31 R27
+  CALL R31 0 1
+  JUMPIFNOT R31 [+11]
+  MOVE R31 R29
+  CALL R31 0 1
+  JUMPIFNOT R31 [+6]
+  GETIMPORT R30 K10 [require]
+  GETTABLEKS R31 R28 K54 ["Service"]
+  CALL R30 1 1
+  JUMP [+10]
+  LOADNIL R30
+  JUMP [+8]
+  JUMPIFNOT R29 [+6]
+  GETIMPORT R30 K10 [require]
+  GETTABLEKS R31 R28 K54 ["Service"]
+  CALL R30 1 1
+  JUMP [+1]
+  LOADNIL R30
+  GETTABLEKS R31 R8 K55 ["strictInterface"]
+  DUPTABLE R32 K60 [{"layoutOrder", "Analytics", "setKeepOutArea", "removeKeepOutArea"}]
+  GETTABLEKS R33 R8 K61 ["integer"]
+  SETTABLEKS R33 R32 K56 ["layoutOrder"]
+  GETTABLEKS R33 R8 K62 ["table"]
+  SETTABLEKS R33 R32 K57 ["Analytics"]
+  GETTABLEKS R33 R8 K63 ["optional"]
+  GETTABLEKS R34 R8 K64 ["callback"]
+  CALL R33 1 1
+  SETTABLEKS R33 R32 K58 ["setKeepOutArea"]
+  GETTABLEKS R33 R8 K63 ["optional"]
+  GETTABLEKS R34 R8 K64 ["callback"]
+  CALL R33 1 1
+  SETTABLEKS R33 R32 K59 ["removeKeepOutArea"]
+  CALL R31 1 1
+  SETTABLEKS R31 R19 K65 ["validateProps"]
+  DUPTABLE R31 K68 [{"FullScreen", "FormSheet"}]
+  LOADN R32 0
+  SETTABLEKS R32 R31 K66 ["FullScreen"]
+  LOADN R32 2
+  SETTABLEKS R32 R31 K67 ["FormSheet"]
+  GETIMPORT R32 K71 [UDim2.fromOffset]
+  LOADN R33 31
+  LOADN R34 11
+  CALL R32 2 1
+  GETIMPORT R33 K73 [UDim.new]
+  LOADN R34 0
+  LOADN R35 12
+  CALL R33 2 1
+  GETIMPORT R34 K71 [UDim2.fromOffset]
+  LOADN R35 74
+  LOADN R36 185
+  CALL R34 2 1
+  GETIMPORT R35 K10 [require]
+  GETTABLEKS R37 R11 K21 ["Modules"]
+  GETTABLEKS R36 R37 K74 ["RobloxTranslator"]
+  CALL R35 1 1
+  DUPCLOSURE R36 K75 [PROTO_0]
+  DUPCLOSURE R37 K76 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R21
+  CAPTURE VAL R31
+  CAPTURE VAL R16
+  CAPTURE VAL R4
+  SETGLOBAL R37 K77 ["openWebview"]
+  DUPCLOSURE R37 K78 [PROTO_5]
+  CAPTURE VAL R6
+  CAPTURE VAL R30
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R36
+  CAPTURE VAL R20
+  SETTABLEKS R37 R19 K79 ["init"]
+  DUPCLOSURE R37 K80 [PROTO_7]
+  CAPTURE VAL R30
+  SETTABLEKS R37 R19 K81 ["didMount"]
+  DUPCLOSURE R37 K82 [PROTO_8]
+  SETTABLEKS R37 R19 K83 ["onUnmount"]
+  DUPCLOSURE R37 K84 [PROTO_12]
+  CAPTURE VAL R2
+  CAPTURE VAL R26
+  CAPTURE VAL R23
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R34
+  CAPTURE VAL R35
+  CAPTURE VAL R33
+  CAPTURE VAL R32
+  CAPTURE VAL R17
+  CAPTURE VAL R3
+  CAPTURE VAL R18
+  SETTABLEKS R37 R19 K85 ["render"]
+  JUMPIFNOT R23 [+11]
+  DUPCLOSURE R37 K86 [PROTO_15]
+  CAPTURE VAL R24
+  CAPTURE VAL R25
+  GETTABLEKS R38 R7 K87 ["UNSTABLE_connect2"]
+  LOADNIL R39
+  MOVE R40 R37
+  CALL R38 2 1
+  MOVE R39 R19
+  CALL R38 1 -1
+  RETURN R38 -1
+  RETURN R19 1

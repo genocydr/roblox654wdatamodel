@@ -1,0 +1,1746 @@
+PROTO_0:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["Gamepad"]
+  JUMPIFEQ R1 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["cameraPanInPixels"]
+  ADD R2 R3 R0
+  SETTABLEKS R2 R1 K0 ["cameraPanInPixels"]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["clampOffsets"]
+  CALL R1 1 0
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K2 ["updateCameraPosition"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+14]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["state"]
+  GETTABLEKS R1 R2 K4 ["cameraMoved"]
+  JUMPIF R1 [+8]
+  GETUPVAL R1 0
+  DUPTABLE R3 K5 [{"cameraMoved"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K4 ["cameraMoved"]
+  NAMECALL R1 R1 K6 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETIMPORT R2 K2 [Vector2.new]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K3 ["cameraDegreesAngle"]
+  GETTABLEKS R4 R5 K4 ["X"]
+  GETTABLEKS R5 R0 K5 ["Y"]
+  SUB R3 R4 R5
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K3 ["cameraDegreesAngle"]
+  GETTABLEKS R5 R6 K5 ["Y"]
+  GETTABLEKS R6 R0 K4 ["X"]
+  SUB R4 R5 R6
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K3 ["cameraDegreesAngle"]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K6 ["clampOffsets"]
+  CALL R1 1 0
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K7 ["updateCameraPosition"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+14]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K8 ["state"]
+  GETTABLEKS R1 R2 K9 ["cameraMoved"]
+  JUMPIF R1 [+8]
+  GETUPVAL R1 0
+  DUPTABLE R3 K10 [{"cameraMoved"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K9 ["cameraMoved"]
+  NAMECALL R1 R1 K11 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K0 ["inputState"]
+  GETUPVAL R3 0
+  SETTABLEKS R2 R3 K1 ["inputObject"]
+  GETIMPORT R3 K5 [Enum.ContextActionResult.Sink]
+  RETURN R3 1
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["model"]
+  LOADK R3 K1 ["HumanoidRootPart"]
+  NAMECALL R1 R1 K2 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  MINUS R4 R0
+  MULK R3 R4 K4 [180]
+  DIVK R2 R3 K3 [3.14159265358979]
+  GETUPVAL R3 0
+  GETIMPORT R4 K7 [Vector2.new]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K9 ["cameraDegreesAngle"]
+  GETTABLEKS R6 R7 K10 ["X"]
+  MODK R5 R6 K8 [360]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K9 ["cameraDegreesAngle"]
+  GETTABLEKS R8 R9 K11 ["Y"]
+  ADD R7 R8 R2
+  MODK R6 R7 K8 [360]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K9 ["cameraDegreesAngle"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K12 ["updateCameraPosition"]
+  CALL R3 1 0
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+14]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K13 ["state"]
+  GETTABLEKS R3 R4 K14 ["cameraMoved"]
+  JUMPIF R3 [+8]
+  GETUPVAL R3 0
+  DUPTABLE R5 K15 [{"cameraMoved"}]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K14 ["cameraMoved"]
+  NAMECALL R3 R3 K16 ["setState"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_5:
+  RETURN R0 0
+
+PROTO_6:
+  LOADK R3 K0 [0.9]
+  POW R2 R3 R0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["zoomFactor"]
+  MUL R3 R4 R2
+  LOADK R6 K2 [0.3]
+  LOADN R7 10
+  FASTCALL3 MATH_CLAMP R3 R6 R7
+  MOVE R5 R3
+  GETIMPORT R4 K5 [math.clamp]
+  CALL R4 3 1
+  JUMPIFEQ R3 R4 [+2]
+  RETURN R0 0
+  GETUPVAL R4 0
+  SETTABLEKS R3 R4 K1 ["zoomFactor"]
+  GETUPVAL R4 1
+  JUMPIFNOT R4 [+1]
+  JUMPIFNOT R1 [+25]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K6 ["absolutePosition"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K8 ["absoluteSize"]
+  DIVK R7 R8 K7 [2]
+  ADD R5 R6 R7
+  SUB R4 R1 R5
+  GETIMPORT R6 K12 [Vector2.new]
+  LOADN R7 1
+  LOADN R8 255
+  CALL R6 2 1
+  MUL R5 R4 R6
+  MULK R4 R5 K9 [-1]
+  GETUPVAL R5 0
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K13 ["cameraPanInPixels"]
+  SUB R8 R4 R9
+  MUL R7 R8 R2
+  SUB R6 R4 R7
+  SETTABLEKS R6 R5 K13 ["cameraPanInPixels"]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K14 ["clampOffsets"]
+  CALL R4 1 0
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K15 ["updateCameraPosition"]
+  CALL R4 1 0
+  GETUPVAL R4 1
+  JUMPIFNOT R4 [+14]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K16 ["state"]
+  GETTABLEKS R4 R5 K17 ["cameraMoved"]
+  JUMPIF R4 [+8]
+  GETUPVAL R4 0
+  DUPTABLE R6 K18 [{"cameraMoved"}]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K17 ["cameraMoved"]
+  NAMECALL R4 R4 K19 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["processAsset"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["resetCameraPosition"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_9:
+  DUPTABLE R3 K3 [{"loadingState", "isGamepad", "cameraMoved"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["LOADING"]
+  SETTABLEKS R4 R3 K0 ["loadingState"]
+  GETUPVAL R5 1
+  NAMECALL R5 R5 K5 ["GetLastInputType"]
+  CALL R5 1 1
+  GETUPVAL R6 2
+  MOVE R7 R5
+  CALL R6 1 1
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K6 ["Gamepad"]
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K1 ["isGamepad"]
+  GETUPVAL R5 4
+  JUMPIFNOT R5 [+2]
+  LOADB R4 0
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K2 ["cameraMoved"]
+  NAMECALL R1 R0 K7 ["setState"]
+  CALL R1 2 0
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K8 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K9 ["ref"]
+  GETUPVAL R1 6
+  SETTABLEKS R1 R0 K10 ["zoomFactor"]
+  GETIMPORT R1 K13 [Vector2.new]
+  LOADN R2 0
+  LOADN R3 0
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K14 ["cameraDegreesAngle"]
+  GETIMPORT R1 K13 [Vector2.new]
+  LOADN R2 0
+  LOADN R3 0
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K15 ["cameraPanInPixels"]
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K8 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K16 ["cameraRef"]
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K8 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K17 ["worldModelRef"]
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K18 ["createBinding"]
+  GETIMPORT R2 K20 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K21 ["cameraCFrameBinding"]
+  SETTABLEKS R2 R0 K22 ["updateCameraCFrameBinding"]
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K18 ["createBinding"]
+  GETIMPORT R2 K20 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K23 ["cameraFocusBinding"]
+  SETTABLEKS R2 R0 K24 ["updateCameraFocusBinding"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R1 R0 K25 ["panByPixels"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R1 R0 K26 ["rotateByPixels"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K27 ["storeInput"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R1 R0 K28 ["rotateByRadians"]
+  DUPCLOSURE R1 K29 [PROTO_5]
+  SETTABLEKS R1 R0 K30 ["setAngularVelocityByPixels"]
+  NEWCLOSURE R1 P5
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R1 R0 K31 ["zoomToPoint"]
+  NEWCLOSURE R1 P6
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K32 ["onRetryLoading"]
+  NEWCLOSURE R1 P7
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K33 ["onResetButtonPressed"]
+  RETURN R0 0
+
+PROTO_10:
+  DUPTABLE R4 K1 [{"loadingState"}]
+  SETTABLEKS R1 R4 K0 ["loadingState"]
+  NAMECALL R2 R0 K2 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R2 R0 K0 ["zoomFactor"]
+  LOADK R3 K1 [0.3]
+  LOADN R4 10
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R1 K4 [math.clamp]
+  CALL R1 3 1
+  SETTABLEKS R1 R0 K0 ["zoomFactor"]
+  LOADN R1 176
+  GETTABLEKS R3 R0 K5 ["props"]
+  GETTABLEKS R2 R3 K6 ["asset"]
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R3 R0 K5 ["props"]
+  GETTABLEKS R2 R3 K6 ["asset"]
+  LOADK R4 K7 ["AnimationClip"]
+  NAMECALL R2 R2 K8 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+4]
+  NAMECALL R2 R0 K9 ["angleToMakeBasePlateParallel"]
+  CALL R2 1 1
+  MOVE R1 R2
+  GETIMPORT R2 K12 [Vector2.new]
+  GETTABLEKS R5 R0 K13 ["cameraDegreesAngle"]
+  GETTABLEKS R4 R5 K14 ["X"]
+  LOADN R6 80
+  FASTCALL3 MATH_CLAMP R4 R1 R6
+  MOVE R5 R1
+  GETIMPORT R3 K4 [math.clamp]
+  CALL R3 3 1
+  GETTABLEKS R5 R0 K13 ["cameraDegreesAngle"]
+  GETTABLEKS R4 R5 K15 ["Y"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K13 ["cameraDegreesAngle"]
+  GETTABLEKS R6 R0 K0 ["zoomFactor"]
+  GETTABLEKS R8 R0 K17 ["modelExtentsSize"]
+  GETTABLEKS R7 R8 K14 ["X"]
+  MUL R5 R6 R7
+  DIVK R4 R5 K16 [2]
+  NAMECALL R5 R0 K18 ["pointsToPixelsFactor"]
+  CALL R5 1 1
+  DIV R3 R4 R5
+  GETTABLEKS R6 R0 K19 ["absoluteSize"]
+  GETTABLEKS R5 R6 K14 ["X"]
+  DIVK R4 R5 K16 [2]
+  FASTCALL2 MATH_MAX R3 R4 [+3]
+  GETIMPORT R2 K21 [math.max]
+  CALL R2 2 1
+  GETTABLEKS R7 R0 K0 ["zoomFactor"]
+  GETTABLEKS R9 R0 K17 ["modelExtentsSize"]
+  GETTABLEKS R8 R9 K15 ["Y"]
+  MUL R6 R7 R8
+  DIVK R5 R6 K16 [2]
+  NAMECALL R6 R0 K18 ["pointsToPixelsFactor"]
+  CALL R6 1 1
+  DIV R4 R5 R6
+  GETTABLEKS R7 R0 K19 ["absoluteSize"]
+  GETTABLEKS R6 R7 K15 ["Y"]
+  DIVK R5 R6 K16 [2]
+  FASTCALL2 MATH_MAX R4 R5 [+3]
+  GETIMPORT R3 K21 [math.max]
+  CALL R3 2 1
+  GETIMPORT R4 K12 [Vector2.new]
+  GETTABLEKS R7 R0 K22 ["cameraPanInPixels"]
+  GETTABLEKS R6 R7 K14 ["X"]
+  MINUS R7 R2
+  FASTCALL3 MATH_CLAMP R6 R7 R2
+  MOVE R8 R2
+  GETIMPORT R5 K4 [math.clamp]
+  CALL R5 3 1
+  GETTABLEKS R8 R0 K22 ["cameraPanInPixels"]
+  GETTABLEKS R7 R8 K15 ["Y"]
+  MINUS R8 R3
+  FASTCALL3 MATH_CLAMP R7 R8 R3
+  MOVE R9 R3
+  GETIMPORT R6 K4 [math.clamp]
+  CALL R6 3 1
+  CALL R4 2 1
+  SETTABLEKS R4 R0 K22 ["cameraPanInPixels"]
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R2 R0 K0 ["cameraDistance"]
+  GETTABLEKS R3 R0 K1 ["zoomFactor"]
+  DIV R1 R2 R3
+  NAMECALL R3 R0 K2 ["pointsToPixelsFactor"]
+  CALL R3 1 1
+  GETTABLEKS R4 R0 K1 ["zoomFactor"]
+  DIV R2 R3 R4
+  GETTABLEKS R5 R0 K3 ["cameraPanInPixels"]
+  GETTABLEKS R4 R5 K4 ["Y"]
+  MUL R3 R2 R4
+  GETTABLEKS R8 R0 K6 ["modelExtentsSize"]
+  GETTABLEKS R7 R8 K4 ["Y"]
+  DIVK R6 R7 K5 [2]
+  ADD R5 R6 R3
+  DIV R4 R5 R1
+  LOADK R7 K7 [-0.99]
+  LOADK R8 K8 [0.99]
+  FASTCALL3 MATH_CLAMP R4 R7 R8
+  MOVE R6 R4
+  GETIMPORT R5 K11 [math.clamp]
+  CALL R5 3 1
+  MOVE R4 R5
+  FASTCALL1 MATH_ASIN R4 [+3]
+  MOVE R6 R4
+  GETIMPORT R5 K13 [math.asin]
+  CALL R5 1 1
+  FASTCALL1 MATH_DEG R5 [+3]
+  MOVE R7 R5
+  GETIMPORT R6 K15 [math.deg]
+  CALL R6 1 1
+  MINUS R7 R6
+  RETURN R7 1
+
+PROTO_13:
+  GETUPVAL R0 0
+  LOADK R2 K0 [1342485078]
+  NAMECALL R0 R0 K1 ["GetHumanoidDescriptionFromOutfitId"]
+  CALL R0 2 1
+  RETURN R0 1
+
+PROTO_14:
+  GETIMPORT R0 K1 [pcall]
+  DUPCLOSURE R1 K2 [PROTO_13]
+  CAPTURE UPVAL U0
+  CALL R0 1 2
+  LOADNIL R2
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R3 0
+  MOVE R5 R1
+  GETIMPORT R6 K6 [Enum.HumanoidRigType.R15]
+  NAMECALL R3 R3 K7 ["CreateHumanoidModelFromDescription"]
+  CALL R3 3 1
+  MOVE R2 R3
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K8 ["isMounted"]
+  JUMPIFNOT R3 [+8]
+  GETUPVAL R3 2
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K9 ["props"]
+  GETTABLEKS R4 R5 K10 ["asset"]
+  JUMPIFEQ R3 R4 [+2]
+  RETURN R0 0
+  JUMPIF R2 [+8]
+  GETUPVAL R3 1
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K11 ["FAILED_TO_LOAD"]
+  NAMECALL R3 R3 K12 ["setLoadingState"]
+  CALL R3 2 0
+  RETURN R0 0
+  GETUPVAL R3 1
+  SETTABLEKS R2 R3 K13 ["model"]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K14 ["addModelToViewportIfNeeded"]
+  CALL R3 1 0
+  GETUPVAL R3 4
+  GETUPVAL R5 2
+  NAMECALL R3 R3 K15 ["RegisterActiveAnimationClip"]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  GETIMPORT R5 K18 [Instance.new]
+  LOADK R6 K19 ["Animation"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K20 ["animation"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K20 ["animation"]
+  SETTABLEKS R3 R4 K21 ["AnimationId"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K13 ["model"]
+  LOADK R6 K22 ["Humanoid"]
+  NAMECALL R4 R4 K23 ["FindFirstChildWhichIsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+9]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K20 ["animation"]
+  NAMECALL R5 R4 K24 ["LoadAnimation"]
+  CALL R5 2 1
+  NAMECALL R6 R5 K25 ["Play"]
+  CALL R6 1 0
+  GETUPVAL R5 1
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K26 ["SUCCESSFULLY_LOADED"]
+  NAMECALL R5 R5 K12 ["setLoadingState"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_15:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["asset"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  LOADK R4 K2 ["AnimationClip"]
+  NAMECALL R2 R1 K3 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+16]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["LOADING"]
+  NAMECALL R2 R0 K5 ["setLoadingState"]
+  CALL R2 2 0
+  GETIMPORT R2 K8 [task.spawn]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  CALL R2 1 0
+  RETURN R0 0
+  LOADK R4 K9 ["Model"]
+  NAMECALL R2 R1 K3 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+19]
+  NAMECALL R2 R1 K10 ["Clone"]
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K11 ["model"]
+  GETTABLEKS R2 R0 K11 ["model"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K12 ["Parent"]
+  NAMECALL R2 R0 K13 ["addModelToViewportIfNeeded"]
+  CALL R2 1 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K14 ["SUCCESSFULLY_LOADED"]
+  NAMECALL R2 R0 K5 ["setLoadingState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_16:
+  GETTABLEKS R1 R0 K0 ["model"]
+  JUMPIFEQKNIL R1 [+8]
+  GETTABLEKS R2 R0 K0 ["model"]
+  GETTABLEKS R1 R2 K1 ["Parent"]
+  JUMPIFEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K2 ["worldModelRef"]
+  NAMECALL R1 R1 K3 ["getValue"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+78]
+  GETTABLEKS R1 R0 K0 ["model"]
+  JUMPIFEQKNIL R1 [+75]
+  GETTABLEKS R1 R0 K0 ["model"]
+  GETTABLEKS R2 R0 K2 ["worldModelRef"]
+  NAMECALL R2 R2 K3 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K1 ["Parent"]
+  NAMECALL R1 R0 K4 ["resetCameraPosition"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K5 ["props"]
+  GETTABLEKS R1 R2 K6 ["asset"]
+  JUMPIFNOT R1 [+57]
+  GETTABLEKS R2 R0 K5 ["props"]
+  GETTABLEKS R1 R2 K6 ["asset"]
+  LOADK R3 K7 ["AnimationClip"]
+  NAMECALL R1 R1 K8 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+48]
+  GETIMPORT R1 K11 [Instance.new]
+  LOADK R2 K12 ["Part"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K13 ["baseplate"]
+  GETTABLEKS R1 R0 K13 ["baseplate"]
+  LOADK R2 K14 [{8, 0.5, 8}]
+  SETTABLEKS R2 R1 K15 ["Size"]
+  GETTABLEKS R1 R0 K13 ["baseplate"]
+  LOADK R2 K16 [0.6]
+  SETTABLEKS R2 R1 K17 ["Transparency"]
+  GETTABLEKS R1 R0 K13 ["baseplate"]
+  GETTABLEKS R2 R0 K2 ["worldModelRef"]
+  NAMECALL R2 R2 K3 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K1 ["Parent"]
+  GETTABLEKS R3 R0 K18 ["modelCFrame"]
+  GETTABLEKS R2 R3 K19 ["Position"]
+  LOADN R4 0
+  GETTABLEKS R8 R0 K21 ["modelExtentsSize"]
+  GETTABLEKS R7 R8 K22 ["Y"]
+  MINUS R6 R7
+  DIVK R5 R6 K20 [2]
+  LOADN R6 0
+  FASTCALL VECTOR [+2]
+  GETIMPORT R3 K24 [Vector3.new]
+  CALL R3 3 1
+  ADD R1 R2 R3
+  GETTABLEKS R2 R0 K13 ["baseplate"]
+  LOADK R4 K25 [{0, -0.25, 0}]
+  ADD R3 R1 R4
+  SETTABLEKS R3 R2 K19 ["Position"]
+  RETURN R0 0
+
+PROTO_17:
+  GETTABLEKS R2 R1 K0 ["X"]
+  GETTABLEKS R3 R1 K1 ["Y"]
+  GETTABLEKS R4 R1 K2 ["Z"]
+  FASTCALL2 MATH_MAX R2 R3 [+5]
+  MOVE R6 R2
+  MOVE R7 R3
+  GETIMPORT R5 K5 [math.max]
+  CALL R5 2 1
+  FASTCALL1 MATH_RAD R0 [+3]
+  MOVE R10 R0
+  GETIMPORT R9 K9 [math.rad]
+  CALL R9 1 1
+  DIVK R8 R9 K7 [2]
+  FASTCALL1 MATH_TAN R8 [+2]
+  GETIMPORT R7 K11 [math.tan]
+  CALL R7 1 1
+  DIVRK R6 R6 K7 [2]
+  DIVK R7 R5 K7 [2]
+  MUL R9 R7 R6
+  DIVK R10 R4 K7 [2]
+  ADD R8 R9 R10
+  RETURN R8 1
+
+PROTO_18:
+  GETIMPORT R3 K2 [CFrame.fromAxisAngle]
+  MOVE R4 R2
+  MOVE R5 R1
+  CALL R3 2 1
+  MOVE R5 R0
+  NAMECALL R3 R3 K3 ["VectorToWorldSpace"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_19:
+  GETTABLEKS R1 R0 K0 ["model"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K0 ["model"]
+  NAMECALL R1 R1 K1 ["GetModelCFrame"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K2 ["modelCFrame"]
+  GETTABLEKS R2 R0 K2 ["modelCFrame"]
+  GETTABLEKS R1 R2 K3 ["lookVector"]
+  SETTABLEKS R1 R0 K4 ["initialLookVector"]
+  GETTABLEKS R1 R0 K0 ["model"]
+  LOADK R3 K5 ["HumanoidRootPart"]
+  NAMECALL R1 R1 K6 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+6]
+  GETTABLEKS R3 R1 K7 ["CFrame"]
+  GETTABLEKS R2 R3 K3 ["lookVector"]
+  SETTABLEKS R2 R0 K4 ["initialLookVector"]
+  GETTABLEKS R2 R0 K0 ["model"]
+  NAMECALL R2 R2 K8 ["GetExtentsSize"]
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K9 ["modelExtentsSize"]
+  GETTABLEKS R3 R0 K9 ["modelExtentsSize"]
+  GETTABLEKS R4 R3 K10 ["X"]
+  GETTABLEKS R5 R3 K11 ["Y"]
+  GETTABLEKS R6 R3 K12 ["Z"]
+  FASTCALL2 MATH_MAX R4 R5 [+5]
+  MOVE R8 R4
+  MOVE R9 R5
+  GETIMPORT R7 K15 [math.max]
+  CALL R7 2 1
+  DIVK R8 R7 K16 [2]
+  MULK R9 R8 K17 [3.73205080756888]
+  DIVK R10 R6 K16 [2]
+  ADD R2 R9 R10
+  SETTABLEKS R2 R0 K18 ["cameraDistance"]
+  GETTABLEKS R3 R0 K19 ["props"]
+  GETTABLEKS R2 R3 K20 ["asset"]
+  JUMPIFNOT R2 [+20]
+  GETTABLEKS R3 R0 K19 ["props"]
+  GETTABLEKS R2 R3 K20 ["asset"]
+  LOADK R4 K21 ["AnimationClip"]
+  NAMECALL R2 R2 K22 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+11]
+  GETIMPORT R2 K25 [Vector2.new]
+  LOADN R3 0
+  LOADN R4 0
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K26 ["cameraDegreesAngle"]
+  LOADK R2 K27 [0.75]
+  SETTABLEKS R2 R0 K28 ["zoomFactor"]
+  JUMP [+10]
+  GETIMPORT R2 K25 [Vector2.new]
+  LOADN R3 5
+  LOADN R4 20
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K26 ["cameraDegreesAngle"]
+  GETUPVAL R2 0
+  SETTABLEKS R2 R0 K28 ["zoomFactor"]
+  GETIMPORT R2 K25 [Vector2.new]
+  LOADN R3 0
+  LOADN R4 0
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K29 ["cameraPanInPixels"]
+  NAMECALL R2 R0 K30 ["updateCameraPosition"]
+  CALL R2 1 0
+  GETUPVAL R2 1
+  JUMPIFNOT R2 [+12]
+  GETTABLEKS R3 R0 K31 ["state"]
+  GETTABLEKS R2 R3 K32 ["cameraMoved"]
+  JUMPIFNOT R2 [+7]
+  DUPTABLE R4 K33 [{"cameraMoved"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K32 ["cameraMoved"]
+  NAMECALL R2 R0 K34 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_20:
+  GETTABLEKS R1 R0 K0 ["absoluteSize"]
+  JUMPIFEQKNIL R1 [+23]
+  GETTABLEKS R1 R0 K1 ["modelExtentsSize"]
+  JUMPIFEQKNIL R1 [+19]
+  GETTABLEKS R2 R0 K0 ["absoluteSize"]
+  GETTABLEKS R1 R2 K2 ["Y"]
+  JUMPIFEQKN R1 K3 [0] [+13]
+  GETTABLEKS R2 R0 K1 ["modelExtentsSize"]
+  GETTABLEKS R1 R2 K2 ["Y"]
+  JUMPIFEQKN R1 K3 [0] [+7]
+  GETTABLEKS R2 R0 K1 ["modelExtentsSize"]
+  GETTABLEKS R1 R2 K4 ["X"]
+  JUMPIFNOTEQKN R1 K3 [0] [+3]
+  LOADN R1 1
+  RETURN R1 1
+  GETTABLEKS R4 R0 K1 ["modelExtentsSize"]
+  GETTABLEKS R3 R4 K4 ["X"]
+  GETTABLEKS R5 R0 K1 ["modelExtentsSize"]
+  GETTABLEKS R4 R5 K2 ["Y"]
+  FASTCALL2 MATH_MAX R3 R4 [+3]
+  GETIMPORT R2 K7 [math.max]
+  CALL R2 2 1
+  GETTABLEKS R4 R0 K0 ["absoluteSize"]
+  GETTABLEKS R3 R4 K2 ["Y"]
+  DIV R1 R2 R3
+  RETURN R1 1
+
+PROTO_21:
+  GETTABLEKS R1 R0 K0 ["absoluteSize"]
+  JUMPIFEQKNIL R1 [+5]
+  GETTABLEKS R1 R0 K1 ["cameraDistance"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K1 ["cameraDistance"]
+  GETTABLEKS R3 R0 K2 ["zoomFactor"]
+  DIV R1 R2 R3
+  GETTABLEKS R2 R0 K3 ["initialLookVector"]
+  GETTABLEKS R5 R0 K4 ["cameraDegreesAngle"]
+  GETTABLEKS R4 R5 K5 ["X"]
+  FASTCALL1 MATH_RAD R4 [+2]
+  GETIMPORT R3 K8 [math.rad]
+  CALL R3 1 1
+  GETTABLEKS R6 R0 K4 ["cameraDegreesAngle"]
+  GETTABLEKS R5 R6 K9 ["Y"]
+  FASTCALL1 MATH_RAD R5 [+2]
+  GETIMPORT R4 K8 [math.rad]
+  CALL R4 1 1
+  MOVE R5 R2
+  GETIMPORT R6 K12 [CFrame.fromAxisAngle]
+  LOADK R7 K13 [{1, 0, 0}]
+  MOVE R8 R3
+  CALL R6 2 1
+  MOVE R8 R5
+  NAMECALL R6 R6 K14 ["VectorToWorldSpace"]
+  CALL R6 2 1
+  MOVE R2 R6
+  MOVE R5 R2
+  GETIMPORT R6 K12 [CFrame.fromAxisAngle]
+  LOADK R7 K15 [{0, 1, 0}]
+  MOVE R8 R4
+  CALL R6 2 1
+  MOVE R8 R5
+  NAMECALL R6 R6 K14 ["VectorToWorldSpace"]
+  CALL R6 2 1
+  MOVE R2 R6
+  GETIMPORT R5 K17 [CFrame.new]
+  GETTABLEKS R8 R0 K18 ["modelCFrame"]
+  GETTABLEKS R7 R8 K19 ["p"]
+  MUL R8 R2 R1
+  ADD R6 R7 R8
+  GETTABLEKS R8 R0 K18 ["modelCFrame"]
+  GETTABLEKS R7 R8 K19 ["p"]
+  CALL R5 2 1
+  NAMECALL R7 R0 K20 ["pointsToPixelsFactor"]
+  CALL R7 1 1
+  GETTABLEKS R8 R0 K2 ["zoomFactor"]
+  DIV R6 R7 R8
+  GETTABLEKS R10 R5 K21 ["UpVector"]
+  MUL R9 R10 R6
+  GETTABLEKS R11 R0 K22 ["cameraPanInPixels"]
+  GETTABLEKS R10 R11 K9 ["Y"]
+  MUL R8 R9 R10
+  ADD R7 R5 R8
+  GETTABLEKS R10 R5 K23 ["RightVector"]
+  MUL R9 R10 R6
+  GETTABLEKS R11 R0 K22 ["cameraPanInPixels"]
+  GETTABLEKS R10 R11 K5 ["X"]
+  MUL R8 R9 R10
+  ADD R5 R7 R8
+  GETTABLEKS R7 R0 K24 ["updateCameraCFrameBinding"]
+  MOVE R8 R5
+  CALL R7 1 0
+  GETTABLEKS R7 R0 K25 ["updateCameraFocusBinding"]
+  GETTABLEKS R8 R0 K18 ["modelCFrame"]
+  CALL R7 1 0
+  RETURN R0 0
+
+PROTO_22:
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["AbsoluteSize"]
+  SETTABLEKS R2 R1 K1 ["absoluteSize"]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K2 ["updateCameraPosition"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_23:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetGuiInset"]
+  CALL R1 1 1
+  GETUPVAL R2 1
+  GETTABLEKS R4 R0 K1 ["absolutePosition"]
+  ADD R3 R4 R1
+  SETTABLEKS R3 R2 K1 ["absolutePosition"]
+  RETURN R0 0
+
+PROTO_24:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"isGamepad"}]
+  GETUPVAL R5 1
+  MOVE R6 R0
+  CALL R5 1 1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K2 ["Gamepad"]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K0 ["isGamepad"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_25:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["resetCameraPosition"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_26:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["closePreviewView"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_27:
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["loadingState"]
+  NEWTABLE R2 0 5
+  DUPTABLE R3 K4 [{"icon", "text"}]
+  NEWTABLE R4 2 0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K5 ["MouseAndKeyboard"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["icons/controls/mouse/scroll"]
+  SETTABLE R6 R4 R5
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["Gamepad"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K8 ["icons/controls/keys/xboxRSVertical"]
+  SETTABLE R6 R4 R5
+  SETTABLEKS R4 R3 K2 ["icon"]
+  GETUPVAL R4 2
+  LOADK R6 K9 ["CoreScripts.PublishAvatarPrompt.Zoom"]
+  NAMECALL R4 R4 K10 ["FormatByKey"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["text"]
+  DUPTABLE R4 K4 [{"icon", "text"}]
+  NEWTABLE R5 2 0
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K5 ["MouseAndKeyboard"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K11 ["icons/controls/mouse/clickLeft"]
+  SETTABLE R7 R5 R6
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K7 ["Gamepad"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K12 ["icons/controls/keys/xboxRSHorizontal"]
+  SETTABLE R7 R5 R6
+  SETTABLEKS R5 R4 K2 ["icon"]
+  GETUPVAL R5 2
+  LOADK R7 K13 ["CoreScripts.PublishAvatarPrompt.Rotate"]
+  NAMECALL R5 R5 K10 ["FormatByKey"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["text"]
+  DUPTABLE R5 K4 [{"icon", "text"}]
+  NEWTABLE R6 1 0
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K5 ["MouseAndKeyboard"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K14 ["icons/controls/mouse/clickRight"]
+  SETTABLE R8 R6 R7
+  SETTABLEKS R6 R5 K2 ["icon"]
+  GETUPVAL R6 2
+  LOADK R8 K15 ["CoreScripts.PublishAvatarPrompt.Pan"]
+  NAMECALL R6 R6 K10 ["FormatByKey"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K3 ["text"]
+  DUPTABLE R6 K4 [{"icon", "text"}]
+  NEWTABLE R7 1 0
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K7 ["Gamepad"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K16 ["icons/controls/keys/xboxY"]
+  SETTABLE R9 R7 R8
+  SETTABLEKS R7 R6 K2 ["icon"]
+  GETUPVAL R7 2
+  LOADK R9 K17 ["CoreScripts.PublishAvatarPrompt.ResetView"]
+  NAMECALL R7 R7 K10 ["FormatByKey"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K3 ["text"]
+  DUPTABLE R7 K4 [{"icon", "text"}]
+  NEWTABLE R8 1 0
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K7 ["Gamepad"]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K18 ["icons/controls/keys/xboxB"]
+  SETTABLE R10 R8 R9
+  SETTABLEKS R8 R7 K2 ["icon"]
+  GETUPVAL R8 2
+  LOADK R10 K19 ["CoreScripts.PublishAvatarPrompt.Close"]
+  NAMECALL R8 R8 K10 ["FormatByKey"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K3 ["text"]
+  SETLIST R2 R3 5 [1]
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K20 ["cameraMoved"]
+  JUMPIFNOT R3 [+5]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K21 ["isGamepad"]
+  NOT R3 R4
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K22 ["createElement"]
+  LOADK R5 K23 ["Frame"]
+  NEWTABLE R6 8 0
+  LOADN R7 1
+  SETTABLEKS R7 R6 K24 ["BackgroundTransparency"]
+  GETIMPORT R7 K27 [UDim2.fromScale]
+  LOADN R8 1
+  LOADN R9 1
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K28 ["Size"]
+  GETIMPORT R7 K27 [UDim2.fromScale]
+  LOADK R8 K29 [0.5]
+  LOADK R9 K29 [0.5]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K30 ["Position"]
+  GETIMPORT R7 K33 [Vector2.new]
+  LOADK R8 K29 [0.5]
+  LOADK R9 K29 [0.5]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K34 ["AnchorPoint"]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K35 ["Ref"]
+  GETTABLEKS R8 R0 K36 ["ref"]
+  SETTABLE R8 R6 R7
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K37 ["Change"]
+  GETTABLEKS R7 R8 K38 ["AbsoluteSize"]
+  NEWCLOSURE R8 P0
+  CAPTURE VAL R0
+  SETTABLE R8 R6 R7
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K37 ["Change"]
+  GETTABLEKS R7 R8 K39 ["AbsolutePosition"]
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  SETTABLE R8 R6 R7
+  DUPTABLE R7 K48 [{"LastInputTypeConnection", "ButtonFrame", "ResetViewButton", "ShrinkPreviewButton", "TooltipHint", "ShimmerFrame", "LoadingFailed", "InteractionFrame"}]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K22 ["createElement"]
+  GETUPVAL R10 5
+  DUPTABLE R11 K52 [{"event", "callback"}]
+  GETUPVAL R13 6
+  GETTABLEKS R12 R13 K53 ["LastInputTypeChanged"]
+  SETTABLEKS R12 R11 K50 ["event"]
+  NEWCLOSURE R12 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  SETTABLEKS R12 R11 K51 ["callback"]
+  CALL R9 2 1
+  ORK R8 R9 K49 []
+  SETTABLEKS R8 R7 K40 ["LastInputTypeConnection"]
+  GETUPVAL R9 9
+  JUMPIFNOT R9 [+141]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  LOADK R9 K23 ["Frame"]
+  DUPTABLE R10 K54 [{"Size", "Position", "BackgroundTransparency"}]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K28 ["Size"]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADN R12 0
+  LOADN R13 0
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K30 ["Position"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K24 ["BackgroundTransparency"]
+  DUPTABLE R11 K56 [{"UIPadding", "ResetViewButton", "ShrinkPreviewButton"}]
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K22 ["createElement"]
+  LOADK R13 K55 ["UIPadding"]
+  DUPTABLE R14 K60 [{"PaddingBottom", "PaddingLeft", "PaddingRight"}]
+  GETIMPORT R15 K62 [UDim.new]
+  LOADN R16 0
+  LOADN R17 24
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K57 ["PaddingBottom"]
+  GETIMPORT R15 K62 [UDim.new]
+  LOADN R16 0
+  LOADN R17 24
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K58 ["PaddingLeft"]
+  GETIMPORT R15 K62 [UDim.new]
+  LOADN R16 0
+  LOADN R17 24
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K59 ["PaddingRight"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K55 ["UIPadding"]
+  JUMPIFNOT R3 [+40]
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K22 ["createElement"]
+  GETUPVAL R13 10
+  DUPTABLE R14 K68 [{"buttonType", "size", "position", "anchorPoint", "icon", "onActivated"}]
+  GETUPVAL R16 11
+  GETTABLEKS R15 R16 K69 ["Secondary"]
+  SETTABLEKS R15 R14 K63 ["buttonType"]
+  GETIMPORT R15 K71 [UDim2.fromOffset]
+  LOADN R16 36
+  LOADN R17 36
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K64 ["size"]
+  GETIMPORT R15 K27 [UDim2.fromScale]
+  LOADN R16 0
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K65 ["position"]
+  GETIMPORT R15 K33 [Vector2.new]
+  LOADN R16 0
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K66 ["anchorPoint"]
+  GETUPVAL R15 12
+  SETTABLEKS R15 R14 K2 ["icon"]
+  GETTABLEKS R15 R0 K72 ["onResetButtonPressed"]
+  SETTABLEKS R15 R14 K67 ["onActivated"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K42 ["ResetViewButton"]
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K22 ["createElement"]
+  GETUPVAL R13 10
+  DUPTABLE R14 K73 [{"buttonType", "size", "icon", "position", "anchorPoint", "onActivated"}]
+  GETUPVAL R16 11
+  GETTABLEKS R15 R16 K74 ["PrimarySystem"]
+  SETTABLEKS R15 R14 K63 ["buttonType"]
+  GETIMPORT R15 K71 [UDim2.fromOffset]
+  LOADN R16 36
+  LOADN R17 36
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K64 ["size"]
+  GETUPVAL R15 13
+  SETTABLEKS R15 R14 K2 ["icon"]
+  GETIMPORT R15 K27 [UDim2.fromScale]
+  LOADN R16 1
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K65 ["position"]
+  GETIMPORT R15 K33 [Vector2.new]
+  LOADN R16 1
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K66 ["anchorPoint"]
+  GETTABLEKS R16 R0 K75 ["props"]
+  GETTABLEKS R15 R16 K76 ["closePreviewView"]
+  SETTABLEKS R15 R14 K67 ["onActivated"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K43 ["ShrinkPreviewButton"]
+  CALL R8 3 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K41 ["ButtonFrame"]
+  GETUPVAL R9 9
+  JUMPIF R9 [+54]
+  LOADB R8 0
+  GETUPVAL R10 14
+  GETTABLEKS R9 R10 K77 ["SUCCESSFULLY_LOADED"]
+  JUMPIFNOTEQ R1 R9 [+50]
+  GETTABLEKS R10 R0 K0 ["state"]
+  GETTABLEKS R9 R10 K21 ["isGamepad"]
+  NOT R8 R9
+  JUMPIFNOT R8 [+43]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 10
+  DUPTABLE R10 K79 [{"buttonType", "standardSize", "position", "anchorPoint", "text", "onActivated"}]
+  GETUPVAL R12 11
+  GETTABLEKS R11 R12 K74 ["PrimarySystem"]
+  SETTABLEKS R11 R10 K63 ["buttonType"]
+  GETUPVAL R12 15
+  GETTABLEKS R11 R12 K80 ["XSmall"]
+  SETTABLEKS R11 R10 K78 ["standardSize"]
+  GETIMPORT R11 K81 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 20
+  LOADN R14 1
+  LOADN R15 236
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K65 ["position"]
+  GETIMPORT R11 K33 [Vector2.new]
+  LOADN R12 0
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K66 ["anchorPoint"]
+  GETUPVAL R12 16
+  GETTABLEKS R11 R12 K82 ["resetViewButtonText"]
+  SETTABLEKS R11 R10 K3 ["text"]
+  NEWCLOSURE R11 P3
+  CAPTURE VAL R0
+  SETTABLEKS R11 R10 K67 ["onActivated"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K42 ["ResetViewButton"]
+  GETUPVAL R9 9
+  JUMPIF R9 [+35]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 17
+  DUPTABLE R10 K84 [{"position", "anchorPoint", "icon", "iconSize", "onActivated"}]
+  GETIMPORT R11 K81 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 236
+  LOADN R14 1
+  LOADN R15 236
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K65 ["position"]
+  GETIMPORT R11 K33 [Vector2.new]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K66 ["anchorPoint"]
+  GETUPVAL R11 13
+  SETTABLEKS R11 R10 K2 ["icon"]
+  GETUPVAL R12 18
+  GETTABLEKS R11 R12 K85 ["Medium"]
+  SETTABLEKS R11 R10 K83 ["iconSize"]
+  NEWCLOSURE R11 P4
+  CAPTURE VAL R0
+  SETTABLEKS R11 R10 K67 ["onActivated"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K43 ["ShrinkPreviewButton"]
+  GETUPVAL R9 9
+  JUMPIFNOT R9 [+35]
+  GETTABLEKS R10 R0 K75 ["props"]
+  GETTABLEKS R9 R10 K86 ["asset"]
+  LOADK R11 K87 ["Model"]
+  NAMECALL R9 R9 K88 ["IsA"]
+  CALL R9 2 1
+  JUMPIFNOT R9 [+26]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 19
+  DUPTABLE R10 K91 [{"position", "anchorPoint", "transitionDelaySeconds", "items"}]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADK R12 K29 [0.5]
+  LOADK R13 K92 [0.9]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K65 ["position"]
+  GETIMPORT R11 K33 [Vector2.new]
+  LOADK R12 K29 [0.5]
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K66 ["anchorPoint"]
+  LOADN R11 2
+  SETTABLEKS R11 R10 K89 ["transitionDelaySeconds"]
+  SETTABLEKS R2 R10 K90 ["items"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K44 ["TooltipHint"]
+  LOADB R8 0
+  GETUPVAL R10 14
+  GETTABLEKS R9 R10 K93 ["LOADING"]
+  JUMPIFNOTEQ R1 R9 [+28]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 20
+  DUPTABLE R10 K94 [{"Size", "Position", "AnchorPoint"}]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K28 ["Size"]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADK R12 K29 [0.5]
+  LOADK R13 K29 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K30 ["Position"]
+  GETIMPORT R11 K33 [Vector2.new]
+  LOADK R12 K29 [0.5]
+  LOADK R13 K29 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K34 ["AnchorPoint"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K45 ["ShimmerFrame"]
+  LOADB R8 0
+  GETUPVAL R10 14
+  GETTABLEKS R9 R10 K95 ["FAILED_TO_LOAD"]
+  JUMPIFNOTEQ R1 R9 [+23]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 21
+  DUPTABLE R10 K96 [{"text", "size", "onActivated"}]
+  GETUPVAL R12 16
+  GETTABLEKS R11 R12 K97 ["loadingFailedText"]
+  SETTABLEKS R11 R10 K3 ["text"]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K64 ["size"]
+  GETTABLEKS R11 R0 K98 ["onRetryLoading"]
+  SETTABLEKS R11 R10 K67 ["onActivated"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K46 ["LoadingFailed"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["createElement"]
+  GETUPVAL R9 22
+  DUPTABLE R10 K105 [{"ZIndex", "Size", "Visible", "panByPixels", "rotateByPixels", "setAngularVelocityByPixels", "zoomToPoint"}]
+  LOADN R11 255
+  SETTABLEKS R11 R10 K99 ["ZIndex"]
+  GETIMPORT R11 K27 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K28 ["Size"]
+  GETUPVAL R13 14
+  GETTABLEKS R12 R13 K77 ["SUCCESSFULLY_LOADED"]
+  JUMPIFEQ R1 R12 [+2]
+  LOADB R11 0 +1
+  LOADB R11 1
+  SETTABLEKS R11 R10 K100 ["Visible"]
+  GETTABLEKS R11 R0 K101 ["panByPixels"]
+  SETTABLEKS R11 R10 K101 ["panByPixels"]
+  GETTABLEKS R11 R0 K102 ["rotateByPixels"]
+  SETTABLEKS R11 R10 K102 ["rotateByPixels"]
+  GETTABLEKS R11 R0 K103 ["setAngularVelocityByPixels"]
+  SETTABLEKS R11 R10 K103 ["setAngularVelocityByPixels"]
+  GETTABLEKS R11 R0 K104 ["zoomToPoint"]
+  SETTABLEKS R11 R10 K104 ["zoomToPoint"]
+  DUPTABLE R11 K107 [{"ViewportFrame"}]
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K22 ["createElement"]
+  LOADK R13 K106 ["ViewportFrame"]
+  DUPTABLE R14 K112 [{"BackgroundTransparency", "Size", "Position", "AnchorPoint", "LightColor", "Ambient", "LightDirection", "CurrentCamera"}]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K24 ["BackgroundTransparency"]
+  GETIMPORT R15 K27 [UDim2.fromScale]
+  LOADN R16 1
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K28 ["Size"]
+  GETIMPORT R15 K27 [UDim2.fromScale]
+  LOADK R16 K29 [0.5]
+  LOADK R17 K29 [0.5]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K30 ["Position"]
+  GETIMPORT R15 K33 [Vector2.new]
+  LOADK R16 K29 [0.5]
+  LOADK R17 K29 [0.5]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K34 ["AnchorPoint"]
+  GETUPVAL R16 23
+  GETTABLEKS R15 R16 K113 ["ViewportLightColor"]
+  SETTABLEKS R15 R14 K108 ["LightColor"]
+  GETUPVAL R16 23
+  GETTABLEKS R15 R16 K114 ["ViewportLightAmbient"]
+  SETTABLEKS R15 R14 K109 ["Ambient"]
+  GETUPVAL R16 23
+  GETTABLEKS R15 R16 K115 ["ViewportLightDirection"]
+  SETTABLEKS R15 R14 K110 ["LightDirection"]
+  GETTABLEKS R15 R0 K116 ["cameraRef"]
+  SETTABLEKS R15 R14 K111 ["CurrentCamera"]
+  DUPTABLE R15 K119 [{"Camera", "WorldModel"}]
+  GETUPVAL R17 3
+  GETTABLEKS R16 R17 K22 ["createElement"]
+  LOADK R17 K117 ["Camera"]
+  NEWTABLE R18 8 0
+  GETIMPORT R19 K123 [Enum.CameraType.Scriptable]
+  SETTABLEKS R19 R18 K121 ["CameraType"]
+  LOADN R19 30
+  SETTABLEKS R19 R18 K124 ["FieldOfView"]
+  GETUPVAL R20 24
+  JUMPIFNOT R20 [+2]
+  LOADB R19 1
+  JUMP [+1]
+  LOADNIL R19
+  SETTABLEKS R19 R18 K125 ["HeadLocked"]
+  GETUPVAL R20 24
+  JUMPIFNOT R20 [+2]
+  LOADB R19 1
+  JUMP [+1]
+  LOADNIL R19
+  SETTABLEKS R19 R18 K126 ["VRTiltAndRollEnabled"]
+  GETTABLEKS R19 R0 K127 ["cameraCFrameBinding"]
+  SETTABLEKS R19 R18 K128 ["CFrame"]
+  GETTABLEKS R19 R0 K129 ["cameraFocusBinding"]
+  SETTABLEKS R19 R18 K130 ["Focus"]
+  GETUPVAL R20 3
+  GETTABLEKS R19 R20 K35 ["Ref"]
+  GETTABLEKS R20 R0 K116 ["cameraRef"]
+  SETTABLE R20 R18 R19
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K117 ["Camera"]
+  GETUPVAL R17 3
+  GETTABLEKS R16 R17 K22 ["createElement"]
+  LOADK R17 K118 ["WorldModel"]
+  NEWTABLE R18 1 0
+  GETUPVAL R20 3
+  GETTABLEKS R19 R20 K35 ["Ref"]
+  GETTABLEKS R20 R0 K131 ["worldModelRef"]
+  SETTABLE R20 R18 R19
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K118 ["WorldModel"]
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K106 ["ViewportFrame"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K47 ["InteractionFrame"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_28:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["resetCameraPosition"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_29:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["inputState"]
+  GETIMPORT R2 K4 [Enum.UserInputState.Change]
+  JUMPIFNOTEQ R1 R2 [+22]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K5 ["inputObject"]
+  JUMPIFNOT R1 [+17]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["rotateAndZoom"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["inputObject"]
+  MOVE R3 R0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["setAngularVelocityByPixels"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K8 ["rotateByRadians"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K9 ["zoomToPoint"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_30:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["PreviewViewportClose"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K2 ["PreviewViewportReset"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K3 ["PreviewViewportRotateAndZoom"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["PreviewViewportClose"]
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K5 ["closePreviewView"]
+  LOADB R5 0
+  GETIMPORT R6 K9 [Enum.KeyCode.ButtonB]
+  NAMECALL R1 R1 K10 ["BindCoreAction"]
+  CALL R1 5 0
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  GETUPVAL R2 0
+  LOADK R4 K2 ["PreviewViewportReset"]
+  MOVE R5 R1
+  LOADB R6 0
+  GETIMPORT R7 K12 [Enum.KeyCode.ButtonY]
+  NAMECALL R2 R2 K10 ["BindCoreAction"]
+  CALL R2 5 0
+  GETUPVAL R2 0
+  LOADK R4 K3 ["PreviewViewportRotateAndZoom"]
+  GETTABLEKS R5 R0 K13 ["storeInput"]
+  LOADB R6 0
+  GETIMPORT R7 K15 [Enum.KeyCode.Thumbstick2]
+  NAMECALL R2 R2 K10 ["BindCoreAction"]
+  CALL R2 5 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K16 ["RenderStepped"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  NAMECALL R2 R2 K17 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K18 ["gamePadConnection"]
+  RETURN R0 0
+
+PROTO_31:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetGuiInset"]
+  CALL R1 1 1
+  LOADB R2 1
+  SETTABLEKS R2 R0 K1 ["isMounted"]
+  GETTABLEKS R5 R0 K2 ["ref"]
+  GETTABLEKS R4 R5 K3 ["current"]
+  GETTABLEKS R3 R4 K4 ["AbsolutePosition"]
+  ADD R2 R3 R1
+  SETTABLEKS R2 R0 K5 ["absolutePosition"]
+  NAMECALL R2 R0 K6 ["processAsset"]
+  CALL R2 1 0
+  GETUPVAL R2 1
+  JUMPIFNOT R2 [+3]
+  NAMECALL R2 R0 K7 ["setUpGamepad"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_32:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["PreviewViewportClose"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K2 ["PreviewViewportReset"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K3 ["PreviewViewportRotateAndZoom"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETTABLEKS R1 R0 K4 ["gamePadConnection"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K4 ["gamePadConnection"]
+  NAMECALL R1 R1 K5 ["Disconnect"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_33:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+3]
+  NAMECALL R1 R0 K1 ["cleanupGamepad"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_34:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["asset"]
+  GETTABLEKS R4 R1 K1 ["asset"]
+  JUMPIFNOTEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIFNOT R2 [+29]
+  GETTABLEKS R3 R0 K2 ["model"]
+  JUMPIFEQKNIL R3 [+9]
+  GETTABLEKS R3 R0 K2 ["model"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K3 ["Parent"]
+  LOADNIL R3
+  SETTABLEKS R3 R0 K2 ["model"]
+  GETTABLEKS R3 R0 K4 ["baseplate"]
+  JUMPIFEQKNIL R3 [+11]
+  GETTABLEKS R3 R0 K4 ["baseplate"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K3 ["Parent"]
+  GETTABLEKS R3 R0 K4 ["baseplate"]
+  NAMECALL R3 R3 K5 ["Destroy"]
+  CALL R3 1 0
+  NAMECALL R3 R0 K6 ["processAsset"]
+  CALL R3 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["AnimationClipProvider"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["UserInputService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["GuiService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K8 ["Players"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K9 ["ContextActionService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K10 ["RunService"]
+  NAMECALL R7 R7 K3 ["GetService"]
+  CALL R7 2 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R10 R1 K13 ["Packages"]
+  GETTABLEKS R9 R10 K14 ["Roact"]
+  CALL R8 1 1
+  GETIMPORT R9 K12 [require]
+  GETTABLEKS R11 R1 K13 ["Packages"]
+  GETTABLEKS R10 R11 K15 ["t"]
+  CALL R9 1 1
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R12 R1 K13 ["Packages"]
+  GETTABLEKS R11 R12 K16 ["UIBlox"]
+  CALL R10 1 1
+  GETTABLEKS R13 R10 K17 ["App"]
+  GETTABLEKS R12 R13 K18 ["Loading"]
+  GETTABLEKS R11 R12 K19 ["ShimmerPanel"]
+  GETTABLEKS R14 R10 K17 ["App"]
+  GETTABLEKS R13 R14 K20 ["Indicator"]
+  GETTABLEKS R12 R13 K21 ["EmptyState"]
+  GETTABLEKS R15 R10 K17 ["App"]
+  GETTABLEKS R14 R15 K22 ["Button"]
+  GETTABLEKS R13 R14 K23 ["IconButton"]
+  GETTABLEKS R17 R10 K17 ["App"]
+  GETTABLEKS R16 R17 K24 ["ImageSet"]
+  GETTABLEKS R15 R16 K25 ["Enum"]
+  GETTABLEKS R14 R15 K26 ["IconSize"]
+  GETTABLEKS R17 R10 K17 ["App"]
+  GETTABLEKS R16 R17 K22 ["Button"]
+  GETTABLEKS R15 R16 K22 ["Button"]
+  GETTABLEKS R19 R10 K17 ["App"]
+  GETTABLEKS R18 R19 K22 ["Button"]
+  GETTABLEKS R17 R18 K25 ["Enum"]
+  GETTABLEKS R16 R17 K27 ["ButtonType"]
+  GETTABLEKS R20 R10 K17 ["App"]
+  GETTABLEKS R19 R20 K22 ["Button"]
+  GETTABLEKS R18 R19 K25 ["Enum"]
+  GETTABLEKS R17 R18 K28 ["StandardButtonSize"]
+  GETTABLEKS R20 R10 K17 ["App"]
+  GETTABLEKS R19 R20 K29 ["Navigation"]
+  GETTABLEKS R18 R19 K30 ["ShortcutBar"]
+  GETTABLEKS R21 R10 K31 ["Core"]
+  GETTABLEKS R20 R21 K32 ["Enums"]
+  GETTABLEKS R19 R20 K33 ["InputType"]
+  GETIMPORT R21 K12 [require]
+  GETTABLEKS R24 R1 K34 ["Workspace"]
+  GETTABLEKS R23 R24 K13 ["Packages"]
+  GETTABLEKS R22 R23 K33 ["InputType"]
+  CALL R21 1 1
+  GETTABLEKS R20 R21 K35 ["getInputGroup"]
+  GETIMPORT R22 K12 [require]
+  GETTABLEKS R25 R1 K34 ["Workspace"]
+  GETTABLEKS R24 R25 K13 ["Packages"]
+  GETTABLEKS R23 R24 K36 ["RoactUtils"]
+  CALL R22 1 1
+  GETTABLEKS R21 R22 K37 ["ExternalEventConnection"]
+  GETIMPORT R23 K12 [require]
+  GETTABLEKS R26 R1 K34 ["Workspace"]
+  GETTABLEKS R25 R26 K13 ["Packages"]
+  GETTABLEKS R24 R25 K33 ["InputType"]
+  CALL R23 1 1
+  GETTABLEKS R22 R23 K38 ["InputTypeConstants"]
+  GETIMPORT R25 K12 [require]
+  GETTABLEKS R28 R1 K34 ["Workspace"]
+  GETTABLEKS R27 R28 K13 ["Packages"]
+  GETTABLEKS R26 R27 K39 ["AppCommonLib"]
+  CALL R25 1 1
+  GETTABLEKS R24 R25 K40 ["Utils"]
+  GETTABLEKS R23 R24 K41 ["GamepadUtils"]
+  LOADK R26 K42 ["RobloxGui"]
+  NAMECALL R24 R2 K43 ["WaitForChild"]
+  CALL R24 2 1
+  GETIMPORT R25 K12 [require]
+  GETTABLEKS R27 R24 K44 ["Modules"]
+  GETTABLEKS R26 R27 K45 ["RobloxTranslator"]
+  CALL R25 1 1
+  GETIMPORT R26 K12 [require]
+  GETIMPORT R29 K47 [script]
+  GETTABLEKS R28 R29 K48 ["Parent"]
+  GETTABLEKS R27 R28 K49 ["InteractionFrame"]
+  CALL R26 1 1
+  GETIMPORT R27 K12 [require]
+  GETIMPORT R32 K47 [script]
+  GETTABLEKS R31 R32 K48 ["Parent"]
+  GETTABLEKS R30 R31 K48 ["Parent"]
+  GETTABLEKS R29 R30 K48 ["Parent"]
+  GETTABLEKS R28 R29 K50 ["Constants"]
+  CALL R27 1 1
+  GETTABLEKS R30 R10 K17 ["App"]
+  GETTABLEKS R29 R30 K24 ["ImageSet"]
+  GETTABLEKS R28 R29 K51 ["Images"]
+  GETTABLEKS R29 R28 K52 ["icons/actions/previewShrink"]
+  GETTABLEKS R30 R28 K53 ["icons/actions/reset"]
+  GETIMPORT R31 K12 [require]
+  GETIMPORT R36 K47 [script]
+  GETTABLEKS R35 R36 K48 ["Parent"]
+  GETTABLEKS R34 R35 K48 ["Parent"]
+  GETTABLEKS R33 R34 K48 ["Parent"]
+  GETTABLEKS R32 R33 K54 ["FFlagPublishAvatarPromptEnabled"]
+  CALL R31 1 1
+  GETIMPORT R32 K12 [require]
+  GETIMPORT R37 K47 [script]
+  GETTABLEKS R36 R37 K48 ["Parent"]
+  GETTABLEKS R35 R36 K48 ["Parent"]
+  GETTABLEKS R34 R35 K48 ["Parent"]
+  GETTABLEKS R33 R34 K55 ["FFlagFixPublishAvatarVRViewports"]
+  CALL R32 1 1
+  JUMPIFNOT R31 [+2]
+  LOADK R33 K56 [0.8]
+  JUMP [+1]
+  LOADN R33 1
+  DUPTABLE R34 K60 [{"LOADING", "SUCCESSFULLY_LOADED", "FAILED_TO_LOAD"}]
+  LOADK R35 K61 ["loading"]
+  SETTABLEKS R35 R34 K57 ["LOADING"]
+  LOADK R35 K62 ["successfullyLoaded"]
+  SETTABLEKS R35 R34 K58 ["SUCCESSFULLY_LOADED"]
+  LOADK R35 K63 ["failedToLoad"]
+  SETTABLEKS R35 R34 K59 ["FAILED_TO_LOAD"]
+  GETTABLEKS R35 R8 K64 ["PureComponent"]
+  LOADK R37 K65 ["PreviewViewport"]
+  NAMECALL R35 R35 K66 ["extend"]
+  CALL R35 2 1
+  GETTABLEKS R36 R9 K67 ["strictInterface"]
+  DUPTABLE R37 K70 [{"asset", "closePreviewView"}]
+  GETTABLEKS R38 R9 K71 ["union"]
+  GETTABLEKS R39 R9 K72 ["instanceOf"]
+  LOADK R40 K73 ["Model"]
+  CALL R39 1 1
+  GETTABLEKS R40 R9 K74 ["instanceIsA"]
+  LOADK R41 K75 ["AnimationClip"]
+  CALL R40 1 -1
+  CALL R38 -1 1
+  SETTABLEKS R38 R37 K68 ["asset"]
+  GETTABLEKS R38 R9 K76 ["callback"]
+  SETTABLEKS R38 R37 K69 ["closePreviewView"]
+  CALL R36 1 1
+  SETTABLEKS R36 R35 K77 ["validateProps"]
+  DUPCLOSURE R36 K78 [PROTO_0]
+  CAPTURE VAL R20
+  CAPTURE VAL R22
+  DUPCLOSURE R37 K79 [PROTO_9]
+  CAPTURE VAL R34
+  CAPTURE VAL R3
+  CAPTURE VAL R20
+  CAPTURE VAL R22
+  CAPTURE VAL R31
+  CAPTURE VAL R8
+  CAPTURE VAL R33
+  SETTABLEKS R37 R35 K80 ["init"]
+  DUPCLOSURE R37 K81 [PROTO_10]
+  SETTABLEKS R37 R35 K82 ["setLoadingState"]
+  DUPCLOSURE R37 K83 [PROTO_11]
+  SETTABLEKS R37 R35 K84 ["clampOffsets"]
+  DUPCLOSURE R37 K85 [PROTO_12]
+  SETTABLEKS R37 R35 K86 ["angleToMakeBasePlateParallel"]
+  DUPCLOSURE R37 K87 [PROTO_15]
+  CAPTURE VAL R34
+  CAPTURE VAL R5
+  CAPTURE VAL R0
+  SETTABLEKS R37 R35 K88 ["processAsset"]
+  DUPCLOSURE R37 K89 [PROTO_16]
+  SETTABLEKS R37 R35 K90 ["addModelToViewportIfNeeded"]
+  DUPCLOSURE R37 K91 [PROTO_17]
+  DUPCLOSURE R38 K92 [PROTO_18]
+  DUPCLOSURE R39 K93 [PROTO_19]
+  CAPTURE VAL R33
+  CAPTURE VAL R31
+  SETTABLEKS R39 R35 K94 ["resetCameraPosition"]
+  DUPCLOSURE R39 K95 [PROTO_20]
+  SETTABLEKS R39 R35 K96 ["pointsToPixelsFactor"]
+  DUPCLOSURE R39 K97 [PROTO_21]
+  SETTABLEKS R39 R35 K98 ["updateCameraPosition"]
+  DUPTABLE R39 K101 [{"resetViewButtonText", "loadingFailedText"}]
+  LOADK R42 K102 ["CoreScripts.AssetPreviewView.Action.ResetView"]
+  NAMECALL R40 R25 K103 ["FormatByKey"]
+  CALL R40 2 1
+  SETTABLEKS R40 R39 K99 ["resetViewButtonText"]
+  LOADK R42 K104 ["CoreScripts.AssetPreviewView.Label.LoadingFailed"]
+  NAMECALL R40 R25 K103 ["FormatByKey"]
+  CALL R40 2 1
+  SETTABLEKS R40 R39 K100 ["loadingFailedText"]
+  DUPCLOSURE R40 K105 [PROTO_27]
+  CAPTURE VAL R19
+  CAPTURE VAL R28
+  CAPTURE VAL R25
+  CAPTURE VAL R8
+  CAPTURE VAL R4
+  CAPTURE VAL R21
+  CAPTURE VAL R3
+  CAPTURE VAL R20
+  CAPTURE VAL R22
+  CAPTURE VAL R31
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  CAPTURE VAL R30
+  CAPTURE VAL R29
+  CAPTURE VAL R34
+  CAPTURE VAL R17
+  CAPTURE VAL R39
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R18
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R26
+  CAPTURE VAL R27
+  CAPTURE VAL R32
+  SETTABLEKS R40 R35 K106 ["render"]
+  DUPCLOSURE R40 K107 [PROTO_30]
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R23
+  SETTABLEKS R40 R35 K108 ["setUpGamepad"]
+  DUPCLOSURE R40 K109 [PROTO_31]
+  CAPTURE VAL R4
+  CAPTURE VAL R31
+  SETTABLEKS R40 R35 K110 ["didMount"]
+  DUPCLOSURE R40 K111 [PROTO_32]
+  CAPTURE VAL R6
+  SETTABLEKS R40 R35 K112 ["cleanupGamepad"]
+  DUPCLOSURE R40 K113 [PROTO_33]
+  CAPTURE VAL R31
+  SETTABLEKS R40 R35 K114 ["willUnmount"]
+  DUPCLOSURE R40 K115 [PROTO_34]
+  SETTABLEKS R40 R35 K116 ["didUpdate"]
+  RETURN R35 1

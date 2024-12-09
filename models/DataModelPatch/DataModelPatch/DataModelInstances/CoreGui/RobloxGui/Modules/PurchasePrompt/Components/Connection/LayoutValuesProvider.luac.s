@@ -1,0 +1,51 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETTABLEKS R2 R0 K1 ["isTenFootInterface"]
+  CALL R1 1 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["Provider"]
+  DUPTABLE R4 K5 [{"value"}]
+  GETTABLEKS R5 R1 K6 ["layout"]
+  SETTABLEKS R5 R4 K4 ["value"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K7 ["oneChild"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K8 ["Children"]
+  GETTABLE R6 R0 R7
+  CALL R5 1 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R5 R1 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["PurchasePromptDeps"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K12 ["Roact"]
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K13 ["Services"]
+  GETTABLEKS R5 R6 K14 ["LayoutValues"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETIMPORT R8 K1 [script]
+  GETTABLEKS R7 R8 K2 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["LayoutValuesContext"]
+  CALL R5 1 1
+  DUPCLOSURE R6 K16 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  RETURN R6 1

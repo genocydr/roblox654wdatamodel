@@ -1,0 +1,181 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["controlMessageMotion"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["controlMessageOff"]
+  GETUPVAL R2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K2 ["None"]
+  JUMPIFEQ R2 R3 [+24]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["controlMessageOn"]
+  GETUPVAL R2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["AudioVideo"]
+  JUMPIFEQ R2 R3 [+7]
+  GETUPVAL R2 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K5 ["Video"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R2 0
+  GETTABLEKS R0 R2 K0 ["controlMessageMotion"]
+  JUMP [+22]
+  GETUPVAL R2 0
+  GETTABLEKS R0 R2 K6 ["controlMessageSound"]
+  JUMP [+18]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["controlMessageOff"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K7 ["current"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K8 ["Audio"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R2 0
+  GETTABLEKS R0 R2 K6 ["controlMessageSound"]
+  JUMP [+3]
+  GETUPVAL R2 0
+  GETTABLEKS R0 R2 K0 ["controlMessageMotion"]
+  GETUPVAL R2 3
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K7 ["current"]
+  DUPTABLE R2 K12 [{"visible", "text", "status"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K9 ["visible"]
+  SETTABLEKS R0 R2 K10 ["text"]
+  SETTABLEKS R1 R2 K11 ["status"]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R0 0
+  DUPTABLE R1 K3 [{"visible", "text", "status"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["visible"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["text"]
+  SETTABLEKS R2 R1 K1 ["text"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["status"]
+  SETTABLEKS R2 R1 K2 ["status"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["current"]
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["current"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  GETUPVAL R1 3
+  CALL R1 0 1
+  CALL R0 1 0
+  GETUPVAL R0 0
+  GETUPVAL R1 4
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U5
+  LOADN R3 208
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K0 ["current"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["useRef"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["getTrackerMode"]
+  CALL R1 0 -1
+  CALL R0 -1 1
+  GETUPVAL R1 2
+  CALL R1 0 1
+  GETUPVAL R2 3
+  DUPTABLE R3 K6 [{"controlMessageSound", "controlMessageMotion", "controlMessageOn", "controlMessageOff"}]
+  LOADK R4 K7 ["CoreScripts.TopBar.ControlMessageSound"]
+  SETTABLEKS R4 R3 K2 ["controlMessageSound"]
+  LOADK R4 K8 ["CoreScripts.TopBar.ControlMessageMotion"]
+  SETTABLEKS R4 R3 K3 ["controlMessageMotion"]
+  LOADK R4 K9 ["CoreScripts.TopBar.ControlMessageOn"]
+  SETTABLEKS R4 R3 K4 ["controlMessageOn"]
+  LOADK R4 K10 ["CoreScripts.TopBar.ControlMessageOff"]
+  SETTABLEKS R4 R3 K5 ["controlMessageOff"]
+  CALL R2 1 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K11 ["useState"]
+  DUPTABLE R4 K15 [{"visible", "text", "status"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K12 ["visible"]
+  GETTABLEKS R5 R2 K3 ["controlMessageMotion"]
+  SETTABLEKS R5 R4 K13 ["text"]
+  GETTABLEKS R5 R2 K5 ["controlMessageOff"]
+  SETTABLEKS R5 R4 K14 ["status"]
+  CALL R3 1 2
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["useRef"]
+  LOADNIL R6
+  CALL R5 1 1
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K16 ["useEffect"]
+  NEWCLOSURE R8 P1
+  CAPTURE VAL R5
+  CAPTURE UPVAL U5
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  NEWTABLE R9 0 1
+  MOVE R10 R1
+  SETLIST R9 R10 1 [1]
+  CALL R7 2 0
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K4 ["Packages"]
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R3 R1 K7 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R4 R1 K8 ["LuauPolyfill"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K9 ["setTimeout"]
+  GETTABLEKS R5 R3 K10 ["clearTimeout"]
+  GETIMPORT R6 K6 [require]
+  GETIMPORT R9 K12 [script]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K14 ["useTrackerMode"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETIMPORT R12 K12 [script]
+  GETTABLEKS R11 R12 K13 ["Parent"]
+  GETTABLEKS R10 R11 K13 ["Parent"]
+  GETTABLEKS R9 R10 K15 ["Utils"]
+  GETTABLEKS R8 R9 K16 ["FaceChatUtils"]
+  CALL R7 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R13 R0 K17 ["Workspace"]
+  GETTABLEKS R12 R13 K4 ["Packages"]
+  GETTABLEKS R11 R12 K18 ["Localization"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K19 ["Hooks"]
+  GETTABLEKS R8 R9 K20 ["useLocalization"]
+  GETIMPORT R9 K23 [Enum.TrackerMode]
+  DUPCLOSURE R10 K24 [PROTO_3]
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  RETURN R10 1

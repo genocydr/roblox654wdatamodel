@@ -1,0 +1,645 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["props"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["dispatchFetchPurchaseWarning"]
+  GETTABLEKS R2 R0 K2 ["robuxProviderId"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["props"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["promptRobuxPurchase"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["networking"]
+  GETTABLEKS R3 R0 K3 ["robuxProviderId"]
+  GETTABLEKS R4 R0 K4 ["robuxProductId"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"canAcceptInput"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["canAcceptInput"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["state"]
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["LocalPlayer"]
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["LocalPlayer"]
+  GETTABLEKS R1 R2 K2 ["GameplayPaused"]
+  JUMPIFNOT R1 [+2]
+  LOADB R1 0
+  RETURN R1 1
+  GETTABLEKS R1 R0 K3 ["canAcceptInput"]
+  RETURN R1 1
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["props"]
+  GETTABLEKS R1 R0 K1 ["promptState"]
+  GETTABLEKS R2 R0 K2 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["canAcceptInput"]
+  CALL R3 0 1
+  JUMPIF R3 [+1]
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["RobuxUpsell"]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETTABLEKS R3 R0 K5 ["dispatchFetchPurchaseWarning"]
+  CALL R3 0 0
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["LargeRobuxUpsell"]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETTABLEKS R3 R0 K7 ["openRobuxStore"]
+  CALL R3 0 0
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K8 ["U13PaymentModal"]
+  JUMPIFEQ R1 R3 [+16]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K9 ["U13MonthlyThreshold1Modal"]
+  JUMPIFEQ R1 R3 [+11]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K10 ["U13MonthlyThreshold2Modal"]
+  JUMPIFEQ R1 R3 [+6]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K11 ["ParentalConsentWarningPaymentModal13To17"]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETTABLEKS R3 R0 K12 ["promptRobuxPurchase"]
+  CALL R3 0 0
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K13 ["PurchaseComplete"]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETTABLEKS R3 R0 K14 ["endPurchase"]
+  CALL R3 0 0
+  RETURN R0 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K15 ["Error"]
+  JUMPIFNOTEQ R1 R3 [+19]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K16 ["TwoFactorNeeded"]
+  JUMPIFEQ R2 R3 [+6]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K17 ["TwoFactorNeededSettings"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETTABLEKS R3 R0 K18 ["openSecuritySettings"]
+  CALL R3 0 0
+  RETURN R0 0
+  GETTABLEKS R3 R0 K14 ["endPurchase"]
+  CALL R3 0 0
+  RETURN R0 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["props"]
+  GETTABLEKS R1 R0 K1 ["endPurchase"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"canAcceptInput"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["canAcceptInput"]
+  SETTABLEKS R1 R0 K2 ["state"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K3 ["dispatchFetchPurchaseWarning"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K4 ["promptRobuxPurchase"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["onDelayedInputComplete"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R1 R0 K0 ["canAcceptInput"]
+  NEWCLOSURE R1 P4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  SETTABLEKS R1 R0 K6 ["confirmButtonPressed"]
+  NEWCLOSURE R1 P5
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K7 ["cancelButtonPressed"]
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R3 K3 [Enum.UserInputState.Begin]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["confirmButtonPressed"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_8:
+  GETIMPORT R3 K3 [Enum.UserInputState.Begin]
+  JUMPIFNOTEQ R1 R3 [+5]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["cancelButtonPressed"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["ProductPurchaseConfirmButtonBind"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.ButtonA]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R1 0
+  LOADK R3 K6 ["ProductPurchaseCancelButtonBind"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETIMPORT R6 K8 [Enum.KeyCode.ButtonB]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["ProductPurchaseConfirmButtonBind"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K2 ["ProductPurchaseCancelButtonBind"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETTABLEKS R2 R1 K1 ["promptState"]
+  GETTABLEKS R3 R1 K2 ["purchaseError"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["RobuxUpsell"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["PurchaseModal"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["LargeRobuxUpsell"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["LargeRobuxPurchaseModal"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["PurchaseInProgress"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K8 ["ItemPurchasePending"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K9 ["UpsellInProgress"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K10 ["RobuxPurchasePending"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K11 ["PollingBalance"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K12 ["RobuxGrantPending"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K13 ["U13PaymentModal"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K14 ["PurchaseWarning"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K15 ["U13MonthlyThreshold1Modal"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K14 ["PurchaseWarning"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K16 ["U13MonthlyThreshold2Modal"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K14 ["PurchaseWarning"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K17 ["PurchaseComplete"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K18 ["Success"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K19 ["LeaveRobloxWarning"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K19 ["LeaveRobloxWarning"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K20 ["EnablePurchaseVPCModal"]
+  JUMPIFNOTEQ R2 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K21 ["PurchaseVPCModal"]
+  RETURN R4 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K22 ["Error"]
+  JUMPIFNOTEQ R2 R4 [+19]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K23 ["TwoFactorNeeded"]
+  JUMPIFEQ R3 R4 [+6]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K24 ["TwoFactorNeededSettings"]
+  JUMPIFNOTEQ R3 R4 [+5]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K25 ["TwoStepRequired"]
+  RETURN R4 1
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K22 ["Error"]
+  RETURN R4 1
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K26 ["None"]
+  RETURN R4 1
+
+PROTO_12:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETTABLEKS R2 R1 K1 ["promptState"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["U13PaymentModal"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["U13PaymentModal"]
+  RETURN R3 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["U13MonthlyThreshold1Modal"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["U13MonthlyThreshold1Modal"]
+  RETURN R3 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["U13MonthlyThreshold2Modal"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["U13MonthlyThreshold2Modal"]
+  RETURN R3 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["ParentalConsentWarningPaymentModal13To17"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K5 ["ParentalConsentWarningPaymentModal13To17"]
+  RETURN R3 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["None"]
+  RETURN R3 1
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["AlreadyOwn"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["AlreadyOwn"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["NotEnoughRobux"]
+  JUMPIFEQ R2 R3 [+15]
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["NotEnoughRobuxXbox"]
+  JUMPIFEQ R2 R3 [+8]
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["NotEnoughRobuxNoUpsell"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["NotEnoughRobux"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K6 ["Limited"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["Limited"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K7 ["NotForSale"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K7 ["NotForSale"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K8 ["NotForSaleHere"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K9 ["NotForSaleExperience"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K10 ["PremiumOnly"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K10 ["PremiumOnly"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K11 ["ThirdPartyDisabled"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K11 ["ThirdPartyDisabled"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K12 ["Under13"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K12 ["Under13"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K13 ["InvalidFunds"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K14 ["FailedGrant"]
+  RETURN R2 1
+  GETTABLEKS R2 R1 K1 ["purchaseError"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K15 ["InvalidFundsUnknown"]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K16 ["FailedGrantUnknown"]
+  RETURN R2 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K17 ["Unknown"]
+  RETURN R2 1
+
+PROTO_14:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETTABLEKS R2 R1 K1 ["promptState"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["EnablePurchaseVPCModal"]
+  JUMPIFNOTEQ R2 R3 [+9]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["toRawValue"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["EnablePurchase"]
+  CALL R3 1 -1
+  RETURN R3 -1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["toRawValue"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K5 ["None"]
+  CALL R3 1 -1
+  RETURN R3 -1
+
+PROTO_15:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["new"]
+  CALL R2 0 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K29 [{"screenSize", "shouldAnimate", "isDelayedInput", "onDelayedInputComplete", "model", "itemIcon", "itemName", "itemRobuxCost", "iapRobuxAmount", "beforeRobuxBalance", "purchaseState", "errorType", "u13ConfirmType", "purchaseVPCType", "acceptControllerIcon", "cancelControllerIcon", "purchaseRobux", "acceptPurchaseWarning", "openBuyRobux", "showTermsOfUse", "openSecuritySettings", "cancelPurchase", "flowComplete", "onAnalyticEvent", "eventPrefix", "isQuest"}]
+  GETTABLEKS R6 R1 K3 ["screenSize"]
+  SETTABLEKS R6 R5 K3 ["screenSize"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K4 ["shouldAnimate"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K5 ["isDelayedInput"]
+  GETTABLEKS R6 R0 K6 ["onDelayedInputComplete"]
+  SETTABLEKS R6 R5 K6 ["onDelayedInputComplete"]
+  GETTABLEKS R6 R1 K30 ["humanoidModel"]
+  SETTABLEKS R6 R5 K7 ["model"]
+  GETTABLEKS R6 R1 K8 ["itemIcon"]
+  SETTABLEKS R6 R5 K8 ["itemIcon"]
+  GETTABLEKS R6 R1 K9 ["itemName"]
+  SETTABLEKS R6 R5 K9 ["itemName"]
+  GETTABLEKS R6 R1 K10 ["itemRobuxCost"]
+  SETTABLEKS R6 R5 K10 ["itemRobuxCost"]
+  GETTABLEKS R6 R1 K11 ["iapRobuxAmount"]
+  SETTABLEKS R6 R5 K11 ["iapRobuxAmount"]
+  GETTABLEKS R6 R1 K12 ["beforeRobuxBalance"]
+  SETTABLEKS R6 R5 K12 ["beforeRobuxBalance"]
+  NAMECALL R6 R0 K31 ["getFlowState"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K13 ["purchaseState"]
+  NAMECALL R6 R0 K32 ["getErrorType"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K14 ["errorType"]
+  NAMECALL R6 R0 K33 ["getU13ConfirmType"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K15 ["u13ConfirmType"]
+  NAMECALL R6 R0 K34 ["getVPCModalType"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K16 ["purchaseVPCType"]
+  GETTABLEKS R7 R1 K35 ["isGamepadEnabled"]
+  JUMPIFNOT R7 [+2]
+  LOADK R6 K36 ["rbxasset://textures/ui/Controls/DesignSystem/ButtonA.png"]
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K17 ["acceptControllerIcon"]
+  GETTABLEKS R7 R1 K35 ["isGamepadEnabled"]
+  JUMPIFNOT R7 [+2]
+  LOADK R6 K37 ["rbxasset://textures/ui/Controls/DesignSystem/ButtonB.png"]
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K18 ["cancelControllerIcon"]
+  GETTABLEKS R6 R0 K38 ["dispatchFetchPurchaseWarning"]
+  SETTABLEKS R6 R5 K19 ["purchaseRobux"]
+  GETTABLEKS R6 R0 K39 ["promptRobuxPurchase"]
+  SETTABLEKS R6 R5 K20 ["acceptPurchaseWarning"]
+  GETTABLEKS R6 R1 K40 ["openRobuxStore"]
+  SETTABLEKS R6 R5 K21 ["openBuyRobux"]
+  GETTABLEKS R6 R1 K41 ["openTermsOfUse"]
+  SETTABLEKS R6 R5 K22 ["showTermsOfUse"]
+  GETTABLEKS R6 R1 K23 ["openSecuritySettings"]
+  SETTABLEKS R6 R5 K23 ["openSecuritySettings"]
+  GETTABLEKS R6 R1 K42 ["endPurchase"]
+  SETTABLEKS R6 R5 K24 ["cancelPurchase"]
+  GETTABLEKS R6 R1 K42 ["endPurchase"]
+  SETTABLEKS R6 R5 K25 ["flowComplete"]
+  GETTABLEKS R6 R1 K26 ["onAnalyticEvent"]
+  SETTABLEKS R6 R5 K26 ["onAnalyticEvent"]
+  LOADK R6 K43 ["InGame"]
+  SETTABLEKS R6 R5 K27 ["eventPrefix"]
+  GETUPVAL R6 3
+  CALL R6 0 1
+  JUMPIFNOT R6 [+12]
+  GETUPVAL R7 4
+  GETTABLEKS R8 R2 K44 ["getPlatform"]
+  CALL R8 0 -1
+  CALL R7 -1 1
+  GETUPVAL R9 5
+  GETTABLEKS R8 R9 K45 ["Maquettes"]
+  JUMPIFEQ R7 R8 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K28 ["isQuest"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_16:
+  DUPTABLE R1 K1 [{"humanoidModel"}]
+  GETTABLEKS R3 R0 K2 ["promptRequest"]
+  GETTABLEKS R2 R3 K0 ["humanoidModel"]
+  SETTABLEKS R2 R1 K0 ["humanoidModel"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["Players"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["ContextActionService"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K4 [game]
+  LOADK R5 K8 ["AssetService"]
+  NAMECALL R3 R3 K6 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K4 [game]
+  LOADK R6 K9 ["CorePackages"]
+  NAMECALL R4 R4 K6 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K11 [require]
+  GETTABLEKS R8 R4 K12 ["Workspace"]
+  GETTABLEKS R7 R8 K13 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["PurchasePromptDeps"]
+  CALL R5 1 1
+  GETTABLEKS R6 R5 K15 ["Roact"]
+  GETIMPORT R7 K4 [game]
+  LOADK R9 K16 ["CoreGui"]
+  NAMECALL R7 R7 K6 ["GetService"]
+  CALL R7 2 1
+  LOADK R10 K17 ["RobloxGui"]
+  NAMECALL R8 R7 K18 ["WaitForChild"]
+  CALL R8 2 1
+  GETTABLEKS R9 R5 K19 ["IAPExperience"]
+  GETTABLEKS R11 R9 K20 ["PurchaseFlow"]
+  GETTABLEKS R10 R11 K21 ["RobuxUpsellFlow"]
+  GETTABLEKS R12 R9 K20 ["PurchaseFlow"]
+  GETTABLEKS R11 R12 K22 ["RobuxUpsellFlowState"]
+  GETTABLEKS R13 R9 K20 ["PurchaseFlow"]
+  GETTABLEKS R12 R13 K23 ["U13ConfirmType"]
+  GETTABLEKS R14 R9 K20 ["PurchaseFlow"]
+  GETTABLEKS R13 R14 K24 ["PurchaseErrorType"]
+  GETIMPORT R14 K11 [require]
+  GETTABLEKS R16 R0 K25 ["Enums"]
+  GETTABLEKS R15 R16 K26 ["PromptState"]
+  CALL R14 1 1
+  GETIMPORT R15 K11 [require]
+  GETTABLEKS R17 R0 K25 ["Enums"]
+  GETTABLEKS R16 R17 K27 ["PurchaseError"]
+  CALL R15 1 1
+  GETIMPORT R16 K11 [require]
+  GETTABLEKS R17 R0 K28 ["connectToStore"]
+  CALL R16 1 1
+  GETIMPORT R17 K11 [require]
+  GETTABLEKS R19 R0 K25 ["Enums"]
+  GETTABLEKS R18 R19 K29 ["VPCModalType"]
+  CALL R17 1 1
+  GETTABLEKS R18 R6 K30 ["PureComponent"]
+  GETIMPORT R21 K1 [script]
+  GETTABLEKS R20 R21 K31 ["Name"]
+  NAMECALL R18 R18 K32 ["extend"]
+  CALL R18 2 1
+  GETIMPORT R19 K11 [require]
+  GETTABLEKS R21 R0 K33 ["Flags"]
+  GETTABLEKS R20 R21 K34 ["GetFFlagDisablePurchasePromptFunctionForMaquettes"]
+  CALL R19 1 1
+  GETIMPORT R20 K11 [require]
+  GETTABLEKS R23 R8 K35 ["Modules"]
+  GETTABLEKS R22 R23 K36 ["PublishAssetPrompt"]
+  GETTABLEKS R21 R22 K37 ["FFlagPublishAvatarPromptEnabled"]
+  CALL R20 1 1
+  GETIMPORT R21 K11 [require]
+  GETTABLEKS R24 R8 K35 ["Modules"]
+  GETTABLEKS R23 R24 K36 ["PublishAssetPrompt"]
+  GETTABLEKS R22 R23 K38 ["FFlagPublishAvatarPromptEnabledAllPlatforms"]
+  CALL R21 1 1
+  GETIMPORT R22 K11 [require]
+  GETTABLEKS R24 R0 K25 ["Enums"]
+  GETTABLEKS R23 R24 K39 ["PaymentPlatform"]
+  CALL R22 1 1
+  GETIMPORT R23 K11 [require]
+  GETTABLEKS R25 R0 K40 ["Utils"]
+  GETTABLEKS R24 R25 K41 ["getPaymentPlatform"]
+  CALL R23 1 1
+  GETIMPORT R24 K11 [require]
+  GETTABLEKS R26 R0 K42 ["Services"]
+  GETTABLEKS R25 R26 K43 ["ExternalSettings"]
+  CALL R24 1 1
+  DUPCLOSURE R25 K44 [PROTO_6]
+  CAPTURE VAL R1
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  SETTABLEKS R25 R18 K45 ["init"]
+  DUPCLOSURE R25 K46 [PROTO_9]
+  CAPTURE VAL R2
+  SETTABLEKS R25 R18 K47 ["didMount"]
+  DUPCLOSURE R25 K48 [PROTO_10]
+  CAPTURE VAL R2
+  SETTABLEKS R25 R18 K49 ["willUnmount"]
+  DUPCLOSURE R25 K50 [PROTO_11]
+  CAPTURE VAL R14
+  CAPTURE VAL R11
+  CAPTURE VAL R15
+  SETTABLEKS R25 R18 K51 ["getFlowState"]
+  DUPCLOSURE R25 K52 [PROTO_12]
+  CAPTURE VAL R14
+  CAPTURE VAL R12
+  SETTABLEKS R25 R18 K53 ["getU13ConfirmType"]
+  DUPCLOSURE R25 K54 [PROTO_13]
+  CAPTURE VAL R15
+  CAPTURE VAL R13
+  SETTABLEKS R25 R18 K55 ["getErrorType"]
+  DUPCLOSURE R25 K56 [PROTO_14]
+  CAPTURE VAL R14
+  CAPTURE VAL R17
+  SETTABLEKS R25 R18 K57 ["getVPCModalType"]
+  DUPCLOSURE R25 K58 [PROTO_15]
+  CAPTURE VAL R24
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  CAPTURE VAL R19
+  CAPTURE VAL R23
+  CAPTURE VAL R22
+  SETTABLEKS R25 R18 K59 ["render"]
+  JUMPIFNOT R20 [+9]
+  JUMPIF R21 [+8]
+  DUPCLOSURE R25 K60 [PROTO_16]
+  MOVE R26 R16
+  MOVE R27 R25
+  LOADNIL R28
+  CALL R26 2 1
+  MOVE R27 R18
+  CALL R26 1 1
+  MOVE R18 R26
+  RETURN R18 1

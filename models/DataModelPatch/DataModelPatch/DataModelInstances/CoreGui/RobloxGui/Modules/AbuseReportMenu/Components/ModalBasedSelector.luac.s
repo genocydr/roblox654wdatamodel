@@ -1,0 +1,116 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["unmountModalSelector"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["mountModalSelector"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["viewportHeight"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["viewportWidth"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["selections"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["onSelect"]
+  DUPCLOSURE R5 K5 [PROTO_0]
+  CAPTURE UPVAL U0
+  CALL R0 5 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K4 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R4 K7 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  GETTABLEKS R8 R0 K8 ["selectorHeight"]
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K2 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  DUPTABLE R4 K10 [{"ControlButton"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 1
+  DUPTABLE R7 K18 [{"buttonType", "size", "anchorPoint", "position", "text", "inputIcon", "onActivated"}]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K19 ["Secondary"]
+  SETTABLEKS R8 R7 K11 ["buttonType"]
+  GETIMPORT R8 K7 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K12 ["size"]
+  GETIMPORT R8 K21 [Vector2.new]
+  LOADK R9 K22 [0.5]
+  LOADK R10 K22 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K13 ["anchorPoint"]
+  GETIMPORT R8 K24 [UDim2.fromScale]
+  LOADK R9 K22 [0.5]
+  LOADK R10 K22 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K14 ["position"]
+  GETTABLEKS R8 R0 K25 ["selectedValue"]
+  JUMPIF R8 [+2]
+  GETTABLEKS R8 R0 K26 ["placeholderText"]
+  SETTABLEKS R8 R7 K15 ["text"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K27 ["icons/actions/truncationExpand"]
+  SETTABLEKS R8 R7 K16 ["inputIcon"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  SETTABLEKS R8 R7 K17 ["onActivated"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["ControlButton"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["UIBlox"]
+  CALL R3 1 1
+  GETTABLEKS R6 R3 K13 ["App"]
+  GETTABLEKS R5 R6 K14 ["ImageSet"]
+  GETTABLEKS R4 R5 K15 ["Images"]
+  GETTABLEKS R7 R3 K13 ["App"]
+  GETTABLEKS R6 R7 K16 ["Button"]
+  GETTABLEKS R5 R6 K16 ["Button"]
+  GETTABLEKS R9 R3 K13 ["App"]
+  GETTABLEKS R8 R9 K16 ["Button"]
+  GETTABLEKS R7 R8 K17 ["Enum"]
+  GETTABLEKS R6 R7 K18 ["ButtonType"]
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K19 ["Components"]
+  GETTABLEKS R8 R9 K20 ["ModalBasedSelectorDialogController"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K21 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  RETURN R8 1

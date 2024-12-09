@@ -1,0 +1,121 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["ServerLogData"]
+  NAMECALL R0 R0 K2 ["getLogData"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K0 ["initServerLogData"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K5 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  GETTABLEKS R5 R0 K6 ["props"]
+  GETTABLEKS R4 R5 K7 ["size"]
+  SETTABLEKS R4 R3 K2 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  GETTABLEKS R5 R0 K6 ["props"]
+  GETTABLEKS R4 R5 K8 ["layoutOrder"]
+  SETTABLEKS R4 R3 K4 ["LayoutOrder"]
+  DUPTABLE R4 K11 [{"Scroll", "CommandLine"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 1
+  DUPTABLE R7 K14 [{"size", "targetSignal", "initLogOutput"}]
+  GETIMPORT R8 K17 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  GETUPVAL R14 2
+  ADDK R13 R14 K18 [4]
+  MINUS R12 R13
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K7 ["size"]
+  GETTABLEKS R9 R0 K6 ["props"]
+  GETTABLEKS R8 R9 K19 ["ServerLogData"]
+  NAMECALL R8 R8 K20 ["Signal"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K12 ["targetSignal"]
+  GETTABLEKS R8 R0 K21 ["initServerLogData"]
+  SETTABLEKS R8 R7 K13 ["initLogOutput"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["Scroll"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 3
+  DUPTABLE R7 K24 [{"pos", "height"}]
+  GETIMPORT R8 K17 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 1
+  GETUPVAL R13 2
+  MINUS R12 R13
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K22 ["pos"]
+  GETUPVAL R8 2
+  SETTABLEKS R8 R7 K23 ["height"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K10 ["CommandLine"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETIMPORT R6 K9 [script]
+  GETTABLEKS R5 R6 K10 ["Parent"]
+  GETTABLEKS R4 R5 K10 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["DataConsumer"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETIMPORT R8 K9 [script]
+  GETTABLEKS R7 R8 K10 ["Parent"]
+  GETTABLEKS R6 R7 K10 ["Parent"]
+  GETTABLEKS R5 R6 K10 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Constants"]
+  CALL R3 1 1
+  GETTABLEKS R5 R3 K13 ["LogFormatting"]
+  GETTABLEKS R4 R5 K14 ["CommandLineHeight"]
+  GETIMPORT R5 K5 [require]
+  GETIMPORT R8 K9 [script]
+  GETTABLEKS R7 R8 K10 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["DevConsoleCommandLine"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETIMPORT R9 K9 [script]
+  GETTABLEKS R8 R9 K10 ["Parent"]
+  GETTABLEKS R7 R8 K16 ["LogOutput"]
+  CALL R6 1 1
+  GETTABLEKS R7 R1 K17 ["Component"]
+  LOADK R9 K18 ["ServerLog"]
+  NAMECALL R7 R7 K19 ["extend"]
+  CALL R7 2 1
+  DUPCLOSURE R8 K20 [PROTO_1]
+  SETTABLEKS R8 R7 K21 ["init"]
+  DUPCLOSURE R8 K22 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  SETTABLEKS R8 R7 K23 ["render"]
+  MOVE R8 R2
+  MOVE R9 R7
+  LOADK R10 K24 ["ServerLogData"]
+  CALL R8 2 -1
+  RETURN R8 -1

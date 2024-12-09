@@ -1,0 +1,66 @@
+PROTO_0:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["displayOptions"]
+  GETTABLEKS R3 R4 K2 ["playerlistCoreGuiEnabled"]
+  NAMECALL R1 R1 K3 ["SetTopStatEnabled"]
+  CALL R1 2 0
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_1:
+  DUPTABLE R1 K1 [{"displayOptions"}]
+  GETTABLEKS R2 R0 K0 ["displayOptions"]
+  SETTABLEKS R2 R1 K0 ["displayOptions"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  LOADK R6 K10 ["RobloxGui"]
+  NAMECALL R4 R1 K11 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R7 R4 K12 ["Modules"]
+  GETTABLEKS R6 R7 K13 ["TenFootInterface"]
+  CALL R5 1 1
+  LOADNIL R6
+  NAMECALL R7 R5 K14 ["IsEnabled"]
+  CALL R7 1 1
+  JUMPIFNOT R7 [+4]
+  NAMECALL R7 R5 K15 ["SetupTopStat"]
+  CALL R7 1 1
+  MOVE R6 R7
+  GETTABLEKS R7 R2 K16 ["PureComponent"]
+  LOADK R9 K17 ["TopStatConnector"]
+  NAMECALL R7 R7 K18 ["extend"]
+  CALL R7 2 1
+  NEWCLOSURE R8 P0
+  CAPTURE REF R6
+  SETTABLEKS R8 R7 K19 ["render"]
+  DUPCLOSURE R8 K20 [PROTO_1]
+  GETTABLEKS R9 R3 K21 ["connect"]
+  MOVE R10 R8
+  LOADNIL R11
+  CALL R9 2 1
+  MOVE R10 R7
+  CALL R9 1 -1
+  CLOSEUPVALS R6
+  RETURN R9 -1

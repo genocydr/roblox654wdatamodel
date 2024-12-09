@@ -1,0 +1,45 @@
+PROTO_0:
+  LOADNIL R2
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["ROACT_PANEL_UIGROUP_MAP"]
+  GETTABLE R3 R4 R1
+  JUMPIFNOT R3 [+8]
+  DUPTABLE R4 K2 [{"uiGroupElementOffset"}]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K3 ["ROACT_PANEL_UIGROUP_ELEMENT_OFFSET_MAP"]
+  GETTABLE R5 R6 R1
+  SETTABLEKS R5 R4 K1 ["uiGroupElementOffset"]
+  MOVE R2 R4
+  DUPTABLE R4 K8 [{"panelObject", "uiType", "panelType", "panelPositionProps"}]
+  GETTABLEKS R5 R0 K9 ["current"]
+  SETTABLEKS R5 R4 K4 ["panelObject"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K10 ["SpatialUIType"]
+  GETTABLEKS R5 R6 K11 ["SpatialUIRoact"]
+  SETTABLEKS R5 R4 K5 ["uiType"]
+  SETTABLEKS R1 R4 K6 ["panelType"]
+  DUPTABLE R5 K14 [{"uiGroup", "cameraFixedPanelProp"}]
+  SETTABLEKS R3 R5 K12 ["uiGroup"]
+  SETTABLEKS R2 R5 K13 ["cameraFixedPanelProp"]
+  SETTABLEKS R5 R4 K7 ["panelPositionProps"]
+  GETUPVAL R5 1
+  MOVE R7 R1
+  MOVE R8 R4
+  NAMECALL R5 R5 K15 ["registerRoactPanel"]
+  CALL R5 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R1 K1 [script]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R2 R0 K5 ["UIManager"]
+  CALL R1 1 1
+  GETIMPORT R2 K4 [require]
+  GETTABLEKS R3 R0 K6 ["Constants"]
+  CALL R2 1 1
+  DUPCLOSURE R3 K7 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  RETURN R3 1

@@ -1,0 +1,97 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["createElement"]
+  GETUPVAL R1 1
+  DUPTABLE R2 K2 [{"tooltipButtons"}]
+  NEWTABLE R3 0 1
+  DUPTABLE R4 K6 [{"Text", "Controller", "ButtonKeycode"}]
+  LOADK R5 K7 ["Press"]
+  SETTABLEKS R5 R4 K3 ["Text"]
+  GETIMPORT R5 K11 [Enum.UserCFrame.RightHand]
+  SETTABLEKS R5 R4 K4 ["Controller"]
+  GETIMPORT R5 K14 [Enum.KeyCode.ButtonR3]
+  SETTABLEKS R5 R4 K5 ["ButtonKeycode"]
+  SETLIST R3 R4 1 [1]
+  SETTABLEKS R3 R2 K1 ["tooltipButtons"]
+  CALL R0 2 1
+  GETUPVAL R1 2
+  NEWTABLE R2 0 1
+  MOVE R3 R0
+  SETLIST R2 R3 1 [1]
+  CALL R1 1 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K15 ["mount"]
+  MOVE R3 R1
+  GETUPVAL R4 4
+  LOADK R6 K16 ["FTUXMenu"]
+  NAMECALL R4 R4 K17 ["FindFirstChild"]
+  CALL R4 2 1
+  LOADK R5 K18 ["PerspectiveTooltip"]
+  CALL R2 3 1
+  SETUPVAL R2 3
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["unmount"]
+  GETUPVAL R1 0
+  CALL R0 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETIMPORT R6 K8 [script]
+  GETTABLEKS R5 R6 K9 ["Parent"]
+  GETTABLEKS R4 R5 K9 ["Parent"]
+  GETTABLEKS R3 R4 K10 ["EventType"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R1 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETIMPORT R11 K8 [script]
+  GETTABLEKS R10 R11 K9 ["Parent"]
+  GETTABLEKS R9 R10 K9 ["Parent"]
+  GETTABLEKS R8 R9 K9 ["Parent"]
+  GETTABLEKS R7 R8 K13 ["Components"]
+  GETTABLEKS R6 R7 K14 ["Tooltips"]
+  GETTABLEKS R5 R6 K15 ["VRFTUXToolTips"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETIMPORT R12 K8 [script]
+  GETTABLEKS R11 R12 K9 ["Parent"]
+  GETTABLEKS R10 R11 K9 ["Parent"]
+  GETTABLEKS R9 R10 K9 ["Parent"]
+  GETTABLEKS R8 R9 K9 ["Parent"]
+  GETTABLEKS R7 R8 K16 ["Common"]
+  GETTABLEKS R6 R7 K17 ["renderWithCoreScriptsStyleProvider"]
+  CALL R5 1 1
+  DUPTABLE R6 K19 [{"Name"}]
+  LOADK R7 K20 ["PerspectiveTooltipEvent"]
+  SETTABLEKS R7 R6 K18 ["Name"]
+  LOADNIL R7
+  NEWCLOSURE R8 P0
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE REF R7
+  CAPTURE VAL R0
+  SETTABLEKS R8 R6 K21 ["StartEvent"]
+  NEWCLOSURE R8 P1
+  CAPTURE REF R7
+  CAPTURE VAL R3
+  SETTABLEKS R8 R6 K22 ["StopEvent"]
+  CLOSEUPVALS R7
+  RETURN R6 1

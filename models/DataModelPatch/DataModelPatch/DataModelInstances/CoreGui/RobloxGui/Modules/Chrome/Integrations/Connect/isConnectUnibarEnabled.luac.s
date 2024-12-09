@@ -1,0 +1,77 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["default"]
+  GETTABLEKS R1 R2 K1 ["variant"]
+  GETTABLEKS R0 R1 K2 ["ShowPlatformChatChromeUnibarEntryPoint"]
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 2
+  CALL R0 0 1
+  GETUPVAL R1 3
+  CALL R1 0 1
+  MOVE R2 R0
+  JUMPIF R2 [+9]
+  MOVE R2 R1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 4
+  CALL R2 0 1
+  JUMPIFNOT R2 [+4]
+  GETUPVAL R3 5
+  GETTABLEKS R2 R3 K3 ["getSquadEntrypointsEnabled"]
+  CALL R2 0 1
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Workspace"]
+  GETTABLEKS R4 R5 K11 ["Packages"]
+  GETTABLEKS R3 R4 K12 ["AppChat"]
+  CALL R2 1 1
+  GETTABLEKS R4 R2 K13 ["App"]
+  GETTABLEKS R3 R4 K14 ["InExperienceAppChatExperimentation"]
+  GETIMPORT R4 K9 [require]
+  GETIMPORT R7 K1 [script]
+  GETTABLEKS R6 R7 K15 ["Parent"]
+  GETTABLEKS R5 R6 K16 ["isConnectDropdownEnabled"]
+  CALL R4 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R1 K10 ["Workspace"]
+  GETTABLEKS R8 R9 K11 ["Packages"]
+  GETTABLEKS R7 R8 K17 ["SharedFlags"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K18 ["GetFFlagEnableAppChatInExperience"]
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R10 R1 K10 ["Workspace"]
+  GETTABLEKS R9 R10 K11 ["Packages"]
+  GETTABLEKS R8 R9 K17 ["SharedFlags"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K19 ["GetFFlagAppChatAddConnectUnibarForActiveSquad"]
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K20 ["Flags"]
+  GETTABLEKS R8 R9 K21 ["GetShouldShowPlatformChatBasedOnPolicy"]
+  CALL R7 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R12 R1 K10 ["Workspace"]
+  GETTABLEKS R11 R12 K11 ["Packages"]
+  GETTABLEKS R10 R11 K22 ["SocialExperiments"]
+  CALL R9 1 1
+  GETTABLEKS R8 R9 K23 ["SquadExperimentation"]
+  DUPCLOSURE R9 K24 [PROTO_0]
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  RETURN R9 1

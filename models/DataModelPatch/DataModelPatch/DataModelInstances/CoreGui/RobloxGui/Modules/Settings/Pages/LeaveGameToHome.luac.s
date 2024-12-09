@@ -1,0 +1,501 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["leavingGame"]
+  CALL R0 0 0
+  GETUPVAL R0 2
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["SelectedCoreObject"]
+  GETUPVAL R0 3
+  JUMPIFNOT R0 [+34]
+  GETUPVAL R0 4
+  GETUPVAL R3 5
+  GETTABLEKS R2 R3 K2 ["AnalyticsTargetName"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K3 ["AnalyticsInGameMenuName"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K4 ["AnalyticsLeaveGameName"]
+  DUPTABLE R5 K8 [{"confirmed", "universeid", "source"}]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K9 ["AnalyticsConfirmedName"]
+  SETTABLEKS R6 R5 K5 ["confirmed"]
+  GETIMPORT R8 K11 [game]
+  GETTABLEKS R7 R8 K12 ["GameId"]
+  FASTCALL1 TOSTRING R7 [+2]
+  GETIMPORT R6 K14 [tostring]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K6 ["universeid"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["AnalyticsLeaveToHomeSource"]
+  SETTABLEKS R6 R5 K7 ["source"]
+  NAMECALL R0 R0 K16 ["SetRBXEventStream"]
+  CALL R0 5 0
+  GETUPVAL R1 6
+  GETTABLEKS R0 R1 K17 ["default"]
+  LOADK R2 K18 ["roblox://navigation/home"]
+  NAMECALL R0 R0 K19 ["detectURL"]
+  CALL R0 2 0
+  GETUPVAL R1 7
+  GETTABLEKS R0 R1 K20 ["RenderStepped"]
+  NAMECALL R0 R0 K21 ["wait"]
+  CALL R0 1 0
+  GETUPVAL R1 7
+  GETTABLEKS R0 R1 K20 ["RenderStepped"]
+  NAMECALL R0 R0 K21 ["wait"]
+  CALL R0 1 0
+  GETIMPORT R0 K11 [game]
+  NAMECALL R0 R0 K22 ["Shutdown"]
+  CALL R0 1 0
+  GETIMPORT R1 K24 [settings]
+  CALL R1 0 1
+  GETTABLEKS R0 R1 K25 ["Rendering"]
+  GETUPVAL R1 8
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K26 ["QualityLevel"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["HubRef"]
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["HubRef"]
+  MOVE R3 R0
+  LOADB R4 1
+  NAMECALL R1 R1 K1 ["PopMenu"]
+  CALL R1 3 0
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+34]
+  GETUPVAL R1 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K2 ["AnalyticsTargetName"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K3 ["AnalyticsInGameMenuName"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K4 ["AnalyticsLeaveGameName"]
+  DUPTABLE R6 K8 [{"confirmed", "universeid", "source"}]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K9 ["AnalyticsCancelledName"]
+  SETTABLEKS R7 R6 K5 ["confirmed"]
+  GETIMPORT R9 K11 [game]
+  GETTABLEKS R8 R9 K12 ["GameId"]
+  FASTCALL1 TOSTRING R8 [+2]
+  GETIMPORT R7 K14 [tostring]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K6 ["universeid"]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K15 ["AnalyticsLeaveToHomeSource"]
+  SETTABLEKS R7 R6 K7 ["source"]
+  NAMECALL R1 R1 K16 ["SetRBXEventStream"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R3 K3 [Enum.UserInputState.Begin]
+  JUMPIFNOTEQ R1 R3 [+35]
+  LOADB R3 1
+  GETTABLEKS R4 R2 K4 ["UserInputType"]
+  GETIMPORT R5 K6 [Enum.UserInputType.Gamepad1]
+  JUMPIFEQ R4 R5 [+23]
+  LOADB R3 1
+  GETTABLEKS R4 R2 K4 ["UserInputType"]
+  GETIMPORT R5 K8 [Enum.UserInputType.Gamepad2]
+  JUMPIFEQ R4 R5 [+16]
+  LOADB R3 1
+  GETTABLEKS R4 R2 K4 ["UserInputType"]
+  GETIMPORT R5 K10 [Enum.UserInputType.Gamepad3]
+  JUMPIFEQ R4 R5 [+9]
+  GETTABLEKS R4 R2 K4 ["UserInputType"]
+  GETIMPORT R5 K12 [Enum.UserInputType.Gamepad4]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K13 ["DontLeaveFunc"]
+  MOVE R5 R3
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DontLeaveFunc"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETIMPORT R0 K1 [require]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["Modules"]
+  GETTABLEKS R2 R3 K3 ["Settings"]
+  GETTABLEKS R1 R2 K4 ["SettingsPageFactory"]
+  CALL R0 1 1
+  NAMECALL R1 R0 K5 ["CreateNewPage"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  SETTABLEKS R2 R1 K6 ["LeaveFunc"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R2 R1 K7 ["DontLeaveFunc"]
+  NEWCLOSURE R2 P2
+  CAPTURE VAL R1
+  SETTABLEKS R2 R1 K8 ["DontLeaveFromHotkey"]
+  NEWCLOSURE R2 P3
+  CAPTURE VAL R1
+  SETTABLEKS R2 R1 K9 ["DontLeaveFromButton"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K10 ["TabHeader"]
+  GETTABLEKS R2 R1 K11 ["Page"]
+  LOADK R3 K12 ["LeaveGameToHomePage"]
+  SETTABLEKS R3 R2 K13 ["Name"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K14 ["ShouldShowBottomBar"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K15 ["ShouldShowHubBar"]
+  GETUPVAL R2 10
+  LOADK R3 K16 ["TextLabel"]
+  CALL R2 1 1
+  DUPTABLE R3 K27 [{"Name", "Text", "Font", "FontSize", "TextColor3", "BackgroundTransparency", "Size", "TextWrapped", "ZIndex", "Parent", "Position"}]
+  LOADK R4 K28 ["LeaveGameText"]
+  SETTABLEKS R4 R3 K13 ["Name"]
+  LOADK R4 K29 ["Are you sure you want to leave the experience?"]
+  SETTABLEKS R4 R3 K17 ["Text"]
+  GETUPVAL R5 11
+  GETTABLEKS R4 R5 K30 ["font"]
+  GETIMPORT R5 K33 [Enum.Font.SourceSansBold]
+  LOADK R6 K34 ["Confirmation"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K18 ["Font"]
+  GETUPVAL R5 11
+  GETTABLEKS R4 R5 K35 ["fontSize"]
+  GETIMPORT R5 K37 [Enum.FontSize.Size36]
+  LOADK R6 K34 ["Confirmation"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K19 ["FontSize"]
+  GETIMPORT R4 K40 [Color3.new]
+  LOADN R5 1
+  LOADN R6 1
+  LOADN R7 1
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K20 ["TextColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K21 ["BackgroundTransparency"]
+  GETIMPORT R4 K42 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 200
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K22 ["Size"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K23 ["TextWrapped"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K24 ["ZIndex"]
+  GETTABLEKS R4 R1 K11 ["Page"]
+  SETTABLEKS R4 R3 K25 ["Parent"]
+  GETUPVAL R5 12
+  JUMPIFNOT R5 [+8]
+  GETIMPORT R4 K42 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 100
+  CALL R4 4 1
+  JUMPIF R4 [+7]
+  GETIMPORT R4 K42 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K26 ["Position"]
+  CALL R2 1 1
+  GETUPVAL R3 10
+  LOADK R4 K43 ["Frame"]
+  CALL R3 1 1
+  DUPTABLE R4 K44 [{"Name", "Parent", "Size", "BackgroundTransparency", "Position"}]
+  LOADK R5 K45 ["LeaveButtonContainer"]
+  SETTABLEKS R5 R4 K13 ["Name"]
+  SETTABLEKS R2 R4 K25 ["Parent"]
+  GETIMPORT R5 K42 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 144
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K22 ["Size"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K21 ["BackgroundTransparency"]
+  GETIMPORT R5 K42 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 1
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K26 ["Position"]
+  CALL R3 1 1
+  GETUPVAL R4 10
+  LOADK R5 K46 ["UIGridLayout"]
+  CALL R4 1 1
+  DUPTABLE R5 K53 [{"Name", "CellSize", "CellPadding", "FillDirection", "HorizontalAlignment", "SortOrder", "VerticalAlignment", "Parent"}]
+  LOADK R6 K54 ["LeavetButtonsLayout"]
+  SETTABLEKS R6 R5 K13 ["Name"]
+  GETUPVAL R7 12
+  JUMPIFNOT R7 [+8]
+  GETIMPORT R6 K42 [UDim2.new]
+  LOADN R7 0
+  LOADN R8 44
+  LOADN R9 0
+  LOADN R10 80
+  CALL R6 4 1
+  JUMPIF R6 [+7]
+  GETIMPORT R6 K42 [UDim2.new]
+  LOADN R7 0
+  LOADN R8 200
+  LOADN R9 0
+  LOADN R10 50
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K47 ["CellSize"]
+  GETIMPORT R6 K42 [UDim2.new]
+  LOADN R7 0
+  LOADN R8 20
+  LOADN R9 0
+  LOADN R10 20
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K48 ["CellPadding"]
+  GETIMPORT R6 K56 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R6 R5 K49 ["FillDirection"]
+  GETIMPORT R6 K58 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R6 R5 K50 ["HorizontalAlignment"]
+  GETIMPORT R6 K60 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R6 R5 K51 ["SortOrder"]
+  GETIMPORT R6 K62 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R6 R5 K52 ["VerticalAlignment"]
+  SETTABLEKS R3 R5 K25 ["Parent"]
+  CALL R4 1 1
+  GETUPVAL R5 13
+  NAMECALL R5 R5 K63 ["IsSmallTouchScreen"]
+  CALL R5 1 1
+  JUMPIFNOT R5 [+14]
+  GETIMPORT R5 K65 [Enum.FontSize.Size24]
+  SETTABLEKS R5 R2 K19 ["FontSize"]
+  GETIMPORT R5 K42 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 100
+  CALL R5 4 1
+  SETTABLEKS R5 R2 K22 ["Size"]
+  JUMP [+6]
+  GETUPVAL R5 12
+  JUMPIFNOT R5 [+4]
+  GETIMPORT R5 K67 [Enum.FontSize.Size48]
+  SETTABLEKS R5 R2 K19 ["FontSize"]
+  GETUPVAL R5 13
+  LOADK R7 K68 ["LeaveGame"]
+  LOADK R8 K69 ["Leave"]
+  LOADNIL R9
+  GETTABLEKS R10 R1 K6 ["LeaveFunc"]
+  NAMECALL R5 R5 K70 ["MakeStyledButton"]
+  CALL R5 5 1
+  SETTABLEKS R5 R1 K71 ["LeaveGameButton"]
+  GETTABLEKS R5 R1 K71 ["LeaveGameButton"]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K72 ["NextSelectionRight"]
+  GETTABLEKS R5 R1 K71 ["LeaveGameButton"]
+  SETTABLEKS R3 R5 K25 ["Parent"]
+  GETUPVAL R5 13
+  LOADK R7 K73 ["DontLeaveGame"]
+  LOADK R8 K74 ["Don't Leave"]
+  LOADNIL R9
+  GETTABLEKS R10 R1 K9 ["DontLeaveFromButton"]
+  NAMECALL R5 R5 K70 ["MakeStyledButton"]
+  CALL R5 5 1
+  LOADNIL R6
+  SETTABLEKS R6 R5 K75 ["NextSelectionLeft"]
+  SETTABLEKS R3 R5 K25 ["Parent"]
+  GETTABLEKS R6 R1 K11 ["Page"]
+  GETIMPORT R7 K42 [UDim2.new]
+  LOADN R8 1
+  LOADN R9 0
+  LOADN R10 0
+  GETTABLEKS R13 R5 K76 ["AbsolutePosition"]
+  GETTABLEKS R12 R13 K77 ["Y"]
+  GETTABLEKS R14 R5 K78 ["AbsoluteSize"]
+  GETTABLEKS R13 R14 K77 ["Y"]
+  ADD R11 R12 R13
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K22 ["Size"]
+  RETURN R1 1
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["LeaveGameButton"]
+  SETTABLEKS R1 R0 K1 ["SelectedCoreObject"]
+  GETUPVAL R0 2
+  LOADK R2 K2 ["LeaveGameCancelAction"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["DontLeaveFromHotkey"]
+  LOADB R4 0
+  GETIMPORT R5 K7 [Enum.KeyCode.ButtonB]
+  NAMECALL R0 R0 K8 ["BindCoreAction"]
+  CALL R0 5 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["LeaveGameCancelAction"]
+  NAMECALL R0 R0 K1 ["UnbindCoreAction"]
+  CALL R0 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["ContextActionService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R0 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K7 ["GuiService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K8 ["RunService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K9 ["RbxAnalyticsService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K10 ["CorePackages"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R10 R2 K13 ["Modules"]
+  GETTABLEKS R9 R10 K14 ["Common"]
+  GETTABLEKS R8 R9 K15 ["PerfUtils"]
+  CALL R7 1 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R11 R2 K13 ["Modules"]
+  GETTABLEKS R10 R11 K16 ["Settings"]
+  GETTABLEKS R9 R10 K17 ["Utility"]
+  CALL R8 1 1
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R13 R6 K18 ["Workspace"]
+  GETTABLEKS R12 R13 K19 ["Packages"]
+  GETTABLEKS R11 R12 K20 ["LinkingProtocol"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K20 ["LinkingProtocol"]
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R13 R2 K13 ["Modules"]
+  GETTABLEKS R12 R13 K16 ["Settings"]
+  GETTABLEKS R11 R12 K21 ["Theme"]
+  CALL R10 1 1
+  GETIMPORT R12 K12 [require]
+  GETTABLEKS R15 R6 K18 ["Workspace"]
+  GETTABLEKS R14 R15 K19 ["Packages"]
+  GETTABLEKS R13 R14 K22 ["AppCommonLib"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K23 ["Create"]
+  LOADNIL R12
+  LOADK R15 K13 ["Modules"]
+  NAMECALL R13 R2 K6 ["WaitForChild"]
+  CALL R13 2 1
+  LOADK R15 K24 ["TenFootInterface"]
+  NAMECALL R13 R13 K6 ["WaitForChild"]
+  CALL R13 2 0
+  GETIMPORT R13 K12 [require]
+  GETTABLEKS R15 R2 K13 ["Modules"]
+  GETTABLEKS R14 R15 K24 ["TenFootInterface"]
+  CALL R13 1 1
+  NAMECALL R13 R13 K25 ["IsEnabled"]
+  CALL R13 1 1
+  GETIMPORT R14 K12 [require]
+  GETTABLEKS R18 R2 K13 ["Modules"]
+  GETTABLEKS R17 R18 K14 ["Common"]
+  GETTABLEKS R16 R17 K26 ["Flags"]
+  GETTABLEKS R15 R16 K27 ["GetFFlagEnableInGameMenuDurationLogger"]
+  CALL R14 1 1
+  GETIMPORT R15 K29 [settings]
+  CALL R15 0 1
+  LOADK R17 K30 ["CollectAnalyticsForSystemMenu"]
+  NAMECALL R15 R15 K31 ["GetFFlag"]
+  CALL R15 2 1
+  GETIMPORT R17 K12 [require]
+  GETTABLEKS R20 R6 K18 ["Workspace"]
+  GETTABLEKS R19 R20 K19 ["Packages"]
+  GETTABLEKS R18 R19 K22 ["AppCommonLib"]
+  CALL R17 1 1
+  GETTABLEKS R16 R17 K32 ["GetDefaultQualityLevel"]
+  LOADNIL R17
+  JUMPIFNOT R15 [+18]
+  GETIMPORT R18 K12 [require]
+  GETTABLEKS R19 R2 K13 ["Modules"]
+  LOADK R21 K33 ["InGameMenu"]
+  NAMECALL R19 R19 K6 ["WaitForChild"]
+  CALL R19 2 1
+  LOADK R21 K34 ["Resources"]
+  NAMECALL R19 R19 K6 ["WaitForChild"]
+  CALL R19 2 1
+  LOADK R21 K35 ["Constants"]
+  NAMECALL R19 R19 K6 ["WaitForChild"]
+  CALL R19 2 -1
+  CALL R18 -1 1
+  MOVE R17 R18
+  NEWCLOSURE R18 P0
+  CAPTURE VAL R2
+  CAPTURE VAL R14
+  CAPTURE VAL R7
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R5
+  CAPTURE REF R17
+  CAPTURE VAL R9
+  CAPTURE VAL R4
+  CAPTURE VAL R16
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  CAPTURE VAL R13
+  CAPTURE VAL R8
+  MOVE R19 R18
+  CALL R19 0 1
+  MOVE R12 R19
+  GETTABLEKS R20 R12 K36 ["Displayed"]
+  GETTABLEKS R19 R20 K37 ["Event"]
+  NEWCLOSURE R21 P1
+  CAPTURE VAL R3
+  CAPTURE REF R12
+  CAPTURE VAL R1
+  NAMECALL R19 R19 K38 ["connect"]
+  CALL R19 2 0
+  GETTABLEKS R20 R12 K39 ["Hidden"]
+  GETTABLEKS R19 R20 K37 ["Event"]
+  DUPCLOSURE R21 K40 [PROTO_6]
+  CAPTURE VAL R1
+  NAMECALL R19 R19 K38 ["connect"]
+  CALL R19 2 0
+  CLOSEUPVALS R12
+  RETURN R12 1

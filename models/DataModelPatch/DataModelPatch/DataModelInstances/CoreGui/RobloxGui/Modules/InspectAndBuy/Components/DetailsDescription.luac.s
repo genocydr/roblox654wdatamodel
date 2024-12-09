@@ -1,0 +1,204 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["assetInfo"]
+  JUMPIF R1 [+2]
+  NEWTABLE R1 0 0
+  GETTABLEKS R3 R1 K2 ["parentBundleId"]
+  JUMPIFNOTEQKNIL R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["bundleInfo"]
+  JUMPIF R3 [+2]
+  NEWTABLE R3 0 0
+  JUMPIFNOT R2 [+14]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["getBundleId"]
+  MOVE R5 R1
+  CALL R4 1 1
+  GETTABLE R5 R3 R4
+  JUMPIFNOT R5 [+13]
+  GETTABLE R7 R3 R4
+  GETTABLEKS R6 R7 K6 ["description"]
+  ORK R5 R6 K5 [""]
+  SETTABLEKS R5 R0 K6 ["description"]
+  RETURN R0 0
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R5 R1 K6 ["description"]
+  ORK R4 R5 K5 [""]
+  SETTABLEKS R4 R0 K6 ["description"]
+  RETURN R0 0
+
+PROTO_1:
+  LOADK R1 K0 [""]
+  SETTABLEKS R1 R0 K1 ["description"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["descriptionRef"]
+  RETURN R0 0
+
+PROTO_2:
+  NAMECALL R1 R0 K0 ["setText"]
+  CALL R1 1 0
+  NAMECALL R1 R0 K1 ["calculateSize"]
+  CALL R1 1 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  LOADK R3 K3 ["TextLabel"]
+  NEWTABLE R4 16 0
+  LOADN R5 1
+  SETTABLEKS R5 R4 K4 ["BackgroundTransparency"]
+  LOADN R5 4
+  SETTABLEKS R5 R4 K5 ["LayoutOrder"]
+  GETIMPORT R5 K8 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 236
+  LOADN R8 0
+  MOVE R9 R1
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K9 ["Size"]
+  GETTABLEKS R6 R0 K11 ["description"]
+  ORK R5 R6 K10 [""]
+  SETTABLEKS R5 R4 K12 ["Text"]
+  GETIMPORT R5 K16 [Enum.TextXAlignment.Left]
+  SETTABLEKS R5 R4 K14 ["TextXAlignment"]
+  GETIMPORT R5 K19 [Enum.TextYAlignment.Top]
+  SETTABLEKS R5 R4 K17 ["TextYAlignment"]
+  LOADN R5 16
+  SETTABLEKS R5 R4 K20 ["TextSize"]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K21 ["TextWrapped"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K22 ["default"]
+  NAMECALL R5 R5 K23 ["getDefault"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K24 ["Font"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K25 ["White"]
+  SETTABLEKS R5 R4 K26 ["TextColor3"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K27 ["Ref"]
+  GETTABLEKS R6 R0 K28 ["descriptionRef"]
+  SETTABLE R6 R4 R5
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["descriptionRef"]
+  GETTABLEKS R1 R2 K1 ["current"]
+  JUMPIFNOT R1 [+51]
+  GETTABLEKS R2 R0 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["assetInfo"]
+  JUMPIFNOT R1 [+46]
+  GETUPVAL R2 0
+  GETTABLEKS R4 R0 K4 ["description"]
+  LOADN R5 16
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["default"]
+  NAMECALL R6 R6 K6 ["getDefault"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [Vector2.new]
+  GETTABLEKS R11 R0 K0 ["descriptionRef"]
+  GETTABLEKS R10 R11 K1 ["current"]
+  GETTABLEKS R9 R10 K10 ["AbsoluteSize"]
+  GETTABLEKS R8 R9 K11 ["X"]
+  LOADN R9 136
+  CALL R7 2 -1
+  NAMECALL R2 R2 K12 ["GetTextSize"]
+  CALL R2 -1 1
+  GETTABLEKS R1 R2 K13 ["Y"]
+  GETUPVAL R2 2
+  JUMPIF R2 [+16]
+  GETTABLEKS R4 R0 K0 ["descriptionRef"]
+  GETTABLEKS R3 R4 K1 ["current"]
+  GETTABLEKS R2 R3 K14 ["Parent"]
+  GETIMPORT R3 K16 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R8 195
+  ADD R7 R8 R1
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K17 ["CanvasSize"]
+  RETURN R1 1
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["detailsInformation"]
+  GETTABLEKS R2 R3 K1 ["assetId"]
+  DUPTABLE R3 K5 [{"view", "assetInfo", "detailsInformation", "bundleInfo"}]
+  GETTABLEKS R4 R0 K2 ["view"]
+  SETTABLEKS R4 R3 K2 ["view"]
+  GETTABLEKS R5 R0 K6 ["assets"]
+  GETTABLE R4 R5 R2
+  SETTABLEKS R4 R3 K3 ["assetInfo"]
+  GETTABLEKS R4 R0 K0 ["detailsInformation"]
+  SETTABLEKS R4 R3 K0 ["detailsInformation"]
+  GETTABLEKS R4 R0 K7 ["bundles"]
+  SETTABLEKS R4 R3 K4 ["bundleInfo"]
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["TextService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R8 R0 K10 ["Workspace"]
+  GETTABLEKS R7 R8 K7 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["Style"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K12 ["AppFonts"]
+  GETIMPORT R7 K14 [script]
+  GETTABLEKS R6 R7 K15 ["Parent"]
+  GETTABLEKS R5 R6 K15 ["Parent"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R7 R5 K16 ["Colors"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R8 R5 K17 ["UtilityFunctions"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R5 K18 ["Flags"]
+  GETTABLEKS R9 R10 K19 ["FFlagAssetDetailsUseAutomaticCanvasSize"]
+  CALL R8 1 1
+  GETTABLEKS R9 R2 K20 ["PureComponent"]
+  LOADK R11 K21 ["DetailsDescription"]
+  NAMECALL R9 R9 K22 ["extend"]
+  CALL R9 2 1
+  DUPCLOSURE R10 K23 [PROTO_0]
+  CAPTURE VAL R7
+  SETTABLEKS R10 R9 K24 ["setText"]
+  DUPCLOSURE R10 K25 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLEKS R10 R9 K26 ["init"]
+  DUPCLOSURE R10 K27 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  SETTABLEKS R10 R9 K28 ["render"]
+  DUPCLOSURE R10 K29 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  CAPTURE VAL R8
+  SETTABLEKS R10 R9 K30 ["calculateSize"]
+  GETTABLEKS R10 R3 K31 ["UNSTABLE_connect2"]
+  DUPCLOSURE R11 K32 [PROTO_4]
+  CALL R10 1 1
+  MOVE R11 R9
+  CALL R10 1 -1
+  RETURN R10 -1

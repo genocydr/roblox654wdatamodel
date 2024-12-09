@@ -3,7 +3,7 @@ local Chrome = script:FindFirstAncestor("Chrome")
 local CorePackages = game:GetService("CorePackages")
 local React = require(CorePackages.Packages.React)
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local ChromeUtils = require(Chrome.ChromeShared.Service.ChromeUtils)
 local ChromeIntegrationUtils = require(Chrome.Integrations.ChromeIntegrationUtils)
 local MappedSignal = ChromeUtils.MappedSignal
@@ -54,6 +54,8 @@ local GetFFlagShouldShowMusicFtuxTooltip = require(Chrome.Flags.GetFFlagShouldSh
 local GetFStringMusicTooltipLocalStorageKey = require(Chrome.Flags.GetFStringMusicTooltipLocalStorageKey)
 local GetFIntMusicFtuxShowDelayMs = require(Chrome.Flags.GetFIntMusicFtuxShowDelayMs)
 local GetFIntMusicFtuxDismissDelayMs = require(Chrome.Flags.GetFIntMusicFtuxDismissDelayMs)
+local GetFFlagFixShowMusicFtuxTooltipWithoutConnect =
+	require(Chrome.Flags.GetFFlagFixShowMusicFtuxTooltipWithoutConnect)
 
 local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
 local GetFFlagAppChatRebrandStringUpdates = SharedFlags.GetFFlagAppChatRebrandStringUpdates
@@ -323,7 +325,11 @@ function HamburgerButton(props)
 	local submenuOpen = submenuVisibility and useMappedSignal(submenuVisibility) or false
 
 	-- Tooltips should be shown one after the other (Connect, then Music)
-	local hasUserAlreadySeenConnectTooltip = LocalStore.getValue(GetFStringConnectTooltipLocalStorageKey())
+	local hasUserAlreadySeenConnectTooltip = if GetFFlagFixShowMusicFtuxTooltipWithoutConnect()
+		then if shouldShowConnectTooltip
+			then LocalStore.getValue(GetFStringConnectTooltipLocalStorageKey()) or false
+			else true
+		else LocalStore.getValue(GetFStringConnectTooltipLocalStorageKey())
 	local hasUserAlreadySeenMusicTooltip = LocalStore.getValue(GetFStringMusicTooltipLocalStorageKey())
 	local isMusicTooltipVisible, setMusicTooltipVisibility =
 		useState(shouldShowMusicTooltip and hasUserAlreadySeenConnectTooltip)

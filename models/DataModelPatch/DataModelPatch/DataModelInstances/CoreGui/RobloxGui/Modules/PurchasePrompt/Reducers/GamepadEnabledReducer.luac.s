@@ -1,0 +1,41 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["enabled"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["UserInputService"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["CorePackages"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R2 K10 ["Workspace"]
+  GETTABLEKS R5 R6 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["PurchasePromptDeps"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["Rodux"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K14 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["SetGamepadEnabled"]
+  CALL R5 1 1
+  NAMECALL R7 R1 K16 ["GetPlatform"]
+  CALL R7 1 1
+  GETIMPORT R8 K20 [Enum.Platform.XBoxOne]
+  JUMPIFEQ R7 R8 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  GETTABLEKS R7 R4 K21 ["createReducer"]
+  MOVE R8 R6
+  NEWTABLE R9 1 0
+  GETTABLEKS R10 R5 K22 ["name"]
+  DUPCLOSURE R11 K23 [PROTO_0]
+  SETTABLE R11 R9 R10
+  CALL R7 2 1
+  RETURN R7 1

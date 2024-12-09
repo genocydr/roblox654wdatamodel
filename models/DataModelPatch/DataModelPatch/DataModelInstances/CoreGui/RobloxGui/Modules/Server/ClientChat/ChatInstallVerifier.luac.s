@@ -1,0 +1,70 @@
+PROTO_0:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["FindFirstChildOfClass"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+4]
+  GETTABLEKS R3 R2 K1 ["ClassName"]
+  JUMPIFEQ R3 R1 [+8]
+  GETTABLEKS R3 R0 K2 ["ChildAdded"]
+  NAMECALL R3 R3 K3 ["Wait"]
+  CALL R3 1 1
+  MOVE R2 R3
+  JUMPBACK [-12]
+  RETURN R2 1
+
+PROTO_1:
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["ScriptToVerify"]
+  NAMECALL R0 R0 K3 ["WaitForChild"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K4 ["Value"]
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K5 ["FindFirstChild"]
+  CALL R2 2 1
+  JUMPIF R2 [+19]
+  GETUPVAL R2 1
+  MOVE R4 R1
+  NAMECALL R2 R2 K5 ["FindFirstChild"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R3 R2 K6 ["Archivable"]
+  LOADB R4 1
+  SETTABLEKS R4 R2 K6 ["Archivable"]
+  NAMECALL R4 R2 K7 ["Clone"]
+  CALL R4 1 1
+  GETUPVAL R5 0
+  SETTABLEKS R5 R4 K8 ["Parent"]
+  SETTABLEKS R3 R2 K6 ["Archivable"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["StarterPlayer"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  DUPCLOSURE R2 K5 [PROTO_0]
+  GETTABLEKS R3 R0 K6 ["LocalPlayer"]
+  MOVE R4 R2
+  MOVE R5 R3
+  LOADK R6 K7 ["PlayerScripts"]
+  CALL R4 2 1
+  MOVE R5 R2
+  MOVE R6 R1
+  LOADK R7 K8 ["StarterPlayerScripts"]
+  CALL R5 2 1
+  DUPCLOSURE R6 K9 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  SETGLOBAL R6 K10 ["VerifyScriptExistence"]
+  GETGLOBAL R6 K10 ["VerifyScriptExistence"]
+  CALL R6 0 0
+  GETIMPORT R6 K12 [script]
+  NAMECALL R6 R6 K13 ["Destroy"]
+  CALL R6 1 0
+  RETURN R0 0

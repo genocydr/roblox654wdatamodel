@@ -1,0 +1,178 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["anchorPoint"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["position"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["size"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["layoutOrder"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["zIndex"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K6 ["onInvite"]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K7 ["inviteStatus"]
+  JUMPIFNOT R7 [+5]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K8 ["Failed"]
+  JUMPIFNOTEQ R7 R8 [+60]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K9 ["Set"]
+  GETTABLEKS R9 R0 K0 ["props"]
+  LOADK R10 K10 ["onClick"]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R6
+  CALL R8 3 1
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K11 ["createElement"]
+  GETUPVAL R10 3
+  MOVE R11 R8
+  DUPTABLE R12 K13 [{"InviteText"}]
+  GETUPVAL R14 2
+  GETTABLEKS R13 R14 K11 ["createElement"]
+  LOADK R14 K14 ["TextLabel"]
+  DUPTABLE R15 K22 [{"BackgroundTransparency", "Position", "Font", "Text", "TextSize", "TextColor3", "ZIndex"}]
+  LOADN R16 1
+  SETTABLEKS R16 R15 K15 ["BackgroundTransparency"]
+  GETIMPORT R16 K25 [UDim2.new]
+  LOADK R17 K26 [0.5]
+  LOADN R18 0
+  LOADK R19 K26 [0.5]
+  LOADN R20 0
+  CALL R16 4 1
+  SETTABLEKS R16 R15 K16 ["Position"]
+  GETUPVAL R16 4
+  SETTABLEKS R16 R15 K17 ["Font"]
+  GETUPVAL R16 5
+  LOADK R18 K27 ["Feature.SettingsHub.Action.InviteFriend"]
+  NAMECALL R16 R16 K28 ["FormatByKey"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K18 ["Text"]
+  GETUPVAL R16 6
+  SETTABLEKS R16 R15 K19 ["TextSize"]
+  GETUPVAL R18 7
+  GETTABLEKS R17 R18 K29 ["Color"]
+  GETTABLEKS R16 R17 K30 ["WHITE"]
+  SETTABLEKS R16 R15 K20 ["TextColor3"]
+  SETTABLEKS R5 R15 K21 ["ZIndex"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K12 ["InviteText"]
+  CALL R9 3 -1
+  RETURN R9 -1
+  GETUPVAL R9 8
+  GETTABLE R8 R9 R7
+  JUMPIF R8 [+1]
+  LOADK R8 K31 ["Feature.SettingsHub.Label.Moderated"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K11 ["createElement"]
+  LOADK R10 K14 ["TextLabel"]
+  DUPTABLE R11 K36 [{"BackgroundTransparency", "AnchorPoint", "Position", "Size", "Font", "Text", "TextSize", "TextColor3", "TextXAlignment", "LayoutOrder", "ZIndex"}]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K15 ["BackgroundTransparency"]
+  SETTABLEKS R1 R11 K32 ["AnchorPoint"]
+  SETTABLEKS R2 R11 K16 ["Position"]
+  SETTABLEKS R3 R11 K33 ["Size"]
+  GETUPVAL R12 4
+  SETTABLEKS R12 R11 K17 ["Font"]
+  GETUPVAL R12 5
+  MOVE R14 R8
+  NAMECALL R12 R12 K28 ["FormatByKey"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K18 ["Text"]
+  GETUPVAL R12 6
+  SETTABLEKS R12 R11 K19 ["TextSize"]
+  GETUPVAL R14 7
+  GETTABLEKS R13 R14 K29 ["Color"]
+  GETTABLEKS R12 R13 K30 ["WHITE"]
+  SETTABLEKS R12 R11 K20 ["TextColor3"]
+  GETIMPORT R12 K39 [Enum.TextXAlignment.Center]
+  SETTABLEKS R12 R11 K34 ["TextXAlignment"]
+  SETTABLEKS R4 R11 K35 ["LayoutOrder"]
+  SETTABLEKS R5 R11 K21 ["ZIndex"]
+  CALL R9 2 -1
+  RETURN R9 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Roact"]
+  CALL R3 1 1
+  GETTABLEKS R7 R2 K11 ["Modules"]
+  GETTABLEKS R6 R7 K12 ["Settings"]
+  GETTABLEKS R5 R6 K13 ["Pages"]
+  GETTABLEKS R4 R5 K14 ["ShareGame"]
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R9 R0 K15 ["Workspace"]
+  GETTABLEKS R8 R9 K9 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["AppCommonLib"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K17 ["Immutable"]
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R7 R4 K18 ["Constants"]
+  CALL R6 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R4 K19 ["Components"]
+  GETTABLEKS R8 R9 K20 ["RectangleButton"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R11 R2 K11 ["Modules"]
+  GETTABLEKS R10 R11 K12 ["Settings"]
+  GETTABLEKS R9 R10 K21 ["Theme"]
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K22 ["font"]
+  GETIMPORT R10 K26 [Enum.Font.SourceSansSemibold]
+  LOADK R11 K27 ["Semibold"]
+  CALL R9 2 1
+  GETTABLEKS R10 R8 K28 ["textSize"]
+  LOADN R11 19
+  CALL R10 1 1
+  GETTABLEKS R11 R6 K29 ["InviteStatus"]
+  NEWTABLE R12 4 0
+  GETTABLEKS R13 R11 K30 ["Success"]
+  LOADK R14 K31 ["Feature.SettingsHub.Label.Invited"]
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R11 K32 ["Moderated"]
+  LOADK R14 K33 ["Feature.SettingsHub.Label.Moderated"]
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R11 K34 ["Pending"]
+  LOADK R14 K35 ["Feature.SettingsHub.Label.Sending"]
+  SETTABLE R14 R12 R13
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R14 R4 K36 ["getTranslator"]
+  CALL R13 1 1
+  MOVE R14 R13
+  CALL R14 0 1
+  GETTABLEKS R15 R3 K37 ["PureComponent"]
+  LOADK R17 K38 ["InviteButton"]
+  NAMECALL R15 R15 K39 ["extend"]
+  CALL R15 2 1
+  DUPCLOSURE R16 K40 [PROTO_1]
+  CAPTURE VAL R11
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R9
+  CAPTURE VAL R14
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R12
+  SETTABLEKS R16 R15 K41 ["render"]
+  RETURN R15 1

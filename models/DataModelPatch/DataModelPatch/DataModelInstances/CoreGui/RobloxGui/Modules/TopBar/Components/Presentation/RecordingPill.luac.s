@@ -1,0 +1,353 @@
+PROTO_0:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"recording"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["VideoRecording"]
+  SETTABLEKS R3 R2 K0 ["recording"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["ToggleRecording"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R1 K2 [{"recording", "recordingText"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["recording"]
+  LOADK R2 K3 ["0:00"]
+  SETTABLEKS R2 R1 K1 ["recordingText"]
+  SETTABLEKS R1 R0 K4 ["state"]
+  GETUPVAL R1 0
+  LOADK R3 K5 ["VideoRecording"]
+  NAMECALL R1 R1 K6 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  NAMECALL R1 R1 K7 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K8 ["recordingConnection"]
+  DUPCLOSURE R1 K9 [PROTO_1]
+  CAPTURE UPVAL U1
+  SETTABLEKS R1 R0 K10 ["RecordingPillActivated"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["Theme"]
+  GETTABLEKS R1 R2 K1 ["TextEmphasis"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createFragment"]
+  DUPTABLE R3 K4 [{"Button"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["createElement"]
+  LOADK R5 K6 ["Frame"]
+  DUPTABLE R6 K12 [{"Visible", "AutomaticSize", "LayoutOrder", "BackgroundTransparency", "Size"}]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K13 ["state"]
+  GETTABLEKS R7 R8 K14 ["recording"]
+  SETTABLEKS R7 R6 K7 ["Visible"]
+  GETIMPORT R7 K17 [Enum.AutomaticSize.XY]
+  SETTABLEKS R7 R6 K8 ["AutomaticSize"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K18 ["props"]
+  GETTABLEKS R7 R8 K19 ["layoutOrder"]
+  SETTABLEKS R7 R6 K9 ["LayoutOrder"]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K10 ["BackgroundTransparency"]
+  GETIMPORT R7 K22 [UDim2.fromScale]
+  LOADN R8 0
+  LOADN R9 1
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K11 ["Size"]
+  DUPTABLE R7 K24 [{"ActualButton"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K5 ["createElement"]
+  LOADK R9 K25 ["TextButton"]
+  NEWTABLE R10 8 0
+  LOADK R11 K26 [""]
+  SETTABLEKS R11 R10 K27 ["Text"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K10 ["BackgroundTransparency"]
+  GETTABLEKS R13 R0 K0 ["Theme"]
+  GETTABLEKS R12 R13 K28 ["Alert"]
+  GETTABLEKS R11 R12 K29 ["Color"]
+  SETTABLEKS R11 R10 K30 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K31 ["BorderSizePixel"]
+  GETUPVAL R11 2
+  SETTABLEKS R11 R10 K11 ["Size"]
+  GETIMPORT R11 K33 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 226
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K34 ["Position"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K35 ["Event"]
+  GETTABLEKS R11 R12 K36 ["Activated"]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K37 ["RecordingPillActivated"]
+  SETTABLE R12 R10 R11
+  DUPTABLE R11 K42 [{"UICorner", "Layout", "Image", "TextLabel"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  LOADK R13 K38 ["UICorner"]
+  DUPTABLE R14 K44 [{"CornerRadius"}]
+  GETIMPORT R15 K46 [UDim.new]
+  LOADN R16 0
+  LOADN R17 18
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K43 ["CornerRadius"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K38 ["UICorner"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  LOADK R13 K47 ["UIListLayout"]
+  DUPTABLE R14 K52 [{"FillDirection", "VerticalAlignment", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R15 K54 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R15 R14 K48 ["FillDirection"]
+  GETIMPORT R15 K56 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R15 R14 K49 ["VerticalAlignment"]
+  GETIMPORT R15 K57 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R15 R14 K50 ["HorizontalAlignment"]
+  GETIMPORT R15 K58 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R15 R14 K51 ["SortOrder"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K39 ["Layout"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  GETUPVAL R13 3
+  DUPTABLE R14 K60 [{"BackgroundTransparency", "Image", "Size", "Position", "AnchorPoint"}]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K10 ["BackgroundTransparency"]
+  GETUPVAL R16 4
+  GETTABLEKS R15 R16 K61 ["icons/controls/screenrecord"]
+  SETTABLEKS R15 R14 K40 ["Image"]
+  GETIMPORT R15 K33 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 28
+  LOADN R18 0
+  LOADN R19 28
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K11 ["Size"]
+  GETIMPORT R15 K33 [UDim2.new]
+  LOADK R16 K62 [0.4]
+  LOADN R17 0
+  LOADK R18 K63 [0.5]
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K34 ["Position"]
+  GETIMPORT R15 K65 [Vector2.new]
+  LOADK R16 K62 [0.4]
+  LOADK R17 K63 [0.5]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K59 ["AnchorPoint"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K40 ["Image"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  LOADK R13 K41 ["TextLabel"]
+  DUPTABLE R14 K70 [{"AutomaticSize", "BackgroundTransparency", "Size", "Text", "LayoutOrder", "TextColor3", "TextWrapped", "TextXAlignment", "TextYAlignment"}]
+  GETIMPORT R15 K17 [Enum.AutomaticSize.XY]
+  SETTABLEKS R15 R14 K8 ["AutomaticSize"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K10 ["BackgroundTransparency"]
+  GETUPVAL R15 5
+  SETTABLEKS R15 R14 K11 ["Size"]
+  GETUPVAL R17 1
+  GETTABLEKS R16 R17 K13 ["state"]
+  GETTABLEKS R15 R16 K71 ["recordingText"]
+  SETTABLEKS R15 R14 K27 ["Text"]
+  LOADN R15 2
+  SETTABLEKS R15 R14 K9 ["LayoutOrder"]
+  GETTABLEKS R15 R1 K29 ["Color"]
+  SETTABLEKS R15 R14 K66 ["TextColor3"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K67 ["TextWrapped"]
+  GETIMPORT R15 K72 [Enum.TextXAlignment.Center]
+  SETTABLEKS R15 R14 K68 ["TextXAlignment"]
+  GETIMPORT R15 K73 [Enum.TextYAlignment.Center]
+  SETTABLEKS R15 R14 K69 ["TextYAlignment"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K41 ["TextLabel"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K23 ["ActualButton"]
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K3 ["Button"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["recording"]
+  JUMPIFNOT R0 [+5]
+  GETIMPORT R0 K3 [delay]
+  LOADK R1 K4 [0.2]
+  GETUPVAL R2 1
+  CALL R0 2 0
+  GETIMPORT R0 K7 [os.date]
+  LOADK R1 K8 ["*t"]
+  GETIMPORT R3 K10 [tick]
+  CALL R3 0 1
+  GETUPVAL R4 2
+  SUB R2 R3 R4
+  CALL R0 2 1
+  LOADK R1 K11 ["%d:%02d"]
+  GETTABLEKS R3 R0 K12 ["min"]
+  GETTABLEKS R4 R0 K13 ["sec"]
+  NAMECALL R1 R1 K14 ["format"]
+  CALL R1 3 1
+  GETUPVAL R2 0
+  DUPTABLE R4 K16 [{"recordingText"}]
+  SETTABLEKS R1 R4 K15 ["recordingText"]
+  NAMECALL R2 R2 K17 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["recording"]
+  JUMPIFNOT R3 [+19]
+  GETTABLEKS R3 R0 K2 ["startRecording"]
+  JUMPIF R3 [+19]
+  LOADB R3 1
+  SETTABLEKS R3 R0 K2 ["startRecording"]
+  GETIMPORT R3 K4 [tick]
+  CALL R3 0 1
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  GETIMPORT R5 K6 [delay]
+  LOADK R6 K7 [0.2]
+  MOVE R7 R4
+  CALL R5 2 0
+  RETURN R0 0
+  LOADB R3 0
+  SETTABLEKS R3 R0 K2 ["startRecording"]
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R1 R0 K0 ["recordingConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["recordingConnection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["recordingConnection"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["VRService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["GamepadService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["GuiService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K8 ["HttpService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R0 K11 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["Roact"]
+  CALL R6 1 1
+  GETIMPORT R7 K10 [require]
+  GETTABLEKS R9 R0 K11 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["RoactRodux"]
+  CALL R7 1 1
+  GETIMPORT R8 K10 [require]
+  GETTABLEKS R10 R0 K11 ["Packages"]
+  GETTABLEKS R9 R10 K14 ["t"]
+  CALL R8 1 1
+  GETIMPORT R9 K10 [require]
+  GETTABLEKS R11 R0 K11 ["Packages"]
+  GETTABLEKS R10 R11 K15 ["UIBlox"]
+  CALL R9 1 1
+  GETTABLEKS R12 R9 K16 ["Core"]
+  GETTABLEKS R11 R12 K17 ["Style"]
+  GETTABLEKS R10 R11 K18 ["withStyle"]
+  GETTABLEKS R13 R9 K16 ["Core"]
+  GETTABLEKS R12 R13 K19 ["ImageSet"]
+  GETTABLEKS R11 R12 K20 ["ImageSetLabel"]
+  GETTABLEKS R14 R9 K21 ["App"]
+  GETTABLEKS R13 R14 K19 ["ImageSet"]
+  GETTABLEKS R12 R13 K22 ["Images"]
+  GETIMPORT R13 K10 [require]
+  GETTABLEKS R16 R0 K23 ["Workspace"]
+  GETTABLEKS R15 R16 K11 ["Packages"]
+  GETTABLEKS R14 R15 K24 ["VideoProtocol"]
+  CALL R13 1 1
+  GETIMPORT R14 K26 [settings]
+  CALL R14 0 1
+  LOADK R16 K27 ["Game Options"]
+  NAMECALL R14 R14 K28 ["WaitForChild"]
+  CALL R14 2 1
+  GETTABLEKS R15 R6 K29 ["PureComponent"]
+  LOADK R17 K30 ["MenuIcon"]
+  NAMECALL R15 R15 K31 ["extend"]
+  CALL R15 2 1
+  GETTABLEKS R16 R8 K32 ["strictInterface"]
+  DUPTABLE R17 K34 [{"layoutOrder"}]
+  GETTABLEKS R18 R8 K35 ["integer"]
+  SETTABLEKS R18 R17 K33 ["layoutOrder"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K36 ["validateProps"]
+  GETIMPORT R16 K39 [UDim2.fromOffset]
+  LOADN R17 77
+  LOADN R18 28
+  CALL R16 2 1
+  GETIMPORT R17 K39 [UDim2.fromOffset]
+  LOADN R18 27
+  LOADN R19 14
+  CALL R17 2 1
+  DUPCLOSURE R18 K40 [PROTO_2]
+  CAPTURE VAL R14
+  CAPTURE VAL R1
+  SETTABLEKS R18 R15 K41 ["init"]
+  DUPCLOSURE R18 K42 [PROTO_4]
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R16
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R17
+  SETTABLEKS R18 R15 K43 ["render"]
+  DUPCLOSURE R18 K44 [PROTO_6]
+  SETTABLEKS R18 R15 K45 ["didUpdate"]
+  DUPCLOSURE R18 K46 [PROTO_7]
+  SETTABLEKS R18 R15 K47 ["willUnmount"]
+  RETURN R15 1

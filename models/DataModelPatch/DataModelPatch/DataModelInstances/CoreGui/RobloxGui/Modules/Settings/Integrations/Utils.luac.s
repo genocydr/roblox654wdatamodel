@@ -1,0 +1,69 @@
+PROTO_0:
+  GETIMPORT R2 K1 [workspace]
+  GETTABLEKS R1 R2 K2 ["CurrentCamera"]
+  GETTABLEKS R0 R1 K3 ["ViewportSize"]
+  RETURN R0 1
+
+PROTO_1:
+  GETIMPORT R3 K1 [workspace]
+  GETTABLEKS R2 R3 K2 ["CurrentCamera"]
+  GETTABLEKS R1 R2 K3 ["ViewportSize"]
+  MOVE R0 R1
+  GETTABLEKS R2 R0 K4 ["X"]
+  GETTABLEKS R3 R0 K5 ["Y"]
+  JUMPIFNOTLT R3 R2 [+5]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K6 ["Landscape"]
+  RETURN R1 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["Portrait"]
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["getDeviceType"]
+  GETIMPORT R5 K2 [workspace]
+  GETTABLEKS R4 R5 K3 ["CurrentCamera"]
+  GETTABLEKS R3 R4 K4 ["ViewportSize"]
+  MOVE R2 R3
+  GETTABLEKS R3 R2 K5 ["X"]
+  GETTABLEKS R4 R2 K6 ["Y"]
+  JUMPIFNOTLT R4 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R1 R3 K7 ["Landscape"]
+  JUMP [+3]
+  GETUPVAL R3 1
+  GETTABLEKS R1 R3 K8 ["Portrait"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Workspace"]
+  GETTABLEKS R3 R4 K7 ["Packages"]
+  GETTABLEKS R2 R3 K8 ["RobloxAppEnums"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Workspace"]
+  GETTABLEKS R4 R5 K7 ["Packages"]
+  GETTABLEKS R3 R4 K9 ["AppCommonLib"]
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K10 ["DeviceOrientationMode"]
+  DUPCLOSURE R4 K11 [PROTO_0]
+  DUPCLOSURE R5 K12 [PROTO_1]
+  CAPTURE VAL R3
+  DUPCLOSURE R6 K13 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  DUPTABLE R7 K18 [{"getDeviceType", "DeviceTypes", "getDeviceOrientation", "getViewportSize"}]
+  SETTABLEKS R6 R7 K14 ["getDeviceType"]
+  GETTABLEKS R8 R1 K19 ["DeviceType"]
+  SETTABLEKS R8 R7 K15 ["DeviceTypes"]
+  SETTABLEKS R5 R7 K16 ["getDeviceOrientation"]
+  SETTABLEKS R4 R7 K17 ["getViewportSize"]
+  RETURN R7 1

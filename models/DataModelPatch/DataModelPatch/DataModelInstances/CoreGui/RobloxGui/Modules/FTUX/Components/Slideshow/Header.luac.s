@@ -1,0 +1,186 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K6 [{"BackgroundColor3", "BackgroundTransparency", "Size", "LayoutOrder"}]
+  GETUPVAL R4 1
+  SETTABLEKS R4 R3 K2 ["BackgroundColor3"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  GETUPVAL R7 2
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K4 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K5 ["LayoutOrder"]
+  DUPTABLE R4 K12 [{"UICorner", "HeaderFrame"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K10 ["UICorner"]
+  DUPTABLE R7 K14 [{"CornerRadius"}]
+  GETIMPORT R8 K16 [UDim.new]
+  LOADK R9 K17 [0.26]
+  LOADN R10 0
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K13 ["CornerRadius"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K10 ["UICorner"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K1 ["Frame"]
+  DUPTABLE R7 K19 [{"Size", "Position", "BackgroundTransparency"}]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K4 ["Size"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K18 ["Position"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K3 ["BackgroundTransparency"]
+  DUPTABLE R8 K21 [{"Box"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K1 ["Frame"]
+  DUPTABLE R11 K19 [{"Size", "Position", "BackgroundTransparency"}]
+  GETIMPORT R12 K9 [UDim2.new]
+  GETUPVAL R13 3
+  LOADN R14 0
+  LOADN R15 1
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K4 ["Size"]
+  GETIMPORT R12 K9 [UDim2.new]
+  GETUPVAL R13 4
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K18 ["Position"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K3 ["BackgroundTransparency"]
+  DUPTABLE R12 K23 [{"HeaderText"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R17 5
+  GETTABLEKS R16 R17 K24 ["App"]
+  GETTABLEKS R15 R16 K25 ["Text"]
+  GETTABLEKS R14 R15 K26 ["StyledTextLabel"]
+  DUPTABLE R15 K34 [{"text", "fontStyle", "colorStyle", "textXAlignment", "size", "fluidSizing", "automaticSize"}]
+  GETTABLEKS R16 R0 K35 ["headerText"]
+  SETTABLEKS R16 R15 K27 ["text"]
+  GETUPVAL R17 6
+  GETTABLEKS R16 R17 K36 ["Header1"]
+  SETTABLEKS R16 R15 K28 ["fontStyle"]
+  GETUPVAL R17 7
+  GETTABLEKS R16 R17 K37 ["TextEmphasis"]
+  SETTABLEKS R16 R15 K29 ["colorStyle"]
+  GETIMPORT R16 K41 [Enum.TextXAlignment.Left]
+  SETTABLEKS R16 R15 K30 ["textXAlignment"]
+  GETIMPORT R16 K9 [UDim2.new]
+  LOADN R17 1
+  LOADN R18 0
+  LOADN R19 1
+  LOADN R20 0
+  CALL R16 4 1
+  SETTABLEKS R16 R15 K31 ["size"]
+  LOADB R16 1
+  SETTABLEKS R16 R15 K32 ["fluidSizing"]
+  GETIMPORT R16 K44 [Enum.AutomaticSize.XY]
+  SETTABLEKS R16 R15 K33 ["automaticSize"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K22 ["HeaderText"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K20 ["Box"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K11 ["HeaderFrame"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETTABLEKS R2 R1 K0 ["Theme"]
+  GETTABLEKS R3 R1 K1 ["Font"]
+  GETUPVAL R6 1
+  GETTABLEKS R7 R0 K2 ["platform"]
+  GETTABLE R5 R6 R7
+  GETTABLEKS R4 R5 K3 ["PanelConstants"]
+  GETTABLEKS R6 R2 K4 ["BackgroundContrast"]
+  GETTABLEKS R5 R6 K5 ["Color"]
+  GETTABLEKS R6 R4 K6 ["HEADER_HEIGHT_RATIO"]
+  GETTABLEKS R8 R4 K7 ["CONTENT_PADDING"]
+  GETTABLEKS R9 R4 K8 ["SLIDESHOW_FRAME_WIDTH"]
+  DIV R7 R8 R9
+  LOADN R10 2
+  MUL R9 R10 R7
+  SUBRK R8 R9 K9 [1]
+  GETUPVAL R9 2
+  DUPTABLE R10 K11 [{"headerText"}]
+  LOADK R11 K12 ["CoreScripts.VRFTUX.Heading.Header"]
+  SETTABLEKS R11 R10 K10 ["headerText"]
+  CALL R9 1 1
+  NEWCLOSURE R10 P0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  CAPTURE UPVAL U4
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CALL R9 1 -1
+  RETURN R9 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["React"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["UIBlox"]
+  CALL R2 1 1
+  GETTABLEKS R5 R2 K9 ["Core"]
+  GETTABLEKS R4 R5 K10 ["Style"]
+  GETTABLEKS R3 R4 K11 ["useStyle"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R8 R0 K12 ["Workspace"]
+  GETTABLEKS R7 R8 K6 ["Packages"]
+  GETTABLEKS R6 R7 K13 ["Localization"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K14 ["withLocalization"]
+  GETIMPORT R8 K16 [script]
+  GETTABLEKS R7 R8 K17 ["Parent"]
+  GETTABLEKS R6 R7 K17 ["Parent"]
+  GETTABLEKS R5 R6 K17 ["Parent"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R5 K18 ["Resources"]
+  GETTABLEKS R7 R8 K19 ["FTUXConstants"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R5 K20 ["Enums"]
+  GETTABLEKS R8 R9 K21 ["PlatformEnum"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K22 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  RETURN R8 1

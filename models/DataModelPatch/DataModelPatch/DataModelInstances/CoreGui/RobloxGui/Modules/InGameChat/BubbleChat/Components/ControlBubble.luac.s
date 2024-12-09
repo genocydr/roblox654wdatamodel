@@ -1,0 +1,254 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["chatSettings"]
+  GETTABLEKS R2 R1 K2 ["BackgroundImage"]
+  GETTABLEKS R3 R1 K3 ["BackgroundGradient"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["isImageSet"]
+  JUMPIFNOT R5 [+2]
+  GETUPVAL R4 0
+  JUMP [+1]
+  LOADK R4 K5 ["ImageButton"]
+  GETTABLEKS R6 R1 K6 ["BackgroundColor3"]
+  GETUPVAL R7 1
+  JUMPIFEQ R6 R7 [+4]
+  GETUPVAL R6 2
+  CALL R6 0 1
+  JUMPIFNOT R6 [+2]
+  GETUPVAL R5 3
+  JUMP [+2]
+  GETTABLEKS R5 R1 K6 ["BackgroundColor3"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K7 ["createElement"]
+  LOADK R7 K5 ["ImageButton"]
+  NEWTABLE R8 8 0
+  GETIMPORT R9 K10 [Vector2.new]
+  LOADK R10 K11 [0.5]
+  LOADN R11 1
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K12 ["AnchorPoint"]
+  GETIMPORT R9 K14 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 44
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K15 ["Size"]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K16 ["LayoutOrder"]
+  SETTABLEKS R9 R8 K16 ["LayoutOrder"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K17 ["BorderSizePixel"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K18 ["Transparency"]
+  LOADN R9 2
+  SETTABLEKS R9 R8 K19 ["ZIndex"]
+  GETUPVAL R11 4
+  GETTABLEKS R10 R11 K20 ["Event"]
+  GETTABLEKS R9 R10 K21 ["Activated"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K22 ["onActivated"]
+  SETTABLE R10 R8 R9
+  DUPTABLE R9 K25 [{"UICorner", "Contents"}]
+  GETTABLEKS R10 R1 K26 ["CornerEnabled"]
+  JUMPIFNOT R10 [+10]
+  GETUPVAL R11 4
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  LOADK R11 K23 ["UICorner"]
+  DUPTABLE R12 K28 [{"CornerRadius"}]
+  GETTABLEKS R13 R1 K27 ["CornerRadius"]
+  SETTABLEKS R13 R12 K27 ["CornerRadius"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K23 ["UICorner"]
+  GETUPVAL R11 4
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  LOADK R11 K29 ["ImageLabel"]
+  GETUPVAL R14 5
+  GETTABLEKS R13 R14 K30 ["Dictionary"]
+  GETTABLEKS R12 R13 K31 ["join"]
+  MOVE R13 R2
+  DUPTABLE R14 K32 [{"Size", "BackgroundColor3", "BorderSizePixel"}]
+  GETIMPORT R15 K34 [UDim2.fromScale]
+  LOADN R16 1
+  LOADN R17 1
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K15 ["Size"]
+  SETTABLEKS R5 R14 K6 ["BackgroundColor3"]
+  LOADN R15 0
+  SETTABLEKS R15 R14 K17 ["BorderSizePixel"]
+  CALL R12 2 1
+  DUPTABLE R13 K38 [{"UICorner", "Padding", "Icon", "Gradient"}]
+  GETTABLEKS R14 R1 K26 ["CornerEnabled"]
+  JUMPIFNOT R14 [+10]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K7 ["createElement"]
+  LOADK R15 K23 ["UICorner"]
+  DUPTABLE R16 K28 [{"CornerRadius"}]
+  GETTABLEKS R17 R1 K27 ["CornerRadius"]
+  SETTABLEKS R17 R16 K27 ["CornerRadius"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K23 ["UICorner"]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K7 ["createElement"]
+  LOADK R15 K39 ["UIPadding"]
+  DUPTABLE R16 K44 [{"PaddingTop", "PaddingRight", "PaddingBottom", "PaddingLeft"}]
+  GETIMPORT R17 K46 [UDim.new]
+  LOADN R18 0
+  GETTABLEKS R19 R1 K35 ["Padding"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K40 ["PaddingTop"]
+  GETIMPORT R17 K46 [UDim.new]
+  LOADN R18 0
+  GETTABLEKS R19 R1 K35 ["Padding"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K41 ["PaddingRight"]
+  GETIMPORT R17 K46 [UDim.new]
+  LOADN R18 0
+  GETTABLEKS R19 R1 K35 ["Padding"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K42 ["PaddingBottom"]
+  GETIMPORT R17 K46 [UDim.new]
+  LOADN R18 0
+  GETTABLEKS R19 R1 K35 ["Padding"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K43 ["PaddingLeft"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K35 ["Padding"]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K7 ["createElement"]
+  MOVE R15 R4
+  DUPTABLE R16 K52 [{"AnchorPoint", "Position", "Size", "BackgroundTransparency", "ImageTransparency", "ImageColor3", "BorderSizePixel", "Image"}]
+  GETIMPORT R17 K10 [Vector2.new]
+  LOADK R18 K11 [0.5]
+  LOADK R19 K11 [0.5]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K12 ["AnchorPoint"]
+  GETIMPORT R17 K34 [UDim2.fromScale]
+  LOADK R18 K11 [0.5]
+  LOADK R19 K11 [0.5]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K47 ["Position"]
+  GETTABLEKS R19 R0 K0 ["props"]
+  GETTABLEKS R18 R19 K4 ["isImageSet"]
+  JUMPIF R18 [+5]
+  GETTABLEKS R18 R0 K0 ["props"]
+  GETTABLEKS R17 R18 K53 ["iconSize"]
+  JUMPIF R17 [+5]
+  GETIMPORT R17 K55 [UDim2.fromOffset]
+  LOADN R18 28
+  LOADN R19 28
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K15 ["Size"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K48 ["BackgroundTransparency"]
+  GETTABLEKS R19 R0 K0 ["props"]
+  GETTABLEKS R18 R19 K56 ["enabled"]
+  JUMPIFNOT R18 [+2]
+  LOADN R17 0
+  JUMP [+1]
+  LOADK R17 K11 [0.5]
+  SETTABLEKS R17 R16 K49 ["ImageTransparency"]
+  GETTABLEKS R19 R0 K0 ["props"]
+  GETTABLEKS R18 R19 K56 ["enabled"]
+  JUMPIFNOT R18 [+2]
+  GETUPVAL R17 6
+  JUMP [+1]
+  GETUPVAL R17 7
+  SETTABLEKS R17 R16 K50 ["ImageColor3"]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K17 ["BorderSizePixel"]
+  GETTABLEKS R18 R0 K0 ["props"]
+  GETTABLEKS R17 R18 K57 ["icon"]
+  SETTABLEKS R17 R16 K51 ["Image"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K36 ["Icon"]
+  GETTABLEKS R14 R3 K58 ["Enabled"]
+  JUMPIFNOT R14 [+6]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K7 ["createElement"]
+  LOADK R15 K59 ["UIGradient"]
+  MOVE R16 R3
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K37 ["Gradient"]
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K24 ["Contents"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["t"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R7 R0 K7 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["Cryo"]
+  CALL R5 1 1
+  GETTABLEKS R8 R4 K12 ["Core"]
+  GETTABLEKS R7 R8 K13 ["ImageSet"]
+  GETTABLEKS R6 R7 K14 ["ImageSetButton"]
+  GETTABLEKS R9 R4 K15 ["App"]
+  GETTABLEKS R8 R9 K16 ["Style"]
+  GETTABLEKS R7 R8 K17 ["Colors"]
+  GETTABLEKS R8 R7 K18 ["Flint"]
+  GETTABLEKS R9 R7 K19 ["Graphite"]
+  GETTABLEKS R10 R7 K20 ["White"]
+  GETIMPORT R11 K23 [Color3.fromRGB]
+  LOADN R12 250
+  LOADN R13 250
+  LOADN R14 250
+  CALL R11 3 1
+  GETTABLEKS R13 R1 K24 ["RobloxGui"]
+  GETTABLEKS R12 R13 K25 ["Modules"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R15 R12 K26 ["Flags"]
+  GETTABLEKS R14 R15 K27 ["GetFFlagForceChatBubbleColorCS"]
+  CALL R13 1 1
+  GETTABLEKS R14 R2 K28 ["PureComponent"]
+  LOADK R16 K29 ["ControlBubble"]
+  NAMECALL R14 R14 K30 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R3 K31 ["strictInterface"]
+  DUPTABLE R16 K37 [{"LayoutOrder", "icon", "onActivated", "enabled", "isImageSet"}]
+  GETTABLEKS R17 R3 K38 ["optional"]
+  GETTABLEKS R18 R3 K39 ["number"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K32 ["LayoutOrder"]
+  GETTABLEKS R17 R3 K40 ["any"]
+  SETTABLEKS R17 R16 K33 ["icon"]
+  GETTABLEKS R17 R3 K41 ["callback"]
+  SETTABLEKS R17 R16 K34 ["onActivated"]
+  GETTABLEKS R17 R3 K42 ["boolean"]
+  SETTABLEKS R17 R16 K35 ["enabled"]
+  GETTABLEKS R17 R3 K42 ["boolean"]
+  SETTABLEKS R17 R16 K36 ["isImageSet"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K43 ["validateProps"]
+  DUPCLOSURE R15 K44 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R11
+  CAPTURE VAL R13
+  CAPTURE VAL R9
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  SETTABLEKS R15 R14 K45 ["render"]
+  RETURN R14 1

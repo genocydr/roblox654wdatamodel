@@ -1,0 +1,472 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["Dialog"]
+  GETTABLEKS R1 R2 K1 ["title"]
+  RETURN R1 1
+
+PROTO_1:
+  JUMPIFEQ R0 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_2:
+  GETTABLEKS R2 R0 K0 ["Dialog"]
+  GETTABLEKS R1 R2 K1 ["bodyText"]
+  RETURN R1 1
+
+PROTO_3:
+  JUMPIFEQ R0 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_4:
+  GETTABLEKS R2 R0 K0 ["Dialog"]
+  GETTABLEKS R1 R2 K1 ["dismissCallback"]
+  RETURN R1 1
+
+PROTO_5:
+  JUMPIFEQ R0 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["Dialog"]
+  GETTABLEKS R1 R2 K1 ["isOpen"]
+  RETURN R1 1
+
+PROTO_7:
+  JUMPIFEQ R0 R1 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["messageType"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["Enums"]
+  GETTABLEKS R4 R5 K2 ["MessageType"]
+  GETTABLEKS R3 R4 K3 ["CallError"]
+  GETTABLEKS R2 R3 K4 ["rawValue"]
+  CALL R2 0 1
+  JUMPIFNOTEQ R1 R2 [+198]
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["CallerIsInAnotherCall"]
+  JUMPIFNOTEQ R1 R2 [+16]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  GETUPVAL R3 4
+  LOADK R5 K7 ["Feature.Call.Error.Title.CouldntMakeCall"]
+  NAMECALL R3 R3 K8 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 4
+  LOADK R6 K9 ["Feature.Call.Error.Description.AlreadyInCall"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  CALL R1 -1 0
+  JUMP [+152]
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K10 ["CalleeIsInAnotherCall"]
+  JUMPIFNOTEQ R1 R2 [+23]
+  GETTABLEKS R2 R0 K11 ["callInfo"]
+  GETTABLEKS R1 R2 K12 ["calleeCombinedName"]
+  GETUPVAL R2 2
+  GETUPVAL R3 3
+  GETUPVAL R4 4
+  LOADK R6 K13 ["Feature.Call.Error.Title.FriendBusy"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 4
+  LOADK R7 K14 ["Feature.Call.Error.Description.FriendBusy"]
+  DUPTABLE R8 K15 [{"calleeCombinedName"}]
+  SETTABLEKS R1 R8 K12 ["calleeCombinedName"]
+  NAMECALL R5 R5 K8 ["FormatByKey"]
+  CALL R5 3 -1
+  CALL R3 -1 -1
+  CALL R2 -1 0
+  JUMP [+123]
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K16 ["UniverseIsNotVoiceEnabled"]
+  JUMPIFEQ R1 R2 [+8]
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K17 ["PlaceIsNotVoiceEnabled"]
+  JUMPIFNOTEQ R1 R2 [+45]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  GETUPVAL R3 4
+  LOADK R5 K18 ["Feature.Call.Error.Title.ExperienceError"]
+  NAMECALL R3 R3 K8 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 4
+  LOADK R6 K19 ["Feature.Call.Description.ExperienceError"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  CALL R1 -1 0
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K20 ["fireEvent"]
+  GETUPVAL R3 6
+  GETTABLEKS R2 R3 K21 ["PhoneBookCallFriendFailed"]
+  DUPTABLE R3 K26 [{"eventTimestampMs", "calleeUserId", "callerUserId", "errorMsg"}]
+  GETIMPORT R5 K30 [os.time]
+  CALL R5 0 1
+  MULK R4 R5 K27 [1000]
+  SETTABLEKS R4 R3 K22 ["eventTimestampMs"]
+  GETTABLEKS R5 R0 K11 ["callInfo"]
+  GETTABLEKS R4 R5 K31 ["calleeId"]
+  SETTABLEKS R4 R3 K23 ["calleeUserId"]
+  GETTABLEKS R5 R0 K11 ["callInfo"]
+  GETTABLEKS R4 R5 K32 ["callerId"]
+  SETTABLEKS R4 R3 K24 ["callerUserId"]
+  LOADK R4 K33 ["Universe or place is not voice enabled."]
+  SETTABLEKS R4 R3 K25 ["errorMsg"]
+  CALL R1 2 0
+  JUMP [+65]
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K34 ["CallerIsNotVoiceEnabled"]
+  JUMPIFNOTEQ R1 R2 [+45]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  GETUPVAL R3 4
+  LOADK R5 K35 ["Feature.Call.Modal.EnableChatVoiceTitle"]
+  NAMECALL R3 R3 K8 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 4
+  LOADK R6 K36 ["Feature.Call.Modal.EnableChatVoiceBody"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  CALL R1 -1 0
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K20 ["fireEvent"]
+  GETUPVAL R3 6
+  GETTABLEKS R2 R3 K21 ["PhoneBookCallFriendFailed"]
+  DUPTABLE R3 K26 [{"eventTimestampMs", "calleeUserId", "callerUserId", "errorMsg"}]
+  GETIMPORT R5 K30 [os.time]
+  CALL R5 0 1
+  MULK R4 R5 K27 [1000]
+  SETTABLEKS R4 R3 K22 ["eventTimestampMs"]
+  GETTABLEKS R5 R0 K11 ["callInfo"]
+  GETTABLEKS R4 R5 K31 ["calleeId"]
+  SETTABLEKS R4 R3 K23 ["calleeUserId"]
+  GETTABLEKS R5 R0 K11 ["callInfo"]
+  GETTABLEKS R4 R5 K32 ["callerId"]
+  SETTABLEKS R4 R3 K24 ["callerUserId"]
+  LOADK R4 K37 ["User is not voice enabled."]
+  SETTABLEKS R4 R3 K25 ["errorMsg"]
+  CALL R1 2 0
+  JUMP [+14]
+  GETUPVAL R1 2
+  GETUPVAL R2 3
+  GETUPVAL R3 4
+  LOADK R5 K38 ["Feature.Call.Error.Label.OhNo"]
+  NAMECALL R3 R3 K8 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 4
+  LOADK R6 K39 ["Feature.Call.Error.Description.Generic"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  CALL R1 -1 0
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K40 ["UniverseAgeIsNotValid"]
+  JUMPIFNOTEQ R1 R2 [+6]
+  GETIMPORT R1 K42 [warn]
+  LOADK R2 K43 ["Experience must be at least one week old to place a call"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETTABLEKS R1 R0 K5 ["errorType"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K44 ["ReservedServerAccessCodeIsNotProvided"]
+  JUMPIFNOTEQ R1 R2 [+5]
+  GETIMPORT R1 K42 [warn]
+  LOADK R2 K45 ["Reserved server access code was not provided via OnCallInviteInvoked callback"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["Disconnect"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["callProtocol"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R0 R0 K1 ["listenToHandleCallMessage"]
+  CALL R0 2 1
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  RETURN R1 1
+
+PROTO_11:
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["AbsoluteSize"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 0
+  CALL R0 0 0
+  GETUPVAL R0 1
+  GETUPVAL R1 2
+  CALL R1 0 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Dictionary"]
+  GETTABLEKS R1 R2 K1 ["join"]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R1 2 1
+  GETUPVAL R2 2
+  CALL R2 0 1
+  GETTABLEKS R3 R2 K2 ["Theme"]
+  GETUPVAL R4 3
+  CALL R4 0 1
+  GETUPVAL R5 4
+  CALL R5 0 1
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K3 ["useState"]
+  GETIMPORT R7 K6 [Vector2.new]
+  LOADN R8 0
+  LOADN R9 0
+  CALL R7 2 -1
+  CALL R6 -1 2
+  GETUPVAL R8 6
+  DUPCLOSURE R9 K7 [PROTO_0]
+  DUPCLOSURE R10 K8 [PROTO_1]
+  CALL R8 2 1
+  GETUPVAL R9 6
+  DUPCLOSURE R10 K9 [PROTO_2]
+  DUPCLOSURE R11 K10 [PROTO_3]
+  CALL R9 2 1
+  GETUPVAL R10 6
+  DUPCLOSURE R11 K11 [PROTO_4]
+  DUPCLOSURE R12 K12 [PROTO_5]
+  CALL R10 2 1
+  GETUPVAL R11 6
+  DUPCLOSURE R12 K13 [PROTO_6]
+  DUPCLOSURE R13 K14 [PROTO_7]
+  CALL R11 2 1
+  GETUPVAL R13 5
+  GETTABLEKS R12 R13 K15 ["useEffect"]
+  NEWCLOSURE R13 P8
+  CAPTURE VAL R1
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE VAL R4
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE VAL R5
+  CAPTURE UPVAL U11
+  NEWTABLE R14 0 1
+  GETTABLEKS R15 R1 K16 ["callProtocol"]
+  SETLIST R14 R15 1 [1]
+  CALL R12 2 0
+  GETUPVAL R13 5
+  GETTABLEKS R12 R13 K17 ["createElement"]
+  GETUPVAL R14 12
+  GETTABLEKS R13 R14 K18 ["Portal"]
+  DUPTABLE R14 K20 [{"target"}]
+  GETUPVAL R15 13
+  SETTABLEKS R15 R14 K19 ["target"]
+  DUPTABLE R15 K22 [{"CallDialogScreen"}]
+  GETUPVAL R17 5
+  GETTABLEKS R16 R17 K17 ["createElement"]
+  LOADK R17 K23 ["ScreenGui"]
+  NEWTABLE R18 8 0
+  SETTABLEKS R11 R18 K24 ["Enabled"]
+  LOADB R19 1
+  SETTABLEKS R19 R18 K25 ["IgnoreGuiInset"]
+  GETIMPORT R19 K29 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R19 R18 K27 ["ZIndexBehavior"]
+  LOADB R19 0
+  SETTABLEKS R19 R18 K30 ["AutoLocalize"]
+  LOADN R19 8
+  SETTABLEKS R19 R18 K31 ["DisplayOrder"]
+  GETUPVAL R21 5
+  GETTABLEKS R20 R21 K32 ["Change"]
+  GETTABLEKS R19 R20 K33 ["AbsoluteSize"]
+  NEWCLOSURE R20 P9
+  CAPTURE VAL R7
+  SETTABLE R20 R18 R19
+  DUPTABLE R19 K36 [{"Overlay", "CallDialog"}]
+  GETUPVAL R21 5
+  GETTABLEKS R20 R21 K17 ["createElement"]
+  LOADK R21 K37 ["TextButton"]
+  DUPTABLE R22 K44 [{"AutoButtonColor", "BackgroundColor3", "BackgroundTransparency", "BorderSizePixel", "Size", "Text"}]
+  LOADB R23 0
+  SETTABLEKS R23 R22 K38 ["AutoButtonColor"]
+  GETTABLEKS R24 R3 K34 ["Overlay"]
+  GETTABLEKS R23 R24 K45 ["Color"]
+  SETTABLEKS R23 R22 K39 ["BackgroundColor3"]
+  GETTABLEKS R24 R3 K34 ["Overlay"]
+  GETTABLEKS R23 R24 K46 ["Transparency"]
+  SETTABLEKS R23 R22 K40 ["BackgroundTransparency"]
+  LOADN R23 0
+  SETTABLEKS R23 R22 K41 ["BorderSizePixel"]
+  GETIMPORT R23 K48 [UDim2.new]
+  LOADN R24 1
+  LOADN R25 0
+  LOADN R26 1
+  LOADN R27 0
+  CALL R23 4 1
+  SETTABLEKS R23 R22 K42 ["Size"]
+  LOADK R23 K49 [""]
+  SETTABLEKS R23 R22 K43 ["Text"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K34 ["Overlay"]
+  GETUPVAL R21 5
+  GETTABLEKS R20 R21 K17 ["createElement"]
+  GETUPVAL R21 14
+  DUPTABLE R22 K54 [{"screenSize", "title", "bodyText", "buttonStackInfo"}]
+  SETTABLEKS R6 R22 K50 ["screenSize"]
+  SETTABLEKS R8 R22 K51 ["title"]
+  SETTABLEKS R9 R22 K52 ["bodyText"]
+  DUPTABLE R23 K56 [{"buttons"}]
+  NEWTABLE R24 0 1
+  DUPTABLE R25 K59 [{"buttonType", "props"}]
+  GETUPVAL R27 15
+  GETTABLEKS R26 R27 K60 ["PrimarySystem"]
+  SETTABLEKS R26 R25 K57 ["buttonType"]
+  DUPTABLE R26 K63 [{"text", "onActivated"}]
+  GETUPVAL R27 10
+  LOADK R29 K64 ["InGame.CommonUI.Button.Ok"]
+  NAMECALL R27 R27 K65 ["FormatByKey"]
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K61 ["text"]
+  NEWCLOSURE R27 P10
+  CAPTURE VAL R10
+  CAPTURE VAL R4
+  CAPTURE UPVAL U16
+  SETTABLEKS R27 R26 K62 ["onActivated"]
+  SETTABLEKS R26 R25 K58 ["props"]
+  SETLIST R24 R25 1 [1]
+  SETTABLEKS R24 R23 K55 ["buttons"]
+  SETTABLEKS R23 R22 K53 ["buttonStackInfo"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K35 ["CallDialog"]
+  CALL R16 3 1
+  SETTABLEKS R16 R15 K21 ["CallDialogScreen"]
+  CALL R12 3 -1
+  RETURN R12 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R1 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R1 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R1 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Cryo"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R8 R1 K11 ["Workspace"]
+  GETTABLEKS R7 R8 K7 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["CallProtocol"]
+  CALL R5 1 1
+  LOADK R8 K13 ["RobloxGui"]
+  NAMECALL R6 R0 K14 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K15 ["Modules"]
+  GETTABLEKS R8 R9 K16 ["RobloxTranslator"]
+  CALL R7 1 1
+  GETTABLEKS R9 R6 K15 ["Modules"]
+  GETTABLEKS R8 R9 K17 ["ContactList"]
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R11 R8 K18 ["Actions"]
+  GETTABLEKS R10 R11 K19 ["OpenOrUpdateDialog"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R11 R8 K20 ["dependencies"]
+  CALL R10 1 1
+  GETTABLEKS R11 R10 K21 ["UIBlox"]
+  GETTABLEKS R13 R10 K22 ["Hooks"]
+  GETTABLEKS R12 R13 K23 ["useSelector"]
+  GETTABLEKS R14 R10 K22 ["Hooks"]
+  GETTABLEKS R13 R14 K24 ["useDispatch"]
+  GETTABLEKS R17 R11 K25 ["App"]
+  GETTABLEKS R16 R17 K26 ["Button"]
+  GETTABLEKS R15 R16 K27 ["Enum"]
+  GETTABLEKS R14 R15 K28 ["ButtonType"]
+  GETTABLEKS R18 R11 K25 ["App"]
+  GETTABLEKS R17 R18 K29 ["Dialog"]
+  GETTABLEKS R16 R17 K30 ["Alert"]
+  GETTABLEKS R15 R16 K31 ["InteractiveAlert"]
+  GETTABLEKS R18 R11 K32 ["Core"]
+  GETTABLEKS R17 R18 K33 ["Style"]
+  GETTABLEKS R16 R17 K34 ["useStyle"]
+  GETIMPORT R17 K6 [require]
+  GETTABLEKS R19 R8 K35 ["Enums"]
+  GETTABLEKS R18 R19 K36 ["ErrorType"]
+  CALL R17 1 1
+  GETIMPORT R18 K6 [require]
+  GETTABLEKS R20 R8 K18 ["Actions"]
+  GETTABLEKS R19 R20 K37 ["CloseDialog"]
+  CALL R18 1 1
+  GETIMPORT R19 K6 [require]
+  GETTABLEKS R21 R8 K38 ["Analytics"]
+  GETTABLEKS R20 R21 K39 ["useAnalytics"]
+  CALL R19 1 1
+  GETIMPORT R20 K6 [require]
+  GETTABLEKS R22 R8 K38 ["Analytics"]
+  GETTABLEKS R21 R22 K40 ["EventNamesEnum"]
+  CALL R20 1 1
+  DUPTABLE R21 K42 [{"callProtocol"}]
+  GETTABLEKS R23 R5 K12 ["CallProtocol"]
+  GETTABLEKS R22 R23 K43 ["default"]
+  SETTABLEKS R22 R21 K41 ["callProtocol"]
+  DUPCLOSURE R22 K44 [PROTO_13]
+  CAPTURE VAL R4
+  CAPTURE VAL R21
+  CAPTURE VAL R16
+  CAPTURE VAL R13
+  CAPTURE VAL R19
+  CAPTURE VAL R2
+  CAPTURE VAL R12
+  CAPTURE VAL R5
+  CAPTURE VAL R17
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R20
+  CAPTURE VAL R3
+  CAPTURE VAL R0
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R18
+  RETURN R22 1

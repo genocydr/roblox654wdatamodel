@@ -1,0 +1,80 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["_initialized"]
+  JUMPIF R1 [+6]
+  NAMECALL R1 R0 K1 ["initialize"]
+  CALL R1 1 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["_initialized"]
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["OnScreenKeyboardVisible"]
+  JUMPIF R0 [+4]
+  GETUPVAL R0 1
+  LOADB R1 1
+  SETTABLEKS R1 R0 K1 ["_isKeyboardJustOff"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["_isKeyboardJustOff"]
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 0
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["_isKeyboardJustOff"]
+  RETURN R0 0
+
+PROTO_3:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["_isKeyboardJustOff"]
+  GETUPVAL R1 0
+  LOADK R3 K1 ["OnScreenKeyboardVisible"]
+  NAMECALL R1 R1 K2 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["Connect"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["InputEnded"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["Connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R1 R0 K0 ["_isKeyboardJustOff"]
+  RETURN R1 1
+
+PROTO_5:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["getInstance"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["UserInputService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  DUPTABLE R1 K6 [{"_initialized", "_isKeyboardJustOff"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K4 ["_initialized"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K5 ["_isKeyboardJustOff"]
+  DUPCLOSURE R2 K7 [PROTO_0]
+  SETTABLEKS R2 R1 K8 ["getInstance"]
+  DUPCLOSURE R2 K9 [PROTO_3]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K10 ["initialize"]
+  DUPCLOSURE R2 K11 [PROTO_4]
+  SETTABLEKS R2 R1 K12 ["isKeyboardJustOff"]
+  DUPTABLE R2 K13 [{"getInstance"}]
+  DUPCLOSURE R3 K14 [PROTO_5]
+  CAPTURE VAL R1
+  SETTABLEKS R3 R2 K8 ["getInstance"]
+  RETURN R2 1

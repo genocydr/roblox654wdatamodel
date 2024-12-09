@@ -1,0 +1,326 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["onUpdate"]
+  MOVE R2 R0
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R5 3
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["onClick"]
+  GETUPVAL R1 1
+  GETUPVAL R2 2
+  GETUPVAL R3 3
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["onUpdateSelectedOption"]
+  MOVE R2 R0
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R5 3
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_3:
+  DUPTABLE R3 K3 [{"label", "subLabel", "identifier"}]
+  SETTABLEKS R0 R3 K0 ["label"]
+  SETTABLEKS R1 R3 K1 ["subLabel"]
+  SETTABLEKS R2 R3 K2 ["identifier"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["onUpdateSelectedOption"]
+  MOVE R5 R3
+  GETUPVAL R6 1
+  GETUPVAL R7 2
+  GETUPVAL R8 3
+  CALL R4 4 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R5 0
+  CALL R5 0 1
+  NEWTABLE R6 0 0
+  GETUPVAL R7 1
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K0 ["localizationKeys"]
+  CALL R7 1 1
+  MOVE R8 R3
+  LOADNIL R9
+  LOADNIL R10
+  FORGPREP R8
+  GETTABLEKS R13 R12 K1 ["getIsVisible"]
+  MOVE R14 R0
+  CALL R13 1 1
+  JUMPIFNOT R13 [+273]
+  GETTABLEKS R13 R12 K2 ["componentType"]
+  GETTABLEKS R14 R12 K3 ["componentName"]
+  JUMPIFNOTEQKS R13 K4 ["generic"] [+2]
+  JUMP [+266]
+  JUMPIFNOTEQKS R13 K5 ["freeComments"] [+32]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K6 ["createElement"]
+  GETUPVAL R16 4
+  DUPTABLE R17 K13 [{"layoutOrder", "comment", "placeholderText", "menuContainerWidth", "isSmallPortraitViewport", "onUpdate"}]
+  SETTABLEKS R11 R17 K7 ["layoutOrder"]
+  GETTABLEKS R18 R0 K8 ["comment"]
+  SETTABLEKS R18 R17 K8 ["comment"]
+  GETTABLEKS R18 R7 K14 ["ReportCommentPlaceholder"]
+  SETTABLEKS R18 R17 K9 ["placeholderText"]
+  GETTABLEKS R18 R2 K15 ["menuWidth"]
+  SETTABLEKS R18 R17 K10 ["menuContainerWidth"]
+  SETTABLEKS R4 R17 K11 ["isSmallPortraitViewport"]
+  NEWCLOSURE R18 P0
+  CAPTURE VAL R12
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R18 R17 K12 ["onUpdate"]
+  CALL R15 2 1
+  SETTABLE R15 R6 R14
+  JUMP [+233]
+  JUMPIFNOTEQKS R13 K16 ["button"] [+103]
+  GETTABLEKS R15 R12 K17 ["getIconSrc"]
+  MOVE R16 R2
+  CALL R15 1 1
+  GETUPVAL R17 3
+  GETTABLEKS R16 R17 K6 ["createElement"]
+  GETUPVAL R17 5
+  DUPTABLE R18 K19 [{"label", "button", "menuContainerWidth", "layoutOrder", "isSmallPortraitViewport"}]
+  GETTABLEKS R20 R12 K20 ["fieldLabel"]
+  JUMPIFNOTEQKS R20 K21 [""] [+4]
+  GETTABLEKS R19 R12 K20 ["fieldLabel"]
+  JUMP [+3]
+  GETTABLEKS R20 R12 K20 ["fieldLabel"]
+  GETTABLE R19 R7 R20
+  SETTABLEKS R19 R18 K18 ["label"]
+  GETUPVAL R20 3
+  GETTABLEKS R19 R20 K6 ["createElement"]
+  GETUPVAL R20 6
+  DUPTABLE R21 K29 [{"buttonType", "text", "size", "fontStyle", "icon", "isDisabled", "onActivated"}]
+  GETTABLEKS R23 R12 K30 ["variant"]
+  JUMPIFNOTEQKS R23 K31 ["primary"] [+5]
+  GETUPVAL R23 7
+  GETTABLEKS R22 R23 K32 ["PrimarySystem"]
+  JUMP [+3]
+  GETUPVAL R23 7
+  GETTABLEKS R22 R23 K33 ["Secondary"]
+  SETTABLEKS R22 R21 K22 ["buttonType"]
+  GETTABLEKS R23 R12 K34 ["getButtonLabel"]
+  MOVE R24 R2
+  CALL R23 1 1
+  GETTABLE R22 R7 R23
+  SETTABLEKS R22 R21 K23 ["text"]
+  GETIMPORT R22 K37 [UDim2.new]
+  LOADN R23 1
+  LOADN R24 0
+  LOADN R25 0
+  GETTABLEKS R26 R5 K38 ["ButtonSize"]
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K24 ["size"]
+  GETTABLEKS R22 R5 K39 ["FontStyle"]
+  SETTABLEKS R22 R21 K25 ["fontStyle"]
+  JUMPIFEQKS R15 K21 [""] [+4]
+  GETUPVAL R23 8
+  GETTABLE R22 R23 R15
+  JUMP [+1]
+  LOADNIL R22
+  SETTABLEKS R22 R21 K26 ["icon"]
+  GETTABLEKS R23 R12 K40 ["getIsDisabled"]
+  JUMPIFEQKNIL R23 [+7]
+  GETTABLEKS R22 R12 K40 ["getIsDisabled"]
+  MOVE R23 R0
+  MOVE R24 R2
+  CALL R22 2 1
+  JUMP [+1]
+  LOADB R22 0
+  SETTABLEKS R22 R21 K27 ["isDisabled"]
+  NEWCLOSURE R22 P1
+  CAPTURE VAL R12
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R22 R21 K28 ["onActivated"]
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K16 ["button"]
+  GETTABLEKS R19 R2 K15 ["menuWidth"]
+  SETTABLEKS R19 R18 K10 ["menuContainerWidth"]
+  SETTABLEKS R11 R18 K7 ["layoutOrder"]
+  SETTABLEKS R4 R18 K11 ["isSmallPortraitViewport"]
+  CALL R16 2 1
+  SETTABLE R16 R6 R14
+  JUMP [+129]
+  JUMPIFNOTEQKS R13 K41 ["dropdown"] [+52]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K6 ["createElement"]
+  GETUPVAL R16 9
+  DUPTABLE R17 K46 [{"label", "placeholderText", "layoutOrder", "onSelect", "menuContainerWidth", "readonlyValue", "selections", "isSmallPortraitViewport", "minHeight"}]
+  GETTABLEKS R19 R12 K20 ["fieldLabel"]
+  GETTABLE R18 R7 R19
+  SETTABLEKS R18 R17 K18 ["label"]
+  GETTABLEKS R18 R7 K47 ["ChooseOne"]
+  SETTABLEKS R18 R17 K9 ["placeholderText"]
+  SETTABLEKS R11 R17 K7 ["layoutOrder"]
+  NEWCLOSURE R18 P2
+  CAPTURE VAL R12
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R18 R17 K42 ["onSelect"]
+  GETTABLEKS R18 R2 K15 ["menuWidth"]
+  SETTABLEKS R18 R17 K10 ["menuContainerWidth"]
+  GETTABLEKS R19 R12 K43 ["readonlyValue"]
+  GETTABLE R18 R7 R19
+  SETTABLEKS R18 R17 K43 ["readonlyValue"]
+  GETTABLEKS R18 R12 K48 ["getMenuItems"]
+  MOVE R19 R0
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K44 ["selections"]
+  SETTABLEKS R4 R17 K11 ["isSmallPortraitViewport"]
+  JUMPIFNOT R4 [+2]
+  LOADN R18 0
+  JUMP [+3]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K49 ["MenuItemHeight"]
+  SETTABLEKS R18 R17 K45 ["minHeight"]
+  CALL R15 2 1
+  SETTABLE R15 R6 R14
+  JUMP [+76]
+  JUMPIFNOTEQKS R13 K50 ["modalSelector"] [+75]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K6 ["createElement"]
+  GETUPVAL R16 10
+  DUPTABLE R17 K55 [{"label", "layoutOrder", "onSelect", "menuContainerWidth", "selectorHeight", "selectedValue", "selections", "viewportHeight", "viewportWidth", "isSmallPortraitViewport", "placeholderText"}]
+  GETTABLEKS R19 R12 K20 ["fieldLabel"]
+  GETTABLE R18 R7 R19
+  SETTABLEKS R18 R17 K18 ["label"]
+  SETTABLEKS R11 R17 K7 ["layoutOrder"]
+  NEWCLOSURE R18 P3
+  CAPTURE VAL R12
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R18 R17 K42 ["onSelect"]
+  GETTABLEKS R18 R2 K15 ["menuWidth"]
+  SETTABLEKS R18 R17 K10 ["menuContainerWidth"]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K49 ["MenuItemHeight"]
+  SETTABLEKS R18 R17 K51 ["selectorHeight"]
+  GETTABLEKS R19 R12 K56 ["getSelectedValue"]
+  JUMPIFNOT R19 [+13]
+  GETTABLEKS R19 R12 K56 ["getSelectedValue"]
+  MOVE R20 R0
+  CALL R19 1 1
+  GETTABLE R18 R7 R19
+  JUMPIF R18 [+8]
+  GETTABLEKS R18 R12 K56 ["getSelectedValue"]
+  MOVE R19 R0
+  CALL R18 1 1
+  JUMPIF R18 [+3]
+  LOADNIL R18
+  JUMP [+1]
+  LOADNIL R18
+  SETTABLEKS R18 R17 K52 ["selectedValue"]
+  GETTABLEKS R18 R12 K48 ["getMenuItems"]
+  MOVE R19 R0
+  MOVE R20 R7
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K44 ["selections"]
+  GETTABLEKS R19 R2 K57 ["viewportDimension"]
+  GETTABLEKS R18 R19 K58 ["height"]
+  SETTABLEKS R18 R17 K53 ["viewportHeight"]
+  GETTABLEKS R19 R2 K57 ["viewportDimension"]
+  GETTABLEKS R18 R19 K59 ["width"]
+  SETTABLEKS R18 R17 K54 ["viewportWidth"]
+  SETTABLEKS R4 R17 K11 ["isSmallPortraitViewport"]
+  GETTABLEKS R18 R7 K47 ["ChooseOne"]
+  SETTABLEKS R18 R17 K9 ["placeholderText"]
+  CALL R15 2 1
+  SETTABLE R15 R6 R14
+  FORGLOOP R8 2 [-279]
+  RETURN R6 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["UIBlox"]
+  CALL R3 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R1 K13 ["Workspace"]
+  GETTABLEKS R8 R9 K10 ["Packages"]
+  GETTABLEKS R7 R8 K14 ["Localization"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K15 ["Hooks"]
+  GETTABLEKS R4 R5 K16 ["useLocalization"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K17 ["Components"]
+  GETTABLEKS R7 R8 K18 ["MenuItems"]
+  GETTABLEKS R6 R7 K19 ["DropdownReportMenuItem"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R0 K17 ["Components"]
+  GETTABLEKS R8 R9 K18 ["MenuItems"]
+  GETTABLEKS R7 R8 K20 ["ButtonReportMenuItem"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R10 R0 K17 ["Components"]
+  GETTABLEKS R9 R10 K18 ["MenuItems"]
+  GETTABLEKS R8 R9 K21 ["FreeCommentsMenuItem"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R11 R0 K17 ["Components"]
+  GETTABLEKS R10 R11 K18 ["MenuItems"]
+  GETTABLEKS R9 R10 K22 ["ModalBasedSelectorMenuItem"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R0 K17 ["Components"]
+  GETTABLEKS R10 R11 K23 ["Types"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETTABLEKS R12 R0 K24 ["Utility"]
+  GETTABLEKS R11 R12 K25 ["getMenuItemSizings"]
+  CALL R10 1 1
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R13 R0 K17 ["Components"]
+  GETTABLEKS R12 R13 K26 ["Constants"]
+  CALL R11 1 1
+  GETTABLEKS R14 R3 K27 ["App"]
+  GETTABLEKS R13 R14 K28 ["Button"]
+  GETTABLEKS R12 R13 K28 ["Button"]
+  GETTABLEKS R16 R3 K27 ["App"]
+  GETTABLEKS R15 R16 K28 ["Button"]
+  GETTABLEKS R14 R15 K29 ["Enum"]
+  GETTABLEKS R13 R14 K30 ["ButtonType"]
+  GETTABLEKS R16 R3 K27 ["App"]
+  GETTABLEKS R15 R16 K31 ["ImageSet"]
+  GETTABLEKS R14 R15 K32 ["Images"]
+  DUPCLOSURE R15 K33 [PROTO_4]
+  CAPTURE VAL R10
+  CAPTURE VAL R4
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  RETURN R15 1

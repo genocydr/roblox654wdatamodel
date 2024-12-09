@@ -1,0 +1,83 @@
+PROTO_0:
+  LOADB R0 1
+  SETUPVAL R0 0
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  NAMECALL R0 R0 K0 ["GetLayerData"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R0 1
+  JUMPIF R0 [+9]
+  GETIMPORT R0 K1 [pcall]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R0 1 2
+  SETUPVAL R0 2
+  SETUPVAL R1 3
+  GETUPVAL R0 6
+  JUMPIF R0 [+7]
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 3
+  JUMPIFNOT R0 [+3]
+  GETUPVAL R1 3
+  GETUPVAL R2 7
+  GETTABLE R0 R1 R2
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  LOADK R4 K6 ["Modules"]
+  NAMECALL R2 R1 K5 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R2 K9 ["Common"]
+  GETTABLEKS R4 R5 K10 ["IXPServiceWrapper"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K11 ["ClientToastNotificationsRedirect3"]
+  LOADB R7 0
+  NAMECALL R4 R4 K12 ["DefineFastFlag"]
+  CALL R4 3 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K13 ["EnableClientToastNotificationsRedirectExperiment"]
+  LOADB R8 0
+  NAMECALL R5 R5 K12 ["DefineFastFlag"]
+  CALL R5 3 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K14 ["ClientToastNotificationsRedirectLayerName"]
+  LOADK R9 K15 ["Notification.Toast"]
+  NAMECALL R6 R6 K16 ["DefineFastString"]
+  CALL R6 3 1
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K17 ["ClientToastNotificationsRedirectLayerValue"]
+  LOADK R10 K18 ["NotificationRedirect"]
+  NAMECALL R7 R7 K16 ["DefineFastString"]
+  CALL R7 3 1
+  LOADB R8 0
+  LOADNIL R9
+  LOADNIL R10
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R5
+  CAPTURE REF R8
+  CAPTURE REF R9
+  CAPTURE REF R10
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  CLOSEUPVALS R8
+  RETURN R11 1

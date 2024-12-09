@@ -1,0 +1,106 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["Dictionary"]
+  GETTABLEKS R3 R4 K3 ["join"]
+  DUPTABLE R4 K5 [{"Size"}]
+  GETIMPORT R5 K8 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 1
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K4 ["Size"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K12 [{"BorderSizePixel", "BackgroundColor3", "BackgroundTransparency"}]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K9 ["BorderSizePixel"]
+  GETTABLEKS R9 R0 K13 ["Theme"]
+  GETTABLEKS R8 R9 K14 ["Divider"]
+  GETTABLEKS R7 R8 K15 ["Color"]
+  SETTABLEKS R7 R6 K10 ["BackgroundColor3"]
+  GETTABLEKS R9 R0 K13 ["Theme"]
+  GETTABLEKS R8 R9 K14 ["Divider"]
+  GETTABLEKS R7 R8 K16 ["Transparency"]
+  SETTABLEKS R7 R6 K11 ["BackgroundTransparency"]
+  CALL R3 3 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["propValidation"]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  FASTCALL ASSERT [+2]
+  GETIMPORT R1 K2 [assert]
+  CALL R1 -1 0
+  GETUPVAL R1 2
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["UIBlox"]
+  CALL R3 1 1
+  GETTABLEKS R4 R1 K10 ["Cryo"]
+  GETTABLEKS R5 R1 K11 ["t"]
+  GETTABLEKS R8 R3 K12 ["Core"]
+  GETTABLEKS R7 R8 K13 ["Style"]
+  GETTABLEKS R6 R7 K14 ["withStyle"]
+  GETIMPORT R10 K16 [script]
+  GETTABLEKS R9 R10 K17 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Parent"]
+  GETTABLEKS R7 R8 K17 ["Parent"]
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R7 K18 ["GlobalConfig"]
+  CALL R8 1 1
+  GETTABLEKS R9 R5 K19 ["strictInterface"]
+  DUPTABLE R10 K25 [{"Size", "Position", "AnchorPoint", "LayoutOrder", "Visible"}]
+  GETTABLEKS R11 R5 K26 ["optional"]
+  GETTABLEKS R12 R5 K27 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K20 ["Size"]
+  GETTABLEKS R11 R5 K26 ["optional"]
+  GETTABLEKS R12 R5 K27 ["UDim2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K21 ["Position"]
+  GETTABLEKS R11 R5 K26 ["optional"]
+  GETTABLEKS R12 R5 K28 ["Vector2"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K22 ["AnchorPoint"]
+  GETTABLEKS R11 R5 K26 ["optional"]
+  GETTABLEKS R12 R5 K29 ["integer"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K23 ["LayoutOrder"]
+  GETTABLEKS R11 R5 K26 ["optional"]
+  GETTABLEKS R12 R5 K30 ["boolean"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K24 ["Visible"]
+  CALL R9 1 1
+  DUPCLOSURE R10 K31 [PROTO_1]
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  RETURN R10 1

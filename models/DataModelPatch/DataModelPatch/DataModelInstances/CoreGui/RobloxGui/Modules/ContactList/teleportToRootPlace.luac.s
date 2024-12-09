@@ -1,0 +1,70 @@
+PROTO_0:
+  GETTABLEKS R3 R0 K0 ["responseBody"]
+  GETTABLEN R2 R3 1
+  GETTABLEKS R1 R2 K1 ["universeRootPlaceId"]
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K2 ["Teleport"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_1:
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R1 K1 [game]
+  GETTABLEKS R0 R1 K2 ["PlaceId"]
+  JUMPIFEQKN R0 K3 [0] [+14]
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  GETIMPORT R3 K1 [game]
+  GETTABLEKS R2 R3 K2 ["PlaceId"]
+  CALL R0 2 1
+  DUPCLOSURE R2 K4 [PROTO_0]
+  CAPTURE UPVAL U2
+  DUPCLOSURE R3 K5 [PROTO_1]
+  NAMECALL R0 R0 K6 ["andThen"]
+  CALL R0 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["HttpRbxApiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["TeleportService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R0 K8 ["Workspace"]
+  GETTABLEKS R7 R8 K9 ["Packages"]
+  GETTABLEKS R6 R7 K10 ["GameDetailRodux"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K11 ["GamesByPlaceId"]
+  GETTABLEKS R3 R4 K12 ["GamesMultigetPlaceDetails"]
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K13 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  LOADK R7 K14 ["RobloxGui"]
+  NAMECALL R5 R4 K15 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R9 R5 K16 ["Modules"]
+  GETTABLEKS R8 R9 K17 ["Common"]
+  GETTABLEKS R7 R8 K18 ["httpRequest"]
+  CALL R6 1 1
+  MOVE R7 R6
+  MOVE R8 R1
+  CALL R7 1 1
+  DUPCLOSURE R8 K19 [PROTO_2]
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R2
+  RETURN R8 1

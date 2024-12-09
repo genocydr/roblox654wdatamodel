@@ -4,7 +4,7 @@ local CoreGui = game:GetService("CoreGui")
 local StarterGui = game:GetService("StarterGui")
 local RobloxGui = CoreGui:WaitForChild("RobloxGui")
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local CommonIcon = require(Chrome.Integrations.CommonIcon)
 local ChromeUtils = require(Chrome.ChromeShared.Service.ChromeUtils)
 local ScreenshotsApp = require(RobloxGui.Modules.Screenshots.ScreenshotsApp)

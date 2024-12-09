@@ -1,0 +1,53 @@
+PROTO_0:
+  JUMPIF R0 [+3]
+  GETUPVAL R1 0
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETUPVAL R1 0
+  JUMPIF R1 [+2]
+  LOADB R1 1
+  SETUPVAL R1 0
+  JUMPIF R0 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["setCameraModeToastOpen"]
+  LOADB R2 0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  FASTCALL1 ASSERT R2 [+2]
+  GETIMPORT R1 K1 [assert]
+  CALL R1 1 0
+  JUMPIFNOT R0 [+15]
+  GETUPVAL R1 1
+  LOADK R3 K2 ["SendNotification"]
+  DUPTABLE R4 K6 [{"Title", "Text", "Duration"}]
+  LOADK R5 K7 ["Camera Control Enabled"]
+  SETTABLEKS R5 R4 K3 ["Title"]
+  LOADK R5 K8 ["Right click to toggle"]
+  SETTABLEKS R5 R4 K4 ["Text"]
+  LOADN R5 3
+  SETTABLEKS R5 R4 K5 ["Duration"]
+  NAMECALL R1 R1 K9 ["SetCore"]
+  CALL R1 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["StarterGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADB R1 0
+  NEWTABLE R2 2 0
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K4 ["setCameraModeToastEnabled"]
+  NEWCLOSURE R3 P1
+  CAPTURE REF R1
+  CAPTURE VAL R0
+  SETTABLEKS R3 R2 K5 ["setCameraModeToastOpen"]
+  CLOSEUPVALS R1
+  RETURN R2 1

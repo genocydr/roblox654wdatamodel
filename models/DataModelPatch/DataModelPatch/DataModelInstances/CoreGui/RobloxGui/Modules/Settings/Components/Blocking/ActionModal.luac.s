@@ -1,0 +1,187 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["ImageButton"]
+  NEWTABLE R3 8 0
+  GETIMPORT R4 K4 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K5 ["Size"]
+  GETTABLEKS R6 R0 K6 ["Theme"]
+  GETTABLEKS R5 R6 K7 ["Overlay"]
+  GETTABLEKS R4 R5 K8 ["Transparency"]
+  SETTABLEKS R4 R3 K9 ["BackgroundTransparency"]
+  GETTABLEKS R6 R0 K6 ["Theme"]
+  GETTABLEKS R5 R6 K7 ["Overlay"]
+  GETTABLEKS R4 R5 K10 ["Color"]
+  SETTABLEKS R4 R3 K11 ["BackgroundColor3"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K12 ["Active"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K13 ["AutoButtonColor"]
+  GETUPVAL R5 1
+  CALL R5 0 1
+  JUMPIFNOT R5 [+2]
+  LOADB R4 0
+  JUMP [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K14 ["Selectable"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K15 ["props"]
+  GETTABLEKS R4 R5 K16 ["Visible"]
+  SETTABLEKS R4 R3 K16 ["Visible"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K17 ["Event"]
+  GETTABLEKS R4 R5 K18 ["Activated"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K15 ["props"]
+  GETTABLEKS R5 R6 K19 ["cancel"]
+  SETTABLE R5 R3 R4
+  DUPTABLE R4 K21 [{"AlertModal"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 3
+  DUPTABLE R7 K26 [{"title", "bodyText", "buttonStackInfo", "screenSize"}]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K15 ["props"]
+  GETTABLEKS R8 R9 K22 ["title"]
+  SETTABLEKS R8 R7 K22 ["title"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K15 ["props"]
+  GETTABLEKS R8 R9 K27 ["body"]
+  SETTABLEKS R8 R7 K23 ["bodyText"]
+  DUPTABLE R8 K29 [{"buttons"}]
+  NEWTABLE R9 0 2
+  DUPTABLE R10 K31 [{"buttonType", "props"}]
+  GETUPVAL R12 4
+  GETTABLEKS R11 R12 K32 ["Secondary"]
+  SETTABLEKS R11 R10 K30 ["buttonType"]
+  DUPTABLE R11 K35 [{"text", "onActivated"}]
+  GETUPVAL R14 2
+  GETTABLEKS R13 R14 K15 ["props"]
+  GETTABLEKS R12 R13 K36 ["cancelText"]
+  SETTABLEKS R12 R11 K33 ["text"]
+  GETUPVAL R14 2
+  GETTABLEKS R13 R14 K15 ["props"]
+  GETTABLEKS R12 R13 K19 ["cancel"]
+  SETTABLEKS R12 R11 K34 ["onActivated"]
+  SETTABLEKS R11 R10 K15 ["props"]
+  DUPTABLE R11 K31 [{"buttonType", "props"}]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K37 ["Alert"]
+  SETTABLEKS R12 R11 K30 ["buttonType"]
+  DUPTABLE R12 K35 [{"text", "onActivated"}]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K15 ["props"]
+  GETTABLEKS R13 R14 K38 ["actionText"]
+  SETTABLEKS R13 R12 K33 ["text"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K15 ["props"]
+  GETTABLEKS R13 R14 K39 ["action"]
+  SETTABLEKS R13 R12 K34 ["onActivated"]
+  SETTABLEKS R12 R11 K15 ["props"]
+  SETLIST R9 R10 2 [1]
+  SETTABLEKS R9 R8 K28 ["buttons"]
+  SETTABLEKS R8 R7 K24 ["buttonStackInfo"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K15 ["props"]
+  GETTABLEKS R8 R9 K25 ["screenSize"]
+  SETTABLEKS R8 R7 K25 ["screenSize"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K20 ["AlertModal"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["t"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K9 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["UIBlox"]
+  CALL R5 1 1
+  GETTABLEKS R7 R5 K13 ["Style"]
+  GETTABLEKS R6 R7 K14 ["withStyle"]
+  GETTABLEKS R10 R5 K15 ["App"]
+  GETTABLEKS R9 R10 K16 ["Button"]
+  GETTABLEKS R8 R9 K17 ["Enum"]
+  GETTABLEKS R7 R8 K18 ["ButtonType"]
+  GETTABLEKS R11 R5 K15 ["App"]
+  GETTABLEKS R10 R11 K19 ["Dialog"]
+  GETTABLEKS R9 R10 K20 ["Alert"]
+  GETTABLEKS R8 R9 K21 ["InteractiveAlert"]
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R12 R2 K22 ["Modules"]
+  GETTABLEKS R11 R12 K23 ["Flags"]
+  GETTABLEKS R10 R11 K24 ["GetFFlagWrapBlockModalScreenInProvider"]
+  CALL R9 1 1
+  GETTABLEKS R10 R3 K25 ["PureComponent"]
+  LOADK R12 K26 ["ActionModal"]
+  NAMECALL R10 R10 K27 ["extend"]
+  CALL R10 2 1
+  DUPTABLE R11 K29 [{"screenSize"}]
+  GETIMPORT R12 K32 [Vector2.new]
+  LOADN R13 232
+  LOADN R14 232
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K28 ["screenSize"]
+  SETTABLEKS R11 R10 K33 ["defaultProps"]
+  GETTABLEKS R11 R4 K34 ["interface"]
+  DUPTABLE R12 K41 [{"action", "actionText", "body", "cancel", "cancelText", "screenSize", "title"}]
+  GETTABLEKS R13 R4 K42 ["callback"]
+  SETTABLEKS R13 R12 K35 ["action"]
+  GETTABLEKS R13 R4 K43 ["string"]
+  SETTABLEKS R13 R12 K36 ["actionText"]
+  GETTABLEKS R13 R4 K43 ["string"]
+  SETTABLEKS R13 R12 K37 ["body"]
+  GETTABLEKS R13 R4 K42 ["callback"]
+  SETTABLEKS R13 R12 K38 ["cancel"]
+  GETTABLEKS R13 R4 K43 ["string"]
+  SETTABLEKS R13 R12 K39 ["cancelText"]
+  GETTABLEKS R13 R4 K44 ["optional"]
+  GETTABLEKS R14 R4 K30 ["Vector2"]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K28 ["screenSize"]
+  GETTABLEKS R13 R4 K43 ["string"]
+  SETTABLEKS R13 R12 K40 ["title"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K45 ["validateProps"]
+  DUPCLOSURE R11 K46 [PROTO_1]
+  CAPTURE VAL R6
+  CAPTURE VAL R3
+  CAPTURE VAL R9
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  SETTABLEKS R11 R10 K47 ["render"]
+  RETURN R10 1

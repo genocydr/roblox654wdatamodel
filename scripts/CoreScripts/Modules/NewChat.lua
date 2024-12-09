@@ -11,6 +11,8 @@ local RobloxGui = CoreGuiService:WaitForChild("RobloxGui")
 local StarterGui = game:GetService("StarterGui")
 local GuiService = game:GetService("GuiService")
 local PlayersService = game:GetService("Players")
+local TextChatService = game:GetService("TextChatService")
+local isChatVersionLegacy = TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService
 
 local ChatTypesSet = false
 local ClassicChatEnabled = PlayersService.ClassicChat
@@ -23,6 +25,15 @@ local ExperienceChat = require(CorePackages.Workspace.Packages.ExpChat)
 
 local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
 local GetFFlagReenableTextChatForTenFootInterfaces = SharedFlags.GetFFlagReenableTextChatForTenFootInterfaces
+local getFFlagExpChatAlwaysRunTCS = SharedFlags.getFFlagExpChatAlwaysRunTCS
+
+local function shouldForceLegacyChatToBeHidden()
+	if getFFlagExpChatAlwaysRunTCS() then
+		return isChatVersionLegacy
+	end
+
+	return false
+end
 
 local moduleApiTable = {}
 do
@@ -80,22 +91,35 @@ do
 
 	function moduleApiTable:ToggleVisibility()
 		ChatWindowState.Visible = not ChatWindowState.Visible
-		local didFire = DispatchEvent("ToggleVisibility")
-		if not didFire then
-			moduleApiTable.VisibilityStateChanged:fire(ChatWindowState.Visible)
+
+		if not shouldForceLegacyChatToBeHidden() then
+			local didFire = DispatchEvent("ToggleVisibility")
+			if not didFire then
+				moduleApiTable.VisibilityStateChanged:fire(ChatWindowState.Visible)
+			end
 		end
 
+		if getFFlagExpChatAlwaysRunTCS() then
+			moduleApiTable.ChromeVisibilityStateChanged:fire(ChatWindowState.Visible)
+		end
 		ExperienceChat.Events.ChatTopBarButtonActivated(ChatWindowState.Visible)
 	end
 
 	function moduleApiTable:SetVisible(visible)
 		ChatWindowState.Visible = visible
 
+		if getFFlagExpChatAlwaysRunTCS() then
+			moduleApiTable.ChromeVisibilityStateChanged:fire(ChatWindowState.Visible)
+		end
 		ExperienceChat.Events.ChatTopBarButtonActivated(ChatWindowState.Visible)
 
-		local didFire = DispatchEvent("SetVisible", ChatWindowState.Visible)
-		if not didFire then
-			moduleApiTable.VisibilityStateChanged:fire(ChatWindowState.Visible)
+		if shouldForceLegacyChatToBeHidden() then
+			DispatchEvent("SetVisible", false)
+		else
+			local didFire = DispatchEvent("SetVisible", ChatWindowState.Visible)
+			if not didFire then
+				moduleApiTable.VisibilityStateChanged:fire(ChatWindowState.Visible)
+			end
 		end
 	end
 
@@ -180,6 +204,9 @@ do
 
 	moduleApiTable.ChatBarFocusChanged = Util.Signal()
 	moduleApiTable.VisibilityStateChanged = Util.Signal()
+	if getFFlagExpChatAlwaysRunTCS() then
+		moduleApiTable.ChromeVisibilityStateChanged = Util.Signal()
+	end
 	moduleApiTable.MessagesChanged = Util.Signal()
 
 	-- Signals that are called when we get information on if Bubble Chat and Classic chat are enabled from the chat.
@@ -199,7 +226,9 @@ do
 			return
 		end
 
-		DispatchEvent("SpecialKeyPressed", key, modifiers)
+		if not shouldForceLegacyChatToBeHidden() then
+			DispatchEvent("SpecialKeyPressed", key, modifiers)
+		end
 	end)
 
 	function DoConnectSetCore(setCoreName)

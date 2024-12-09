@@ -1,0 +1,97 @@
+PROTO_0:
+  MOVE R2 R0
+  JUMPIF R2 [+18]
+  DUPTABLE R2 K3 [{"DeviceLayout", "DeviceOrientation", "IsSmallTouchScreen"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["DeviceLayout"]
+  GETTABLEKS R3 R4 K4 ["DESKTOP"]
+  SETTABLEKS R3 R2 K0 ["DeviceLayout"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["DeviceOrientation"]
+  GETTABLEKS R3 R4 K5 ["INVALID"]
+  SETTABLEKS R3 R2 K1 ["DeviceOrientation"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K2 ["IsSmallTouchScreen"]
+  MOVE R0 R2
+  GETTABLEKS R2 R1 K6 ["type"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["name"]
+  JUMPIFNOTEQ R2 R3 [+11]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K8 ["Set"]
+  MOVE R3 R0
+  LOADK R4 K1 ["DeviceOrientation"]
+  GETTABLEKS R5 R1 K9 ["deviceOrientation"]
+  CALL R2 3 1
+  MOVE R0 R2
+  RETURN R0 1
+  GETTABLEKS R2 R1 K6 ["type"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K7 ["name"]
+  JUMPIFNOTEQ R2 R3 [+11]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K8 ["Set"]
+  MOVE R3 R0
+  LOADK R4 K0 ["DeviceLayout"]
+  GETTABLEKS R5 R1 K10 ["deviceLayout"]
+  CALL R2 3 1
+  MOVE R0 R2
+  RETURN R0 1
+  GETTABLEKS R2 R1 K6 ["type"]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K7 ["name"]
+  JUMPIFNOTEQ R2 R3 [+10]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K8 ["Set"]
+  MOVE R3 R0
+  LOADK R4 K2 ["IsSmallTouchScreen"]
+  GETTABLEKS R5 R1 K11 ["isSmallTouchScreen"]
+  CALL R2 3 1
+  MOVE R0 R2
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K4 ["AppTempCommon"]
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K5 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETTABLEKS R3 R4 K6 ["RobloxGui"]
+  GETTABLEKS R2 R3 K7 ["Modules"]
+  GETTABLEKS R5 R2 K8 ["Settings"]
+  GETTABLEKS R4 R5 K9 ["Pages"]
+  GETTABLEKS R3 R4 K10 ["ShareGame"]
+  GETIMPORT R5 K12 [require]
+  GETTABLEKS R8 R0 K13 ["Workspace"]
+  GETTABLEKS R7 R8 K14 ["Packages"]
+  GETTABLEKS R6 R7 K15 ["AppCommonLib"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K16 ["Immutable"]
+  GETIMPORT R5 K12 [require]
+  GETTABLEKS R6 R3 K17 ["Constants"]
+  CALL R5 1 1
+  GETIMPORT R6 K12 [require]
+  GETTABLEKS R8 R3 K18 ["Actions"]
+  GETTABLEKS R7 R8 K19 ["SetDeviceLayout"]
+  CALL R6 1 1
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R10 R1 K20 ["LuaApp"]
+  GETTABLEKS R9 R10 K18 ["Actions"]
+  GETTABLEKS R8 R9 K21 ["SetDeviceOrientation"]
+  CALL R7 1 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R10 R3 K18 ["Actions"]
+  GETTABLEKS R9 R10 K22 ["SetIsSmallTouchScreen"]
+  CALL R8 1 1
+  DUPCLOSURE R9 K23 [PROTO_0]
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  RETURN R9 1

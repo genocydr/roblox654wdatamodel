@@ -1,0 +1,227 @@
+PROTO_0:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["boundPlayerListActions"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["MenuIsOpen"]
+  JUMPIFNOT R3 [+3]
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+  GETIMPORT R3 K7 [Enum.UserInputState.Begin]
+  JUMPIFEQ R1 R3 [+4]
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K8 ["props"]
+  GETTABLEKS R3 R4 K9 ["setVisibility"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K8 ["props"]
+  GETTABLEKS R6 R7 K10 ["displayOptions"]
+  GETTABLEKS R5 R6 K11 ["isVisible"]
+  NOT R4 R5
+  CALL R3 1 0
+  GETIMPORT R3 K13 [Enum.ContextActionResult.Sink]
+  RETURN R3 1
+
+PROTO_2:
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["displayOptions"]
+  GETTABLEKS R3 R4 K2 ["isVisible"]
+  JUMPIFNOT R3 [+11]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["displayOptions"]
+  GETTABLEKS R3 R4 K3 ["isTenFootInterface"]
+  JUMPIFNOT R3 [+3]
+  GETIMPORT R3 K7 [Enum.ContextActionResult.Sink]
+  RETURN R3 1
+  GETIMPORT R3 K9 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_3:
+  GETIMPORT R3 K3 [Enum.UserInputState.Begin]
+  JUMPIFEQ R1 R3 [+4]
+  GETIMPORT R3 K6 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["props"]
+  GETTABLEKS R4 R5 K8 ["displayOptions"]
+  GETTABLEKS R3 R4 K9 ["isVisible"]
+  JUMPIFNOT R3 [+18]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["props"]
+  GETTABLEKS R4 R5 K8 ["displayOptions"]
+  GETTABLEKS R3 R4 K10 ["isTenFootInterface"]
+  JUMPIFNOT R3 [+10]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["props"]
+  GETTABLEKS R3 R4 K11 ["setVisibility"]
+  LOADB R4 0
+  CALL R3 1 0
+  GETIMPORT R3 K13 [Enum.ContextActionResult.Sink]
+  RETURN R3 1
+  GETIMPORT R3 K6 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_4:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["RbxPlayerListToggle"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.Tab]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R1 0
+  LOADK R3 K6 ["RbxPlayerListStopMovement"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETUPVAL R7 2
+  FASTCALL1 TABLE_UNPACK R7 [+2]
+  GETIMPORT R6 K8 [unpack]
+  CALL R6 1 -1
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 -1 0
+  GETUPVAL R1 0
+  LOADK R3 K9 ["RbxPlayerListGamepadClose"]
+  NEWCLOSURE R4 P2
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETIMPORT R6 K11 [Enum.KeyCode.ButtonB]
+  GETIMPORT R7 K13 [Enum.KeyCode.ButtonStart]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 6 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K14 ["boundPlayerListActions"]
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["RbxPlayerListToggle"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K2 ["RbxPlayerListStopMovement"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  LOADK R3 K3 ["RbxPlayerListGamepadClose"]
+  NAMECALL R1 R1 K1 ["UnbindCoreAction"]
+  CALL R1 2 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["boundPlayerListActions"]
+  RETURN R0 0
+
+PROTO_6:
+  NAMECALL R1 R0 K0 ["bindActions"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_7:
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["boundPlayerListActions"]
+  JUMPIFNOT R1 [+3]
+  NAMECALL R1 R0 K1 ["unbindActions"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_9:
+  DUPTABLE R1 K1 [{"displayOptions"}]
+  GETTABLEKS R2 R0 K0 ["displayOptions"]
+  SETTABLEKS R2 R1 K0 ["displayOptions"]
+  RETURN R1 1
+
+PROTO_10:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_11:
+  DUPTABLE R1 K1 [{"setVisibility"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setVisibility"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["ContextActionService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K8 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["RoactRodux"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R6 R5 K13 ["Parent"]
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R9 R6 K14 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["SetPlayerListVisibility"]
+  CALL R7 1 1
+  GETTABLEKS R8 R3 K16 ["PureComponent"]
+  LOADK R10 K17 ["ContextActionsBinder"]
+  NAMECALL R8 R8 K18 ["extend"]
+  CALL R8 2 1
+  NEWTABLE R9 0 8
+  GETIMPORT R10 K22 [Enum.UserInputType.Gamepad1]
+  GETIMPORT R11 K24 [Enum.UserInputType.Gamepad2]
+  GETIMPORT R12 K26 [Enum.UserInputType.Gamepad3]
+  GETIMPORT R13 K28 [Enum.UserInputType.Gamepad4]
+  GETIMPORT R14 K30 [Enum.UserInputType.Gamepad5]
+  GETIMPORT R15 K32 [Enum.UserInputType.Gamepad6]
+  GETIMPORT R16 K34 [Enum.UserInputType.Gamepad7]
+  GETIMPORT R17 K36 [Enum.UserInputType.Gamepad8]
+  SETLIST R9 R10 8 [1]
+  DUPCLOSURE R10 K37 [PROTO_0]
+  SETTABLEKS R10 R8 K38 ["init"]
+  DUPCLOSURE R10 K39 [PROTO_4]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  SETTABLEKS R10 R8 K40 ["bindActions"]
+  DUPCLOSURE R10 K41 [PROTO_5]
+  CAPTURE VAL R1
+  SETTABLEKS R10 R8 K42 ["unbindActions"]
+  DUPCLOSURE R10 K43 [PROTO_6]
+  SETTABLEKS R10 R8 K44 ["didMount"]
+  DUPCLOSURE R10 K45 [PROTO_7]
+  SETTABLEKS R10 R8 K46 ["render"]
+  DUPCLOSURE R10 K47 [PROTO_8]
+  SETTABLEKS R10 R8 K48 ["willUnmount"]
+  DUPCLOSURE R10 K49 [PROTO_9]
+  DUPCLOSURE R11 K50 [PROTO_11]
+  CAPTURE VAL R7
+  GETTABLEKS R12 R4 K51 ["connect"]
+  MOVE R13 R10
+  MOVE R14 R11
+  CALL R12 2 1
+  MOVE R13 R8
+  CALL R12 1 -1
+  RETURN R12 -1

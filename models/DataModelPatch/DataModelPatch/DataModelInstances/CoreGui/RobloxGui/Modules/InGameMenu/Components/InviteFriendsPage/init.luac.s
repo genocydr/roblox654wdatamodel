@@ -1,0 +1,575 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["backButtonRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K2 ["searchBoxRef"]
+  DUPTABLE R1 K6 [{"loadingFriends", "loadingFriendsError", "friends"}]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K3 ["loadingFriends"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K4 ["loadingFriendsError"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K5 ["friends"]
+  SETTABLEKS R1 R0 K7 ["state"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K5 [{"Size", "Text", "fontKey", "themeKey"}]
+  GETIMPORT R4 K8 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K1 ["Size"]
+  GETTABLEKS R4 R0 K9 ["loading"]
+  SETTABLEKS R4 R3 K2 ["Text"]
+  LOADK R4 K10 ["Header1"]
+  SETTABLEKS R4 R3 K3 ["fontKey"]
+  LOADK R4 K11 ["TextEmphasis"]
+  SETTABLEKS R4 R3 K4 ["themeKey"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  DUPTABLE R2 K1 [{"loading"}]
+  LOADK R3 K2 ["CoreScripts.InGameMenu.InviteFriends.Loading"]
+  SETTABLEKS R3 R2 K0 ["loading"]
+  CALL R1 1 1
+  DUPCLOSURE R2 K3 [PROTO_1]
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"loadingFriends", "loadingFriendsError"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["loadingFriends"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["loadingFriendsError"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K4 ["loadFriends"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"onRetry", "canCaptureFocus"}]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  SETTABLEKS R4 R3 K1 ["onRetry"]
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K2 ["canCaptureFocus"]
+  SETTABLEKS R4 R3 K2 ["canCaptureFocus"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K2 [{"canCaptureFocus"}]
+  GETTABLEKS R5 R0 K3 ["props"]
+  GETTABLEKS R4 R5 K1 ["canCaptureFocus"]
+  SETTABLEKS R4 R3 K1 ["canCaptureFocus"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["IsOnline"]
+  GETTABLEKS R3 R1 K0 ["IsOnline"]
+  JUMPIFNOTEQ R2 R3 [+16]
+  GETTABLEKS R3 R0 K1 ["Username"]
+  NAMECALL R3 R3 K2 ["lower"]
+  CALL R3 1 1
+  GETTABLEKS R4 R1 K1 ["Username"]
+  NAMECALL R4 R4 K2 ["lower"]
+  CALL R4 1 1
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+  GETTABLEKS R2 R0 K0 ["IsOnline"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R3 R1 K0 ["IsOnline"]
+  NOT R2 R3
+  RETURN R2 1
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K4 [{"friends", "canCaptureFocus", "searchBoxRef"}]
+  GETTABLEKS R5 R0 K5 ["state"]
+  GETTABLEKS R4 R5 K1 ["friends"]
+  SETTABLEKS R4 R3 K1 ["friends"]
+  GETTABLEKS R5 R0 K6 ["props"]
+  GETTABLEKS R4 R5 K2 ["canCaptureFocus"]
+  SETTABLEKS R4 R3 K2 ["canCaptureFocus"]
+  GETTABLEKS R4 R0 K3 ["searchBoxRef"]
+  SETTABLEKS R4 R3 K3 ["searchBoxRef"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_8:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["loadFriends"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["backButtonRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K2 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K4 [{"shouldForgetPreviousSelection", "isFocused", "didFocus"}]
+  GETUPVAL R5 2
+  CALL R5 0 1
+  JUMPIFNOT R5 [+8]
+  LOADB R4 1
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K5 ["props"]
+  GETTABLEKS R5 R6 K6 ["menuPage"]
+  JUMPIFNOTEQKS R5 K7 ["InviteFriends"] [+2]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K1 ["shouldForgetPreviousSelection"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K5 ["props"]
+  GETTABLEKS R4 R5 K8 ["canCaptureFocus"]
+  JUMPIFNOT R4 [+5]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K9 ["loadingFriends"]
+  JUMPIFNOT R4 [+1]
+  MOVE R4 R0
+  SETTABLEKS R4 R3 K2 ["isFocused"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U3
+  SETTABLEKS R4 R3 K3 ["didFocus"]
+  DUPTABLE R4 K11 [{"Page"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 6
+  DUPTABLE R7 K15 [{"pageTitle", "buttonRef", "NextSelectionDown"}]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K5 ["props"]
+  GETTABLEKS R8 R9 K12 ["pageTitle"]
+  SETTABLEKS R8 R7 K12 ["pageTitle"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K16 ["backButtonRef"]
+  SETTABLEKS R8 R7 K13 ["buttonRef"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K17 ["searchBoxRef"]
+  SETTABLEKS R8 R7 K14 ["NextSelectionDown"]
+  GETUPVAL R8 7
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K10 ["Page"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["state"]
+  DUPTABLE R2 K2 [{"Watcher"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K6 [{"desiredPage", "onNavigateTo"}]
+  LOADK R6 K7 ["InviteFriends"]
+  SETTABLEKS R6 R5 K4 ["desiredPage"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K5 ["onNavigateTo"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["Watcher"]
+  GETTABLEKS R3 R1 K8 ["loadingFriends"]
+  JUMPIFNOT R3 [+6]
+  NAMECALL R3 R0 K9 ["renderLoadingPage"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K10 ["Loading"]
+  JUMP [+25]
+  GETTABLEKS R3 R1 K11 ["loadingFriendsError"]
+  JUMPIFNOT R3 [+6]
+  NAMECALL R3 R0 K12 ["renderError"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K13 ["ErrorLoading"]
+  JUMP [+16]
+  GETTABLEKS R4 R1 K14 ["friends"]
+  LENGTH R3 R4
+  JUMPIFNOTEQKN R3 K15 [0] [+7]
+  NAMECALL R3 R0 K16 ["renderNoFriends"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K17 ["NoFriends"]
+  JUMP [+5]
+  NAMECALL R3 R0 K18 ["renderFriends"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K19 ["FriendsList"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K21 [{"render"}]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R2
+  SETTABLEKS R6 R5 K20 ["render"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_12:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  NAMECALL R1 R0 K1 ["loadFriends"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["PlayersService"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["UserId"]
+  NAMECALL R0 R0 K3 ["GetFriendsAsync"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_14:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["AdvanceToNextPageAsync"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["PlayersService"]
+  GETTABLEKS R0 R1 K2 ["LocalPlayer"]
+  GETIMPORT R1 K4 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CALL R1 1 2
+  JUMPIF R1 [+4]
+  GETUPVAL R3 1
+  LOADK R4 K5 ["Error loading friends"]
+  CALL R3 1 0
+  RETURN R0 0
+  NEWTABLE R3 0 0
+  GETIMPORT R4 K7 [ipairs]
+  NAMECALL R5 R2 K8 ["GetCurrentPage"]
+  CALL R5 1 -1
+  CALL R4 -1 3
+  FORGPREP_INEXT R4
+  LENGTH R10 R3
+  ADDK R9 R10 K9 [1]
+  DUPTABLE R10 K15 [{"IsOnline", "Id", "Username", "DisplayName", "itemRef"}]
+  GETTABLEKS R11 R8 K10 ["IsOnline"]
+  SETTABLEKS R11 R10 K10 ["IsOnline"]
+  GETTABLEKS R11 R8 K11 ["Id"]
+  SETTABLEKS R11 R10 K11 ["Id"]
+  GETTABLEKS R11 R8 K12 ["Username"]
+  SETTABLEKS R11 R10 K12 ["Username"]
+  GETTABLEKS R11 R8 K13 ["DisplayName"]
+  SETTABLEKS R11 R10 K13 ["DisplayName"]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K14 ["itemRef"]
+  SETTABLE R10 R3 R9
+  FORGLOOP R4 2 [inext] [-24]
+  GETTABLEKS R4 R2 K16 ["IsFinished"]
+  JUMPIF R4 [+14]
+  GETIMPORT R4 K4 [pcall]
+  NEWCLOSURE R5 P1
+  CAPTURE VAL R2
+  CALL R4 1 1
+  MOVE R1 R4
+  JUMPIF R1 [+6]
+  GETUPVAL R4 1
+  LOADK R5 K5 ["Error loading friends"]
+  CALL R4 1 0
+  RETURN R0 0
+  JUMP [+1]
+  JUMP [+1]
+  JUMPBACK [-49]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K17 ["List"]
+  GETTABLEKS R4 R5 K18 ["sort"]
+  MOVE R5 R3
+  GETUPVAL R6 3
+  CALL R4 2 1
+  MOVE R3 R4
+  GETUPVAL R4 4
+  MOVE R5 R3
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_16:
+  GETIMPORT R2 K2 [coroutine.wrap]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CALL R2 1 1
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_17:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["mounted"]
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R1 0
+  DUPTABLE R3 K3 [{"loadingFriends", "friends"}]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K1 ["loadingFriends"]
+  SETTABLEKS R0 R3 K2 ["friends"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["mounted"]
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R0 0
+  DUPTABLE R2 K3 [{"loadingFriends", "loadingFriendsError"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["loadingFriends"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K2 ["loadingFriendsError"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_19:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R1 1 1
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K1 ["andThen"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["catch"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_20:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  RETURN R0 0
+
+PROTO_21:
+  LOADB R2 0
+  GETTABLEKS R3 R0 K0 ["menuPage"]
+  JUMPIFNOTEQKS R3 K1 ["InviteFriends"] [+28]
+  GETTABLEKS R2 R0 K2 ["isMenuOpen"]
+  JUMPIFNOT R2 [+24]
+  LOADB R2 0
+  GETTABLEKS R4 R0 K3 ["displayOptions"]
+  GETTABLEKS R3 R4 K4 ["inputType"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K5 ["InputType"]
+  GETTABLEKS R4 R5 K6 ["Gamepad"]
+  JUMPIFNOTEQ R3 R4 [+13]
+  GETTABLEKS R4 R0 K7 ["respawn"]
+  GETTABLEKS R3 R4 K8 ["dialogOpen"]
+  NOT R2 R3
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R3 R0 K9 ["currentZone"]
+  JUMPIFEQKN R3 K10 [1] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  DUPTABLE R3 K12 [{"canCaptureFocus", "menuPage"}]
+  SETTABLEKS R2 R3 K11 ["canCaptureFocus"]
+  GETUPVAL R5 1
+  CALL R5 0 1
+  JUMPIFNOT R5 [+3]
+  GETTABLEKS R4 R0 K0 ["menuPage"]
+  JUMPIF R4 [+1]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K0 ["menuPage"]
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K10 ["Roact"]
+  GETTABLEKS R5 R3 K11 ["t"]
+  GETTABLEKS R6 R3 K12 ["RoactRodux"]
+  GETTABLEKS R7 R3 K13 ["Cryo"]
+  GETIMPORT R10 K15 [script]
+  GETTABLEKS R9 R10 K16 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["Parent"]
+  GETIMPORT R9 K7 [require]
+  GETTABLEKS R11 R8 K17 ["Resources"]
+  GETTABLEKS R10 R11 K18 ["Constants"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R12 R8 K19 ["Utility"]
+  GETTABLEKS R11 R12 K20 ["Promise"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R13 R8 K21 ["Localization"]
+  GETTABLEKS R12 R13 K22 ["withLocalization"]
+  CALL R11 1 1
+  GETIMPORT R12 K7 [require]
+  GETTABLEKS R14 R8 K23 ["Components"]
+  GETTABLEKS R13 R14 K24 ["Page"]
+  CALL R12 1 1
+  GETIMPORT R13 K7 [require]
+  GETTABLEKS R15 R8 K23 ["Components"]
+  GETTABLEKS R14 R15 K25 ["ThemedTextLabel"]
+  CALL R13 1 1
+  GETIMPORT R14 K7 [require]
+  GETTABLEKS R16 R8 K23 ["Components"]
+  GETTABLEKS R15 R16 K26 ["PageNavigationWatcher"]
+  CALL R14 1 1
+  GETIMPORT R15 K7 [require]
+  GETTABLEKS R18 R8 K23 ["Components"]
+  GETTABLEKS R17 R18 K27 ["Connection"]
+  GETTABLEKS R16 R17 K28 ["FocusHandler"]
+  CALL R15 1 1
+  GETIMPORT R16 K7 [require]
+  GETTABLEKS R19 R8 K23 ["Components"]
+  GETTABLEKS R18 R19 K27 ["Connection"]
+  GETTABLEKS R17 R18 K29 ["RootedConnection"]
+  CALL R16 1 1
+  GETIMPORT R17 K7 [require]
+  GETIMPORT R19 K15 [script]
+  GETTABLEKS R18 R19 K30 ["InviteFriendsList"]
+  CALL R17 1 1
+  GETIMPORT R18 K7 [require]
+  GETIMPORT R20 K15 [script]
+  GETTABLEKS R19 R20 K31 ["AddFriendsNow"]
+  CALL R18 1 1
+  GETIMPORT R19 K7 [require]
+  GETIMPORT R21 K15 [script]
+  GETTABLEKS R20 R21 K32 ["LoadingFriendsError"]
+  CALL R19 1 1
+  GETIMPORT R20 K7 [require]
+  GETTABLEKS R22 R8 K33 ["Flags"]
+  GETTABLEKS R21 R22 K34 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R20 1 1
+  GETTABLEKS R21 R4 K35 ["PureComponent"]
+  LOADK R23 K36 ["InviteFriendsPage"]
+  NAMECALL R21 R21 K37 ["extend"]
+  CALL R21 2 1
+  GETTABLEKS R22 R5 K38 ["strictInterface"]
+  DUPTABLE R23 K43 [{"pageTitle", "canCaptureFocus", "PlayersService", "menuPage"}]
+  GETTABLEKS R24 R5 K44 ["string"]
+  SETTABLEKS R24 R23 K39 ["pageTitle"]
+  GETTABLEKS R24 R5 K45 ["optional"]
+  GETTABLEKS R25 R5 K46 ["boolean"]
+  CALL R24 1 1
+  SETTABLEKS R24 R23 K40 ["canCaptureFocus"]
+  GETTABLEKS R24 R5 K47 ["union"]
+  GETTABLEKS R25 R5 K48 ["Instance"]
+  GETTABLEKS R26 R5 K49 ["table"]
+  CALL R24 2 1
+  SETTABLEKS R24 R23 K41 ["PlayersService"]
+  MOVE R25 R20
+  CALL R25 0 1
+  JUMPIFNOT R25 [+3]
+  GETTABLEKS R24 R5 K44 ["string"]
+  JUMPIF R24 [+1]
+  LOADNIL R24
+  SETTABLEKS R24 R23 K42 ["menuPage"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K50 ["validateProps"]
+  DUPTABLE R22 K51 [{"PlayersService"}]
+  SETTABLEKS R2 R22 K41 ["PlayersService"]
+  SETTABLEKS R22 R21 K52 ["defaultProps"]
+  DUPCLOSURE R22 K53 [PROTO_0]
+  CAPTURE VAL R4
+  SETTABLEKS R22 R21 K54 ["init"]
+  DUPCLOSURE R22 K55 [PROTO_2]
+  CAPTURE VAL R11
+  CAPTURE VAL R4
+  CAPTURE VAL R13
+  SETTABLEKS R22 R21 K56 ["renderLoadingPage"]
+  DUPCLOSURE R22 K57 [PROTO_4]
+  CAPTURE VAL R4
+  CAPTURE VAL R19
+  SETTABLEKS R22 R21 K58 ["renderError"]
+  DUPCLOSURE R22 K59 [PROTO_5]
+  CAPTURE VAL R4
+  CAPTURE VAL R18
+  SETTABLEKS R22 R21 K60 ["renderNoFriends"]
+  DUPCLOSURE R22 K61 [PROTO_6]
+  DUPCLOSURE R23 K62 [PROTO_7]
+  CAPTURE VAL R4
+  CAPTURE VAL R17
+  SETTABLEKS R23 R21 K63 ["renderFriends"]
+  DUPCLOSURE R23 K64 [PROTO_11]
+  CAPTURE VAL R4
+  CAPTURE VAL R14
+  CAPTURE VAL R16
+  CAPTURE VAL R15
+  CAPTURE VAL R20
+  CAPTURE VAL R1
+  CAPTURE VAL R12
+  SETTABLEKS R23 R21 K65 ["render"]
+  DUPCLOSURE R23 K66 [PROTO_12]
+  SETTABLEKS R23 R21 K67 ["didMount"]
+  DUPCLOSURE R23 K68 [PROTO_19]
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  CAPTURE VAL R22
+  SETTABLEKS R23 R21 K69 ["loadFriends"]
+  DUPCLOSURE R23 K70 [PROTO_20]
+  SETTABLEKS R23 R21 K71 ["willUnmount"]
+  GETTABLEKS R23 R6 K72 ["connect"]
+  DUPCLOSURE R24 K73 [PROTO_21]
+  CAPTURE VAL R9
+  CAPTURE VAL R20
+  CALL R23 1 1
+  MOVE R24 R21
+  CALL R23 1 -1
+  RETURN R23 -1

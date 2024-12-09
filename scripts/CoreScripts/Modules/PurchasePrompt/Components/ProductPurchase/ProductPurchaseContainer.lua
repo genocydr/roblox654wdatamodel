@@ -49,7 +49,6 @@ local LocalizationService = require(Root.Localization.LocalizationService)
 local getPlayerPrice = require(Root.Utils.getPlayerPrice)
 local isGenericChallengeResponse = require(Root.Utils.isGenericChallengeResponse)
 local FFlagPublishAvatarPromptEnabled = require(RobloxGui.Modules.PublishAssetPrompt.FFlagPublishAvatarPromptEnabled)
-local FFlagCoreScriptPublishAssetAnalytics = require(RobloxGui.Modules.Flags.FFlagCoreScriptPublishAssetAnalytics)
 
 local initiateUserPurchaseSettingsPrecheck = require(Root.Thunks.initiateUserPurchaseSettingsPrecheck)
 local GetFFlagEnableTexasU18VPCForInExperienceBundleRobuxUpsellFlow =
@@ -205,8 +204,7 @@ function ProductPurchaseContainer:init()
 
 	self.confirmButtonPressed = function()
 		if
-			FFlagCoreScriptPublishAssetAnalytics
-			and self.props.requestType == RequestType.AvatarCreationFee
+			self.props.requestType == RequestType.AvatarCreationFee
 			and self.props.promptState == PromptState.PromptPurchase
 		then
 			PublishAssetAnalytics.sendButtonClicked(
@@ -223,8 +221,7 @@ function ProductPurchaseContainer:init()
 
 	self.cancelButtonPressed = function()
 		if
-			FFlagCoreScriptPublishAssetAnalytics
-			and self.props.requestType == RequestType.AvatarCreationFee
+			self.props.requestType == RequestType.AvatarCreationFee
 			and self.props.promptState == PromptState.PromptPurchase
 		then
 			PublishAssetAnalytics.sendButtonClicked(
@@ -307,8 +304,7 @@ function ProductPurchaseContainer:didUpdate(prevProps, prevState)
 	end
 
 	if
-		FFlagCoreScriptPublishAssetAnalytics
-		and requestType == RequestType.AvatarCreationFee
+		requestType == RequestType.AvatarCreationFee
 		and self.props.promptState == PromptState.PurchaseComplete
 		and prevProps.promptState ~= PromptState.PurchaseComplete
 	then
@@ -573,8 +569,7 @@ function ProductPurchaseContainer:render()
 			shouldShow = self.props.windowState ~= WindowState.Hidden,
 			onShown = function()
 				if
-					FFlagCoreScriptPublishAssetAnalytics
-					and self.props.requestType == RequestType.AvatarCreationFee
+					self.props.requestType == RequestType.AvatarCreationFee
 					and promptState == PromptState.PromptPurchase
 				then
 					PublishAssetAnalytics.sendPageLoad(PublishAssetAnalytics.Section.BuyItemModal)

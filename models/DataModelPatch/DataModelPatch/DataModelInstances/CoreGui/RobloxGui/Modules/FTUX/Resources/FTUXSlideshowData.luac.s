@@ -1,0 +1,68 @@
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R3 R0 K5 ["Enums"]
+  GETTABLEKS R2 R3 K6 ["ButtonEnum"]
+  CALL R1 1 1
+  GETIMPORT R2 K4 [require]
+  GETTABLEKS R4 R0 K5 ["Enums"]
+  GETTABLEKS R3 R4 K7 ["PlatformEnum"]
+  CALL R2 1 1
+  NEWTABLE R3 1 0
+  GETTABLEKS R4 R2 K8 ["QuestVR"]
+  NEWTABLE R5 0 4
+  DUPTABLE R6 K13 [{"title", "text", "image", "button"}]
+  LOADK R7 K14 ["CoreScripts.VRFTUX.Heading.Perspective"]
+  SETTABLEKS R7 R6 K9 ["title"]
+  NEWTABLE R7 0 2
+  LOADK R8 K15 ["CoreScripts.VRFTUX.Description.Perspective.Body1"]
+  LOADK R9 K16 ["CoreScripts.VRFTUX.Description.Perspective.Body2"]
+  SETLIST R7 R8 2 [1]
+  SETTABLEKS R7 R6 K10 ["text"]
+  LOADK R7 K17 ["rbxassetid://13251804809"]
+  SETTABLEKS R7 R6 K11 ["image"]
+  GETTABLEKS R7 R1 K18 ["SkipButton"]
+  SETTABLEKS R7 R6 K12 ["button"]
+  DUPTABLE R7 K13 [{"title", "text", "image", "button"}]
+  LOADK R8 K19 ["CoreScripts.VRFTUX.Heading.Movement"]
+  SETTABLEKS R8 R7 K9 ["title"]
+  NEWTABLE R8 0 3
+  LOADK R9 K20 ["CoreScripts.VRFTUX.Description.Movement.Body1"]
+  LOADK R10 K21 ["CoreScripts.VRFTUX.Description.Movement.Body2"]
+  LOADK R11 K22 ["CoreScripts.VRFTUX.Description.Movement.Body3"]
+  SETLIST R8 R9 3 [1]
+  SETTABLEKS R8 R7 K10 ["text"]
+  LOADK R8 K23 ["rbxassetid://13251750527"]
+  SETTABLEKS R8 R7 K11 ["image"]
+  GETTABLEKS R8 R1 K18 ["SkipButton"]
+  SETTABLEKS R8 R7 K12 ["button"]
+  DUPTABLE R8 K13 [{"title", "text", "image", "button"}]
+  LOADK R9 K24 ["CoreScripts.VRFTUX.Heading.SafetyBubble.Title"]
+  SETTABLEKS R9 R8 K9 ["title"]
+  NEWTABLE R9 0 2
+  LOADK R10 K25 ["CoreScripts.VRFTUX.Description.SafetyBubble.Body1"]
+  LOADK R11 K26 ["CoreScripts.VRFTUX.Description.SafetyBubble.Body2"]
+  SETLIST R9 R10 2 [1]
+  SETTABLEKS R9 R8 K10 ["text"]
+  LOADK R9 K27 ["rbxassetid://13251806846"]
+  SETTABLEKS R9 R8 K11 ["image"]
+  GETTABLEKS R9 R1 K28 ["NextButton"]
+  SETTABLEKS R9 R8 K12 ["button"]
+  DUPTABLE R9 K13 [{"title", "text", "image", "button"}]
+  LOADK R10 K29 ["CoreScripts.VRFTUX.Heading.OtherSettings.Title"]
+  SETTABLEKS R10 R9 K9 ["title"]
+  NEWTABLE R10 0 2
+  LOADK R11 K30 ["CoreScripts.VRFTUX.Description.OtherSettings.Body1"]
+  LOADK R12 K31 ["CoreScripts.VRFTUX.Description.OtherSettings.Body2"]
+  SETLIST R10 R11 2 [1]
+  SETTABLEKS R10 R9 K10 ["text"]
+  LOADK R10 K32 [""]
+  SETTABLEKS R10 R9 K11 ["image"]
+  GETTABLEKS R10 R1 K28 ["NextButton"]
+  SETTABLEKS R10 R9 K12 ["button"]
+  SETLIST R5 R6 4 [1]
+  SETTABLE R5 R3 R4
+  RETURN R3 1

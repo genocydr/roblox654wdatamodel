@@ -1,0 +1,287 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+27]
+  GETIMPORT R1 K1 [require]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["Modules"]
+  GETTABLEKS R2 R3 K3 ["InGameMenuInit"]
+  CALL R1 1 1
+  GETTABLEKS R3 R0 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["setMenuOpen"]
+  GETTABLEKS R3 R1 K6 ["getOpen"]
+  CALL R3 0 -1
+  CALL R2 -1 0
+  GETTABLEKS R2 R1 K7 ["getRespawnBehaviour"]
+  CALL R2 0 2
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K8 ["setRespawnBehaviour"]
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+  GETIMPORT R1 K1 [require]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["Modules"]
+  GETTABLEKS R3 R4 K9 ["Settings"]
+  GETTABLEKS R2 R3 K10 ["SettingsHub"]
+  CALL R1 1 1
+  GETTABLEKS R3 R0 K4 ["props"]
+  GETTABLEKS R2 R3 K5 ["setMenuOpen"]
+  NAMECALL R3 R1 K11 ["GetVisibility"]
+  CALL R3 1 -1
+  CALL R2 -1 0
+  NAMECALL R2 R1 K12 ["GetRespawnBehaviour"]
+  CALL R2 1 2
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K8 ["setRespawnBehaviour"]
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setMenuOpen"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["setRespawnBehaviour"]
+  MOVE R3 R0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+5]
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["menuOpenBegin"]
+  CALL R1 0 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["setMenuOpen"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["setRespawnBehaviour"]
+  MOVE R3 R0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+54]
+  GETIMPORT R1 K1 [require]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["Modules"]
+  GETTABLEKS R2 R3 K3 ["InGameMenuInit"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K4 ["getOpenChangedEvent"]
+  CALL R2 0 1
+  LOADNIL R3
+  GETTABLEKS R4 R1 K5 ["getRespawnBehaviourChangedEvent"]
+  CALL R4 0 1
+  MOVE R3 R4
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["createFragment"]
+  DUPTABLE R5 K9 [{"MenuOpenChangedConnection", "RespawnBehaviourConnection"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K10 ["createElement"]
+  GETUPVAL R7 3
+  DUPTABLE R8 K13 [{"event", "callback"}]
+  GETTABLEKS R9 R2 K14 ["Event"]
+  SETTABLEKS R9 R8 K11 ["event"]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K12 ["callback"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K7 ["MenuOpenChangedConnection"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K10 ["createElement"]
+  GETUPVAL R7 3
+  DUPTABLE R8 K13 [{"event", "callback"}]
+  GETTABLEKS R9 R3 K14 ["Event"]
+  SETTABLEKS R9 R8 K11 ["event"]
+  NEWCLOSURE R9 P1
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K12 ["callback"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K8 ["RespawnBehaviourConnection"]
+  CALL R4 1 -1
+  RETURN R4 -1
+  GETIMPORT R1 K1 [require]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["Modules"]
+  GETTABLEKS R3 R4 K15 ["Settings"]
+  GETTABLEKS R2 R3 K16 ["SettingsHub"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K17 ["SettingsShowEvent"]
+  GETTABLEKS R3 R1 K18 ["RespawnBehaviourChangedEvent"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["createFragment"]
+  DUPTABLE R5 K9 [{"MenuOpenChangedConnection", "RespawnBehaviourConnection"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K10 ["createElement"]
+  GETUPVAL R7 3
+  DUPTABLE R8 K13 [{"event", "callback"}]
+  GETTABLEKS R9 R2 K14 ["Event"]
+  SETTABLEKS R9 R8 K11 ["event"]
+  NEWCLOSURE R9 P2
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K12 ["callback"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K7 ["MenuOpenChangedConnection"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K10 ["createElement"]
+  GETUPVAL R7 3
+  DUPTABLE R8 K13 [{"event", "callback"}]
+  GETTABLEKS R9 R3 K14 ["Event"]
+  SETTABLEKS R9 R8 K11 ["event"]
+  NEWCLOSURE R9 P3
+  CAPTURE VAL R0
+  SETTABLEKS R9 R8 K12 ["callback"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K8 ["RespawnBehaviourConnection"]
+  CALL R4 1 -1
+  RETURN R4 -1
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_8:
+  DUPTABLE R1 K2 [{"setMenuOpen", "setRespawnBehaviour"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setMenuOpen"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  ORK R2 R3 K3 []
+  SETTABLEKS R2 R1 K1 ["setRespawnBehaviour"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["Common"]
+  GETTABLEKS R4 R5 K11 ["PerfUtils"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K12 ["Packages"]
+  GETTABLEKS R5 R6 K13 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K12 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R8 R0 K12 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["t"]
+  CALL R6 1 1
+  GETIMPORT R9 K17 [script]
+  GETTABLEKS R8 R9 K18 ["Parent"]
+  GETTABLEKS R7 R8 K18 ["Parent"]
+  GETTABLEKS R8 R7 K18 ["Parent"]
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R8 K19 ["Actions"]
+  GETTABLEKS R10 R11 K20 ["SetMenuOpen"]
+  CALL R9 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R12 R8 K19 ["Actions"]
+  GETTABLEKS R11 R12 K21 ["SetRespawnBehaviour"]
+  CALL R10 1 1
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R14 R8 K18 ["Parent"]
+  GETTABLEKS R13 R14 K10 ["Common"]
+  GETTABLEKS R12 R13 K22 ["EventConnection"]
+  CALL R11 1 1
+  LOADK R14 K5 ["RobloxGui"]
+  NAMECALL R12 R1 K6 ["WaitForChild"]
+  CALL R12 2 1
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R12 K9 ["Modules"]
+  GETTABLEKS R14 R15 K23 ["isNewInGameMenuEnabled"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R18 R12 K9 ["Modules"]
+  GETTABLEKS R17 R18 K10 ["Common"]
+  GETTABLEKS R16 R17 K24 ["Flags"]
+  GETTABLEKS R15 R16 K25 ["GetFFlagEnableInGameMenuDurationLogger"]
+  CALL R14 1 1
+  GETTABLEKS R15 R4 K26 ["PureComponent"]
+  LOADK R17 K27 ["MenuConnector"]
+  NAMECALL R15 R15 K28 ["extend"]
+  CALL R15 2 1
+  GETTABLEKS R16 R6 K29 ["strictInterface"]
+  DUPTABLE R17 K32 [{"setMenuOpen", "setRespawnBehaviour"}]
+  GETTABLEKS R18 R6 K33 ["callback"]
+  SETTABLEKS R18 R17 K30 ["setMenuOpen"]
+  GETTABLEKS R18 R6 K33 ["callback"]
+  SETTABLEKS R18 R17 K31 ["setRespawnBehaviour"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K34 ["validateProps"]
+  DUPCLOSURE R16 K35 [PROTO_0]
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  SETTABLEKS R16 R15 K36 ["didMount"]
+  DUPCLOSURE R16 K37 [PROTO_5]
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  CAPTURE VAL R4
+  CAPTURE VAL R11
+  CAPTURE VAL R14
+  CAPTURE VAL R3
+  SETTABLEKS R16 R15 K38 ["render"]
+  DUPCLOSURE R16 K39 [PROTO_8]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  GETTABLEKS R17 R5 K40 ["UNSTABLE_connect2"]
+  LOADNIL R18
+  MOVE R19 R16
+  CALL R17 2 1
+  MOVE R18 R15
+  CALL R17 1 -1
+  RETURN R17 -1

@@ -1,0 +1,293 @@
+PROTO_0:
+  GETIMPORT R0 K1 [require]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["Integrations"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  NEWTABLE R0 0 3
+  LOADK R1 K0 ["leaderboard"]
+  LOADK R2 K1 ["emotes"]
+  LOADK R3 K2 ["backpack"]
+  SETLIST R0 R1 3 [1]
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+8]
+  NEWTABLE R1 0 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["TOGGLE_MIC_INTEGRATION_ID"]
+  SETLIST R1 R2 1 [1]
+  JUMP [+2]
+  NEWTABLE R1 0 0
+  FASTCALL2K TABLE_INSERT R0 K4 [+5]
+  MOVE R3 R0
+  LOADK R4 K4 ["respawn"]
+  GETIMPORT R2 K7 [table.insert]
+  CALL R2 2 0
+  LOADN R4 1
+  LOADK R5 K8 ["trust_and_safety"]
+  FASTCALL3 TABLE_INSERT R0 R4 R5
+  MOVE R3 R0
+  GETIMPORT R2 K7 [table.insert]
+  CALL R2 3 0
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+8]
+  LOADN R4 1
+  LOADK R5 K9 ["connect_dropdown"]
+  FASTCALL3 TABLE_INSERT R0 R4 R5
+  MOVE R3 R0
+  GETIMPORT R2 K7 [table.insert]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 1
+  JUMPIFNOT R2 [+30]
+  GETUPVAL R2 4
+  LOADK R4 K8 ["trust_and_safety"]
+  NAMECALL R2 R2 K10 ["isUserPinned"]
+  CALL R2 2 1
+  JUMPIF R2 [+24]
+  GETUPVAL R2 5
+  CALL R2 0 1
+  JUMPIF R2 [+21]
+  GETUPVAL R2 4
+  LOADK R4 K8 ["trust_and_safety"]
+  LOADB R5 1
+  NAMECALL R2 R2 K11 ["setUserPin"]
+  CALL R2 3 0
+  GETUPVAL R2 6
+  CALL R2 0 1
+  JUMPIFNOT R2 [+12]
+  GETUPVAL R3 7
+  GETTABLEKS R2 R3 K12 ["default"]
+  LOADK R4 K8 ["trust_and_safety"]
+  LOADB R5 1
+  GETUPVAL R6 4
+  NAMECALL R6 R6 K13 ["userPins"]
+  CALL R6 1 -1
+  NAMECALL R2 R2 K14 ["setPin"]
+  CALL R2 -1 0
+  NEWTABLE R2 0 3
+  LOADK R3 K15 ["toggle_mic_mute"]
+  LOADK R4 K16 ["chat"]
+  LOADK R5 K17 ["nine_dot"]
+  SETLIST R2 R3 3 [1]
+  GETUPVAL R3 8
+  CALL R3 0 1
+  JUMPIFNOT R3 [+8]
+  LOADN R5 2
+  LOADK R6 K18 ["join_voice"]
+  FASTCALL3 TABLE_INSERT R2 R5 R6
+  MOVE R4 R2
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  GETUPVAL R3 9
+  CALL R3 0 1
+  JUMPIFNOT R3 [+24]
+  LOADN R5 1
+  LOADK R6 K19 ["dummy_window"]
+  FASTCALL3 TABLE_INSERT R2 R5 R6
+  MOVE R4 R2
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  LOADN R5 1
+  LOADK R6 K20 ["dummy_window_2"]
+  FASTCALL3 TABLE_INSERT R2 R5 R6
+  MOVE R4 R2
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  LOADN R5 1
+  LOADK R6 K21 ["dummy_container"]
+  FASTCALL3 TABLE_INSERT R2 R5 R6
+  MOVE R4 R2
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  GETUPVAL R3 10
+  CALL R3 0 1
+  JUMPIFNOT R3 [+14]
+  GETIMPORT R3 K23 [table.find]
+  MOVE R4 R2
+  LOADK R5 K16 ["chat"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+8]
+  ADDK R6 R3 K24 [1]
+  LOADK R7 K25 ["connect_unibar"]
+  FASTCALL3 TABLE_INSERT R2 R6 R7
+  MOVE R5 R2
+  GETIMPORT R4 K7 [table.insert]
+  CALL R4 3 0
+  GETUPVAL R3 4
+  NEWTABLE R5 0 2
+  MOVE R6 R1
+  MOVE R7 R2
+  SETLIST R5 R6 2 [1]
+  NAMECALL R3 R3 K26 ["configureMenu"]
+  CALL R3 2 0
+  LOADN R5 2
+  LOADK R6 K27 ["camera_entrypoint"]
+  FASTCALL3 TABLE_INSERT R0 R5 R6
+  MOVE R4 R0
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  LOADN R5 2
+  LOADK R6 K28 ["selfie_view"]
+  FASTCALL3 TABLE_INSERT R0 R5 R6
+  MOVE R4 R0
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  GETUPVAL R3 11
+  CALL R3 0 1
+  JUMPIFNOT R3 [+8]
+  LOADN R5 4
+  LOADK R6 K29 ["music_entrypoint"]
+  FASTCALL3 TABLE_INSERT R0 R5 R6
+  MOVE R4 R0
+  GETIMPORT R3 K7 [table.insert]
+  CALL R3 3 0
+  GETUPVAL R3 4
+  LOADK R5 K17 ["nine_dot"]
+  MOVE R6 R0
+  NAMECALL R3 R3 K30 ["configureSubMenu"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+30]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["music_peek"]
+  DUPTABLE R3 K2 [{"integrations"}]
+  NEWTABLE R4 0 3
+  LOADK R5 K3 ["music_icon"]
+  LOADK R6 K4 ["peek_track_details"]
+  LOADK R7 K5 ["peek_close"]
+  SETLIST R4 R5 3 [1]
+  SETTABLEKS R4 R3 K1 ["integrations"]
+  NAMECALL R0 R0 K6 ["configurePeek"]
+  CALL R0 3 0
+  GETUPVAL R0 1
+  LOADK R2 K7 ["music_peek_portrait"]
+  DUPTABLE R3 K2 [{"integrations"}]
+  NEWTABLE R4 0 3
+  LOADK R5 K3 ["music_icon"]
+  LOADK R6 K4 ["peek_track_details"]
+  LOADK R7 K5 ["peek_close"]
+  SETLIST R4 R5 3 [1]
+  SETTABLEKS R4 R3 K1 ["integrations"]
+  NAMECALL R0 R0 K6 ["configurePeek"]
+  CALL R0 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R3 R0 K10 ["Enabled"]
+  CALL R2 1 1
+  MOVE R3 R2
+  CALL R3 0 1
+  JUMPIF R3 [+1]
+  RETURN R0 0
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R0 K11 ["ChromeShared"]
+  GETTABLEKS R5 R6 K12 ["Analytics"]
+  GETTABLEKS R4 R5 K13 ["ChromeAnalytics"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R5 R0 K14 ["Service"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K15 ["Integrations"]
+  GETTABLEKS R7 R8 K16 ["Party"]
+  GETTABLEKS R6 R7 K17 ["Constants"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R0 K15 ["Integrations"]
+  GETTABLEKS R8 R9 K18 ["Connect"]
+  GETTABLEKS R7 R8 K19 ["isConnectUnibarEnabled"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R10 R0 K15 ["Integrations"]
+  GETTABLEKS R9 R10 K18 ["Connect"]
+  GETTABLEKS R8 R9 K20 ["isConnectDropdownEnabled"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R10 R0 K21 ["Flags"]
+  GETTABLEKS R9 R10 K22 ["GetFFlagEnableSongbirdPeek"]
+  CALL R8 1 1
+  GETIMPORT R10 K9 [require]
+  GETTABLEKS R13 R1 K23 ["Workspace"]
+  GETTABLEKS R12 R13 K24 ["Packages"]
+  GETTABLEKS R11 R12 K25 ["SharedFlags"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K26 ["GetFFlagDebugEnableUnibarDummyIntegrations"]
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R14 R1 K23 ["Workspace"]
+  GETTABLEKS R13 R14 K24 ["Packages"]
+  GETTABLEKS R12 R13 K25 ["SharedFlags"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K27 ["GetFFlagEnableSaveUserPins"]
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R15 R1 K23 ["Workspace"]
+  GETTABLEKS R14 R15 K24 ["Packages"]
+  GETTABLEKS R13 R14 K25 ["SharedFlags"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K28 ["GetFFlagEnableChromePinAnalytics"]
+  GETIMPORT R13 K9 [require]
+  GETTABLEKS R16 R1 K23 ["Workspace"]
+  GETTABLEKS R15 R16 K24 ["Packages"]
+  GETTABLEKS R14 R15 K25 ["SharedFlags"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K29 ["GetFFlagEnableChromePinIntegrations"]
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R17 R1 K23 ["Workspace"]
+  GETTABLEKS R16 R17 K24 ["Packages"]
+  GETTABLEKS R15 R16 K25 ["SharedFlags"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K30 ["GetFFlagEnablePartyMicIconInChrome"]
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R16 R0 K21 ["Flags"]
+  GETTABLEKS R15 R16 K31 ["GetFFlagEnableSongbirdInChrome"]
+  CALL R14 1 1
+  GETIMPORT R16 K9 [require]
+  GETTABLEKS R19 R1 K23 ["Workspace"]
+  GETTABLEKS R18 R19 K24 ["Packages"]
+  GETTABLEKS R17 R18 K25 ["SharedFlags"]
+  CALL R16 1 1
+  GETTABLEKS R15 R16 K32 ["GetFFlagEnableJoinVoiceOnUnibar"]
+  DUPCLOSURE R16 K33 [PROTO_0]
+  CAPTURE VAL R0
+  DUPCLOSURE R17 K34 [PROTO_1]
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE VAL R12
+  CAPTURE VAL R4
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R14
+  DUPCLOSURE R18 K35 [PROTO_2]
+  CAPTURE VAL R8
+  CAPTURE VAL R4
+  GETIMPORT R19 K9 [require]
+  GETTABLEKS R20 R0 K15 ["Integrations"]
+  CALL R19 1 0
+  MOVE R19 R17
+  CALL R19 0 0
+  MOVE R19 R18
+  CALL R19 0 0
+  LOADNIL R19
+  RETURN R19 1

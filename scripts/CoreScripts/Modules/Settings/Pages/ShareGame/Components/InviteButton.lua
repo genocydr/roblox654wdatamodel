@@ -11,8 +11,6 @@ local Constants = require(ShareGame.Constants)
 local RectangleButton = require(ShareGame.Components.RectangleButton)
 local Theme = require(RobloxGui.Modules.Settings.Theme)
 
-local GetFFlagInviteFriendsDesignUpdates = require(RobloxGui.Modules.Settings.Flags.GetFFlagInviteFriendsDesignUpdates)
-
 local INVITE_TEXT_FONT = Theme.font(Enum.Font.SourceSansSemibold, "Semibold")
 local INVITE_TEXT_SIZE = Theme.textSize(19)
 local InviteStatus = Constants.InviteStatus
@@ -70,9 +68,7 @@ function InviteButton:render()
 			Text = RobloxTranslator:FormatByKey(inviteText),
 			TextSize = INVITE_TEXT_SIZE,
 			TextColor3 = Constants.Color.WHITE,
-			TextXAlignment = if GetFFlagInviteFriendsDesignUpdates()
-				then Enum.TextXAlignment.Center
-				else Enum.TextXAlignment.Right,
+			TextXAlignment = Enum.TextXAlignment.Center,
 			LayoutOrder = layoutOrder,
 			ZIndex = zIndex,
 		})

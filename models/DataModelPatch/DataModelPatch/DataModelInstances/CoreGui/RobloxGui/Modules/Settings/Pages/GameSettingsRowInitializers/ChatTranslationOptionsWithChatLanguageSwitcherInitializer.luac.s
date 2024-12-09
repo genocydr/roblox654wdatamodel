@@ -1,0 +1,596 @@
+PROTO_0:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+20]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["ChatTranslationLocale"]
+  GETUPVAL R3 2
+  GETTABLE R2 R3 R0
+  GETUPVAL R3 1
+  SETTABLEKS R2 R3 K0 ["ChatTranslationLocale"]
+  GETUPVAL R3 3
+  MOVE R5 R2
+  NAMECALL R3 R3 K1 ["SetChatTranslationSettingsLocaleId"]
+  CALL R3 2 0
+  SETUPVAL R2 4
+  GETUPVAL R3 5
+  LOADK R4 K2 ["chat_translation_locale"]
+  MOVE R5 R1
+  MOVE R6 R2
+  CALL R3 3 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETTABLE R2 R3 R0
+  SETTABLEKS R2 R1 K0 ["ChatTranslationLocale"]
+  GETUPVAL R1 3
+  GETUPVAL R4 2
+  GETTABLE R3 R4 R0
+  NAMECALL R1 R1 K1 ["SetChatTranslationSettingsLocaleId"]
+  CALL R1 2 0
+  GETUPVAL R2 2
+  GETTABLE R1 R2 R0
+  SETUPVAL R1 4
+  RETURN R0 0
+
+PROTO_1:
+  JUMPIFNOTEQKN R0 K0 [1] [+3]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["ChatTranslationToggleEnabled"]
+  JUMPIFEQ R1 R2 [+19]
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 2
+  SETTABLEKS R1 R3 K1 ["ChatTranslationToggleEnabled"]
+  JUMP [+3]
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K1 ["ChatTranslationToggleEnabled"]
+  GETUPVAL R3 3
+  LOADK R4 K2 ["chat_translation_toggle"]
+  MOVE R5 R2
+  MOVE R6 R1
+  DUPTABLE R7 K4 [{"locale_id"}]
+  GETUPVAL R8 4
+  SETTABLEKS R8 R7 K3 ["locale_id"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_2:
+  JUMPIFNOTEQKN R0 K0 [1] [+3]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["ChatTranslationEnabled"]
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 2
+  SETTABLEKS R1 R3 K1 ["ChatTranslationEnabled"]
+  JUMP [+3]
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K1 ["ChatTranslationEnabled"]
+  GETUPVAL R3 3
+  LOADK R4 K2 ["chat_translation"]
+  MOVE R5 R2
+  MOVE R6 R1
+  DUPTABLE R7 K4 [{"locale_id"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K5 ["LocaleId"]
+  SETTABLEKS R8 R7 K3 ["locale_id"]
+  CALL R3 4 0
+  JUMPIFNOTEQKN R0 K0 [1] [+14]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K6 ["ChatLanguageSelectorFrame"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K7 ["Visible"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K8 ["ChatTranslationToggleFrame"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K7 ["Visible"]
+  RETURN R0 0
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K6 ["ChatLanguageSelectorFrame"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K7 ["Visible"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K8 ["ChatTranslationToggleFrame"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K7 ["Visible"]
+  RETURN R0 0
+
+PROTO_3:
+  JUMPIF R0 [+65]
+  JUMPIFNOTEQKNIL R1 [+2]
+  LOADK R1 K0 ["Locales call did not set error message to non-nil value"]
+  GETUPVAL R2 0
+  LOADK R5 K1 ["GameSettings chat language selector initialization failed to get all required information; defaulting to unavailable for the remainder of this session. Error message: "]
+  MOVE R6 R1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K2 ["warning"]
+  CALL R2 2 0
+  GETUPVAL R2 1
+  JUMPIFNOT R2 [+23]
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 2
+  GETUPVAL R5 3
+  GETUPVAL R7 2
+  LOADK R8 K3 ["Chat Translation Language"]
+  LOADK R9 K4 ["DropDown"]
+  NEWTABLE R10 0 1
+  LOADK R11 K5 ["Unavailable"]
+  SETLIST R10 R11 1 [1]
+  LOADN R11 1
+  NAMECALL R5 R5 K6 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R6 R3 K8 ["ChatLanguageSelectorLabel"]
+  SETTABLEKS R7 R4 K9 ["ChatLanguageSelectorMode"]
+  JUMP [+22]
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 2
+  GETUPVAL R5 3
+  GETUPVAL R7 2
+  LOADK R8 K10 ["Chat Language"]
+  LOADK R9 K4 ["DropDown"]
+  NEWTABLE R10 0 1
+  LOADK R11 K5 ["Unavailable"]
+  SETLIST R10 R11 1 [1]
+  LOADN R11 1
+  NAMECALL R5 R5 K6 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R6 R3 K8 ["ChatLanguageSelectorLabel"]
+  SETTABLEKS R7 R4 K9 ["ChatLanguageSelectorMode"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["ChatLanguageSelectorFrame"]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R3 R2 K11 ["LayoutOrder"]
+  LOADNIL R2
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K12 ["ChatTranslationLocale"]
+  JUMPIFEQKS R3 K13 [""] [+10]
+  GETUPVAL R4 6
+  LOADNIL R5
+  LOADNIL R6
+  FORGPREP R4
+  JUMPIFNOTEQ R8 R3 [+2]
+  MOVE R2 R7
+  FORGLOOP R4 2 [-4]
+  JUMPIFEQKS R3 K13 [""] [+3]
+  JUMPIFNOTEQKNIL R2 [+22]
+  GETUPVAL R4 6
+  LOADNIL R5
+  LOADNIL R6
+  FORGPREP R4
+  GETUPVAL R10 7
+  GETTABLEKS R9 R10 K14 ["LocaleId"]
+  LOADK R11 K15 ["-"]
+  LOADK R12 K16 ["_"]
+  NAMECALL R9 R9 K17 ["gsub"]
+  CALL R9 3 1
+  JUMPIFNOTEQ R8 R9 [+6]
+  MOVE R2 R7
+  GETUPVAL R9 8
+  LOADB R10 1
+  SETTABLEKS R10 R9 K18 ["ChatTranslationEnabled"]
+  FORGLOOP R4 2 [-16]
+  JUMPIFNOTEQKNIL R2 [+7]
+  GETUPVAL R4 8
+  LOADB R5 0
+  SETTABLEKS R5 R4 K18 ["ChatTranslationEnabled"]
+  LOADN R2 1
+  JUMP [+5]
+  GETUPVAL R4 5
+  GETUPVAL R6 6
+  GETTABLE R5 R6 R2
+  SETTABLEKS R5 R4 K12 ["ChatTranslationLocale"]
+  GETUPVAL R4 7
+  GETUPVAL R7 6
+  GETTABLE R6 R7 R2
+  NAMECALL R4 R4 K19 ["SetChatTranslationSettingsLocaleId"]
+  CALL R4 2 0
+  GETUPVAL R5 6
+  GETTABLE R4 R5 R2
+  GETUPVAL R5 1
+  JUMPIFNOT R5 [+19]
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 3
+  GETUPVAL R10 2
+  LOADK R11 K3 ["Chat Translation Language"]
+  LOADK R12 K4 ["DropDown"]
+  GETUPVAL R13 9
+  MOVE R14 R2
+  NAMECALL R8 R8 K6 ["AddNewRow"]
+  CALL R8 6 3
+  SETTABLEKS R8 R5 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R9 R6 K8 ["ChatLanguageSelectorLabel"]
+  SETTABLEKS R10 R7 K9 ["ChatLanguageSelectorMode"]
+  JUMP [+18]
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 3
+  GETUPVAL R10 2
+  LOADK R11 K10 ["Chat Language"]
+  LOADK R12 K4 ["DropDown"]
+  GETUPVAL R13 9
+  MOVE R14 R2
+  NAMECALL R8 R8 K6 ["AddNewRow"]
+  CALL R8 6 3
+  SETTABLEKS R8 R5 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R9 R6 K8 ["ChatLanguageSelectorLabel"]
+  SETTABLEKS R10 R7 K9 ["ChatLanguageSelectorMode"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K7 ["ChatLanguageSelectorFrame"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K7 ["ChatLanguageSelectorFrame"]
+  SETTABLEKS R6 R5 K11 ["LayoutOrder"]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE REF R4
+  CAPTURE UPVAL U11
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K9 ["ChatLanguageSelectorMode"]
+  GETTABLEKS R6 R7 K20 ["IndexChanged"]
+  MOVE R8 R5
+  NAMECALL R6 R6 K21 ["connect"]
+  CALL R6 2 0
+  GETUPVAL R8 8
+  GETTABLEKS R7 R8 K22 ["ChatTranslationToggleEnabled"]
+  JUMPIFNOT R7 [+2]
+  LOADN R6 1
+  JUMP [+1]
+  LOADN R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 2
+  GETUPVAL R9 2
+  GETUPVAL R10 3
+  GETUPVAL R12 2
+  LOADK R13 K23 ["Option to View Untranslated Message"]
+  LOADK R14 K24 ["Selector"]
+  NEWTABLE R15 0 2
+  LOADK R16 K25 ["On"]
+  LOADK R17 K26 ["Off"]
+  SETLIST R15 R16 2 [1]
+  MOVE R16 R6
+  NAMECALL R10 R10 K6 ["AddNewRow"]
+  CALL R10 6 3
+  SETTABLEKS R10 R7 K27 ["ChatTranslationToggleFrame"]
+  SETTABLEKS R11 R8 K28 ["ChatTranslationToggleLabel"]
+  SETTABLEKS R12 R9 K29 ["ChatTranslationToggleEnabler"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K27 ["ChatTranslationToggleFrame"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K27 ["ChatTranslationToggleFrame"]
+  SETTABLEKS R8 R7 K11 ["LayoutOrder"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K29 ["ChatTranslationToggleEnabler"]
+  GETTABLEKS R7 R8 K20 ["IndexChanged"]
+  NEWCLOSURE R9 P1
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U11
+  CAPTURE REF R4
+  NAMECALL R7 R7 K21 ["connect"]
+  CALL R7 2 0
+  GETUPVAL R9 8
+  GETTABLEKS R8 R9 K18 ["ChatTranslationEnabled"]
+  JUMPIFNOT R8 [+2]
+  LOADN R7 1
+  JUMP [+1]
+  LOADN R7 2
+  JUMPIFNOTEQKN R7 K30 [2] [+13]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K7 ["ChatLanguageSelectorFrame"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K31 ["Visible"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K27 ["ChatTranslationToggleFrame"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K31 ["Visible"]
+  GETUPVAL R8 2
+  GETUPVAL R9 2
+  GETUPVAL R10 2
+  GETUPVAL R11 3
+  GETUPVAL R13 2
+  LOADK R14 K32 ["Automatic Chat Translation"]
+  LOADK R15 K24 ["Selector"]
+  NEWTABLE R16 0 2
+  LOADK R17 K25 ["On"]
+  LOADK R18 K26 ["Off"]
+  SETLIST R16 R17 2 [1]
+  MOVE R17 R7
+  NAMECALL R11 R11 K6 ["AddNewRow"]
+  CALL R11 6 3
+  SETTABLEKS R11 R8 K33 ["ChatTranslationFrame"]
+  SETTABLEKS R12 R9 K34 ["ChatTranslationLabel"]
+  SETTABLEKS R13 R10 K35 ["ChatTranslationEnabler"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K33 ["ChatTranslationFrame"]
+  GETUPVAL R10 4
+  GETTABLEKS R9 R10 K33 ["ChatTranslationFrame"]
+  SETTABLEKS R9 R8 K11 ["LayoutOrder"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K35 ["ChatTranslationEnabler"]
+  GETTABLEKS R8 R9 K20 ["IndexChanged"]
+  NEWCLOSURE R10 P2
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U2
+  NAMECALL R8 R8 K21 ["connect"]
+  CALL R8 2 0
+  CLOSEUPVALS R4
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  LOADNIL R2
+  LOADNIL R3
+  FORGPREP R1
+  JUMPIFNOTEQ R5 R0 [+3]
+  LOADB R6 1
+  RETURN R6 1
+  FORGLOOP R1 2 [-5]
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETUPVAL R1 2
+  CALL R1 0 1
+  LOADK R4 K2 ["([^,]+)"]
+  NAMECALL R2 R1 K3 ["gmatch"]
+  CALL R2 2 1
+  NEWTABLE R3 0 0
+  MOVE R4 R2
+  LOADNIL R5
+  LOADNIL R6
+  FORGPREP R4
+  FASTCALL2 TABLE_INSERT R3 R7 [+5]
+  MOVE R10 R3
+  MOVE R11 R7
+  GETIMPORT R9 K6 [table.insert]
+  CALL R9 2 0
+  FORGLOOP R4 1 [-8]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R3
+  LOADN R5 2
+  GETIMPORT R6 K8 [pairs]
+  GETTABLEKS R7 R0 K9 ["data"]
+  CALL R6 1 3
+  FORGPREP_NEXT R6
+  GETTABLEKS R12 R10 K10 ["locale"]
+  GETTABLEKS R11 R12 K10 ["locale"]
+  GETTABLEKS R14 R10 K10 ["locale"]
+  GETTABLEKS R13 R14 K11 ["language"]
+  GETTABLEKS R12 R13 K12 ["name"]
+  JUMPIFNOTEQKS R11 K13 ["en_us"] [+4]
+  GETUPVAL R13 3
+  SETTABLEN R12 R13 1
+  JUMP [+24]
+  MOVE R14 R3
+  LOADNIL R15
+  LOADNIL R16
+  FORGPREP R14
+  JUMPIFNOTEQ R18 R11 [+3]
+  LOADB R13 1
+  JUMP [+3]
+  FORGLOOP R14 2 [-5]
+  LOADB R13 0
+  JUMPIFNOT R13 [+12]
+  GETUPVAL R14 3
+  FASTCALL2 TABLE_INSERT R14 R12 [+4]
+  MOVE R15 R12
+  GETIMPORT R13 K6 [table.insert]
+  CALL R13 2 0
+  GETUPVAL R13 4
+  SETTABLE R11 R13 R5
+  GETUPVAL R13 5
+  SETTABLE R5 R13 R11
+  ADDK R5 R5 K14 [1]
+  FORGLOOP R6 2 [-40]
+  RETURN R0 0
+
+PROTO_6:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["Locale Code to Language Code Mapping Request: Connection error"]
+  JUMP [+33]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["Locale Code to Language Code Mapping Request: Unauthorized"]
+  JUMP [+27]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["Locale Code to Language Code Mapping Request Status code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+12]
+  GETIMPORT R4 K6 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CALL R4 1 2
+  MOVE R2 R4
+  MOVE R3 R5
+  JUMPIF R2 [+9]
+  GETUPVAL R4 5
+  LOADK R7 K7 ["GameSettings chat language selector initialization: Failed to get response from Localization API for "]
+  GETUPVAL R8 6
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  GETUPVAL R4 7
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_7:
+  NEWTABLE R3 0 1
+  LOADK R4 K0 ["en_us"]
+  SETTABLEN R4 R3 1
+  NEWTABLE R4 1 0
+  LOADN R5 1
+  SETTABLEKS R5 R4 K0 ["en_us"]
+  NEWTABLE R5 0 1
+  LOADK R6 K1 ["English"]
+  SETLIST R5 R6 1 [1]
+  GETUPVAL R9 0
+  GETTABLEKS R7 R9 K2 ["LOCALE_URL"]
+  GETIMPORT R8 K5 [string.format]
+  LOADK R9 K6 ["v1/locales?displayValueLocale=%s"]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K7 ["LocalPlayer"]
+  GETTABLEKS R10 R11 K8 ["LocaleId"]
+  LOADK R12 K9 ["-"]
+  LOADK R13 K10 ["_"]
+  NAMECALL R10 R10 K11 ["gsub"]
+  CALL R10 3 -1
+  CALL R8 -1 1
+  CONCAT R6 R7 R8
+  GETUPVAL R7 2
+  DUPTABLE R9 K14 [{"Url", "Method"}]
+  SETTABLEKS R6 R9 K12 ["Url"]
+  LOADK R10 K15 ["GET"]
+  SETTABLEKS R10 R9 K13 ["Method"]
+  NAMECALL R7 R7 K16 ["RequestInternal"]
+  CALL R7 2 1
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE VAL R5
+  CAPTURE UPVAL U9
+  CAPTURE VAL R2
+  CAPTURE UPVAL U10
+  NEWCLOSURE R11 P1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U11
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE UPVAL U3
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  NAMECALL R9 R7 K17 ["Start"]
+  CALL R9 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["TextChatService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["HttpService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CorePackages"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R2 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [require]
+  GETTABLEKS R8 R4 K11 ["Modules"]
+  GETTABLEKS R7 R8 K12 ["Common"]
+  GETTABLEKS R6 R7 K13 ["Url"]
+  CALL R5 1 1
+  GETIMPORT R6 K15 [UserSettings]
+  CALL R6 0 1
+  GETTABLEKS R7 R6 K16 ["GameSettings"]
+  GETIMPORT R8 K1 [game]
+  LOADK R10 K17 ["Players"]
+  NAMECALL R8 R8 K3 ["GetService"]
+  CALL R8 2 1
+  GETTABLEKS R9 R8 K18 ["LocalPlayer"]
+  GETIMPORT R10 K10 [require]
+  GETTABLEKS R13 R4 K11 ["Modules"]
+  GETTABLEKS R12 R13 K19 ["Settings"]
+  GETTABLEKS R11 R12 K20 ["Utility"]
+  CALL R10 1 1
+  GETIMPORT R12 K10 [require]
+  GETTABLEKS R15 R3 K21 ["Workspace"]
+  GETTABLEKS R14 R15 K22 ["Packages"]
+  GETTABLEKS R13 R14 K23 ["CoreScriptsInitializer"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K24 ["CoreLogger"]
+  GETIMPORT R14 K26 [script]
+  GETTABLEKS R13 R14 K27 ["Name"]
+  NAMECALL R11 R11 K28 ["new"]
+  CALL R11 2 1
+  GETIMPORT R12 K1 [game]
+  LOADK R14 K29 ["FixChatLanguageSwitcherLabel"]
+  LOADB R15 0
+  NAMECALL R12 R12 K30 ["DefineFastFlag"]
+  CALL R12 3 1
+  GETIMPORT R13 K10 [require]
+  GETTABLEKS R16 R4 K11 ["Modules"]
+  GETTABLEKS R15 R16 K31 ["Flags"]
+  GETTABLEKS R14 R15 K32 ["GetFStringChatTranslationEnabledLocales"]
+  CALL R13 1 1
+  GETIMPORT R14 K1 [game]
+  LOADK R16 K33 ["TextChatServiceSettingsSaved"]
+  NAMECALL R14 R14 K34 ["GetEngineFeature"]
+  CALL R14 2 1
+  GETIMPORT R15 K10 [require]
+  GETTABLEKS R18 R4 K11 ["Modules"]
+  GETTABLEKS R17 R18 K31 ["Flags"]
+  GETTABLEKS R16 R17 K35 ["FFlagInExperienceSettingsRefactorAnalytics"]
+  CALL R15 1 1
+  DUPCLOSURE R16 K36 [PROTO_7]
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  CAPTURE VAL R9
+  CAPTURE VAL R0
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R13
+  RETURN R16 1

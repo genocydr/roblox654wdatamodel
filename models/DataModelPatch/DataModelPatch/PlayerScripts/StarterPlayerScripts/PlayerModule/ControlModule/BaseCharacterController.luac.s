@@ -1,0 +1,71 @@
+PROTO_0:
+  NEWTABLE R1 8 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["enabled"]
+  GETUPVAL R1 1
+  SETTABLEKS R1 R0 K3 ["moveVector"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K4 ["moveVectorIsCameraRelative"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K5 ["isJumping"]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K6 ["new"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K7 ["_connectionUtil"]
+  RETURN R0 1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["moveVector"]
+  RETURN R1 1
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["moveVectorIsCameraRelative"]
+  RETURN R1 1
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["isJumping"]
+  RETURN R1 1
+
+PROTO_4:
+  GETIMPORT R2 K1 [error]
+  LOADK R3 K2 ["BaseCharacterController:Enable must be overridden in derived classes and should not be called."]
+  CALL R2 1 0
+  LOADB R2 0
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  LOADK R2 K3 ["CommonUtils"]
+  NAMECALL R0 R0 K4 ["WaitForChild"]
+  CALL R0 2 1
+  GETIMPORT R1 K6 [require]
+  LOADK R4 K7 ["ConnectionUtil"]
+  NAMECALL R2 R0 K4 ["WaitForChild"]
+  CALL R2 2 -1
+  CALL R1 -1 1
+  FASTCALL VECTOR [+2]
+  GETIMPORT R2 K10 [Vector3.new]
+  CALL R2 0 1
+  NEWTABLE R3 0 0
+  SETTABLEKS R3 R3 K11 ["__index"]
+  DUPCLOSURE R4 K12 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  SETTABLEKS R4 R3 K9 ["new"]
+  DUPCLOSURE R4 K13 [PROTO_1]
+  SETTABLEKS R4 R3 K14 ["GetMoveVector"]
+  DUPCLOSURE R4 K15 [PROTO_2]
+  SETTABLEKS R4 R3 K16 ["IsMoveVectorCameraRelative"]
+  DUPCLOSURE R4 K17 [PROTO_3]
+  SETTABLEKS R4 R3 K18 ["GetIsJumping"]
+  DUPCLOSURE R4 K19 [PROTO_4]
+  SETTABLEKS R4 R3 K20 ["Enable"]
+  RETURN R3 1

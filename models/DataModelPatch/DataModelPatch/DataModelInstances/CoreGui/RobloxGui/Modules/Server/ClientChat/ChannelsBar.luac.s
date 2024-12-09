@@ -1,0 +1,1013 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETIMPORT R2 K2 [string.format]
+  LOADK R3 K3 ["/leave %s"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["Value"]
+  CALL R2 2 1
+  LOADNIL R3
+  NAMECALL R0 R0 K5 ["SendMessage"]
+  CALL R0 3 0
+  GETUPVAL R0 2
+  GETUPVAL R2 3
+  GETIMPORT R3 K9 [Enum.EasingDirection.Out]
+  GETIMPORT R4 K12 [Enum.EasingStyle.Quad]
+  LOADK R5 K13 [0.2]
+  LOADB R6 1
+  NAMECALL R0 R0 K14 ["TweenPosition"]
+  CALL R0 6 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETIMPORT R3 K3 [Enum.EasingDirection.Out]
+  GETIMPORT R4 K6 [Enum.EasingStyle.Quad]
+  LOADK R5 K7 [0.2]
+  LOADB R6 1
+  NAMECALL R0 R0 K8 ["TweenPosition"]
+  CALL R0 6 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  LOADN R2 255
+  NAMECALL R0 R0 K0 ["ScrollChannelsFrame"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  LOADN R2 1
+  NAMECALL R0 R0 K0 ["ScrollChannelsFrame"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETIMPORT R2 K2 [Instance.new]
+  LOADK R3 K3 ["Frame"]
+  CALL R2 1 1
+  LOADB R3 0
+  SETTABLEKS R3 R2 K4 ["Selectable"]
+  GETIMPORT R3 K6 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 0
+  LOADN R6 1
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K7 ["Size"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K8 ["BackgroundTransparency"]
+  SETTABLEKS R1 R2 K9 ["Parent"]
+  GETIMPORT R3 K2 [Instance.new]
+  LOADK R4 K3 ["Frame"]
+  CALL R3 1 1
+  LOADB R4 0
+  SETTABLEKS R4 R3 K4 ["Selectable"]
+  LOADK R4 K10 ["ScrollingBase"]
+  SETTABLEKS R4 R3 K11 ["Name"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K8 ["BackgroundTransparency"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K12 ["ClipsDescendants"]
+  GETIMPORT R4 K6 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K7 ["Size"]
+  GETIMPORT R4 K6 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K13 ["Position"]
+  SETTABLEKS R2 R3 K9 ["Parent"]
+  GETIMPORT R4 K2 [Instance.new]
+  LOADK R5 K3 ["Frame"]
+  CALL R4 1 1
+  LOADB R5 0
+  SETTABLEKS R5 R4 K4 ["Selectable"]
+  LOADK R5 K14 ["ScrollerSizer"]
+  SETTABLEKS R5 R4 K11 ["Name"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K8 ["BackgroundTransparency"]
+  GETIMPORT R5 K6 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 1
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K7 ["Size"]
+  GETIMPORT R5 K6 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K13 ["Position"]
+  SETTABLEKS R3 R4 K9 ["Parent"]
+  GETIMPORT R5 K2 [Instance.new]
+  LOADK R6 K3 ["Frame"]
+  CALL R5 1 1
+  LOADB R6 0
+  SETTABLEKS R6 R5 K4 ["Selectable"]
+  LOADK R6 K15 ["ScrollerFrame"]
+  SETTABLEKS R6 R5 K11 ["Name"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K8 ["BackgroundTransparency"]
+  GETIMPORT R6 K6 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 1
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K7 ["Size"]
+  GETIMPORT R6 K6 [UDim2.new]
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K13 ["Position"]
+  SETTABLEKS R4 R5 K9 ["Parent"]
+  GETIMPORT R6 K2 [Instance.new]
+  LOADK R7 K3 ["Frame"]
+  CALL R6 1 1
+  LOADB R7 0
+  SETTABLEKS R7 R6 K4 ["Selectable"]
+  GETIMPORT R7 K6 [UDim2.new]
+  LOADN R8 1
+  LOADN R9 0
+  LOADN R10 1
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K7 ["Size"]
+  GETIMPORT R7 K6 [UDim2.new]
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K13 ["Position"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K12 ["ClipsDescendants"]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K8 ["BackgroundTransparency"]
+  SETTABLEKS R2 R6 K9 ["Parent"]
+  GETIMPORT R7 K2 [Instance.new]
+  LOADK R8 K3 ["Frame"]
+  CALL R7 1 1
+  LOADB R8 0
+  SETTABLEKS R8 R7 K4 ["Selectable"]
+  LOADK R8 K16 ["LeaveConfirmationFrame"]
+  SETTABLEKS R8 R7 K11 ["Name"]
+  GETIMPORT R8 K6 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K7 ["Size"]
+  GETIMPORT R8 K6 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K13 ["Position"]
+  LOADK R8 K17 [0.6]
+  SETTABLEKS R8 R7 K8 ["BackgroundTransparency"]
+  LOADN R8 0
+  SETTABLEKS R8 R7 K18 ["BorderSizePixel"]
+  GETIMPORT R8 K20 [Color3.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K21 ["BackgroundColor3"]
+  SETTABLEKS R6 R7 K9 ["Parent"]
+  GETIMPORT R8 K2 [Instance.new]
+  LOADK R9 K22 ["TextButton"]
+  CALL R8 1 1
+  LOADB R9 0
+  SETTABLEKS R9 R8 K4 ["Selectable"]
+  GETIMPORT R9 K6 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K7 ["Size"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K8 ["BackgroundTransparency"]
+  LOADK R9 K23 [""]
+  SETTABLEKS R9 R8 K24 ["Text"]
+  SETTABLEKS R7 R8 K9 ["Parent"]
+  GETIMPORT R9 K2 [Instance.new]
+  LOADK R10 K22 ["TextButton"]
+  CALL R9 1 1
+  LOADB R10 0
+  SETTABLEKS R10 R9 K4 ["Selectable"]
+  GETIMPORT R10 K6 [UDim2.new]
+  LOADK R11 K25 [0.25]
+  LOADN R12 0
+  LOADN R13 1
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K7 ["Size"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K8 ["BackgroundTransparency"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K26 ["DefaultFont"]
+  SETTABLEKS R10 R9 K27 ["Font"]
+  LOADN R10 18
+  SETTABLEKS R10 R9 K28 ["TextSize"]
+  LOADK R10 K29 [0.75]
+  SETTABLEKS R10 R9 K30 ["TextStrokeTransparency"]
+  GETIMPORT R10 K6 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K13 ["Position"]
+  GETIMPORT R10 K20 [Color3.new]
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 0
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K31 ["TextColor3"]
+  LOADK R10 K32 ["Confirm"]
+  SETTABLEKS R10 R9 K24 ["Text"]
+  SETTABLEKS R7 R9 K9 ["Parent"]
+  NAMECALL R10 R9 K33 ["Clone"]
+  CALL R10 1 1
+  SETTABLEKS R7 R10 K9 ["Parent"]
+  GETIMPORT R11 K6 [UDim2.new]
+  LOADK R12 K29 [0.75]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K13 ["Position"]
+  GETIMPORT R11 K20 [Color3.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K31 ["TextColor3"]
+  LOADK R11 K34 ["Cancel"]
+  SETTABLEKS R11 R10 K24 ["Text"]
+  GETIMPORT R11 K2 [Instance.new]
+  LOADK R12 K35 ["TextLabel"]
+  CALL R11 1 1
+  LOADB R12 0
+  SETTABLEKS R12 R11 K4 ["Selectable"]
+  GETIMPORT R12 K6 [UDim2.new]
+  LOADK R13 K36 [0.5]
+  LOADN R14 0
+  LOADN R15 1
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K7 ["Size"]
+  GETIMPORT R12 K6 [UDim2.new]
+  LOADK R13 K25 [0.25]
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K13 ["Position"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K8 ["BackgroundTransparency"]
+  GETIMPORT R12 K20 [Color3.new]
+  LOADN R13 1
+  LOADN R14 1
+  LOADN R15 1
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K31 ["TextColor3"]
+  LOADK R12 K29 [0.75]
+  SETTABLEKS R12 R11 K30 ["TextStrokeTransparency"]
+  LOADK R12 K37 ["Leave channel <XX>?"]
+  SETTABLEKS R12 R11 K24 ["Text"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K26 ["DefaultFont"]
+  SETTABLEKS R12 R11 K27 ["Font"]
+  LOADN R12 18
+  SETTABLEKS R12 R11 K28 ["TextSize"]
+  SETTABLEKS R7 R11 K9 ["Parent"]
+  GETIMPORT R12 K2 [Instance.new]
+  LOADK R13 K38 ["StringValue"]
+  CALL R12 1 1
+  LOADK R13 K39 ["LeaveTarget"]
+  SETTABLEKS R13 R12 K11 ["Name"]
+  SETTABLEKS R7 R12 K9 ["Parent"]
+  GETTABLEKS R13 R7 K13 ["Position"]
+  GETTABLEKS R14 R9 K40 ["MouseButton1Click"]
+  NEWCLOSURE R16 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R12
+  CAPTURE VAL R7
+  CAPTURE VAL R13
+  NAMECALL R14 R14 K41 ["connect"]
+  CALL R14 2 0
+  GETTABLEKS R14 R10 K40 ["MouseButton1Click"]
+  NEWCLOSURE R16 P1
+  CAPTURE VAL R7
+  CAPTURE VAL R13
+  NAMECALL R14 R14 K41 ["connect"]
+  CALL R14 2 0
+  LOADK R14 K42 ["rbxasset://textures/ui/Chat/TabArrowBackground.png"]
+  LOADK R15 K43 ["rbxasset://textures/ui/Chat/TabArrow.png"]
+  LOADK R14 K44 ["rbxassetid://471630199"]
+  LOADK R15 K45 ["rbxassetid://471630112"]
+  GETIMPORT R16 K2 [Instance.new]
+  LOADK R17 K46 ["ImageButton"]
+  MOVE R18 R2
+  CALL R16 2 1
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K47 ["GamepadNavigationEnabled"]
+  SETTABLEKS R17 R16 K4 ["Selectable"]
+  LOADK R17 K48 ["PageLeftButton"]
+  SETTABLEKS R17 R16 K11 ["Name"]
+  GETIMPORT R17 K52 [Enum.SizeConstraint.RelativeYY]
+  SETTABLEKS R17 R16 K50 ["SizeConstraint"]
+  GETIMPORT R17 K6 [UDim2.new]
+  LOADK R18 K53 [0.7]
+  LOADN R19 0
+  LOADK R20 K53 [0.7]
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K7 ["Size"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K8 ["BackgroundTransparency"]
+  GETIMPORT R17 K6 [UDim2.new]
+  LOADN R18 0
+  LOADN R19 4
+  LOADK R20 K54 [0.15]
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K13 ["Position"]
+  LOADB R17 0
+  SETTABLEKS R17 R16 K55 ["Visible"]
+  SETTABLEKS R14 R16 K56 ["Image"]
+  GETIMPORT R17 K2 [Instance.new]
+  LOADK R18 K57 ["ImageLabel"]
+  MOVE R19 R16
+  CALL R17 2 1
+  LOADK R18 K58 ["ArrowLabel"]
+  SETTABLEKS R18 R17 K11 ["Name"]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K8 ["BackgroundTransparency"]
+  GETIMPORT R18 K6 [UDim2.new]
+  LOADK R19 K59 [0.4]
+  LOADN R20 0
+  LOADK R21 K59 [0.4]
+  LOADN R22 0
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K7 ["Size"]
+  SETTABLEKS R15 R17 K56 ["Image"]
+  GETIMPORT R18 K2 [Instance.new]
+  LOADK R19 K3 ["Frame"]
+  MOVE R20 R2
+  CALL R18 2 1
+  LOADB R19 0
+  SETTABLEKS R19 R18 K4 ["Selectable"]
+  LOADN R19 1
+  SETTABLEKS R19 R18 K8 ["BackgroundTransparency"]
+  LOADK R19 K60 ["PositionalHelper"]
+  SETTABLEKS R19 R18 K11 ["Name"]
+  GETTABLEKS R19 R16 K7 ["Size"]
+  SETTABLEKS R19 R18 K7 ["Size"]
+  GETTABLEKS R19 R16 K50 ["SizeConstraint"]
+  SETTABLEKS R19 R18 K50 ["SizeConstraint"]
+  GETIMPORT R19 K6 [UDim2.new]
+  LOADN R20 1
+  LOADN R21 0
+  LOADK R22 K54 [0.15]
+  LOADN R23 0
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K13 ["Position"]
+  NAMECALL R19 R16 K33 ["Clone"]
+  CALL R19 1 1
+  SETTABLEKS R18 R19 K9 ["Parent"]
+  LOADK R20 K61 ["PageRightButton"]
+  SETTABLEKS R20 R19 K11 ["Name"]
+  GETIMPORT R20 K6 [UDim2.new]
+  LOADN R21 1
+  LOADN R22 0
+  LOADN R23 1
+  LOADN R24 0
+  CALL R20 4 1
+  SETTABLEKS R20 R19 K7 ["Size"]
+  GETIMPORT R20 K63 [Enum.SizeConstraint.RelativeXY]
+  SETTABLEKS R20 R19 K50 ["SizeConstraint"]
+  GETIMPORT R20 K6 [UDim2.new]
+  LOADN R21 255
+  LOADN R22 252
+  LOADN R23 0
+  LOADN R24 0
+  CALL R20 4 1
+  SETTABLEKS R20 R19 K13 ["Position"]
+  GETIMPORT R20 K6 [UDim2.new]
+  LOADK R21 K64 [0.05]
+  LOADN R22 0
+  LOADN R23 0
+  LOADN R24 0
+  CALL R20 4 1
+  GETTABLEKS R21 R19 K58 ["ArrowLabel"]
+  GETIMPORT R23 K6 [UDim2.new]
+  LOADK R24 K65 [0.3]
+  LOADN R25 0
+  LOADK R26 K65 [0.3]
+  LOADN R27 0
+  CALL R23 4 1
+  ADD R22 R23 R20
+  SETTABLEKS R22 R21 K13 ["Position"]
+  GETTABLEKS R21 R16 K58 ["ArrowLabel"]
+  GETIMPORT R23 K6 [UDim2.new]
+  LOADK R24 K65 [0.3]
+  LOADN R25 0
+  LOADK R26 K65 [0.3]
+  LOADN R27 0
+  CALL R23 4 1
+  SUB R22 R23 R20
+  SETTABLEKS R22 R21 K13 ["Position"]
+  GETTABLEKS R21 R16 K58 ["ArrowLabel"]
+  LOADN R22 180
+  SETTABLEKS R22 R21 K66 ["Rotation"]
+  SETTABLEKS R2 R0 K67 ["GuiObject"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R2 R21 K69 ["BaseFrame"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R4 R21 K14 ["ScrollerSizer"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R5 R21 K15 ["ScrollerFrame"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R16 R21 K48 ["PageLeftButton"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R19 R21 K61 ["PageRightButton"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R7 R21 K16 ["LeaveConfirmationFrame"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  SETTABLEKS R11 R21 K70 ["LeaveConfirmationNotice"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  GETTABLEKS R22 R16 K58 ["ArrowLabel"]
+  SETTABLEKS R22 R21 K71 ["PageLeftButtonArrow"]
+  GETTABLEKS R21 R0 K68 ["GuiObjects"]
+  GETTABLEKS R22 R19 K58 ["ArrowLabel"]
+  SETTABLEKS R22 R21 K72 ["PageRightButtonArrow"]
+  NAMECALL R21 R0 K73 ["AnimGuiObjects"]
+  CALL R21 1 0
+  GETTABLEKS R21 R16 K40 ["MouseButton1Click"]
+  NEWCLOSURE R23 P2
+  CAPTURE VAL R0
+  NAMECALL R21 R21 K41 ["connect"]
+  CALL R21 2 0
+  GETTABLEKS R21 R19 K40 ["MouseButton1Click"]
+  NEWCLOSURE R23 P3
+  CAPTURE VAL R0
+  NAMECALL R21 R21 K41 ["connect"]
+  CALL R21 2 0
+  LOADN R23 0
+  NAMECALL R21 R0 K74 ["ScrollChannelsFrame"]
+  CALL R21 2 0
+  RETURN R0 0
+
+PROTO_5:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["GetChannelTab"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+4]
+  NAMECALL R3 R2 K1 ["UpdateMessagePostedInChannel"]
+  CALL R3 1 0
+  RETURN R0 0
+  GETIMPORT R3 K3 [warn]
+  LOADK R5 K4 ["ChannelsTab '"]
+  MOVE R6 R1
+  LOADK R7 K5 ["' does not exist!"]
+  CONCAT R4 R5 R7
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["LeaveConfirmationNotice"]
+  GETIMPORT R1 K3 [string.format]
+  LOADK R2 K4 ["Leave channel %s?"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K5 ["ChannelName"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K6 ["Text"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["LeaveConfirmationFrame"]
+  GETTABLEKS R0 R1 K8 ["LeaveTarget"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K5 ["ChannelName"]
+  SETTABLEKS R1 R0 K9 ["Value"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K7 ["LeaveConfirmationFrame"]
+  GETIMPORT R2 K12 [UDim2.new]
+  LOADN R3 0
+  LOADN R4 0
+  LOADN R5 0
+  LOADN R6 0
+  CALL R2 4 1
+  GETIMPORT R3 K16 [Enum.EasingDirection.In]
+  GETIMPORT R4 K19 [Enum.EasingStyle.Quad]
+  LOADK R5 K20 [0.2]
+  LOADB R6 1
+  NAMECALL R0 R0 K21 ["TweenPosition"]
+  CALL R0 6 0
+  RETURN R0 0
+
+PROTO_7:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["GetChannelTab"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+7]
+  GETIMPORT R2 K2 [error]
+  LOADK R4 K3 ["Channel tab '"]
+  MOVE R5 R1
+  LOADK R6 K4 ["'already exists!"]
+  CONCAT R3 R4 R6
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["new"]
+  MOVE R3 R1
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K6 ["GuiObject"]
+  GETTABLEKS R5 R0 K7 ["GuiObjects"]
+  GETTABLEKS R4 R5 K8 ["ScrollerFrame"]
+  SETTABLEKS R4 R3 K9 ["Parent"]
+  GETTABLEKS R3 R0 K10 ["ChannelTabs"]
+  NAMECALL R4 R1 K11 ["lower"]
+  CALL R4 1 1
+  SETTABLE R2 R3 R4
+  GETTABLEKS R4 R0 K13 ["NumTabs"]
+  ADDK R3 R4 K12 [1]
+  SETTABLEKS R3 R0 K13 ["NumTabs"]
+  NAMECALL R3 R0 K14 ["OrganizeChannelTabs"]
+  CALL R3 1 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K15 ["RightClickToLeaveChannelEnabled"]
+  JUMPIFNOT R3 [+10]
+  GETTABLEKS R4 R2 K16 ["NameTag"]
+  GETTABLEKS R3 R4 K17 ["MouseButton2Click"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  NAMECALL R3 R3 K18 ["connect"]
+  CALL R3 2 0
+  RETURN R2 1
+
+PROTO_8:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["GetChannelTab"]
+  CALL R2 2 1
+  JUMPIF R2 [+7]
+  GETIMPORT R2 K2 [error]
+  LOADK R4 K3 ["Channel tab '"]
+  MOVE R5 R1
+  LOADK R6 K4 ["'does not exist!"]
+  CONCAT R3 R4 R6
+  CALL R2 1 0
+  NAMECALL R2 R1 K5 ["lower"]
+  CALL R2 1 1
+  GETTABLEKS R4 R0 K6 ["ChannelTabs"]
+  GETTABLE R3 R4 R2
+  NAMECALL R3 R3 K7 ["Destroy"]
+  CALL R3 1 0
+  GETTABLEKS R3 R0 K6 ["ChannelTabs"]
+  LOADNIL R4
+  SETTABLE R4 R3 R2
+  GETTABLEKS R4 R0 K9 ["NumTabs"]
+  SUBK R3 R4 K8 [1]
+  SETTABLEKS R3 R0 K9 ["NumTabs"]
+  NAMECALL R3 R0 K10 ["OrganizeChannelTabs"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R3 R0 K0 ["ChannelTabs"]
+  NAMECALL R4 R1 K1 ["lower"]
+  CALL R4 1 1
+  GETTABLE R2 R3 R4
+  RETURN R2 1
+
+PROTO_10:
+  NEWTABLE R1 0 0
+  MOVE R3 R1
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K0 ["GeneralChannelName"]
+  NAMECALL R4 R0 K1 ["GetChannelTab"]
+  CALL R4 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R2 K4 [table.insert]
+  CALL R2 -1 0
+  MOVE R3 R1
+  LOADK R6 K5 ["System"]
+  NAMECALL R4 R0 K1 ["GetChannelTab"]
+  CALL R4 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R2 K4 [table.insert]
+  CALL R2 -1 0
+  GETIMPORT R2 K7 [pairs]
+  GETTABLEKS R3 R0 K8 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R7 R6 K9 ["ChannelName"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["GeneralChannelName"]
+  JUMPIFEQ R7 R8 [+12]
+  GETTABLEKS R7 R6 K9 ["ChannelName"]
+  JUMPIFEQKS R7 K5 ["System"] [+8]
+  FASTCALL2 TABLE_INSERT R1 R6 [+5]
+  MOVE R8 R1
+  MOVE R9 R6
+  GETIMPORT R7 K4 [table.insert]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-19]
+  GETIMPORT R2 K7 [pairs]
+  MOVE R3 R1
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R7 R6 K10 ["GuiObject"]
+  GETIMPORT R8 K13 [UDim2.new]
+  SUBK R9 R5 K14 [1]
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K15 ["Position"]
+  FORGLOOP R2 2 [-12]
+  GETTABLEKS R3 R0 K16 ["GuiObjects"]
+  GETTABLEKS R2 R3 K17 ["ScrollerSizer"]
+  GETIMPORT R3 K13 [UDim2.new]
+  LOADN R6 1
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K18 ["ChannelsBarFullTabSize"]
+  GETTABLEKS R9 R0 K19 ["NumTabs"]
+  FASTCALL2 MATH_MIN R8 R9 [+3]
+  GETIMPORT R7 K22 [math.min]
+  CALL R7 2 1
+  FASTCALL2 MATH_MAX R6 R7 [+3]
+  GETIMPORT R5 K24 [math.max]
+  CALL R5 2 1
+  DIVRK R4 R14 K5 ["System"]
+  LOADN R5 0
+  LOADN R6 1
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K25 ["Size"]
+  LOADN R4 0
+  NAMECALL R2 R0 K26 ["ScrollChannelsFrame"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["SetTextSize"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["ScrollChannelsFrameLock"]
+  RETURN R0 0
+
+PROTO_13:
+  GETTABLEKS R2 R0 K0 ["ScrollChannelsFrameLock"]
+  JUMPIFNOT R2 [+1]
+  RETURN R0 0
+  LOADB R2 1
+  SETTABLEKS R2 R0 K0 ["ScrollChannelsFrameLock"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["ChannelsBarFullTabSize"]
+  GETTABLEKS R4 R0 K2 ["CurPageNum"]
+  ADD R3 R4 R1
+  LOADN R4 0
+  JUMPIFNOTLT R3 R4 [+3]
+  LOADN R3 0
+  JUMP [+11]
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+9]
+  ADD R4 R3 R2
+  GETTABLEKS R5 R0 K3 ["NumTabs"]
+  JUMPIFNOTLT R5 R4 [+4]
+  GETTABLEKS R4 R0 K3 ["NumTabs"]
+  SUB R3 R4 R2
+  SETTABLEKS R3 R0 K2 ["CurPageNum"]
+  GETIMPORT R4 K6 [UDim2.new]
+  GETTABLEKS R6 R0 K2 ["CurPageNum"]
+  MINUS R5 R6
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  GETTABLEKS R6 R0 K7 ["GuiObjects"]
+  GETTABLEKS R5 R6 K8 ["PageLeftButton"]
+  GETTABLEKS R7 R0 K2 ["CurPageNum"]
+  LOADN R8 0
+  JUMPIFLT R8 R7 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K9 ["Visible"]
+  GETTABLEKS R6 R0 K7 ["GuiObjects"]
+  GETTABLEKS R5 R6 K10 ["PageRightButton"]
+  GETTABLEKS R8 R0 K2 ["CurPageNum"]
+  ADD R7 R8 R2
+  GETTABLEKS R8 R0 K3 ["NumTabs"]
+  JUMPIFLT R7 R8 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K9 ["Visible"]
+  JUMPIFNOTEQKN R1 K11 [0] [+5]
+  LOADB R5 0
+  SETTABLEKS R5 R0 K0 ["ScrollChannelsFrameLock"]
+  RETURN R0 0
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  NAMECALL R6 R0 K12 ["WaitUntilParentedCorrectly"]
+  CALL R6 1 0
+  GETTABLEKS R7 R0 K7 ["GuiObjects"]
+  GETTABLEKS R6 R7 K13 ["ScrollerFrame"]
+  MOVE R8 R4
+  GETIMPORT R9 K17 [Enum.EasingDirection.InOut]
+  GETIMPORT R10 K20 [Enum.EasingStyle.Quad]
+  LOADK R11 K21 [0.15]
+  LOADB R12 1
+  MOVE R13 R5
+  NAMECALL R6 R6 K22 ["TweenPosition"]
+  CALL R6 7 0
+  RETURN R0 0
+
+PROTO_14:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["FadeOutBackground"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  GETTABLEKS R2 R0 K4 ["AnimParams"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K5 ["Background_TargetTransparency"]
+  GETTABLEKS R2 R0 K4 ["AnimParams"]
+  GETUPVAL R3 0
+  MOVE R5 R1
+  NAMECALL R3 R3 K6 ["NormalizedDefaultExptValueInSeconds"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K7 ["Background_NormalizedExptValue"]
+  RETURN R0 0
+
+PROTO_15:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["FadeInBackground"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  GETTABLEKS R2 R0 K4 ["AnimParams"]
+  LOADK R3 K5 [0.6]
+  SETTABLEKS R3 R2 K6 ["Background_TargetTransparency"]
+  GETTABLEKS R2 R0 K4 ["AnimParams"]
+  GETUPVAL R3 0
+  MOVE R5 R1
+  NAMECALL R3 R3 K7 ["NormalizedDefaultExptValueInSeconds"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K8 ["Background_NormalizedExptValue"]
+  RETURN R0 0
+
+PROTO_16:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["FadeOutText"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  RETURN R0 0
+
+PROTO_17:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["FadeInText"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  RETURN R0 0
+
+PROTO_18:
+  GETTABLEKS R2 R0 K0 ["GuiObjects"]
+  GETTABLEKS R1 R2 K1 ["PageLeftButton"]
+  GETTABLEKS R3 R0 K2 ["AnimParams"]
+  GETTABLEKS R2 R3 K3 ["Background_CurrentTransparency"]
+  SETTABLEKS R2 R1 K4 ["ImageTransparency"]
+  GETTABLEKS R2 R0 K0 ["GuiObjects"]
+  GETTABLEKS R1 R2 K5 ["PageRightButton"]
+  GETTABLEKS R3 R0 K2 ["AnimParams"]
+  GETTABLEKS R2 R3 K3 ["Background_CurrentTransparency"]
+  SETTABLEKS R2 R1 K4 ["ImageTransparency"]
+  GETTABLEKS R2 R0 K0 ["GuiObjects"]
+  GETTABLEKS R1 R2 K6 ["PageLeftButtonArrow"]
+  GETTABLEKS R3 R0 K2 ["AnimParams"]
+  GETTABLEKS R2 R3 K3 ["Background_CurrentTransparency"]
+  SETTABLEKS R2 R1 K4 ["ImageTransparency"]
+  GETTABLEKS R2 R0 K0 ["GuiObjects"]
+  GETTABLEKS R1 R2 K7 ["PageRightButtonArrow"]
+  GETTABLEKS R3 R0 K2 ["AnimParams"]
+  GETTABLEKS R2 R3 K3 ["Background_CurrentTransparency"]
+  SETTABLEKS R2 R1 K4 ["ImageTransparency"]
+  RETURN R0 0
+
+PROTO_19:
+  GETTABLEKS R1 R0 K0 ["AnimParams"]
+  LOADK R2 K1 [0.6]
+  SETTABLEKS R2 R1 K2 ["Background_TargetTransparency"]
+  GETTABLEKS R1 R0 K0 ["AnimParams"]
+  LOADK R2 K1 [0.6]
+  SETTABLEKS R2 R1 K3 ["Background_CurrentTransparency"]
+  GETTABLEKS R1 R0 K0 ["AnimParams"]
+  GETUPVAL R2 0
+  LOADN R4 0
+  NAMECALL R2 R2 K4 ["NormalizedDefaultExptValueInSeconds"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K5 ["Background_NormalizedExptValue"]
+  RETURN R0 0
+
+PROTO_20:
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["ChannelTabs"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R1
+  NAMECALL R7 R6 K3 ["Update"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  GETTABLEKS R2 R0 K4 ["AnimParams"]
+  GETUPVAL R3 0
+  GETTABLEKS R6 R0 K4 ["AnimParams"]
+  GETTABLEKS R5 R6 K5 ["Background_CurrentTransparency"]
+  GETTABLEKS R7 R0 K4 ["AnimParams"]
+  GETTABLEKS R6 R7 K6 ["Background_TargetTransparency"]
+  GETTABLEKS R8 R0 K4 ["AnimParams"]
+  GETTABLEKS R7 R8 K7 ["Background_NormalizedExptValue"]
+  MOVE R8 R1
+  NAMECALL R3 R3 K8 ["Expt"]
+  CALL R3 5 1
+  SETTABLEKS R3 R2 K5 ["Background_CurrentTransparency"]
+  NAMECALL R2 R0 K9 ["AnimGuiObjects"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_21:
+  GETTABLEKS R1 R0 K0 ["GuiObject"]
+  GETIMPORT R4 K2 [game]
+  LOADK R6 K3 ["Players"]
+  NAMECALL R4 R4 K4 ["GetService"]
+  CALL R4 2 1
+  GETTABLEKS R3 R4 K5 ["LocalPlayer"]
+  NAMECALL R1 R1 K6 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIF R1 [+8]
+  GETTABLEKS R2 R0 K0 ["GuiObject"]
+  GETTABLEKS R1 R2 K7 ["AncestryChanged"]
+  NAMECALL R1 R1 K8 ["wait"]
+  CALL R1 1 0
+  JUMPBACK [-22]
+  RETURN R0 0
+
+PROTO_22:
+  JUMPIFNOTEQKS R0 K0 ["ChatChannelsTabTextSize"] [+6]
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K1 ["ResizeChannelTabText"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_23:
+  NEWTABLE R1 8 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["GuiObject"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K3 ["GuiObjects"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K4 ["ChannelTabs"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K5 ["NumTabs"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K6 ["CurPageNum"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K7 ["ScrollChannelsFrameLock"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K8 ["AnimParams"]
+  NAMECALL R1 R0 K9 ["InitializeAnimParams"]
+  CALL R1 1 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K10 ["SettingsChanged"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K11 ["connect"]
+  CALL R1 2 0
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  NEWTABLE R0 1 0
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K2 ["Chat"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K4 ["ClientChatModules"]
+  NAMECALL R2 R1 K5 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R4 K7 [script]
+  GETTABLEKS R3 R4 K8 ["Parent"]
+  GETIMPORT R4 K10 [require]
+  LOADK R7 K11 ["ChannelsTab"]
+  NAMECALL R5 R3 K5 ["WaitForChild"]
+  CALL R5 2 -1
+  CALL R4 -1 1
+  GETIMPORT R5 K10 [require]
+  LOADK R8 K12 ["MessageSender"]
+  NAMECALL R6 R3 K5 ["WaitForChild"]
+  CALL R6 2 -1
+  CALL R5 -1 1
+  GETIMPORT R6 K10 [require]
+  LOADK R9 K13 ["ChatSettings"]
+  NAMECALL R7 R2 K5 ["WaitForChild"]
+  CALL R7 2 -1
+  CALL R6 -1 1
+  GETIMPORT R7 K10 [require]
+  LOADK R10 K14 ["CurveUtil"]
+  NAMECALL R8 R3 K5 ["WaitForChild"]
+  CALL R8 2 -1
+  CALL R7 -1 1
+  NEWTABLE R8 32 0
+  SETTABLEKS R8 R8 K15 ["__index"]
+  DUPCLOSURE R9 K16 [PROTO_4]
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  SETTABLEKS R9 R8 K17 ["CreateGuiObjects"]
+  DUPCLOSURE R9 K18 [PROTO_5]
+  SETTABLEKS R9 R8 K19 ["UpdateMessagePostedInChannel"]
+  DUPCLOSURE R9 K20 [PROTO_7]
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K21 ["AddChannelTab"]
+  DUPCLOSURE R9 K22 [PROTO_8]
+  SETTABLEKS R9 R8 K23 ["RemoveChannelTab"]
+  DUPCLOSURE R9 K24 [PROTO_9]
+  SETTABLEKS R9 R8 K25 ["GetChannelTab"]
+  DUPCLOSURE R9 K26 [PROTO_10]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K27 ["OrganizeChannelTabs"]
+  DUPCLOSURE R9 K28 [PROTO_11]
+  SETTABLEKS R9 R8 K29 ["ResizeChannelTabText"]
+  DUPCLOSURE R9 K30 [PROTO_13]
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K31 ["ScrollChannelsFrame"]
+  DUPCLOSURE R9 K32 [PROTO_14]
+  CAPTURE VAL R7
+  SETTABLEKS R9 R8 K33 ["FadeOutBackground"]
+  DUPCLOSURE R9 K34 [PROTO_15]
+  CAPTURE VAL R7
+  SETTABLEKS R9 R8 K35 ["FadeInBackground"]
+  DUPCLOSURE R9 K36 [PROTO_16]
+  SETTABLEKS R9 R8 K37 ["FadeOutText"]
+  DUPCLOSURE R9 K38 [PROTO_17]
+  SETTABLEKS R9 R8 K39 ["FadeInText"]
+  DUPCLOSURE R9 K40 [PROTO_18]
+  SETTABLEKS R9 R8 K41 ["AnimGuiObjects"]
+  DUPCLOSURE R9 K42 [PROTO_19]
+  CAPTURE VAL R7
+  SETTABLEKS R9 R8 K43 ["InitializeAnimParams"]
+  DUPCLOSURE R9 K44 [PROTO_20]
+  CAPTURE VAL R7
+  SETTABLEKS R9 R8 K45 ["Update"]
+  DUPCLOSURE R9 K46 [PROTO_21]
+  SETTABLEKS R9 R8 K47 ["WaitUntilParentedCorrectly"]
+  DUPCLOSURE R9 K48 [PROTO_23]
+  CAPTURE VAL R8
+  CAPTURE VAL R6
+  SETTABLEKS R9 R0 K49 ["new"]
+  RETURN R0 1

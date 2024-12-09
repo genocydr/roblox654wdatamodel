@@ -20,6 +20,9 @@ local createPersistenceMiddleware = CrossExperience.Middlewares.createPersistenc
 local CoreGuiModules = RobloxGui.Modules
 local BlockingUtility = require(CoreGuiModules.BlockingUtility)
 
+local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
+local FFlagPartyVoiceBlockSync = SharedFlags.FFlagPartyVoiceBlockSync
+
 local FFlagUseNotificationServiceIsConnected = game:DefineFastFlag("UseNotificationServiceIsConnected", false)
 local FFlagDefaultChannelEnableDefaultVoice = game:DefineFastFlag("DefaultChannelEnableDefaultVoice", true)
 local FFlagAlwaysJoinWhenUsingAudioAPI = game:DefineFastFlag("AlwaysJoinWhenUsingAudioAPI", false)
@@ -86,7 +89,7 @@ end
 notifyVoiceStatusChange(Constants.VOICE_STATUS.RCC_CONNECTED)
 
 cevEventManager:notify(CrossExperience.Constants.EVENTS.PARTY_VOICE_EXPERIENCE_JOINED, {
-	jobId = game.JobId,
+	jobId = if game.JobId == "" or game.JobId == nil then HttpService:GenerateGUID(true) else game.JobId,
 	placeId = game.PlaceId,
 	gameId = game.GameId,
 })
@@ -198,6 +201,38 @@ function handleMicrophone()
 	cevEventManager:addObserver(CrossExperience.Constants.EVENTS.UNMUTE_PARTY_VOICE_PARTICIPANT, toggleMutePlayer)
 end
 
+local handleBlockedParticipant = function(params: { userId: number })
+	local numberUserId = tonumber(params.userId) or 0
+	local player = Players:GetPlayerByUserId(numberUserId)
+	if player then
+		coroutine.wrap(function()
+			local success = BlockingUtility:AddPlayerToBlockList(player)
+			if success then
+				log:info("Participant {} was blocked from party voice", player.DisplayName)
+			end
+		end)()
+	end
+end
+
+local handleUnblockedParticipant = function(params: { userId: number })
+	local numberUserId = tonumber(params.userId) or 0
+	local player = Players:GetPlayerByUserId(numberUserId)
+	if player then
+		coroutine.wrap(function()
+			local success = BlockingUtility:RemovePlayerFromBlockList(player)
+			if success then
+				log:info("Participant {} was unblocked from party voice", player.DisplayName)
+			end
+		end)()
+	end
+end
+
+local function initializeParticipantBlockListener()
+	cevEventManager:addObserver(CrossExperience.Constants.EVENTS.PARTY_VOICE_BLOCK_PARTICIPANT, handleBlockedParticipant)
+	cevEventManager:addObserver(CrossExperience.Constants.EVENTS.PARTY_VOICE_UNBLOCK_PARTICIPANT, handleUnblockedParticipant)
+end
+
+
 function onCoreVoiceManagerInitialized()
 	CoreVoiceManager:getService().PlayerMicActivitySignalChange:Connect(onLocalPlayerActiveChanged)
 	CoreVoiceManager.participantsUpdate.Event:Connect(onParticipantsUpdated)
@@ -299,6 +334,9 @@ local function setupListeners()
 	-- setup listeners
 	handleParticipants()
 	handleMicrophone()
+	if FFlagPartyVoiceBlockSync then
+		initializeParticipantBlockListener()
+	end
 
 	-- unmute mic at the start once muted state is initialized
 	unmuteMicrophoneOnce()

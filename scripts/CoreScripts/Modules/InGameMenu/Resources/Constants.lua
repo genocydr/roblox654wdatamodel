@@ -136,12 +136,12 @@ local Constants = {
 			customProps = t.optional(t.table),
 		}),
 	},
-	SurveyEventType =  "leaveButtonClick",
+	SurveyEventType = "leaveButtonClick",
 	ChromeSeenCountKey = "ChromeSeenCount",
 
 	--[[ Localization Keys ]]
+	PartyLocalizedKey = "Feature.Squads.Label.Party",
 	RespawnLocalizedKey = "CoreScripts.InGameMenu.QuickActions.Respawn",
-	
 }
 
 return Constants

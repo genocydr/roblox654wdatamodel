@@ -1,0 +1,157 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K1 ["App"]
+  GETTABLEKS R4 R5 K2 ["Text"]
+  GETTABLEKS R3 R4 K3 ["StyledTextLabel"]
+  DUPTABLE R4 K10 [{"text", "fontStyle", "colorStyle", "textXAlignment", "size", "layoutOrder"}]
+  GETUPVAL R6 2
+  GETTABLE R5 R6 R1
+  SETTABLEKS R5 R4 K4 ["text"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K11 ["CaptionBody"]
+  SETTABLEKS R5 R4 K5 ["fontStyle"]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K12 ["TextDefault"]
+  SETTABLEKS R5 R4 K6 ["colorStyle"]
+  GETIMPORT R5 K16 [Enum.TextXAlignment.Left]
+  SETTABLEKS R5 R4 K7 ["textXAlignment"]
+  GETIMPORT R5 K19 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  GETUPVAL R10 5
+  LENGTH R9 R10
+  DIVRK R8 R20 K9 ["layoutOrder"]
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K8 ["size"]
+  SETTABLEKS R1 R4 K9 ["layoutOrder"]
+  CALL R2 2 1
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K6 [{"Size", "Position", "LayoutOrder", "BackgroundTransparency"}]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADK R7 K10 [0.4]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K2 ["Size"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K3 ["Position"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K4 ["LayoutOrder"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K5 ["BackgroundTransparency"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["createElement"]
+  LOADK R5 K11 ["UIListLayout"]
+  DUPTABLE R6 K16 [{"Padding", "FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R7 K18 [UDim.new]
+  LOADN R8 0
+  LOADN R9 0
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K12 ["Padding"]
+  GETIMPORT R7 K21 [Enum.FillDirection.Vertical]
+  SETTABLEKS R7 R6 K13 ["FillDirection"]
+  GETIMPORT R7 K23 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R7 R6 K14 ["HorizontalAlignment"]
+  GETIMPORT R7 K24 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R7 R6 K15 ["SortOrder"]
+  CALL R4 2 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K25 ["Array"]
+  GETTABLEKS R5 R6 K26 ["map"]
+  GETUPVAL R6 2
+  NEWCLOSURE R7 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U2
+  CALL R5 2 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETTABLEKS R2 R1 K0 ["Theme"]
+  GETTABLEKS R3 R1 K1 ["Font"]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R0 K2 ["platform"]
+  GETTABLE R4 R5 R6
+  GETTABLEKS R7 R0 K3 ["currentIndex"]
+  GETTABLE R6 R4 R7
+  GETTABLEKS R5 R6 K4 ["text"]
+  GETUPVAL R6 2
+  MOVE R7 R5
+  CALL R6 1 1
+  NEWCLOSURE R7 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R5
+  CAPTURE UPVAL U5
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CALL R6 1 -1
+  RETURN R6 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["React"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["UIBlox"]
+  CALL R2 1 1
+  GETTABLEKS R5 R2 K9 ["Core"]
+  GETTABLEKS R4 R5 K10 ["Style"]
+  GETTABLEKS R3 R4 K11 ["useStyle"]
+  GETIMPORT R7 K13 [script]
+  GETTABLEKS R6 R7 K14 ["Parent"]
+  GETTABLEKS R5 R6 K14 ["Parent"]
+  GETTABLEKS R4 R5 K14 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R4 K15 ["Resources"]
+  GETTABLEKS R6 R7 K16 ["FTUXSlideshowData"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R0 K6 ["Packages"]
+  GETTABLEKS R7 R8 K17 ["LuauPolyfill"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K18 ["Enums"]
+  GETTABLEKS R8 R9 K19 ["PlatformEnum"]
+  CALL R7 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R12 R0 K20 ["Workspace"]
+  GETTABLEKS R11 R12 K6 ["Packages"]
+  GETTABLEKS R10 R11 K21 ["Localization"]
+  CALL R9 1 1
+  GETTABLEKS R8 R9 K22 ["withLocalization"]
+  DUPCLOSURE R9 K23 [PROTO_2]
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  RETURN R9 1

@@ -1,0 +1,240 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Label"]
+  DUPTABLE R3 K9 [{"imageKey", "Size", "ImageColor3", "ImageTransparency", "LayoutOrder", "Position", "AnchorPoint"}]
+  LOADK R4 K10 ["RoundedRect"]
+  SETTABLEKS R4 R3 K2 ["imageKey"]
+  GETIMPORT R4 K13 [UDim2.fromOffset]
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["Size"]
+  GETTABLEKS R6 R0 K14 ["Theme"]
+  GETTABLEKS R5 R6 K15 ["PlaceHolder"]
+  GETTABLEKS R4 R5 K16 ["Color"]
+  SETTABLEKS R4 R3 K4 ["ImageColor3"]
+  GETTABLEKS R6 R0 K14 ["Theme"]
+  GETTABLEKS R5 R6 K15 ["PlaceHolder"]
+  GETTABLEKS R4 R5 K17 ["Transparency"]
+  SETTABLEKS R4 R3 K5 ["ImageTransparency"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K18 ["props"]
+  GETTABLEKS R4 R5 K19 ["layoutOrder"]
+  SETTABLEKS R4 R3 K6 ["LayoutOrder"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K18 ["props"]
+  GETTABLEKS R4 R5 K7 ["Position"]
+  SETTABLEKS R4 R3 K7 ["Position"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K18 ["props"]
+  GETTABLEKS R4 R5 K8 ["AnchorPoint"]
+  SETTABLEKS R4 R3 K8 ["AnchorPoint"]
+  DUPTABLE R4 K21 [{"PlaceholderIcon"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 4
+  DUPTABLE R7 K24 [{"BackgroundTransparency", "Size", "Position", "Image", "ImageColor3", "ImageTransparency", "AnchorPoint"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K22 ["BackgroundTransparency"]
+  GETIMPORT R8 K13 [UDim2.fromOffset]
+  GETUPVAL R9 5
+  GETUPVAL R10 5
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K3 ["Size"]
+  GETIMPORT R8 K26 [UDim2.fromScale]
+  LOADK R9 K27 [0.5]
+  LOADK R10 K27 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K7 ["Position"]
+  GETUPVAL R9 6
+  GETTABLEKS R8 R9 K28 ["icons/imageUnavailable"]
+  SETTABLEKS R8 R7 K23 ["Image"]
+  GETTABLEKS R10 R0 K14 ["Theme"]
+  GETTABLEKS R9 R10 K29 ["UIDefault"]
+  GETTABLEKS R8 R9 K16 ["Color"]
+  SETTABLEKS R8 R7 K4 ["ImageColor3"]
+  GETTABLEKS R10 R0 K14 ["Theme"]
+  GETTABLEKS R9 R10 K29 ["UIDefault"]
+  GETTABLEKS R8 R9 K17 ["Transparency"]
+  SETTABLEKS R8 R7 K5 ["ImageTransparency"]
+  GETIMPORT R8 K32 [Vector2.new]
+  LOADK R9 K27 [0.5]
+  LOADK R10 K27 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K8 ["AnchorPoint"]
+  DUPTABLE R8 K34 [{"UICorner"}]
+  GETUPVAL R10 7
+  JUMPIFNOT R10 [+18]
+  GETUPVAL R10 7
+  GETIMPORT R11 K36 [UDim.new]
+  LOADN R12 0
+  LOADN R13 0
+  CALL R11 2 1
+  JUMPIFEQ R10 R11 [+11]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K33 ["UICorner"]
+  DUPTABLE R11 K38 [{"CornerRadius"}]
+  GETUPVAL R12 7
+  SETTABLEKS R12 R11 K37 ["CornerRadius"]
+  CALL R9 2 1
+  JUMPIF R9 [+1]
+  LOADNIL R9
+  SETTABLEKS R9 R8 K33 ["UICorner"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K20 ["PlaceholderIcon"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["iconSize"]
+  GETUPVAL R2 0
+  MOVE R3 R1
+  CALL R2 1 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["gameId"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K3 ["cornerRadius"]
+  LOADK R5 K4 ["rbxthumb://type=GameIcon&id=%d&w=%d&h=%d"]
+  MOVE R7 R3
+  MOVE R8 R2
+  MOVE R9 R2
+  NAMECALL R5 R5 K5 ["format"]
+  CALL R5 4 1
+  JUMPIFEQKN R3 K6 [0] [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  JUMPIFNOT R6 [+19]
+  LOADN R7 44
+  LOADN R8 44
+  JUMPIFNOTLE R1 R8 [+2]
+  MOVE R7 R1
+  GETUPVAL R8 1
+  NEWCLOSURE R9 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE REF R7
+  CAPTURE UPVAL U5
+  CAPTURE VAL R4
+  CALL R8 1 -1
+  CLOSEUPVALS R7
+  RETURN R8 -1
+  CLOSEUPVALS R7
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K7 ["createElement"]
+  LOADK R8 K8 ["ImageLabel"]
+  DUPTABLE R9 K15 [{"Image", "Size", "BackgroundTransparency", "LayoutOrder", "Position", "AnchorPoint"}]
+  SETTABLEKS R5 R9 K9 ["Image"]
+  GETIMPORT R10 K18 [UDim2.fromOffset]
+  MOVE R11 R1
+  MOVE R12 R1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K10 ["Size"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K11 ["BackgroundTransparency"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K19 ["layoutOrder"]
+  SETTABLEKS R10 R9 K12 ["LayoutOrder"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K13 ["Position"]
+  SETTABLEKS R10 R9 K13 ["Position"]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K14 ["AnchorPoint"]
+  SETTABLEKS R10 R9 K14 ["AnchorPoint"]
+  DUPTABLE R10 K21 [{"UICorner"}]
+  JUMPIFNOT R4 [+16]
+  GETIMPORT R12 K24 [UDim.new]
+  LOADN R13 0
+  LOADN R14 0
+  CALL R12 2 1
+  JUMPIFEQ R4 R12 [+10]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K7 ["createElement"]
+  LOADK R12 K20 ["UICorner"]
+  DUPTABLE R13 K26 [{"CornerRadius"}]
+  SETTABLEKS R4 R13 K25 ["CornerRadius"]
+  CALL R11 2 1
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K20 ["UICorner"]
+  CALL R7 3 -1
+  RETURN R7 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["UIBlox"]
+  GETTABLEKS R4 R1 K10 ["t"]
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R8 R3 K14 ["Core"]
+  GETTABLEKS R7 R8 K15 ["Style"]
+  GETTABLEKS R6 R7 K16 ["withStyle"]
+  GETTABLEKS R9 R3 K17 ["App"]
+  GETTABLEKS R8 R9 K18 ["ImageSet"]
+  GETTABLEKS R7 R8 K19 ["Images"]
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R5 K20 ["Components"]
+  GETTABLEKS R9 R10 K21 ["AssetImage"]
+  CALL R8 1 1
+  GETTABLEKS R11 R3 K14 ["Core"]
+  GETTABLEKS R10 R11 K18 ["ImageSet"]
+  GETTABLEKS R9 R10 K22 ["ImageSetLabel"]
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R5 K20 ["Components"]
+  GETTABLEKS R11 R12 K23 ["getGameIconRequestSize"]
+  CALL R10 1 1
+  GETTABLEKS R11 R2 K24 ["PureComponent"]
+  LOADK R13 K25 ["GameIcon"]
+  NAMECALL R11 R11 K26 ["extend"]
+  CALL R11 2 1
+  GETTABLEKS R12 R4 K27 ["strictInterface"]
+  DUPTABLE R13 K34 [{"gameId", "iconSize", "layoutOrder", "cornerRadius", "Position", "AnchorPoint"}]
+  GETTABLEKS R14 R4 K35 ["number"]
+  SETTABLEKS R14 R13 K28 ["gameId"]
+  GETTABLEKS R14 R4 K36 ["numberMin"]
+  LOADN R15 0
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K29 ["iconSize"]
+  GETTABLEKS R14 R4 K37 ["optional"]
+  GETTABLEKS R15 R4 K35 ["number"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K30 ["layoutOrder"]
+  GETTABLEKS R14 R4 K37 ["optional"]
+  GETTABLEKS R15 R4 K38 ["UDim"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K31 ["cornerRadius"]
+  GETTABLEKS R14 R4 K37 ["optional"]
+  GETTABLEKS R15 R4 K39 ["UDim2"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K32 ["Position"]
+  GETTABLEKS R14 R4 K37 ["optional"]
+  GETTABLEKS R15 R4 K40 ["Vector2"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K33 ["AnchorPoint"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K41 ["validateProps"]
+  DUPCLOSURE R12 K42 [PROTO_1]
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  SETTABLEKS R12 R11 K43 ["render"]
+  RETURN R11 1

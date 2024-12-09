@@ -1,0 +1,216 @@
+PROTO_0:
+  LOADNIL R1
+  GETUPVAL R3 0
+  GETTABLE R2 R3 R0
+  JUMPIFNOT R2 [+2]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  GETUPVAL R2 1
+  MOVE R3 R1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setGamepadEnabled"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  SETTABLEKS R2 R0 K2 ["dispatchOnChange"]
+  LOADB R2 0
+  SETTABLEKS R2 R0 K3 ["cursorOverridden"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"event", "callback"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K4 ["LastInputTypeChanged"]
+  SETTABLEKS R4 R3 K1 ["event"]
+  GETTABLEKS R4 R0 K5 ["dispatchOnChange"]
+  SETTABLEKS R4 R3 K2 ["callback"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  LOADB R3 0
+  GETTABLEKS R4 R1 K0 ["promptState"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["None"]
+  JUMPIFNOTEQ R4 R5 [+12]
+  GETTABLEKS R5 R0 K2 ["props"]
+  GETTABLEKS R4 R5 K0 ["promptState"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["None"]
+  JUMPIFNOTEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  LOADB R4 0
+  GETTABLEKS R5 R1 K0 ["promptState"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["None"]
+  JUMPIFEQ R5 R6 [+12]
+  GETTABLEKS R6 R0 K2 ["props"]
+  GETTABLEKS R5 R6 K0 ["promptState"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K1 ["None"]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K0 ["promptState"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K1 ["None"]
+  JUMPIFNOTEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  GETTABLEKS R8 R0 K2 ["props"]
+  GETTABLEKS R7 R8 K3 ["gamepadEnabled"]
+  JUMPIFNOT R7 [+3]
+  GETIMPORT R6 K7 [Enum.OverrideMouseIconBehavior.ForceHide]
+  JUMPIF R6 [+2]
+  GETIMPORT R6 K9 [Enum.OverrideMouseIconBehavior.ForceShow]
+  JUMPIFNOT R5 [+26]
+  GETTABLEKS R7 R1 K3 ["gamepadEnabled"]
+  GETTABLEKS R9 R0 K2 ["props"]
+  GETTABLEKS R8 R9 K3 ["gamepadEnabled"]
+  JUMPIFEQ R7 R8 [+19]
+  GETTABLEKS R7 R0 K10 ["cursorOverridden"]
+  JUMPIFNOT R7 [+5]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K11 ["pop"]
+  LOADK R8 K12 ["PurchasePromptOverrideKey"]
+  CALL R7 1 0
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K13 ["push"]
+  LOADK R8 K12 ["PurchasePromptOverrideKey"]
+  MOVE R9 R6
+  CALL R7 2 0
+  LOADB R7 1
+  SETTABLEKS R7 R0 K10 ["cursorOverridden"]
+  RETURN R0 0
+  JUMPIFNOT R3 [+10]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K13 ["push"]
+  LOADK R8 K12 ["PurchasePromptOverrideKey"]
+  MOVE R9 R6
+  CALL R7 2 0
+  LOADB R7 1
+  SETTABLEKS R7 R0 K10 ["cursorOverridden"]
+  RETURN R0 0
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K11 ["pop"]
+  LOADK R8 K12 ["PurchasePromptOverrideKey"]
+  CALL R7 1 0
+  LOADB R7 0
+  SETTABLEKS R7 R0 K10 ["cursorOverridden"]
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K2 [{"promptState", "gamepadEnabled"}]
+  GETTABLEKS R2 R0 K0 ["promptState"]
+  SETTABLEKS R2 R1 K0 ["promptState"]
+  GETTABLEKS R2 R0 K1 ["gamepadEnabled"]
+  SETTABLEKS R2 R1 K1 ["gamepadEnabled"]
+  RETURN R1 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"setGamepadEnabled"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setGamepadEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["CorePackages"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["UserInputService"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R1 K10 ["Workspace"]
+  GETTABLEKS R5 R6 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["PurchasePromptDeps"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["Roact"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R1 K14 ["InGameServices"]
+  GETTABLEKS R6 R7 K15 ["MouseIconOverrideService"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R0 K16 ["Actions"]
+  GETTABLEKS R7 R8 K17 ["SetGamepadEnabled"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R0 K18 ["Enums"]
+  GETTABLEKS R8 R9 K19 ["PromptState"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R9 R0 K20 ["connectToStore"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETIMPORT R12 K1 [script]
+  GETTABLEKS R11 R12 K2 ["Parent"]
+  GETTABLEKS R10 R11 K21 ["ExternalEventConnection"]
+  CALL R9 1 1
+  NEWTABLE R10 4 0
+  GETIMPORT R11 K25 [Enum.UserInputType.Gamepad1]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K27 [Enum.UserInputType.Gamepad2]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K29 [Enum.UserInputType.Gamepad3]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K31 [Enum.UserInputType.Gamepad4]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETTABLEKS R11 R4 K32 ["Component"]
+  LOADK R13 K33 ["InputTypeManager"]
+  NAMECALL R11 R11 K34 ["extend"]
+  CALL R11 2 1
+  DUPCLOSURE R12 K35 [PROTO_1]
+  CAPTURE VAL R10
+  SETTABLEKS R12 R11 K36 ["init"]
+  DUPCLOSURE R12 K37 [PROTO_2]
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  CAPTURE VAL R2
+  SETTABLEKS R12 R11 K38 ["render"]
+  DUPCLOSURE R12 K39 [PROTO_3]
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  SETTABLEKS R12 R11 K40 ["didUpdate"]
+  DUPCLOSURE R12 K41 [PROTO_4]
+  DUPCLOSURE R13 K42 [PROTO_6]
+  CAPTURE VAL R6
+  MOVE R14 R8
+  MOVE R15 R12
+  MOVE R16 R13
+  CALL R14 2 1
+  MOVE R15 R11
+  CALL R14 1 1
+  MOVE R11 R14
+  RETURN R11 1

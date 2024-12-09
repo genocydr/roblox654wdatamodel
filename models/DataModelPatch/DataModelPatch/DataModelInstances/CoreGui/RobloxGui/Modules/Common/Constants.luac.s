@@ -1,0 +1,119 @@
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R4 K3 [script]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K5 ["Flags"]
+  GETTABLEKS R1 R2 K6 ["GetFFlagEnableInGameMenuDurationLogger"]
+  CALL R0 1 1
+  CALL R0 0 1
+  DUPTABLE R1 K38 [{"COLORS", "ERROR_PROMPT_HEIGHT", "ERROR_PROMPT_MIN_HEIGHT", "ERROR_PROMPT_MIN_WIDTH", "ERROR_PROMPT_MAX_WIDTH", "ERROR_TITLE_FRAME_HEIGHT", "SPLIT_LINE_THICKNESS", "BUTTON_CELL_PADDING", "BUTTON_HEIGHT", "SIDE_PADDING", "LAYOUT_PADDING", "SIDE_MARGIN", "VERTICAL_MARGIN", "PRIMARY_BUTTON_TEXTURE", "SECONDARY_BUTTON_TEXTURE", "SHIMMER_TEXTURE", "OVERLAY_TEXTURE", "VIP_SERVER", "RESERVED_SERVER", "STANDARD_SERVER", "AnalyticsInGameMenuName", "AnalyticsPerfMenuOpening", "AnalyticsPerfMenuStarted", "AnalyticsPerfMenuEnding", "AnalyticsPerfMenuClosed", "AnalyticsGameMenuFlowStart", "AnalyticsGameMenuOpenStart", "AnalyticsGameMenuOpenEnd", "AnalyticsGameMenuCloseStart", "AnalyticsGameMenuCloseEnd", "AnalyticsGameMenuFlowEnd"}]
+  DUPTABLE R2 K44 [{"SLATE", "FLINT", "GRAPHITE", "PUMICE", "WHITE"}]
+  GETIMPORT R3 K47 [Color3.fromRGB]
+  LOADN R4 35
+  LOADN R5 37
+  LOADN R6 39
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K39 ["SLATE"]
+  GETIMPORT R3 K47 [Color3.fromRGB]
+  LOADN R4 57
+  LOADN R5 59
+  LOADN R6 61
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K40 ["FLINT"]
+  GETIMPORT R3 K47 [Color3.fromRGB]
+  LOADN R4 101
+  LOADN R5 102
+  LOADN R6 104
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K41 ["GRAPHITE"]
+  GETIMPORT R3 K47 [Color3.fromRGB]
+  LOADN R4 189
+  LOADN R5 190
+  LOADN R6 190
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K42 ["PUMICE"]
+  GETIMPORT R3 K47 [Color3.fromRGB]
+  LOADN R4 255
+  LOADN R5 255
+  LOADN R6 255
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K43 ["WHITE"]
+  SETTABLEKS R2 R1 K7 ["COLORS"]
+  DUPTABLE R2 K50 [{"Default", "XBox"}]
+  LOADN R3 236
+  SETTABLEKS R3 R2 K48 ["Default"]
+  LOADN R3 180
+  SETTABLEKS R3 R2 K49 ["XBox"]
+  SETTABLEKS R2 R1 K8 ["ERROR_PROMPT_HEIGHT"]
+  DUPTABLE R2 K51 [{"Default"}]
+  LOADN R3 250
+  SETTABLEKS R3 R2 K48 ["Default"]
+  SETTABLEKS R2 R1 K9 ["ERROR_PROMPT_MIN_HEIGHT"]
+  DUPTABLE R2 K50 [{"Default", "XBox"}]
+  LOADN R3 64
+  SETTABLEKS R3 R2 K48 ["Default"]
+  LOADN R3 144
+  SETTABLEKS R3 R2 K49 ["XBox"]
+  SETTABLEKS R2 R1 K10 ["ERROR_PROMPT_MIN_WIDTH"]
+  DUPTABLE R2 K50 [{"Default", "XBox"}]
+  LOADN R3 144
+  SETTABLEKS R3 R2 K48 ["Default"]
+  LOADN R3 144
+  SETTABLEKS R3 R2 K49 ["XBox"]
+  SETTABLEKS R2 R1 K11 ["ERROR_PROMPT_MAX_WIDTH"]
+  DUPTABLE R2 K51 [{"Default"}]
+  LOADN R3 50
+  SETTABLEKS R3 R2 K48 ["Default"]
+  SETTABLEKS R2 R1 K12 ["ERROR_TITLE_FRAME_HEIGHT"]
+  LOADN R2 1
+  SETTABLEKS R2 R1 K13 ["SPLIT_LINE_THICKNESS"]
+  LOADN R2 10
+  SETTABLEKS R2 R1 K14 ["BUTTON_CELL_PADDING"]
+  LOADN R2 36
+  SETTABLEKS R2 R1 K15 ["BUTTON_HEIGHT"]
+  LOADN R2 20
+  SETTABLEKS R2 R1 K16 ["SIDE_PADDING"]
+  LOADN R2 20
+  SETTABLEKS R2 R1 K17 ["LAYOUT_PADDING"]
+  LOADN R2 20
+  SETTABLEKS R2 R1 K18 ["SIDE_MARGIN"]
+  LOADN R2 50
+  SETTABLEKS R2 R1 K19 ["VERTICAL_MARGIN"]
+  LOADK R2 K52 ["rbxasset://textures/ui/ErrorPrompt/PrimaryButton.png"]
+  SETTABLEKS R2 R1 K20 ["PRIMARY_BUTTON_TEXTURE"]
+  LOADK R2 K53 ["rbxasset://textures/ui/ErrorPrompt/SecondaryButton.png"]
+  SETTABLEKS R2 R1 K21 ["SECONDARY_BUTTON_TEXTURE"]
+  LOADK R2 K54 ["rbxasset://textures/ui/LuaApp/graphic/shimmer_darkTheme.png"]
+  SETTABLEKS R2 R1 K22 ["SHIMMER_TEXTURE"]
+  LOADK R2 K55 ["rbxasset://textures/ui/ErrorPrompt/ShimmerOverlay.png"]
+  SETTABLEKS R2 R1 K23 ["OVERLAY_TEXTURE"]
+  LOADK R2 K56 ["VIPServer"]
+  SETTABLEKS R2 R1 K24 ["VIP_SERVER"]
+  LOADK R2 K57 ["ReservedServer"]
+  SETTABLEKS R2 R1 K25 ["RESERVED_SERVER"]
+  LOADK R2 K58 ["StandardServer"]
+  SETTABLEKS R2 R1 K26 ["STANDARD_SERVER"]
+  LOADK R2 K59 ["ingame_menu"]
+  SETTABLEKS R2 R1 K27 ["AnalyticsInGameMenuName"]
+  LOADK R2 K60 ["perf_menu_opening"]
+  SETTABLEKS R2 R1 K28 ["AnalyticsPerfMenuOpening"]
+  LOADK R2 K61 ["perf_menu_started"]
+  SETTABLEKS R2 R1 K29 ["AnalyticsPerfMenuStarted"]
+  LOADK R2 K62 ["perf_menu_ending"]
+  SETTABLEKS R2 R1 K30 ["AnalyticsPerfMenuEnding"]
+  LOADK R2 K63 ["perf_menu_closed"]
+  SETTABLEKS R2 R1 K31 ["AnalyticsPerfMenuClosed"]
+  LOADK R2 K64 ["gamemenu_flow_start"]
+  SETTABLEKS R2 R1 K32 ["AnalyticsGameMenuFlowStart"]
+  LOADK R2 K65 ["gamemenu_open_start"]
+  SETTABLEKS R2 R1 K33 ["AnalyticsGameMenuOpenStart"]
+  LOADK R2 K66 ["gamemenu_open_end"]
+  SETTABLEKS R2 R1 K34 ["AnalyticsGameMenuOpenEnd"]
+  LOADK R2 K67 ["gamemenu_close_start"]
+  SETTABLEKS R2 R1 K35 ["AnalyticsGameMenuCloseStart"]
+  LOADK R2 K68 ["gamemenu_close_end"]
+  SETTABLEKS R2 R1 K36 ["AnalyticsGameMenuCloseEnd"]
+  LOADK R2 K69 ["gamemenu_flow_end"]
+  SETTABLEKS R2 R1 K37 ["AnalyticsGameMenuFlowEnd"]
+  RETURN R1 1

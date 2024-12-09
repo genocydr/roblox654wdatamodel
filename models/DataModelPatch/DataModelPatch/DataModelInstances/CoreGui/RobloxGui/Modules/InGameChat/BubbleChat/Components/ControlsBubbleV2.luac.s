@@ -1,0 +1,810 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["isLocalPlayer"]
+  JUMPIFNOT R0 [+63]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["hasMicPermissions"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K3 ["voiceState"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["VOICE_STATE"]
+  GETTABLEKS R1 R2 K5 ["ERROR"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K6 ["RejoinPreviousChannel"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K3 ["voiceState"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["VOICE_STATE"]
+  GETTABLEKS R1 R2 K7 ["CONNECTING"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K8 ["ShowVoiceChatLoadingMessage"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R0 3
+  LOADK R2 K9 ["bubbleChatToggle"]
+  NAMECALL R0 R0 K10 ["setLastCtx"]
+  CALL R0 2 0
+  GETUPVAL R0 2
+  LOADK R2 K11 ["LegacyBubbleChatToggle"]
+  NAMECALL R0 R0 K12 ["ToggleMic"]
+  CALL R0 2 0
+  GETUPVAL R0 0
+  DUPTABLE R2 K14 [{"microphoneEnabled"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K15 ["localMuted"]
+  NOT R3 R4
+  SETTABLEKS R3 R2 K13 ["microphoneEnabled"]
+  NAMECALL R0 R0 K16 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+  GETUPVAL R0 2
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K17 ["userId"]
+  FASTCALL1 TONUMBER R3 [+2]
+  GETIMPORT R2 K19 [tonumber]
+  CALL R2 1 1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K20 ["isShowingDueToEasierUnmuting"]
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K21 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K22 ["EASIER_UNMUTING"]
+  JUMP [+5]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K21 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K23 ["BUBBLE_CHAT"]
+  NAMECALL R0 R0 K24 ["ToggleMutePlayer"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"cameraEnabled"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["VideoAnimationEnabled"]
+  SETTABLEKS R3 R2 K0 ["cameraEnabled"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["hasCameraPermissions"]
+  JUMPIFNOT R1 [+13]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["toggleVideo"]
+  CALL R1 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["setCameraPermissionStateFromControl"]
+  GETTABLEKS R2 R0 K0 ["hasCameraPermissions"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+22]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["hasCameraPermissions"]
+  JUMPIF R0 [+16]
+  NEWCLOSURE R0 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  GETUPVAL R1 3
+  MOVE R2 R0
+  NEWTABLE R3 0 1
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K2 ["Permissions"]
+  GETTABLEKS R4 R5 K3 ["CAMERA_ACCESS"]
+  SETLIST R3 R4 1 [1]
+  CALL R1 2 0
+  RETURN R0 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K4 ["toggleVideo"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIF R0 [+7]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["hasCameraPermissions"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["IsStarted"]
+  CALL R0 1 1
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 2
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K3 ["VideoAnimationEnabled"]
+  NOT R1 R2
+  SETTABLEKS R1 R0 K3 ["VideoAnimationEnabled"]
+  GETUPVAL R0 3
+  LOADK R2 K4 ["bubbleChatToggle"]
+  NAMECALL R0 R0 K5 ["setLastCtx"]
+  CALL R0 2 0
+  GETUPVAL R0 1
+  DUPTABLE R2 K7 [{"cameraEnabled"}]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["VideoAnimationEnabled"]
+  SETTABLEKS R3 R2 K6 ["cameraEnabled"]
+  NAMECALL R0 R0 K8 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R1 4
+  GETTABLEKS R0 R1 K9 ["getSelfViewIsOpenAndVisible"]
+  CALL R0 0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K3 ["VideoAnimationEnabled"]
+  JUMPIFNOT R1 [+5]
+  JUMPIF R0 [+4]
+  GETUPVAL R1 5
+  NAMECALL R1 R1 K10 ["fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"microphoneEnabled"}]
+  NOT R4 R0
+  SETTABLEKS R4 R3 K0 ["microphoneEnabled"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+9]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["IsStarted"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["VideoAnimationEnabled"]
+  JUMP [+1]
+  LOADB R1 0
+  DUPTABLE R4 K4 [{"microphoneEnabled", "cameraEnabled"}]
+  GETUPVAL R6 1
+  JUMPIFNOT R6 [+8]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["localMuted"]
+  JUMPIFEQKB R6 FALSE [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  JUMP [+4]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["localMuted"]
+  NOT R5 R6
+  SETTABLEKS R5 R4 K2 ["microphoneEnabled"]
+  SETTABLEKS R1 R4 K3 ["cameraEnabled"]
+  NAMECALL R2 R0 K6 ["setState"]
+  CALL R2 2 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  SETTABLEKS R2 R0 K7 ["toggleMic"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R0 K8 ["updateVideo"]
+  NEWCLOSURE R2 P2
+  CAPTURE UPVAL U6
+  CAPTURE VAL R0
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  SETTABLEKS R2 R0 K9 ["onVideoButtonPressed"]
+  NEWCLOSURE R2 P3
+  CAPTURE UPVAL U6
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  SETTABLEKS R2 R0 K10 ["toggleVideo"]
+  NEWCLOSURE R2 P4
+  CAPTURE VAL R0
+  SETTABLEKS R2 R0 K11 ["muteChangedEvent"]
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isLocalPlayer"]
+  JUMPIFNOT R1 [+6]
+  NAMECALL R1 R0 K2 ["getCameraButtonVisibleAtMount"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+2]
+  LOADB R1 1
+  RETURN R1 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_8:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isLocalPlayer"]
+  JUMPIFNOT R1 [+49]
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["hasMicPermissions"]
+  NOT R1 R2
+  JUMP [+10]
+  GETTABLEKS R3 R0 K3 ["state"]
+  GETTABLEKS R2 R3 K4 ["microphoneEnabled"]
+  JUMPIFNOT R2 [+4]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["hasMicPermissions"]
+  NOT R1 R2
+  LOADB R2 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K5 ["voiceState"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["VOICE_STATE"]
+  GETTABLEKS R4 R5 K7 ["MUTED"]
+  JUMPIFEQ R3 R4 [+14]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K5 ["voiceState"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["VOICE_STATE"]
+  GETTABLEKS R4 R5 K8 ["LOCAL_MUTED"]
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIF R1 [+1]
+  JUMPIFNOT R2 [+2]
+  LOADB R3 1
+  RETURN R3 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_9:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+2]
+  LOADB R1 0
+  RETURN R1 1
+  GETUPVAL R1 2
+  CALL R1 0 -1
+  RETURN R1 -1
+
+PROTO_10:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["hasMicPermissions"]
+  JUMPIFNOT R1 [+4]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["voiceEnabled"]
+  NAMECALL R2 R0 K3 ["shouldShowCameraIndicator"]
+  CALL R2 1 1
+  NAMECALL R3 R0 K4 ["shouldShowMicOffIndicator"]
+  CALL R3 1 1
+  AND R4 R2 R1
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["chatSettings"]
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K6 ["DoubleIconCornerRadiusOffset"]
+  JUMPIF R6 [+3]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K7 ["SingleIconCornerRadiusOffset"]
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K8 ["DoubleIconButtonSize"]
+  JUMPIF R7 [+3]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K9 ["SingleIconButtonSize"]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K10 ["isLocalPlayer"]
+  JUMPIFNOT R9 [+2]
+  LOADK R8 K11 ["microphone"]
+  JUMP [+1]
+  LOADK R8 K12 ["speaker"]
+  GETTABLEKS R11 R0 K13 ["state"]
+  GETTABLEKS R10 R11 K14 ["cameraEnabled"]
+  JUMPIFNOT R10 [+7]
+  GETTABLEKS R11 R0 K0 ["props"]
+  GETTABLEKS R10 R11 K15 ["hasCameraPermissions"]
+  JUMPIFNOT R10 [+2]
+  LOADK R9 K16 ["icons/controls/voice/video_on_light"]
+  JUMP [+1]
+  LOADK R9 K17 ["icons/controls/voice/video_off_light"]
+  GETUPVAL R10 1
+  CALL R10 0 1
+  JUMPIFNOT R10 [+12]
+  GETTABLEKS R11 R0 K13 ["state"]
+  GETTABLEKS R10 R11 K14 ["cameraEnabled"]
+  JUMPIFNOT R10 [+6]
+  NAMECALL R10 R0 K18 ["getCameraButtonVisibleAtMount"]
+  CALL R10 1 1
+  JUMPIFNOT R10 [+2]
+  LOADK R9 K16 ["icons/controls/voice/video_on_light"]
+  JUMP [+1]
+  LOADK R9 K17 ["icons/controls/voice/video_off_light"]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K19 ["createElement"]
+  LOADK R11 K20 ["Frame"]
+  DUPTABLE R12 K29 [{"AnchorPoint", "Position", "AutomaticSize", "Size", "LayoutOrder", "BackgroundTransparency", "BackgroundColor3", "Visible"}]
+  GETIMPORT R13 K32 [Vector2.new]
+  LOADK R14 K33 [0.5]
+  LOADN R15 1
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K21 ["AnchorPoint"]
+  GETIMPORT R13 K35 [UDim2.new]
+  LOADK R14 K33 [0.5]
+  LOADN R15 0
+  LOADN R16 1
+  LOADN R17 248
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K22 ["Position"]
+  GETIMPORT R13 K38 [Enum.AutomaticSize.X]
+  SETTABLEKS R13 R12 K23 ["AutomaticSize"]
+  GETIMPORT R13 K40 [UDim2.fromOffset]
+  LOADN R14 0
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K41 ["FrameHeight"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K24 ["Size"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K25 ["LayoutOrder"]
+  SETTABLEKS R13 R12 K25 ["LayoutOrder"]
+  GETTABLEKS R13 R5 K26 ["BackgroundTransparency"]
+  SETTABLEKS R13 R12 K26 ["BackgroundTransparency"]
+  GETTABLEKS R13 R5 K27 ["BackgroundColor3"]
+  SETTABLEKS R13 R12 K27 ["BackgroundColor3"]
+  OR R13 R1 R2
+  SETTABLEKS R13 R12 K28 ["Visible"]
+  DUPTABLE R13 K48 [{"Scale", "UICorner", "Container", "Carat", "MuteChangedEvent", "VideoEnabledChanged"}]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  LOADK R15 K49 ["UIScale"]
+  DUPTABLE R16 K50 [{"Scale"}]
+  GETTABLEKS R19 R0 K0 ["props"]
+  GETTABLEKS R18 R19 K51 ["isInsideMaximizeDistance"]
+  JUMPIF R18 [+2]
+  LOADK R17 K52 [0.75]
+  JUMP [+1]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K42 ["Scale"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K42 ["Scale"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  LOADK R15 K43 ["UICorner"]
+  DUPTABLE R16 K54 [{"CornerRadius"}]
+  GETIMPORT R17 K56 [UDim.new]
+  LOADN R18 0
+  MOVE R19 R6
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K53 ["CornerRadius"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K43 ["UICorner"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  LOADK R15 K20 ["Frame"]
+  DUPTABLE R16 K57 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R17 K59 [UDim2.fromScale]
+  LOADN R18 1
+  LOADN R19 1
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K24 ["Size"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K26 ["BackgroundTransparency"]
+  DUPTABLE R17 K64 [{"UICorner", "UIListLayout", "MicrophoneBubble", "Divider", "CameraBubble"}]
+  GETTABLEKS R18 R5 K65 ["CornerEnabled"]
+  JUMPIFNOT R18 [+13]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K19 ["createElement"]
+  LOADK R19 K43 ["UICorner"]
+  DUPTABLE R20 K54 [{"CornerRadius"}]
+  GETIMPORT R21 K56 [UDim.new]
+  LOADN R22 0
+  MOVE R23 R6
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K53 ["CornerRadius"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K43 ["UICorner"]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K19 ["createElement"]
+  LOADK R19 K60 ["UIListLayout"]
+  DUPTABLE R20 K70 [{"FillDirection", "SortOrder", "HorizontalAlignment", "VerticalAlignment"}]
+  GETIMPORT R21 K72 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R21 R20 K66 ["FillDirection"]
+  GETIMPORT R21 K73 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R21 R20 K67 ["SortOrder"]
+  GETIMPORT R21 K75 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R21 R20 K68 ["HorizontalAlignment"]
+  GETIMPORT R21 K76 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R21 R20 K69 ["VerticalAlignment"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K60 ["UIListLayout"]
+  MOVE R18 R1
+  JUMPIFNOT R18 [+49]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K19 ["createElement"]
+  GETUPVAL R19 3
+  DUPTABLE R20 K86 [{"LayoutOrder", "onActivated", "chatSettings", "controlBubbleSize", "cornerRadiusOffset", "iconAssetName", "iconSize", "iconTransparency", "voiceState", "renderStepName", "iconStyle"}]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K25 ["LayoutOrder"]
+  GETTABLEKS R21 R0 K87 ["toggleMic"]
+  SETTABLEKS R21 R20 K77 ["onActivated"]
+  SETTABLEKS R5 R20 K5 ["chatSettings"]
+  SETTABLEKS R7 R20 K78 ["controlBubbleSize"]
+  SETTABLEKS R6 R20 K79 ["cornerRadiusOffset"]
+  JUMPIFNOT R3 [+2]
+  LOADK R21 K88 ["icons/controls/voice/microphone_off_light"]
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K80 ["iconAssetName"]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K89 ["IconSize"]
+  SETTABLEKS R21 R20 K81 ["iconSize"]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K90 ["IconTransparency"]
+  SETTABLEKS R21 R20 K82 ["iconTransparency"]
+  GETTABLEKS R22 R0 K0 ["props"]
+  GETTABLEKS R21 R22 K83 ["voiceState"]
+  SETTABLEKS R21 R20 K83 ["voiceState"]
+  GETUPVAL R21 4
+  NAMECALL R21 R21 K91 ["GenerateGUID"]
+  CALL R21 1 1
+  SETTABLEKS R21 R20 K84 ["renderStepName"]
+  SETTABLEKS R8 R20 K85 ["iconStyle"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K61 ["MicrophoneBubble"]
+  MOVE R18 R1
+  JUMPIFNOT R18 [+34]
+  MOVE R18 R2
+  JUMPIFNOT R18 [+32]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K19 ["createElement"]
+  LOADK R19 K20 ["Frame"]
+  DUPTABLE R20 K94 [{"Size", "AnchorPoint", "BorderSizePixel", "LayoutOrder", "ZIndex", "BackgroundColor3"}]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K95 ["DividerSize"]
+  SETTABLEKS R21 R20 K24 ["Size"]
+  GETIMPORT R21 K32 [Vector2.new]
+  LOADK R22 K33 [0.5]
+  LOADN R23 1
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K21 ["AnchorPoint"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K92 ["BorderSizePixel"]
+  LOADN R21 2
+  SETTABLEKS R21 R20 K25 ["LayoutOrder"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K93 ["ZIndex"]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K96 ["DividerColor"]
+  SETTABLEKS R21 R20 K27 ["BackgroundColor3"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K62 ["Divider"]
+  MOVE R18 R2
+  JUMPIFNOT R18 [+39]
+  GETUPVAL R19 2
+  GETTABLEKS R18 R19 K19 ["createElement"]
+  GETUPVAL R19 3
+  DUPTABLE R20 K97 [{"LayoutOrder", "onActivated", "chatSettings", "cornerRadiusOffset", "controlBubbleSize", "iconAssetName", "iconSize", "iconTransparency", "iconStyle"}]
+  LOADN R21 3
+  SETTABLEKS R21 R20 K25 ["LayoutOrder"]
+  GETUPVAL R22 1
+  CALL R22 0 1
+  JUMPIFNOT R22 [+3]
+  GETTABLEKS R21 R0 K98 ["onVideoButtonPressed"]
+  JUMPIF R21 [+2]
+  GETTABLEKS R21 R0 K99 ["toggleVideo"]
+  SETTABLEKS R21 R20 K77 ["onActivated"]
+  SETTABLEKS R5 R20 K5 ["chatSettings"]
+  SETTABLEKS R6 R20 K79 ["cornerRadiusOffset"]
+  SETTABLEKS R7 R20 K78 ["controlBubbleSize"]
+  SETTABLEKS R9 R20 K80 ["iconAssetName"]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K89 ["IconSize"]
+  SETTABLEKS R21 R20 K81 ["iconSize"]
+  GETUPVAL R22 0
+  GETTABLEKS R21 R22 K90 ["IconTransparency"]
+  SETTABLEKS R21 R20 K82 ["iconTransparency"]
+  SETTABLEKS R8 R20 K85 ["iconStyle"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K63 ["CameraBubble"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K44 ["Container"]
+  GETTABLEKS R14 R5 K100 ["TailVisible"]
+  JUMPIFNOT R14 [+46]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  LOADK R15 K101 ["ImageLabel"]
+  DUPTABLE R16 K105 [{"LayoutOrder", "AnchorPoint", "BackgroundTransparency", "Position", "Size", "Image", "ImageColor3", "ImageTransparency"}]
+  LOADN R17 3
+  SETTABLEKS R17 R16 K25 ["LayoutOrder"]
+  GETIMPORT R17 K32 [Vector2.new]
+  LOADK R18 K33 [0.5]
+  LOADN R19 0
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K21 ["AnchorPoint"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K26 ["BackgroundTransparency"]
+  GETIMPORT R17 K35 [UDim2.new]
+  LOADK R18 K33 [0.5]
+  LOADN R19 0
+  LOADN R20 1
+  LOADN R21 255
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K22 ["Position"]
+  GETIMPORT R17 K40 [UDim2.fromOffset]
+  LOADN R18 12
+  LOADN R19 8
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K24 ["Size"]
+  LOADK R17 K106 ["rbxasset://textures/ui/InGameChat/Caret.png"]
+  SETTABLEKS R17 R16 K102 ["Image"]
+  GETTABLEKS R17 R5 K27 ["BackgroundColor3"]
+  SETTABLEKS R17 R16 K103 ["ImageColor3"]
+  GETTABLEKS R17 R5 K26 ["BackgroundTransparency"]
+  SETTABLEKS R17 R16 K104 ["ImageTransparency"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K45 ["Carat"]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  GETUPVAL R15 5
+  DUPTABLE R16 K109 [{"event", "callback"}]
+  GETUPVAL R19 6
+  GETTABLEKS R18 R19 K110 ["muteChanged"]
+  GETTABLEKS R17 R18 K111 ["Event"]
+  SETTABLEKS R17 R16 K107 ["event"]
+  GETTABLEKS R17 R0 K112 ["muteChangedEvent"]
+  SETTABLEKS R17 R16 K108 ["callback"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K46 ["MuteChangedEvent"]
+  GETUPVAL R15 7
+  JUMPIFNOT R15 [+18]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K19 ["createElement"]
+  GETUPVAL R15 5
+  DUPTABLE R16 K109 [{"event", "callback"}]
+  GETUPVAL R17 7
+  LOADK R19 K113 ["VideoAnimationEnabled"]
+  NAMECALL R17 R17 K114 ["GetPropertyChangedSignal"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K107 ["event"]
+  GETTABLEKS R17 R0 K115 ["updateVideo"]
+  SETTABLEKS R17 R16 K108 ["callback"]
+  CALL R14 2 1
+  JUMPIF R14 [+1]
+  LOADNIL R14
+  SETTABLEKS R14 R13 K47 ["VideoEnabledChanged"]
+  CALL R10 3 -1
+  RETURN R10 -1
+
+PROTO_11:
+  DUPTABLE R2 K1 [{"voiceState"}]
+  GETTABLEKS R4 R0 K0 ["voiceState"]
+  GETTABLEKS R5 R1 K2 ["userId"]
+  GETTABLE R3 R4 R5
+  SETTABLEKS R3 R2 K0 ["voiceState"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["FaceAnimatorService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["HttpService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K9 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R8 R0 K9 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["t"]
+  CALL R6 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R0 K9 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["UIBlox"]
+  CALL R7 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R13 R0 K14 ["Workspace"]
+  GETTABLEKS R12 R13 K9 ["Packages"]
+  GETTABLEKS R11 R12 K15 ["PermissionsProtocol"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K15 ["PermissionsProtocol"]
+  GETTABLEKS R8 R9 K16 ["default"]
+  GETTABLEKS R10 R7 K17 ["Utility"]
+  GETTABLEKS R9 R10 K18 ["ExternalEventConnection"]
+  LOADK R12 K19 ["RobloxGui"]
+  NAMECALL R10 R1 K20 ["WaitForChild"]
+  CALL R10 2 1
+  GETTABLEKS R12 R1 K19 ["RobloxGui"]
+  GETTABLEKS R11 R12 K21 ["Modules"]
+  GETIMPORT R12 K8 [require]
+  GETIMPORT R15 K23 [script]
+  GETTABLEKS R14 R15 K24 ["Parent"]
+  GETTABLEKS R13 R14 K25 ["ControlBubbleV2"]
+  CALL R12 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R16 R11 K26 ["VoiceChat"]
+  GETTABLEKS R15 R16 K27 ["VoiceChatServiceManager"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K16 ["default"]
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R17 R11 K28 ["InGameChat"]
+  GETTABLEKS R16 R17 K29 ["BubbleChat"]
+  GETTABLEKS R15 R16 K30 ["Constants"]
+  CALL R14 1 1
+  GETIMPORT R15 K8 [require]
+  GETTABLEKS R17 R11 K31 ["SelfView"]
+  GETTABLEKS R16 R17 K32 ["publicApi"]
+  CALL R15 1 1
+  GETIMPORT R16 K8 [require]
+  GETTABLEKS R18 R11 K31 ["SelfView"]
+  GETTABLEKS R17 R18 K33 ["toggleSelfViewSignal"]
+  CALL R16 1 1
+  GETIMPORT R18 K8 [require]
+  GETTABLEKS R20 R11 K31 ["SelfView"]
+  GETTABLEKS R19 R20 K34 ["Analytics"]
+  CALL R18 1 1
+  GETTABLEKS R17 R18 K35 ["new"]
+  CALL R17 0 1
+  GETIMPORT R19 K8 [require]
+  GETTABLEKS R22 R0 K14 ["Workspace"]
+  GETTABLEKS R21 R22 K9 ["Packages"]
+  GETTABLEKS R20 R21 K36 ["SharedFlags"]
+  CALL R19 1 1
+  GETTABLEKS R18 R19 K37 ["GetFFlagLocalMutedNilFix"]
+  GETIMPORT R19 K8 [require]
+  GETTABLEKS R21 R11 K26 ["VoiceChat"]
+  GETTABLEKS R20 R21 K30 ["Constants"]
+  CALL R19 1 1
+  GETIMPORT R20 K8 [require]
+  GETTABLEKS R23 R10 K21 ["Modules"]
+  GETTABLEKS R22 R23 K38 ["Settings"]
+  GETTABLEKS R21 R22 K39 ["getCamMicPermissions"]
+  CALL R20 1 1
+  GETIMPORT R21 K8 [require]
+  GETTABLEKS R24 R10 K21 ["Modules"]
+  GETTABLEKS R23 R24 K38 ["Settings"]
+  GETTABLEKS R22 R23 K40 ["isCamEnabledForUserAndPlace"]
+  CALL R21 1 1
+  GETIMPORT R22 K8 [require]
+  GETTABLEKS R27 R10 K21 ["Modules"]
+  GETTABLEKS R26 R27 K28 ["InGameChat"]
+  GETTABLEKS R25 R26 K29 ["BubbleChat"]
+  GETTABLEKS R24 R25 K41 ["Helpers"]
+  GETTABLEKS R23 R24 K42 ["displayCameraDeniedToast"]
+  CALL R22 1 1
+  GETIMPORT R23 K8 [require]
+  GETTABLEKS R26 R10 K21 ["Modules"]
+  GETTABLEKS R25 R26 K38 ["Settings"]
+  GETTABLEKS R24 R25 K43 ["isCameraOnlyUser"]
+  CALL R23 1 1
+  GETIMPORT R24 K8 [require]
+  GETTABLEKS R27 R10 K21 ["Modules"]
+  GETTABLEKS R26 R27 K44 ["Flags"]
+  GETTABLEKS R25 R26 K45 ["getFFlagDoNotPromptCameraPermissionsOnMount"]
+  CALL R24 1 1
+  GETIMPORT R25 K8 [require]
+  GETTABLEKS R28 R10 K21 ["Modules"]
+  GETTABLEKS R27 R28 K44 ["Flags"]
+  GETTABLEKS R26 R27 K46 ["getFFlagEnableAlwaysAvailableCamera"]
+  CALL R25 1 1
+  GETIMPORT R26 K8 [require]
+  GETTABLEKS R29 R10 K21 ["Modules"]
+  GETTABLEKS R28 R29 K44 ["Flags"]
+  GETTABLEKS R27 R28 K47 ["getFFlagLegacyConnectingMicStateFix"]
+  CALL R26 1 1
+  GETTABLEKS R27 R14 K48 ["AVATAR_CHAT_UI_SETTINGS"]
+  GETTABLEKS R28 R4 K49 ["PureComponent"]
+  LOADK R30 K50 ["ControlsBubble"]
+  NAMECALL R28 R28 K51 ["extend"]
+  CALL R28 2 1
+  GETTABLEKS R29 R6 K52 ["strictInterface"]
+  DUPTABLE R30 K60 [{"chatSettings", "isInsideMaximizeDistance", "isLocalPlayer", "LayoutOrder", "hasCameraPermissions", "hasMicPermissions", "isShowingDueToEasierUnmuting"}]
+  GETTABLEKS R31 R6 K61 ["table"]
+  SETTABLEKS R31 R30 K53 ["chatSettings"]
+  GETTABLEKS R31 R6 K62 ["boolean"]
+  SETTABLEKS R31 R30 K54 ["isInsideMaximizeDistance"]
+  GETTABLEKS R31 R6 K62 ["boolean"]
+  SETTABLEKS R31 R30 K55 ["isLocalPlayer"]
+  GETTABLEKS R31 R6 K63 ["optional"]
+  GETTABLEKS R32 R6 K64 ["number"]
+  CALL R31 1 1
+  SETTABLEKS R31 R30 K56 ["LayoutOrder"]
+  GETTABLEKS R31 R6 K62 ["boolean"]
+  SETTABLEKS R31 R30 K57 ["hasCameraPermissions"]
+  GETTABLEKS R31 R6 K62 ["boolean"]
+  SETTABLEKS R31 R30 K58 ["hasMicPermissions"]
+  GETTABLEKS R31 R6 K63 ["optional"]
+  GETTABLEKS R32 R6 K62 ["boolean"]
+  CALL R31 1 1
+  SETTABLEKS R31 R30 K59 ["isShowingDueToEasierUnmuting"]
+  CALL R29 1 1
+  SETTABLEKS R29 R28 K65 ["validateProps"]
+  DUPTABLE R29 K66 [{"LayoutOrder"}]
+  LOADN R30 1
+  SETTABLEKS R30 R29 K56 ["LayoutOrder"]
+  SETTABLEKS R29 R28 K67 ["defaultProps"]
+  DUPCLOSURE R29 K68 [PROTO_6]
+  CAPTURE VAL R2
+  CAPTURE VAL R18
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R17
+  CAPTURE VAL R19
+  CAPTURE VAL R24
+  CAPTURE VAL R22
+  CAPTURE VAL R20
+  CAPTURE VAL R8
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  SETTABLEKS R29 R28 K69 ["init"]
+  DUPCLOSURE R29 K70 [PROTO_7]
+  SETTABLEKS R29 R28 K71 ["shouldShowCameraIndicator"]
+  DUPCLOSURE R29 K72 [PROTO_8]
+  CAPTURE VAL R26
+  CAPTURE VAL R14
+  SETTABLEKS R29 R28 K73 ["shouldShowMicOffIndicator"]
+  DUPCLOSURE R29 K74 [PROTO_9]
+  CAPTURE VAL R25
+  CAPTURE VAL R23
+  CAPTURE VAL R21
+  SETTABLEKS R29 R28 K75 ["getCameraButtonVisibleAtMount"]
+  DUPCLOSURE R29 K76 [PROTO_10]
+  CAPTURE VAL R27
+  CAPTURE VAL R24
+  CAPTURE VAL R4
+  CAPTURE VAL R12
+  CAPTURE VAL R3
+  CAPTURE VAL R9
+  CAPTURE VAL R13
+  CAPTURE VAL R2
+  SETTABLEKS R29 R28 K77 ["render"]
+  DUPCLOSURE R29 K78 [PROTO_11]
+  GETTABLEKS R30 R5 K79 ["connect"]
+  MOVE R31 R29
+  CALL R30 1 1
+  MOVE R31 R28
+  CALL R30 1 -1
+  RETURN R30 -1

@@ -1,0 +1,74 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["trackerPrompt"]
+  JUMPIFNOT R2 [+15]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["update"]
+  GETTABLEKS R3 R0 K0 ["trackerPrompt"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["createElement"]
+  GETUPVAL R5 1
+  DUPTABLE R6 K4 [{"promptType"}]
+  SETTABLEKS R1 R6 K3 ["promptType"]
+  CALL R4 2 -1
+  CALL R2 -1 0
+  RETURN R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["mount"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K4 [{"promptType"}]
+  SETTABLEKS R1 R5 K3 ["promptType"]
+  CALL R3 2 1
+  GETUPVAL R4 2
+  LOADK R5 K6 ["RobloxTrackerPromptGui"]
+  CALL R2 3 1
+  SETTABLEKS R2 R0 K0 ["trackerPrompt"]
+  RETURN R0 0
+
+PROTO_1:
+  DUPTABLE R0 K1 [{"trackerPrompt"}]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["trackerPrompt"]
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K3 [setmetatable]
+  CALL R1 2 0
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R7 R2 K11 ["Modules"]
+  GETTABLEKS R6 R7 K12 ["Tracker"]
+  GETTABLEKS R5 R6 K13 ["TrackerPrompt"]
+  CALL R4 1 1
+  NEWTABLE R5 0 0
+  SETTABLEKS R5 R5 K14 ["__index"]
+  DUPCLOSURE R6 K15 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  SETTABLEKS R6 R5 K16 ["showPrompt"]
+  DUPCLOSURE R6 K17 [PROTO_1]
+  CAPTURE VAL R5
+  SETTABLEKS R6 R5 K18 ["new"]
+  GETTABLEKS R6 R5 K18 ["new"]
+  CALL R6 0 -1
+  RETURN R6 -1

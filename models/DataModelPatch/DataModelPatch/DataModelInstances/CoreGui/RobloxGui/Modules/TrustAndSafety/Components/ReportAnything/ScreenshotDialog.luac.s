@@ -1,0 +1,751 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["reportAction"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["annotationPoints"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K8 [{"BackgroundTransparency", "Size", "BackgroundColor3", "AnchorPoint", "Position", "LayoutOrder"}]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  GETIMPORT R4 K11 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 60
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K3 ["Size"]
+  GETIMPORT R4 K14 [Color3.fromHex]
+  LOADK R5 K15 ["#4F545F"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K4 ["BackgroundColor3"]
+  GETIMPORT R4 K17 [Vector2.new]
+  LOADN R5 0
+  LOADN R6 1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K5 ["AnchorPoint"]
+  GETIMPORT R4 K19 [UDim2.fromScale]
+  LOADN R5 0
+  LOADN R6 1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K6 ["Position"]
+  LOADN R4 4
+  SETTABLEKS R4 R3 K7 ["LayoutOrder"]
+  DUPTABLE R4 K22 [{"Layout", "Container"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K23 ["UIListLayout"]
+  DUPTABLE R7 K26 [{"FillDirection", "HorizontalAlignment"}]
+  GETIMPORT R8 K29 [Enum.FillDirection.Vertical]
+  SETTABLEKS R8 R7 K24 ["FillDirection"]
+  GETIMPORT R8 K31 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R8 R7 K25 ["HorizontalAlignment"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K20 ["Layout"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K1 ["Frame"]
+  DUPTABLE R7 K32 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R8 K11 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 144
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K3 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K2 ["BackgroundTransparency"]
+  DUPTABLE R8 K35 [{"Padding", "ActionButtons"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K36 ["UIPadding"]
+  DUPTABLE R11 K41 [{"PaddingTop", "PaddingBottom", "PaddingLeft", "PaddingRight"}]
+  GETIMPORT R12 K43 [UDim.new]
+  LOADN R13 0
+  LOADN R14 12
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K37 ["PaddingTop"]
+  GETIMPORT R12 K43 [UDim.new]
+  LOADN R13 0
+  LOADN R14 12
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K38 ["PaddingBottom"]
+  GETIMPORT R12 K43 [UDim.new]
+  LOADN R13 0
+  LOADN R14 32
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K39 ["PaddingLeft"]
+  GETIMPORT R12 K43 [UDim.new]
+  LOADN R13 0
+  LOADN R14 32
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K40 ["PaddingRight"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K33 ["Padding"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  GETUPVAL R10 1
+  DUPTABLE R11 K46 [{"marginBetween", "buttons"}]
+  LOADN R12 8
+  SETTABLEKS R12 R11 K44 ["marginBetween"]
+  NEWTABLE R12 0 1
+  DUPTABLE R13 K49 [{"buttonType", "props"}]
+  GETUPVAL R15 2
+  GETTABLEKS R14 R15 K50 ["PrimarySystem"]
+  SETTABLEKS R14 R13 K47 ["buttonType"]
+  DUPTABLE R14 K53 [{"onActivated", "text"}]
+  NEWCLOSURE R15 P0
+  CAPTURE VAL R0
+  SETTABLEKS R15 R14 K51 ["onActivated"]
+  GETUPVAL R16 3
+  CALL R16 0 1
+  JUMPIFNOT R16 [+6]
+  GETUPVAL R15 4
+  LOADK R17 K54 ["Feature.ReportAbuse.Action.Next"]
+  NAMECALL R15 R15 K55 ["FormatByKey"]
+  CALL R15 2 1
+  JUMP [+1]
+  LOADK R15 K56 ["Next"]
+  SETTABLEKS R15 R14 K52 ["text"]
+  SETTABLEKS R14 R13 K48 ["props"]
+  SETLIST R12 R13 1 [1]
+  SETTABLEKS R12 R11 K45 ["buttons"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K34 ["ActionButtons"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K21 ["Container"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["reportAnythingAnalytics"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["reportAnythingAnalytics"]
+  GETTABLEKS R0 R1 K1 ["incrementAnnotationPageSeen"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_3:
+  GETIMPORT R0 K1 [warn]
+  LOADK R1 K2 ["OverlayActivated"]
+  CALL R0 1 0
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K3 ["isKeyboardJustOff"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K4 ["dismissAction"]
+  JUMPIFNOT R0 [+8]
+  GETIMPORT R0 K1 [warn]
+  LOADK R1 K5 ["Menu dismissed"]
+  CALL R0 1 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K4 ["dismissAction"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_4:
+  NEWTABLE R0 0 0
+  GETIMPORT R1 K1 [pairs]
+  GETUPVAL R2 0
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  SETTABLE R5 R0 R4
+  FORGLOOP R1 2 [-2]
+  GETUPVAL R1 1
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["reportAnythingAnalytics"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["reportAnythingAnalytics"]
+  GETTABLEKS R1 R2 K1 ["incrementAnnotationPlace"]
+  CALL R1 0 0
+  NEWTABLE R1 0 0
+  GETIMPORT R2 K3 [pairs]
+  GETUPVAL R3 1
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  SETTABLE R6 R1 R5
+  FORGLOOP R2 2 [-2]
+  GETUPVAL R2 2
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R1 3
+  NEWTABLE R2 0 0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  LENGTH R0 R1
+  LOADN R1 0
+  JUMPIFNOTLT R1 R0 [+40]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["reportAnythingAnalytics"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["reportAnythingAnalytics"]
+  GETTABLEKS R0 R1 K1 ["incrementAnnotationUndo"]
+  CALL R0 0 0
+  GETUPVAL R1 2
+  LOADN R2 1
+  GETUPVAL R4 0
+  GETUPVAL R6 0
+  LENGTH R5 R6
+  GETTABLE R3 R4 R5
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R0 K4 [table.insert]
+  CALL R0 3 0
+  GETIMPORT R0 K6 [table.remove]
+  GETUPVAL R1 0
+  GETUPVAL R3 0
+  LENGTH R2 R3
+  CALL R0 2 0
+  NEWTABLE R0 0 0
+  GETIMPORT R1 K8 [pairs]
+  GETUPVAL R2 0
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  SETTABLE R5 R0 R4
+  FORGLOOP R1 2 [-2]
+  GETUPVAL R1 3
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  LENGTH R0 R1
+  LOADN R1 0
+  JUMPIFNOTLT R1 R0 [+37]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["reportAnythingAnalytics"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["reportAnythingAnalytics"]
+  GETTABLEKS R0 R1 K1 ["incrementAnnotationRedo"]
+  CALL R0 0 0
+  GETUPVAL R1 2
+  GETUPVAL R3 0
+  GETTABLEN R2 R3 1
+  FASTCALL2 TABLE_INSERT R1 R2 [+3]
+  GETIMPORT R0 K4 [table.insert]
+  CALL R0 2 0
+  GETIMPORT R0 K6 [table.remove]
+  GETUPVAL R1 0
+  LOADN R2 1
+  CALL R0 2 0
+  NEWTABLE R0 0 0
+  GETIMPORT R1 K8 [pairs]
+  GETUPVAL R2 2
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  SETTABLE R5 R0 R4
+  FORGLOOP R1 2 [-2]
+  GETUPVAL R1 3
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useEffect"]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  NEWTABLE R3 0 0
+  CALL R1 2 0
+  GETUPVAL R1 1
+  CALL R1 0 1
+  GETTABLEKS R2 R1 K1 ["Theme"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K2 ["getInstance"]
+  CALL R3 0 1
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R3
+  CAPTURE VAL R0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K3 ["useState"]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K4 ["Dictionary"]
+  GETTABLEKS R6 R7 K5 ["join"]
+  NEWTABLE R7 0 0
+  GETTABLEKS R8 R0 K6 ["initialAnnotationPoints"]
+  JUMPIF R8 [+2]
+  NEWTABLE R8 0 0
+  CALL R6 2 -1
+  CALL R5 -1 2
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K3 ["useState"]
+  NEWTABLE R8 0 0
+  CALL R7 1 2
+  NEWCLOSURE R9 P2
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  NEWCLOSURE R10 P3
+  CAPTURE VAL R0
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  NEWCLOSURE R11 P4
+  CAPTURE VAL R5
+  CAPTURE VAL R0
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  NEWCLOSURE R12 P5
+  CAPTURE VAL R7
+  CAPTURE VAL R0
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  LENGTH R14 R5
+  LOADN R15 0
+  JUMPIFLT R15 R14 [+2]
+  LOADB R13 0 +1
+  LOADB R13 1
+  LENGTH R15 R7
+  LOADN R16 0
+  JUMPIFLT R16 R15 [+2]
+  LOADB R14 0 +1
+  LOADB R14 1
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K7 ["createElement"]
+  LOADK R16 K8 ["TextButton"]
+  NEWTABLE R17 16 0
+  LOADB R18 0
+  SETTABLEKS R18 R17 K9 ["AutoButtonColor"]
+  LOADN R18 0
+  SETTABLEKS R18 R17 K10 ["BorderSizePixel"]
+  GETTABLEKS R19 R2 K11 ["Overlay"]
+  GETTABLEKS R18 R19 K12 ["Color"]
+  SETTABLEKS R18 R17 K13 ["BackgroundColor3"]
+  GETTABLEKS R19 R2 K11 ["Overlay"]
+  GETTABLEKS R18 R19 K14 ["Transparency"]
+  SETTABLEKS R18 R17 K15 ["BackgroundTransparency"]
+  GETIMPORT R18 K18 [UDim2.new]
+  LOADN R19 1
+  LOADN R20 0
+  LOADN R21 1
+  LOADN R22 0
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K19 ["Size"]
+  GETIMPORT R18 K21 [UDim2.fromScale]
+  LOADK R19 K22 [0.5]
+  LOADK R20 K22 [0.5]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K23 ["Position"]
+  GETIMPORT R18 K25 [Vector2.new]
+  LOADK R19 K22 [0.5]
+  LOADK R20 K22 [0.5]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K26 ["AnchorPoint"]
+  LOADN R18 10
+  SETTABLEKS R18 R17 K27 ["ZIndex"]
+  LOADK R18 K28 [""]
+  SETTABLEKS R18 R17 K29 ["Text"]
+  GETUPVAL R20 0
+  GETTABLEKS R19 R20 K30 ["Event"]
+  GETTABLEKS R18 R19 K31 ["Activated"]
+  SETTABLE R4 R17 R18
+  DUPTABLE R18 K33 [{"ScreenshotDialog"}]
+  GETUPVAL R20 0
+  GETTABLEKS R19 R20 K7 ["createElement"]
+  GETUPVAL R20 4
+  DUPTABLE R21 K40 [{"Active", "Size", "BackgroundTransparency", "Image", "ImageColor3", "ImageTransparency", "ScaleType", "SliceCenter"}]
+  LOADB R22 1
+  SETTABLEKS R22 R21 K34 ["Active"]
+  GETIMPORT R22 K21 [UDim2.fromScale]
+  LOADN R23 1
+  LOADN R24 1
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K19 ["Size"]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K15 ["BackgroundTransparency"]
+  GETUPVAL R25 5
+  GETTABLEKS R24 R25 K41 ["Images"]
+  GETTABLEKS R23 R24 K42 ["RoundedRect"]
+  GETTABLEKS R22 R23 K35 ["Image"]
+  SETTABLEKS R22 R21 K35 ["Image"]
+  GETTABLEKS R23 R2 K43 ["BackgroundUIDefault"]
+  GETTABLEKS R22 R23 K12 ["Color"]
+  SETTABLEKS R22 R21 K36 ["ImageColor3"]
+  GETTABLEKS R23 R2 K43 ["BackgroundUIDefault"]
+  GETTABLEKS R22 R23 K14 ["Transparency"]
+  SETTABLEKS R22 R21 K37 ["ImageTransparency"]
+  GETUPVAL R25 5
+  GETTABLEKS R24 R25 K41 ["Images"]
+  GETTABLEKS R23 R24 K42 ["RoundedRect"]
+  GETTABLEKS R22 R23 K38 ["ScaleType"]
+  SETTABLEKS R22 R21 K38 ["ScaleType"]
+  GETUPVAL R25 5
+  GETTABLEKS R24 R25 K41 ["Images"]
+  GETTABLEKS R23 R24 K42 ["RoundedRect"]
+  GETTABLEKS R22 R23 K39 ["SliceCenter"]
+  SETTABLEKS R22 R21 K39 ["SliceCenter"]
+  DUPTABLE R22 K46 [{"HeaderAndContent", "Footer"}]
+  GETUPVAL R24 0
+  GETTABLEKS R23 R24 K7 ["createElement"]
+  LOADK R24 K47 ["Frame"]
+  DUPTABLE R25 K48 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R26 K18 [UDim2.new]
+  LOADN R27 1
+  LOADN R28 0
+  LOADN R29 1
+  GETTABLEKS R31 R0 K49 ["isSmallPortraitMode"]
+  JUMPIFNOT R31 [+2]
+  LOADN R30 196
+  JUMP [+1]
+  LOADN R30 0
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K19 ["Size"]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K15 ["BackgroundTransparency"]
+  DUPTABLE R26 K54 [{"Layout", "Header", "Divider", "ScreenshotAnnotation"}]
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K7 ["createElement"]
+  LOADK R28 K55 ["UIListLayout"]
+  DUPTABLE R29 K59 [{"FillDirection", "HorizontalAlignment", "SortOrder"}]
+  GETIMPORT R30 K62 [Enum.FillDirection.Vertical]
+  SETTABLEKS R30 R29 K56 ["FillDirection"]
+  GETIMPORT R30 K64 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R30 R29 K57 ["HorizontalAlignment"]
+  GETIMPORT R30 K66 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R30 R29 K58 ["SortOrder"]
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K50 ["Layout"]
+  GETTABLEKS R28 R0 K49 ["isSmallPortraitMode"]
+  JUMPIFNOT R28 [+25]
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K7 ["createElement"]
+  GETUPVAL R28 6
+  DUPTABLE R29 K74 [{"titleText", "backAction", "undoAnnotationPoints", "redoAnnotationPoints", "isRedoEnabled", "isUndoEnabled", "annotationPoints"}]
+  GETTABLEKS R30 R0 K67 ["titleText"]
+  SETTABLEKS R30 R29 K67 ["titleText"]
+  GETTABLEKS R30 R0 K68 ["backAction"]
+  SETTABLEKS R30 R29 K68 ["backAction"]
+  SETTABLEKS R11 R29 K69 ["undoAnnotationPoints"]
+  SETTABLEKS R12 R29 K70 ["redoAnnotationPoints"]
+  SETTABLEKS R14 R29 K71 ["isRedoEnabled"]
+  SETTABLEKS R13 R29 K72 ["isUndoEnabled"]
+  SETTABLEKS R5 R29 K73 ["annotationPoints"]
+  CALL R27 2 1
+  JUMP [+28]
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K7 ["createElement"]
+  GETUPVAL R28 7
+  DUPTABLE R29 K76 [{"titleText", "backAction", "reportAction", "undoAnnotationPoints", "redoAnnotationPoints", "isRedoEnabled", "isUndoEnabled", "annotationPoints"}]
+  GETTABLEKS R30 R0 K67 ["titleText"]
+  SETTABLEKS R30 R29 K67 ["titleText"]
+  GETTABLEKS R30 R0 K68 ["backAction"]
+  SETTABLEKS R30 R29 K68 ["backAction"]
+  GETTABLEKS R30 R0 K75 ["reportAction"]
+  SETTABLEKS R30 R29 K75 ["reportAction"]
+  SETTABLEKS R11 R29 K69 ["undoAnnotationPoints"]
+  SETTABLEKS R12 R29 K70 ["redoAnnotationPoints"]
+  SETTABLEKS R14 R29 K71 ["isRedoEnabled"]
+  SETTABLEKS R13 R29 K72 ["isUndoEnabled"]
+  SETTABLEKS R5 R29 K73 ["annotationPoints"]
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K51 ["Header"]
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K7 ["createElement"]
+  GETUPVAL R28 8
+  DUPTABLE R29 K77 [{"LayoutOrder"}]
+  LOADN R30 2
+  SETTABLEKS R30 R29 K65 ["LayoutOrder"]
+  CALL R27 2 1
+  SETTABLEKS R27 R26 K52 ["Divider"]
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K7 ["createElement"]
+  LOADK R28 K47 ["Frame"]
+  DUPTABLE R29 K78 [{"BackgroundTransparency", "LayoutOrder", "Size", "ZIndex"}]
+  LOADN R30 1
+  SETTABLEKS R30 R29 K15 ["BackgroundTransparency"]
+  LOADN R30 3
+  SETTABLEKS R30 R29 K65 ["LayoutOrder"]
+  GETIMPORT R30 K18 [UDim2.new]
+  LOADN R31 1
+  LOADN R32 0
+  LOADN R33 1
+  LOADN R34 207
+  CALL R30 4 1
+  SETTABLEKS R30 R29 K19 ["Size"]
+  LOADN R30 1
+  SETTABLEKS R30 R29 K27 ["ZIndex"]
+  DUPTABLE R30 K80 [{"Container"}]
+  GETUPVAL R32 0
+  GETTABLEKS R31 R32 K7 ["createElement"]
+  LOADK R32 K47 ["Frame"]
+  DUPTABLE R33 K81 [{"Size", "AnchorPoint", "Position", "BackgroundTransparency"}]
+  GETIMPORT R34 K21 [UDim2.fromScale]
+  LOADN R35 1
+  LOADN R36 1
+  CALL R34 2 1
+  SETTABLEKS R34 R33 K19 ["Size"]
+  GETIMPORT R34 K25 [Vector2.new]
+  LOADK R35 K22 [0.5]
+  LOADK R36 K22 [0.5]
+  CALL R34 2 1
+  SETTABLEKS R34 R33 K26 ["AnchorPoint"]
+  GETIMPORT R34 K21 [UDim2.fromScale]
+  LOADK R35 K22 [0.5]
+  LOADK R36 K22 [0.5]
+  CALL R34 2 1
+  SETTABLEKS R34 R33 K23 ["Position"]
+  LOADN R34 1
+  SETTABLEKS R34 R33 K15 ["BackgroundTransparency"]
+  DUPTABLE R34 K85 [{"UIAspectRatioConstraint", "Padding", "AnnotationLayer"}]
+  GETUPVAL R36 0
+  GETTABLEKS R35 R36 K7 ["createElement"]
+  LOADK R36 K82 ["UIAspectRatioConstraint"]
+  DUPTABLE R37 K87 [{"AspectRatio"}]
+  GETTABLEKS R38 R0 K88 ["imageAspectRatio"]
+  SETTABLEKS R38 R37 K86 ["AspectRatio"]
+  CALL R35 2 1
+  SETTABLEKS R35 R34 K82 ["UIAspectRatioConstraint"]
+  GETUPVAL R36 0
+  GETTABLEKS R35 R36 K7 ["createElement"]
+  LOADK R36 K89 ["UIPadding"]
+  DUPTABLE R37 K94 [{"PaddingTop", "PaddingBottom", "PaddingLeft", "PaddingRight"}]
+  GETIMPORT R38 K96 [UDim.new]
+  LOADN R39 0
+  LOADN R40 16
+  CALL R38 2 1
+  SETTABLEKS R38 R37 K90 ["PaddingTop"]
+  GETIMPORT R38 K96 [UDim.new]
+  LOADN R39 0
+  LOADN R40 16
+  CALL R38 2 1
+  SETTABLEKS R38 R37 K91 ["PaddingBottom"]
+  GETIMPORT R38 K96 [UDim.new]
+  LOADN R39 0
+  LOADN R40 16
+  CALL R38 2 1
+  SETTABLEKS R38 R37 K92 ["PaddingLeft"]
+  GETIMPORT R38 K96 [UDim.new]
+  LOADN R39 0
+  LOADN R40 16
+  CALL R38 2 1
+  SETTABLEKS R38 R37 K93 ["PaddingRight"]
+  CALL R35 2 1
+  SETTABLEKS R35 R34 K83 ["Padding"]
+  GETUPVAL R36 0
+  GETTABLEKS R35 R36 K7 ["createElement"]
+  LOADK R36 K47 ["Frame"]
+  DUPTABLE R37 K99 [{"Size", "BorderSizePixel", "BorderMode", "BorderColor3"}]
+  GETIMPORT R38 K18 [UDim2.new]
+  LOADN R39 1
+  LOADN R40 0
+  LOADN R41 1
+  LOADN R42 0
+  CALL R38 4 1
+  SETTABLEKS R38 R37 K19 ["Size"]
+  LOADN R38 2
+  SETTABLEKS R38 R37 K10 ["BorderSizePixel"]
+  GETIMPORT R38 K101 [Enum.BorderMode.Inset]
+  SETTABLEKS R38 R37 K97 ["BorderMode"]
+  GETIMPORT R38 K104 [Color3.fromRGB]
+  LOADN R39 255
+  LOADN R40 255
+  LOADN R41 255
+  CALL R38 3 1
+  SETTABLEKS R38 R37 K98 ["BorderColor3"]
+  DUPTABLE R38 K108 [{"ScreenshotImage", "DebugCanvas", "Highlighter"}]
+  GETUPVAL R40 0
+  GETTABLEKS R39 R40 K7 ["createElement"]
+  LOADK R40 K109 ["ImageLabel"]
+  DUPTABLE R41 K110 [{"Size", "Image", "ZIndex"}]
+  GETIMPORT R42 K21 [UDim2.fromScale]
+  LOADN R43 1
+  LOADN R44 1
+  CALL R42 2 1
+  SETTABLEKS R42 R41 K19 ["Size"]
+  GETTABLEKS R42 R0 K111 ["screenshot"]
+  SETTABLEKS R42 R41 K35 ["Image"]
+  LOADN R42 1
+  SETTABLEKS R42 R41 K27 ["ZIndex"]
+  NEWTABLE R42 0 0
+  CALL R39 3 1
+  SETTABLEKS R39 R38 K105 ["ScreenshotImage"]
+  GETUPVAL R40 0
+  GETTABLEKS R39 R40 K7 ["createElement"]
+  GETUPVAL R40 9
+  DUPTABLE R41 K114 [{"identifiedAvatars", "identifiedAds", "ZIndex"}]
+  GETUPVAL R43 10
+  GETTABLEKS R42 R43 K115 ["getIdentifiedAvatars"]
+  CALL R42 0 1
+  SETTABLEKS R42 R41 K112 ["identifiedAvatars"]
+  GETUPVAL R43 10
+  GETTABLEKS R42 R43 K116 ["getIdentifiedAds"]
+  CALL R42 0 1
+  SETTABLEKS R42 R41 K113 ["identifiedAds"]
+  LOADN R42 2
+  SETTABLEKS R42 R41 K27 ["ZIndex"]
+  CALL R39 2 1
+  SETTABLEKS R39 R38 K106 ["DebugCanvas"]
+  GETUPVAL R40 0
+  GETTABLEKS R39 R40 K7 ["createElement"]
+  GETUPVAL R40 11
+  DUPTABLE R41 K120 [{"annotationPoints", "handleAnnotationPoints", "setAnnotationCircleRadius", "setAspectRatioDimensions", "ZIndex"}]
+  SETTABLEKS R5 R41 K73 ["annotationPoints"]
+  SETTABLEKS R10 R41 K117 ["handleAnnotationPoints"]
+  GETUPVAL R43 10
+  GETTABLEKS R42 R43 K118 ["setAnnotationCircleRadius"]
+  SETTABLEKS R42 R41 K118 ["setAnnotationCircleRadius"]
+  GETUPVAL R43 10
+  GETTABLEKS R42 R43 K119 ["setAspectRatioDimensions"]
+  SETTABLEKS R42 R41 K119 ["setAspectRatioDimensions"]
+  LOADN R42 3
+  SETTABLEKS R42 R41 K27 ["ZIndex"]
+  NEWTABLE R42 0 0
+  CALL R39 3 1
+  SETTABLEKS R39 R38 K107 ["Highlighter"]
+  CALL R35 3 1
+  SETTABLEKS R35 R34 K84 ["AnnotationLayer"]
+  CALL R31 3 1
+  SETTABLEKS R31 R30 K79 ["Container"]
+  CALL R27 3 1
+  SETTABLEKS R27 R26 K53 ["ScreenshotAnnotation"]
+  CALL R23 3 1
+  SETTABLEKS R23 R22 K44 ["HeaderAndContent"]
+  GETTABLEKS R24 R0 K49 ["isSmallPortraitMode"]
+  JUMPIFNOT R24 [+13]
+  GETUPVAL R24 0
+  GETTABLEKS R23 R24 K7 ["createElement"]
+  GETUPVAL R24 12
+  DUPTABLE R25 K121 [{"reportAction", "annotationPoints"}]
+  GETTABLEKS R26 R0 K75 ["reportAction"]
+  SETTABLEKS R26 R25 K75 ["reportAction"]
+  SETTABLEKS R5 R25 K73 ["annotationPoints"]
+  CALL R23 2 1
+  JUMP [+1]
+  LOADNIL R23
+  SETTABLEKS R23 R22 K45 ["Footer"]
+  CALL R19 3 1
+  SETTABLEKS R19 R18 K32 ["ScreenshotDialog"]
+  CALL R15 3 -1
+  RETURN R15 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R2 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["UIBlox"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["React"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R2 K9 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["Cryo"]
+  CALL R5 1 1
+  GETTABLEKS R8 R3 K13 ["Core"]
+  GETTABLEKS R7 R8 K14 ["ImageSet"]
+  GETTABLEKS R6 R7 K15 ["ImageSetButton"]
+  GETTABLEKS R9 R3 K13 ["Core"]
+  GETTABLEKS R8 R9 K16 ["Style"]
+  GETTABLEKS R7 R8 K17 ["useStyle"]
+  GETTABLEKS R10 R3 K18 ["App"]
+  GETTABLEKS R9 R10 K19 ["Button"]
+  GETTABLEKS R8 R9 K20 ["ButtonStack"]
+  GETTABLEKS R12 R3 K18 ["App"]
+  GETTABLEKS R11 R12 K19 ["Button"]
+  GETTABLEKS R10 R11 K21 ["Enum"]
+  GETTABLEKS R9 R10 K22 ["ButtonType"]
+  GETIMPORT R13 K24 [script]
+  GETTABLEKS R12 R13 K25 ["Parent"]
+  GETTABLEKS R11 R12 K25 ["Parent"]
+  GETTABLEKS R10 R11 K25 ["Parent"]
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R13 R10 K26 ["Resources"]
+  GETTABLEKS R12 R13 K27 ["Assets"]
+  CALL R11 1 1
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R13 R10 K28 ["Dependencies"]
+  CALL R12 1 1
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R10 K29 ["Components"]
+  GETTABLEKS R14 R15 K30 ["DebugCanvas"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R17 R10 K29 ["Components"]
+  GETTABLEKS R16 R17 K31 ["ReportAnything"]
+  GETTABLEKS R15 R16 K32 ["ScreenshotHighlighter"]
+  CALL R14 1 1
+  GETIMPORT R15 K8 [require]
+  GETTABLEKS R17 R10 K29 ["Components"]
+  GETTABLEKS R16 R17 K33 ["VirtualKeyboardMonitor"]
+  CALL R15 1 1
+  GETIMPORT R16 K8 [require]
+  GETTABLEKS R19 R10 K29 ["Components"]
+  GETTABLEKS R18 R19 K31 ["ReportAnything"]
+  GETTABLEKS R17 R18 K34 ["ScreenshotDialogPortraitModeHeader"]
+  CALL R16 1 1
+  GETIMPORT R17 K8 [require]
+  GETTABLEKS R20 R10 K29 ["Components"]
+  GETTABLEKS R19 R20 K31 ["ReportAnything"]
+  GETTABLEKS R18 R19 K35 ["ScreenshotDialogLandscapeModeHeader"]
+  CALL R17 1 1
+  GETIMPORT R18 K8 [require]
+  GETTABLEKS R20 R10 K36 ["Utility"]
+  GETTABLEKS R19 R20 K37 ["AbuseReportBuilder"]
+  CALL R18 1 1
+  GETIMPORT R19 K8 [require]
+  GETTABLEKS R21 R10 K36 ["Utility"]
+  GETTABLEKS R20 R21 K38 ["ReportAnythingAnalytics"]
+  CALL R19 1 1
+  GETIMPORT R20 K8 [require]
+  GETTABLEKS R22 R1 K39 ["Modules"]
+  GETTABLEKS R21 R22 K40 ["RobloxTranslator"]
+  CALL R20 1 1
+  GETIMPORT R21 K8 [require]
+  GETTABLEKS R23 R10 K41 ["Flags"]
+  GETTABLEKS R22 R23 K42 ["GetFFlagReportAnythingLocalizationEnabled"]
+  CALL R21 1 1
+  GETIMPORT R22 K8 [require]
+  GETTABLEKS R23 R12 K43 ["Divider"]
+  CALL R22 1 1
+  DUPCLOSURE R23 K44 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R21
+  CAPTURE VAL R20
+  DUPCLOSURE R24 K45 [PROTO_8]
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  CAPTURE VAL R15
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R11
+  CAPTURE VAL R16
+  CAPTURE VAL R17
+  CAPTURE VAL R22
+  CAPTURE VAL R13
+  CAPTURE VAL R18
+  CAPTURE VAL R14
+  CAPTURE VAL R23
+  RETURN R24 1

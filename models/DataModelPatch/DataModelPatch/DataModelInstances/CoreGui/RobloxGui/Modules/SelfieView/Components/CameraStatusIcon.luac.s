@@ -1,0 +1,87 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  LOADK R3 K1 ["Frame"]
+  DUPTABLE R4 K4 [{"BackgroundTransparency", "Size"}]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K2 ["BackgroundTransparency"]
+  GETIMPORT R5 K7 [UDim2.fromScale]
+  LOADN R6 1
+  LOADN R7 1
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["Size"]
+  DUPTABLE R5 K9 [{"Icon"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["createElement"]
+  GETUPVAL R7 2
+  DUPTABLE R8 K14 [{"BackgroundTransparency", "Image", "Size", "Position", "AnchorPoint", "ImageTransparency"}]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K2 ["BackgroundTransparency"]
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K15 ["icons/controls/video"]
+  JUMPIF R9 [+3]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K16 ["icons/controls/videoOff"]
+  SETTABLEKS R9 R8 K10 ["Image"]
+  GETTABLEKS R9 R0 K17 ["iconSize"]
+  JUMPIF R9 [+1]
+  GETUPVAL R9 4
+  SETTABLEKS R9 R8 K3 ["Size"]
+  GETIMPORT R9 K7 [UDim2.fromScale]
+  LOADK R10 K18 [0.5]
+  LOADK R11 K18 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K11 ["Position"]
+  GETIMPORT R9 K21 [Vector2.new]
+  LOADK R10 K18 [0.5]
+  LOADK R11 K18 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K12 ["AnchorPoint"]
+  GETTABLEKS R10 R0 K23 ["transparency"]
+  ORK R9 R10 K22 [0]
+  SETTABLEKS R9 R8 K13 ["ImageTransparency"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K8 ["Icon"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K4 ["Packages"]
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R3 R1 K7 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R4 R1 K8 ["UIBlox"]
+  CALL R3 1 1
+  GETTABLEKS R6 R3 K9 ["App"]
+  GETTABLEKS R5 R6 K10 ["ImageSet"]
+  GETTABLEKS R4 R5 K11 ["Images"]
+  GETTABLEKS R7 R3 K12 ["Core"]
+  GETTABLEKS R6 R7 K10 ["ImageSet"]
+  GETTABLEKS R5 R6 K13 ["ImageSetLabel"]
+  GETIMPORT R6 K6 [require]
+  GETIMPORT R11 K15 [script]
+  GETTABLEKS R10 R11 K16 ["Parent"]
+  GETTABLEKS R9 R10 K16 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Hooks"]
+  GETTABLEKS R7 R8 K18 ["useCameraOn"]
+  CALL R6 1 1
+  GETIMPORT R7 K21 [UDim2.fromScale]
+  LOADN R8 1
+  LOADN R9 1
+  CALL R7 2 1
+  DUPCLOSURE R8 K22 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  RETURN R8 1

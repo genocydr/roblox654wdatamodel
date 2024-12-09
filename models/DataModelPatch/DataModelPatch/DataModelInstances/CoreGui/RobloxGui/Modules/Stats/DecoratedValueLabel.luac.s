@@ -1,0 +1,216 @@
+PROTO_0:
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  NAMECALL R0 R0 K0 ["FormatByKey"]
+  CALL R0 2 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_1:
+  MOVE R1 R0
+  GETIMPORT R2 K1 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CALL R2 1 0
+  CLOSEUPVALS R1
+  RETURN R1 1
+
+PROTO_2:
+  GETIMPORT R0 K1 [settings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UseNotificationsLocalization"]
+  NAMECALL R0 R0 K3 ["GetFFlag"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_3:
+  NEWTABLE R2 8 0
+  GETUPVAL R5 0
+  FASTCALL2 SETMETATABLE R2 R5 [+4]
+  MOVE R4 R2
+  GETIMPORT R3 K1 [setmetatable]
+  CALL R3 2 0
+  GETIMPORT R3 K4 [Instance.new]
+  LOADK R4 K5 ["Frame"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K6 ["_frame"]
+  GETTABLEKS R3 R2 K6 ["_frame"]
+  LOADK R4 K7 ["PS_DecoratedValueLabel"]
+  SETTABLEKS R4 R3 K8 ["Name"]
+  GETTABLEKS R3 R2 K6 ["_frame"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K9 ["BackgroundTransparency"]
+  GETUPVAL R3 1
+  JUMPIFNOTEQKB R3 TRUE [+8]
+  GETGLOBAL R3 K10 ["LocalizedGetKey"]
+  MOVE R4 R1
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K11 ["_valueName"]
+  JUMP [+2]
+  SETTABLEKS R1 R2 K11 ["_valueName"]
+  SETTABLEKS R0 R2 K12 ["_statType"]
+  GETIMPORT R3 K4 [Instance.new]
+  LOADK R4 K5 ["Frame"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  GETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  LOADK R4 K14 ["PS_Decoration"]
+  SETTABLEKS R4 R3 K8 ["Name"]
+  GETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  GETTABLEKS R4 R2 K6 ["_frame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  GETIMPORT R4 K17 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 0
+  LOADK R7 K18 [0.5]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K20 ["DecorationSize"]
+  MINUS R9 R10
+  DIVK R8 R9 K19 [2]
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Position"]
+  GETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  GETIMPORT R4 K17 [UDim2.new]
+  LOADN R5 0
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K20 ["DecorationSize"]
+  LOADN R7 0
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K20 ["DecorationSize"]
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K22 ["Size"]
+  GETTABLEKS R3 R2 K13 ["_decorationFrame"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K9 ["BackgroundTransparency"]
+  GETIMPORT R3 K4 [Instance.new]
+  LOADK R4 K23 ["TextLabel"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K24 ["_label"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  LOADK R4 K25 ["Label"]
+  SETTABLEKS R4 R3 K8 ["Name"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETTABLEKS R4 R2 K6 ["_frame"]
+  SETTABLEKS R4 R3 K15 ["Parent"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETIMPORT R4 K17 [UDim2.new]
+  LOADN R5 0
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K20 ["DecorationSize"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K26 ["DecorationMargin"]
+  ADD R6 R7 R8
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K21 ["Position"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETIMPORT R4 K17 [UDim2.new]
+  LOADN R5 1
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K20 ["DecorationSize"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K26 ["DecorationMargin"]
+  ADD R7 R8 R9
+  MINUS R6 R7
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K22 ["Size"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K27 ["PanelValueFontSize"]
+  SETTABLEKS R4 R3 K28 ["FontSize"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETIMPORT R4 K32 [Enum.TextXAlignment.Left]
+  SETTABLEKS R4 R3 K30 ["TextXAlignment"]
+  GETTABLEKS R3 R2 K24 ["_label"]
+  GETIMPORT R4 K35 [Enum.TextYAlignment.Center]
+  SETTABLEKS R4 R3 K33 ["TextYAlignment"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K36 ["StyleTextWidget"]
+  GETTABLEKS R4 R2 K24 ["_label"]
+  CALL R3 1 0
+  RETURN R2 1
+
+PROTO_4:
+  GETTABLEKS R2 R0 K0 ["_frame"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K2 ["_decorationFrame"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K3 ["_label"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R1 R4 K1 ["Parent"]
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R2 R4 K2 ["Size"]
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R3 R4 K3 ["Position"]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["_decorationFrame"]
+  RETURN R1 1
+
+PROTO_7:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["FormatTypedValue"]
+  MOVE R3 R1
+  GETTABLEKS R4 R0 K1 ["_statType"]
+  CALL R2 2 1
+  GETTABLEKS R3 R0 K2 ["_label"]
+  GETIMPORT R4 K5 [string.format]
+  LOADK R5 K6 ["%s: %s"]
+  GETTABLEKS R6 R0 K7 ["_valueName"]
+  MOVE R7 R2
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K8 ["Text"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R5 R0 K6 ["RobloxGui"]
+  GETTABLEKS R4 R5 K7 ["Modules"]
+  GETTABLEKS R3 R4 K8 ["Stats"]
+  GETTABLEKS R2 R3 K9 ["StatsUtils"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R5 R0 K6 ["RobloxGui"]
+  GETTABLEKS R4 R5 K7 ["Modules"]
+  GETTABLEKS R3 R4 K10 ["RobloxTranslator"]
+  CALL R2 1 1
+  DUPCLOSURE R3 K11 [PROTO_1]
+  CAPTURE VAL R2
+  SETGLOBAL R3 K12 ["LocalizedGetKey"]
+  GETIMPORT R3 K14 [pcall]
+  DUPCLOSURE R4 K15 [PROTO_2]
+  CALL R3 1 2
+  AND R5 R3 R4
+  NEWTABLE R6 8 0
+  SETTABLEKS R6 R6 K16 ["__index"]
+  DUPCLOSURE R7 K17 [PROTO_3]
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  SETTABLEKS R7 R6 K18 ["new"]
+  DUPCLOSURE R7 K19 [PROTO_4]
+  SETTABLEKS R7 R6 K20 ["SetZIndex"]
+  DUPCLOSURE R7 K21 [PROTO_5]
+  SETTABLEKS R7 R6 K22 ["PlaceInParent"]
+  DUPCLOSURE R7 K23 [PROTO_6]
+  SETTABLEKS R7 R6 K24 ["GetDecorationFrame"]
+  DUPCLOSURE R7 K25 [PROTO_7]
+  CAPTURE VAL R1
+  SETTABLEKS R7 R6 K26 ["SetValue"]
+  RETURN R6 1

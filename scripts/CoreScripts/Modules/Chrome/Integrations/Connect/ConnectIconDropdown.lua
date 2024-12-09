@@ -1,7 +1,7 @@
 local CorePackages = game:GetService("CorePackages")
 local Chrome = script:FindFirstAncestor("Chrome")
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local GetFFlagAppChatAddConnectUnibarForActiveSquad =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagAppChatAddConnectUnibarForActiveSquad
 local AppChat = require(CorePackages.Workspace.Packages.AppChat)

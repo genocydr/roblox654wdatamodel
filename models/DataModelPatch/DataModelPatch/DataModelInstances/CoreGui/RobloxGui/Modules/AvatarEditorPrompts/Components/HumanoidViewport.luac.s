@@ -1,0 +1,679 @@
+PROTO_0:
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"loading", "loadingFailed"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["loading"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["loadingFailed"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["props"]
+  GETTABLEKS R0 R1 K5 ["humanoidDescription"]
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K6 ["loadHumanoidModel"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["props"]
+  GETTABLEKS R0 R1 K7 ["retryLoadDescription"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_1:
+  DUPTABLE R3 K2 [{"loading", "loadingFailed"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K0 ["loading"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K1 ["loadingFailed"]
+  NAMECALL R1 R0 K3 ["setState"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K5 ["cameraRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K6 ["worldModelRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createBinding"]
+  GETIMPORT R2 K10 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K11 ["cameraCFrameBinding"]
+  SETTABLEKS R2 R0 K12 ["updateCameraCFrameBinding"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createBinding"]
+  GETIMPORT R2 K10 [CFrame.new]
+  CALL R2 0 -1
+  CALL R1 -1 2
+  SETTABLEKS R1 R0 K13 ["cameraFocusBinding"]
+  SETTABLEKS R2 R0 K14 ["updateCameraFocusBinding"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K15 ["humanoidModel"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K16 ["mounted"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K17 ["onRetryLoading"]
+  RETURN R0 0
+
+PROTO_2:
+  MOVE R1 R0
+  GETTABLEKS R3 R1 K0 ["Y"]
+  FASTCALL1 MATH_ABS R3 [+2]
+  GETIMPORT R2 K3 [math.abs]
+  CALL R2 1 1
+  LOADK R3 K4 [0.95]
+  JUMPIFNOTLT R3 R2 [+3]
+  LOADK R1 K5 [{0, 0, -1}]
+  JUMP [+12]
+  GETTABLEKS R3 R1 K6 ["X"]
+  LOADN R4 0
+  GETTABLEKS R5 R1 K7 ["Z"]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R2 K10 [Vector3.new]
+  CALL R2 3 1
+  MOVE R1 R2
+  GETTABLEKS R1 R1 K11 ["unit"]
+  GETIMPORT R2 K13 [CFrame.new]
+  LOADK R3 K14 [{0, 0, 0}]
+  MOVE R4 R1
+  CALL R2 2 1
+  GETUPVAL R3 0
+  MUL R2 R2 R3
+  GETTABLEKS R3 R2 K15 ["lookVector"]
+  RETURN R3 1
+
+PROTO_3:
+  GETTABLEKS R2 R1 K0 ["X"]
+  GETTABLEKS R3 R1 K1 ["Y"]
+  GETTABLEKS R4 R1 K2 ["Z"]
+  FASTCALL2 MATH_MAX R2 R3 [+5]
+  MOVE R6 R2
+  MOVE R7 R3
+  GETIMPORT R5 K5 [math.max]
+  CALL R5 2 1
+  FASTCALL1 MATH_RAD R0 [+3]
+  MOVE R10 R0
+  GETIMPORT R9 K9 [math.rad]
+  CALL R9 1 1
+  DIVK R8 R9 K7 [2]
+  FASTCALL1 MATH_TAN R8 [+2]
+  GETIMPORT R7 K11 [math.tan]
+  CALL R7 1 1
+  DIVRK R6 R6 K7 [2]
+  DIVK R7 R5 K7 [2]
+  MUL R9 R7 R6
+  DIVK R10 R4 K7 [2]
+  ADD R8 R9 R10
+  RETURN R8 1
+
+PROTO_4:
+  NAMECALL R3 R0 K0 ["GetModelCFrame"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K1 ["p"]
+  NAMECALL R5 R0 K2 ["GetExtentsSize"]
+  CALL R5 1 1
+  GETTABLEKS R7 R5 K3 ["X"]
+  GETTABLEKS R8 R5 K4 ["Y"]
+  GETTABLEKS R9 R5 K5 ["Z"]
+  FASTCALL2 MATH_MAX R7 R8 [+5]
+  MOVE R11 R7
+  MOVE R12 R8
+  GETIMPORT R10 K8 [math.max]
+  CALL R10 2 1
+  DIVK R11 R10 K9 [2]
+  MULK R12 R11 K10 [1.42814800674211]
+  DIVK R13 R9 K9 [2]
+  ADD R6 R12 R13
+  MULK R6 R6 K11 [1]
+  GETTABLEKS R8 R2 K1 ["p"]
+  SUB R7 R2 R8
+  ADD R9 R7 R4
+  MUL R10 R1 R6
+  ADD R8 R9 R10
+  RETURN R8 1
+
+PROTO_5:
+  GETTABLEKS R1 R0 K0 ["humanoidModel"]
+  NAMECALL R2 R1 K1 ["GetModelCFrame"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K2 ["lookVector"]
+  LOADK R6 K3 ["HumanoidRootPart"]
+  NAMECALL R4 R1 K4 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+4]
+  GETTABLEKS R5 R4 K5 ["CFrame"]
+  GETTABLEKS R3 R5 K2 ["lookVector"]
+  GETUPVAL R5 0
+  MOVE R6 R3
+  CALL R5 1 1
+  MOVE R3 R5
+  GETIMPORT R5 K7 [CFrame.new]
+  GETTABLEKS R7 R2 K8 ["p"]
+  MULK R8 R3 K9 [5]
+  ADD R6 R7 R8
+  GETTABLEKS R7 R2 K8 ["p"]
+  CALL R5 2 1
+  MOVE R6 R3
+  MOVE R7 R5
+  NAMECALL R8 R1 K1 ["GetModelCFrame"]
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K8 ["p"]
+  NAMECALL R10 R1 K10 ["GetExtentsSize"]
+  CALL R10 1 1
+  GETTABLEKS R12 R10 K11 ["X"]
+  GETTABLEKS R13 R10 K12 ["Y"]
+  GETTABLEKS R14 R10 K13 ["Z"]
+  FASTCALL2 MATH_MAX R12 R13 [+5]
+  MOVE R16 R12
+  MOVE R17 R13
+  GETIMPORT R15 K16 [math.max]
+  CALL R15 2 1
+  DIVK R16 R15 K17 [2]
+  MULK R17 R16 K18 [1.42814800674211]
+  DIVK R18 R14 K17 [2]
+  ADD R11 R17 R18
+  MULK R11 R11 K19 [1]
+  GETTABLEKS R13 R7 K8 ["p"]
+  SUB R12 R7 R13
+  ADD R13 R12 R9
+  MUL R14 R6 R11
+  ADD R5 R13 R14
+  GETTABLEKS R6 R0 K20 ["updateCameraCFrameBinding"]
+  MOVE R7 R5
+  CALL R6 1 0
+  GETTABLEKS R6 R0 K21 ["updateCameraFocusBinding"]
+  MOVE R7 R2
+  CALL R6 1 0
+  RETURN R0 0
+
+PROTO_6:
+  LOADK R4 K0 ["Humanoid"]
+  NAMECALL R2 R1 K1 ["FindFirstChildOfClass"]
+  CALL R2 2 1
+  GETTABLEKS R3 R2 K2 ["HumanoidDescription"]
+  GETTABLEKS R4 R3 K3 ["IdleAnimation"]
+  JUMPIFNOTEQKN R4 K4 [0] [+2]
+  RETURN R0 0
+  LOADK R6 K5 ["Animate"]
+  NAMECALL R4 R1 K6 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+1]
+  RETURN R0 0
+  LOADK R7 K7 ["idle"]
+  NAMECALL R5 R4 K6 ["FindFirstChild"]
+  CALL R5 2 1
+  JUMPIF R5 [+1]
+  RETURN R0 0
+  LOADK R8 K8 ["Animation"]
+  NAMECALL R6 R5 K1 ["FindFirstChildOfClass"]
+  CALL R6 2 1
+  JUMPIF R6 [+1]
+  RETURN R0 0
+  MOVE R9 R6
+  NAMECALL R7 R2 K9 ["LoadAnimation"]
+  CALL R7 2 1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K10 ["Looped"]
+  NAMECALL R8 R7 K11 ["Play"]
+  CALL R8 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETUPVAL R3 3
+  NAMECALL R0 R0 K0 ["CreateHumanoidModelFromDescription"]
+  CALL R0 3 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_8:
+  LOADNIL R0
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE REF R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R1 1 0
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K2 ["mounted"]
+  JUMPIF R1 [+2]
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["props"]
+  GETTABLEKS R1 R2 K4 ["humanoidDescription"]
+  GETUPVAL R2 1
+  JUMPIFEQ R1 R2 [+3]
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["props"]
+  GETTABLEKS R1 R2 K5 ["rigType"]
+  GETUPVAL R2 2
+  JUMPIFEQ R1 R2 [+3]
+  CLOSEUPVALS R0
+  RETURN R0 0
+  JUMPIFNOTEQKNIL R0 [+11]
+  GETUPVAL R1 3
+  DUPTABLE R3 K7 [{"loadingFailed"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K6 ["loadingFailed"]
+  NAMECALL R1 R1 K8 ["setState"]
+  CALL R1 2 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R1 3
+  SETTABLEKS R0 R1 K9 ["humanoidModel"]
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K10 ["worldModelRef"]
+  NAMECALL R1 R1 K11 ["getValue"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+11]
+  GETUPVAL R2 3
+  GETTABLEKS R1 R2 K9 ["humanoidModel"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K10 ["worldModelRef"]
+  NAMECALL R2 R2 K11 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K12 ["Parent"]
+  GETUPVAL R1 1
+  LOADB R3 0
+  NAMECALL R1 R1 K13 ["GetAccessories"]
+  CALL R1 2 1
+  LENGTH R2 R1
+  LOADN R3 0
+  JUMPIFNOTLT R3 R2 [+26]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K14 ["race"]
+  NEWTABLE R3 0 2
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K15 ["fromEvent"]
+  GETTABLEKS R6 R0 K16 ["Humanoid"]
+  GETTABLEKS R5 R6 K17 ["ClusterCompositionFinished"]
+  CALL R4 1 1
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K18 ["delay"]
+  GETUPVAL R7 5
+  MULK R6 R7 K19 [0.001]
+  CALL R5 1 -1
+  SETLIST R3 R4 -1 [1]
+  CALL R2 1 1
+  NAMECALL R2 R2 K20 ["await"]
+  CALL R2 1 0
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K2 ["mounted"]
+  JUMPIF R2 [+2]
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R2 3
+  NAMECALL R2 R2 K21 ["positionCamera"]
+  CALL R2 1 0
+  GETUPVAL R2 3
+  MOVE R4 R0
+  NAMECALL R2 R2 K22 ["loadIdleAnimation"]
+  CALL R2 2 0
+  GETUPVAL R2 3
+  DUPTABLE R4 K24 [{"loading", "loadingFailed"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K23 ["loading"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K6 ["loadingFailed"]
+  NAMECALL R2 R2 K8 ["setState"]
+  CALL R2 2 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["humanoidDescription"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["rigType"]
+  GETIMPORT R3 K5 [coroutine.wrap]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R3 1 1
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["loadingFailed"]
+  JUMPIF R1 [+4]
+  GETTABLEKS R2 R0 K2 ["state"]
+  GETTABLEKS R1 R2 K1 ["loadingFailed"]
+  NOT R2 R1
+  JUMPIFNOT R2 [+4]
+  GETTABLEKS R3 R0 K2 ["state"]
+  GETTABLEKS R2 R3 K3 ["loading"]
+  MOVE R4 R1
+  JUMPIF R4 [+4]
+  GETTABLEKS R5 R0 K2 ["state"]
+  GETTABLEKS R4 R5 K3 ["loading"]
+  NOT R3 R4
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["createElement"]
+  LOADK R5 K5 ["Frame"]
+  DUPTABLE R6 K10 [{"BackgroundTransparency", "Size", "Position", "AnchorPoint"}]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K6 ["BackgroundTransparency"]
+  GETIMPORT R7 K13 [UDim2.fromScale]
+  LOADN R8 1
+  LOADN R9 1
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K7 ["Size"]
+  GETIMPORT R7 K13 [UDim2.fromScale]
+  LOADK R8 K14 [0.5]
+  LOADK R9 K14 [0.5]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K8 ["Position"]
+  GETIMPORT R7 K17 [Vector2.new]
+  LOADK R8 K14 [0.5]
+  LOADK R9 K14 [0.5]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K9 ["AnchorPoint"]
+  DUPTABLE R7 K22 [{"AspectRatioConstraint", "ShimmerFrame", "LoadingFailed", "ViewportFrame"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K4 ["createElement"]
+  LOADK R9 K23 ["UIAspectRatioConstraint"]
+  DUPTABLE R10 K27 [{"AspectRatio", "AspectType", "DominantAxis"}]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K24 ["AspectRatio"]
+  GETIMPORT R11 K30 [Enum.AspectType.FitWithinMaxSize]
+  SETTABLEKS R11 R10 K25 ["AspectType"]
+  GETIMPORT R11 K32 [Enum.DominantAxis.Width]
+  SETTABLEKS R11 R10 K26 ["DominantAxis"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K18 ["AspectRatioConstraint"]
+  MOVE R8 R2
+  JUMPIFNOT R8 [+27]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K4 ["createElement"]
+  GETUPVAL R9 1
+  DUPTABLE R10 K33 [{"Size", "Position", "AnchorPoint"}]
+  GETIMPORT R11 K13 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K7 ["Size"]
+  GETIMPORT R11 K13 [UDim2.fromScale]
+  LOADK R12 K14 [0.5]
+  LOADK R13 K14 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K8 ["Position"]
+  GETIMPORT R11 K17 [Vector2.new]
+  LOADK R12 K14 [0.5]
+  LOADK R13 K14 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K9 ["AnchorPoint"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K19 ["ShimmerFrame"]
+  MOVE R8 R1
+  JUMPIFNOT R8 [+24]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K4 ["createElement"]
+  GETUPVAL R9 2
+  DUPTABLE R10 K37 [{"text", "size", "onActivated"}]
+  GETUPVAL R11 3
+  LOADK R13 K38 ["CoreScripts.AvatarEditorPrompts.ItemsListLoadingFailed"]
+  NAMECALL R11 R11 K39 ["FormatByKey"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K34 ["text"]
+  GETIMPORT R11 K13 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K35 ["size"]
+  GETTABLEKS R11 R0 K40 ["onRetryLoading"]
+  SETTABLEKS R11 R10 K36 ["onActivated"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K20 ["LoadingFailed"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K4 ["createElement"]
+  LOADK R9 K21 ["ViewportFrame"]
+  DUPTABLE R10 K45 [{"Visible", "BackgroundTransparency", "Size", "Position", "AnchorPoint", "LightColor", "Ambient", "CurrentCamera"}]
+  SETTABLEKS R3 R10 K41 ["Visible"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K6 ["BackgroundTransparency"]
+  GETIMPORT R11 K13 [UDim2.fromScale]
+  LOADN R12 1
+  LOADN R13 1
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K7 ["Size"]
+  GETIMPORT R11 K13 [UDim2.fromScale]
+  LOADK R12 K14 [0.5]
+  LOADK R13 K14 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K8 ["Position"]
+  GETIMPORT R11 K17 [Vector2.new]
+  LOADK R12 K14 [0.5]
+  LOADK R13 K14 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K9 ["AnchorPoint"]
+  GETIMPORT R11 K48 [Color3.fromRGB]
+  LOADN R12 240
+  LOADN R13 240
+  LOADN R14 240
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K42 ["LightColor"]
+  GETIMPORT R11 K48 [Color3.fromRGB]
+  LOADN R12 240
+  LOADN R13 240
+  LOADN R14 240
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K43 ["Ambient"]
+  GETTABLEKS R11 R0 K49 ["cameraRef"]
+  SETTABLEKS R11 R10 K44 ["CurrentCamera"]
+  DUPTABLE R11 K52 [{"Camera", "WorldModel"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K4 ["createElement"]
+  LOADK R13 K50 ["Camera"]
+  NEWTABLE R14 8 0
+  GETIMPORT R15 K55 [Enum.CameraType.Scriptable]
+  SETTABLEKS R15 R14 K53 ["CameraType"]
+  LOADN R15 70
+  SETTABLEKS R15 R14 K56 ["FieldOfView"]
+  GETTABLEKS R15 R0 K57 ["cameraCFrameBinding"]
+  SETTABLEKS R15 R14 K58 ["CFrame"]
+  GETTABLEKS R15 R0 K59 ["cameraFocusBinding"]
+  SETTABLEKS R15 R14 K60 ["Focus"]
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K61 ["Ref"]
+  GETTABLEKS R16 R0 K49 ["cameraRef"]
+  SETTABLE R16 R14 R15
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K50 ["Camera"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K4 ["createElement"]
+  LOADK R13 K51 ["WorldModel"]
+  NEWTABLE R14 1 0
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K61 ["Ref"]
+  GETTABLEKS R16 R0 K62 ["worldModelRef"]
+  SETTABLE R16 R14 R15
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K51 ["WorldModel"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K21 ["ViewportFrame"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_11:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  GETTABLEKS R2 R0 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["humanoidDescription"]
+  JUMPIFNOT R1 [+3]
+  NAMECALL R1 R0 K3 ["loadHumanoidModel"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R2 R0 K0 ["worldModelRef"]
+  NAMECALL R2 R2 K1 ["getValue"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+12]
+  GETTABLEKS R2 R0 K2 ["humanoidModel"]
+  JUMPIFNOT R2 [+9]
+  GETTABLEKS R2 R0 K2 ["humanoidModel"]
+  GETTABLEKS R3 R0 K0 ["worldModelRef"]
+  NAMECALL R3 R3 K1 ["getValue"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K3 ["Parent"]
+  GETTABLEKS R4 R0 K4 ["props"]
+  GETTABLEKS R3 R4 K5 ["humanoidDescription"]
+  GETTABLEKS R4 R1 K5 ["humanoidDescription"]
+  JUMPIFNOTEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K6 ["rigType"]
+  GETTABLEKS R5 R1 K6 ["rigType"]
+  JUMPIFNOTEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  LOADB R4 0
+  GETTABLEKS R6 R0 K4 ["props"]
+  GETTABLEKS R5 R6 K6 ["rigType"]
+  JUMPIFEQKNIL R5 [+9]
+  LOADB R4 0
+  GETTABLEKS R6 R0 K4 ["props"]
+  GETTABLEKS R5 R6 K5 ["humanoidDescription"]
+  JUMPIFEQKNIL R5 [+2]
+  OR R4 R2 R3
+  JUMPIFNOT R4 [+16]
+  DUPTABLE R7 K8 [{"loading"}]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K7 ["loading"]
+  NAMECALL R5 R0 K9 ["setState"]
+  CALL R5 2 0
+  GETTABLEKS R6 R0 K4 ["props"]
+  GETTABLEKS R5 R6 K5 ["humanoidDescription"]
+  JUMPIFEQKNIL R5 [+4]
+  NAMECALL R5 R0 K10 ["loadHumanoidModel"]
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_13:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K8 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R7 R0 K8 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["UIBlox"]
+  CALL R5 1 1
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R8 R0 K8 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["Promise"]
+  CALL R6 1 1
+  GETTABLEKS R9 R5 K13 ["App"]
+  GETTABLEKS R8 R9 K14 ["Loading"]
+  GETTABLEKS R7 R8 K15 ["ShimmerPanel"]
+  GETTABLEKS R10 R5 K13 ["App"]
+  GETTABLEKS R9 R10 K16 ["Indicator"]
+  GETTABLEKS R8 R9 K17 ["EmptyState"]
+  LOADK R11 K18 ["RobloxGui"]
+  NAMECALL R9 R1 K19 ["WaitForChild"]
+  CALL R9 2 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R12 R9 K20 ["Modules"]
+  GETTABLEKS R11 R12 K21 ["RobloxTranslator"]
+  CALL R10 1 1
+  GETIMPORT R11 K24 [CFrame.fromEulerAnglesXYZ]
+  LOADK R12 K25 [0.349065850398866]
+  LOADK R13 K26 [0.261799387799149]
+  LOADK R14 K27 [0.698131700797732]
+  CALL R11 3 1
+  GETIMPORT R12 K1 [game]
+  LOADK R14 K28 ["AXClusterCompositionTimeoutMs"]
+  LOADN R15 184
+  NAMECALL R12 R12 K29 ["DefineFastInt"]
+  CALL R12 3 1
+  GETTABLEKS R13 R3 K30 ["PureComponent"]
+  LOADK R15 K31 ["HumanoidViewport"]
+  NAMECALL R13 R13 K32 ["extend"]
+  CALL R13 2 1
+  GETTABLEKS R14 R4 K33 ["strictInterface"]
+  DUPTABLE R15 K38 [{"humanoidDescription", "loadingFailed", "retryLoadDescription", "rigType"}]
+  GETTABLEKS R16 R4 K39 ["optional"]
+  GETTABLEKS R17 R4 K40 ["instanceOf"]
+  LOADK R18 K41 ["HumanoidDescription"]
+  CALL R17 1 -1
+  CALL R16 -1 1
+  SETTABLEKS R16 R15 K34 ["humanoidDescription"]
+  GETTABLEKS R16 R4 K42 ["boolean"]
+  SETTABLEKS R16 R15 K35 ["loadingFailed"]
+  GETTABLEKS R16 R4 K43 ["callback"]
+  SETTABLEKS R16 R15 K36 ["retryLoadDescription"]
+  GETTABLEKS R16 R4 K39 ["optional"]
+  GETTABLEKS R17 R4 K44 ["enum"]
+  GETIMPORT R18 K47 [Enum.HumanoidRigType]
+  CALL R17 1 -1
+  CALL R16 -1 1
+  SETTABLEKS R16 R15 K37 ["rigType"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K48 ["validateProps"]
+  DUPCLOSURE R14 K49 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLEKS R14 R13 K50 ["init"]
+  DUPCLOSURE R14 K51 [PROTO_2]
+  CAPTURE VAL R11
+  DUPCLOSURE R15 K52 [PROTO_3]
+  DUPCLOSURE R16 K53 [PROTO_4]
+  DUPCLOSURE R17 K54 [PROTO_5]
+  CAPTURE VAL R14
+  SETTABLEKS R17 R13 K55 ["positionCamera"]
+  DUPCLOSURE R17 K56 [PROTO_6]
+  SETTABLEKS R17 R13 K57 ["loadIdleAnimation"]
+  DUPCLOSURE R17 K58 [PROTO_9]
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  CAPTURE VAL R12
+  SETTABLEKS R17 R13 K59 ["loadHumanoidModel"]
+  DUPCLOSURE R17 K60 [PROTO_10]
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R10
+  SETTABLEKS R17 R13 K61 ["render"]
+  DUPCLOSURE R17 K62 [PROTO_11]
+  SETTABLEKS R17 R13 K63 ["didMount"]
+  DUPCLOSURE R17 K64 [PROTO_12]
+  SETTABLEKS R17 R13 K65 ["didUpdate"]
+  DUPCLOSURE R17 K66 [PROTO_13]
+  SETTABLEKS R17 R13 K67 ["willUnmount"]
+  RETURN R13 1

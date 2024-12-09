@@ -1,0 +1,148 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["Theme"]
+  GETUPVAL R2 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["chatVisible"]
+  JUMPIF R3 [+1]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K3 ["createElement"]
+  GETUPVAL R4 4
+  DUPTABLE R5 K10 [{"Size", "BackgroundTransparency", "Image", "ImageColor3", "ImageTransparency", "ZIndex"}]
+  GETIMPORT R6 K13 [UDim2.fromScale]
+  LOADN R7 1
+  LOADN R8 1
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K4 ["Size"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K5 ["BackgroundTransparency"]
+  SETTABLEKS R2 R5 K6 ["Image"]
+  GETTABLEKS R7 R1 K14 ["IconEmphasis"]
+  GETTABLEKS R6 R7 K15 ["Color"]
+  SETTABLEKS R6 R5 K7 ["ImageColor3"]
+  GETTABLEKS R7 R1 K14 ["IconEmphasis"]
+  GETTABLEKS R6 R7 K16 ["Transparency"]
+  SETTABLEKS R6 R5 K8 ["ImageTransparency"]
+  LOADN R6 2
+  SETTABLEKS R6 R5 K9 ["ZIndex"]
+  DUPTABLE R6 K18 [{"Badge"}]
+  LOADB R7 0
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K1 ["props"]
+  GETTABLEKS R8 R9 K19 ["unreadMessages"]
+  LOADN R9 0
+  JUMPIFNOTLT R9 R8 [+33]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K3 ["createElement"]
+  GETUPVAL R8 5
+  DUPTABLE R9 K24 [{"position", "anchorPoint", "hasShadow", "value"}]
+  GETIMPORT R10 K26 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 24
+  LOADK R13 K27 [0.5]
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K20 ["position"]
+  GETIMPORT R10 K29 [Vector2.new]
+  LOADN R11 0
+  LOADK R12 K27 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K21 ["anchorPoint"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K22 ["hasShadow"]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K1 ["props"]
+  GETTABLEKS R10 R11 K19 ["unreadMessages"]
+  SETTABLEKS R10 R9 K23 ["value"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K17 ["Badge"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  DUPTABLE R1 K2 [{"chatVisible", "unreadMessages"}]
+  GETTABLEKS R3 R0 K3 ["chat"]
+  GETTABLEKS R2 R3 K4 ["visible"]
+  SETTABLEKS R2 R1 K0 ["chatVisible"]
+  GETTABLEKS R3 R0 K3 ["chat"]
+  GETTABLEKS R2 R3 K1 ["unreadMessages"]
+  SETTABLEKS R2 R1 K1 ["unreadMessages"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["t"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["UIBlox"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["RoactRodux"]
+  CALL R4 1 1
+  GETTABLEKS R7 R3 K11 ["Core"]
+  GETTABLEKS R6 R7 K12 ["Style"]
+  GETTABLEKS R5 R6 K13 ["withStyle"]
+  GETTABLEKS R8 R3 K14 ["App"]
+  GETTABLEKS R7 R8 K15 ["ImageSet"]
+  GETTABLEKS R6 R7 K16 ["Images"]
+  GETTABLEKS R9 R3 K11 ["Core"]
+  GETTABLEKS R8 R9 K15 ["ImageSet"]
+  GETTABLEKS R7 R8 K17 ["ImageSetLabel"]
+  GETTABLEKS R10 R3 K14 ["App"]
+  GETTABLEKS R9 R10 K18 ["Indicator"]
+  GETTABLEKS R8 R9 K19 ["Badge"]
+  GETTABLEKS R9 R6 K20 ["icons/menu/chat_on"]
+  GETTABLEKS R10 R6 K21 ["icons/menu/chat_off"]
+  GETTABLEKS R11 R1 K22 ["PureComponent"]
+  LOADK R13 K23 ["ChatIcon"]
+  NAMECALL R11 R11 K24 ["extend"]
+  CALL R11 2 1
+  GETTABLEKS R12 R2 K25 ["strictInterface"]
+  DUPTABLE R13 K28 [{"chatVisible", "unreadMessages"}]
+  GETTABLEKS R14 R2 K29 ["boolean"]
+  SETTABLEKS R14 R13 K26 ["chatVisible"]
+  GETTABLEKS R14 R2 K30 ["integer"]
+  SETTABLEKS R14 R13 K27 ["unreadMessages"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K31 ["validateProps"]
+  DUPCLOSURE R12 K32 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R1
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  SETTABLEKS R12 R11 K33 ["render"]
+  DUPCLOSURE R12 K34 [PROTO_2]
+  GETTABLEKS R13 R4 K35 ["UNSTABLE_connect2"]
+  MOVE R14 R12
+  LOADNIL R15
+  CALL R13 2 1
+  MOVE R14 R11
+  CALL R13 1 -1
+  RETURN R13 -1

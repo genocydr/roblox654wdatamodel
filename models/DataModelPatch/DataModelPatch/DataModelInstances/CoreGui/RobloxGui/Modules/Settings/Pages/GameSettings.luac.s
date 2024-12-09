@@ -1,0 +1,10208 @@
+PROTO_0:
+  GETIMPORT R0 K1 [settings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UseNotificationsLocalization"]
+  NAMECALL R0 R0 K3 ["GetFFlag"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  CALL R4 0 1
+  JUMPIFNOT R4 [+6]
+  JUMPIFEQ R1 R2 [+5]
+  JUMPIFEQKNIL R1 [+3]
+  JUMPIFNOTEQKNIL R2 [+2]
+  RETURN R0 0
+  DUPTABLE R4 K7 [{"universe_id", "name", "old_value", "new_value", "has_touch", "has_mouse", "has_gamepad"}]
+  GETIMPORT R7 K9 [game]
+  GETTABLEKS R6 R7 K10 ["GameId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K12 [tostring]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K0 ["universe_id"]
+  SETTABLEKS R0 R4 K1 ["name"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K12 [tostring]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K2 ["old_value"]
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R6 R2
+  GETIMPORT R5 K12 [tostring]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K3 ["new_value"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K13 ["TouchEnabled"]
+  SETTABLEKS R5 R4 K4 ["has_touch"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K14 ["MouseEnabled"]
+  SETTABLEKS R5 R4 K5 ["has_mouse"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K15 ["GamepadEnabled"]
+  SETTABLEKS R5 R4 K6 ["has_gamepad"]
+  JUMPIFNOT R3 [+9]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K16 ["Dictionary"]
+  GETTABLEKS R5 R6 K17 ["join"]
+  MOVE R6 R4
+  MOVE R7 R3
+  CALL R5 2 1
+  MOVE R4 R5
+  GETUPVAL R5 3
+  GETUPVAL R8 4
+  GETTABLEKS R7 R8 K18 ["AnalyticsTargetName"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K19 ["AnalyticsInGameMenuName"]
+  GETUPVAL R10 4
+  GETTABLEKS R9 R10 K20 ["AnalyticsExplicitSettingsChangeName"]
+  MOVE R10 R4
+  NAMECALL R5 R5 K21 ["SetRBXEventStream"]
+  CALL R5 5 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWTABLE R0 0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["TouchCameraMovementMode"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K4 ["camera_mode_touch"]
+  JUMP [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["ComputerCameraMovementMode"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K6 ["camera_mode_desktop"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K7 ["TouchMovementMode"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K8 ["movement_mode_touch"]
+  JUMP [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K9 ["ComputerMovementMode"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K10 ["movement_mode_desktop"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K11 ["MouseEnabled"]
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K12 ["ControlMode"]
+  GETIMPORT R4 K15 [Enum.ControlMode.MouseLockSwitch]
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K16 ["shift_lock_enabled"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K17 ["GamepadEnabled"]
+  JUMPIFNOT R1 [+23]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K18 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R1 [+19]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K19 ["GamepadCameraSensitivity"]
+  GETIMPORT R3 K22 [string.format]
+  LOADK R4 K23 ["%.2f"]
+  MOVE R5 R1
+  CALL R3 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R2 K25 [tonumber]
+  CALL R2 -1 1
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R4 R2
+  GETIMPORT R3 K3 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R0 K26 ["camera_sensitivity_gamepad"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K11 ["MouseEnabled"]
+  JUMPIFNOT R1 [+21]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K27 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R1 R2 K28 ["X"]
+  GETIMPORT R3 K22 [string.format]
+  LOADK R4 K23 ["%.2f"]
+  MOVE R5 R1
+  CALL R3 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R2 K25 [tonumber]
+  CALL R2 -1 1
+  FASTCALL1 TOSTRING R2 [+3]
+  MOVE R4 R2
+  GETIMPORT R3 K3 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R0 K29 ["camera_sensitivity_mouse"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K30 ["CameraYInverted"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K31 ["camera_y_inverted"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K32 ["PerformanceStatsVisible"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K33 ["show_performance_stats"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K36 ["MasterVolume"]
+  MULK R4 R5 K35 [10]
+  ADDK R3 R4 K34 [0.5]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K39 [math.floor]
+  CALL R2 1 1
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K40 ["volume"]
+  GETIMPORT R4 K42 [settings]
+  CALL R4 0 1
+  GETTABLEKS R3 R4 K43 ["Rendering"]
+  GETTABLEKS R2 R3 K44 ["QualityLevel"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K45 ["gfx_quality_level"]
+  GETUPVAL R1 2
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K46 ["FramerateCap"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K47 ["framerate_cap"]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K48 ["InFullScreen"]
+  CALL R2 1 -1
+  FASTCALL TOSTRING [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 -1 1
+  SETTABLEKS R1 R0 K49 ["fullscreen_enabled"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K50 ["OnScreenProfilerEnabled"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K51 ["microprofiler_enabled"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K52 ["MicroProfilerWebServerEnabled"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K53 ["microprofiler_webserver_enabled"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K54 ["ReducedMotion"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K55 ["reduced_motion"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K56 ["PreferredTransparency"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K57 ["preferred_transparency"]
+  GETUPVAL R1 3
+  CALL R1 0 1
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K58 ["PreferredTextSize"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K59 ["preferred_text_size"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K60 ["UiNavigationKeyBindEnabled"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K61 ["ui_navigation_key_bind_enabled"]
+  GETIMPORT R3 K63 [game]
+  GETTABLEKS R2 R3 K64 ["GameId"]
+  FASTCALL1 TOSTRING R2 [+2]
+  GETIMPORT R1 K3 [tostring]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K65 ["universeid"]
+  GETUPVAL R1 4
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K66 ["AnalyticsTargetName"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K67 ["AnalyticsInGameMenuName"]
+  GETUPVAL R6 5
+  GETTABLEKS R5 R6 K68 ["AnalyticsSettingsChangeName"]
+  MOVE R6 R0
+  NAMECALL R1 R1 K69 ["SetRBXEventStream"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VREnabled"]
+  GETIMPORT R1 K2 [pairs]
+  GETUPVAL R2 1
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  NOT R6 R0
+  SETTABLEKS R6 R4 K3 ["Visible"]
+  FORGLOOP R1 2 [-4]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VREnabled"]
+  JUMPIFNOT R0 [+15]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+13]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VREnabled"]
+  GETIMPORT R1 K2 [pairs]
+  GETUPVAL R2 2
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  NOT R6 R0
+  SETTABLEKS R6 R4 K3 ["Visible"]
+  FORGLOOP R1 2 [-4]
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 1
+  LOADK R1 K0 ["fullscreen_enabled"]
+  GETUPVAL R2 2
+  GETUPVAL R3 3
+  NAMECALL R3 R3 K1 ["InFullScreen"]
+  CALL R3 1 -1
+  CALL R0 -1 0
+  GETUPVAL R0 4
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["InFullScreen"]
+  CALL R1 1 1
+  JUMPIFNOTEQKN R0 K1 [1] [+37]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["InFullScreen"]
+  CALL R2 1 1
+  JUMPIF R2 [+68]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K2 ["ToggleFullscreen"]
+  CALL R2 1 0
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+16]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K3 ["FullscreenEnabler"]
+  GETTABLEKS R2 R3 K4 ["GetSelectedIndex"]
+  CALL R2 0 1
+  JUMPIFEQKN R2 K1 [1] [+54]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["FullscreenEnabler"]
+  LOADN R4 1
+  NAMECALL R2 R2 K5 ["SetSelectionIndex"]
+  CALL R2 2 0
+  JUMP [+45]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["FullscreenEnabler"]
+  LOADN R4 1
+  NAMECALL R2 R2 K5 ["SetSelectionIndex"]
+  CALL R2 2 0
+  JUMP [+37]
+  JUMPIFNOTEQKN R0 K6 [2] [+36]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["InFullScreen"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+30]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K2 ["ToggleFullscreen"]
+  CALL R2 1 0
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+16]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K3 ["FullscreenEnabler"]
+  GETTABLEKS R2 R3 K4 ["GetSelectedIndex"]
+  CALL R2 0 1
+  JUMPIFEQKN R2 K6 [2] [+16]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["FullscreenEnabler"]
+  LOADN R4 2
+  NAMECALL R2 R2 K5 ["SetSelectionIndex"]
+  CALL R2 2 0
+  JUMP [+7]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["FullscreenEnabler"]
+  LOADN R4 2
+  NAMECALL R2 R2 K5 ["SetSelectionIndex"]
+  CALL R2 2 0
+  GETIMPORT R2 K8 [spawn]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U6
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_7:
+  JUMPIFNOT R0 [+16]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["FullscreenEnabler"]
+  NAMECALL R1 R1 K1 ["GetSelectedIndex"]
+  CALL R1 1 1
+  JUMPIFEQKN R1 K2 [1] [+24]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["FullscreenEnabler"]
+  LOADN R3 1
+  NAMECALL R1 R1 K3 ["SetSelectionIndex"]
+  CALL R1 2 0
+  JUMP [+15]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["FullscreenEnabler"]
+  NAMECALL R1 R1 K1 ["GetSelectedIndex"]
+  CALL R1 1 1
+  JUMPIFEQKN R1 K4 [2] [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["FullscreenEnabler"]
+  LOADN R3 2
+  NAMECALL R1 R1 K3 ["SetSelectionIndex"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K5 ["AnalyticsTargetName"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["AnalyticsInGameMenuName"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K7 ["AnalyticsFullscreenModeName"]
+  DUPTABLE R6 K9 [{"enabled"}]
+  SETTABLEKS R0 R6 K8 ["enabled"]
+  NAMECALL R1 R1 K10 ["SetRBXEventStream"]
+  CALL R1 5 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["FramerateCap"]
+  GETUPVAL R2 0
+  GETUPVAL R4 1
+  GETTABLE R3 R4 R0
+  SETTABLEKS R3 R2 K0 ["FramerateCap"]
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 3
+  LOADK R3 K1 ["framerate_cap"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["FramerateCap"]
+  CALL R2 3 0
+  GETUPVAL R2 4
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  GETUPVAL R1 0
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  GETUPVAL R5 0
+  GETUPVAL R6 2
+  LOADK R8 K0 ["Feature.SettingsHub.GameSettings.MaximumFramerate"]
+  NAMECALL R6 R6 K1 ["FormatByKey"]
+  CALL R6 2 1
+  LOADK R7 K2 ["DropDown"]
+  GETUPVAL R8 3
+  GETIMPORT R9 K5 [table.find]
+  GETUPVAL R10 4
+  GETUPVAL R12 5
+  GETTABLEKS R11 R12 K6 ["FramerateCap"]
+  CALL R9 2 1
+  LOADNIL R10
+  GETUPVAL R11 2
+  LOADK R13 K7 ["Feature.SettingsHub.GameSettings.MaximumFramerate.Description"]
+  NAMECALL R11 R11 K1 ["FormatByKey"]
+  CALL R11 2 -1
+  NAMECALL R3 R3 K8 ["AddNewRow"]
+  CALL R3 -1 3
+  SETTABLEKS R3 R0 K9 ["FramerateCapFrame"]
+  SETTABLEKS R4 R1 K10 ["FramerateCapLabel"]
+  SETTABLEKS R5 R2 K11 ["FramerateCapMode"]
+  GETUPVAL R0 6
+  JUMPIF R0 [+2]
+  GETUPVAL R0 7
+  JUMPIFNOT R0 [+9]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K9 ["FramerateCapFrame"]
+  GETUPVAL R2 8
+  GETTABLEKS R1 R2 K6 ["FramerateCap"]
+  SETTABLEKS R1 R0 K12 ["LayoutOrder"]
+  JUMP [+6]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K9 ["FramerateCapFrame"]
+  LOADN R1 12
+  SETTABLEKS R1 R0 K12 ["LayoutOrder"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K11 ["FramerateCapMode"]
+  GETTABLEKS R0 R1 K13 ["IndexChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NAMECALL R0 R0 K14 ["Connect"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+14]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["TemporaryOverride"]
+  MOVE R3 R0
+  CALL R2 1 2
+  JUMPIFNOT R2 [+8]
+  GETIMPORT R5 K2 [settings]
+  CALL R5 0 1
+  GETTABLEKS R4 R5 K3 ["Rendering"]
+  SETTABLEKS R3 R4 K4 ["QualityLevel"]
+  RETURN R0 0
+  DIVK R2 R0 K5 [10]
+  GETIMPORT R7 K2 [settings]
+  CALL R7 0 1
+  GETTABLEKS R6 R7 K3 ["Rendering"]
+  NAMECALL R6 R6 K7 ["GetMaxQualityLevel"]
+  CALL R6 1 1
+  SUBK R5 R6 K6 [1]
+  MUL R4 R5 R2
+  FASTCALL1 MATH_FLOOR R4 [+2]
+  GETIMPORT R3 K10 [math.floor]
+  CALL R3 1 1
+  JUMPIFNOTEQKN R3 K11 [20] [+3]
+  LOADN R3 21
+  JUMP [+30]
+  JUMPIFNOTEQKN R0 K6 [1] [+3]
+  LOADN R3 1
+  JUMP [+26]
+  LOADN R4 1
+  JUMPIFNOTLT R0 R4 [+5]
+  JUMPIF R1 [+3]
+  LOADN R0 1
+  LOADN R3 1
+  JUMP [+19]
+  GETIMPORT R5 K2 [settings]
+  CALL R5 0 1
+  GETTABLEKS R4 R5 K3 ["Rendering"]
+  NAMECALL R4 R4 K7 ["GetMaxQualityLevel"]
+  CALL R4 1 1
+  JUMPIFNOTLT R4 R3 [+10]
+  GETIMPORT R5 K2 [settings]
+  CALL R5 0 1
+  GETTABLEKS R4 R5 K3 ["Rendering"]
+  NAMECALL R4 R4 K7 ["GetMaxQualityLevel"]
+  CALL R4 1 1
+  SUBK R3 R4 K6 [1]
+  GETUPVAL R4 2
+  SETTABLEKS R0 R4 K12 ["SavedQualityLevel"]
+  GETIMPORT R5 K2 [settings]
+  CALL R5 0 1
+  GETTABLEKS R4 R5 K3 ["Rendering"]
+  SETTABLEKS R3 R4 K4 ["QualityLevel"]
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["GraphicsQualitySlider"]
+  LOADN R2 1
+  NAMECALL R0 R0 K1 ["SetZIndex"]
+  CALL R0 2 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["GraphicsQualityLabel"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K3 ["ZIndex"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["GraphicsQualitySlider"]
+  LOADB R2 0
+  NAMECALL R0 R0 K4 ["SetInteractable"]
+  CALL R0 2 0
+  GETGLOBAL R0 K5 ["SetGraphicsQuality"]
+  GETIMPORT R2 K9 [Enum.QualityLevel.Automatic]
+  GETTABLEKS R1 R2 K10 ["Value"]
+  LOADB R2 1
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GraphicsQualitySlider"]
+  LOADN R3 2
+  NAMECALL R1 R1 K1 ["SetZIndex"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["GraphicsQualityLabel"]
+  LOADN R2 2
+  SETTABLEKS R2 R1 K3 ["ZIndex"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GraphicsQualitySlider"]
+  LOADB R3 1
+  NAMECALL R1 R1 K4 ["SetInteractable"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GraphicsQualitySlider"]
+  NAMECALL R1 R1 K5 ["GetValue"]
+  CALL R1 1 1
+  JUMPIFNOTEQ R1 R0 [+6]
+  GETGLOBAL R1 K6 ["SetGraphicsQuality"]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["GraphicsQualitySlider"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K7 ["SetValue"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETGLOBAL R1 K0 ["SetGraphicsQuality"]
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R1 0
+  JUMPIFNOTEQKB R1 TRUE [+3]
+  GETUPVAL R1 1
+  CALL R1 0 0
+  LOADB R1 1
+  SETUPVAL R1 0
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+92]
+  DUPTABLE R1 K2 [{"Automatic", "Manual"}]
+  DUPTABLE R2 K5 [{"Name", "Value"}]
+  LOADK R3 K0 ["Automatic"]
+  SETTABLEKS R3 R2 K3 ["Name"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K4 ["Value"]
+  SETTABLEKS R2 R1 K0 ["Automatic"]
+  DUPTABLE R2 K5 [{"Name", "Value"}]
+  LOADK R3 K1 ["Manual"]
+  SETTABLEKS R3 R2 K3 ["Name"]
+  LOADN R3 2
+  SETTABLEKS R3 R2 K4 ["Value"]
+  SETTABLEKS R2 R1 K1 ["Manual"]
+  GETTABLEKS R3 R1 K0 ["Automatic"]
+  GETTABLEKS R2 R3 K3 ["Name"]
+  GETTABLEKS R4 R1 K1 ["Manual"]
+  GETTABLEKS R3 R4 K3 ["Name"]
+  GETTABLEKS R5 R1 K0 ["Automatic"]
+  GETTABLEKS R4 R5 K4 ["Value"]
+  JUMPIFNOTEQ R0 R4 [+38]
+  GETTABLEKS R4 R1 K1 ["Manual"]
+  GETTABLEKS R2 R4 K3 ["Name"]
+  GETTABLEKS R4 R1 K0 ["Automatic"]
+  GETTABLEKS R3 R4 K3 ["Name"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["GraphicsQualitySlider"]
+  LOADN R6 1
+  NAMECALL R4 R4 K7 ["SetZIndex"]
+  CALL R4 2 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K8 ["GraphicsQualityLabel"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K9 ["ZIndex"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["GraphicsQualitySlider"]
+  LOADB R6 0
+  NAMECALL R4 R4 K10 ["SetInteractable"]
+  CALL R4 2 0
+  GETGLOBAL R4 K11 ["SetGraphicsQuality"]
+  GETIMPORT R6 K14 [Enum.QualityLevel.Automatic]
+  GETTABLEKS R5 R6 K4 ["Value"]
+  LOADB R6 1
+  CALL R4 2 0
+  JUMP [+14]
+  GETTABLEKS R5 R1 K1 ["Manual"]
+  GETTABLEKS R4 R5 K4 ["Value"]
+  JUMPIFNOTEQ R0 R4 [+9]
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["GraphicsQualitySlider"]
+  NAMECALL R5 R5 K15 ["GetValue"]
+  CALL R5 1 -1
+  CALL R4 -1 0
+  GETUPVAL R4 3
+  CALL R4 0 0
+  GETUPVAL R4 4
+  LOADK R5 K16 ["gfx_mode"]
+  MOVE R6 R2
+  MOVE R7 R3
+  CALL R4 3 0
+  RETURN R0 0
+  JUMPIFNOTEQKN R0 K17 [1] [+30]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["GraphicsQualitySlider"]
+  LOADN R3 1
+  NAMECALL R1 R1 K7 ["SetZIndex"]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K8 ["GraphicsQualityLabel"]
+  LOADN R2 1
+  SETTABLEKS R2 R1 K9 ["ZIndex"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["GraphicsQualitySlider"]
+  LOADB R3 0
+  NAMECALL R1 R1 K10 ["SetInteractable"]
+  CALL R1 2 0
+  GETGLOBAL R1 K11 ["SetGraphicsQuality"]
+  GETIMPORT R3 K14 [Enum.QualityLevel.Automatic]
+  GETTABLEKS R2 R3 K4 ["Value"]
+  LOADB R3 1
+  CALL R1 2 0
+  JUMP [+10]
+  JUMPIFNOTEQKN R0 K18 [2] [+9]
+  GETUPVAL R1 2
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["GraphicsQualitySlider"]
+  NAMECALL R2 R2 K15 ["GetValue"]
+  CALL R2 1 -1
+  CALL R1 -1 0
+  GETUPVAL R1 3
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["SavedQualityLevel"]
+  GETIMPORT R2 K4 [Enum.SavedQualitySetting.Automatic]
+  JUMPIFEQ R1 R2 [+18]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K5 ["GraphicsQualitySlider"]
+  NAMECALL R1 R1 K6 ["GetValue"]
+  CALL R1 1 1
+  JUMPIFNOT R0 [+2]
+  ADDK R1 R1 K7 [1]
+  JUMP [+1]
+  SUBK R1 R1 K7 [1]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["GraphicsQualitySlider"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K8 ["SetValue"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_16:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["GraphicsQualitySlider"]
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K1 ["SetValue"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_17:
+  LOADN R0 1
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["InFullScreen"]
+  CALL R1 1 1
+  JUMPIF R1 [+1]
+  LOADN R0 2
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  LOADK R7 K1 ["Fullscreen"]
+  LOADK R8 K2 ["Selector"]
+  NEWTABLE R9 0 2
+  LOADK R10 K3 ["On"]
+  LOADK R11 K4 ["Off"]
+  SETLIST R9 R10 2 [1]
+  MOVE R10 R0
+  NAMECALL R4 R4 K5 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K6 ["FullscreenFrame"]
+  SETTABLEKS R5 R2 K7 ["FullscreenLabel"]
+  SETTABLEKS R6 R3 K8 ["FullscreenEnabler"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["FullscreenFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K9 ["FullScreenFrame"]
+  SETTABLEKS R2 R1 K10 ["LayoutOrder"]
+  GETUPVAL R1 4
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["FullscreenFrame"]
+  LOADB R3 1
+  SETTABLE R3 R1 R2
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K8 ["FullscreenEnabler"]
+  GETTABLEKS R1 R2 K11 ["IndexChanged"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  NAMECALL R1 R1 K12 ["connect"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K13 ["FullscreenChanged"]
+  NEWCLOSURE R3 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NAMECALL R1 R1 K12 ["connect"]
+  CALL R1 2 0
+  LOADN R1 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K14 ["SavedQualityLevel"]
+  GETIMPORT R3 K18 [Enum.SavedQualitySetting.Automatic]
+  JUMPIFEQ R2 R3 [+2]
+  LOADN R1 2
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  GETUPVAL R7 1
+  LOADK R8 K19 ["Graphics Mode"]
+  LOADK R9 K2 ["Selector"]
+  NEWTABLE R10 0 2
+  LOADK R11 K17 ["Automatic"]
+  LOADK R12 K20 ["Manual"]
+  SETLIST R10 R11 2 [1]
+  MOVE R11 R1
+  NAMECALL R5 R5 K5 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K21 ["GraphicsEnablerFrame"]
+  SETTABLEKS R6 R3 K22 ["GraphicsEnablerLabel"]
+  SETTABLEKS R7 R4 K23 ["GraphicsQualityEnabler"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K21 ["GraphicsEnablerFrame"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K21 ["GraphicsEnablerFrame"]
+  SETTABLEKS R3 R2 K10 ["LayoutOrder"]
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  GETUPVAL R7 1
+  LOADK R8 K24 ["Graphics Quality"]
+  LOADK R9 K25 ["Slider"]
+  LOADN R10 10
+  LOADN R11 1
+  NAMECALL R5 R5 K5 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K26 ["GraphicsQualityFrame"]
+  SETTABLEKS R6 R3 K27 ["GraphicsQualityLabel"]
+  SETTABLEKS R7 R4 K28 ["GraphicsQualitySlider"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K26 ["GraphicsQualityFrame"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K26 ["GraphicsQualityFrame"]
+  SETTABLEKS R3 R2 K10 ["LayoutOrder"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K28 ["GraphicsQualitySlider"]
+  LOADN R4 1
+  NAMECALL R2 R2 K29 ["SetMinStep"]
+  CALL R2 2 0
+  GETUPVAL R2 12
+  JUMPIFNOT R2 [+69]
+  GETUPVAL R3 13
+  GETTABLEKS R2 R3 K30 ["VREnabled"]
+  JUMPIF R2 [+65]
+  GETIMPORT R2 K33 [table.clone]
+  GETUPVAL R4 11
+  GETTABLEKS R3 R4 K34 ["FramerateCaps"]
+  CALL R2 1 1
+  NEWTABLE R3 0 1
+  GETUPVAL R4 14
+  LOADK R6 K35 ["Feature.SettingsHub.GameSettings.FramerateCapDefaultEntry"]
+  DUPTABLE R7 K37 [{"Frames"}]
+  GETUPVAL R8 0
+  NAMECALL R8 R8 K38 ["GetDefaultFramerateCap"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K36 ["Frames"]
+  NAMECALL R4 R4 K39 ["FormatByKey"]
+  CALL R4 3 -1
+  SETLIST R3 R4 -1 [1]
+  MOVE R4 R2
+  LOADNIL R5
+  LOADNIL R6
+  FORGPREP R4
+  MOVE R10 R3
+  GETUPVAL R11 14
+  LOADK R13 K40 ["Feature.SettingsHub.GameSettings.FramerateEntry"]
+  DUPTABLE R14 K37 [{"Frames"}]
+  SETTABLEKS R8 R14 K36 ["Frames"]
+  NAMECALL R11 R11 K39 ["FormatByKey"]
+  CALL R11 3 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R9 K42 [table.insert]
+  CALL R9 -1 0
+  FORGLOOP R4 2 [-14]
+  LOADN R6 1
+  LOADN R7 255
+  FASTCALL3 TABLE_INSERT R2 R6 R7
+  MOVE R5 R2
+  GETIMPORT R4 K42 [table.insert]
+  CALL R4 3 0
+  GETIMPORT R4 K45 [task.defer]
+  NEWCLOSURE R5 P2
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U14
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CALL R4 1 0
+  GETIMPORT R3 K47 [settings]
+  CALL R3 0 1
+  GETTABLEKS R2 R3 K48 ["Rendering"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K49 ["EnableFRM"]
+  DUPCLOSURE R2 K50 [PROTO_10]
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U0
+  SETGLOBAL R2 K51 ["SetGraphicsQuality"]
+  NEWCLOSURE R2 P4
+  CAPTURE UPVAL U1
+  NEWCLOSURE R3 P5
+  CAPTURE UPVAL U1
+  LOADB R4 0
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K28 ["GraphicsQualitySlider"]
+  GETTABLEKS R5 R6 K52 ["ValueChanged"]
+  NEWCLOSURE R7 P6
+  CAPTURE REF R4
+  CAPTURE UPVAL U9
+  NAMECALL R5 R5 K12 ["connect"]
+  CALL R5 2 0
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K23 ["GraphicsQualityEnabler"]
+  GETTABLEKS R5 R6 K11 ["IndexChanged"]
+  NEWCLOSURE R7 P7
+  CAPTURE UPVAL U19
+  CAPTURE UPVAL U1
+  CAPTURE VAL R3
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U8
+  NAMECALL R5 R5 K12 ["connect"]
+  CALL R5 2 0
+  GETIMPORT R6 K54 [game]
+  GETTABLEKS R5 R6 K55 ["GraphicsQualityChangeRequest"]
+  NEWCLOSURE R7 P8
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  NAMECALL R5 R5 K56 ["Connect"]
+  CALL R5 2 0
+  GETUPVAL R5 20
+  LOADN R6 0
+  JUMPIFNOTLE R6 R5 [+51]
+  GETUPVAL R5 20
+  JUMPIFNOTEQKN R5 K57 [0] [+37]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K23 ["GraphicsQualityEnabler"]
+  LOADN R7 1
+  NAMECALL R5 R5 K58 ["SetSelectionIndex"]
+  CALL R5 2 0
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K28 ["GraphicsQualitySlider"]
+  LOADN R7 1
+  NAMECALL R5 R5 K59 ["SetZIndex"]
+  CALL R5 2 0
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K27 ["GraphicsQualityLabel"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K60 ["ZIndex"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K28 ["GraphicsQualitySlider"]
+  LOADB R7 0
+  NAMECALL R5 R5 K61 ["SetInteractable"]
+  CALL R5 2 0
+  GETGLOBAL R5 K51 ["SetGraphicsQuality"]
+  GETIMPORT R7 K63 [Enum.QualityLevel.Automatic]
+  GETTABLEKS R6 R7 K64 ["Value"]
+  LOADB R7 1
+  CALL R5 2 0
+  JUMP [+79]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K23 ["GraphicsQualityEnabler"]
+  LOADN R7 2
+  NAMECALL R5 R5 K58 ["SetSelectionIndex"]
+  CALL R5 2 0
+  MOVE R5 R3
+  GETUPVAL R6 20
+  CALL R5 1 0
+  JUMP [+68]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K14 ["SavedQualityLevel"]
+  GETIMPORT R6 K18 [Enum.SavedQualitySetting.Automatic]
+  JUMPIFNOTEQ R5 R6 [+37]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K28 ["GraphicsQualitySlider"]
+  LOADN R7 5
+  NAMECALL R5 R5 K65 ["SetValue"]
+  CALL R5 2 0
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K28 ["GraphicsQualitySlider"]
+  LOADN R7 1
+  NAMECALL R5 R5 K59 ["SetZIndex"]
+  CALL R5 2 0
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K27 ["GraphicsQualityLabel"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K60 ["ZIndex"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K28 ["GraphicsQualitySlider"]
+  LOADB R7 0
+  NAMECALL R5 R5 K61 ["SetInteractable"]
+  CALL R5 2 0
+  GETGLOBAL R5 K51 ["SetGraphicsQuality"]
+  GETIMPORT R7 K63 [Enum.QualityLevel.Automatic]
+  GETTABLEKS R6 R7 K64 ["Value"]
+  LOADB R7 1
+  CALL R5 2 0
+  JUMP [+25]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K14 ["SavedQualityLevel"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K67 [tostring]
+  CALL R5 1 1
+  GETUPVAL R7 21
+  GETTABLE R6 R7 R5
+  JUMPIFNOT R6 [+3]
+  GETUPVAL R6 21
+  GETTABLE R5 R6 R5
+  JUMP [+1]
+  LOADN R5 10
+  GETGLOBAL R6 K51 ["SetGraphicsQuality"]
+  MOVE R7 R5
+  CALL R6 1 0
+  GETIMPORT R6 K69 [spawn]
+  NEWCLOSURE R7 P9
+  CAPTURE UPVAL U1
+  CAPTURE REF R5
+  CALL R6 1 0
+  CLOSEUPVALS R5
+  CLOSEUPVALS R4
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ReducedMotion"]
+  GETUPVAL R2 0
+  JUMPIFEQKN R0 K1 [1] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["ReducedMotion"]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K2 ["reduced_motion"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["ReducedMotion"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_19:
+  LOADN R0 2
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ReducedMotion"]
+  JUMPIFNOT R1 [+1]
+  LOADN R0 1
+  GETUPVAL R1 1
+  LOADK R3 K1 ["Feature.Accessibility.Heading.ReducedMotion"]
+  NAMECALL R1 R1 K2 ["FormatByKey"]
+  CALL R1 2 1
+  GETUPVAL R2 1
+  LOADK R4 K3 ["Feature.Accessibility.Description.ReducedMotion"]
+  NAMECALL R2 R2 K2 ["FormatByKey"]
+  CALL R2 2 1
+  GETUPVAL R3 1
+  LOADK R5 K4 ["InGame.CommonUI.Label.On"]
+  NAMECALL R3 R3 K2 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  LOADK R6 K5 ["InGame.CommonUI.Label.Off"]
+  NAMECALL R4 R4 K2 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 3
+  GETUPVAL R10 2
+  MOVE R11 R1
+  LOADK R12 K6 ["Selector"]
+  NEWTABLE R13 0 2
+  MOVE R14 R3
+  MOVE R15 R4
+  SETLIST R13 R14 2 [1]
+  MOVE R14 R0
+  LOADNIL R15
+  MOVE R16 R2
+  NAMECALL R8 R8 K7 ["AddNewRow"]
+  CALL R8 8 3
+  SETTABLEKS R8 R5 K8 ["ReducedMotionFrame"]
+  SETTABLEKS R9 R6 K9 ["ReducedMotionLabel"]
+  SETTABLEKS R10 R7 K10 ["ReducedMotionMode"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K8 ["ReducedMotionFrame"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K8 ["ReducedMotionFrame"]
+  SETTABLEKS R6 R5 K11 ["LayoutOrder"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K10 ["ReducedMotionMode"]
+  GETTABLEKS R5 R6 K12 ["IndexChanged"]
+  DUPCLOSURE R7 K13 [PROTO_18]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R5 R5 K14 ["connect"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_20:
+  FASTCALL1 MATH_FLOOR R0 [+3]
+  MOVE R4 R0
+  GETIMPORT R3 K3 [math.floor]
+  CALL R3 1 1
+  LOADN R4 0
+  LOADN R5 10
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R2 K5 [math.clamp]
+  CALL R2 3 1
+  SUBRK R1 R0 K2 ["floor"]
+  DIVK R0 R1 K0 [10]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K6 ["PreferredTransparency"]
+  GETUPVAL R2 0
+  SETTABLEKS R0 R2 K6 ["PreferredTransparency"]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K7 ["preferred_transparency"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K6 ["PreferredTransparency"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_21:
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["PreferredTransparency"]
+  MULK R4 R5 K0 [10]
+  ADDK R3 R4 K1 [0.5]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K5 [math.floor]
+  CALL R2 1 1
+  LOADN R3 0
+  LOADN R4 10
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R1 K7 [math.clamp]
+  CALL R1 3 1
+  SUBRK R0 R0 K1 [0.5]
+  GETUPVAL R1 1
+  LOADK R3 K8 ["Feature.Accessibility.Heading.PreferredTransparency"]
+  NAMECALL R1 R1 K9 ["FormatByKey"]
+  CALL R1 2 1
+  GETUPVAL R2 1
+  LOADK R4 K10 ["Feature.Accessibility.Description.PreferredTransparency"]
+  NAMECALL R2 R2 K9 ["FormatByKey"]
+  CALL R2 2 1
+  GETUPVAL R3 1
+  LOADK R5 K11 ["Feature.Accessibility.PreferredTransparency.Transparent"]
+  NAMECALL R3 R3 K9 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  LOADK R6 K12 ["Feature.Accessibility.PreferredTransparency.Opaque"]
+  NAMECALL R4 R4 K9 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 3
+  GETUPVAL R10 2
+  MOVE R11 R1
+  LOADK R12 K13 ["Slider"]
+  LOADN R13 10
+  MOVE R14 R0
+  LOADNIL R15
+  MOVE R16 R2
+  MOVE R17 R3
+  MOVE R18 R4
+  NAMECALL R8 R8 K14 ["AddNewRow"]
+  CALL R8 10 3
+  SETTABLEKS R8 R5 K15 ["PreferredTransparencyFrame"]
+  SETTABLEKS R9 R6 K16 ["PreferredTransparencyLabel"]
+  SETTABLEKS R10 R7 K17 ["PreferredTransparencySlider"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K15 ["PreferredTransparencyFrame"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K15 ["PreferredTransparencyFrame"]
+  SETTABLEKS R6 R5 K18 ["LayoutOrder"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K17 ["PreferredTransparencySlider"]
+  GETTABLEKS R5 R6 K19 ["ValueChanged"]
+  DUPCLOSURE R7 K20 [PROTO_20]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R5 R5 K21 ["connect"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_22:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["PreferredTextSize"]
+  GETUPVAL R2 0
+  GETUPVAL R4 1
+  ADDK R5 R0 K1 [1]
+  GETTABLE R3 R4 R5
+  SETTABLEKS R3 R2 K0 ["PreferredTextSize"]
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 3
+  LOADK R3 K2 ["preferred_text_size"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["PreferredTextSize"]
+  CALL R2 3 0
+  GETUPVAL R2 4
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_23:
+  GETIMPORT R0 K2 [Enum.PreferredTextSize]
+  NAMECALL R0 R0 K3 ["GetEnumItems"]
+  CALL R0 1 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["PreferredTextSize"]
+  GETTABLEKS R2 R3 K5 ["Value"]
+  SUBK R1 R2 K4 [1]
+  GETUPVAL R2 1
+  LOADK R4 K6 ["Feature.Accessibility.Heading.PreferredTextSize"]
+  NAMECALL R2 R2 K7 ["FormatByKey"]
+  CALL R2 2 1
+  GETUPVAL R3 1
+  LOADK R5 K8 ["Feature.Accessibility.Description.PreferredTextSize"]
+  NAMECALL R3 R3 K7 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  LOADK R6 K9 ["Feature.Accessibility.PreferredTextSize.Default"]
+  NAMECALL R4 R4 K7 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 1
+  LOADK R7 K10 ["Feature.Accessibility.PreferredTextSize.Largest"]
+  NAMECALL R5 R5 K7 ["FormatByKey"]
+  CALL R5 2 1
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 2
+  GETUPVAL R9 3
+  GETUPVAL R11 2
+  MOVE R12 R2
+  LOADK R13 K11 ["Slider"]
+  LOADN R14 3
+  MOVE R15 R1
+  LOADNIL R16
+  MOVE R17 R3
+  MOVE R18 R4
+  MOVE R19 R5
+  NAMECALL R9 R9 K12 ["AddNewRow"]
+  CALL R9 10 3
+  SETTABLEKS R9 R6 K13 ["PreferredTextSizeFrame"]
+  SETTABLEKS R10 R7 K14 ["PreferredTextSizeLabel"]
+  SETTABLEKS R11 R8 K15 ["PreferredTextSizeSlider"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K13 ["PreferredTextSizeFrame"]
+  GETUPVAL R8 4
+  GETTABLEKS R7 R8 K13 ["PreferredTextSizeFrame"]
+  SETTABLEKS R7 R6 K16 ["LayoutOrder"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K15 ["PreferredTextSizeSlider"]
+  GETTABLEKS R6 R7 K17 ["ValueChanged"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R6 R6 K18 ["connect"]
+  CALL R6 2 0
+  RETURN R0 0
+
+PROTO_24:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["UiNavigationKeyBindEnabled"]
+  GETUPVAL R2 0
+  JUMPIFEQKN R0 K1 [1] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["UiNavigationKeyBindEnabled"]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K2 ["ui_navigation_key_bind_enabled"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["UiNavigationKeyBindEnabled"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_25:
+  LOADN R0 2
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["UiNavigationKeyBindEnabled"]
+  JUMPIFNOT R1 [+1]
+  LOADN R0 1
+  GETUPVAL R1 1
+  LOADK R3 K1 ["Feature.Accessibility.Heading.UiNavigationKeyBind"]
+  NAMECALL R1 R1 K2 ["FormatByKey"]
+  CALL R1 2 1
+  GETUPVAL R2 1
+  LOADK R4 K3 ["Feature.Accessibility.Description.UiNavigationKeyBind"]
+  DUPTABLE R5 K5 [{"uiNavigationKey"}]
+  GETUPVAL R6 2
+  GETIMPORT R8 K9 [Enum.KeyCode.BackSlash]
+  NAMECALL R6 R6 K10 ["GetStringForKeyCode"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K4 ["uiNavigationKey"]
+  NAMECALL R2 R2 K2 ["FormatByKey"]
+  CALL R2 3 1
+  GETUPVAL R3 1
+  LOADK R5 K11 ["InGame.CommonUI.Label.On"]
+  NAMECALL R3 R3 K2 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 1
+  LOADK R6 K12 ["InGame.CommonUI.Label.Off"]
+  NAMECALL R4 R4 K2 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 3
+  GETUPVAL R6 3
+  GETUPVAL R7 3
+  GETUPVAL R8 4
+  GETUPVAL R10 3
+  MOVE R11 R1
+  LOADK R12 K13 ["Selector"]
+  NEWTABLE R13 0 2
+  MOVE R14 R3
+  MOVE R15 R4
+  SETLIST R13 R14 2 [1]
+  MOVE R14 R0
+  LOADNIL R15
+  MOVE R16 R2
+  NAMECALL R8 R8 K14 ["AddNewRow"]
+  CALL R8 8 3
+  SETTABLEKS R8 R5 K15 ["UiNavigationKeyBindEnabledFrame"]
+  SETTABLEKS R9 R6 K16 ["UiNavigationKeyBindEnabledLabel"]
+  SETTABLEKS R10 R7 K17 ["UiNavigationKeyBindEnabledMode"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K15 ["UiNavigationKeyBindEnabledFrame"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K15 ["UiNavigationKeyBindEnabledFrame"]
+  SETTABLEKS R6 R5 K18 ["LayoutOrder"]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K17 ["UiNavigationKeyBindEnabledMode"]
+  GETTABLEKS R5 R6 K19 ["IndexChanged"]
+  DUPCLOSURE R7 K20 [PROTO_24]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  NAMECALL R5 R5 K21 ["connect"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_26:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["PerformanceStatsVisible"]
+  JUMPIFNOT R0 [+2]
+  LOADN R0 1
+  RETURN R0 1
+  LOADN R0 2
+  RETURN R0 1
+
+PROTO_27:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+3]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["PerformanceStatsVisible"]
+  JUMPIFNOTEQKN R0 K1 [1] [+6]
+  GETUPVAL R2 1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["PerformanceStatsVisible"]
+  JUMP [+4]
+  GETUPVAL R2 1
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["PerformanceStatsVisible"]
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K2 ["show_performance_stats"]
+  MOVE R4 R1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["PerformanceStatsVisible"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_28:
+  GETGLOBAL R0 K0 ["GetDesiredPerformanceStatsIndex"]
+  CALL R0 0 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PerformanceStatsMode"]
+  GETTABLEKS R1 R2 K2 ["CurrentIndex"]
+  JUMPIFEQ R0 R1 [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["PerformanceStatsMode"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K3 ["SetSelectionIndex"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_29:
+  GETUPVAL R0 0
+  GETUPVAL R1 0
+  GETUPVAL R2 0
+  GETUPVAL R3 0
+  LOADNIL R4
+  LOADNIL R5
+  LOADNIL R6
+  LOADNIL R7
+  SETTABLEKS R4 R0 K0 ["PerformanceStatsFrame"]
+  SETTABLEKS R5 R1 K1 ["PerformanceStatsLabel"]
+  SETTABLEKS R6 R2 K2 ["PerformanceStatsMode"]
+  SETTABLEKS R7 R3 K3 ["PerformanceStatsOverrideText"]
+  DUPCLOSURE R0 K4 [PROTO_26]
+  CAPTURE UPVAL U1
+  SETGLOBAL R0 K5 ["GetDesiredPerformanceStatsIndex"]
+  GETGLOBAL R0 K5 ["GetDesiredPerformanceStatsIndex"]
+  CALL R0 0 1
+  GETUPVAL R1 0
+  GETUPVAL R2 0
+  GETUPVAL R3 0
+  GETUPVAL R4 2
+  GETUPVAL R6 0
+  LOADK R7 K6 ["Performance Stats"]
+  LOADK R8 K7 ["Selector"]
+  NEWTABLE R9 0 2
+  LOADK R10 K8 ["On"]
+  LOADK R11 K9 ["Off"]
+  SETLIST R9 R10 2 [1]
+  MOVE R10 R0
+  NAMECALL R4 R4 K10 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K0 ["PerformanceStatsFrame"]
+  SETTABLEKS R5 R2 K1 ["PerformanceStatsLabel"]
+  SETTABLEKS R6 R3 K2 ["PerformanceStatsMode"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["PerformanceStatsFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K0 ["PerformanceStatsFrame"]
+  SETTABLEKS R2 R1 K11 ["LayoutOrder"]
+  GETUPVAL R1 0
+  GETUPVAL R2 4
+  LOADK R3 K12 ["TextLabel"]
+  CALL R2 1 1
+  DUPTABLE R3 K24 [{"Name", "Text", "TextColor3", "Font", "FontSize", "BackgroundTransparency", "Size", "Position", "Visible", "ZIndex", "Parent"}]
+  LOADK R4 K1 ["PerformanceStatsLabel"]
+  SETTABLEKS R4 R3 K13 ["Name"]
+  LOADK R4 K25 ["Set by Developer"]
+  SETTABLEKS R4 R3 K14 ["Text"]
+  GETIMPORT R4 K28 [Color3.new]
+  LOADN R5 1
+  LOADN R6 1
+  LOADN R7 1
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K15 ["TextColor3"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K29 ["font"]
+  GETIMPORT R5 K32 [Enum.Font.SourceSans]
+  LOADK R6 K33 ["GameSettings"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K16 ["Font"]
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K34 ["fontSize"]
+  GETIMPORT R5 K36 [Enum.FontSize.Size24]
+  LOADK R6 K33 ["GameSettings"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K17 ["FontSize"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K18 ["BackgroundTransparency"]
+  GETIMPORT R4 K38 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 200
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K19 ["Size"]
+  GETIMPORT R4 K38 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 162
+  LOADN R7 0
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K20 ["Position"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K21 ["Visible"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K22 ["ZIndex"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["PerformanceStatsFrame"]
+  SETTABLEKS R4 R3 K23 ["Parent"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K3 ["PerformanceStatsOverrideText"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["PerformanceStatsMode"]
+  GETTABLEKS R1 R2 K39 ["IndexChanged"]
+  DUPCLOSURE R3 K40 [PROTO_27]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  NAMECALL R1 R1 K41 ["connect"]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K42 ["PerformanceStatsVisibleChanged"]
+  NEWCLOSURE R3 P2
+  CAPTURE UPVAL U0
+  NAMECALL R1 R1 K41 ["connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_30:
+  GETUPVAL R0 0
+  GETUPVAL R1 0
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  GETUPVAL R5 0
+  LOADK R6 K0 ["MicroProfiler Information"]
+  LOADK R7 K1 ["TextBox"]
+  LOADNIL R8
+  LOADNIL R9
+  LOADN R10 5
+  NAMECALL R3 R3 K2 ["AddNewRow"]
+  CALL R3 7 3
+  SETTABLEKS R3 R0 K3 ["InformationFrame"]
+  SETTABLEKS R4 R1 K4 ["InformationLabel"]
+  SETTABLEKS R5 R2 K5 ["InformationTextBox"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["InformationFrame"]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K3 ["InformationFrame"]
+  SETTABLEKS R1 R0 K6 ["LayoutOrder"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["InformationFrame"]
+  GETIMPORT R1 K9 [UDim2.new]
+  LOADK R2 K10 [0.5]
+  LOADN R3 0
+  LOADK R4 K10 [0.5]
+  LOADN R5 0
+  CALL R1 4 1
+  SETTABLEKS R1 R0 K11 ["Position"]
+  GETUPVAL R0 0
+  GETUPVAL R1 3
+  LOADK R2 K12 ["TextLabel"]
+  CALL R1 1 1
+  DUPTABLE R2 K22 [{"Name", "Text", "Font", "FontSize", "BackgroundTransparency", "Size", "Position", "Visible", "ZIndex", "Parent"}]
+  LOADK R3 K4 ["InformationLabel"]
+  SETTABLEKS R3 R2 K13 ["Name"]
+  LOADK R3 K23 ["Information Loading"]
+  SETTABLEKS R3 R2 K14 ["Text"]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K24 ["font"]
+  GETIMPORT R4 K27 [Enum.Font.SourceSans]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K15 ["Font"]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K28 ["fontSize"]
+  GETIMPORT R4 K30 [Enum.FontSize.Size14]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K16 ["FontSize"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K17 ["BackgroundTransparency"]
+  GETIMPORT R3 K9 [UDim2.new]
+  LOADN R4 0
+  LOADN R5 32
+  LOADN R6 1
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K18 ["Size"]
+  GETIMPORT R3 K9 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 118
+  LOADN R6 0
+  LOADN R7 20
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K11 ["Position"]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K19 ["Visible"]
+  LOADN R3 2
+  SETTABLEKS R3 R2 K20 ["ZIndex"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["InformationFrame"]
+  SETTABLEKS R3 R2 K21 ["Parent"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K31 ["InformationText"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["InformationFrame"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K31 ["InformationText"]
+  RETURN R0 2
+
+PROTO_31:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["MicroProfilerWebServerPort"]
+  JUMPIFEQKN R0 K1 [0] [+21]
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 2
+  CALL R3 0 2
+  SETTABLEKS R3 R1 K2 ["InformationFrame"]
+  SETTABLEKS R4 R2 K3 ["InformationText"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K3 ["InformationText"]
+  GETUPVAL R5 0
+  GETTABLEKS R3 R5 K4 ["MicroProfilerWebServerIP"]
+  MOVE R4 R0
+  CONCAT R2 R3 R4
+  SETTABLEKS R2 R1 K5 ["Text"]
+  LOADB R1 1
+  RETURN R1 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_32:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["MicroProfilerWebServerEnabled"]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["InformationFrame"]
+  JUMPIF R0 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K2 ["InformationText"]
+  JUMPIFNOT R0 [+26]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["InformationFrame"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K3 ["Visible"]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["InformationFrame"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["Parent"]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K2 ["InformationText"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["Parent"]
+  GETUPVAL R0 1
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["InformationFrame"]
+  GETUPVAL R0 1
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["InformationText"]
+  RETURN R0 0
+
+PROTO_33:
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  LOADNIL R2
+  LOADNIL R3
+  LOADNIL R4
+  GETUPVAL R5 2
+  JUMPIFNOT R5 [+145]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+4]
+  LOADK R2 K0 ["webserver"]
+  GETUPVAL R5 0
+  GETTABLEKS R3 R5 K1 ["MicroProfilerWebServerEnabled"]
+  JUMPIFNOTEQKN R0 K2 [1] [+92]
+  GETUPVAL R5 0
+  LOADB R6 1
+  SETTABLEKS R6 R5 K1 ["MicroProfilerWebServerEnabled"]
+  LOADN R5 30
+  LOADN R6 1
+  JUMPIFNOTLE R6 R5 [+35]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K3 ["MicroProfilerWebServerPort"]
+  JUMPIFEQKN R7 K4 [0] [+21]
+  GETUPVAL R8 1
+  GETUPVAL R9 1
+  GETUPVAL R10 4
+  CALL R10 0 2
+  SETTABLEKS R10 R8 K5 ["InformationFrame"]
+  SETTABLEKS R11 R9 K6 ["InformationText"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K6 ["InformationText"]
+  GETUPVAL R12 0
+  GETTABLEKS R10 R12 K7 ["MicroProfilerWebServerIP"]
+  MOVE R11 R7
+  CONCAT R9 R10 R11
+  SETTABLEKS R9 R8 K8 ["Text"]
+  LOADB R6 1
+  JUMP [+2]
+  LOADB R6 0
+  JUMP [0]
+  JUMPIF R6 [+6]
+  SUBK R5 R5 K2 [1]
+  GETIMPORT R6 K10 [wait]
+  LOADK R7 K11 [0.1]
+  CALL R6 1 0
+  JUMPBACK [-37]
+  LOADN R6 0
+  JUMPIFNOTLE R5 R6 [+85]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K12 ["MicroProfilerMode"]
+  LOADN R8 2
+  NAMECALL R6 R6 K13 ["SetSelectionIndex"]
+  CALL R6 2 0
+  GETUPVAL R6 0
+  LOADB R7 0
+  SETTABLEKS R7 R6 K1 ["MicroProfilerWebServerEnabled"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["InformationFrame"]
+  JUMPIF R6 [+4]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["InformationText"]
+  JUMPIFNOT R6 [+65]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["InformationFrame"]
+  LOADB R7 0
+  SETTABLEKS R7 R6 K14 ["Visible"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["InformationFrame"]
+  LOADNIL R7
+  SETTABLEKS R7 R6 K15 ["Parent"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["InformationText"]
+  LOADNIL R7
+  SETTABLEKS R7 R6 K15 ["Parent"]
+  GETUPVAL R6 1
+  LOADNIL R7
+  SETTABLEKS R7 R6 K5 ["InformationFrame"]
+  GETUPVAL R6 1
+  LOADNIL R7
+  SETTABLEKS R7 R6 K6 ["InformationText"]
+  JUMP [+38]
+  GETUPVAL R5 0
+  LOADB R6 0
+  SETTABLEKS R6 R5 K1 ["MicroProfilerWebServerEnabled"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K5 ["InformationFrame"]
+  JUMPIF R5 [+4]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["InformationText"]
+  JUMPIFNOT R5 [+26]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K5 ["InformationFrame"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K14 ["Visible"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K5 ["InformationFrame"]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K15 ["Parent"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K6 ["InformationText"]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K15 ["Parent"]
+  GETUPVAL R5 1
+  LOADNIL R6
+  SETTABLEKS R6 R5 K5 ["InformationFrame"]
+  GETUPVAL R5 1
+  LOADNIL R6
+  SETTABLEKS R6 R5 K6 ["InformationText"]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+26]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["MicroProfilerWebServerEnabled"]
+  JUMP [+22]
+  GETUPVAL R5 5
+  JUMPIFNOT R5 [+20]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+4]
+  LOADK R2 K16 ["regular"]
+  GETUPVAL R5 0
+  GETTABLEKS R3 R5 K17 ["OnScreenProfilerEnabled"]
+  GETUPVAL R5 0
+  JUMPIFEQKN R0 K2 [1] [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K17 ["OnScreenProfilerEnabled"]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+3]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K17 ["OnScreenProfilerEnabled"]
+  GETUPVAL R5 6
+  LOADK R7 K18 ["MicroprofilerSettingsPressed"]
+  NAMECALL R5 R5 K19 ["ReportCounter"]
+  CALL R5 2 0
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R5 7
+  LOADK R6 K20 ["microprofiler_enabled"]
+  MOVE R7 R3
+  MOVE R8 R4
+  DUPTABLE R9 K22 [{"microprofiler_type"}]
+  SETTABLEKS R2 R9 K21 ["microprofiler_type"]
+  CALL R5 4 0
+  GETUPVAL R5 8
+  CALL R5 0 0
+  RETURN R0 0
+
+PROTO_34:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["MicroProfilerWebServerEnabled"]
+  JUMPIFNOT R0 [+2]
+  LOADN R0 1
+  RETURN R0 1
+  LOADN R0 2
+  RETURN R0 1
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["OnScreenProfilerEnabled"]
+  JUMPIFNOT R0 [+2]
+  LOADN R0 1
+  RETURN R0 1
+  LOADN R0 2
+  RETURN R0 1
+  LOADN R0 2
+  RETURN R0 1
+
+PROTO_35:
+  LOADB R0 1
+  SETUPVAL R0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["OnScreenProfilerEnabled"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["MicroProfilerMode"]
+  LOADN R2 1
+  NAMECALL R0 R0 K2 ["SetSelectionIndex"]
+  CALL R0 2 0
+  RETURN R0 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["MicroProfilerMode"]
+  LOADN R2 2
+  NAMECALL R0 R0 K2 ["SetSelectionIndex"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_36:
+  PREPVARARGS 0
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+3]
+  LOADB R0 0
+  SETUPVAL R0 0
+  RETURN R0 0
+  GETUPVAL R0 1
+  GETVARARGS R1 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_37:
+  GETUPVAL R0 0
+  GETUPVAL R1 0
+  GETUPVAL R2 0
+  GETUPVAL R3 0
+  LOADNIL R4
+  LOADNIL R5
+  LOADNIL R6
+  LOADNIL R7
+  SETTABLEKS R4 R0 K0 ["MicroProfilerFrame"]
+  SETTABLEKS R5 R1 K1 ["MicroProfilerLabel"]
+  SETTABLEKS R6 R2 K2 ["MicroProfilerMode"]
+  SETTABLEKS R7 R3 K3 ["MicroProfilerOverrideText"]
+  NEWCLOSURE R0 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  NEWCLOSURE R1 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  DUPCLOSURE R2 K4 [PROTO_34]
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U5
+  GETUPVAL R4 3
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K5 ["MicroProfilerWebServerEnabled"]
+  JUMPIFNOT R4 [+2]
+  LOADN R3 1
+  JUMP [+14]
+  LOADN R3 2
+  JUMP [+12]
+  GETUPVAL R4 5
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["OnScreenProfilerEnabled"]
+  JUMPIFNOT R4 [+2]
+  LOADN R3 1
+  JUMP [+4]
+  LOADN R3 2
+  JUMP [+2]
+  LOADN R3 2
+  JUMP [0]
+  GETUPVAL R4 9
+  LOADK R6 K7 ["Feature.SettingsHub.GameSettings.MicroProfiler"]
+  NAMECALL R4 R4 K8 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 0
+  GETUPVAL R6 0
+  GETUPVAL R7 0
+  GETUPVAL R8 10
+  GETUPVAL R10 0
+  MOVE R11 R4
+  LOADK R12 K9 ["Selector"]
+  NEWTABLE R13 0 2
+  LOADK R14 K10 ["On"]
+  LOADK R15 K11 ["Off"]
+  SETLIST R13 R14 2 [1]
+  MOVE R14 R3
+  NAMECALL R8 R8 K12 ["AddNewRow"]
+  CALL R8 6 3
+  SETTABLEKS R8 R5 K0 ["MicroProfilerFrame"]
+  SETTABLEKS R9 R6 K1 ["MicroProfilerLabel"]
+  SETTABLEKS R10 R7 K2 ["MicroProfilerMode"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["MicroProfilerFrame"]
+  GETUPVAL R7 11
+  GETTABLEKS R6 R7 K0 ["MicroProfilerFrame"]
+  SETTABLEKS R6 R5 K13 ["LayoutOrder"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K14 ["MicroProfilerWebServerPort"]
+  JUMPIFEQKN R5 K15 [0] [+21]
+  GETUPVAL R6 0
+  GETUPVAL R7 0
+  GETUPVAL R8 2
+  CALL R8 0 2
+  SETTABLEKS R8 R6 K16 ["InformationFrame"]
+  SETTABLEKS R9 R7 K17 ["InformationText"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K17 ["InformationText"]
+  GETUPVAL R10 1
+  GETTABLEKS R8 R10 K18 ["MicroProfilerWebServerIP"]
+  MOVE R9 R5
+  CONCAT R7 R8 R9
+  SETTABLEKS R7 R6 K19 ["Text"]
+  JUMP [+1]
+  JUMP [0]
+  LOADB R5 0
+  GETUPVAL R6 1
+  LOADK R8 K6 ["OnScreenProfilerEnabled"]
+  NAMECALL R6 R6 K20 ["GetPropertyChangedSignal"]
+  CALL R6 2 1
+  NEWCLOSURE R8 P3
+  CAPTURE REF R5
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U0
+  NAMECALL R6 R6 K21 ["Connect"]
+  CALL R6 2 0
+  NEWCLOSURE R6 P4
+  CAPTURE REF R5
+  CAPTURE VAL R1
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K2 ["MicroProfilerMode"]
+  GETTABLEKS R7 R8 K22 ["IndexChanged"]
+  MOVE R9 R6
+  NAMECALL R7 R7 K23 ["connect"]
+  CALL R7 2 0
+  CLOSEUPVALS R5
+  RETURN R0 0
+
+PROTO_38:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["ControlMode"]
+  GETIMPORT R3 K3 [Enum.ControlMode.MouseLockSwitch]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  JUMPIFNOTEQKN R0 K4 [1] [+7]
+  GETUPVAL R2 1
+  GETIMPORT R3 K3 [Enum.ControlMode.MouseLockSwitch]
+  SETTABLEKS R3 R2 K0 ["ControlMode"]
+  JUMP [+5]
+  GETUPVAL R2 1
+  GETIMPORT R3 K6 [Enum.ControlMode.Classic]
+  SETTABLEKS R3 R2 K0 ["ControlMode"]
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+13]
+  GETUPVAL R2 2
+  LOADK R3 K7 ["shift_lock_enabled"]
+  MOVE R4 R1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["ControlMode"]
+  GETIMPORT R7 K3 [Enum.ControlMode.MouseLockSwitch]
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_39:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["TouchEnabled"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["DevTouchCameraMode"]
+  GETIMPORT R2 K5 [Enum.DevTouchCameraMovementMode.UserChoice]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  RETURN R0 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["DevComputerCameraMode"]
+  GETIMPORT R2 K8 [Enum.DevComputerCameraMovementMode.UserChoice]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  RETURN R0 1
+
+PROTO_40:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["CameraMode"]
+  JUMPIFNOT R1 [+20]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["CameraMode"]
+  GETTABLEKS R1 R2 K1 ["SelectorFrame"]
+  SETTABLEKS R0 R1 K2 ["Visible"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["CameraMode"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K3 ["SetInteractable"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["CameraModeOverrideText"]
+  NOT R2 R0
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  RETURN R0 0
+
+PROTO_41:
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETUPVAL R4 3
+  GETTABLE R2 R3 R4
+  GETTABLE R0 R1 R2
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_42:
+  LOADNIL R1
+  GETIMPORT R2 K1 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R2 1 1
+  JUMPIFNOT R2 [+2]
+  JUMPIFNOTEQKNIL R1 [+4]
+  LOADB R3 0
+  CLOSEUPVALS R1
+  RETURN R3 1
+  LOADNIL R3
+  LOADNIL R4
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K2 ["TouchEnabled"]
+  JUMPIFNOT R5 [+21]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+5]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K3 ["TouchCameraMovementMode"]
+  GETTABLEKS R4 R5 K4 ["Value"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K3 ["TouchCameraMovementMode"]
+  GETTABLEKS R5 R6 K4 ["Value"]
+  JUMPIFNOTEQ R5 R1 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R5 4
+  SETTABLEKS R1 R5 K3 ["TouchCameraMovementMode"]
+  JUMP [+20]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+5]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K5 ["ComputerCameraMovementMode"]
+  GETTABLEKS R4 R5 K4 ["Value"]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K5 ["ComputerCameraMovementMode"]
+  GETTABLEKS R5 R6 K4 ["Value"]
+  JUMPIFNOTEQ R5 R1 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R5 4
+  SETTABLEKS R1 R5 K5 ["ComputerCameraMovementMode"]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+6]
+  JUMPIFNOT R3 [+5]
+  GETUPVAL R5 5
+  LOADK R6 K6 ["camera_mode"]
+  MOVE R7 R4
+  MOVE R8 R1
+  CALL R5 3 0
+  CLOSEUPVALS R1
+  RETURN R3 1
+
+PROTO_43:
+  GETUPVAL R1 1
+  GETUPVAL R2 2
+  GETTABLE R0 R1 R2
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_44:
+  NEWTABLE R0 0 0
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K1 ["GetRegisteredTouchCameraMovementModes"]
+  CALL R1 1 1
+  MOVE R0 R1
+  JUMP [+5]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K2 ["GetRegisteredComputerCameraMovementModes"]
+  CALL R1 1 1
+  MOVE R0 R1
+  NEWTABLE R1 0 0
+  SETUPVAL R1 2
+  NEWTABLE R1 0 0
+  SETUPVAL R1 3
+  LENGTH R1 R0
+  LOADN R2 0
+  JUMPIFNOTLE R1 R2 [+7]
+  GETGLOBAL R1 K3 ["setCameraModeVisible"]
+  LOADB R2 0
+  CALL R1 1 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R1 4
+  CALL R1 0 1
+  JUMPIFNOT R1 [+7]
+  GETGLOBAL R1 K3 ["setCameraModeVisible"]
+  GETGLOBAL R2 K4 ["cameraModeIsUserChoice"]
+  CALL R2 0 -1
+  CALL R1 -1 0
+  JUMP [+4]
+  GETGLOBAL R1 K3 ["setCameraModeVisible"]
+  LOADB R2 1
+  CALL R1 1 0
+  LOADN R3 1
+  LENGTH R1 R0
+  LOADN R2 1
+  FORNPREP R1
+  GETTABLE R4 R0 R3
+  GETTABLEKS R5 R4 K5 ["Name"]
+  JUMPIFNOTEQKS R5 K6 ["Default"] [+2]
+  GETUPVAL R5 5
+  GETUPVAL R6 2
+  GETUPVAL R9 2
+  LENGTH R8 R9
+  ADDK R7 R8 K7 [1]
+  SETTABLE R5 R6 R7
+  GETUPVAL R6 3
+  GETTABLEKS R7 R4 K8 ["Value"]
+  SETTABLE R7 R6 R5
+  FORNLOOP R1
+  GETUPVAL R2 6
+  GETTABLEKS R1 R2 K9 ["CameraMode"]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 6
+  GETTABLEKS R1 R2 K9 ["CameraMode"]
+  GETUPVAL R3 2
+  NAMECALL R1 R1 K10 ["UpdateOptions"]
+  CALL R1 2 0
+  LOADN R1 255
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["TouchEnabled"]
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R3 7
+  GETTABLEKS R2 R3 K11 ["TouchCameraMovementMode"]
+  GETTABLEKS R1 R2 K8 ["Value"]
+  JUMP [+5]
+  GETUPVAL R3 7
+  GETTABLEKS R2 R3 K12 ["ComputerCameraMovementMode"]
+  GETTABLEKS R1 R2 K8 ["Value"]
+  LOADN R2 255
+  JUMPIFNOTLT R2 R1 [+52]
+  GETUPVAL R2 8
+  JUMPIFNOT R2 [+23]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["TouchEnabled"]
+  JUMPIF R2 [+7]
+  GETUPVAL R3 7
+  GETTABLEKS R2 R3 K12 ["ComputerCameraMovementMode"]
+  GETIMPORT R3 K15 [Enum.ComputerCameraMovementMode.CameraToggle]
+  JUMPIFEQ R2 R3 [+2]
+  ADDK R1 R1 K7 [1]
+  GETUPVAL R2 9
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R3 6
+  GETTABLEKS R2 R3 K9 ["CameraMode"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K16 ["SetSelectionIndex"]
+  CALL R2 2 0
+  JUMP [+26]
+  ADDK R1 R1 K7 [1]
+  LOADNIL R2
+  GETIMPORT R3 K18 [pcall]
+  NEWCLOSURE R4 P0
+  CAPTURE REF R2
+  CAPTURE REF R0
+  CAPTURE REF R1
+  CALL R3 1 1
+  JUMPIFNOT R3 [+15]
+  JUMPIFNOT R2 [+14]
+  GETUPVAL R4 9
+  GETTABLEKS R6 R2 K8 ["Value"]
+  ADDK R5 R6 K7 [1]
+  CALL R4 1 0
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K9 ["CameraMode"]
+  GETTABLEKS R7 R2 K8 ["Value"]
+  ADDK R6 R7 K7 [1]
+  NAMECALL R4 R4 K16 ["SetSelectionIndex"]
+  CALL R4 2 0
+  CLOSEUPVALS R2
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_45:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_46:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseEnabled"]
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_47:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 1
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R1 2
+  CALL R1 0 0
+  LOADB R1 1
+  SETUPVAL R1 1
+  RETURN R0 0
+
+PROTO_48:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+63]
+  DUPTABLE R1 K2 [{"On", "Off"}]
+  DUPTABLE R2 K5 [{"Name", "Value"}]
+  LOADK R3 K0 ["On"]
+  SETTABLEKS R3 R2 K3 ["Name"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K4 ["Value"]
+  SETTABLEKS R2 R1 K0 ["On"]
+  DUPTABLE R2 K5 [{"Name", "Value"}]
+  LOADK R3 K1 ["Off"]
+  SETTABLEKS R3 R2 K3 ["Name"]
+  LOADN R3 2
+  SETTABLEKS R3 R2 K4 ["Value"]
+  SETTABLEKS R2 R1 K1 ["Off"]
+  GETTABLEKS R4 R1 K0 ["On"]
+  GETTABLEKS R3 R4 K4 ["Value"]
+  JUMPIFEQ R0 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["VREnabled"]
+  JUMPIFEQ R3 R2 [+44]
+  GETUPVAL R3 1
+  SETTABLEKS R2 R3 K6 ["VREnabled"]
+  GETUPVAL R4 2
+  GETTABLEKS R6 R1 K0 ["On"]
+  GETTABLEKS R5 R6 K4 ["Value"]
+  GETTABLE R3 R4 R5
+  GETUPVAL R5 2
+  GETTABLE R4 R5 R0
+  GETUPVAL R6 2
+  GETTABLEKS R8 R1 K0 ["On"]
+  GETTABLEKS R7 R8 K4 ["Value"]
+  GETTABLE R5 R6 R7
+  JUMPIFNOTEQ R4 R5 [+7]
+  GETUPVAL R5 2
+  GETTABLEKS R7 R1 K1 ["Off"]
+  GETTABLEKS R6 R7 K4 ["Value"]
+  GETTABLE R3 R5 R6
+  GETUPVAL R5 3
+  LOADK R6 K7 ["vr_mode"]
+  MOVE R7 R3
+  MOVE R8 R4
+  CALL R5 3 0
+  RETURN R0 0
+  JUMPIFEQKN R0 K8 [1] [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["VREnabled"]
+  JUMPIFEQ R2 R1 [+4]
+  GETUPVAL R2 1
+  SETTABLEKS R1 R2 K6 ["VREnabled"]
+  RETURN R0 0
+
+PROTO_49:
+  GETUPVAL R0 0
+  JUMPIF R0 [+68]
+  LOADB R0 1
+  SETUPVAL R0 0
+  LOADNIL R0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["VREnabled"]
+  JUMPIFNOT R1 [+8]
+  NEWTABLE R1 0 2
+  LOADK R2 K1 ["On"]
+  LOADK R3 K2 ["Off (restart pending)"]
+  SETLIST R1 R2 2 [1]
+  MOVE R0 R1
+  JUMP [+7]
+  NEWTABLE R1 0 2
+  LOADK R2 K3 ["On (restart pending)"]
+  LOADK R3 K4 ["Off"]
+  SETLIST R1 R2 2 [1]
+  MOVE R0 R1
+  GETUPVAL R1 2
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 3
+  GETUPVAL R6 2
+  LOADK R7 K5 ["VR"]
+  LOADK R8 K6 ["Selector"]
+  MOVE R9 R0
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K0 ["VREnabled"]
+  JUMPIFNOT R11 [+2]
+  LOADN R10 1
+  JUMP [+1]
+  LOADN R10 2
+  NAMECALL R4 R4 K7 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K8 ["VREnabledFrame"]
+  SETTABLEKS R5 R2 K9 ["VREnabledLabel"]
+  SETTABLEKS R6 R3 K10 ["VREnabledSelector"]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["VREnabledFrame"]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K8 ["VREnabledFrame"]
+  SETTABLEKS R2 R1 K11 ["LayoutOrder"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K10 ["VREnabledSelector"]
+  GETTABLEKS R1 R2 K12 ["IndexChanged"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U1
+  CAPTURE REF R0
+  CAPTURE UPVAL U6
+  NAMECALL R1 R1 K13 ["connect"]
+  CALL R1 2 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_50:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VREnabled"]
+  JUMPIFNOT R0 [+7]
+  GETUPVAL R0 1
+  LOADB R1 1
+  SETTABLEKS R1 R0 K1 ["HasEverUsedVR"]
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["HasEverUsedVR"]
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_51:
+  JUMPIFNOTEQKN R0 K0 [1] [+3]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["ChatTranslationEnabled"]
+  JUMPIFEQ R1 R2 [+21]
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 2
+  SETTABLEKS R1 R3 K1 ["ChatTranslationEnabled"]
+  JUMP [+3]
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K1 ["ChatTranslationEnabled"]
+  GETUPVAL R3 3
+  LOADK R4 K2 ["chat_translation"]
+  MOVE R5 R2
+  MOVE R6 R1
+  DUPTABLE R7 K4 [{"locale_id"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K5 ["LocaleId"]
+  SETTABLEKS R8 R7 K3 ["locale_id"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_52:
+  JUMPIFNOTEQKN R0 K0 [1] [+3]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["ChatTranslationToggleEnabled"]
+  JUMPIFEQ R1 R2 [+21]
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 2
+  SETTABLEKS R1 R3 K1 ["ChatTranslationToggleEnabled"]
+  JUMP [+3]
+  GETUPVAL R3 0
+  SETTABLEKS R1 R3 K1 ["ChatTranslationToggleEnabled"]
+  GETUPVAL R3 3
+  LOADK R4 K2 ["chat_translation_toggle"]
+  MOVE R5 R2
+  MOVE R6 R1
+  DUPTABLE R7 K4 [{"locale_id"}]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K5 ["LocaleId"]
+  SETTABLEKS R8 R7 K3 ["locale_id"]
+  CALL R3 4 0
+  RETURN R0 0
+
+PROTO_53:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ChatTranslationEnabled"]
+  JUMPIFNOT R1 [+2]
+  LOADN R0 1
+  JUMP [+1]
+  LOADN R0 2
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  LOADK R7 K1 ["Automatic Chat Translation"]
+  LOADK R8 K2 ["Selector"]
+  NEWTABLE R9 0 2
+  LOADK R10 K3 ["On"]
+  LOADK R11 K4 ["Off"]
+  SETLIST R9 R10 2 [1]
+  MOVE R10 R0
+  NAMECALL R4 R4 K5 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K6 ["ChatTranslationFrame"]
+  SETTABLEKS R5 R2 K7 ["ChatTranslationLabel"]
+  SETTABLEKS R6 R3 K8 ["ChatTranslationEnabler"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["ChatTranslationFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K6 ["ChatTranslationFrame"]
+  SETTABLEKS R2 R1 K9 ["LayoutOrder"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K8 ["ChatTranslationEnabler"]
+  GETTABLEKS R1 R2 K10 ["IndexChanged"]
+  DUPCLOSURE R3 K11 [PROTO_51]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R1 R1 K12 ["connect"]
+  CALL R1 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K13 ["ChatTranslationToggleEnabled"]
+  JUMPIFNOT R2 [+2]
+  LOADN R1 1
+  JUMP [+1]
+  LOADN R1 2
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  GETUPVAL R7 1
+  LOADK R8 K14 ["Option to View Untranslated Message"]
+  LOADK R9 K2 ["Selector"]
+  NEWTABLE R10 0 2
+  LOADK R11 K3 ["On"]
+  LOADK R12 K4 ["Off"]
+  SETLIST R10 R11 2 [1]
+  MOVE R11 R1
+  NAMECALL R5 R5 K5 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K15 ["ChatTranslationToggleFrame"]
+  SETTABLEKS R6 R3 K16 ["ChatTranslationToggleLabel"]
+  SETTABLEKS R7 R4 K17 ["ChatTranslationToggleEnabler"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K15 ["ChatTranslationToggleFrame"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K15 ["ChatTranslationToggleFrame"]
+  SETTABLEKS R3 R2 K9 ["LayoutOrder"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K17 ["ChatTranslationToggleEnabler"]
+  GETTABLEKS R2 R3 K10 ["IndexChanged"]
+  DUPCLOSURE R4 K18 [PROTO_52]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R2 R2 K12 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_54:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["GetLayerData"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_55:
+  DUPTABLE R1 K2 [{"ChatTranslationEnabled", "ChatTranslationToggleEnabled"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["ChatTranslationToggleEnabled"]
+  JUMPIFNOT R0 [+2]
+  JUMPIFNOTEQKS R0 K3 [""] [+2]
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K4 ["override"] [+5]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  RETURN R1 1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+4]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K5 ["WaitForInitialization"]
+  CALL R2 1 0
+  GETIMPORT R2 K7 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R2 1 2
+  JUMPIFNOT R2 [+24]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  JUMPIFNOT R4 [+11]
+  GETTABLEKS R5 R3 K0 ["ChatTranslationEnabled"]
+  ORK R4 R5 K8 [True]
+  SETTABLEKS R4 R1 K0 ["ChatTranslationEnabled"]
+  GETTABLEKS R5 R3 K1 ["ChatTranslationToggleEnabled"]
+  ORK R4 R5 K9 [False]
+  SETTABLEKS R4 R1 K1 ["ChatTranslationToggleEnabled"]
+  RETURN R1 1
+  GETTABLEKS R5 R3 K10 ["chatTranslationEnabled"]
+  ORK R4 R5 K9 [False]
+  SETTABLEKS R4 R1 K0 ["ChatTranslationEnabled"]
+  GETTABLEKS R5 R3 K11 ["chatTranslationToggleEnabled"]
+  ORK R4 R5 K9 [False]
+  SETTABLEKS R4 R1 K1 ["ChatTranslationToggleEnabled"]
+  RETURN R1 1
+
+PROTO_56:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["ChatTranslationEnabled"]
+  SETTABLEKS R1 R0 K0 ["ChatTranslationEnabled"]
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R1 R0 K1 ["ChatTranslationToggleEnabled"]
+  RETURN R0 0
+
+PROTO_57:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K0 ["ChatTranslationEnabled"]
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K1 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R2 R1 K1 ["ChatTranslationToggleEnabled"]
+  LOADB R1 1
+  RETURN R1 1
+  GETIMPORT R1 K3 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CALL R1 1 2
+  RETURN R1 1
+
+PROTO_58:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["ChatTranslationEnabled"]
+  RETURN R0 0
+
+PROTO_59:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MovementMode"]
+  JUMPIFNOT R1 [+29]
+  MOVE R1 R0
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R3 1
+  LENGTH R2 R3
+  LOADN R3 0
+  JUMPIFLT R3 R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["MovementMode"]
+  GETTABLEKS R2 R3 K1 ["SelectorFrame"]
+  SETTABLEKS R1 R2 K2 ["Visible"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["MovementMode"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K3 ["SetInteractable"]
+  CALL R2 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K4 ["MovementModeOverrideText"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  RETURN R0 0
+
+PROTO_60:
+  MOVE R1 R0
+  JUMPIFNOTEQKS R0 K0 ["Default"] [+3]
+  GETUPVAL R1 0
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K1 ["KeyboardMouse"] [+3]
+  LOADK R1 K2 ["Keyboard + Mouse"]
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K3 ["ClickToMove"] [+3]
+  GETUPVAL R1 1
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K4 ["DynamicThumbstick"] [+3]
+  LOADK R1 K5 ["Dynamic Thumbstick"]
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K6 ["Thumbstick"] [+2]
+  LOADK R1 K7 ["Classic Thumbstick"]
+  RETURN R1 1
+
+PROTO_61:
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETUPVAL R4 3
+  GETTABLE R2 R3 R4
+  GETTABLE R0 R1 R2
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_62:
+  LOADNIL R1
+  GETIMPORT R2 K1 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R2 1 1
+  JUMPIFNOT R2 [+2]
+  JUMPIFNOTEQKNIL R1 [+3]
+  CLOSEUPVALS R1
+  RETURN R0 0
+  LOADNIL R3
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K2 ["TouchEnabled"]
+  JUMPIFNOT R4 [+10]
+  GETUPVAL R4 3
+  CALL R4 0 1
+  JUMPIFNOT R4 [+3]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K3 ["TouchMovementMode"]
+  GETUPVAL R4 4
+  SETTABLEKS R1 R4 K3 ["TouchMovementMode"]
+  JUMP [+9]
+  GETUPVAL R4 3
+  CALL R4 0 1
+  JUMPIFNOT R4 [+3]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K4 ["ComputerMovementMode"]
+  GETUPVAL R4 4
+  SETTABLEKS R1 R4 K4 ["ComputerMovementMode"]
+  GETUPVAL R4 3
+  CALL R4 0 1
+  JUMPIFNOT R4 [+5]
+  GETUPVAL R4 5
+  LOADK R5 K5 ["movement_mode"]
+  MOVE R6 R3
+  MOVE R7 R1
+  CALL R4 3 0
+  CLOSEUPVALS R1
+  RETURN R0 0
+
+PROTO_63:
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETUPVAL R4 3
+  GETTABLE R2 R3 R4
+  GETTABLE R0 R1 R2
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_64:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+15]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["TouchEnabled"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K1 ["GetRegisteredTouchMovementModes"]
+  CALL R0 1 1
+  SETUPVAL R0 2
+  JUMP [+5]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K2 ["GetRegisteredComputerMovementModes"]
+  CALL R0 1 1
+  SETUPVAL R0 2
+  NEWTABLE R0 0 0
+  SETUPVAL R0 3
+  NEWTABLE R0 0 0
+  SETUPVAL R0 4
+  GETUPVAL R1 2
+  LENGTH R0 R1
+  LOADN R1 0
+  JUMPIFNOTLE R0 R1 [+6]
+  GETGLOBAL R0 K3 ["setMovementModeVisible"]
+  LOADB R1 0
+  CALL R0 1 0
+  RETURN R0 0
+  GETGLOBAL R0 K3 ["setMovementModeVisible"]
+  LOADB R1 1
+  CALL R0 1 0
+  LOADN R2 1
+  GETUPVAL R3 2
+  LENGTH R0 R3
+  LOADN R1 1
+  FORNPREP R0
+  GETUPVAL R4 2
+  GETTABLE R3 R4 R2
+  GETTABLEKS R5 R3 K4 ["Name"]
+  MOVE R6 R5
+  JUMPIFNOTEQKS R5 K5 ["Default"] [+3]
+  GETUPVAL R6 5
+  JUMP [+15]
+  JUMPIFNOTEQKS R5 K6 ["KeyboardMouse"] [+3]
+  LOADK R6 K7 ["Keyboard + Mouse"]
+  JUMP [+11]
+  JUMPIFNOTEQKS R5 K8 ["ClickToMove"] [+3]
+  GETUPVAL R6 6
+  JUMP [+7]
+  JUMPIFNOTEQKS R5 K9 ["DynamicThumbstick"] [+3]
+  LOADK R6 K10 ["Dynamic Thumbstick"]
+  JUMP [+3]
+  JUMPIFNOTEQKS R5 K11 ["Thumbstick"] [+2]
+  LOADK R6 K12 ["Classic Thumbstick"]
+  MOVE R4 R6
+  GETUPVAL R5 3
+  GETUPVAL R8 3
+  LENGTH R7 R8
+  ADDK R6 R7 K13 [1]
+  SETTABLE R4 R5 R6
+  GETUPVAL R5 4
+  SETTABLE R3 R5 R4
+  FORNLOOP R0
+  GETUPVAL R1 7
+  GETTABLEKS R0 R1 K14 ["MovementMode"]
+  JUMPIFNOT R0 [+7]
+  GETUPVAL R1 7
+  GETTABLEKS R0 R1 K14 ["MovementMode"]
+  GETUPVAL R2 3
+  NAMECALL R0 R0 K15 ["UpdateOptions"]
+  CALL R0 2 0
+  LOADN R0 255
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R2 8
+  GETTABLEKS R1 R2 K16 ["TouchMovementMode"]
+  GETTABLEKS R0 R1 K17 ["Value"]
+  JUMP [+5]
+  GETUPVAL R2 8
+  GETTABLEKS R1 R2 K18 ["ComputerMovementMode"]
+  GETTABLEKS R0 R1 K17 ["Value"]
+  LOADN R1 255
+  JUMPIFNOTLT R1 R0 [+28]
+  ADDK R0 R0 K13 [1]
+  LOADNIL R1
+  GETIMPORT R2 K20 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U3
+  CAPTURE REF R0
+  CALL R2 1 1
+  JUMPIFNOT R2 [+15]
+  JUMPIFNOT R1 [+14]
+  GETUPVAL R3 9
+  GETTABLEKS R5 R1 K17 ["Value"]
+  ADDK R4 R5 K13 [1]
+  CALL R3 1 0
+  GETUPVAL R4 7
+  GETTABLEKS R3 R4 K14 ["MovementMode"]
+  GETTABLEKS R6 R1 K17 ["Value"]
+  ADDK R5 R6 K13 [1]
+  NAMECALL R3 R3 K21 ["SetSelectionIndex"]
+  CALL R3 2 0
+  CLOSEUPVALS R1
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_65:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_66:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseEnabled"]
+  JUMPIFNOT R1 [+2]
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_67:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_68:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShiftLockMode"]
+  JUMPIFNOT R1 [+14]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["ShiftLockMode"]
+  GETTABLEKS R1 R2 K1 ["SelectorFrame"]
+  SETTABLEKS R0 R1 K2 ["Visible"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShiftLockMode"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K3 ["SetInteractable"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_69:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShiftLockOverrideText"]
+  JUMPIFNOT R1 [+18]
+  JUMPIFNOTEQKS R0 K1 ["DevEnableMouseLock"] [+17]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["ShiftLockOverrideText"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["DevEnableMouseLock"]
+  NOT R2 R3
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  GETGLOBAL R1 K3 ["setShiftLockVisible"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["DevEnableMouseLock"]
+  CALL R1 1 0
+  RETURN R0 0
+  JUMPIFNOTEQKS R0 K4 ["DevComputerCameraMode"] [+21]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["DevComputerCameraMode"]
+  GETIMPORT R3 K8 [Enum.DevComputerCameraMovementMode.UserChoice]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETGLOBAL R2 K9 ["setCameraModeVisible"]
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K10 ["CameraModeOverrideText"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  RETURN R0 0
+  JUMPIFNOTEQKS R0 K11 ["DevComputerMovementMode"] [+25]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K11 ["DevComputerMovementMode"]
+  GETIMPORT R3 K12 [Enum.DevComputerMovementMode.UserChoice]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETGLOBAL R2 K13 ["setMovementModeVisible"]
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K14 ["MovementModeOverrideText"]
+  JUMPIFNOT R2 [+54]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K14 ["MovementModeOverrideText"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  RETURN R0 0
+  JUMPIFNOTEQKS R0 K15 ["DevTouchMovementMode"] [+25]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K15 ["DevTouchMovementMode"]
+  GETIMPORT R3 K16 [Enum.DevTouchMovementMode.UserChoice]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETGLOBAL R2 K13 ["setMovementModeVisible"]
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K14 ["MovementModeOverrideText"]
+  JUMPIFNOT R2 [+28]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K14 ["MovementModeOverrideText"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  RETURN R0 0
+  JUMPIFNOTEQKS R0 K17 ["DevTouchCameraMode"] [+20]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K17 ["DevTouchCameraMode"]
+  GETIMPORT R3 K19 [Enum.DevTouchCameraMovementMode.UserChoice]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETGLOBAL R2 K9 ["setCameraModeVisible"]
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K10 ["CameraModeOverrideText"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  RETURN R0 0
+
+PROTO_70:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R2 1
+  GETTABLE R1 R2 R0
+  JUMPIFNOT R1 [+3]
+  GETUPVAL R1 2
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["KeyboardEnabled"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R2 3
+  GETTABLE R1 R2 R0
+  JUMPIFNOT R1 [+3]
+  GETUPVAL R1 2
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_71:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseEnabled"]
+  JUMPIFNOT R1 [+157]
+  GETUPVAL R1 1
+  JUMPIF R1 [+155]
+  GETUPVAL R1 2
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 2
+  LOADNIL R5
+  LOADNIL R6
+  LOADNIL R7
+  LOADNIL R8
+  SETTABLEKS R5 R1 K1 ["ShiftLockFrame"]
+  SETTABLEKS R6 R2 K2 ["ShiftLockLabel"]
+  SETTABLEKS R7 R3 K3 ["ShiftLockMode"]
+  SETTABLEKS R8 R4 K4 ["ShiftLockOverrideText"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["MouseEnabled"]
+  JUMPIFNOT R1 [+135]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K5 ["KeyboardEnabled"]
+  JUMPIFNOT R1 [+131]
+  LOADN R1 2
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K6 ["ControlMode"]
+  GETIMPORT R3 K9 [Enum.ControlMode.MouseLockSwitch]
+  JUMPIFNOTEQ R2 R3 [+2]
+  LOADN R1 1
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 2
+  GETUPVAL R5 4
+  GETUPVAL R7 2
+  LOADK R8 K10 ["Shift Lock Switch"]
+  LOADK R9 K11 ["Selector"]
+  NEWTABLE R10 0 2
+  LOADK R11 K12 ["On"]
+  LOADK R12 K13 ["Off"]
+  SETLIST R10 R11 2 [1]
+  MOVE R11 R1
+  NAMECALL R5 R5 K14 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K1 ["ShiftLockFrame"]
+  SETTABLEKS R6 R3 K2 ["ShiftLockLabel"]
+  SETTABLEKS R7 R4 K3 ["ShiftLockMode"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K1 ["ShiftLockFrame"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K1 ["ShiftLockFrame"]
+  SETTABLEKS R3 R2 K15 ["LayoutOrder"]
+  GETUPVAL R2 6
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K1 ["ShiftLockFrame"]
+  LOADB R4 1
+  SETTABLE R4 R2 R3
+  GETUPVAL R2 2
+  GETUPVAL R3 7
+  LOADK R4 K16 ["TextLabel"]
+  CALL R3 1 1
+  DUPTABLE R4 K28 [{"Name", "Text", "TextColor3", "Font", "FontSize", "BackgroundTransparency", "Size", "Position", "Visible", "ZIndex", "Parent"}]
+  LOADK R5 K29 ["ShiftLockOverrideLabel"]
+  SETTABLEKS R5 R4 K17 ["Name"]
+  LOADK R5 K30 ["Set by Developer"]
+  SETTABLEKS R5 R4 K18 ["Text"]
+  GETIMPORT R5 K33 [Color3.new]
+  LOADN R6 1
+  LOADN R7 1
+  LOADN R8 1
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K19 ["TextColor3"]
+  GETUPVAL R6 8
+  GETTABLEKS R5 R6 K34 ["font"]
+  GETIMPORT R6 K36 [Enum.Font.SourceSans]
+  LOADK R7 K37 ["GameSettings"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K20 ["Font"]
+  GETUPVAL R6 8
+  GETTABLEKS R5 R6 K38 ["fontSize"]
+  GETIMPORT R6 K40 [Enum.FontSize.Size24]
+  LOADK R7 K37 ["GameSettings"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K21 ["FontSize"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K22 ["BackgroundTransparency"]
+  GETIMPORT R5 K42 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 200
+  LOADN R8 1
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K23 ["Size"]
+  GETIMPORT R5 K42 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 162
+  LOADN R8 0
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K24 ["Position"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K25 ["Visible"]
+  LOADN R5 2
+  SETTABLEKS R5 R4 K26 ["ZIndex"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K1 ["ShiftLockFrame"]
+  SETTABLEKS R5 R4 K27 ["Parent"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K4 ["ShiftLockOverrideText"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["ShiftLockMode"]
+  GETTABLEKS R2 R3 K43 ["IndexChanged"]
+  DUPCLOSURE R4 K44 [PROTO_38]
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NAMECALL R2 R2 K45 ["connect"]
+  CALL R2 2 0
+  DUPCLOSURE R1 K46 [PROTO_39]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U12
+  SETGLOBAL R1 K47 ["cameraModeIsUserChoice"]
+  NEWCLOSURE R1 P2
+  CAPTURE UPVAL U2
+  SETGLOBAL R1 K48 ["setCameraModeVisible"]
+  GETUPVAL R2 13
+  GETTABLEKS R1 R2 K49 ["waitForChildOfClass"]
+  GETUPVAL R2 12
+  LOADK R3 K50 ["PlayerScripts"]
+  CALL R1 2 1
+  NEWTABLE R2 0 0
+  NEWTABLE R3 0 0
+  NEWCLOSURE R4 P3
+  CAPTURE REF R3
+  CAPTURE REF R2
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U10
+  NEWCLOSURE R5 P4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U0
+  CAPTURE REF R2
+  CAPTURE REF R3
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U16
+  CAPTURE VAL R4
+  GETUPVAL R6 2
+  GETUPVAL R7 2
+  GETUPVAL R8 2
+  GETUPVAL R9 4
+  GETUPVAL R11 2
+  LOADK R12 K51 ["Camera Mode"]
+  LOADK R13 K11 ["Selector"]
+  MOVE R14 R2
+  LOADN R15 1
+  NAMECALL R9 R9 K14 ["AddNewRow"]
+  CALL R9 6 3
+  SETTABLEKS R9 R6 K52 ["CameraModeFrame"]
+  SETTABLEKS R10 R7 K53 ["CameraModeLabel"]
+  SETTABLEKS R11 R8 K54 ["CameraMode"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K52 ["CameraModeFrame"]
+  GETUPVAL R8 5
+  GETTABLEKS R7 R8 K52 ["CameraModeFrame"]
+  SETTABLEKS R7 R6 K15 ["LayoutOrder"]
+  GETUPVAL R6 6
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K54 ["CameraMode"]
+  LOADB R8 1
+  SETTABLE R8 R6 R7
+  GETUPVAL R6 2
+  GETUPVAL R7 7
+  LOADK R8 K16 ["TextLabel"]
+  CALL R7 1 1
+  DUPTABLE R8 K58 [{"Name", "Text", "TextColor3", "Font", "FontSize", "BackgroundTransparency", "Size", "AnchorPoint", "Position", "TextXAlignment", "TextYAlignment", "Visible", "ZIndex", "Parent"}]
+  LOADK R9 K59 ["CameraDevOverrideLabel"]
+  SETTABLEKS R9 R8 K17 ["Name"]
+  LOADK R9 K30 ["Set by Developer"]
+  SETTABLEKS R9 R8 K18 ["Text"]
+  GETIMPORT R9 K33 [Color3.new]
+  LOADN R10 1
+  LOADN R11 1
+  LOADN R12 1
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K19 ["TextColor3"]
+  GETUPVAL R10 8
+  GETTABLEKS R9 R10 K34 ["font"]
+  GETIMPORT R10 K36 [Enum.Font.SourceSans]
+  LOADK R11 K37 ["GameSettings"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K20 ["Font"]
+  GETUPVAL R10 8
+  GETTABLEKS R9 R10 K38 ["fontSize"]
+  GETIMPORT R10 K40 [Enum.FontSize.Size24]
+  LOADK R11 K37 ["GameSettings"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K21 ["FontSize"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K22 ["BackgroundTransparency"]
+  GETIMPORT R9 K42 [UDim2.new]
+  LOADK R10 K60 [0.6]
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K23 ["Size"]
+  GETIMPORT R9 K62 [Vector2.new]
+  LOADN R10 1
+  LOADK R11 K63 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K55 ["AnchorPoint"]
+  GETIMPORT R9 K42 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADK R12 K63 [0.5]
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K24 ["Position"]
+  GETIMPORT R9 K65 [Enum.TextXAlignment.Center]
+  SETTABLEKS R9 R8 K56 ["TextXAlignment"]
+  GETIMPORT R9 K66 [Enum.TextYAlignment.Center]
+  SETTABLEKS R9 R8 K57 ["TextYAlignment"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K25 ["Visible"]
+  LOADN R9 2
+  SETTABLEKS R9 R8 K26 ["ZIndex"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K52 ["CameraModeFrame"]
+  SETTABLEKS R9 R8 K27 ["Parent"]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K67 ["CameraModeOverrideText"]
+  JUMPIFNOT R1 [+16]
+  GETTABLEKS R6 R1 K68 ["TouchCameraMovementModeRegistered"]
+  NEWCLOSURE R8 P5
+  CAPTURE UPVAL U0
+  CAPTURE VAL R5
+  NAMECALL R6 R6 K45 ["connect"]
+  CALL R6 2 0
+  GETTABLEKS R6 R1 K69 ["ComputerCameraMovementModeRegistered"]
+  NEWCLOSURE R8 P6
+  CAPTURE UPVAL U0
+  CAPTURE VAL R5
+  NAMECALL R6 R6 K45 ["connect"]
+  CALL R6 2 0
+  LOADB R6 0
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K54 ["CameraMode"]
+  GETTABLEKS R7 R8 K43 ["IndexChanged"]
+  NEWCLOSURE R9 P7
+  CAPTURE VAL R4
+  CAPTURE REF R6
+  CAPTURE UPVAL U11
+  NAMECALL R7 R7 K45 ["connect"]
+  CALL R7 2 0
+  MOVE R7 R5
+  CALL R7 0 0
+  CLOSEUPVALS R2
+  LOADB R1 0
+  NEWCLOSURE R2 P8
+  CAPTURE REF R1
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U10
+  NEWCLOSURE R3 P9
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U3
+  CAPTURE VAL R2
+  GETUPVAL R4 19
+  CALL R4 0 1
+  JUMPIFNOT R4 [+9]
+  GETUPVAL R5 20
+  CALL R5 0 1
+  GETTABLEKS R4 R5 K70 ["getIsLinkedVRModeAvailable"]
+  CALL R4 0 1
+  JUMPIFNOT R4 [+3]
+  MOVE R4 R2
+  CALL R4 0 0
+  JUMP [+26]
+  GETUPVAL R5 18
+  GETTABLEKS R4 R5 K71 ["VREnabled"]
+  JUMPIFNOT R4 [+7]
+  GETUPVAL R4 3
+  LOADB R5 1
+  SETTABLEKS R5 R4 K72 ["HasEverUsedVR"]
+  MOVE R4 R2
+  CALL R4 0 0
+  JUMP [+6]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K72 ["HasEverUsedVR"]
+  JUMPIFNOT R4 [+2]
+  MOVE R4 R2
+  CALL R4 0 0
+  GETUPVAL R4 18
+  LOADK R6 K71 ["VREnabled"]
+  NAMECALL R4 R4 K73 ["GetPropertyChangedSignal"]
+  CALL R4 2 1
+  MOVE R6 R3
+  NAMECALL R4 R4 K45 ["connect"]
+  CALL R4 2 0
+  NEWCLOSURE R4 P10
+  CAPTURE UPVAL U21
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U12
+  DUPCLOSURE R5 K74 [PROTO_55]
+  CAPTURE UPVAL U23
+  CAPTURE UPVAL U24
+  CAPTURE UPVAL U25
+  DUPCLOSURE R6 K75 [PROTO_57]
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U21
+  GETIMPORT R7 K77 [game]
+  LOADK R9 K78 ["EnableTCSChatTranslation"]
+  NAMECALL R7 R7 K79 ["GetEngineFeature"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+97]
+  GETIMPORT R7 K77 [game]
+  LOADK R9 K80 ["EnableTCSChatTranslationLanguageSwitcher"]
+  NAMECALL R7 R7 K79 ["GetEngineFeature"]
+  CALL R7 2 1
+  JUMPIF R7 [+90]
+  GETUPVAL R7 26
+  CALL R7 0 1
+  JUMPIFNOT R7 [+87]
+  GETUPVAL R7 27
+  CALL R7 0 1
+  JUMPIFNOT R7 [+51]
+  GETUPVAL R7 28
+  CALL R7 0 1
+  JUMPIFNOT R7 [+45]
+  GETUPVAL R7 29
+  CALL R7 0 1
+  MOVE R8 R5
+  MOVE R9 R7
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K81 ["ChatTranslationEnabled"]
+  JUMPIF R9 [+30]
+  GETUPVAL R9 22
+  JUMPIFNOT R9 [+22]
+  GETUPVAL R9 25
+  CALL R9 0 1
+  JUMPIFNOT R9 [+14]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K82 ["ChatTranslationLocale"]
+  JUMPIFNOTEQKS R9 K83 [""] [+28]
+  GETUPVAL R9 3
+  LOADB R10 0
+  SETTABLEKS R10 R9 K81 ["ChatTranslationEnabled"]
+  GETUPVAL R9 3
+  LOADK R10 K84 ["en_us"]
+  SETTABLEKS R10 R9 K82 ["ChatTranslationLocale"]
+  JUMP [+18]
+  GETUPVAL R9 3
+  LOADB R10 0
+  SETTABLEKS R10 R9 K81 ["ChatTranslationEnabled"]
+  JUMP [+13]
+  GETIMPORT R9 K86 [pcall]
+  DUPCLOSURE R10 K87 [PROTO_58]
+  CAPTURE UPVAL U21
+  CALL R9 1 0
+  JUMP [+7]
+  GETUPVAL R9 30
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  GETUPVAL R9 3
+  LOADB R10 1
+  SETTABLEKS R10 R9 K81 ["ChatTranslationEnabled"]
+  MOVE R7 R4
+  CALL R7 0 0
+  JUMP [+33]
+  GETUPVAL R7 29
+  CALL R7 0 1
+  MOVE R8 R5
+  MOVE R9 R7
+  CALL R8 1 1
+  GETUPVAL R10 22
+  JUMPIFNOT R10 [+12]
+  GETUPVAL R10 3
+  GETTABLEKS R11 R8 K81 ["ChatTranslationEnabled"]
+  SETTABLEKS R11 R10 K81 ["ChatTranslationEnabled"]
+  GETUPVAL R10 3
+  GETTABLEKS R11 R8 K88 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R11 R10 K88 ["ChatTranslationToggleEnabled"]
+  LOADB R9 1
+  JUMP [+8]
+  GETIMPORT R10 K86 [pcall]
+  NEWCLOSURE R11 P14
+  CAPTURE UPVAL U21
+  CAPTURE VAL R8
+  CALL R10 1 2
+  MOVE R9 R10
+  JUMP [0]
+  JUMPIFNOT R9 [+5]
+  GETTABLEKS R10 R8 K81 ["ChatTranslationEnabled"]
+  JUMPIFNOT R10 [+2]
+  MOVE R10 R4
+  CALL R10 0 0
+  NEWTABLE R7 0 0
+  NEWCLOSURE R8 P15
+  CAPTURE UPVAL U2
+  CAPTURE REF R7
+  SETGLOBAL R8 K89 ["setMovementModeVisible"]
+  JUMPIFNOT R0 [+181]
+  NEWTABLE R8 0 0
+  NEWTABLE R9 0 0
+  GETUPVAL R11 13
+  GETTABLEKS R10 R11 K49 ["waitForChildOfClass"]
+  GETUPVAL R11 12
+  LOADK R12 K50 ["PlayerScripts"]
+  CALL R10 2 1
+  DUPCLOSURE R11 K90 [PROTO_60]
+  CAPTURE UPVAL U31
+  CAPTURE UPVAL U32
+  GETUPVAL R12 2
+  GETUPVAL R13 2
+  GETUPVAL R14 2
+  GETUPVAL R15 4
+  GETUPVAL R17 2
+  LOADK R18 K91 ["Movement Mode"]
+  LOADK R19 K11 ["Selector"]
+  MOVE R20 R8
+  LOADN R21 1
+  NAMECALL R15 R15 K14 ["AddNewRow"]
+  CALL R15 6 3
+  SETTABLEKS R15 R12 K92 ["MovementModeFrame"]
+  SETTABLEKS R16 R13 K93 ["MovementModeLabel"]
+  SETTABLEKS R17 R14 K94 ["MovementMode"]
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K92 ["MovementModeFrame"]
+  GETUPVAL R14 5
+  GETTABLEKS R13 R14 K92 ["MovementModeFrame"]
+  SETTABLEKS R13 R12 K15 ["LayoutOrder"]
+  GETUPVAL R12 6
+  GETUPVAL R14 2
+  GETTABLEKS R13 R14 K94 ["MovementMode"]
+  LOADB R14 1
+  SETTABLE R14 R12 R13
+  GETUPVAL R12 2
+  GETUPVAL R13 7
+  LOADK R14 K16 ["TextLabel"]
+  CALL R13 1 1
+  DUPTABLE R14 K58 [{"Name", "Text", "TextColor3", "Font", "FontSize", "BackgroundTransparency", "Size", "AnchorPoint", "Position", "TextXAlignment", "TextYAlignment", "Visible", "ZIndex", "Parent"}]
+  LOADK R15 K95 ["MovementDevOverrideLabel"]
+  SETTABLEKS R15 R14 K17 ["Name"]
+  LOADK R15 K30 ["Set by Developer"]
+  SETTABLEKS R15 R14 K18 ["Text"]
+  GETIMPORT R15 K33 [Color3.new]
+  LOADN R16 1
+  LOADN R17 1
+  LOADN R18 1
+  CALL R15 3 1
+  SETTABLEKS R15 R14 K19 ["TextColor3"]
+  GETUPVAL R16 8
+  GETTABLEKS R15 R16 K34 ["font"]
+  GETIMPORT R16 K36 [Enum.Font.SourceSans]
+  LOADK R17 K37 ["GameSettings"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K20 ["Font"]
+  GETUPVAL R16 8
+  GETTABLEKS R15 R16 K38 ["fontSize"]
+  GETIMPORT R16 K40 [Enum.FontSize.Size24]
+  LOADK R17 K37 ["GameSettings"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K21 ["FontSize"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K22 ["BackgroundTransparency"]
+  GETIMPORT R15 K42 [UDim2.new]
+  LOADK R16 K60 [0.6]
+  LOADN R17 0
+  LOADN R18 1
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K23 ["Size"]
+  GETIMPORT R15 K62 [Vector2.new]
+  LOADN R16 1
+  LOADK R17 K63 [0.5]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K55 ["AnchorPoint"]
+  GETIMPORT R15 K42 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADK R18 K63 [0.5]
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K24 ["Position"]
+  GETIMPORT R15 K65 [Enum.TextXAlignment.Center]
+  SETTABLEKS R15 R14 K56 ["TextXAlignment"]
+  GETIMPORT R15 K66 [Enum.TextYAlignment.Center]
+  SETTABLEKS R15 R14 K57 ["TextYAlignment"]
+  LOADB R15 0
+  SETTABLEKS R15 R14 K25 ["Visible"]
+  LOADN R15 2
+  SETTABLEKS R15 R14 K26 ["ZIndex"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K92 ["MovementModeFrame"]
+  SETTABLEKS R15 R14 K27 ["Parent"]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K96 ["MovementModeOverrideText"]
+  NEWCLOSURE R12 P17
+  CAPTURE REF R9
+  CAPTURE REF R8
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U10
+  NEWCLOSURE R13 P18
+  CAPTURE VAL R10
+  CAPTURE UPVAL U0
+  CAPTURE REF R7
+  CAPTURE REF R8
+  CAPTURE REF R9
+  CAPTURE UPVAL U31
+  CAPTURE UPVAL U32
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R12
+  MOVE R14 R13
+  CALL R14 0 0
+  JUMPIFNOT R10 [+16]
+  GETTABLEKS R14 R10 K97 ["TouchMovementModeRegistered"]
+  NEWCLOSURE R16 P19
+  CAPTURE UPVAL U0
+  CAPTURE VAL R13
+  NAMECALL R14 R14 K45 ["connect"]
+  CALL R14 2 0
+  GETTABLEKS R14 R10 K98 ["ComputerMovementModeRegistered"]
+  NEWCLOSURE R16 P20
+  CAPTURE UPVAL U0
+  CAPTURE VAL R13
+  NAMECALL R14 R14 K45 ["connect"]
+  CALL R14 2 0
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K94 ["MovementMode"]
+  GETTABLEKS R14 R15 K43 ["IndexChanged"]
+  NEWCLOSURE R16 P21
+  CAPTURE VAL R12
+  CAPTURE UPVAL U11
+  NAMECALL R14 R14 K45 ["connect"]
+  CALL R14 2 0
+  CLOSEUPVALS R8
+  NEWCLOSURE R8 P22
+  CAPTURE UPVAL U2
+  SETGLOBAL R8 K99 ["setShiftLockVisible"]
+  LOADB R8 0
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K100 ["TouchEnabled"]
+  JUMPIFNOT R9 [+10]
+  GETUPVAL R10 12
+  GETTABLEKS R9 R10 K101 ["DevTouchCameraMode"]
+  GETIMPORT R10 K104 [Enum.DevTouchCameraMovementMode.UserChoice]
+  JUMPIFEQ R9 R10 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  JUMP [+9]
+  GETUPVAL R10 12
+  GETTABLEKS R9 R10 K105 ["DevComputerCameraMode"]
+  GETIMPORT R10 K107 [Enum.DevComputerCameraMovementMode.UserChoice]
+  JUMPIFEQ R9 R10 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  JUMPIF R8 [+11]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K67 ["CameraModeOverrideText"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K25 ["Visible"]
+  GETGLOBAL R9 K48 ["setCameraModeVisible"]
+  LOADB R10 0
+  CALL R9 1 0
+  JUMP [+10]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K67 ["CameraModeOverrideText"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K25 ["Visible"]
+  GETGLOBAL R9 K48 ["setCameraModeVisible"]
+  LOADB R10 1
+  CALL R9 1 0
+  LOADB R9 0
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K100 ["TouchEnabled"]
+  JUMPIFNOT R10 [+10]
+  GETUPVAL R11 12
+  GETTABLEKS R10 R11 K108 ["DevTouchMovementMode"]
+  GETIMPORT R11 K109 [Enum.DevTouchMovementMode.UserChoice]
+  JUMPIFEQ R10 R11 [+2]
+  LOADB R9 0 +1
+  LOADB R9 1
+  JUMP [+9]
+  GETUPVAL R11 12
+  GETTABLEKS R10 R11 K110 ["DevComputerMovementMode"]
+  GETIMPORT R11 K111 [Enum.DevComputerMovementMode.UserChoice]
+  JUMPIFEQ R10 R11 [+2]
+  LOADB R9 0 +1
+  LOADB R9 1
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K96 ["MovementModeOverrideText"]
+  JUMPIFNOT R10 [+22]
+  JUMPIF R9 [+11]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K96 ["MovementModeOverrideText"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K25 ["Visible"]
+  GETGLOBAL R10 K89 ["setMovementModeVisible"]
+  LOADB R11 0
+  CALL R10 1 0
+  JUMP [+10]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K96 ["MovementModeOverrideText"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K25 ["Visible"]
+  GETGLOBAL R10 K89 ["setMovementModeVisible"]
+  LOADB R11 1
+  CALL R10 1 0
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K4 ["ShiftLockOverrideText"]
+  JUMPIFNOT R10 [+15]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K4 ["ShiftLockOverrideText"]
+  GETUPVAL R13 12
+  GETTABLEKS R12 R13 K112 ["DevEnableMouseLock"]
+  NOT R11 R12
+  SETTABLEKS R11 R10 K25 ["Visible"]
+  GETGLOBAL R10 K99 ["setShiftLockVisible"]
+  GETUPVAL R12 12
+  GETTABLEKS R11 R12 K112 ["DevEnableMouseLock"]
+  CALL R10 1 0
+  NEWCLOSURE R8 P23
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U12
+  GETUPVAL R10 12
+  GETTABLEKS R9 R10 K113 ["Changed"]
+  NEWCLOSURE R11 P24
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U33
+  CAPTURE VAL R8
+  CAPTURE UPVAL U34
+  NAMECALL R9 R9 K45 ["connect"]
+  CALL R9 2 0
+  CLOSEUPVALS R1
+  RETURN R0 0
+
+PROTO_72:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+12]
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ExperienceStateCaptureMinMemEnabled"]
+  NAMECALL R0 R0 K3 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K4 ["FeedbackEntryPointEnabled"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K5 ["HubRef"]
+  LOADB R2 0
+  LOADB R3 1
+  NAMECALL R0 R0 K6 ["PopMenu"]
+  CALL R0 3 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K7 ["SafetyServiceCaptureModeReportProp"]
+  NAMECALL R0 R0 K3 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  LOADB R1 0
+  SETTABLEKS R1 R0 K8 ["IsCaptureModeForReport"]
+  GETUPVAL R0 3
+  JUMPIFEQKNIL R0 [+5]
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K9 ["ToggleCaptureMode"]
+  CALL R0 1 0
+  GETUPVAL R0 4
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 5
+  LOADK R1 K10 ["translation_feedback"]
+  LOADK R2 K11 [""]
+  LOADK R3 K12 ["pressed"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_73:
+  JUMPIFNOT R0 [+161]
+  GETUPVAL R1 0
+  JUMPIF R1 [+12]
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K2 ["ExperienceStateCaptureMinMemEnabled"]
+  NAMECALL R1 R1 K3 ["GetEngineFeature"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["FeedbackEntryPointEnabled"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  LOADNIL R2
+  LOADNIL R3
+  GETUPVAL R4 6
+  JUMPIFNOT R4 [+43]
+  GETUPVAL R4 7
+  LOADK R6 K5 ["toggleFeedbackModeButton"]
+  LOADK R7 K6 ["Give Feedback"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 236
+  CALL R8 4 1
+  MOVE R9 R1
+  GETUPVAL R10 1
+  NAMECALL R4 R4 K10 ["MakeStyledButton"]
+  CALL R4 6 2
+  MOVE R2 R4
+  MOVE R3 R5
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADK R5 K11 [0.6]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 40
+  CALL R4 4 1
+  SETTABLEKS R4 R2 K12 ["Size"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADK R5 K13 [0.4]
+  LOADN R6 0
+  LOADK R7 K14 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R2 K15 ["Position"]
+  GETIMPORT R4 K17 [Vector2.new]
+  LOADN R5 0
+  LOADK R6 K14 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R2 K18 ["AnchorPoint"]
+  JUMP [+42]
+  GETUPVAL R4 7
+  LOADK R6 K5 ["toggleFeedbackModeButton"]
+  LOADK R7 K6 ["Give Feedback"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 44
+  LOADN R11 1
+  LOADN R12 236
+  CALL R8 4 1
+  MOVE R9 R1
+  GETUPVAL R10 1
+  NAMECALL R4 R4 K10 ["MakeStyledButton"]
+  CALL R4 6 2
+  MOVE R2 R4
+  MOVE R3 R5
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 44
+  LOADN R7 0
+  LOADN R8 30
+  CALL R4 4 1
+  SETTABLEKS R4 R2 K12 ["Size"]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADK R5 K13 [0.4]
+  LOADN R6 0
+  LOADK R7 K14 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R2 K15 ["Position"]
+  GETIMPORT R4 K17 [Vector2.new]
+  LOADN R5 0
+  LOADK R6 K14 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R2 K18 ["AnchorPoint"]
+  LOADN R4 2
+  SETTABLEKS R4 R2 K19 ["ZIndex"]
+  LOADB R4 1
+  SETTABLEKS R4 R2 K20 ["Selectable"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K19 ["ZIndex"]
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K2 ["ExperienceStateCaptureMinMemEnabled"]
+  NAMECALL R4 R4 K3 ["GetEngineFeature"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R4 1
+  SETTABLEKS R2 R4 K5 ["toggleFeedbackModeButton"]
+  GETUPVAL R4 1
+  SETTABLEKS R3 R4 K21 ["toggleFeedbackModeText"]
+  GETUPVAL R4 6
+  JUMPIFNOT R4 [+15]
+  GETUPVAL R4 7
+  GETUPVAL R6 1
+  LOADK R7 K22 ["Give Translation Feedback"]
+  MOVE R8 R2
+  LOADNIL R9
+  LOADB R10 1
+  NAMECALL R4 R4 K23 ["AddNewRowObject"]
+  CALL R4 6 1
+  GETUPVAL R6 8
+  GETTABLEKS R5 R6 K24 ["FeedbackModeButton"]
+  SETTABLEKS R5 R4 K25 ["LayoutOrder"]
+  RETURN R0 0
+  GETUPVAL R4 7
+  GETUPVAL R6 1
+  LOADK R7 K22 ["Give Translation Feedback"]
+  MOVE R8 R2
+  NAMECALL R4 R4 K23 ["AddNewRowObject"]
+  CALL R4 4 1
+  GETUPVAL R6 8
+  GETTABLEKS R5 R6 K24 ["FeedbackModeButton"]
+  SETTABLEKS R5 R4 K25 ["LayoutOrder"]
+  RETURN R0 0
+
+PROTO_74:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETIMPORT R1 K3 [pairs]
+  GETTABLEKS R2 R0 K4 ["roles"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  JUMPIFNOTEQKS R5 K5 ["Soothsayer"] [+3]
+  LOADB R6 1
+  SETUPVAL R6 2
+  FORGLOOP R1 2 [-5]
+  RETURN R0 0
+
+PROTO_75:
+  LOADB R2 0
+  LOADB R3 0
+  LOADNIL R4
+  JUMPIF R0 [+2]
+  LOADK R4 K0 ["Roles Api Request: Connection error"]
+  JUMP [+30]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R5 K2 [401] [+3]
+  LOADK R4 K3 ["Roles Api Request: Unauthorized"]
+  JUMP [+24]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  LOADN R6 200
+  JUMPIFLT R5 R6 [+6]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  LOADN R6 144
+  JUMPIFNOTLE R6 R5 [+6]
+  LOADK R5 K4 ["Roles Api Status code: "]
+  GETTABLEKS R6 R1 K1 ["StatusCode"]
+  CONCAT R4 R5 R6
+  JUMP [+9]
+  GETIMPORT R5 K6 [pcall]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE REF R2
+  CALL R5 1 2
+  MOVE R3 R5
+  MOVE R4 R6
+  JUMPIF R3 [+9]
+  GETUPVAL R5 1
+  LOADK R8 K7 ["Feedback Mode initialization api call failed with url: "]
+  GETUPVAL R9 2
+  LOADK R10 K8 [" and with error message: "]
+  MOVE R11 R4
+  CONCAT R7 R8 R11
+  NAMECALL R5 R5 K9 ["warning"]
+  CALL R5 2 0
+  GETUPVAL R5 3
+  MOVE R6 R2
+  CALL R5 1 0
+  CLOSEUPVALS R2
+  RETURN R0 0
+
+PROTO_76:
+  GETUPVAL R3 0
+  GETTABLEKS R1 R3 K0 ["ROLES_URL"]
+  LOADK R2 K1 ["v1/users/authenticated/roles"]
+  CONCAT R0 R1 R2
+  GETUPVAL R1 1
+  DUPTABLE R3 K4 [{"Url", "Method"}]
+  SETTABLEKS R0 R3 K2 ["Url"]
+  LOADK R4 K5 ["GET"]
+  SETTABLEKS R4 R3 K3 ["Method"]
+  NAMECALL R1 R1 K6 ["RequestInternal"]
+  CALL R1 2 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  GETUPVAL R3 11
+  JUMPIFNOT R3 [+4]
+  MOVE R3 R2
+  LOADB R4 1
+  CALL R3 1 0
+  RETURN R0 0
+  NEWCLOSURE R5 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U12
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  NAMECALL R3 R1 K7 ["Start"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_77:
+  JUMPIFNOT R0 [+25]
+  GETUPVAL R2 1
+  SETUPVAL R2 0
+  GETUPVAL R2 1
+  JUMPIFNOTEQKN R2 K0 [1] [+7]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  NAMECALL R2 R2 K1 ["SetExperienceSettingsLocaleId"]
+  CALL R2 2 0
+  JUMP [+30]
+  GETUPVAL R3 4
+  GETUPVAL R5 5
+  GETUPVAL R6 1
+  GETTABLE R4 R5 R6
+  GETTABLE R2 R3 R4
+  GETUPVAL R3 2
+  GETUPVAL R7 6
+  GETTABLE R6 R7 R2
+  GETTABLEKS R5 R6 K2 ["localeCode"]
+  NAMECALL R3 R3 K1 ["SetExperienceSettingsLocaleId"]
+  CALL R3 2 0
+  JUMP [+16]
+  GETUPVAL R2 7
+  LOADK R5 K3 ["Request to update user experience language status failed, keeping language toggle disabled for the remainder of the session. Error: "]
+  MOVE R6 R1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K4 ["warning"]
+  CALL R2 2 0
+  LOADB R2 1
+  SETUPVAL R2 8
+  GETUPVAL R3 9
+  GETTABLEKS R2 R3 K5 ["LanguageSelectorMode"]
+  GETUPVAL R4 0
+  NAMECALL R2 R2 K6 ["SetSelectionIndex"]
+  CALL R2 2 0
+  GETUPVAL R3 9
+  GETTABLEKS R2 R3 K5 ["LanguageSelectorMode"]
+  LOADB R4 1
+  NAMECALL R2 R2 K7 ["SetInteractable"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_78:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["User Experience Language Settings Update Request: Connection error"]
+  JUMP [+30]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["User Experience Language Settings Update Request: Unauthorized"]
+  JUMP [+24]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["User Experience Language Settings Update Request Status Code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+9]
+  GETUPVAL R4 0
+  LOADK R7 K5 ["User Experience Language Settings Update Request succeeded with code: "]
+  GETTABLEKS R8 R1 K1 ["StatusCode"]
+  CONCAT R6 R7 R8
+  NAMECALL R4 R4 K6 ["info"]
+  CALL R4 2 0
+  LOADB R2 1
+  JUMPIF R2 [+9]
+  GETUPVAL R4 0
+  LOADK R7 K7 ["GameSettings language selector toggle: Failed to update user experience language status from GameInternationalization API for "]
+  GETUPVAL R8 1
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  GETUPVAL R4 2
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_79:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["LanguageSelectorMode"]
+  LOADB R3 0
+  NAMECALL R1 R1 K1 ["SetInteractable"]
+  CALL R1 2 0
+  LOADNIL R1
+  JUMPIFNOTEQKN R0 K2 [1] [+7]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETTABLE R2 R3 R4
+  GETTABLEKS R1 R2 K3 ["id"]
+  JUMP [+8]
+  GETUPVAL R3 1
+  GETUPVAL R5 3
+  GETUPVAL R7 4
+  GETTABLE R6 R7 R0
+  GETTABLE R4 R5 R6
+  GETTABLE R2 R3 R4
+  GETTABLEKS R1 R2 K3 ["id"]
+  GETUPVAL R2 5
+  JUMPIFNOT R2 [+19]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["LanguageSelectorMode"]
+  GETTABLEKS R2 R3 K4 ["CurrentLanguage"]
+  GETUPVAL R4 4
+  GETTABLE R3 R4 R0
+  JUMPIFEQ R2 R3 [+11]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["LanguageSelectorMode"]
+  SETTABLEKS R3 R4 K4 ["CurrentLanguage"]
+  GETUPVAL R4 6
+  LOADK R5 K5 ["experience_language"]
+  MOVE R6 R2
+  MOVE R7 R3
+  CALL R4 3 0
+  DUPTABLE R2 K7 [{"settingValue"}]
+  DUPTABLE R3 K10 [{"settingType", "settingTargetId"}]
+  LOADK R4 K11 ["LanguageFamily"]
+  SETTABLEKS R4 R3 K8 ["settingType"]
+  SETTABLEKS R1 R3 K9 ["settingTargetId"]
+  SETTABLEKS R3 R2 K6 ["settingValue"]
+  GETUPVAL R6 7
+  GETTABLEKS R4 R6 K12 ["GAME_INTERNATIONALIZATION_URL"]
+  GETIMPORT R5 K15 [string.format]
+  LOADK R6 K16 ["v1/user-localization-settings/universe/%d"]
+  GETIMPORT R8 K18 [game]
+  GETTABLEKS R7 R8 K19 ["GameId"]
+  CALL R5 2 1
+  CONCAT R3 R4 R5
+  GETUPVAL R4 8
+  DUPTABLE R6 K24 [{"Url", "Method", "Headers", "Body"}]
+  SETTABLEKS R3 R6 K20 ["Url"]
+  LOADK R7 K25 ["POST"]
+  SETTABLEKS R7 R6 K21 ["Method"]
+  NEWTABLE R7 1 0
+  LOADK R8 K26 ["application/json"]
+  SETTABLEKS R8 R7 K27 ["Content-Type"]
+  SETTABLEKS R7 R6 K22 ["Headers"]
+  GETUPVAL R7 8
+  MOVE R9 R2
+  NAMECALL R7 R7 K28 ["JSONEncode"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K23 ["Body"]
+  NAMECALL R4 R4 K29 ["RequestInternal"]
+  CALL R4 2 1
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U9
+  CAPTURE VAL R0
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U0
+  GETUPVAL R6 14
+  NAMECALL R6 R6 K30 ["IsStudio"]
+  CALL R6 1 1
+  JUMPIFNOT R6 [+5]
+  MOVE R6 R5
+  LOADB R7 1
+  LOADNIL R8
+  CALL R6 2 0
+  RETURN R0 0
+  GETUPVAL R6 13
+  JUMPIFNOT R6 [+7]
+  LOADB R6 0
+  SETUPVAL R6 13
+  MOVE R6 R5
+  LOADB R7 1
+  LOADNIL R8
+  CALL R6 2 0
+  RETURN R0 0
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U12
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  NAMECALL R6 R4 K31 ["Start"]
+  CALL R6 2 0
+  RETURN R0 0
+
+PROTO_80:
+  JUMPIF R0 [+48]
+  JUMPIFNOTEQKNIL R1 [+2]
+  LOADK R1 K0 ["Execution path did not set earliest error to non-nil value."]
+  GETUPVAL R2 0
+  LOADK R5 K1 ["GameSettings language selector initialization failed to get all required information; defaulting to player locale and disabling language selection toggle. Earliest error message: "]
+  MOVE R6 R1
+  CONCAT R4 R5 R6
+  NAMECALL R2 R2 K2 ["warning"]
+  CALL R2 2 0
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  GETUPVAL R7 1
+  LOADK R8 K3 ["Experience Language"]
+  LOADK R9 K4 ["DropDown"]
+  NEWTABLE R10 0 1
+  LOADK R11 K5 ["Unavailable"]
+  SETLIST R10 R11 1 [1]
+  LOADN R11 1
+  NAMECALL R5 R5 K6 ["AddNewRow"]
+  CALL R5 6 3
+  SETTABLEKS R5 R2 K7 ["LanguageSelectorFrame"]
+  SETTABLEKS R6 R3 K8 ["LanguageSelectorLabel"]
+  SETTABLEKS R7 R4 K9 ["LanguageSelectorMode"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K9 ["LanguageSelectorMode"]
+  LOADB R4 0
+  NAMECALL R2 R2 K10 ["SetInteractable"]
+  CALL R2 2 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K7 ["LanguageSelectorFrame"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K7 ["LanguageSelectorFrame"]
+  SETTABLEKS R3 R2 K11 ["LayoutOrder"]
+  RETURN R0 0
+  LOADB R2 0
+  GETUPVAL R4 4
+  GETUPVAL R9 5
+  GETUPVAL R10 6
+  GETTABLE R8 R9 R10
+  GETTABLEKS R6 R8 K12 ["languageName"]
+  LOADK R7 K13 [" (Original)"]
+  CONCAT R5 R6 R7
+  FASTCALL2 TABLE_INSERT R4 R5 [+3]
+  GETIMPORT R3 K16 [table.insert]
+  CALL R3 2 0
+  GETIMPORT R3 K18 [pairs]
+  GETUPVAL R4 7
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  GETUPVAL R8 8
+  JUMPIFNOTEQ R7 R8 [+2]
+  LOADB R2 1
+  GETUPVAL R8 6
+  JUMPIFEQ R7 R8 [+11]
+  GETUPVAL R9 4
+  GETUPVAL R12 5
+  GETTABLE R11 R12 R7
+  GETTABLEKS R10 R11 K12 ["languageName"]
+  FASTCALL2 TABLE_INSERT R9 R10 [+3]
+  GETIMPORT R8 K16 [table.insert]
+  CALL R8 2 0
+  FORGLOOP R3 2 [-18]
+  JUMPIFNOTEQKB R2 TRUE [+17]
+  GETIMPORT R3 K18 [pairs]
+  GETUPVAL R4 4
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  JUMPIFEQKN R6 K19 [1] [+8]
+  GETUPVAL R9 9
+  GETTABLE R8 R9 R7
+  GETUPVAL R9 8
+  JUMPIFNOTEQ R8 R9 [+3]
+  SETUPVAL R6 10
+  SETUPVAL R6 11
+  FORGLOOP R3 2 [-10]
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 1
+  GETUPVAL R6 2
+  GETUPVAL R8 1
+  LOADK R9 K3 ["Experience Language"]
+  LOADK R10 K4 ["DropDown"]
+  GETUPVAL R11 4
+  GETUPVAL R12 10
+  NAMECALL R6 R6 K6 ["AddNewRow"]
+  CALL R6 6 3
+  SETTABLEKS R6 R3 K7 ["LanguageSelectorFrame"]
+  SETTABLEKS R7 R4 K8 ["LanguageSelectorLabel"]
+  SETTABLEKS R8 R5 K9 ["LanguageSelectorMode"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["LanguageSelectorFrame"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K7 ["LanguageSelectorFrame"]
+  SETTABLEKS R4 R3 K11 ["LayoutOrder"]
+  GETUPVAL R3 10
+  JUMPIFNOTEQKN R3 K19 [1] [+7]
+  GETUPVAL R3 12
+  GETUPVAL R5 13
+  NAMECALL R3 R3 K20 ["SetExperienceSettingsLocaleId"]
+  CALL R3 2 0
+  JUMP [+13]
+  GETUPVAL R4 9
+  GETUPVAL R6 4
+  GETUPVAL R7 10
+  GETTABLE R5 R6 R7
+  GETTABLE R3 R4 R5
+  GETUPVAL R4 12
+  GETUPVAL R8 5
+  GETTABLE R7 R8 R3
+  GETTABLEKS R6 R7 K21 ["localeCode"]
+  NAMECALL R4 R4 K20 ["SetExperienceSettingsLocaleId"]
+  CALL R4 2 0
+  GETUPVAL R3 14
+  JUMPIFNOT R3 [+14]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K9 ["LanguageSelectorMode"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K9 ["LanguageSelectorMode"]
+  GETTABLEKS R6 R7 K22 ["DropDownFrame"]
+  GETTABLEKS R5 R6 K23 ["DropDownFrameTextLabel"]
+  GETTABLEKS R4 R5 K24 ["Text"]
+  SETTABLEKS R4 R3 K25 ["CurrentLanguage"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U19
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K9 ["LanguageSelectorMode"]
+  GETTABLEKS R4 R5 K26 ["IndexChanged"]
+  MOVE R6 R3
+  NAMECALL R4 R4 K27 ["connect"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_81:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K2 ["userUniverseLocalizationSettingValue"]
+  JUMPIFNOTEQKNIL R1 [+4]
+  GETUPVAL R2 3
+  SETUPVAL R2 2
+  RETURN R0 0
+  GETTABLEKS R2 R1 K3 ["settingType"]
+  JUMPIFNOTEQKS R2 K4 ["SourceOrTranslation"] [+10]
+  GETTABLEKS R2 R1 K5 ["settingTargetId"]
+  JUMPIFNOTEQKN R2 K6 [1] [+4]
+  GETUPVAL R2 4
+  SETUPVAL R2 2
+  JUMP [+2]
+  GETUPVAL R2 3
+  SETUPVAL R2 2
+  GETTABLEKS R2 R1 K3 ["settingType"]
+  JUMPIFNOTEQKS R2 K7 ["LanguageFamily"] [+15]
+  GETUPVAL R3 5
+  GETTABLEKS R4 R1 K5 ["settingTargetId"]
+  GETTABLE R2 R3 R4
+  JUMPIFNOTEQKNIL R2 [+4]
+  GETUPVAL R2 3
+  SETUPVAL R2 2
+  RETURN R0 0
+  GETUPVAL R3 5
+  GETTABLEKS R4 R1 K5 ["settingTargetId"]
+  GETTABLE R2 R3 R4
+  SETUPVAL R2 2
+  RETURN R0 0
+
+PROTO_82:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["User Experience Language Setting Request: Connection error"]
+  JUMP [+33]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["User Experience Language Setting Request: Unauthorized"]
+  JUMP [+27]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["User Experience Language Setting Request Status code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+12]
+  GETIMPORT R4 K6 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CALL R4 1 2
+  MOVE R2 R4
+  MOVE R3 R5
+  JUMPIF R2 [+9]
+  GETUPVAL R4 5
+  LOADK R7 K7 ["GameSettings language selector initialization: Failed to get response from GameInternationalization API for "]
+  GETUPVAL R8 6
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  GETUPVAL R4 7
+  MOVE R5 R2
+  MOVE R6 R3
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_83:
+  JUMPIFNOT R0 [+14]
+  GETUPVAL R2 0
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  NAMECALL R2 R2 K0 ["Start"]
+  CALL R2 2 0
+  RETURN R0 0
+  GETUPVAL R2 8
+  LOADB R3 0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_84:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETIMPORT R1 K3 [pairs]
+  GETTABLEKS R2 R0 K4 ["data"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  GETUPVAL R6 2
+  GETTABLEKS R7 R5 K5 ["languageCode"]
+  SETTABLE R7 R6 R4
+  FORGLOOP R1 2 [-5]
+  RETURN R0 0
+
+PROTO_85:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["Experience Supported Language Request: Connection error"]
+  JUMP [+30]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["Experience Supported Language Request: Unauthorized"]
+  JUMP [+24]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["Experience Supported Language Request Status code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+9]
+  GETIMPORT R4 K6 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CALL R4 1 2
+  MOVE R2 R4
+  MOVE R3 R5
+  JUMPIF R2 [+9]
+  GETUPVAL R4 2
+  LOADK R7 K7 ["GameSettings language selector initialization: Failed to get response from Localization API for "]
+  GETUPVAL R8 3
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  GETUPVAL R4 4
+  JUMPIFNOTEQKNIL R4 [+2]
+  SETUPVAL R3 4
+  MOVE R4 R2
+  JUMPIFNOT R4 [+1]
+  GETUPVAL R4 5
+  GETUPVAL R5 4
+  JUMPIFNOT R4 [+14]
+  GETUPVAL R6 6
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  NAMECALL R6 R6 K10 ["Start"]
+  CALL R6 2 0
+  RETURN R0 0
+  GETUPVAL R6 12
+  LOADB R7 0
+  MOVE R8 R5
+  CALL R6 2 0
+  RETURN R0 0
+
+PROTO_86:
+  JUMPIFNOT R0 [+19]
+  GETUPVAL R2 0
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE REF R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NAMECALL R2 R2 K0 ["Start"]
+  CALL R2 2 0
+  JUMP [+5]
+  MOVE R2 R1
+  GETUPVAL R3 11
+  LOADB R4 0
+  MOVE R5 R2
+  CALL R3 2 0
+  CLOSEUPVALS R1
+  RETURN R0 0
+
+PROTO_87:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETTABLEKS R1 R0 K2 ["languageCode"]
+  SETUPVAL R1 2
+  GETUPVAL R3 4
+  GETUPVAL R4 2
+  GETTABLE R2 R3 R4
+  GETTABLEKS R1 R2 K3 ["localeCode"]
+  SETUPVAL R1 3
+  RETURN R0 0
+
+PROTO_88:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["Experience Source Language Request: Connection error"]
+  JUMP [+32]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["Experience Source Language Request: Unauthorized"]
+  JUMP [+26]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["Experience Source Language Status code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+11]
+  GETIMPORT R4 K6 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CALL R4 1 2
+  MOVE R2 R4
+  MOVE R3 R5
+  JUMPIF R2 [+9]
+  GETUPVAL R4 4
+  LOADK R7 K7 ["GameSettings language selector initialization: Failed to get response from GameInternationalization API for "]
+  GETUPVAL R8 5
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  GETUPVAL R4 6
+  JUMPIFNOTEQKNIL R4 [+2]
+  SETUPVAL R3 6
+  MOVE R4 R2
+  JUMPIFNOT R4 [+1]
+  GETUPVAL R4 7
+  GETUPVAL R5 6
+  JUMPIFNOT R4 [+19]
+  GETUPVAL R6 8
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U10
+  CAPTURE REF R5
+  CAPTURE VAL R4
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  NAMECALL R6 R6 K10 ["Start"]
+  CALL R6 2 0
+  JUMP [+5]
+  MOVE R6 R5
+  GETUPVAL R7 16
+  LOADB R8 0
+  MOVE R9 R6
+  CALL R7 2 0
+  CLOSEUPVALS R5
+  RETURN R0 0
+
+PROTO_89:
+  JUMPIFNOT R0 [+23]
+  GETUPVAL R2 0
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE REF R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  NAMECALL R2 R2 K0 ["Start"]
+  CALL R2 2 0
+  JUMP [+7]
+  MOVE R2 R1
+  MOVE R3 R2
+  GETUPVAL R4 15
+  LOADB R5 0
+  MOVE R6 R3
+  CALL R4 2 0
+  CLOSEUPVALS R2
+  CLOSEUPVALS R1
+  RETURN R0 0
+
+PROTO_90:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["Body"]
+  NAMECALL R0 R0 K1 ["JSONDecode"]
+  CALL R0 2 1
+  GETIMPORT R1 K3 [pairs]
+  GETTABLEKS R2 R0 K4 ["data"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  GETTABLEKS R8 R5 K5 ["locale"]
+  GETTABLEKS R7 R8 K6 ["language"]
+  GETTABLEKS R6 R7 K7 ["languageCode"]
+  GETTABLEKS R8 R5 K5 ["locale"]
+  GETTABLEKS R7 R8 K5 ["locale"]
+  GETTABLEKS R10 R5 K5 ["locale"]
+  GETTABLEKS R9 R10 K6 ["language"]
+  GETTABLEKS R8 R9 K8 ["name"]
+  GETTABLEKS R11 R5 K5 ["locale"]
+  GETTABLEKS R10 R11 K6 ["language"]
+  GETTABLEKS R9 R10 K9 ["id"]
+  GETUPVAL R10 2
+  DUPTABLE R11 K12 [{"localeCode", "languageName", "id"}]
+  SETTABLEKS R7 R11 K10 ["localeCode"]
+  SETTABLEKS R8 R11 K11 ["languageName"]
+  SETTABLEKS R9 R11 K9 ["id"]
+  SETTABLE R11 R10 R6
+  GETUPVAL R10 3
+  SETTABLE R6 R10 R9
+  GETUPVAL R10 4
+  SETTABLE R6 R10 R8
+  GETTABLEKS R11 R5 K5 ["locale"]
+  GETTABLEKS R10 R11 K5 ["locale"]
+  GETUPVAL R11 5
+  LOADK R13 K13 ["-"]
+  LOADK R14 K14 ["_"]
+  NAMECALL R11 R11 K15 ["gsub"]
+  CALL R11 3 1
+  JUMPIFNOTEQ R10 R11 [+8]
+  GETTABLEKS R12 R5 K5 ["locale"]
+  GETTABLEKS R11 R12 K6 ["language"]
+  GETTABLEKS R10 R11 K7 ["languageCode"]
+  SETUPVAL R10 6
+  FORGLOOP R1 2 [-55]
+  RETURN R0 0
+
+PROTO_91:
+  LOADB R2 0
+  LOADNIL R3
+  JUMPIF R0 [+2]
+  LOADK R3 K0 ["Locale Code to Language Code Mapping Request: Connection error"]
+  JUMP [+34]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  JUMPIFNOTEQKN R4 K2 [401] [+3]
+  LOADK R3 K3 ["Locale Code to Language Code Mapping Request: Unauthorized"]
+  JUMP [+28]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 200
+  JUMPIFLT R4 R5 [+6]
+  GETTABLEKS R4 R1 K1 ["StatusCode"]
+  LOADN R5 144
+  JUMPIFNOTLE R5 R4 [+6]
+  LOADK R4 K4 ["Locale Code to Language Code Mapping Request Status code: "]
+  GETTABLEKS R5 R1 K1 ["StatusCode"]
+  CONCAT R3 R4 R5
+  JUMP [+13]
+  GETIMPORT R4 K6 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R4 1 2
+  MOVE R2 R4
+  MOVE R3 R5
+  JUMPIF R2 [+9]
+  GETUPVAL R4 6
+  LOADK R7 K7 ["GameSettings language selector initialization: Failed to get response from Localization API for "]
+  GETUPVAL R8 7
+  LOADK R9 K8 [" with error message: "]
+  MOVE R10 R3
+  CONCAT R6 R7 R10
+  NAMECALL R4 R4 K9 ["warning"]
+  CALL R4 2 0
+  MOVE R4 R2
+  MOVE R5 R3
+  JUMPIFNOT R4 [+23]
+  GETUPVAL R6 8
+  NEWCLOSURE R8 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U11
+  CAPTURE REF R5
+  CAPTURE VAL R4
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U18
+  NAMECALL R6 R6 K10 ["Start"]
+  CALL R6 2 0
+  JUMP [+7]
+  MOVE R6 R5
+  MOVE R7 R6
+  GETUPVAL R8 18
+  LOADB R9 0
+  MOVE R10 R7
+  CALL R8 2 0
+  CLOSEUPVALS R6
+  CLOSEUPVALS R5
+  RETURN R0 0
+
+PROTO_92:
+  LOADN R0 1
+  LOADN R1 1
+  LOADB R2 0
+  LOADNIL R3
+  LOADNIL R4
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K0 ["LocalPlayer"]
+  GETTABLEKS R5 R6 K1 ["LocaleId"]
+  LOADNIL R6
+  LOADNIL R7
+  NEWTABLE R8 0 0
+  NEWTABLE R9 0 0
+  NEWTABLE R10 0 0
+  NEWTABLE R11 0 0
+  NEWTABLE R12 0 0
+  GETUPVAL R16 1
+  GETTABLEKS R14 R16 K2 ["LOCALE_URL"]
+  GETIMPORT R15 K5 [string.format]
+  LOADK R16 K6 ["v1/locales?displayValueLocale=%s"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K0 ["LocalPlayer"]
+  GETTABLEKS R17 R18 K1 ["LocaleId"]
+  LOADK R19 K7 ["-"]
+  LOADK R20 K8 ["_"]
+  NAMECALL R17 R17 K9 ["gsub"]
+  CALL R17 3 -1
+  CALL R15 -1 1
+  CONCAT R13 R14 R15
+  GETUPVAL R14 2
+  DUPTABLE R16 K12 [{"Url", "Method"}]
+  SETTABLEKS R13 R16 K10 ["Url"]
+  LOADK R17 K13 ["GET"]
+  SETTABLEKS R17 R16 K11 ["Method"]
+  NAMECALL R14 R14 K14 ["RequestInternal"]
+  CALL R14 2 1
+  GETUPVAL R18 1
+  GETTABLEKS R16 R18 K15 ["GAME_INTERNATIONALIZATION_URL"]
+  GETIMPORT R17 K5 [string.format]
+  LOADK R18 K16 ["v1/source-language/games/%d"]
+  GETIMPORT R20 K18 [game]
+  GETTABLEKS R19 R20 K19 ["GameId"]
+  CALL R17 2 1
+  CONCAT R15 R16 R17
+  GETUPVAL R16 2
+  DUPTABLE R18 K12 [{"Url", "Method"}]
+  SETTABLEKS R15 R18 K10 ["Url"]
+  LOADK R19 K13 ["GET"]
+  SETTABLEKS R19 R18 K11 ["Method"]
+  NAMECALL R16 R16 K14 ["RequestInternal"]
+  CALL R16 2 1
+  GETUPVAL R20 1
+  GETTABLEKS R18 R20 K15 ["GAME_INTERNATIONALIZATION_URL"]
+  GETIMPORT R19 K5 [string.format]
+  LOADK R20 K20 ["v1/supported-languages/games/%d"]
+  GETIMPORT R22 K18 [game]
+  GETTABLEKS R21 R22 K19 ["GameId"]
+  CALL R19 2 1
+  CONCAT R17 R18 R19
+  GETUPVAL R18 2
+  DUPTABLE R20 K12 [{"Url", "Method"}]
+  SETTABLEKS R17 R20 K10 ["Url"]
+  LOADK R21 K13 ["GET"]
+  SETTABLEKS R21 R20 K11 ["Method"]
+  NAMECALL R18 R18 K14 ["RequestInternal"]
+  CALL R18 2 1
+  GETUPVAL R22 1
+  GETTABLEKS R20 R22 K15 ["GAME_INTERNATIONALIZATION_URL"]
+  GETIMPORT R21 K5 [string.format]
+  LOADK R22 K21 ["v1/user-localization-settings/universe/%d"]
+  GETIMPORT R24 K18 [game]
+  GETTABLEKS R23 R24 K19 ["GameId"]
+  CALL R21 2 1
+  CONCAT R19 R20 R21
+  GETUPVAL R20 2
+  DUPTABLE R22 K12 [{"Url", "Method"}]
+  SETTABLEKS R19 R22 K10 ["Url"]
+  LOADK R23 K13 ["GET"]
+  SETTABLEKS R23 R22 K11 ["Method"]
+  NAMECALL R20 R20 K14 ["RequestInternal"]
+  CALL R20 2 1
+  NEWCLOSURE R21 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE REF R3
+  CAPTURE VAL R8
+  CAPTURE REF R7
+  CAPTURE VAL R9
+  CAPTURE REF R0
+  CAPTURE REF R1
+  CAPTURE UPVAL U7
+  CAPTURE REF R4
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE REF R2
+  CAPTURE UPVAL U10
+  NEWCLOSURE R22 P1
+  CAPTURE VAL R20
+  CAPTURE UPVAL U2
+  CAPTURE REF R7
+  CAPTURE REF R6
+  CAPTURE REF R3
+  CAPTURE VAL R11
+  CAPTURE UPVAL U3
+  CAPTURE VAL R19
+  CAPTURE VAL R21
+  NEWCLOSURE R23 P2
+  CAPTURE VAL R18
+  CAPTURE UPVAL U2
+  CAPTURE VAL R8
+  CAPTURE UPVAL U3
+  CAPTURE VAL R17
+  CAPTURE VAL R20
+  CAPTURE REF R7
+  CAPTURE REF R6
+  CAPTURE REF R3
+  CAPTURE VAL R11
+  CAPTURE VAL R19
+  CAPTURE VAL R21
+  NEWCLOSURE R24 P3
+  CAPTURE VAL R16
+  CAPTURE UPVAL U2
+  CAPTURE REF R3
+  CAPTURE REF R4
+  CAPTURE VAL R10
+  CAPTURE UPVAL U3
+  CAPTURE VAL R15
+  CAPTURE VAL R18
+  CAPTURE VAL R8
+  CAPTURE VAL R17
+  CAPTURE VAL R20
+  CAPTURE REF R7
+  CAPTURE REF R6
+  CAPTURE VAL R11
+  CAPTURE VAL R19
+  CAPTURE VAL R21
+  NEWCLOSURE R27 P4
+  CAPTURE UPVAL U2
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE REF R6
+  CAPTURE UPVAL U3
+  CAPTURE VAL R13
+  CAPTURE VAL R16
+  CAPTURE REF R3
+  CAPTURE REF R4
+  CAPTURE VAL R15
+  CAPTURE VAL R18
+  CAPTURE VAL R8
+  CAPTURE VAL R17
+  CAPTURE VAL R20
+  CAPTURE REF R7
+  CAPTURE VAL R19
+  CAPTURE VAL R21
+  NAMECALL R25 R14 K22 ["Start"]
+  CALL R25 2 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_93:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["GetLayerData"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_94:
+  DUPTABLE R1 K2 [{"ChatTranslationEnabled", "ChatTranslationToggleEnabled"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["ChatTranslationToggleEnabled"]
+  JUMPIFNOT R0 [+2]
+  JUMPIFNOTEQKS R0 K3 [""] [+2]
+  RETURN R1 1
+  JUMPIFNOTEQKS R0 K4 ["override"] [+5]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  RETURN R1 1
+  GETIMPORT R2 K6 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CALL R2 1 2
+  JUMPIFNOT R2 [+10]
+  GETTABLEKS R5 R3 K8 ["chatTranslationEnabled"]
+  ORK R4 R5 K7 [False]
+  SETTABLEKS R4 R1 K0 ["ChatTranslationEnabled"]
+  GETTABLEKS R5 R3 K9 ["chatTranslationToggleEnabled"]
+  ORK R4 R5 K7 [False]
+  SETTABLEKS R4 R1 K1 ["ChatTranslationToggleEnabled"]
+  RETURN R1 1
+
+PROTO_95:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["ChatTranslationEnabled"]
+  SETTABLEKS R1 R0 K0 ["ChatTranslationEnabled"]
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R1 R0 K1 ["ChatTranslationToggleEnabled"]
+  RETURN R0 0
+
+PROTO_96:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K0 ["ChatTranslationEnabled"]
+  SETTABLEKS R2 R1 K0 ["ChatTranslationEnabled"]
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K1 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R2 R1 K1 ["ChatTranslationToggleEnabled"]
+  LOADB R1 1
+  RETURN R1 1
+  GETIMPORT R1 K3 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CALL R1 1 2
+  RETURN R1 1
+
+PROTO_97:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+10]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K2 ["MasterVolume"]
+  MULK R4 R5 K1 [10]
+  ADDK R3 R4 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K5 [math.floor]
+  CALL R2 1 1
+  MOVE R1 R2
+  DIVK R2 R0 K1 [10]
+  GETUPVAL R3 2
+  SETTABLEKS R2 R3 K6 ["Volume"]
+  GETUPVAL R3 2
+  NAMECALL R3 R3 K7 ["Play"]
+  CALL R3 1 0
+  GETUPVAL R3 1
+  SETTABLEKS R2 R3 K2 ["MasterVolume"]
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+13]
+  GETUPVAL R3 3
+  LOADK R4 K8 ["volume"]
+  MOVE R5 R1
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K2 ["MasterVolume"]
+  MULK R8 R9 K1 [10]
+  ADDK R7 R8 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R7 [+2]
+  GETIMPORT R6 K5 [math.floor]
+  CALL R6 1 1
+  CALL R3 3 0
+  GETUPVAL R3 4
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_98:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["MasterVolume"]
+  MULK R1 R2 K0 [10]
+  FASTCALL1 MATH_FLOOR R1 [+2]
+  GETIMPORT R0 K4 [math.floor]
+  CALL R0 1 1
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  LOADK R7 K5 ["Volume"]
+  LOADK R8 K6 ["Slider"]
+  LOADN R9 10
+  MOVE R10 R0
+  NAMECALL R4 R4 K7 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K8 ["VolumeFrame"]
+  SETTABLEKS R5 R2 K9 ["VolumeLabel"]
+  SETTABLEKS R6 R3 K10 ["VolumeSlider"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K8 ["VolumeFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K8 ["VolumeFrame"]
+  SETTABLEKS R2 R1 K11 ["LayoutOrder"]
+  GETIMPORT R1 K14 [Instance.new]
+  LOADK R2 K15 ["Sound"]
+  GETIMPORT R5 K17 [game]
+  LOADK R7 K18 ["CoreGui"]
+  NAMECALL R5 R5 K19 ["GetService"]
+  CALL R5 2 1
+  GETTABLEKS R4 R5 K20 ["RobloxGui"]
+  GETTABLEKS R3 R4 K21 ["Sounds"]
+  CALL R1 2 1
+  LOADK R2 K22 ["VolumeChangeSound"]
+  SETTABLEKS R2 R1 K23 ["Name"]
+  LOADK R2 K24 ["rbxasset://sounds/uuhhh.mp3"]
+  SETTABLEKS R2 R1 K25 ["SoundId"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K10 ["VolumeSlider"]
+  GETTABLEKS R2 R3 K26 ["ValueChanged"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  NAMECALL R2 R2 K27 ["connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_99:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+13]
+  GETUPVAL R2 1
+  JUMPIFEQKNIL R2 [+10]
+  GETUPVAL R5 1
+  MULK R4 R5 K1 [10]
+  ADDK R3 R4 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K4 [math.floor]
+  CALL R2 1 1
+  MOVE R1 R2
+  JUMP [+1]
+  LOADN R1 0
+  DIVK R2 R0 K1 [10]
+  GETUPVAL R3 2
+  SETTABLEKS R2 R3 K5 ["PartyVoiceVolume"]
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+10]
+  GETUPVAL R3 3
+  LOADK R4 K6 ["party_voice_volume"]
+  MOVE R5 R1
+  MULK R8 R0 K1 [10]
+  ADDK R7 R8 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R7 [+2]
+  GETIMPORT R6 K4 [math.floor]
+  CALL R6 1 1
+  CALL R3 3 0
+  GETUPVAL R3 4
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_100:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["PartyVoiceVolume"]
+  MULK R1 R2 K0 [10]
+  FASTCALL1 MATH_FLOOR R1 [+2]
+  GETIMPORT R0 K4 [math.floor]
+  CALL R0 1 1
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  LOADK R7 K5 ["Party Voice Volume"]
+  LOADK R8 K6 ["Slider"]
+  LOADN R9 10
+  MOVE R10 R0
+  NAMECALL R4 R4 K7 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K8 ["PartyVoiceVolumeFrame"]
+  SETTABLEKS R5 R2 K9 ["PartyVoiceVolumeLabel"]
+  SETTABLEKS R6 R3 K10 ["PartyVoiceVolumeSlider"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K8 ["PartyVoiceVolumeFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K8 ["PartyVoiceVolumeFrame"]
+  SETTABLEKS R2 R1 K11 ["LayoutOrder"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K10 ["PartyVoiceVolumeSlider"]
+  GETTABLEKS R1 R2 K12 ["ValueChanged"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  NAMECALL R1 R1 K13 ["connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_101:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["HapticStrength"]
+  JUMPIFNOTEQKN R0 K1 [2] [+6]
+  GETUPVAL R2 0
+  LOADN R3 1
+  SETTABLEKS R3 R2 K0 ["HapticStrength"]
+  JUMP [+4]
+  GETUPVAL R2 0
+  LOADN R3 0
+  SETTABLEKS R3 R2 K0 ["HapticStrength"]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K2 ["haptics_toggle"]
+  MOVE R4 R1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["HapticStrength"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_102:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["HapticStrength"]
+  JUMPIFNOTEQKN R1 K1 [0] [+3]
+  LOADN R0 1
+  JUMP [+1]
+  LOADN R0 2
+  GETUPVAL R1 1
+  GETUPVAL R2 1
+  GETUPVAL R3 2
+  GETUPVAL R5 1
+  LOADK R6 K2 ["Haptics"]
+  LOADK R7 K3 ["Selector"]
+  NEWTABLE R8 0 2
+  LOADK R9 K4 ["Off"]
+  LOADK R10 K5 ["On"]
+  SETLIST R8 R9 2 [1]
+  MOVE R9 R0
+  NAMECALL R3 R3 K6 ["AddNewRow"]
+  CALL R3 6 3
+  SETTABLEKS R3 R1 K7 ["HapticsFrame"]
+  SETGLOBAL R4 K8 ["_"]
+  SETTABLEKS R5 R2 K9 ["HapticsSelector"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K7 ["HapticsFrame"]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K7 ["HapticsFrame"]
+  SETTABLEKS R2 R1 K10 ["LayoutOrder"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K9 ["HapticsSelector"]
+  GETTABLEKS R1 R2 K11 ["IndexChanged"]
+  DUPCLOSURE R3 K12 [PROTO_101]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  NAMECALL R1 R1 K13 ["connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_103:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["CameraYInverted"]
+  JUMPIFNOTEQKB R0 TRUE [+3]
+  LOADN R0 2
+  SETUPVAL R0 1
+  RETURN R0 0
+
+PROTO_104:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+3]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["CameraYInverted"]
+  JUMPIFNOTEQKN R0 K1 [2] [+6]
+  GETUPVAL R2 1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["CameraYInverted"]
+  JUMP [+4]
+  GETUPVAL R2 1
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["CameraYInverted"]
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R2 2
+  LOADK R3 K2 ["camera_y_inverted"]
+  MOVE R4 R1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["CameraYInverted"]
+  CALL R2 3 0
+  GETUPVAL R2 3
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_105:
+  LOADN R0 1
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE REF R0
+  CALL R1 1 1
+  JUMPIFNOTEQKB R1 FALSE [+3]
+  CLOSEUPVALS R0
+  RETURN R0 0
+  GETUPVAL R2 1
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  GETUPVAL R6 1
+  LOADK R7 K2 ["Camera Inverted"]
+  LOADK R8 K3 ["Selector"]
+  NEWTABLE R9 0 2
+  LOADK R10 K4 ["Off"]
+  LOADK R11 K5 ["On"]
+  SETLIST R9 R10 2 [1]
+  MOVE R10 R0
+  NAMECALL R4 R4 K6 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R2 K7 ["CameraInvertedFrame"]
+  SETGLOBAL R5 K8 ["_"]
+  SETTABLEKS R6 R3 K9 ["CameraInvertedSelector"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K7 ["CameraInvertedFrame"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K7 ["CameraInvertedFrame"]
+  SETTABLEKS R3 R2 K10 ["LayoutOrder"]
+  GETUPVAL R2 4
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["CameraInvertedFrame"]
+  LOADB R4 1
+  SETTABLE R4 R2 R3
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K9 ["CameraInvertedSelector"]
+  GETTABLEKS R2 R3 K11 ["IndexChanged"]
+  DUPCLOSURE R4 K12 [PROTO_104]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  NAMECALL R2 R2 K13 ["connect"]
+  CALL R2 2 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_106:
+  LOADNIL R1
+  LOADNIL R2
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["GamepadEnabled"]
+  JUMPIFNOT R3 [+14]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R3 [+10]
+  GETUPVAL R3 2
+  CALL R3 0 1
+  JUMPIFNOT R3 [+4]
+  LOADK R1 K2 ["gamepad"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["GamepadCameraSensitivity"]
+  GETUPVAL R3 1
+  SETTABLEKS R0 R3 K3 ["GamepadCameraSensitivity"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["MouseEnabled"]
+  JUMPIFNOT R3 [+20]
+  GETUPVAL R3 2
+  CALL R3 0 1
+  JUMPIFNOT R3 [+6]
+  LOADK R1 K5 ["mouse"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K6 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R2 R3 K7 ["X"]
+  GETIMPORT R3 K10 [Vector2.new]
+  MOVE R4 R0
+  MOVE R5 R0
+  CALL R3 2 1
+  GETUPVAL R4 1
+  SETTABLEKS R3 R4 K6 ["MouseSensitivityFirstPerson"]
+  GETUPVAL R4 1
+  SETTABLEKS R3 R4 K11 ["MouseSensitivityThirdPerson"]
+  GETUPVAL R3 2
+  CALL R3 0 1
+  JUMPIFNOT R3 [+38]
+  FASTCALL1 TYPEOF R2 [+3]
+  MOVE R4 R2
+  GETIMPORT R3 K13 [typeof]
+  CALL R3 1 1
+  JUMPIFNOTEQKS R3 K14 ["number"] [+32]
+  FASTCALL1 TYPEOF R0 [+3]
+  MOVE R4 R0
+  GETIMPORT R3 K13 [typeof]
+  CALL R3 1 1
+  JUMPIFNOTEQKS R3 K14 ["number"] [+25]
+  GETUPVAL R3 3
+  LOADK R4 K15 ["camera_sensitivity"]
+  GETIMPORT R6 K18 [string.format]
+  LOADK R7 K19 ["%.2f"]
+  MOVE R8 R2
+  CALL R6 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R5 K21 [tonumber]
+  CALL R5 -1 1
+  GETIMPORT R7 K18 [string.format]
+  LOADK R8 K19 ["%.2f"]
+  MOVE R9 R0
+  CALL R7 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R6 K21 [tonumber]
+  CALL R6 -1 1
+  DUPTABLE R7 K23 [{"sensitivity_type"}]
+  SETTABLEKS R1 R7 K22 ["sensitivity_type"]
+  CALL R3 4 0
+  GETUPVAL R3 4
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_107:
+  LOADN R2 1
+  JUMPIFNOTLE R0 R2 [+9]
+  SUBK R4 R0 K2 [0.2]
+  DIVK R3 R4 K1 [0.16]
+  ADDK R2 R3 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R2 [+2]
+  GETIMPORT R1 K5 [math.floor]
+  CALL R1 1 1
+  JUMPIF R1 [+7]
+  ADDK R4 R0 K7 [2]
+  DIVK R3 R4 K6 [0.6]
+  ADDK R2 R3 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R2 [+2]
+  GETIMPORT R1 K5 [math.floor]
+  CALL R1 1 1
+  LOADK R3 K2 [0.2]
+  JUMPIFNOTLE R0 R3 [+3]
+  LOADN R2 0
+  RETURN R2 1
+  MOVE R2 R1
+  RETURN R2 1
+
+PROTO_108:
+  LOADN R2 5
+  JUMPIFNOTLE R0 R2 [+5]
+  LOADK R3 K1 [0.16]
+  MUL R2 R3 R0
+  ADDK R1 R2 K0 [0.2]
+  JUMPIF R1 [+3]
+  LOADK R3 K3 [0.6]
+  MUL R2 R3 R0
+  SUBK R1 R2 K2 [2]
+  LOADK R3 K0 [0.2]
+  JUMPIFNOTLE R1 R3 [+3]
+  LOADK R2 K0 [0.2]
+  RETURN R2 1
+  MOVE R2 R1
+  RETURN R2 1
+
+PROTO_109:
+  MULK R3 R0 K0 [1000]
+  ADDK R2 R3 K1 [0.5]
+  FASTCALL1 MATH_FLOOR R2 [+2]
+  GETIMPORT R1 K4 [math.floor]
+  CALL R1 1 1
+  DIVK R0 R1 K0 [1000]
+  GETIMPORT R1 K7 [string.format]
+  LOADK R2 K8 ["%.3f"]
+  MOVE R3 R0
+  CALL R1 2 1
+  GETUPVAL R2 0
+  FASTCALL1 TONUMBER R1 [+3]
+  MOVE R5 R1
+  GETIMPORT R4 K10 [tonumber]
+  CALL R4 1 1
+  FASTCALL1 TOSTRING R4 [+2]
+  GETIMPORT R3 K12 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K13 ["Text"]
+  RETURN R0 0
+
+PROTO_110:
+  LOADN R1 0
+  JUMPIFNOTLT R0 R1 [+2]
+  MINUS R0 R0
+  LOADN R1 100
+  JUMPIFNOTLT R1 R0 [+3]
+  LOADN R0 100
+  RETURN R0 1
+  LOADK R1 K0 [0.001]
+  JUMPIFNOTLT R0 R1 [+2]
+  LOADK R0 K0 [0.001]
+  RETURN R0 1
+
+PROTO_111:
+  GETUPVAL R2 0
+  JUMPIF R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 0
+  LOADB R2 0
+  SETUPVAL R2 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K0 ["MouseAdvancedEntry"]
+  JUMPIFEQ R1 R2 [+31]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K0 ["MouseAdvancedEntry"]
+  LOADN R6 1
+  JUMPIFNOTLE R0 R6 [+9]
+  SUBK R8 R0 K3 [0.2]
+  DIVK R7 R8 K2 [0.16]
+  ADDK R6 R7 K1 [0.5]
+  FASTCALL1 MATH_FLOOR R6 [+2]
+  GETIMPORT R5 K6 [math.floor]
+  CALL R5 1 1
+  JUMPIF R5 [+7]
+  ADDK R8 R0 K8 [2]
+  DIVK R7 R8 K7 [0.6]
+  ADDK R6 R7 K1 [0.5]
+  FASTCALL1 MATH_FLOOR R6 [+2]
+  GETIMPORT R5 K6 [math.floor]
+  CALL R5 1 1
+  LOADK R6 K3 [0.2]
+  JUMPIFNOTLE R0 R6 [+3]
+  LOADN R4 0
+  JUMP [+1]
+  MOVE R4 R5
+  NAMECALL R2 R2 K9 ["SetValue"]
+  CALL R2 2 0
+  MOVE R2 R0
+  MULK R5 R2 K10 [1000]
+  ADDK R4 R5 K1 [0.5]
+  FASTCALL1 MATH_FLOOR R4 [+2]
+  GETIMPORT R3 K6 [math.floor]
+  CALL R3 1 1
+  DIVK R2 R3 K10 [1000]
+  GETIMPORT R3 K13 [string.format]
+  LOADK R4 K14 ["%.3f"]
+  MOVE R5 R2
+  CALL R3 2 1
+  GETUPVAL R4 3
+  FASTCALL1 TONUMBER R3 [+3]
+  MOVE R7 R3
+  GETIMPORT R6 K16 [tonumber]
+  CALL R6 1 1
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K18 [tostring]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K19 ["Text"]
+  LOADB R2 1
+  SETUPVAL R2 0
+  RETURN R0 0
+
+PROTO_112:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["MouseAdvancedEntry"]
+  LOADB R2 1
+  NAMECALL R0 R0 K1 ["SetInteractable"]
+  CALL R0 2 0
+  GETIMPORT R1 K4 [string.match]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["Text"]
+  LOADK R3 K6 ["([%d%.]+)"]
+  CALL R1 2 1
+  FASTCALL1 TONUMBER R1 [+2]
+  GETIMPORT R0 K8 [tonumber]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+9]
+  GETGLOBAL R1 K9 ["setMouseSensitivity"]
+  GETGLOBAL R2 K10 ["clampMouseSensitivity"]
+  MOVE R3 R0
+  CALL R2 1 1
+  GETUPVAL R3 1
+  CALL R1 2 0
+  RETURN R0 0
+  GETGLOBAL R1 K9 ["setMouseSensitivity"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K11 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R2 R3 K12 ["X"]
+  GETUPVAL R3 1
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_113:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["MouseAdvancedEntry"]
+  LOADB R2 0
+  NAMECALL R0 R0 K1 ["SetInteractable"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_114:
+  GETGLOBAL R1 K0 ["clampMouseSensitivity"]
+  MOVE R2 R0
+  CALL R1 1 1
+  MOVE R0 R1
+  MOVE R1 R0
+  LOADN R3 5
+  JUMPIFNOTLE R1 R3 [+5]
+  LOADK R4 K2 [0.16]
+  MUL R3 R4 R1
+  ADDK R2 R3 K1 [0.2]
+  JUMPIF R2 [+3]
+  LOADK R4 K4 [0.6]
+  MUL R3 R4 R1
+  SUBK R2 R3 K3 [2]
+  LOADK R3 K1 [0.2]
+  JUMPIFNOTLE R2 R3 [+3]
+  LOADK R0 K1 [0.2]
+  JUMP [+1]
+  MOVE R0 R2
+  GETGLOBAL R1 K5 ["setMouseSensitivity"]
+  MOVE R2 R0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K6 ["MouseAdvancedEntry"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_115:
+  DUPCLOSURE R0 K0 [PROTO_107]
+  DUPCLOSURE R1 K1 [PROTO_108]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["MouseSensitivity"]
+  LOADN R5 1
+  JUMPIFNOTLE R3 R5 [+9]
+  SUBK R7 R3 K5 [0.2]
+  DIVK R6 R7 K4 [0.16]
+  ADDK R5 R6 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R5 [+2]
+  GETIMPORT R4 K8 [math.floor]
+  CALL R4 1 1
+  JUMPIF R4 [+7]
+  ADDK R7 R3 K10 [2]
+  DIVK R6 R7 K9 [0.6]
+  ADDK R5 R6 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R5 [+2]
+  GETIMPORT R4 K8 [math.floor]
+  CALL R4 1 1
+  LOADK R5 K5 [0.2]
+  JUMPIFNOTLE R3 R5 [+3]
+  LOADN R2 0
+  JUMP [+1]
+  MOVE R2 R4
+  LOADB R3 1
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K11 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R5 R6 K12 ["X"]
+  FASTCALL1 TOSTRING R5 [+2]
+  GETIMPORT R4 K14 [tostring]
+  CALL R4 1 1
+  GETUPVAL R5 1
+  GETUPVAL R6 1
+  GETUPVAL R7 1
+  GETUPVAL R8 2
+  GETUPVAL R10 1
+  LOADK R11 K15 ["Camera Sensitivity"]
+  LOADK R12 K16 ["Slider"]
+  LOADN R13 10
+  MOVE R14 R2
+  NAMECALL R8 R8 K17 ["AddNewRow"]
+  CALL R8 6 3
+  SETTABLEKS R8 R5 K18 ["MouseAdvancedFrame"]
+  SETTABLEKS R9 R6 K19 ["MouseAdvancedLabel"]
+  SETTABLEKS R10 R7 K20 ["MouseAdvancedEntry"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K18 ["MouseAdvancedFrame"]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K18 ["MouseAdvancedFrame"]
+  SETTABLEKS R6 R5 K21 ["LayoutOrder"]
+  GETUPVAL R5 4
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K18 ["MouseAdvancedFrame"]
+  LOADB R7 1
+  SETTABLE R7 R5 R6
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R5 R6 K22 ["SliderFrame"]
+  GETIMPORT R6 K25 [UDim2.new]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R10 R11 K22 ["SliderFrame"]
+  GETTABLEKS R9 R10 K26 ["Size"]
+  GETTABLEKS R8 R9 K12 ["X"]
+  GETTABLEKS R7 R8 K27 ["Scale"]
+  GETUPVAL R9 5
+  JUMPIFNOT R9 [+14]
+  GETUPVAL R15 1
+  GETTABLEKS R14 R15 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R13 R14 K22 ["SliderFrame"]
+  GETTABLEKS R12 R13 K26 ["Size"]
+  GETTABLEKS R11 R12 K12 ["X"]
+  GETTABLEKS R10 R11 K30 ["Offset"]
+  SUBK R9 R10 K29 [60]
+  SUBK R8 R9 K28 [20]
+  JUMP [+12]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R12 R13 K22 ["SliderFrame"]
+  GETTABLEKS R11 R12 K26 ["Size"]
+  GETTABLEKS R10 R11 K12 ["X"]
+  GETTABLEKS R9 R10 K30 ["Offset"]
+  SUBK R8 R9 K29 [60]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R12 R13 K22 ["SliderFrame"]
+  GETTABLEKS R11 R12 K26 ["Size"]
+  GETTABLEKS R10 R11 K31 ["Y"]
+  GETTABLEKS R9 R10 K27 ["Scale"]
+  GETUPVAL R16 1
+  GETTABLEKS R15 R16 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R14 R15 K22 ["SliderFrame"]
+  GETTABLEKS R13 R14 K26 ["Size"]
+  GETTABLEKS R12 R13 K31 ["Y"]
+  GETTABLEKS R11 R12 K30 ["Offset"]
+  SUBK R10 R11 K32 [6]
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K26 ["Size"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R5 R6 K22 ["SliderFrame"]
+  GETIMPORT R6 K25 [UDim2.new]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R10 R11 K22 ["SliderFrame"]
+  GETTABLEKS R9 R10 K33 ["Position"]
+  GETTABLEKS R8 R9 K12 ["X"]
+  GETTABLEKS R7 R8 K27 ["Scale"]
+  GETUPVAL R9 5
+  JUMPIFNOT R9 [+14]
+  GETUPVAL R15 1
+  GETTABLEKS R14 R15 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R13 R14 K22 ["SliderFrame"]
+  GETTABLEKS R12 R13 K33 ["Position"]
+  GETTABLEKS R11 R12 K12 ["X"]
+  GETTABLEKS R10 R11 K30 ["Offset"]
+  SUBK R9 R10 K29 [60]
+  SUBK R8 R9 K28 [20]
+  JUMP [+12]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R12 R13 K22 ["SliderFrame"]
+  GETTABLEKS R11 R12 K26 ["Size"]
+  GETTABLEKS R10 R11 K12 ["X"]
+  GETTABLEKS R9 R10 K30 ["Offset"]
+  SUBK R8 R9 K29 [60]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R12 R13 K22 ["SliderFrame"]
+  GETTABLEKS R11 R12 K33 ["Position"]
+  GETTABLEKS R10 R11 K31 ["Y"]
+  GETTABLEKS R9 R10 K27 ["Scale"]
+  GETUPVAL R15 1
+  GETTABLEKS R14 R15 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R13 R14 K22 ["SliderFrame"]
+  GETTABLEKS R12 R13 K33 ["Position"]
+  GETTABLEKS R11 R12 K31 ["Y"]
+  GETTABLEKS R10 R11 K30 ["Offset"]
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K33 ["Position"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K19 ["MouseAdvancedLabel"]
+  LOADN R6 2
+  SETTABLEKS R6 R5 K34 ["ZIndex"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K20 ["MouseAdvancedEntry"]
+  LOADB R7 1
+  NAMECALL R5 R5 K35 ["SetInteractable"]
+  CALL R5 2 0
+  GETUPVAL R5 6
+  LOADK R6 K36 ["TextBox"]
+  CALL R5 1 1
+  DUPTABLE R6 K47 [{"Name", "TextColor3", "BorderColor3", "BackgroundColor3", "Font", "TextSize", "Size", "Position", "AnchorPoint", "ZIndex", "Selectable", "Parent", "BorderSizePixel"}]
+  LOADK R7 K48 ["CameraSensitivityTextBox"]
+  SETTABLEKS R7 R6 K37 ["Name"]
+  GETIMPORT R7 K50 [Color3.new]
+  LOADN R8 1
+  LOADN R9 1
+  LOADN R10 1
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K38 ["TextColor3"]
+  GETIMPORT R7 K50 [Color3.new]
+  LOADK R8 K51 [0.8]
+  LOADK R9 K51 [0.8]
+  LOADK R10 K51 [0.8]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K39 ["BorderColor3"]
+  GETIMPORT R7 K50 [Color3.new]
+  LOADK R8 K5 [0.2]
+  LOADK R9 K5 [0.2]
+  LOADK R10 K5 [0.2]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K40 ["BackgroundColor3"]
+  GETUPVAL R8 7
+  GETTABLEKS R7 R8 K52 ["font"]
+  GETIMPORT R8 K55 [Enum.Font.SourceSans]
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K41 ["Font"]
+  GETUPVAL R8 7
+  GETTABLEKS R7 R8 K56 ["textSize"]
+  LOADN R8 18
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K42 ["TextSize"]
+  GETIMPORT R7 K25 [UDim2.new]
+  LOADN R8 0
+  LOADN R9 60
+  LOADK R10 K51 [0.8]
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K26 ["Size"]
+  GETIMPORT R7 K25 [UDim2.new]
+  LOADN R8 1
+  GETUPVAL R10 5
+  JUMPIFNOT R10 [+2]
+  LOADN R9 10
+  JUMP [+1]
+  LOADN R9 254
+  LOADK R10 K3 [0.5]
+  LOADN R11 0
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K33 ["Position"]
+  GETIMPORT R7 K58 [Vector2.new]
+  LOADN R8 0
+  LOADK R9 K3 [0.5]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K43 ["AnchorPoint"]
+  LOADN R7 3
+  SETTABLEKS R7 R6 K34 ["ZIndex"]
+  LOADB R7 0
+  SETTABLEKS R7 R6 K44 ["Selectable"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R7 R8 K22 ["SliderFrame"]
+  SETTABLEKS R7 R6 K45 ["Parent"]
+  GETUPVAL R9 7
+  GETTABLEKS R8 R9 K59 ["UIBloxThemeEnabled"]
+  JUMPIFNOT R8 [+2]
+  LOADN R7 0
+  JUMP [+1]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K46 ["BorderSizePixel"]
+  CALL R5 1 1
+  GETUPVAL R7 7
+  GETTABLEKS R6 R7 K59 ["UIBloxThemeEnabled"]
+  JUMPIFNOT R6 [+12]
+  GETUPVAL R6 6
+  LOADK R7 K60 ["UICorner"]
+  CALL R6 1 1
+  DUPTABLE R7 K62 [{"CornerRadius", "Parent"}]
+  GETUPVAL R9 7
+  GETTABLEKS R8 R9 K63 ["DefaultCornerRadius"]
+  SETTABLEKS R8 R7 K61 ["CornerRadius"]
+  SETTABLEKS R5 R7 K45 ["Parent"]
+  CALL R6 1 0
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R5
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K11 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R7 R8 K12 ["X"]
+  MULK R10 R7 K64 [1000]
+  ADDK R9 R10 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R9 [+2]
+  GETIMPORT R8 K8 [math.floor]
+  CALL R8 1 1
+  DIVK R7 R8 K64 [1000]
+  GETIMPORT R8 K67 [string.format]
+  LOADK R9 K68 ["%.3f"]
+  MOVE R10 R7
+  CALL R8 2 1
+  FASTCALL1 TONUMBER R8 [+3]
+  MOVE R11 R8
+  GETIMPORT R10 K70 [tonumber]
+  CALL R10 1 1
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K14 [tostring]
+  CALL R9 1 1
+  SETTABLEKS R9 R5 K71 ["Text"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K20 ["MouseAdvancedEntry"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K11 ["MouseSensitivityFirstPerson"]
+  GETTABLEKS R10 R11 K12 ["X"]
+  LOADN R12 1
+  JUMPIFNOTLE R10 R12 [+9]
+  SUBK R14 R10 K5 [0.2]
+  DIVK R13 R14 K4 [0.16]
+  ADDK R12 R13 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R12 [+2]
+  GETIMPORT R11 K8 [math.floor]
+  CALL R11 1 1
+  JUMPIF R11 [+7]
+  ADDK R14 R10 K10 [2]
+  DIVK R13 R14 K9 [0.6]
+  ADDK R12 R13 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R12 [+2]
+  GETIMPORT R11 K8 [math.floor]
+  CALL R11 1 1
+  LOADK R12 K5 [0.2]
+  JUMPIFNOTLE R10 R12 [+3]
+  LOADN R9 0
+  JUMP [+1]
+  MOVE R9 R11
+  NAMECALL R7 R7 K72 ["SetValue"]
+  CALL R7 2 0
+  DUPCLOSURE R7 K73 [PROTO_110]
+  SETGLOBAL R7 K74 ["clampMouseSensitivity"]
+  NEWCLOSURE R7 P4
+  CAPTURE REF R3
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U1
+  CAPTURE VAL R5
+  SETGLOBAL R7 K75 ["setMouseSensitivity"]
+  GETTABLEKS R7 R5 K76 ["FocusLost"]
+  NEWCLOSURE R9 P5
+  CAPTURE UPVAL U1
+  CAPTURE VAL R5
+  CAPTURE UPVAL U0
+  NAMECALL R7 R7 K77 ["connect"]
+  CALL R7 2 0
+  GETTABLEKS R7 R5 K78 ["Focused"]
+  NEWCLOSURE R9 P6
+  CAPTURE UPVAL U1
+  NAMECALL R7 R7 K77 ["connect"]
+  CALL R7 2 0
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K20 ["MouseAdvancedEntry"]
+  GETTABLEKS R7 R8 K79 ["ValueChanged"]
+  NEWCLOSURE R9 P7
+  CAPTURE UPVAL U1
+  NAMECALL R7 R7 K77 ["connect"]
+  CALL R7 2 0
+  CLOSEUPVALS R3
+  RETURN R0 0
+
+PROTO_116:
+  LOADN R2 1
+  JUMPIFNOTLE R0 R2 [+9]
+  SUBK R4 R0 K2 [0.2]
+  DIVK R3 R4 K1 [0.16]
+  ADDK R2 R3 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R2 [+2]
+  GETIMPORT R1 K5 [math.floor]
+  CALL R1 1 1
+  JUMPIF R1 [+7]
+  ADDK R4 R0 K7 [2]
+  DIVK R3 R4 K6 [0.6]
+  ADDK R2 R3 K0 [0.5]
+  FASTCALL1 MATH_FLOOR R2 [+2]
+  GETIMPORT R1 K5 [math.floor]
+  CALL R1 1 1
+  LOADK R3 K2 [0.2]
+  JUMPIFNOTLE R0 R3 [+3]
+  LOADN R2 0
+  RETURN R2 1
+  MOVE R2 R1
+  RETURN R2 1
+
+PROTO_117:
+  LOADN R2 5
+  JUMPIFNOTLE R0 R2 [+5]
+  LOADK R3 K1 [0.16]
+  MUL R2 R3 R0
+  ADDK R1 R2 K0 [0.2]
+  JUMPIF R1 [+3]
+  LOADK R3 K3 [0.6]
+  MUL R2 R3 R0
+  SUBK R1 R2 K2 [2]
+  LOADK R3 K0 [0.2]
+  JUMPIFNOTLE R1 R3 [+3]
+  LOADK R2 K0 [0.2]
+  RETURN R2 1
+  MOVE R2 R1
+  RETURN R2 1
+
+PROTO_118:
+  GETUPVAL R1 0
+  LOADN R4 5
+  JUMPIFNOTLE R0 R4 [+5]
+  LOADK R5 K1 [0.16]
+  MUL R4 R5 R0
+  ADDK R3 R4 K0 [0.2]
+  JUMPIF R3 [+3]
+  LOADK R5 K3 [0.6]
+  MUL R4 R5 R0
+  SUBK R3 R4 K2 [2]
+  LOADK R4 K0 [0.2]
+  JUMPIFNOTLE R3 R4 [+3]
+  LOADK R2 K0 [0.2]
+  JUMP [+1]
+  MOVE R2 R3
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_119:
+  DUPCLOSURE R0 K0 [PROTO_116]
+  DUPCLOSURE R1 K1 [PROTO_117]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["GamepadCameraSensitivity"]
+  LOADN R5 1
+  JUMPIFNOTLE R3 R5 [+9]
+  SUBK R7 R3 K5 [0.2]
+  DIVK R6 R7 K4 [0.16]
+  ADDK R5 R6 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R5 [+2]
+  GETIMPORT R4 K8 [math.floor]
+  CALL R4 1 1
+  JUMPIF R4 [+7]
+  ADDK R7 R3 K10 [2]
+  DIVK R6 R7 K9 [0.6]
+  ADDK R5 R6 K3 [0.5]
+  FASTCALL1 MATH_FLOOR R5 [+2]
+  GETIMPORT R4 K8 [math.floor]
+  CALL R4 1 1
+  LOADK R5 K5 [0.2]
+  JUMPIFNOTLE R3 R5 [+3]
+  LOADN R2 0
+  JUMP [+1]
+  MOVE R2 R4
+  GETUPVAL R3 1
+  GETUPVAL R4 1
+  GETUPVAL R5 1
+  GETUPVAL R6 2
+  GETUPVAL R8 1
+  LOADK R9 K11 ["Camera Sensitivity"]
+  LOADK R10 K12 ["Slider"]
+  LOADN R11 10
+  MOVE R12 R2
+  NAMECALL R6 R6 K13 ["AddNewRow"]
+  CALL R6 6 3
+  SETTABLEKS R6 R3 K14 ["GamepadSensitivityFrame"]
+  SETTABLEKS R7 R4 K15 ["GamepadSensitivityLabel"]
+  SETTABLEKS R8 R5 K16 ["GamepadSensitivitySlider"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K14 ["GamepadSensitivityFrame"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K14 ["GamepadSensitivityFrame"]
+  SETTABLEKS R4 R3 K17 ["LayoutOrder"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K16 ["GamepadSensitivitySlider"]
+  GETTABLEKS R3 R4 K18 ["ValueChanged"]
+  DUPCLOSURE R5 K19 [PROTO_118]
+  CAPTURE UPVAL U4
+  NAMECALL R3 R3 K20 ["connect"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_120:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+16]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["unmount"]
+  GETUPVAL R1 0
+  CALL R0 1 0
+  GETUPVAL R0 2
+  LOADK R2 K1 ["RbxStopOverscanMovement"]
+  NAMECALL R0 R0 K2 ["UnbindCoreAction"]
+  CALL R0 2 0
+  GETUPVAL R0 3
+  LOADB R2 1
+  LOADB R3 1
+  NAMECALL R0 R0 K3 ["SetVisibility"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_121:
+  RETURN R0 0
+
+PROTO_122:
+  GETIMPORT R0 K1 [require]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["Modules"]
+  GETTABLEKS R2 R3 K3 ["Settings"]
+  GETTABLEKS R1 R2 K4 ["SettingsHub"]
+  CALL R0 1 1
+  LOADNIL R1
+  GETIMPORT R2 K1 [require]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K2 ["Modules"]
+  GETTABLEKS R6 R7 K5 ["Shell"]
+  GETTABLEKS R5 R6 K6 ["Components"]
+  GETTABLEKS R4 R5 K7 ["Overscan10ft"]
+  GETTABLEKS R3 R4 K8 ["Overscan"]
+  CALL R2 1 1
+  MOVE R1 R2
+  GETIMPORT R2 K1 [require]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K2 ["Modules"]
+  GETTABLEKS R5 R6 K3 ["Settings"]
+  GETTABLEKS R4 R5 K6 ["Components"]
+  GETTABLEKS R3 R4 K9 ["OverscanWrapper"]
+  CALL R2 1 1
+  MOVE R3 R1
+  CALL R2 1 1
+  MOVE R1 R2
+  GETIMPORT R2 K1 [require]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["Roact"]
+  CALL R2 1 1
+  LOADNIL R3
+  NEWTABLE R4 4 0
+  NEWCLOSURE R5 P0
+  CAPTURE REF R3
+  CAPTURE VAL R2
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K12 ["onUnmount"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K13 ["ImageVisible"]
+  LOADK R5 K14 [0.2]
+  SETTABLEKS R5 R4 K15 ["BackgroundTransparency"]
+  LOADB R7 0
+  LOADB R8 1
+  NAMECALL R5 R0 K16 ["SetVisibility"]
+  CALL R5 3 0
+  DUPCLOSURE R5 K17 [PROTO_121]
+  GETUPVAL R6 2
+  LOADK R8 K18 ["RbxStopOverscanMovement"]
+  MOVE R9 R5
+  LOADB R10 0
+  GETIMPORT R11 K22 [Enum.UserInputType.Gamepad1]
+  GETIMPORT R12 K24 [Enum.UserInputType.Gamepad2]
+  GETIMPORT R13 K26 [Enum.UserInputType.Gamepad3]
+  GETIMPORT R14 K28 [Enum.UserInputType.Gamepad4]
+  NAMECALL R6 R6 K29 ["BindCoreAction"]
+  CALL R6 8 0
+  LOADNIL R6
+  GETTABLEKS R7 R2 K30 ["createElement"]
+  MOVE R8 R1
+  MOVE R9 R4
+  CALL R7 2 1
+  MOVE R6 R7
+  GETTABLEKS R7 R2 K31 ["mount"]
+  MOVE R8 R6
+  GETUPVAL R9 0
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R11 R1
+  GETIMPORT R10 K33 [tostring]
+  CALL R10 1 1
+  CALL R7 3 1
+  MOVE R3 R7
+  CLOSEUPVALS R3
+  RETURN R0 0
+
+PROTO_123:
+  DUPCLOSURE R0 K0 [PROTO_122]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  GETUPVAL R1 3
+  LOADK R3 K1 ["AdjustButton"]
+  LOADK R4 K2 ["Adjust"]
+  GETIMPORT R5 K5 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 44
+  LOADN R8 1
+  LOADN R9 236
+  CALL R5 4 1
+  MOVE R6 R0
+  GETUPVAL R7 4
+  NAMECALL R1 R1 K6 ["MakeStyledButton"]
+  CALL R1 6 3
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K7 ["font"]
+  GETIMPORT R5 K11 [Enum.Font.SourceSans]
+  CALL R4 1 1
+  SETTABLEKS R4 R2 K9 ["Font"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 112
+  LOADN R7 0
+  LOADN R8 12
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K12 ["Position"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 0
+  LOADN R6 44
+  LOADN R7 0
+  LOADN R8 40
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K13 ["Size"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 112
+  LOADK R7 K14 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K12 ["Position"]
+  GETIMPORT R4 K16 [Vector2.new]
+  LOADN R5 0
+  LOADK R6 K14 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R1 K17 ["AnchorPoint"]
+  GETUPVAL R4 6
+  NAMECALL R4 R4 K18 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+19]
+  LOADB R4 0
+  SETTABLEKS R4 R1 K19 ["Selectable"]
+  LOADB R4 0
+  SETTABLEKS R4 R1 K20 ["Active"]
+  GETTABLEKS R4 R1 K21 ["Enabled"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K22 ["Value"]
+  GETIMPORT R4 K25 [Color3.fromRGB]
+  LOADN R5 100
+  LOADN R6 100
+  LOADN R7 100
+  CALL R4 3 1
+  SETTABLEKS R4 R2 K26 ["TextColor3"]
+  GETUPVAL R4 3
+  GETUPVAL R6 4
+  LOADK R7 K27 ["Safe Zone"]
+  MOVE R8 R1
+  NAMECALL R4 R4 K28 ["AddNewRowObject"]
+  CALL R4 4 1
+  GETUPVAL R6 7
+  GETTABLEKS R5 R6 K29 ["OverscanAdjustButton"]
+  SETTABLEKS R5 R4 K30 ["LayoutOrder"]
+  MOVE R5 R3
+  MOVE R6 R4
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_124:
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K4 ["Parent"]
+  GETTABLEKS R1 R2 K5 ["DevConsoleMaster"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+27]
+  LOADB R3 1
+  NAMECALL R1 R0 K6 ["SetVisibility"]
+  CALL R1 2 0
+  GETIMPORT R1 K1 [require]
+  GETIMPORT R5 K3 [script]
+  GETTABLEKS R4 R5 K4 ["Parent"]
+  GETTABLEKS R3 R4 K4 ["Parent"]
+  GETTABLEKS R2 R3 K7 ["SettingsHub"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+4]
+  LOADB R4 0
+  NAMECALL R2 R1 K6 ["SetVisibility"]
+  CALL R2 2 0
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+5]
+  GETUPVAL R2 1
+  LOADK R3 K8 ["dev_console"]
+  LOADK R4 K9 [""]
+  LOADK R5 K10 ["pressed"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_125:
+  DUPCLOSURE R0 K0 [PROTO_124]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  GETUPVAL R1 2
+  JUMPIFNOT R1 [+66]
+  GETUPVAL R1 3
+  LOADK R3 K1 ["DevConsoleButton"]
+  LOADK R4 K2 ["Open"]
+  GETIMPORT R5 K5 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 1
+  LOADN R9 236
+  CALL R5 4 1
+  MOVE R6 R0
+  GETUPVAL R7 4
+  NAMECALL R1 R1 K6 ["MakeStyledButton"]
+  CALL R1 6 3
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K7 ["font"]
+  GETIMPORT R5 K11 [Enum.Font.SourceSans]
+  CALL R4 1 1
+  SETTABLEKS R4 R2 K9 ["Font"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADK R5 K12 [0.6]
+  LOADN R6 246
+  LOADN R7 0
+  LOADN R8 35
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K13 ["Size"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADK R5 K14 [0.4]
+  LOADN R6 10
+  LOADK R7 K15 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K16 ["Position"]
+  GETIMPORT R4 K18 [Vector2.new]
+  LOADN R5 0
+  LOADK R6 K15 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R1 K19 ["AnchorPoint"]
+  GETUPVAL R4 3
+  GETUPVAL R6 4
+  LOADK R7 K20 ["Developer Console"]
+  MOVE R8 R1
+  LOADNIL R9
+  LOADB R10 1
+  NAMECALL R4 R4 K21 ["AddNewRowObject"]
+  CALL R4 6 1
+  GETUPVAL R6 6
+  GETTABLEKS R5 R6 K22 ["DeveloperConsoleButton"]
+  SETTABLEKS R5 R4 K23 ["LayoutOrder"]
+  MOVE R5 R3
+  MOVE R6 R4
+  CALL R5 1 0
+  RETURN R0 0
+  GETUPVAL R1 3
+  LOADK R3 K1 ["DevConsoleButton"]
+  LOADK R4 K2 ["Open"]
+  GETIMPORT R5 K5 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 44
+  LOADN R8 1
+  LOADN R9 236
+  CALL R5 4 1
+  MOVE R6 R0
+  GETUPVAL R7 4
+  NAMECALL R1 R1 K6 ["MakeStyledButton"]
+  CALL R1 6 3
+  GETUPVAL R5 5
+  GETTABLEKS R4 R5 K7 ["font"]
+  GETIMPORT R5 K11 [Enum.Font.SourceSans]
+  CALL R4 1 1
+  SETTABLEKS R4 R2 K9 ["Font"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADK R5 K12 [0.6]
+  LOADN R6 246
+  LOADN R7 0
+  LOADN R8 35
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K13 ["Size"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 112
+  LOADK R7 K15 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R1 K16 ["Position"]
+  GETIMPORT R4 K18 [Vector2.new]
+  LOADN R5 0
+  LOADK R6 K15 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R1 K19 ["AnchorPoint"]
+  GETUPVAL R4 3
+  GETUPVAL R6 4
+  LOADK R7 K20 ["Developer Console"]
+  MOVE R8 R1
+  NAMECALL R4 R4 K21 ["AddNewRowObject"]
+  CALL R4 4 1
+  GETUPVAL R6 6
+  GETTABLEKS R5 R6 K22 ["DeveloperConsoleButton"]
+  SETTABLEKS R5 R4 K23 ["LayoutOrder"]
+  MOVE R5 R3
+  MOVE R6 R4
+  CALL R5 1 0
+  RETURN R0 0
+
+PROTO_126:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["CanPlayerManagePlaceAsync"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["LocalPlayer"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_127:
+  NEWCLOSURE R0 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  GETUPVAL R1 7
+  NAMECALL R1 R1 K0 ["IsStudio"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+3]
+  MOVE R1 R0
+  CALL R1 0 0
+  RETURN R0 0
+  GETIMPORT R1 K2 [spawn]
+  NEWCLOSURE R2 P1
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE VAL R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_128:
+  GETUPVAL R2 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["type"]
+  NAMECALL R2 R2 K1 ["GetGuiIsVisible"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+2]
+  LOADN R1 1
+  JUMP [+1]
+  LOADN R1 2
+  JUMPIFEQ R1 R0 [+8]
+  GETUPVAL R2 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["type"]
+  NAMECALL R2 R2 K2 ["ToggleGuiIsVisibleIfAllowed"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_129:
+  JUMPIFEQKN R0 K0 [2] [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R2 0
+  LOADK R4 K1 ["FreecamScript"]
+  LOADB R5 1
+  NAMECALL R2 R2 K2 ["FindFirstChild"]
+  CALL R2 3 1
+  JUMPIF R2 [+5]
+  GETIMPORT R3 K4 [warn]
+  LOADK R4 K5 ["Freecam not present"]
+  CALL R3 1 0
+  RETURN R0 0
+  LOADK R5 K6 ["FreecamEnabled"]
+  MOVE R6 R1
+  NAMECALL R3 R2 K7 ["SetAttribute"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_130:
+  GETUPVAL R1 0
+  GETIMPORT R3 K3 [Enum.GuiType.PlayerNameplates]
+  NAMECALL R1 R1 K4 ["ToggleGuiIsVisibleIfAllowed"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_131:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+162]
+  NEWTABLE R0 0 3
+  DUPTABLE R1 K3 [{"label", "type", "layoutOrderKey"}]
+  LOADK R2 K4 ["Custom"]
+  SETTABLEKS R2 R1 K0 ["label"]
+  GETIMPORT R2 K7 [Enum.GuiType.Custom]
+  SETTABLEKS R2 R1 K1 ["type"]
+  LOADK R2 K8 ["UiToggleRowCustom"]
+  SETTABLEKS R2 R1 K2 ["layoutOrderKey"]
+  DUPTABLE R2 K3 [{"label", "type", "layoutOrderKey"}]
+  LOADK R3 K9 ["CustomBillboards"]
+  SETTABLEKS R3 R2 K0 ["label"]
+  GETIMPORT R3 K10 [Enum.GuiType.CustomBillboards]
+  SETTABLEKS R3 R2 K1 ["type"]
+  LOADK R3 K11 ["UiToggleRowBillboards"]
+  SETTABLEKS R3 R2 K2 ["layoutOrderKey"]
+  DUPTABLE R3 K3 [{"label", "type", "layoutOrderKey"}]
+  LOADK R4 K12 ["PlayerNameplates"]
+  SETTABLEKS R4 R3 K0 ["label"]
+  GETIMPORT R4 K13 [Enum.GuiType.PlayerNameplates]
+  SETTABLEKS R4 R3 K1 ["type"]
+  LOADK R4 K14 ["UiToggleRowNameplates"]
+  SETTABLEKS R4 R3 K2 ["layoutOrderKey"]
+  SETLIST R0 R1 3 [1]
+  GETUPVAL R1 1
+  LOADK R3 K15 ["InGame.CommonUI.Label.On"]
+  NAMECALL R1 R1 K16 ["FormatByKey"]
+  CALL R1 2 1
+  GETUPVAL R2 1
+  LOADK R4 K17 ["InGame.CommonUI.Label.Off"]
+  NAMECALL R2 R2 K16 ["FormatByKey"]
+  CALL R2 2 1
+  GETUPVAL R3 2
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R3 K18 ["uiToggleSelectors"]
+  MOVE R3 R0
+  LOADNIL R4
+  LOADNIL R5
+  FORGPREP R3
+  GETUPVAL R8 1
+  LOADK R10 K19 ["Feature.SettingsHub.GameSettings.GuiVisibility.ShowGuiType"]
+  DUPTABLE R11 K20 [{"GuiType"}]
+  GETTABLEKS R12 R7 K0 ["label"]
+  SETTABLEKS R12 R11 K6 ["GuiType"]
+  NAMECALL R8 R8 K16 ["FormatByKey"]
+  CALL R8 3 1
+  GETUPVAL R9 3
+  GETUPVAL R11 2
+  MOVE R12 R8
+  LOADK R13 K21 ["Selector"]
+  NEWTABLE R14 0 2
+  MOVE R15 R1
+  MOVE R16 R2
+  SETLIST R14 R15 2 [1]
+  LOADN R15 1
+  NAMECALL R9 R9 K22 ["AddNewRow"]
+  CALL R9 6 3
+  GETUPVAL R13 4
+  GETTABLEKS R14 R7 K2 ["layoutOrderKey"]
+  GETTABLE R12 R13 R14
+  SETTABLEKS R12 R9 K23 ["LayoutOrder"]
+  GETTABLEKS R12 R11 K24 ["IndexChanged"]
+  NEWCLOSURE R14 P0
+  CAPTURE UPVAL U5
+  CAPTURE VAL R7
+  NAMECALL R12 R12 K25 ["Connect"]
+  CALL R12 2 0
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K18 ["uiToggleSelectors"]
+  GETTABLEKS R13 R7 K0 ["label"]
+  DUPTABLE R14 K29 [{"label", "type", "row", "frame", "selector"}]
+  SETTABLEKS R8 R14 K0 ["label"]
+  GETTABLEKS R15 R7 K1 ["type"]
+  SETTABLEKS R15 R14 K1 ["type"]
+  SETTABLEKS R9 R14 K26 ["row"]
+  SETTABLEKS R10 R14 K27 ["frame"]
+  SETTABLEKS R11 R14 K28 ["selector"]
+  SETTABLE R14 R12 R13
+  FORGLOOP R3 2 [-58]
+  GETUPVAL R3 1
+  LOADK R5 K30 ["Feature.SettingsHub.GameSettings.GuiVisibility.Freecam"]
+  NAMECALL R3 R3 K16 ["FormatByKey"]
+  CALL R3 2 1
+  GETUPVAL R4 2
+  GETUPVAL R5 2
+  GETUPVAL R6 2
+  GETUPVAL R7 3
+  GETUPVAL R9 2
+  MOVE R10 R3
+  LOADK R11 K21 ["Selector"]
+  NEWTABLE R12 0 2
+  MOVE R13 R2
+  MOVE R14 R1
+  SETLIST R12 R13 2 [1]
+  LOADN R13 1
+  NAMECALL R7 R7 K22 ["AddNewRow"]
+  CALL R7 6 3
+  SETTABLEKS R7 R4 K31 ["freecamRow"]
+  SETTABLEKS R8 R5 K32 ["freecamFrame"]
+  SETTABLEKS R9 R6 K33 ["freecamSelector"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K31 ["freecamRow"]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K34 ["FreecamToggleRow"]
+  SETTABLEKS R5 R4 K23 ["LayoutOrder"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K33 ["freecamSelector"]
+  GETTABLEKS R4 R5 K24 ["IndexChanged"]
+  DUPCLOSURE R6 K35 [PROTO_129]
+  CAPTURE UPVAL U6
+  NAMECALL R4 R4 K25 ["Connect"]
+  CALL R4 2 0
+  RETURN R0 0
+  NEWTABLE R0 0 2
+  LOADK R1 K36 ["All visible"]
+  LOADK R2 K37 ["Hide nameplates/bubble chat"]
+  SETLIST R0 R1 2 [1]
+  GETUPVAL R1 2
+  GETUPVAL R2 2
+  GETUPVAL R3 2
+  GETUPVAL R4 3
+  GETUPVAL R6 2
+  LOADK R7 K38 ["BillboardGui Visibility"]
+  LOADK R8 K21 ["Selector"]
+  MOVE R9 R0
+  LOADN R10 1
+  NAMECALL R4 R4 K22 ["AddNewRow"]
+  CALL R4 6 3
+  SETTABLEKS R4 R1 K39 ["uiToggleRow"]
+  SETTABLEKS R5 R2 K40 ["uiToggleFrame"]
+  SETTABLEKS R6 R3 K41 ["uiToggleSelector"]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K39 ["uiToggleRow"]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K42 ["UiToggleRow"]
+  SETTABLEKS R2 R1 K23 ["LayoutOrder"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K41 ["uiToggleSelector"]
+  GETTABLEKS R1 R2 K24 ["IndexChanged"]
+  DUPCLOSURE R3 K43 [PROTO_130]
+  CAPTURE UPVAL U5
+  NAMECALL R1 R1 K44 ["connect"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_132:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+59]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["uiToggleSelectors"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R0 R3 K0 ["uiToggleSelectors"]
+  LOADNIL R1
+  LOADNIL R2
+  FORGPREP R0
+  GETUPVAL R6 2
+  GETTABLEKS R8 R4 K1 ["type"]
+  NAMECALL R6 R6 K2 ["GetGuiIsVisible"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+2]
+  LOADN R5 1
+  JUMP [+1]
+  LOADN R5 2
+  GETTABLEKS R6 R4 K3 ["selector"]
+  NAMECALL R6 R6 K4 ["GetSelectedIndex"]
+  CALL R6 1 1
+  JUMPIFEQ R5 R6 [+7]
+  GETTABLEKS R6 R4 K3 ["selector"]
+  MOVE R8 R5
+  NAMECALL R6 R6 K5 ["SetSelectionIndex"]
+  CALL R6 2 0
+  FORGLOOP R0 2 [-24]
+  GETUPVAL R0 3
+  LOADK R2 K6 ["FreecamScript"]
+  LOADB R3 1
+  NAMECALL R0 R0 K7 ["FindFirstChild"]
+  CALL R0 3 1
+  JUMPIFNOT R0 [+48]
+  LOADK R3 K8 ["FreecamEnabled"]
+  NAMECALL R1 R0 K9 ["GetAttribute"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+2]
+  LOADN R2 2
+  JUMP [+1]
+  LOADN R2 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K10 ["freecamSelector"]
+  MOVE R5 R2
+  NAMECALL R3 R3 K5 ["SetSelectionIndex"]
+  CALL R3 2 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K11 ["uiToggleSelector"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  LOADNIL R0
+  GETUPVAL R1 2
+  GETIMPORT R3 K15 [Enum.GuiType.PlayerNameplates]
+  NAMECALL R1 R1 K2 ["GetGuiIsVisible"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+2]
+  LOADN R0 1
+  JUMP [+1]
+  LOADN R0 2
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K11 ["uiToggleSelector"]
+  NAMECALL R1 R1 K4 ["GetSelectedIndex"]
+  CALL R1 1 1
+  JUMPIFNOTEQ R0 R1 [+2]
+  RETURN R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K11 ["uiToggleSelector"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K5 ["SetSelectionIndex"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_133:
+  MOVE R3 R0
+  JUMPIFNOT R3 [+23]
+  MOVE R3 R1
+  JUMPIFNOT R3 [+21]
+  MOVE R3 R2
+  JUMPIFNOT R3 [+19]
+  LOADB R3 0
+  LENGTH R4 R0
+  LOADN R5 0
+  JUMPIFNOTLT R5 R4 [+15]
+  LOADB R3 0
+  LOADN R4 0
+  JUMPIFNOTLT R4 R2 [+11]
+  LOADB R3 0
+  LENGTH R4 R0
+  JUMPIFNOTLE R2 R4 [+7]
+  LENGTH R4 R0
+  LENGTH R5 R1
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_134:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetSpeakerDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_135:
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CALL R1 1 4
+  JUMPIFNOT R1 [+66]
+  MOVE R5 R2
+  JUMPIFNOT R5 [+23]
+  MOVE R5 R3
+  JUMPIFNOT R5 [+21]
+  MOVE R5 R4
+  JUMPIFNOT R5 [+19]
+  LOADB R5 0
+  LENGTH R6 R2
+  LOADN R7 0
+  JUMPIFNOTLT R7 R6 [+15]
+  LOADB R5 0
+  LOADN R6 0
+  JUMPIFNOTLT R6 R4 [+11]
+  LOADB R5 0
+  LENGTH R6 R2
+  JUMPIFNOTLE R4 R6 [+7]
+  LENGTH R6 R2
+  LENGTH R7 R3
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  JUMPIFNOT R5 [+40]
+  LOADN R5 0
+  GETIMPORT R6 K3 [ipairs]
+  MOVE R7 R2
+  CALL R6 1 3
+  FORGPREP_INEXT R6
+  JUMPIFNOTEQ R10 R0 [+2]
+  MOVE R5 R9
+  FORGLOOP R6 2 [inext] [-4]
+  LOADN R6 0
+  JUMPIFNOTLT R6 R5 [+18]
+  GETUPVAL R6 1
+  CALL R6 0 1
+  JUMPIFNOT R6 [+7]
+  GETUPVAL R6 2
+  LOADK R8 K4 ["[OutputDeviceSelection] Setting VCS Speaker Device To {} {} "]
+  GETTABLE R9 R2 R5
+  GETTABLE R10 R3 R5
+  NAMECALL R6 R6 K5 ["debug"]
+  CALL R6 4 0
+  GETUPVAL R6 0
+  GETTABLE R8 R2 R5
+  GETTABLE R9 R3 R5
+  NAMECALL R6 R6 K6 ["SetSpeakerDevice"]
+  CALL R6 3 0
+  RETURN R0 0
+  GETUPVAL R6 1
+  CALL R6 0 1
+  JUMPIFNOT R6 [+14]
+  GETUPVAL R6 2
+  LOADK R8 K7 ["Could not find equivalent VoiceChatService Device"]
+  NAMECALL R6 R6 K8 ["warning"]
+  CALL R6 2 0
+  RETURN R0 0
+  GETUPVAL R5 1
+  CALL R5 0 1
+  JUMPIFNOT R5 [+5]
+  GETUPVAL R5 2
+  LOADK R7 K9 ["Could not connect to Voice Chat Service to change Output Device"]
+  NAMECALL R5 R5 K8 ["warning"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_136:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetOutputDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_137:
+  GETIMPORT R0 K1 [pcall]
+  DUPCLOSURE R1 K2 [PROTO_136]
+  CAPTURE UPVAL U0
+  CALL R0 1 4
+  JUMPIFNOT R0 [+30]
+  MOVE R4 R1
+  JUMPIFNOT R4 [+23]
+  MOVE R4 R2
+  JUMPIFNOT R4 [+21]
+  MOVE R4 R3
+  JUMPIFNOT R4 [+19]
+  LOADB R4 0
+  LENGTH R5 R1
+  LOADN R6 0
+  JUMPIFNOTLT R6 R5 [+15]
+  LOADB R4 0
+  LOADN R5 0
+  JUMPIFNOTLT R5 R3 [+11]
+  LOADB R4 0
+  LENGTH R5 R1
+  JUMPIFNOTLE R3 R5 [+7]
+  LENGTH R5 R1
+  LENGTH R6 R2
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R4 1
+  GETTABLE R5 R1 R3
+  CALL R4 1 0
+  RETURN R0 0
+  GETUPVAL R4 2
+  CALL R4 0 1
+  JUMPIFNOT R4 [+5]
+  GETUPVAL R4 3
+  LOADK R6 K3 ["Could not connect to Voice Chat Service to change Output Device"]
+  NAMECALL R4 R4 K4 ["warning"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_138:
+  GETUPVAL R2 0
+  MOVE R4 R0
+  MOVE R5 R1
+  NAMECALL R2 R2 K0 ["SetOutputDevice"]
+  CALL R2 3 0
+  GETUPVAL R2 1
+  LOADK R4 K1 ["[SwitchOutputDevice] Setting SS Speaker Device To {} {}"]
+  MOVE R5 R0
+  MOVE R6 R1
+  NAMECALL R2 R2 K2 ["info"]
+  CALL R2 4 0
+  RETURN R0 0
+
+PROTO_139:
+  GETUPVAL R3 0
+  GETUPVAL R5 1
+  LOADK R6 K0 ["DeviceInfo"]
+  CONCAT R4 R5 R6
+  GETTABLE R2 R3 R4
+  GETTABLEKS R1 R2 K1 ["Name"]
+  GETUPVAL R4 0
+  GETUPVAL R6 1
+  LOADK R7 K2 ["DeviceNames"]
+  CONCAT R5 R6 R7
+  GETTABLE R3 R4 R5
+  GETTABLE R2 R3 R0
+  JUMPIFNOTEQ R1 R2 [+17]
+  GETUPVAL R3 0
+  GETUPVAL R5 1
+  LOADK R6 K0 ["DeviceInfo"]
+  CONCAT R4 R5 R6
+  GETTABLE R2 R3 R4
+  GETTABLEKS R1 R2 K3 ["Guid"]
+  GETUPVAL R4 0
+  GETUPVAL R6 1
+  LOADK R7 K4 ["DeviceGuids"]
+  CONCAT R5 R6 R7
+  GETTABLE R3 R4 R5
+  GETTABLE R2 R3 R0
+  JUMPIFNOTEQ R1 R2 [+2]
+  RETURN R0 0
+  GETUPVAL R2 2
+  ADDK R1 R2 K5 [1]
+  SETUPVAL R1 2
+  GETIMPORT R2 K7 [wait]
+  GETUPVAL R3 3
+  CALL R2 1 0
+  GETUPVAL R3 2
+  JUMPIFEQ R1 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIFNOT R2 [+109]
+  LOADN R3 0
+  SETUPVAL R3 2
+  GETUPVAL R3 0
+  GETUPVAL R5 1
+  LOADK R6 K0 ["DeviceInfo"]
+  CONCAT R4 R5 R6
+  DUPTABLE R5 K8 [{"Name", "Guid"}]
+  GETUPVAL R8 0
+  GETUPVAL R10 1
+  LOADK R11 K2 ["DeviceNames"]
+  CONCAT R9 R10 R11
+  GETTABLE R7 R8 R9
+  GETTABLE R6 R7 R0
+  SETTABLEKS R6 R5 K1 ["Name"]
+  GETUPVAL R8 0
+  GETUPVAL R10 1
+  LOADK R11 K4 ["DeviceGuids"]
+  CONCAT R9 R10 R11
+  GETTABLE R7 R8 R9
+  GETTABLE R6 R7 R0
+  SETTABLEKS R6 R5 K3 ["Guid"]
+  SETTABLE R5 R3 R4
+  GETUPVAL R5 0
+  GETUPVAL R7 1
+  LOADK R8 K0 ["DeviceInfo"]
+  CONCAT R6 R7 R8
+  GETTABLE R4 R5 R6
+  GETTABLEKS R3 R4 K1 ["Name"]
+  GETUPVAL R6 0
+  GETUPVAL R8 1
+  LOADK R9 K0 ["DeviceInfo"]
+  CONCAT R7 R8 R9
+  GETTABLE R5 R6 R7
+  GETTABLEKS R4 R5 K3 ["Guid"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K9 ["VoiceChatOptionsEnabled"]
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R5 4
+  GETUPVAL R7 1
+  MOVE R8 R3
+  MOVE R9 R4
+  NAMECALL R5 R5 K10 ["SwitchDevice"]
+  CALL R5 4 0
+  JUMP [+13]
+  GETUPVAL R5 5
+  MOVE R7 R3
+  MOVE R8 R4
+  NAMECALL R5 R5 K11 ["SetOutputDevice"]
+  CALL R5 3 0
+  GETUPVAL R5 6
+  LOADK R7 K12 ["[SwitchOutputDevice] Setting SS Speaker Device To {} {}"]
+  MOVE R8 R3
+  MOVE R9 R4
+  NAMECALL R5 R5 K13 ["info"]
+  CALL R5 4 0
+  GETUPVAL R5 7
+  CALL R5 0 1
+  JUMPIFNOT R5 [+27]
+  GETUPVAL R5 6
+  LOADK R7 K14 ["[GameSettings] Changing {} device to {} {} "]
+  GETUPVAL R8 1
+  MOVE R9 R3
+  MOVE R10 R4
+  NAMECALL R5 R5 K15 ["debug"]
+  CALL R5 5 0
+  GETUPVAL R5 1
+  GETUPVAL R7 8
+  GETTABLEKS R6 R7 K16 ["Input"]
+  JUMPIFNOTEQ R5 R6 [+8]
+  GETUPVAL R5 9
+  MOVE R7 R3
+  MOVE R8 R4
+  NAMECALL R5 R5 K17 ["changeInputDevice"]
+  CALL R5 3 0
+  JUMP [+6]
+  GETUPVAL R5 9
+  MOVE R7 R3
+  MOVE R8 R4
+  NAMECALL R5 R5 K18 ["changeOutputDevice"]
+  CALL R5 3 0
+  GETUPVAL R5 10
+  JUMPIFNOT R5 [+14]
+  GETUPVAL R5 11
+  GETUPVAL R6 1
+  GETUPVAL R8 0
+  GETUPVAL R10 1
+  LOADK R11 K19 ["PrevDeviceName"]
+  CONCAT R9 R10 R11
+  GETTABLE R7 R8 R9
+  MOVE R8 R3
+  CALL R5 3 0
+  GETUPVAL R5 0
+  GETUPVAL R7 1
+  LOADK R8 K19 ["PrevDeviceName"]
+  CONCAT R6 R7 R8
+  SETTABLE R3 R5 R6
+  RETURN R0 0
+
+PROTO_140:
+  GETUPVAL R3 0
+  MOVE R5 R0
+  LOADK R6 K1 ["DeviceIndex"]
+  CONCAT R4 R5 R6
+  GETTABLE R2 R3 R4
+  ORK R1 R2 K0 [0]
+  GETUPVAL R3 0
+  MOVE R5 R0
+  LOADK R6 K2 ["DeviceNames"]
+  CONCAT R4 R5 R6
+  GETTABLE R2 R3 R4
+  JUMPIF R2 [+2]
+  NEWTABLE R2 0 0
+  GETUPVAL R4 0
+  MOVE R6 R0
+  LOADK R7 K3 ["DeviceGuids"]
+  CONCAT R5 R6 R7
+  GETTABLE R3 R4 R5
+  JUMPIF R3 [+2]
+  NEWTABLE R3 0 0
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["Input"]
+  JUMPIFNOTEQ R0 R5 [+7]
+  GETUPVAL R4 2
+  LOADK R6 K5 ["Feature.SettingsHub.GameSettings.InputDevice"]
+  NAMECALL R4 R4 K6 ["FormatByKey"]
+  CALL R4 2 1
+  JUMPIF R4 [+5]
+  GETUPVAL R4 2
+  LOADK R6 K7 ["Feature.SettingsHub.GameSettings.OutputDevice"]
+  NAMECALL R4 R4 K6 ["FormatByKey"]
+  CALL R4 2 1
+  GETUPVAL R5 0
+  MOVE R7 R0
+  LOADK R8 K8 ["DeviceFrame"]
+  CONCAT R6 R7 R8
+  GETUPVAL R7 0
+  MOVE R9 R0
+  LOADK R10 K9 ["DeviceSelector"]
+  CONCAT R8 R9 R10
+  GETUPVAL R9 3
+  GETUPVAL R11 0
+  MOVE R12 R4
+  LOADK R13 K10 ["Selector"]
+  MOVE R14 R2
+  MOVE R15 R1
+  NAMECALL R9 R9 K11 ["AddNewRow"]
+  CALL R9 6 3
+  SETTABLE R9 R5 R6
+  SETGLOBAL R10 K12 ["_"]
+  SETTABLE R11 R7 R8
+  GETUPVAL R6 0
+  MOVE R8 R0
+  LOADK R9 K8 ["DeviceFrame"]
+  CONCAT R7 R8 R9
+  GETTABLE R5 R6 R7
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K4 ["Input"]
+  JUMPIFNOTEQ R0 R7 [+5]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K13 ["DeviceFrameInput"]
+  JUMPIF R6 [+3]
+  GETUPVAL R7 4
+  GETTABLEKS R6 R7 K14 ["DeviceFrameOutput"]
+  SETTABLEKS R6 R5 K15 ["LayoutOrder"]
+  GETUPVAL R5 0
+  MOVE R7 R0
+  LOADK R8 K16 ["DeviceInfo"]
+  CONCAT R6 R7 R8
+  DUPTABLE R7 K19 [{"Name", "Guid"}]
+  LOADN R9 0
+  JUMPIFNOTLT R9 R1 [+3]
+  GETTABLE R8 R2 R1
+  JUMPIF R8 [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K17 ["Name"]
+  LOADN R9 0
+  JUMPIFNOTLT R9 R1 [+3]
+  GETTABLE R8 R3 R1
+  JUMPIF R8 [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K18 ["Guid"]
+  SETTABLE R7 R5 R6
+  GETUPVAL R5 5
+  JUMPIFNOT R5 [+12]
+  GETUPVAL R5 0
+  MOVE R7 R0
+  LOADK R8 K20 ["PrevDeviceName"]
+  CONCAT R6 R7 R8
+  GETUPVAL R9 0
+  MOVE R11 R0
+  LOADK R12 K16 ["DeviceInfo"]
+  CONCAT R10 R11 R12
+  GETTABLE R8 R9 R10
+  GETTABLEKS R7 R8 K17 ["Name"]
+  SETTABLE R7 R5 R6
+  LOADN R5 0
+  GETUPVAL R6 6
+  CALL R6 0 1
+  GETUPVAL R9 0
+  MOVE R11 R0
+  LOADK R12 K9 ["DeviceSelector"]
+  CONCAT R10 R11 R12
+  GETTABLE R8 R9 R10
+  GETTABLEKS R7 R8 K21 ["IndexChanged"]
+  NEWCLOSURE R9 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CAPTURE REF R5
+  CAPTURE VAL R6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U12
+  NAMECALL R7 R7 K22 ["connect"]
+  CALL R7 2 0
+  CLOSEUPVALS R5
+  RETURN R0 0
+
+PROTO_141:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["CameraDeviceInfo"]
+  GETTABLEKS R1 R2 K1 ["Name"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["CameraDeviceNames"]
+  GETTABLE R2 R3 R0
+  JUMPIFNOTEQ R1 R2 [+13]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["CameraDeviceInfo"]
+  GETTABLEKS R1 R2 K3 ["Guid"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["CameraDeviceGuids"]
+  GETTABLE R2 R3 R0
+  JUMPIFNOTEQ R1 R2 [+2]
+  RETURN R0 0
+  GETUPVAL R1 0
+  DUPTABLE R2 K5 [{"Name", "Guid"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["CameraDeviceNames"]
+  GETTABLE R3 R4 R0
+  SETTABLEKS R3 R2 K1 ["Name"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["CameraDeviceGuids"]
+  GETTABLE R3 R4 R0
+  SETTABLEKS R3 R2 K3 ["Guid"]
+  SETTABLEKS R2 R1 K0 ["CameraDeviceInfo"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["CameraDeviceInfo"]
+  GETTABLEKS R1 R2 K3 ["Guid"]
+  GETUPVAL R2 1
+  LOADK R4 K6 ["Changed webcam to: {}"]
+  MOVE R5 R1
+  NAMECALL R2 R2 K7 ["info"]
+  CALL R2 3 0
+  GETUPVAL R2 2
+  SETTABLEKS R1 R2 K8 ["DefaultCameraID"]
+  GETUPVAL R2 3
+  JUMPIFNOT R2 [+20]
+  GETUPVAL R2 4
+  LOADK R3 K9 ["video_camera"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K11 ["prevCameraDeviceName"]
+  ORK R4 R5 K10 ["None"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K0 ["CameraDeviceInfo"]
+  GETTABLEKS R5 R6 K1 ["Name"]
+  CALL R2 3 0
+  GETUPVAL R2 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["CameraDeviceInfo"]
+  GETTABLEKS R3 R4 K1 ["Name"]
+  SETTABLEKS R3 R2 K11 ["prevCameraDeviceName"]
+  RETURN R0 0
+
+PROTO_142:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["CameraDeviceIndex"]
+  ORK R0 R1 K0 [1]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["CameraDeviceNames"]
+  JUMPIF R1 [+2]
+  NEWTABLE R1 0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["CameraDeviceGuids"]
+  JUMPIF R2 [+2]
+  NEWTABLE R2 0 0
+  GETUPVAL R3 1
+  GETUPVAL R4 0
+  GETUPVAL R5 0
+  GETUPVAL R6 2
+  GETUPVAL R8 0
+  MOVE R9 R3
+  LOADK R10 K4 ["Selector"]
+  MOVE R11 R1
+  MOVE R12 R0
+  NAMECALL R6 R6 K5 ["AddNewRow"]
+  CALL R6 6 3
+  SETTABLEKS R6 R4 K6 ["CameraDeviceFrame"]
+  SETGLOBAL R7 K7 ["_"]
+  SETTABLEKS R8 R5 K8 ["CameraDeviceSelector"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["CameraDeviceFrame"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K6 ["CameraDeviceFrame"]
+  SETTABLEKS R5 R4 K9 ["LayoutOrder"]
+  GETUPVAL R4 0
+  DUPTABLE R5 K12 [{"Name", "Guid"}]
+  LOADN R7 0
+  JUMPIFNOTLT R7 R0 [+3]
+  GETTABLE R6 R1 R0
+  JUMPIF R6 [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K10 ["Name"]
+  LOADN R7 0
+  JUMPIFNOTLT R7 R0 [+3]
+  GETTABLE R6 R2 R0
+  JUMPIF R6 [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K11 ["Guid"]
+  SETTABLEKS R5 R4 K13 ["CameraDeviceInfo"]
+  GETUPVAL R4 4
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R4 0
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K13 ["CameraDeviceInfo"]
+  GETTABLEKS R5 R6 K10 ["Name"]
+  SETTABLEKS R5 R4 K14 ["prevCameraDeviceName"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K8 ["CameraDeviceSelector"]
+  GETTABLEKS R4 R5 K15 ["IndexChanged"]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U7
+  NAMECALL R4 R4 K16 ["connect"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_143:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["Input"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["GetInputDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["GetOutputDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_144:
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CALL R1 1 4
+  JUMPIFNOT R1 [+52]
+  MOVE R5 R2
+  JUMPIFNOT R5 [+23]
+  MOVE R5 R3
+  JUMPIFNOT R5 [+21]
+  MOVE R5 R4
+  JUMPIFNOT R5 [+19]
+  LOADB R5 0
+  LENGTH R6 R2
+  LOADN R7 0
+  JUMPIFNOTLT R7 R6 [+15]
+  LOADB R5 0
+  LOADN R6 0
+  JUMPIFNOTLT R6 R4 [+11]
+  LOADB R5 0
+  LENGTH R6 R2
+  JUMPIFNOTLE R4 R6 [+7]
+  LENGTH R6 R2
+  LENGTH R7 R3
+  JUMPIFEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  JUMPIFNOT R5 [+26]
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K2 ["DeviceNames"]
+  CONCAT R6 R7 R8
+  SETTABLE R2 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K3 ["VCSDeviceNames"]
+  CONCAT R6 R7 R8
+  SETTABLE R2 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K4 ["VCSDeviceGuids"]
+  CONCAT R6 R7 R8
+  SETTABLE R3 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K5 ["DeviceGuids"]
+  CONCAT R6 R7 R8
+  SETTABLE R3 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K6 ["DeviceIndex"]
+  CONCAT R6 R7 R8
+  SETTABLE R4 R5 R6
+  JUMP [+43]
+  GETUPVAL R5 3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+6]
+  GETUPVAL R5 4
+  LOADK R7 K7 ["Errors in get {} device info"]
+  MOVE R8 R0
+  NAMECALL R5 R5 K8 ["warning"]
+  CALL R5 3 0
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K2 ["DeviceNames"]
+  CONCAT R6 R7 R8
+  NEWTABLE R7 0 0
+  SETTABLE R7 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K5 ["DeviceGuids"]
+  CONCAT R6 R7 R8
+  NEWTABLE R7 0 0
+  SETTABLE R7 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K3 ["VCSDeviceNames"]
+  CONCAT R6 R7 R8
+  NEWTABLE R7 0 0
+  SETTABLE R7 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K4 ["VCSDeviceGuids"]
+  CONCAT R6 R7 R8
+  NEWTABLE R7 0 0
+  SETTABLE R7 R5 R6
+  GETUPVAL R5 2
+  MOVE R7 R0
+  LOADK R8 K6 ["DeviceIndex"]
+  CONCAT R6 R7 R8
+  LOADN R7 0
+  SETTABLE R7 R5 R6
+  GETUPVAL R6 2
+  MOVE R8 R0
+  LOADK R9 K9 ["DeviceSelector"]
+  CONCAT R7 R8 R9
+  GETTABLE R5 R6 R7
+  JUMPIF R5 [+4]
+  GETUPVAL R5 5
+  MOVE R6 R0
+  CALL R5 1 0
+  RETURN R0 0
+  GETUPVAL R6 2
+  MOVE R8 R0
+  LOADK R9 K9 ["DeviceSelector"]
+  CONCAT R7 R8 R9
+  GETTABLE R5 R6 R7
+  MOVE R7 R2
+  NAMECALL R5 R5 K10 ["UpdateOptions"]
+  CALL R5 2 0
+  GETUPVAL R6 2
+  MOVE R8 R0
+  LOADK R9 K9 ["DeviceSelector"]
+  CONCAT R7 R8 R9
+  GETTABLE R5 R6 R7
+  MOVE R7 R4
+  NAMECALL R5 R5 K11 ["SetSelectionIndex"]
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_145:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["Input"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["GetInputDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["GetOutputDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_146:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetSpeakerDevices"]
+  CALL R0 1 -1
+  RETURN R0 -1
+
+PROTO_147:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Input"]
+  JUMPIFEQ R0 R1 [+15]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["Output"]
+  JUMPIFEQ R0 R1 [+10]
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 2
+  LOADK R3 K2 ["{} is not supported in VoiceChat devices"]
+  MOVE R4 R0
+  NAMECALL R1 R1 K3 ["warning"]
+  CALL R1 3 0
+  GETIMPORT R1 K5 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  CALL R1 1 4
+  GETIMPORT R5 K5 [pcall]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U4
+  CALL R5 1 4
+  JUMPIFNOT R1 [+79]
+  JUMPIFNOT R5 [+78]
+  MOVE R9 R2
+  JUMPIFNOT R9 [+23]
+  MOVE R9 R3
+  JUMPIFNOT R9 [+21]
+  MOVE R9 R4
+  JUMPIFNOT R9 [+19]
+  LOADB R9 0
+  LENGTH R10 R2
+  LOADN R11 0
+  JUMPIFNOTLT R11 R10 [+15]
+  LOADB R9 0
+  LOADN R10 0
+  JUMPIFNOTLT R10 R4 [+11]
+  LOADB R9 0
+  LENGTH R10 R2
+  JUMPIFNOTLE R4 R10 [+7]
+  LENGTH R10 R2
+  LENGTH R11 R3
+  JUMPIFEQ R10 R11 [+2]
+  LOADB R9 0 +1
+  LOADB R9 1
+  JUMPIFNOT R9 [+52]
+  MOVE R9 R6
+  JUMPIFNOT R9 [+23]
+  MOVE R9 R7
+  JUMPIFNOT R9 [+21]
+  MOVE R9 R8
+  JUMPIFNOT R9 [+19]
+  LOADB R9 0
+  LENGTH R10 R6
+  LOADN R11 0
+  JUMPIFNOTLT R11 R10 [+15]
+  LOADB R9 0
+  LOADN R10 0
+  JUMPIFNOTLT R10 R8 [+11]
+  LOADB R9 0
+  LENGTH R10 R6
+  JUMPIFNOTLE R8 R10 [+7]
+  LENGTH R10 R6
+  LENGTH R11 R7
+  JUMPIFEQ R10 R11 [+2]
+  LOADB R9 0 +1
+  LOADB R9 1
+  JUMPIFNOT R9 [+26]
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K6 ["DeviceNames"]
+  CONCAT R10 R11 R12
+  SETTABLE R2 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K7 ["VCSDeviceNames"]
+  CONCAT R10 R11 R12
+  SETTABLE R6 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K8 ["VCSDeviceGuids"]
+  CONCAT R10 R11 R12
+  SETTABLE R7 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K9 ["DeviceGuids"]
+  CONCAT R10 R11 R12
+  SETTABLE R3 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K10 ["DeviceIndex"]
+  CONCAT R10 R11 R12
+  SETTABLE R4 R9 R10
+  JUMP [+56]
+  GETUPVAL R9 1
+  CALL R9 0 1
+  JUMPIFNOT R9 [+19]
+  LENGTH R9 R2
+  LOADN R10 0
+  JUMPIFNOTLT R10 R9 [+10]
+  GETUPVAL R9 2
+  LOADK R11 K11 ["Errors in get {} device info success: {} VCSSuccess: {}"]
+  MOVE R12 R0
+  MOVE R13 R1
+  MOVE R14 R5
+  NAMECALL R9 R9 K3 ["warning"]
+  CALL R9 5 0
+  JUMP [+6]
+  GETUPVAL R9 2
+  LOADK R11 K12 ["Empty deviceNames list for {}"]
+  MOVE R12 R0
+  NAMECALL R9 R9 K3 ["warning"]
+  CALL R9 3 0
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K6 ["DeviceNames"]
+  CONCAT R10 R11 R12
+  NEWTABLE R11 0 0
+  SETTABLE R11 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K9 ["DeviceGuids"]
+  CONCAT R10 R11 R12
+  NEWTABLE R11 0 0
+  SETTABLE R11 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K7 ["VCSDeviceNames"]
+  CONCAT R10 R11 R12
+  NEWTABLE R11 0 0
+  SETTABLE R11 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K8 ["VCSDeviceGuids"]
+  CONCAT R10 R11 R12
+  NEWTABLE R11 0 0
+  SETTABLE R11 R9 R10
+  GETUPVAL R9 5
+  MOVE R11 R0
+  LOADK R12 K10 ["DeviceIndex"]
+  CONCAT R10 R11 R12
+  LOADN R11 0
+  SETTABLE R11 R9 R10
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K13 ["DeviceSelector"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  JUMPIF R9 [+4]
+  GETUPVAL R9 6
+  MOVE R10 R0
+  CALL R9 1 0
+  JUMP [+18]
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K13 ["DeviceSelector"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  MOVE R11 R2
+  NAMECALL R9 R9 K14 ["UpdateOptions"]
+  CALL R9 2 0
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K13 ["DeviceSelector"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  MOVE R11 R4
+  NAMECALL R9 R9 K15 ["SetSelectionIndex"]
+  CALL R9 2 0
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K16 ["DeviceFrame"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  JUMPIFNOT R9 [+21]
+  LENGTH R9 R2
+  LOADN R10 0
+  JUMPIFNOTLT R10 R9 [+10]
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K16 ["DeviceFrame"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  LOADB R10 1
+  SETTABLEKS R10 R9 K17 ["Visible"]
+  RETURN R0 0
+  GETUPVAL R10 5
+  MOVE R12 R0
+  LOADK R13 K16 ["DeviceFrame"]
+  CONCAT R11 R12 R13
+  GETTABLE R9 R10 R11
+  LOADB R10 0
+  SETTABLEKS R10 R9 K17 ["Visible"]
+  RETURN R0 0
+
+PROTO_148:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetCameraDevices"]
+  CALL R0 1 1
+  NEWTABLE R1 0 0
+  NEWTABLE R2 0 0
+  LOADN R3 1
+  GETUPVAL R6 1
+  FASTCALL2 TABLE_INSERT R1 R6 [+4]
+  MOVE R5 R1
+  GETIMPORT R4 K3 [table.insert]
+  CALL R4 2 0
+  FASTCALL2K TABLE_INSERT R2 K4 [+5]
+  MOVE R5 R2
+  LOADK R6 K4 ["{DefaultDeviceGuid}"]
+  GETIMPORT R4 K3 [table.insert]
+  CALL R4 2 0
+  GETIMPORT R4 K6 [pairs]
+  MOVE R5 R0
+  CALL R4 1 3
+  FORGPREP_NEXT R4
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K7 ["DefaultCameraID"]
+  JUMPIFNOTEQ R7 R9 [+3]
+  LENGTH R9 R1
+  ADDK R3 R9 K8 [1]
+  FASTCALL2 TABLE_INSERT R1 R8 [+5]
+  MOVE R10 R1
+  MOVE R11 R8
+  GETIMPORT R9 K3 [table.insert]
+  CALL R9 2 0
+  FASTCALL2 TABLE_INSERT R2 R7 [+5]
+  MOVE R10 R2
+  MOVE R11 R7
+  GETIMPORT R9 K3 [table.insert]
+  CALL R9 2 0
+  FORGLOOP R4 2 [-22]
+  GETUPVAL R4 3
+  SETTABLEKS R1 R4 K9 ["CameraDeviceNames"]
+  GETUPVAL R4 3
+  SETTABLEKS R2 R4 K10 ["CameraDeviceGuids"]
+  GETUPVAL R4 3
+  LOADN R5 0
+  SETTABLEKS R5 R4 K11 ["CameraDeviceIndex"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K12 ["CameraDeviceSelector"]
+  JUMPIF R4 [+3]
+  GETUPVAL R4 4
+  CALL R4 0 0
+  JUMP [+7]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K12 ["CameraDeviceSelector"]
+  MOVE R6 R1
+  NAMECALL R4 R4 K13 ["UpdateOptions"]
+  CALL R4 2 0
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K12 ["CameraDeviceSelector"]
+  MOVE R6 R3
+  NAMECALL R4 R4 K14 ["SetSelectionIndex"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_149:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K1 ["Input"]
+  CALL R0 1 0
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K2 ["Output"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R0 3
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R0 4
+  NAMECALL R0 R0 K3 ["getIsConnected"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 5
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K1 ["Input"]
+  CALL R0 1 0
+  GETUPVAL R0 5
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K2 ["Output"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_150:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["PageOpen"]
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 1
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_151:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DeviceListChanged"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DeviceListChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  NAMECALL R0 R0 K1 ["Connect"]
+  CALL R0 2 1
+  SETUPVAL R0 1
+  RETURN R0 0
+
+PROTO_152:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["PageOpen"]
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 1
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_153:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DevicesChanged"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DevicesChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  NAMECALL R0 R0 K1 ["Connect"]
+  CALL R0 2 1
+  SETUPVAL R0 1
+  RETURN R0 0
+
+PROTO_154:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DeviceListChanged"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K1 ["Disconnect"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_155:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DevicesChanged"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K1 ["Disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 1
+  RETURN R0 0
+
+PROTO_156:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["VoiceChatAvailable"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 1
+  LOADB R1 1
+  SETTABLEKS R1 R0 K1 ["VoiceChatOptionsEnabled"]
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_157:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIF R0 [+7]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["getIsConnected"]
+  CALL R0 1 1
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  SETTABLEKS R0 R1 K4 ["Visible"]
+  RETURN R0 0
+
+PROTO_158:
+  GETIMPORT R4 K1 [Enum]
+  GETTABLEKS R3 R4 K2 ["VoiceChatState"]
+  GETTABLEKS R2 R3 K3 ["Joined"]
+  JUMPIFNOTEQ R1 R2 [+17]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K4 ["Analytics"]
+  LOADK R4 K5 ["clicked"]
+  GETUPVAL R5 0
+  LOADB R7 1
+  NAMECALL R5 R5 K6 ["GetConnectDisconnectButtonAnalyticsData"]
+  CALL R5 2 -1
+  NAMECALL R2 R2 K7 ["reportJoinVoiceButtonEventWithVoiceSessionId"]
+  CALL R2 -1 0
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K8 ["Disconnect"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_159:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["getService"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+16]
+  LOADNIL R0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K0 ["getService"]
+  CALL R2 1 1
+  GETTABLEKS R1 R2 K1 ["StateChanged"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE REF R0
+  NAMECALL R1 R1 K2 ["Connect"]
+  CALL R1 2 1
+  MOVE R0 R1
+  CLOSEUPVALS R0
+  JUMP [+12]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["Analytics"]
+  LOADK R2 K4 ["clicked"]
+  GETUPVAL R3 0
+  LOADB R5 0
+  NAMECALL R3 R3 K5 ["GetConnectDisconnectButtonAnalyticsData"]
+  CALL R3 2 -1
+  NAMECALL R0 R0 K6 ["reportJoinVoiceButtonEventWithVoiceSessionId"]
+  CALL R0 -1 0
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K7 ["JoinVoice"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_160:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["Analytics"]
+  LOADK R2 K1 ["clicked"]
+  GETUPVAL R3 0
+  LOADB R5 1
+  NAMECALL R3 R3 K2 ["GetConnectDisconnectButtonAnalyticsData"]
+  CALL R3 2 -1
+  NAMECALL R0 R0 K3 ["reportLeaveVoiceButtonEvent"]
+  CALL R0 -1 0
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K4 ["Leave"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_161:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["IsSeamlessVoice"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+215]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K1 ["isShowingFTUX"]
+  JUMPIF R0 [+211]
+  LOADNIL R0
+  LOADNIL R1
+  LOADNIL R2
+  LOADNIL R3
+  GETUPVAL R4 1
+  LOADK R6 K2 ["Feature.GameDetails.Label.VoiceChat"]
+  NAMECALL R4 R4 K3 ["Format"]
+  CALL R4 2 1
+  GETUPVAL R5 1
+  LOADK R7 K4 ["Feature.SettingsHub.Label.Connect"]
+  NAMECALL R5 R5 K3 ["Format"]
+  CALL R5 2 1
+  GETUPVAL R6 1
+  LOADK R8 K5 ["Feature.SettingsHub.Label.Disconnect"]
+  NAMECALL R6 R6 K3 ["Format"]
+  CALL R6 2 1
+  GETUPVAL R7 2
+  CALL R7 0 1
+  GETUPVAL R8 3
+  CALL R8 0 1
+  JUMPIFNOT R8 [+5]
+  LOADN R9 0
+  JUMPIFLT R9 R7 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  DUPCLOSURE R9 K6 [PROTO_159]
+  CAPTURE UPVAL U0
+  DUPCLOSURE R10 K7 [PROTO_160]
+  CAPTURE UPVAL U0
+  GETUPVAL R11 4
+  LOADK R13 K8 ["VoiceConnectButton"]
+  MOVE R14 R5
+  GETIMPORT R15 K11 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 1
+  LOADN R19 236
+  CALL R15 4 1
+  JUMPIFNOT R8 [+5]
+  GETUPVAL R16 5
+  MOVE R17 R7
+  MOVE R18 R9
+  CALL R16 2 1
+  JUMP [+1]
+  MOVE R16 R9
+  GETUPVAL R17 6
+  NAMECALL R11 R11 K12 ["MakeStyledButton"]
+  CALL R11 6 3
+  SETGLOBAL R13 K13 ["voiceConnectSetRowRef"]
+  MOVE R0 R11
+  MOVE R1 R12
+  GETUPVAL R11 4
+  LOADK R13 K14 ["VoiceDisconnectButton"]
+  MOVE R14 R6
+  GETIMPORT R15 K11 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 1
+  LOADN R19 236
+  CALL R15 4 1
+  JUMPIFNOT R8 [+5]
+  GETUPVAL R16 5
+  MOVE R17 R7
+  MOVE R18 R10
+  CALL R16 2 1
+  JUMP [+1]
+  MOVE R16 R10
+  GETUPVAL R17 6
+  NAMECALL R11 R11 K12 ["MakeStyledButton"]
+  CALL R11 6 3
+  SETGLOBAL R13 K15 ["voiceDisconnectSetRowRef"]
+  MOVE R2 R11
+  MOVE R3 R12
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADK R12 K16 [0.6]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 40
+  CALL R11 4 1
+  SETTABLEKS R11 R0 K17 ["Size"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADK R12 K18 [0.4]
+  LOADN R13 0
+  LOADK R14 K19 [0.5]
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R0 K20 ["Position"]
+  GETIMPORT R11 K22 [Vector2.new]
+  LOADN R12 0
+  LOADK R13 K19 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R0 K23 ["AnchorPoint"]
+  LOADN R11 2
+  SETTABLEKS R11 R0 K24 ["ZIndex"]
+  LOADB R11 1
+  SETTABLEKS R11 R0 K25 ["Selectable"]
+  LOADN R11 2
+  SETTABLEKS R11 R1 K24 ["ZIndex"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADK R12 K16 [0.6]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 40
+  CALL R11 4 1
+  SETTABLEKS R11 R2 K17 ["Size"]
+  GETIMPORT R11 K11 [UDim2.new]
+  LOADK R12 K18 [0.4]
+  LOADN R13 0
+  LOADK R14 K19 [0.5]
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R2 K20 ["Position"]
+  GETIMPORT R11 K22 [Vector2.new]
+  LOADN R12 0
+  LOADK R13 K19 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R2 K23 ["AnchorPoint"]
+  LOADN R11 2
+  SETTABLEKS R11 R2 K24 ["ZIndex"]
+  LOADB R11 1
+  SETTABLEKS R11 R2 K25 ["Selectable"]
+  LOADN R11 2
+  SETTABLEKS R11 R3 K24 ["ZIndex"]
+  GETUPVAL R11 4
+  GETUPVAL R13 6
+  MOVE R14 R4
+  MOVE R15 R0
+  LOADNIL R16
+  LOADB R17 1
+  NAMECALL R11 R11 K26 ["AddNewRowObject"]
+  CALL R11 6 1
+  GETUPVAL R12 4
+  GETUPVAL R14 6
+  MOVE R15 R4
+  MOVE R16 R2
+  LOADNIL R17
+  LOADB R18 1
+  NAMECALL R12 R12 K26 ["AddNewRowObject"]
+  CALL R12 6 1
+  GETUPVAL R13 6
+  SETTABLEKS R11 R13 K27 ["VoiceConnectFrame"]
+  GETUPVAL R13 6
+  SETTABLEKS R12 R13 K28 ["VoiceDisconnectFrame"]
+  GETUPVAL R14 7
+  GETTABLEKS R13 R14 K27 ["VoiceConnectFrame"]
+  SETTABLEKS R13 R11 K29 ["LayoutOrder"]
+  GETUPVAL R14 7
+  GETTABLEKS R13 R14 K28 ["VoiceDisconnectFrame"]
+  SETTABLEKS R13 R12 K29 ["LayoutOrder"]
+  GETGLOBAL R13 K13 ["voiceConnectSetRowRef"]
+  MOVE R14 R11
+  CALL R13 1 0
+  GETGLOBAL R13 K15 ["voiceDisconnectSetRowRef"]
+  MOVE R14 R12
+  CALL R13 1 0
+  GETUPVAL R13 0
+  NAMECALL R13 R13 K30 ["ShouldShowJoinVoice"]
+  CALL R13 1 1
+  JUMPIFNOT R13 [+7]
+  LOADB R13 1
+  SETTABLEKS R13 R11 K31 ["Visible"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K31 ["Visible"]
+  RETURN R0 0
+  LOADB R13 0
+  SETTABLEKS R13 R11 K31 ["Visible"]
+  LOADB R13 1
+  SETTABLEKS R13 R12 K31 ["Visible"]
+  RETURN R0 0
+
+PROTO_162:
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["VoiceChatOptionsEnabled"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIF R0 [+7]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["getIsConnected"]
+  CALL R0 1 1
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  SETTABLEKS R0 R1 K4 ["Visible"]
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["VoiceConnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["VoiceConnectFrame"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["Visible"]
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K4 ["Visible"]
+  RETURN R0 0
+
+PROTO_163:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["VoiceChatOptionsEnabled"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIF R0 [+7]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["getIsConnected"]
+  CALL R0 1 1
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  SETTABLEKS R0 R1 K4 ["Visible"]
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["VoiceConnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["VoiceConnectFrame"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K4 ["Visible"]
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["Visible"]
+  RETURN R0 0
+
+PROTO_164:
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K0 ["getService"]
+  CALL R0 1 1
+  SETUPVAL R0 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K1 ["VoiceChatAvailable"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 2
+  LOADB R1 1
+  SETTABLEKS R1 R0 K2 ["VoiceChatOptionsEnabled"]
+  GETUPVAL R0 3
+  CALL R0 0 0
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 5
+  CALL R0 0 0
+  GETUPVAL R0 6
+  CALL R0 0 1
+  JUMPIF R0 [+4]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K3 ["CheckAndShowNotAudiblePrompt"]
+  CALL R0 1 0
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["VoiceConnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["VoiceConnectFrame"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K5 ["Visible"]
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K6 ["VoiceDisconnectFrame"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K5 ["Visible"]
+  GETUPVAL R0 7
+  CALL R0 0 1
+  JUMPIFNOT R0 [+28]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K7 ["showVoiceUI"]
+  GETTABLEKS R0 R1 K8 ["Event"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U4
+  NAMECALL R0 R0 K9 ["Connect"]
+  CALL R0 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K10 ["hideVoiceUI"]
+  GETTABLEKS R0 R1 K8 ["Event"]
+  NEWCLOSURE R2 P1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U4
+  NAMECALL R0 R0 K9 ["Connect"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_165:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["Failed to init VoiceChatServiceManager"]
+  NAMECALL R0 R0 K1 ["warning"]
+  CALL R0 2 0
+  GETUPVAL R0 2
+  CALL R0 0 1
+  JUMPIF R0 [+4]
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K2 ["CheckAndShowPermissionPrompt"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_166:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["asyncInit"]
+  CALL R0 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  NAMECALL R0 R0 K1 ["andThen"]
+  CALL R0 2 1
+  DUPCLOSURE R2 K2 [PROTO_165]
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U0
+  NAMECALL R0 R0 K3 ["catch"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_167:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIF R0 [+7]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["getIsConnected"]
+  CALL R0 1 1
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  SETTABLEKS R0 R1 K4 ["Visible"]
+  RETURN R0 0
+
+PROTO_168:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VoiceChatOptionsEnabled"]
+  JUMPIF R0 [+7]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K1 ["getIsConnected"]
+  CALL R0 1 1
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 0
+  GETUPVAL R6 3
+  GETTABLEKS R4 R6 K2 ["Input"]
+  LOADK R5 K3 ["DeviceFrame"]
+  CONCAT R3 R4 R5
+  GETTABLE R1 R2 R3
+  SETTABLEKS R0 R1 K4 ["Visible"]
+  RETURN R0 0
+
+PROTO_169:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["Disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 0
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K0 ["Disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 1
+  RETURN R0 0
+
+PROTO_170:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_171:
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["hasCameraPermissions"]
+  SETTABLEKS R2 R1 K1 ["VideoOptionsEnabled"]
+  RETURN R0 0
+
+PROTO_172:
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["VideoOptionsEnabled"]
+  GETUPVAL R0 1
+  CALL R0 0 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["DevicesChanged"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["DevicesChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  NAMECALL R0 R0 K2 ["Connect"]
+  CALL R0 2 1
+  SETUPVAL R0 3
+  RETURN R0 0
+
+PROTO_173:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K1 ["disconnect"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_174:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R0 [+3]
+  GETUPVAL R0 1
+  CALL R0 0 0
+  RETURN R0 0
+  LOADNIL R0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["IsUsingGamepadCameraSensitivity"]
+  NAMECALL R1 R1 K1 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE REF R0
+  CAPTURE UPVAL U1
+  NAMECALL R1 R1 K2 ["connect"]
+  CALL R1 2 1
+  MOVE R0 R1
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_175:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["disconnect"]
+  CALL R0 1 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R0 [+3]
+  GETUPVAL R0 2
+  CALL R0 0 0
+  RETURN R0 0
+  LOADNIL R0
+  GETUPVAL R1 1
+  LOADK R3 K1 ["IsUsingGamepadCameraSensitivity"]
+  NAMECALL R1 R1 K2 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  CAPTURE REF R0
+  CAPTURE UPVAL U2
+  NAMECALL R1 R1 K3 ["connect"]
+  CALL R1 2 1
+  MOVE R0 R1
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_176:
+  JUMPIFNOTEQKS R0 K0 ["IsUsingCameraYInverted"] [+11]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["IsUsingCameraYInverted"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K1 ["disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_177:
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R1 0
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_178:
+  GETIMPORT R1 K1 [warn]
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_179:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["IsStudio"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETIMPORT R0 K2 [game]
+  LOADK R2 K3 ["CaptureModeEnabled"]
+  NAMECALL R0 R0 K4 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOTEQKB R0 FALSE [+3]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  LOADB R0 1
+  RETURN R0 1
+
+PROTO_180:
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["PageOpen"]
+  GETUPVAL R0 1
+  CALL R0 0 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["DeviceListChanged"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["DeviceListChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  NAMECALL R0 R0 K2 ["Connect"]
+  CALL R0 2 1
+  SETUPVAL R0 3
+  GETUPVAL R0 0
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K3 ["MasterVolume"]
+  SETTABLEKS R1 R0 K4 ["startVolume"]
+  GETUPVAL R0 5
+  JUMPIF R0 [+3]
+  GETUPVAL R0 6
+  CALL R0 0 1
+  JUMPIFNOT R0 [+27]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["VideoOptionsEnabled"]
+  JUMPIFNOT R0 [+23]
+  GETIMPORT R0 K7 [game]
+  LOADK R2 K8 ["VideoCaptureService"]
+  NAMECALL R0 R0 K9 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+16]
+  GETUPVAL R0 7
+  CALL R0 0 0
+  GETUPVAL R1 8
+  GETTABLEKS R0 R1 K10 ["DevicesChanged"]
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R1 8
+  GETTABLEKS R0 R1 K10 ["DevicesChanged"]
+  NEWCLOSURE R2 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U7
+  NAMECALL R0 R0 K2 ["Connect"]
+  CALL R0 2 1
+  SETUPVAL R0 9
+  GETUPVAL R0 10
+  CALL R0 0 0
+  GETIMPORT R0 K7 [game]
+  LOADK R2 K11 ["ExperienceStateCaptureMinMemEnabled"]
+  NAMECALL R0 R0 K9 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+80]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K12 ["toggleFeedbackModeButton"]
+  JUMPIFNOT R0 [+76]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K13 ["toggleFeedbackModeText"]
+  JUMPIFNOT R0 [+72]
+  GETUPVAL R0 0
+  LOADB R1 0
+  GETUPVAL R2 11
+  JUMPIFEQKNIL R2 [+5]
+  GETUPVAL R1 11
+  NAMECALL R1 R1 K14 ["CanEnterCaptureMode"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K15 ["FeedbackEntryPointEnabled"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K15 ["FeedbackEntryPointEnabled"]
+  JUMPIFNOT R0 [+21]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K12 ["toggleFeedbackModeButton"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K16 ["Active"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K12 ["toggleFeedbackModeButton"]
+  GETTABLEKS R0 R1 K17 ["Enabled"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K18 ["Value"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K13 ["toggleFeedbackModeText"]
+  LOADK R1 K19 ["Give Feedback"]
+  SETTABLEKS R1 R0 K20 ["Text"]
+  RETURN R0 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K12 ["toggleFeedbackModeButton"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K16 ["Active"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K12 ["toggleFeedbackModeButton"]
+  GETTABLEKS R0 R1 K17 ["Enabled"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K18 ["Value"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K13 ["toggleFeedbackModeText"]
+  GETUPVAL R2 12
+  GETTABLEKS R1 R2 K21 ["color"]
+  LOADK R2 K22 ["ButtonNonInteractable"]
+  GETIMPORT R3 K25 [Color3.fromRGB]
+  LOADN R4 100
+  LOADN R5 100
+  LOADN R6 100
+  CALL R3 3 -1
+  CALL R1 -1 1
+  SETTABLEKS R1 R0 K26 ["TextColor3"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K13 ["toggleFeedbackModeText"]
+  LOADK R1 K27 ["Unavailable"]
+  SETTABLEKS R1 R0 K20 ["Text"]
+  RETURN R0 0
+
+PROTO_181:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["PageOpen"]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K1 ["DeviceListChanged"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K2 ["Disconnect"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  CALL R0 0 1
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R0 4
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 4
+  CALL R0 0 0
+  GETUPVAL R0 5
+  JUMPIF R0 [+3]
+  GETUPVAL R0 6
+  CALL R0 0 1
+  JUMPIFNOT R0 [+30]
+  GETIMPORT R0 K4 [game]
+  LOADK R2 K5 ["VideoCaptureService"]
+  NAMECALL R0 R0 K6 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R1 7
+  GETTABLEKS R0 R1 K7 ["DevicesChanged"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 8
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 8
+  NAMECALL R0 R0 K2 ["Disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 8
+  GETUPVAL R0 9
+  CALL R0 0 1
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 10
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R0 10
+  NAMECALL R0 R0 K8 ["disconnect"]
+  CALL R0 1 0
+  LOADNIL R0
+  SETUPVAL R0 10
+  GETIMPORT R0 K4 [game]
+  LOADK R2 K9 ["VoiceChatSupported"]
+  NAMECALL R0 R0 K6 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+19]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K10 ["VoiceChatOptionsEnabled"]
+  JUMPIFNOT R0 [+15]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K11 ["startVolume"]
+  JUMPIFEQKNIL R0 [+11]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K11 ["startVolume"]
+  LOADN R1 0
+  JUMPIFNOTLT R1 R0 [+5]
+  GETUPVAL R0 11
+  NAMECALL R0 R0 K12 ["CheckAndShowNotAudiblePrompt"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_182:
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["EnableSetExperienceSettingsLocaleIdApi"]
+  NAMECALL R0 R0 K3 ["GetEngineFeature"]
+  CALL R0 2 1
+  JUMPIFEQKB R0 TRUE [+3]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K6 ["UserId"]
+  MODK R1 R2 K5 [1000]
+  ADDK R0 R1 K4 [1]
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K7 ["V1MenuLanguageSelectionFeaturePerMillageRollout"]
+  NAMECALL R1 R1 K8 ["GetFastInt"]
+  CALL R1 2 1
+  JUMPIFNOTLE R0 R1 [+3]
+  LOADB R0 1
+  RETURN R0 1
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K9 ["V1MenuLanguageSelectionFeatureForcedUserIds"]
+  NAMECALL R0 R0 K10 ["GetFastString"]
+  CALL R0 2 1
+  LOADK R3 K11 ["%d+"]
+  NAMECALL R1 R0 K12 ["gmatch"]
+  CALL R1 2 3
+  FORGPREP R1
+  FASTCALL1 TONUMBER R4 [+3]
+  MOVE R7 R4
+  GETIMPORT R6 K14 [tonumber]
+  CALL R6 1 1
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K6 ["UserId"]
+  JUMPIFNOTEQ R6 R7 [+3]
+  LOADB R6 1
+  RETURN R6 1
+  FORGLOOP R1 1 [-13]
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_183:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["ChatTranslationEnabled"]
+  RETURN R0 0
+
+PROTO_184:
+  GETUPVAL R2 0
+  SETTABLEKS R1 R2 K0 ["HubRef"]
+  GETGLOBAL R2 K1 ["isLangaugeSelectionDropdownEnabled"]
+  CALL R2 0 1
+  JUMPIFNOT R2 [+2]
+  GETUPVAL R2 1
+  CALL R2 0 0
+  GETIMPORT R2 K3 [game]
+  LOADK R4 K4 ["EnableTCSChatTranslation"]
+  NAMECALL R2 R2 K5 ["GetEngineFeature"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+103]
+  GETIMPORT R2 K3 [game]
+  LOADK R4 K6 ["EnableTCSChatTranslationLanguageSwitcher"]
+  NAMECALL R2 R2 K5 ["GetEngineFeature"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+96]
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+93]
+  GETUPVAL R2 3
+  CALL R2 0 1
+  JUMPIFNOT R2 [+54]
+  GETUPVAL R2 4
+  CALL R2 0 1
+  JUMPIFNOT R2 [+45]
+  GETUPVAL R2 5
+  CALL R2 0 1
+  GETUPVAL R3 6
+  MOVE R4 R2
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K7 ["ChatTranslationEnabled"]
+  JUMPIF R4 [+30]
+  GETUPVAL R4 7
+  JUMPIFNOT R4 [+22]
+  GETUPVAL R4 8
+  CALL R4 0 1
+  JUMPIFNOT R4 [+14]
+  GETUPVAL R5 9
+  GETTABLEKS R4 R5 K8 ["ChatTranslationLocale"]
+  JUMPIFNOTEQKS R4 K9 [""] [+28]
+  GETUPVAL R4 9
+  LOADB R5 0
+  SETTABLEKS R5 R4 K7 ["ChatTranslationEnabled"]
+  GETUPVAL R4 9
+  LOADK R5 K10 ["en_us"]
+  SETTABLEKS R5 R4 K8 ["ChatTranslationLocale"]
+  JUMP [+18]
+  GETUPVAL R4 9
+  LOADB R5 0
+  SETTABLEKS R5 R4 K7 ["ChatTranslationEnabled"]
+  JUMP [+13]
+  GETIMPORT R4 K12 [pcall]
+  DUPCLOSURE R5 K13 [PROTO_183]
+  CAPTURE UPVAL U10
+  CALL R4 1 0
+  JUMP [+7]
+  GETUPVAL R4 11
+  CALL R4 0 1
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R4 9
+  LOADB R5 1
+  SETTABLEKS R5 R4 K7 ["ChatTranslationEnabled"]
+  GETUPVAL R2 12
+  GETUPVAL R3 0
+  GETUPVAL R4 13
+  GETUPVAL R5 14
+  CALL R2 3 0
+  JUMP [+36]
+  GETUPVAL R2 5
+  CALL R2 0 1
+  GETUPVAL R3 6
+  MOVE R4 R2
+  CALL R3 1 1
+  GETUPVAL R5 7
+  JUMPIFNOT R5 [+12]
+  GETUPVAL R5 9
+  GETTABLEKS R6 R3 K7 ["ChatTranslationEnabled"]
+  SETTABLEKS R6 R5 K7 ["ChatTranslationEnabled"]
+  GETUPVAL R5 9
+  GETTABLEKS R6 R3 K14 ["ChatTranslationToggleEnabled"]
+  SETTABLEKS R6 R5 K14 ["ChatTranslationToggleEnabled"]
+  LOADB R4 1
+  JUMP [+8]
+  GETIMPORT R5 K12 [pcall]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U10
+  CAPTURE VAL R3
+  CALL R5 1 2
+  MOVE R4 R5
+  JUMP [0]
+  JUMPIFNOT R4 [+8]
+  GETTABLEKS R5 R3 K7 ["ChatTranslationEnabled"]
+  JUMPIFNOT R5 [+5]
+  GETUPVAL R5 12
+  GETUPVAL R6 0
+  GETUPVAL R7 13
+  GETUPVAL R8 14
+  CALL R5 3 0
+  GETUPVAL R3 15
+  NAMECALL R3 R3 K15 ["IsStudio"]
+  CALL R3 1 1
+  JUMPIFNOT R3 [+2]
+  LOADB R2 0
+  JUMP [+17]
+  GETIMPORT R3 K3 [game]
+  LOADK R5 K16 ["CaptureModeEnabled"]
+  NAMECALL R3 R3 K5 ["GetEngineFeature"]
+  CALL R3 2 1
+  JUMPIFNOTEQKB R3 FALSE [+3]
+  LOADB R2 0
+  JUMP [+7]
+  GETUPVAL R3 16
+  JUMPIFNOT R3 [+4]
+  GETUPVAL R3 17
+  JUMPIFNOT R3 [+2]
+  LOADB R2 0
+  JUMP [+1]
+  LOADB R2 1
+  JUMPIFNOT R2 [+2]
+  GETUPVAL R2 18
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_185:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["RunGfxReset"]
+  CALL R0 0 0
+  GETIMPORT R0 K2 [require]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["Modules"]
+  GETTABLEKS R2 R3 K4 ["Settings"]
+  GETTABLEKS R1 R2 K5 ["SettingsPageFactory"]
+  CALL R0 1 1
+  NAMECALL R1 R0 K6 ["CreateNewPage"]
+  CALL R1 1 1
+  LOADB R2 0
+  NEWTABLE R3 0 0
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R3
+  NEWCLOSURE R5 P1
+  CAPTURE UPVAL U3
+  CAPTURE REF R2
+  CAPTURE VAL R3
+  GETUPVAL R6 3
+  LOADK R8 K7 ["VREnabled"]
+  NAMECALL R6 R6 K8 ["GetPropertyChangedSignal"]
+  CALL R6 2 1
+  MOVE R8 R5
+  NAMECALL R6 R6 K9 ["connect"]
+  CALL R6 2 0
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K7 ["VREnabled"]
+  JUMPIFNOT R6 [+14]
+  JUMPIFNOT R2 [+13]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K7 ["VREnabled"]
+  GETIMPORT R7 K11 [pairs]
+  MOVE R8 R3
+  CALL R7 1 3
+  FORGPREP_NEXT R7
+  NOT R12 R6
+  SETTABLEKS R12 R10 K12 ["Visible"]
+  FORGLOOP R7 2 [-4]
+  NEWCLOSURE R6 P2
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U19
+  CAPTURE UPVAL U20
+  NEWCLOSURE R7 P3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U15
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R8 P4
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U15
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R9 P5
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U15
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R10 P6
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U21
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R11 P7
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U23
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R12 P8
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U23
+  NEWCLOSURE R13 P9
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R12
+  CAPTURE UPVAL U24
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U25
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  NEWCLOSURE R14 P10
+  CAPTURE UPVAL U21
+  CAPTURE UPVAL U26
+  CAPTURE VAL R1
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U23
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U27
+  CAPTURE UPVAL U28
+  CAPTURE UPVAL U29
+  CAPTURE UPVAL U30
+  CAPTURE UPVAL U31
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U32
+  CAPTURE UPVAL U33
+  CAPTURE UPVAL U34
+  CAPTURE UPVAL U35
+  CAPTURE UPVAL U36
+  CAPTURE UPVAL U37
+  CAPTURE UPVAL U38
+  CAPTURE UPVAL U39
+  CAPTURE UPVAL U40
+  CAPTURE UPVAL U41
+  CAPTURE UPVAL U42
+  CAPTURE UPVAL U43
+  CAPTURE UPVAL U44
+  CAPTURE UPVAL U45
+  CAPTURE UPVAL U46
+  CAPTURE UPVAL U47
+  NEWCLOSURE R15 P11
+  CAPTURE UPVAL U48
+  CAPTURE UPVAL U49
+  CAPTURE UPVAL U50
+  CAPTURE VAL R1
+  CAPTURE UPVAL U51
+  CAPTURE UPVAL U52
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U53
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U54
+  CAPTURE UPVAL U55
+  NEWCLOSURE R16 P12
+  CAPTURE UPVAL U56
+  CAPTURE UPVAL U48
+  CAPTURE UPVAL U49
+  CAPTURE UPVAL U55
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U27
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U57
+  DUPCLOSURE R17 K13 [PROTO_94]
+  CAPTURE UPVAL U37
+  DUPCLOSURE R18 K14 [PROTO_96]
+  CAPTURE UPVAL U35
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U34
+  NEWCLOSURE R19 P15
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R20 P16
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R21 P17
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R22 P18
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  DUPCLOSURE R23 K15 [PROTO_106]
+  CAPTURE UPVAL U21
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  NEWCLOSURE R24 P20
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  CAPTURE UPVAL U58
+  CAPTURE UPVAL U22
+  CAPTURE UPVAL U23
+  CAPTURE VAL R23
+  NEWCLOSURE R25 P21
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R23
+  NEWCLOSURE R26 P22
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U59
+  CAPTURE UPVAL U60
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  CAPTURE UPVAL U23
+  CAPTURE UPVAL U57
+  CAPTURE UPVAL U6
+  NEWCLOSURE R27 P23
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U61
+  CAPTURE UPVAL U5
+  CAPTURE VAL R1
+  CAPTURE UPVAL U23
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U57
+  CAPTURE UPVAL U62
+  CAPTURE UPVAL U56
+  NEWCLOSURE R28 P24
+  CAPTURE UPVAL U63
+  CAPTURE UPVAL U15
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U27
+  NEWCLOSURE R29 P25
+  CAPTURE UPVAL U63
+  CAPTURE VAL R1
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U27
+  DUPCLOSURE R30 K16 [PROTO_133]
+  NEWCLOSURE R31 P27
+  CAPTURE UPVAL U64
+  CAPTURE UPVAL U65
+  CAPTURE UPVAL U55
+  NEWCLOSURE R32 P28
+  CAPTURE UPVAL U66
+  CAPTURE VAL R31
+  CAPTURE UPVAL U65
+  CAPTURE UPVAL U55
+  DUPCLOSURE R33 K17 [PROTO_138]
+  CAPTURE UPVAL U66
+  CAPTURE UPVAL U55
+  NEWCLOSURE R34 P30
+  CAPTURE VAL R1
+  CAPTURE UPVAL U67
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U68
+  CAPTURE UPVAL U69
+  CAPTURE UPVAL U66
+  CAPTURE UPVAL U55
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE UPVAL U10
+  NEWCLOSURE R35 P31
+  CAPTURE VAL R1
+  CAPTURE UPVAL U72
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U55
+  CAPTURE UPVAL U73
+  CAPTURE UPVAL U10
+  NEWCLOSURE R36 P32
+  CAPTURE UPVAL U67
+  CAPTURE UPVAL U66
+  CAPTURE VAL R1
+  CAPTURE UPVAL U65
+  CAPTURE UPVAL U55
+  CAPTURE VAL R34
+  NEWCLOSURE R37 P33
+  CAPTURE UPVAL U67
+  CAPTURE UPVAL U65
+  CAPTURE UPVAL U55
+  CAPTURE UPVAL U66
+  CAPTURE UPVAL U64
+  CAPTURE VAL R1
+  CAPTURE VAL R34
+  NEWCLOSURE R38 P34
+  CAPTURE UPVAL U74
+  CAPTURE UPVAL U75
+  CAPTURE UPVAL U73
+  CAPTURE VAL R1
+  CAPTURE VAL R35
+  LOADNIL R39
+  LOADNIL R40
+  NEWCLOSURE R41 P35
+  CAPTURE VAL R1
+  CAPTURE VAL R37
+  CAPTURE UPVAL U67
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE VAL R36
+  NEWCLOSURE R42 P36
+  CAPTURE UPVAL U66
+  CAPTURE REF R39
+  CAPTURE VAL R1
+  CAPTURE VAL R41
+  NEWCLOSURE R43 P37
+  CAPTURE UPVAL U74
+  CAPTURE REF R40
+  CAPTURE VAL R1
+  CAPTURE VAL R38
+  NEWCLOSURE R44 P38
+  CAPTURE UPVAL U66
+  CAPTURE REF R39
+  NEWCLOSURE R45 P39
+  CAPTURE UPVAL U74
+  CAPTURE REF R40
+  NEWCLOSURE R46 P40
+  CAPTURE UPVAL U69
+  CAPTURE VAL R1
+  CAPTURE VAL R32
+  NEWCLOSURE R47 P41
+  CAPTURE VAL R1
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE UPVAL U67
+  NEWCLOSURE R48 P42
+  CAPTURE UPVAL U69
+  CAPTURE UPVAL U76
+  CAPTURE UPVAL U77
+  CAPTURE UPVAL U78
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U79
+  CAPTURE VAL R1
+  CAPTURE UPVAL U6
+  LOADB R49 0
+  SETTABLEKS R49 R1 K18 ["VoiceChatOptionsEnabled"]
+  LOADNIL R49
+  LOADNIL R50
+  LOADNIL R51
+  GETIMPORT R52 K20 [game]
+  LOADK R54 K21 ["VoiceChatSupported"]
+  NAMECALL R52 R52 K22 ["GetEngineFeature"]
+  CALL R52 2 1
+  JUMPIFNOT R52 [+17]
+  GETIMPORT R52 K24 [spawn]
+  NEWCLOSURE R53 P43
+  CAPTURE UPVAL U69
+  CAPTURE UPVAL U64
+  CAPTURE VAL R1
+  CAPTURE VAL R32
+  CAPTURE UPVAL U80
+  CAPTURE VAL R48
+  CAPTURE UPVAL U81
+  CAPTURE UPVAL U82
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE UPVAL U67
+  CAPTURE UPVAL U65
+  CAPTURE UPVAL U55
+  CALL R52 1 0
+  GETUPVAL R52 70
+  CALL R52 0 1
+  JUMPIFNOT R52 [+31]
+  GETUPVAL R54 71
+  GETTABLEKS R53 R54 K25 ["ExperienceJoined"]
+  GETTABLEKS R52 R53 K26 ["Event"]
+  NEWCLOSURE R54 P44
+  CAPTURE VAL R1
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE UPVAL U67
+  NAMECALL R52 R52 K27 ["Connect"]
+  CALL R52 2 1
+  MOVE R49 R52
+  GETUPVAL R54 71
+  GETTABLEKS R53 R54 K28 ["ExperienceLeft"]
+  GETTABLEKS R52 R53 K26 ["Event"]
+  NEWCLOSURE R54 P45
+  CAPTURE VAL R1
+  CAPTURE UPVAL U70
+  CAPTURE UPVAL U71
+  CAPTURE UPVAL U67
+  NAMECALL R52 R52 K27 ["Connect"]
+  CALL R52 2 1
+  MOVE R50 R52
+  NEWCLOSURE R51 P46
+  CAPTURE REF R49
+  CAPTURE REF R50
+  LOADB R52 0
+  SETTABLEKS R52 R1 K29 ["VideoOptionsEnabled"]
+  LOADNIL R52
+  NEWCLOSURE R53 P47
+  CAPTURE REF R52
+  GETUPVAL R54 83
+  JUMPIF R54 [+3]
+  GETUPVAL R54 84
+  CALL R54 0 1
+  JUMPIFNOT R54 [+42]
+  NEWCLOSURE R54 P48
+  CAPTURE VAL R1
+  GETUPVAL R55 85
+  CALL R55 0 1
+  JUMPIFNOT R55 [+31]
+  GETUPVAL R55 86
+  CALL R55 0 1
+  JUMPIFNOT R55 [+34]
+  GETUPVAL R55 87
+  MOVE R56 R54
+  NEWTABLE R57 0 1
+  GETUPVAL R60 88
+  GETTABLEKS R59 R60 K30 ["Permissions"]
+  GETTABLEKS R58 R59 K31 ["CAMERA_ACCESS"]
+  SETLIST R57 R58 1 [1]
+  LOADB R58 1
+  CALL R55 3 0
+  JUMPIFNOT R52 [+3]
+  NAMECALL R55 R52 K32 ["disconnect"]
+  CALL R55 1 0
+  GETUPVAL R55 89
+  NEWCLOSURE R57 P49
+  CAPTURE VAL R1
+  CAPTURE VAL R38
+  CAPTURE UPVAL U74
+  CAPTURE REF R40
+  NAMECALL R55 R55 K9 ["connect"]
+  CALL R55 2 1
+  MOVE R52 R55
+  JUMP [+6]
+  GETUPVAL R55 87
+  MOVE R56 R54
+  LOADNIL R57
+  LOADNIL R58
+  LOADK R59 K33 ["GameSettings.createDeviceOptions"]
+  CALL R55 4 0
+  MOVE R54 R14
+  GETUPVAL R56 26
+  NOT R55 R56
+  JUMPIFNOT R55 [+11]
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K34 ["TouchEnabled"]
+  JUMPIF R55 [+7]
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K35 ["MouseEnabled"]
+  JUMPIF R55 [+3]
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K36 ["KeyboardEnabled"]
+  CALL R54 1 0
+  NEWCLOSURE R54 P50
+  CAPTURE UPVAL U4
+  CAPTURE VAL R25
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K35 ["MouseEnabled"]
+  JUMPIFNOT R55 [+3]
+  MOVE R55 R24
+  CALL R55 0 0
+  JUMP [+40]
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K37 ["GamepadEnabled"]
+  JUMPIFNOT R55 [+23]
+  GETUPVAL R56 4
+  GETTABLEKS R55 R56 K38 ["IsUsingGamepadCameraSensitivity"]
+  JUMPIFNOT R55 [+3]
+  MOVE R55 R25
+  CALL R55 0 0
+  JUMP [+29]
+  LOADNIL R55
+  GETUPVAL R56 4
+  LOADK R58 K38 ["IsUsingGamepadCameraSensitivity"]
+  NAMECALL R56 R56 K8 ["GetPropertyChangedSignal"]
+  CALL R56 2 1
+  NEWCLOSURE R58 P51
+  CAPTURE UPVAL U4
+  CAPTURE REF R55
+  CAPTURE VAL R25
+  NAMECALL R56 R56 K9 ["connect"]
+  CALL R56 2 1
+  MOVE R55 R56
+  CLOSEUPVALS R55
+  JUMP [+13]
+  LOADNIL R55
+  GETUPVAL R57 21
+  GETTABLEKS R56 R57 K39 ["GamepadConnected"]
+  NEWCLOSURE R58 P52
+  CAPTURE REF R55
+  CAPTURE UPVAL U4
+  CAPTURE VAL R25
+  NAMECALL R56 R56 K9 ["connect"]
+  CALL R56 2 1
+  MOVE R55 R56
+  CLOSEUPVALS R55
+  GETUPVAL R56 4
+  GETTABLEKS R55 R56 K40 ["IsUsingCameraYInverted"]
+  JUMPIFNOT R55 [+3]
+  MOVE R55 R22
+  CALL R55 0 0
+  JUMP [+13]
+  LOADNIL R55
+  GETUPVAL R57 4
+  GETTABLEKS R56 R57 K41 ["Changed"]
+  NEWCLOSURE R58 P53
+  CAPTURE UPVAL U4
+  CAPTURE REF R55
+  CAPTURE VAL R22
+  NAMECALL R56 R56 K9 ["connect"]
+  CALL R56 2 1
+  MOVE R55 R56
+  CLOSEUPVALS R55
+  MOVE R55 R19
+  CALL R55 0 0
+  GETUPVAL R55 90
+  JUMPIFNOT R55 [+2]
+  MOVE R55 R20
+  CALL R55 0 0
+  GETUPVAL R55 91
+  CALL R55 0 1
+  JUMPIFNOT R55 [+2]
+  MOVE R55 R21
+  CALL R55 0 0
+  MOVE R55 R6
+  CALL R55 0 0
+  MOVE R55 R7
+  CALL R55 0 0
+  MOVE R55 R8
+  CALL R55 0 0
+  GETUPVAL R55 92
+  CALL R55 0 1
+  JUMPIFNOT R55 [+2]
+  MOVE R55 R9
+  CALL R55 0 0
+  GETUPVAL R56 21
+  GETTABLEKS R55 R56 K36 ["KeyboardEnabled"]
+  JUMPIFNOT R55 [+2]
+  MOVE R55 R10
+  CALL R55 0 0
+  GETUPVAL R56 93
+  NAMECALL R56 R56 K42 ["IsSubjectToChinaPolicies"]
+  CALL R56 1 1
+  NOT R55 R56
+  JUMPIFNOT R55 [+2]
+  MOVE R56 R11
+  CALL R56 0 0
+  GETUPVAL R56 94
+  JUMPIFNOT R56 [+2]
+  MOVE R56 R13
+  CALL R56 0 0
+  GETUPVAL R56 26
+  JUMPIFNOT R56 [+8]
+  GETUPVAL R57 33
+  CALL R57 0 1
+  GETTABLEKS R56 R57 K43 ["getSupportsOverscan"]
+  CALL R56 0 1
+  JUMPIFNOT R56 [+2]
+  MOVE R56 R26
+  CALL R56 0 0
+  MOVE R56 R27
+  CALL R56 0 0
+  GETUPVAL R56 95
+  GETUPVAL R57 57
+  NAMECALL R57 R57 K44 ["IsStudio"]
+  CALL R57 1 1
+  GETUPVAL R58 27
+  GETUPVAL R59 62
+  CALL R56 3 1
+  NEWCLOSURE R58 P54
+  CAPTURE VAL R28
+  NAMECALL R56 R56 K45 ["andThen"]
+  CALL R56 2 1
+  DUPCLOSURE R58 K46 [PROTO_178]
+  NAMECALL R56 R56 K47 ["catch"]
+  CALL R56 2 0
+  LOADB R2 1
+  GETUPVAL R57 3
+  GETTABLEKS R56 R57 K7 ["VREnabled"]
+  JUMPIFNOT R56 [+13]
+  GETUPVAL R57 3
+  GETTABLEKS R56 R57 K7 ["VREnabled"]
+  GETIMPORT R57 K11 [pairs]
+  MOVE R58 R3
+  CALL R57 1 3
+  FORGPREP_NEXT R57
+  NOT R62 R56
+  SETTABLEKS R62 R60 K12 ["Visible"]
+  FORGLOOP R57 2 [-4]
+  GETTABLEKS R56 R1 K48 ["TabHeader"]
+  LOADK R57 K49 ["GameSettingsTab"]
+  SETTABLEKS R57 R56 K50 ["Name"]
+  GETUPVAL R57 23
+  GETTABLEKS R56 R57 K51 ["UIBloxThemeEnabled"]
+  JUMPIFNOT R56 [+45]
+  GETUPVAL R58 23
+  GETTABLEKS R57 R58 K53 ["Images"]
+  GETTABLEKS R56 R57 K52 ["icons/common/settings"]
+  GETTABLEKS R59 R1 K48 ["TabHeader"]
+  GETTABLEKS R58 R59 K54 ["TabLabel"]
+  GETTABLEKS R57 R58 K55 ["Icon"]
+  GETTABLEKS R58 R56 K56 ["ImageRectOffset"]
+  SETTABLEKS R58 R57 K56 ["ImageRectOffset"]
+  GETTABLEKS R59 R1 K48 ["TabHeader"]
+  GETTABLEKS R58 R59 K54 ["TabLabel"]
+  GETTABLEKS R57 R58 K55 ["Icon"]
+  GETTABLEKS R58 R56 K57 ["ImageRectSize"]
+  SETTABLEKS R58 R57 K57 ["ImageRectSize"]
+  GETTABLEKS R59 R1 K48 ["TabHeader"]
+  GETTABLEKS R58 R59 K54 ["TabLabel"]
+  GETTABLEKS R57 R58 K55 ["Icon"]
+  GETTABLEKS R58 R56 K58 ["Image"]
+  SETTABLEKS R58 R57 K58 ["Image"]
+  GETTABLEKS R59 R1 K48 ["TabHeader"]
+  GETTABLEKS R58 R59 K54 ["TabLabel"]
+  GETTABLEKS R57 R58 K59 ["Title"]
+  LOADK R58 K4 ["Settings"]
+  SETTABLEKS R58 R57 K60 ["Text"]
+  JUMP [+30]
+  GETTABLEKS R57 R1 K48 ["TabHeader"]
+  GETTABLEKS R56 R57 K55 ["Icon"]
+  GETUPVAL R58 26
+  JUMPIFNOT R58 [+2]
+  LOADK R57 K61 ["rbxasset://textures/ui/Settings/MenuBarIcons/GameSettingsTab@2x.png"]
+  JUMP [+1]
+  LOADK R57 K62 ["rbxasset://textures/ui/Settings/MenuBarIcons/GameSettingsTab.png"]
+  SETTABLEKS R57 R56 K58 ["Image"]
+  GETUPVAL R56 96
+  JUMPIFNOT R56 [+8]
+  GETTABLEKS R57 R1 K48 ["TabHeader"]
+  GETTABLEKS R56 R57 K59 ["Title"]
+  LOADK R57 K4 ["Settings"]
+  SETTABLEKS R57 R56 K60 ["Text"]
+  JUMP [+9]
+  GETTABLEKS R58 R1 K48 ["TabHeader"]
+  GETTABLEKS R57 R58 K55 ["Icon"]
+  GETTABLEKS R56 R57 K59 ["Title"]
+  LOADK R57 K4 ["Settings"]
+  SETTABLEKS R57 R56 K60 ["Text"]
+  GETTABLEKS R56 R1 K63 ["Page"]
+  LOADN R57 5
+  SETTABLEKS R57 R56 K64 ["ZIndex"]
+  GETTABLEKS R56 R1 K65 ["PageListLayout"]
+  JUMPIFNOT R56 [+9]
+  GETTABLEKS R56 R1 K65 ["PageListLayout"]
+  GETIMPORT R57 K68 [UDim.new]
+  LOADN R58 0
+  LOADN R59 0
+  CALL R57 2 1
+  SETTABLEKS R57 R56 K69 ["Padding"]
+  LOADB R56 0
+  SETTABLEKS R56 R1 K70 ["PageOpen"]
+  GETIMPORT R56 K20 [game]
+  LOADK R58 K71 ["ExperienceStateCaptureMinMemEnabled"]
+  NAMECALL R56 R56 K22 ["GetEngineFeature"]
+  CALL R56 2 1
+  JUMPIFNOT R56 [+3]
+  LOADB R56 1
+  SETTABLEKS R56 R1 K72 ["FeedbackEntryPointEnabled"]
+  DUPCLOSURE R56 K73 [PROTO_179]
+  CAPTURE UPVAL U57
+  CAPTURE UPVAL U97
+  CAPTURE UPVAL U26
+  NEWCLOSURE R57 P57
+  CAPTURE VAL R1
+  CAPTURE VAL R41
+  CAPTURE UPVAL U66
+  CAPTURE REF R39
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U83
+  CAPTURE UPVAL U84
+  CAPTURE VAL R38
+  CAPTURE UPVAL U74
+  CAPTURE REF R40
+  CAPTURE VAL R29
+  CAPTURE UPVAL U52
+  CAPTURE UPVAL U23
+  SETTABLEKS R57 R1 K74 ["OpenSettingsPage"]
+  NEWCLOSURE R57 P58
+  CAPTURE VAL R1
+  CAPTURE UPVAL U66
+  CAPTURE REF R39
+  CAPTURE UPVAL U70
+  CAPTURE REF R51
+  CAPTURE UPVAL U83
+  CAPTURE UPVAL U84
+  CAPTURE UPVAL U74
+  CAPTURE REF R40
+  CAPTURE UPVAL U85
+  CAPTURE REF R52
+  CAPTURE UPVAL U69
+  SETTABLEKS R57 R1 K75 ["CloseSettingsPage"]
+  DUPCLOSURE R57 K76 [PROTO_182]
+  CAPTURE UPVAL U27
+  SETGLOBAL R57 K77 ["isLangaugeSelectionDropdownEnabled"]
+  NEWCLOSURE R57 P60
+  CAPTURE VAL R1
+  CAPTURE VAL R16
+  CAPTURE UPVAL U39
+  CAPTURE UPVAL U40
+  CAPTURE UPVAL U41
+  CAPTURE UPVAL U42
+  CAPTURE VAL R17
+  CAPTURE UPVAL U35
+  CAPTURE UPVAL U38
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U34
+  CAPTURE UPVAL U43
+  CAPTURE UPVAL U98
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U57
+  CAPTURE UPVAL U97
+  CAPTURE UPVAL U26
+  CAPTURE VAL R15
+  SETTABLEKS R57 R1 K78 ["SetHub"]
+  CLOSEUPVALS R2
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K7 ["CorePackages"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K8 ["UserInputService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K9 ["HttpService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K10 ["RunService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K11 ["ContextActionService"]
+  NAMECALL R7 R7 K3 ["GetService"]
+  CALL R7 2 1
+  GETIMPORT R8 K1 [game]
+  LOADK R10 K12 ["Players"]
+  NAMECALL R8 R8 K3 ["GetService"]
+  CALL R8 2 1
+  GETIMPORT R9 K1 [game]
+  LOADK R11 K13 ["VRService"]
+  NAMECALL R9 R9 K3 ["GetService"]
+  CALL R9 2 1
+  GETIMPORT R10 K1 [game]
+  LOADK R12 K14 ["SoundService"]
+  NAMECALL R10 R10 K3 ["GetService"]
+  CALL R10 2 1
+  GETIMPORT R11 K1 [game]
+  LOADK R13 K15 ["RbxAnalyticsService"]
+  NAMECALL R11 R11 K3 ["GetService"]
+  CALL R11 2 1
+  GETIMPORT R12 K17 [UserSettings]
+  CALL R12 0 1
+  GETTABLEKS R13 R12 K18 ["GameSettings"]
+  GETIMPORT R14 K1 [game]
+  LOADK R16 K19 ["VideoCaptureService"]
+  NAMECALL R14 R14 K3 ["GetService"]
+  CALL R14 2 1
+  LOADK R17 K20 ["UserGameSettings"]
+  NAMECALL R15 R12 K3 ["GetService"]
+  CALL R15 2 1
+  GETIMPORT R16 K22 [require]
+  GETTABLEKS R19 R1 K23 ["Modules"]
+  GETTABLEKS R18 R19 K24 ["Common"]
+  GETTABLEKS R17 R18 K25 ["Url"]
+  CALL R16 1 1
+  LOADNIL R17
+  GETIMPORT R18 K1 [game]
+  LOADK R20 K26 ["TextChatService"]
+  NAMECALL R18 R18 K3 ["GetService"]
+  CALL R18 2 1
+  GETIMPORT R19 K1 [game]
+  LOADK R21 K27 ["SafetyService"]
+  NAMECALL R19 R19 K3 ["GetService"]
+  CALL R19 2 1
+  LOADNIL R20
+  GETIMPORT R21 K1 [game]
+  LOADK R23 K28 ["CaptureModeEnabled"]
+  NAMECALL R21 R21 K29 ["GetEngineFeature"]
+  CALL R21 2 1
+  JUMPIFNOT R21 [+7]
+  GETIMPORT R21 K1 [game]
+  LOADK R23 K30 ["ExperienceStateCaptureService"]
+  NAMECALL R21 R21 K3 ["GetService"]
+  CALL R21 2 1
+  MOVE R20 R21
+  GETIMPORT R21 K22 [require]
+  GETTABLEKS R24 R1 K23 ["Modules"]
+  GETTABLEKS R23 R24 K31 ["Flags"]
+  GETTABLEKS R22 R23 K32 ["GetFFlagEnableConnectDisconnectInSettingsAndChrome"]
+  CALL R21 1 1
+  LOADNIL R22
+  MOVE R23 R21
+  CALL R23 0 1
+  JUMPIFNOT R23 [+23]
+  GETIMPORT R23 K1 [game]
+  LOADK R25 K33 ["LocalizationService"]
+  NAMECALL R23 R23 K3 ["GetService"]
+  CALL R23 2 1
+  GETIMPORT R25 K22 [require]
+  GETTABLEKS R28 R3 K34 ["Workspace"]
+  GETTABLEKS R27 R28 K35 ["Packages"]
+  GETTABLEKS R26 R27 K36 ["InExperienceLocales"]
+  CALL R25 1 1
+  GETTABLEKS R24 R25 K37 ["Localization"]
+  GETTABLEKS R25 R24 K38 ["new"]
+  GETTABLEKS R26 R23 K39 ["RobloxLocaleId"]
+  CALL R25 1 1
+  MOVE R22 R25
+  GETIMPORT R23 K22 [require]
+  GETTABLEKS R26 R1 K23 ["Modules"]
+  GETTABLEKS R25 R26 K40 ["Settings"]
+  GETTABLEKS R24 R25 K41 ["getCamMicPermissions"]
+  CALL R23 1 1
+  GETIMPORT R24 K22 [require]
+  GETTABLEKS R27 R1 K23 ["Modules"]
+  GETTABLEKS R26 R27 K40 ["Settings"]
+  GETTABLEKS R25 R26 K42 ["isCamEnabledForUserAndPlace"]
+  CALL R24 1 1
+  GETIMPORT R27 K22 [require]
+  GETTABLEKS R30 R3 K34 ["Workspace"]
+  GETTABLEKS R29 R30 K35 ["Packages"]
+  GETTABLEKS R28 R29 K43 ["PermissionsProtocol"]
+  CALL R27 1 1
+  GETTABLEKS R26 R27 K43 ["PermissionsProtocol"]
+  GETTABLEKS R25 R26 K44 ["default"]
+  GETIMPORT R26 K22 [require]
+  GETTABLEKS R30 R0 K4 ["RobloxGui"]
+  GETTABLEKS R29 R30 K23 ["Modules"]
+  GETTABLEKS R28 R29 K40 ["Settings"]
+  GETTABLEKS R27 R28 K45 ["cameraDevicePermissionGrantedSignal"]
+  CALL R26 1 1
+  GETIMPORT R27 K22 [require]
+  GETTABLEKS R30 R1 K23 ["Modules"]
+  GETTABLEKS R29 R30 K31 ["Flags"]
+  GETTABLEKS R28 R29 K46 ["getFFlagDoNotPromptCameraPermissionsOnMount"]
+  CALL R27 1 1
+  GETIMPORT R28 K22 [require]
+  GETTABLEKS R31 R3 K34 ["Workspace"]
+  GETTABLEKS R30 R31 K35 ["Packages"]
+  GETTABLEKS R29 R30 K47 ["SharedFlags"]
+  CALL R28 1 1
+  GETTABLEKS R29 R28 K48 ["GetFFlagAvatarChatCoreScriptSupport"]
+  CALL R29 0 1
+  GETTABLEKS R30 R28 K49 ["GetFFlagEnableCrossExpVoice"]
+  GETTABLEKS R31 R28 K50 ["GetFFlagSelfViewCameraSettings"]
+  GETIMPORT R32 K22 [require]
+  GETTABLEKS R35 R1 K23 ["Modules"]
+  GETTABLEKS R34 R35 K31 ["Flags"]
+  GETTABLEKS R33 R34 K51 ["GetFFlagAlwaysShowVRToggle"]
+  CALL R32 1 1
+  GETIMPORT R33 K22 [require]
+  GETTABLEKS R36 R1 K23 ["Modules"]
+  GETTABLEKS R35 R36 K31 ["Flags"]
+  GETTABLEKS R34 R35 K52 ["FFlagInExperienceSettingsRefactorAnalytics"]
+  CALL R33 1 1
+  GETTABLEKS R34 R28 K53 ["GetFFlagAddHapticsToggle"]
+  GETTABLEKS R35 R28 K54 ["GetFFlagEnableCrossExpVoiceVolumeIXPCheck"]
+  GETTABLEKS R36 R28 K55 ["GetFFlagEnablePreferredTextSizeSettingInMenus"]
+  GETIMPORT R37 K1 [game]
+  LOADK R39 K56 ["CameraSensitivityPadding2"]
+  LOADB R40 0
+  NAMECALL R37 R37 K57 ["DefineFastFlag"]
+  CALL R37 3 1
+  GETIMPORT R38 K22 [require]
+  GETTABLEKS R41 R1 K23 ["Modules"]
+  GETTABLEKS R40 R41 K31 ["Flags"]
+  GETTABLEKS R39 R40 K58 ["GetFFlagDebounceConnectDisconnectButton"]
+  CALL R38 1 1
+  GETIMPORT R39 K22 [require]
+  GETTABLEKS R42 R1 K23 ["Modules"]
+  GETTABLEKS R41 R42 K31 ["Flags"]
+  GETTABLEKS R40 R41 K59 ["GetFIntDebounceDisconnectButtonDelay"]
+  CALL R39 1 1
+  GETIMPORT R40 K22 [require]
+  GETTABLEKS R44 R1 K23 ["Modules"]
+  GETTABLEKS R43 R44 K40 ["Settings"]
+  GETTABLEKS R42 R43 K31 ["Flags"]
+  GETTABLEKS R41 R42 K60 ["FFlagInExperienceMenuReorderFirstVariant1"]
+  CALL R40 1 1
+  GETIMPORT R41 K22 [require]
+  GETTABLEKS R45 R1 K23 ["Modules"]
+  GETTABLEKS R44 R45 K40 ["Settings"]
+  GETTABLEKS R43 R44 K31 ["Flags"]
+  GETTABLEKS R42 R43 K61 ["FFlagOverrideInExperienceMenuReorderFirstVariant1"]
+  CALL R41 1 1
+  GETIMPORT R42 K1 [game]
+  LOADK R44 K62 ["CameraToggleInitBugFix"]
+  LOADB R45 0
+  NAMECALL R42 R42 K57 ["DefineFastFlag"]
+  CALL R42 3 1
+  GETIMPORT R45 K22 [require]
+  GETTABLEKS R48 R3 K34 ["Workspace"]
+  GETTABLEKS R47 R48 K35 ["Packages"]
+  GETTABLEKS R46 R47 K63 ["CrossExperienceVoice"]
+  CALL R45 1 1
+  GETTABLEKS R44 R45 K64 ["IXPManager"]
+  GETTABLEKS R43 R44 K44 ["default"]
+  LOADNIL R44
+  MOVE R45 R35
+  CALL R45 0 1
+  JUMPIFNOT R45 [+5]
+  MOVE R45 R43
+  JUMPIFNOT R45 [+3]
+  GETTABLEKS R45 R43 K65 ["getHasPartyVoiceVolume"]
+  CALL R45 0 1
+  NEWTABLE R46 16 0
+  LOADN R47 0
+  SETTABLEKS R47 R46 K66 ["Enum.SavedQualitySetting.Automatic"]
+  LOADN R47 1
+  SETTABLEKS R47 R46 K67 ["Enum.SavedQualitySetting.QualityLevel1"]
+  LOADN R47 2
+  SETTABLEKS R47 R46 K68 ["Enum.SavedQualitySetting.QualityLevel2"]
+  LOADN R47 3
+  SETTABLEKS R47 R46 K69 ["Enum.SavedQualitySetting.QualityLevel3"]
+  LOADN R47 4
+  SETTABLEKS R47 R46 K70 ["Enum.SavedQualitySetting.QualityLevel4"]
+  LOADN R47 5
+  SETTABLEKS R47 R46 K71 ["Enum.SavedQualitySetting.QualityLevel5"]
+  LOADN R47 6
+  SETTABLEKS R47 R46 K72 ["Enum.SavedQualitySetting.QualityLevel6"]
+  LOADN R47 7
+  SETTABLEKS R47 R46 K73 ["Enum.SavedQualitySetting.QualityLevel7"]
+  LOADN R47 8
+  SETTABLEKS R47 R46 K74 ["Enum.SavedQualitySetting.QualityLevel8"]
+  LOADN R47 9
+  SETTABLEKS R47 R46 K75 ["Enum.SavedQualitySetting.QualityLevel9"]
+  LOADN R47 10
+  SETTABLEKS R47 R46 K76 ["Enum.SavedQualitySetting.QualityLevel10"]
+  DUPTABLE R47 K80 [{"DevComputerMovementMode", "DevComputerCameraMode", "DevEnableMouseLock"}]
+  LOADB R48 1
+  SETTABLEKS R48 R47 K77 ["DevComputerMovementMode"]
+  LOADB R48 1
+  SETTABLEKS R48 R47 K78 ["DevComputerCameraMode"]
+  LOADB R48 1
+  SETTABLEKS R48 R47 K79 ["DevEnableMouseLock"]
+  DUPTABLE R48 K83 [{"DevTouchMovementMode", "DevTouchCameraMode"}]
+  LOADB R49 1
+  SETTABLEKS R49 R48 K81 ["DevTouchMovementMode"]
+  LOADB R49 1
+  SETTABLEKS R49 R48 K82 ["DevTouchCameraMode"]
+  GETTABLEKS R50 R4 K84 ["TouchEnabled"]
+  JUMPIFNOT R50 [+2]
+  LOADK R49 K85 ["Default (Follow)"]
+  JUMP [+1]
+  LOADK R49 K86 ["Default (Classic)"]
+  DUPTABLE R50 K89 [{"Input", "Output"}]
+  LOADK R51 K87 ["Input"]
+  SETTABLEKS R51 R50 K87 ["Input"]
+  LOADK R51 K88 ["Output"]
+  SETTABLEKS R51 R50 K88 ["Output"]
+  GETTABLEKS R52 R4 K84 ["TouchEnabled"]
+  JUMPIFNOT R52 [+2]
+  LOADK R51 K90 ["Default (Dynamic Thumbstick)"]
+  JUMP [+1]
+  LOADK R51 K91 ["Default (Keyboard)"]
+  GETTABLEKS R53 R4 K84 ["TouchEnabled"]
+  JUMPIFNOT R53 [+2]
+  LOADK R52 K92 ["Tap to Move"]
+  JUMP [+1]
+  LOADK R52 K93 ["Click to Move"]
+  LOADNIL R53
+  JUMPIF R40 [+1]
+  JUMPIFNOT R41 [+15]
+  GETIMPORT R54 K22 [require]
+  GETTABLEKS R58 R1 K23 ["Modules"]
+  GETTABLEKS R57 R58 K40 ["Settings"]
+  GETTABLEKS R56 R57 K94 ["Resources"]
+  GETTABLEKS R55 R56 K95 ["GameSettingsConstants"]
+  CALL R54 1 1
+  MOVE R44 R54
+  GETTABLEKS R53 R44 K96 ["SETTINGS_MENU_LAYOUT_ORDER"]
+  JUMP [+118]
+  NEWTABLE R54 64 0
+  LOADN R55 1
+  SETTABLEKS R55 R54 K97 ["OverscanAdjustButton"]
+  LOADN R55 10
+  SETTABLEKS R55 R54 K98 ["ShiftLockFrame"]
+  LOADN R55 11
+  SETTABLEKS R55 R54 K99 ["CameraModeFrame"]
+  LOADN R55 12
+  SETTABLEKS R55 R54 K100 ["MovementModeFrame"]
+  LOADN R55 13
+  SETTABLEKS R55 R54 K101 ["GamepadSensitivityFrame"]
+  LOADN R55 18
+  SETTABLEKS R55 R54 K102 ["VoiceConnectFrame"]
+  LOADN R55 19
+  SETTABLEKS R55 R54 K103 ["VoiceDisconnectFrame"]
+  LOADN R55 20
+  SETTABLEKS R55 R54 K104 ["LanguageSelectorFrame"]
+  LOADN R55 30
+  SETTABLEKS R55 R54 K105 ["FeedbackModeButton"]
+  LOADN R55 40
+  SETTABLEKS R55 R54 K106 ["ChatTranslationFrame"]
+  LOADN R55 41
+  SETTABLEKS R55 R54 K107 ["ChatLanguageSelectorFrame"]
+  LOADN R55 42
+  SETTABLEKS R55 R54 K108 ["ChatTranslationToggleFrame"]
+  LOADN R55 50
+  SETTABLEKS R55 R54 K109 ["MouseAdvancedFrame"]
+  LOADN R55 60
+  SETTABLEKS R55 R54 K110 ["DeviceFrameInput"]
+  LOADN R55 61
+  SETTABLEKS R55 R54 K111 ["DeviceFrameOutput"]
+  LOADN R55 62
+  SETTABLEKS R55 R54 K112 ["VolumeFrame"]
+  JUMPIFNOT R45 [+2]
+  LOADN R55 64
+  JUMP [+1]
+  LOADN R55 63
+  SETTABLEKS R55 R54 K113 ["HapticsFrame"]
+  LOADN R55 70
+  SETTABLEKS R55 R54 K114 ["FullScreenFrame"]
+  LOADN R55 71
+  SETTABLEKS R55 R54 K115 ["GraphicsEnablerFrame"]
+  LOADN R55 72
+  SETTABLEKS R55 R54 K116 ["GraphicsQualityFrame"]
+  LOADN R55 73
+  SETTABLEKS R55 R54 K117 ["ReducedMotionFrame"]
+  LOADN R55 74
+  SETTABLEKS R55 R54 K118 ["PreferredTransparencyFrame"]
+  LOADN R55 75
+  SETTABLEKS R55 R54 K119 ["PreferredTextSizeFrame"]
+  LOADN R55 76
+  SETTABLEKS R55 R54 K120 ["UiNavigationKeyBindEnabledFrame"]
+  LOADN R55 80
+  SETTABLEKS R55 R54 K121 ["PerformanceStatsFrame"]
+  LOADN R55 81
+  SETTABLEKS R55 R54 K122 ["MicroProfilerFrame"]
+  LOADN R55 90
+  SETTABLEKS R55 R54 K123 ["CameraInvertedFrame"]
+  LOADN R55 91
+  SETTABLEKS R55 R54 K124 ["CameraDeviceFrame"]
+  LOADN R55 100
+  SETTABLEKS R55 R54 K125 ["VREnabledFrame"]
+  LOADN R55 101
+  SETTABLEKS R55 R54 K126 ["DeveloperConsoleButton"]
+  LOADN R55 200
+  SETTABLEKS R55 R54 K127 ["UiToggleRow"]
+  LOADN R55 200
+  SETTABLEKS R55 R54 K128 ["UiToggleRowCustom"]
+  LOADN R55 201
+  SETTABLEKS R55 R54 K129 ["UiToggleRowBillboards"]
+  LOADN R55 202
+  SETTABLEKS R55 R54 K130 ["UiToggleRowNameplates"]
+  LOADN R55 203
+  SETTABLEKS R55 R54 K131 ["FreecamToggleRow"]
+  LOADN R55 231
+  SETTABLEKS R55 R54 K132 ["InformationFrame"]
+  MOVE R53 R54
+  JUMPIFNOT R45 [+3]
+  LOADN R54 63
+  SETTABLEKS R54 R53 K133 ["PartyVoiceVolumeFrame"]
+  GETIMPORT R54 K22 [require]
+  GETTABLEKS R57 R1 K23 ["Modules"]
+  GETTABLEKS R56 R57 K24 ["Common"]
+  GETTABLEKS R55 R56 K134 ["IXPServiceWrapper"]
+  CALL R54 1 1
+  GETIMPORT R55 K22 [require]
+  GETTABLEKS R58 R1 K23 ["Modules"]
+  GETTABLEKS R57 R58 K31 ["Flags"]
+  GETTABLEKS R56 R57 K135 ["GetFFlagChatTranslationSettingEnabled"]
+  CALL R55 1 1
+  GETIMPORT R56 K22 [require]
+  GETTABLEKS R59 R1 K23 ["Modules"]
+  GETTABLEKS R58 R59 K31 ["Flags"]
+  GETTABLEKS R57 R58 K136 ["GetFStringChatTranslationLayerName"]
+  CALL R56 1 1
+  GETIMPORT R57 K22 [require]
+  GETTABLEKS R60 R1 K23 ["Modules"]
+  GETTABLEKS R59 R60 K31 ["Flags"]
+  GETTABLEKS R58 R59 K137 ["GetFFlagChatTranslationLaunchEnabled"]
+  CALL R57 1 1
+  GETIMPORT R58 K22 [require]
+  GETTABLEKS R61 R1 K23 ["Modules"]
+  GETTABLEKS R60 R61 K31 ["Flags"]
+  GETTABLEKS R59 R60 K138 ["GetFFlagChatTranslationHoldoutEnabled"]
+  CALL R58 1 1
+  GETIMPORT R59 K22 [require]
+  GETTABLEKS R62 R1 K23 ["Modules"]
+  GETTABLEKS R61 R62 K31 ["Flags"]
+  GETTABLEKS R60 R61 K139 ["GetFFlagChatTranslationWaitForIXP"]
+  CALL R59 1 1
+  GETIMPORT R60 K22 [require]
+  GETTABLEKS R63 R1 K23 ["Modules"]
+  GETTABLEKS R62 R63 K31 ["Flags"]
+  GETTABLEKS R61 R62 K140 ["GetFFlagChatTranslationForceSetting"]
+  CALL R60 1 1
+  GETIMPORT R61 K22 [require]
+  GETTABLEKS R64 R1 K23 ["Modules"]
+  GETTABLEKS R63 R64 K31 ["Flags"]
+  GETTABLEKS R62 R63 K141 ["GetFFlagChatTranslationNewDefaults"]
+  CALL R61 1 1
+  GETIMPORT R62 K1 [game]
+  LOADK R64 K142 ["TextChatServiceSettingsSaved"]
+  NAMECALL R62 R62 K29 ["GetEngineFeature"]
+  CALL R62 2 1
+  GETIMPORT R63 K22 [require]
+  GETTABLEKS R68 R1 K23 ["Modules"]
+  GETTABLEKS R67 R68 K40 ["Settings"]
+  GETTABLEKS R66 R67 K143 ["Pages"]
+  GETTABLEKS R65 R66 K144 ["GameSettingsRowInitializers"]
+  GETTABLEKS R64 R65 K145 ["ChatTranslationOptionsWithChatLanguageSwitcherInitializer"]
+  CALL R63 1 1
+  GETIMPORT R64 K1 [game]
+  LOADK R66 K146 ["GameBasicSettingsFramerateCap"]
+  NAMECALL R64 R64 K29 ["GetEngineFeature"]
+  CALL R64 2 1
+  GETIMPORT R65 K22 [require]
+  GETTABLEKS R68 R1 K23 ["Modules"]
+  GETTABLEKS R67 R68 K40 ["Settings"]
+  GETTABLEKS R66 R67 K147 ["Utility"]
+  CALL R65 1 1
+  GETIMPORT R66 K22 [require]
+  LOADK R69 K23 ["Modules"]
+  NAMECALL R67 R1 K5 ["WaitForChild"]
+  CALL R67 2 1
+  LOADK R69 K148 ["InGameMenu"]
+  NAMECALL R67 R67 K5 ["WaitForChild"]
+  CALL R67 2 1
+  LOADK R69 K94 ["Resources"]
+  NAMECALL R67 R67 K5 ["WaitForChild"]
+  CALL R67 2 1
+  LOADK R69 K149 ["Constants"]
+  NAMECALL R67 R67 K5 ["WaitForChild"]
+  CALL R67 2 -1
+  CALL R66 -1 1
+  GETIMPORT R67 K22 [require]
+  GETTABLEKS R69 R1 K23 ["Modules"]
+  GETTABLEKS R68 R69 K150 ["CoreUtility"]
+  CALL R67 1 1
+  GETIMPORT R68 K22 [require]
+  GETTABLEKS R70 R1 K23 ["Modules"]
+  GETTABLEKS R69 R70 K151 ["PlayerPermissionsModule"]
+  CALL R68 1 1
+  GETIMPORT R69 K22 [require]
+  GETTABLEKS R72 R1 K23 ["Modules"]
+  GETTABLEKS R71 R72 K24 ["Common"]
+  GETTABLEKS R70 R71 K152 ["GetHasGuiHidingPermission"]
+  CALL R69 1 1
+  GETIMPORT R70 K22 [require]
+  GETTABLEKS R73 R1 K23 ["Modules"]
+  GETTABLEKS R72 R73 K40 ["Settings"]
+  GETTABLEKS R71 R72 K153 ["Theme"]
+  CALL R70 1 1
+  GETIMPORT R71 K22 [require]
+  GETTABLEKS R73 R3 K35 ["Packages"]
+  GETTABLEKS R72 R73 K154 ["Cryo"]
+  CALL R71 1 1
+  GETIMPORT R72 K22 [require]
+  GETIMPORT R76 K156 [script]
+  GETTABLEKS R75 R76 K157 ["Parent"]
+  GETTABLEKS R74 R75 K157 ["Parent"]
+  GETTABLEKS R73 R74 K158 ["GfxReset"]
+  CALL R72 1 1
+  GETIMPORT R74 K22 [require]
+  GETTABLEKS R77 R3 K34 ["Workspace"]
+  GETTABLEKS R76 R77 K35 ["Packages"]
+  GETTABLEKS R75 R76 K159 ["AppCommonLib"]
+  CALL R74 1 1
+  GETTABLEKS R73 R74 K160 ["Create"]
+  GETIMPORT R74 K22 [require]
+  GETTABLEKS R80 R0 K4 ["RobloxGui"]
+  GETTABLEKS R79 R80 K23 ["Modules"]
+  GETTABLEKS R78 R79 K40 ["Settings"]
+  GETTABLEKS R77 R78 K143 ["Pages"]
+  GETTABLEKS R76 R77 K161 ["ShareGame"]
+  GETTABLEKS R75 R76 K162 ["ThrottleFunctionCall"]
+  CALL R74 1 1
+  LOADK R77 K23 ["Modules"]
+  NAMECALL R75 R1 K5 ["WaitForChild"]
+  CALL R75 2 1
+  LOADK R77 K163 ["TenFootInterface"]
+  NAMECALL R75 R75 K5 ["WaitForChild"]
+  CALL R75 2 0
+  LOADK R77 K23 ["Modules"]
+  NAMECALL R75 R1 K5 ["WaitForChild"]
+  CALL R75 2 1
+  LOADK R77 K40 ["Settings"]
+  NAMECALL R75 R75 K5 ["WaitForChild"]
+  CALL R75 2 1
+  LOADK R77 K164 ["SettingsHub"]
+  NAMECALL R75 R75 K5 ["WaitForChild"]
+  CALL R75 2 0
+  GETIMPORT R75 K22 [require]
+  GETTABLEKS R77 R1 K23 ["Modules"]
+  GETTABLEKS R76 R77 K163 ["TenFootInterface"]
+  CALL R75 1 1
+  NAMECALL R75 R75 K165 ["IsEnabled"]
+  CALL R75 1 1
+  LOADNIL R76
+  GETTABLEKS R77 R8 K166 ["LocalPlayer"]
+  NAMECALL R78 R4 K167 ["GetPlatform"]
+  CALL R78 1 1
+  GETIMPORT R79 K22 [require]
+  GETTABLEKS R82 R1 K23 ["Modules"]
+  GETTABLEKS R81 R82 K24 ["Common"]
+  GETTABLEKS R80 R81 K168 ["PolicyService"]
+  CALL R79 1 1
+  GETIMPORT R81 K22 [require]
+  GETTABLEKS R84 R1 K23 ["Modules"]
+  GETTABLEKS R83 R84 K169 ["VoiceChat"]
+  GETTABLEKS R82 R83 K170 ["VoiceChatServiceManager"]
+  CALL R81 1 1
+  GETTABLEKS R80 R81 K44 ["default"]
+  GETIMPORT R81 K22 [require]
+  GETTABLEKS R84 R3 K34 ["Workspace"]
+  GETTABLEKS R83 R84 K35 ["Packages"]
+  GETTABLEKS R82 R83 K63 ["CrossExperienceVoice"]
+  CALL R81 1 1
+  GETTABLEKS R83 R81 K171 ["CrossExperienceVoiceManager"]
+  GETTABLEKS R82 R83 K44 ["default"]
+  GETIMPORT R83 K22 [require]
+  LOADK R86 K23 ["Modules"]
+  NAMECALL R84 R1 K5 ["WaitForChild"]
+  CALL R84 2 1
+  LOADK R86 K172 ["RobloxTranslator"]
+  NAMECALL R84 R84 K5 ["WaitForChild"]
+  CALL R84 2 -1
+  CALL R83 -1 1
+  GETIMPORT R84 K22 [require]
+  GETTABLEKS R87 R3 K34 ["Workspace"]
+  GETTABLEKS R86 R87 K35 ["Packages"]
+  GETTABLEKS R85 R86 K173 ["UniversalAppPolicy"]
+  CALL R84 1 1
+  GETTABLEKS R85 R84 K174 ["getAppFeaturePolicies"]
+  LOADK R88 K175 ["Feature.SettingsHub.Video.SystemDefault"]
+  NAMECALL R86 R83 K176 ["FormatByKey"]
+  CALL R86 2 1
+  LOADK R89 K177 ["Feature.SettingsHub.Video.VideoCamera"]
+  NAMECALL R87 R83 K176 ["FormatByKey"]
+  CALL R87 2 1
+  GETIMPORT R89 K22 [require]
+  GETTABLEKS R92 R3 K34 ["Workspace"]
+  GETTABLEKS R91 R92 K35 ["Packages"]
+  GETTABLEKS R90 R91 K178 ["CoreScriptsInitializer"]
+  CALL R89 1 1
+  GETTABLEKS R88 R89 K179 ["CoreLogger"]
+  GETIMPORT R91 K156 [script]
+  GETTABLEKS R90 R91 K180 ["Name"]
+  NAMECALL R88 R88 K38 ["new"]
+  CALL R88 2 1
+  GETIMPORT R89 K182 [pcall]
+  DUPCLOSURE R90 K183 [PROTO_0]
+  CALL R89 1 2
+  AND R91 R89 R90
+  GETIMPORT R92 K1 [game]
+  LOADK R94 K184 ["RomarkStartWithGraphicQualityLevel"]
+  LOADN R95 255
+  NAMECALL R92 R92 K185 ["DefineFastInt"]
+  CALL R92 3 0
+  GETIMPORT R92 K1 [game]
+  LOADK R94 K184 ["RomarkStartWithGraphicQualityLevel"]
+  NAMECALL R92 R92 K186 ["GetFastInt"]
+  CALL R92 2 1
+  NAMECALL R94 R79 K187 ["IsSubjectToChinaPolicies"]
+  CALL R94 1 1
+  NOT R93 R94
+  LOADB R94 1
+  GETIMPORT R95 K191 [Enum.Platform.Windows]
+  JUMPIFEQ R78 R95 [+12]
+  LOADB R94 1
+  GETIMPORT R95 K193 [Enum.Platform.OSX]
+  JUMPIFEQ R78 R95 [+7]
+  GETIMPORT R95 K195 [Enum.Platform.UWP]
+  JUMPIFEQ R78 R95 [+2]
+  LOADB R94 0 +1
+  LOADB R94 1
+  LOADB R95 1
+  GETIMPORT R96 K197 [Enum.Platform.IOS]
+  JUMPIFEQ R78 R96 [+7]
+  GETIMPORT R96 K199 [Enum.Platform.Android]
+  JUMPIFEQ R78 R96 [+2]
+  LOADB R95 0 +1
+  LOADB R95 1
+  JUMPIF R95 [+2]
+  MOVE R96 R94
+  JUMPIFNOT R96 [+1]
+  MOVE R96 R93
+  GETIMPORT R97 K22 [require]
+  GETTABLEKS R100 R1 K23 ["Modules"]
+  GETTABLEKS R99 R100 K31 ["Flags"]
+  GETTABLEKS R98 R99 K200 ["GetFIntVoiceChatDeviceChangeDebounceDelay"]
+  CALL R97 1 1
+  GETIMPORT R98 K22 [require]
+  GETTABLEKS R101 R1 K23 ["Modules"]
+  GETTABLEKS R100 R101 K31 ["Flags"]
+  GETTABLEKS R99 R100 K201 ["GetFFlagVoiceChatUILogging"]
+  CALL R98 1 1
+  GETIMPORT R99 K22 [require]
+  GETTABLEKS R102 R1 K23 ["Modules"]
+  GETTABLEKS R101 R102 K31 ["Flags"]
+  GETTABLEKS R100 R101 K202 ["GetFFlagEnableUniveralVoiceToasts"]
+  CALL R99 1 1
+  GETIMPORT R100 K22 [require]
+  GETTABLEKS R104 R1 K23 ["Modules"]
+  GETTABLEKS R103 R104 K40 ["Settings"]
+  GETTABLEKS R102 R103 K31 ["Flags"]
+  GETTABLEKS R101 R102 K203 ["GetFFlagEnableExplicitSettingsChangeAnalytics"]
+  CALL R100 1 1
+  GETTABLEKS R101 R28 K204 ["GetFFlagGameSettingsCameraModeFixEnabled"]
+  GETIMPORT R102 K22 [require]
+  GETTABLEKS R106 R1 K23 ["Modules"]
+  GETTABLEKS R105 R106 K40 ["Settings"]
+  GETTABLEKS R104 R105 K31 ["Flags"]
+  GETTABLEKS R103 R104 K205 ["GetFFlagFixCyclicFullscreenIndexEvent"]
+  CALL R102 1 1
+  GETIMPORT R103 K1 [game]
+  LOADK R105 K206 ["DisableFeedbackSoothsayerCheck"]
+  LOADB R106 0
+  NAMECALL R103 R103 K57 ["DefineFastFlag"]
+  CALL R103 3 1
+  GETIMPORT R104 K1 [game]
+  LOADK R106 K207 ["UserShowGuiHideToggles"]
+  LOADB R107 0
+  NAMECALL R104 R104 K57 ["DefineFastFlag"]
+  CALL R104 3 1
+  GETIMPORT R105 K1 [game]
+  LOADK R107 K208 ["FixDeveloperConsoleButtonSizeAndPositioning"]
+  LOADB R108 0
+  NAMECALL R105 R105 K57 ["DefineFastFlag"]
+  CALL R105 3 1
+  GETIMPORT R106 K1 [game]
+  LOADK R108 K209 ["EnableTFFeedbackModeEntryCheck"]
+  LOADB R109 0
+  NAMECALL R106 R106 K57 ["DefineFastFlag"]
+  CALL R106 3 1
+  GETIMPORT R107 K1 [game]
+  LOADK R109 K210 ["FeedbackEntryPointButtonSizeAdjustment2"]
+  LOADB R110 0
+  NAMECALL R107 R107 K57 ["DefineFastFlag"]
+  CALL R107 3 1
+  GETIMPORT R108 K1 [game]
+  LOADK R110 K211 ["FeedbackEntryPointImprovedStrictnessCheck"]
+  LOADB R111 0
+  NAMECALL R108 R108 K57 ["DefineFastFlag"]
+  CALL R108 3 1
+  GETIMPORT R110 K22 [require]
+  GETTABLEKS R113 R3 K34 ["Workspace"]
+  GETTABLEKS R112 R113 K35 ["Packages"]
+  GETTABLEKS R111 R112 K47 ["SharedFlags"]
+  CALL R110 1 1
+  GETTABLEKS R109 R110 K212 ["GetFFlagEnableShowVoiceUI"]
+  DUPCLOSURE R110 K213 [PROTO_1]
+  CAPTURE VAL R100
+  CAPTURE VAL R4
+  CAPTURE VAL R71
+  CAPTURE VAL R11
+  CAPTURE VAL R66
+  DUPCLOSURE R111 K214 [PROTO_2]
+  CAPTURE VAL R4
+  CAPTURE VAL R13
+  CAPTURE VAL R64
+  CAPTURE VAL R36
+  CAPTURE VAL R11
+  CAPTURE VAL R66
+  GETIMPORT R112 K1 [game]
+  LOADK R114 K215 ["V1MenuLanguageSelectionFeaturePerMillageRollout"]
+  LOADN R115 0
+  NAMECALL R112 R112 K185 ["DefineFastInt"]
+  CALL R112 3 0
+  GETIMPORT R112 K1 [game]
+  LOADK R114 K216 ["V1MenuLanguageSelectionFeatureForcedUserIds"]
+  LOADK R115 K217 [""]
+  NAMECALL R112 R112 K218 ["DefineFastString"]
+  CALL R112 3 0
+  GETIMPORT R112 K1 [game]
+  LOADK R114 K219 ["IGMEnableGFXReset"]
+  LOADB R115 0
+  NAMECALL R112 R112 K57 ["DefineFastFlag"]
+  CALL R112 3 1
+  NEWCLOSURE R113 P3
+  CAPTURE VAL R112
+  CAPTURE VAL R72
+  CAPTURE VAL R1
+  CAPTURE VAL R9
+  CAPTURE VAL R13
+  CAPTURE VAL R65
+  CAPTURE REF R53
+  CAPTURE VAL R2
+  CAPTURE VAL R102
+  CAPTURE VAL R100
+  CAPTURE VAL R110
+  CAPTURE VAL R111
+  CAPTURE VAL R11
+  CAPTURE VAL R66
+  CAPTURE VAL R64
+  CAPTURE VAL R83
+  CAPTURE VAL R40
+  CAPTURE VAL R41
+  CAPTURE VAL R33
+  CAPTURE VAL R92
+  CAPTURE VAL R46
+  CAPTURE VAL R4
+  CAPTURE VAL R73
+  CAPTURE VAL R70
+  CAPTURE VAL R95
+  CAPTURE VAL R94
+  CAPTURE VAL R75
+  CAPTURE VAL R77
+  CAPTURE VAL R67
+  CAPTURE VAL R101
+  CAPTURE VAL R49
+  CAPTURE VAL R42
+  CAPTURE VAL R32
+  CAPTURE VAL R85
+  CAPTURE VAL R18
+  CAPTURE VAL R62
+  CAPTURE VAL R59
+  CAPTURE VAL R54
+  CAPTURE VAL R61
+  CAPTURE VAL R55
+  CAPTURE VAL R57
+  CAPTURE VAL R58
+  CAPTURE VAL R56
+  CAPTURE VAL R60
+  CAPTURE VAL R51
+  CAPTURE VAL R52
+  CAPTURE VAL R48
+  CAPTURE VAL R47
+  CAPTURE VAL R16
+  CAPTURE VAL R5
+  CAPTURE VAL R108
+  CAPTURE VAL R19
+  CAPTURE REF R20
+  CAPTURE VAL R107
+  CAPTURE VAL R103
+  CAPTURE VAL R88
+  CAPTURE VAL R8
+  CAPTURE VAL R6
+  CAPTURE VAL R37
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R105
+  CAPTURE VAL R68
+  CAPTURE VAL R104
+  CAPTURE REF R17
+  CAPTURE VAL R98
+  CAPTURE VAL R10
+  CAPTURE VAL R50
+  CAPTURE VAL R97
+  CAPTURE VAL R80
+  CAPTURE VAL R30
+  CAPTURE VAL R82
+  CAPTURE VAL R87
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R86
+  CAPTURE REF R22
+  CAPTURE VAL R39
+  CAPTURE VAL R38
+  CAPTURE VAL R74
+  CAPTURE VAL R21
+  CAPTURE VAL R99
+  CAPTURE VAL R109
+  CAPTURE VAL R29
+  CAPTURE VAL R31
+  CAPTURE VAL R27
+  CAPTURE VAL R24
+  CAPTURE VAL R23
+  CAPTURE VAL R25
+  CAPTURE VAL R26
+  CAPTURE VAL R45
+  CAPTURE VAL R34
+  CAPTURE VAL R36
+  CAPTURE VAL R79
+  CAPTURE VAL R96
+  CAPTURE VAL R69
+  CAPTURE VAL R91
+  CAPTURE VAL R106
+  CAPTURE VAL R63
+  MOVE R114 R113
+  CALL R114 0 1
+  MOVE R76 R114
+  CLOSEUPVALS R17
+  RETURN R76 1

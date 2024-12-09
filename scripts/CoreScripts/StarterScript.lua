@@ -53,6 +53,8 @@ local GetFFlagEnableAppChatInExperience =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableAppChatInExperience
 local GetFFlagChromeCentralizedConfiguration =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeCentralizedConfiguration
+local GetFFlagEnableCrossExpVoice =
+	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableCrossExpVoice
 
 local FFlagLuaAppEnableToastNotificationsCoreScripts =
 	game:DefineFastFlag("LuaAppEnableToastNotificationsCoreScripts4", false)
@@ -107,6 +109,16 @@ if GetFFlagEnableAppChatInExperience() then
 	if InExperienceAppChatExperimentation.getHasInExperienceAppChatEntryPoint() then
 		ScriptContext:AddCoreScriptLocal("CoreScripts/AppChatMain", RobloxGui)
 	end
+end
+
+if GetFFlagEnableCrossExpVoice() then
+	local ExperimentCacheManager =
+		require(CorePackages.Workspace.Packages.ExperimentCacheManager).ExperimentCacheManager
+	ExperimentCacheManager.default:initialize()
+
+	local CrossExperienceVoiceIXPManager =
+		require(CorePackages.Workspace.Packages.CrossExperienceVoice).IXPManager
+	CrossExperienceVoiceIXPManager.default:initialize()
 end
 
 -- Initialize SessionManager
@@ -505,12 +517,6 @@ if FFlagEnableRobloxCommerce then
 end
 if FFlagCoreGuiEnableAnalytics then
 	ScriptContext:AddCoreScriptLocal("CoreScripts/CoreGuiEnableAnalytics", RobloxGui)
-end
-
-local GetFFlagEnableConnectCaptureEvents = require(RobloxGui.Modules.Common.Flags.GetFFlagEnableConnectCaptureEvents)
-
-if GetFFlagEnableConnectCaptureEvents() then
-	ScriptContext:AddCoreScriptLocal("CoreScripts/ConnectCaptureEvents", script.Parent)
 end
 
 if not FFlagEnableExperienceGenericChallengeRenderingOnLoadingScript then

@@ -1,0 +1,495 @@
+PROTO_0:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserHideCharacterParticlesInFirstPerson"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  NEWTABLE R1 8 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["transparencyDirty"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K3 ["enabled"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["lastTransparency"]
+  LOADNIL R1
+  LOADNIL R2
+  SETTABLEKS R1 R0 K5 ["descendantAddedConn"]
+  SETTABLEKS R2 R0 K6 ["descendantRemovingConn"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K7 ["toolDescendantAddedConns"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K8 ["toolDescendantRemovingConns"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K9 ["cachedParts"]
+  RETURN R0 1
+
+PROTO_2:
+  GETTABLEKS R2 R1 K0 ["Parent"]
+  JUMPIFNOTEQKNIL R2 [+3]
+  LOADB R2 0
+  RETURN R2 1
+  GETTABLEKS R3 R1 K0 ["Parent"]
+  FASTCALL2K ASSERT R3 K1 [+4]
+  LOADK R4 K1 [""]
+  GETIMPORT R2 K3 [assert]
+  CALL R2 2 0
+  GETTABLEKS R2 R1 K0 ["Parent"]
+  LOADK R4 K4 ["Tool"]
+  NAMECALL R2 R2 K5 ["IsA"]
+  CALL R2 2 1
+  JUMPIF R2 [+5]
+  GETTABLEKS R4 R1 K0 ["Parent"]
+  NAMECALL R2 R0 K6 ["HasToolAncestor"]
+  CALL R2 2 1
+  RETURN R2 1
+
+PROTO_3:
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+18]
+  GETUPVAL R2 1
+  LOADNIL R3
+  LOADNIL R4
+  FORGPREP R2
+  MOVE R9 R6
+  NAMECALL R7 R1 K0 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+6]
+  MOVE R10 R1
+  NAMECALL R8 R0 K1 ["HasToolAncestor"]
+  CALL R8 2 1
+  NOT R7 R8
+  RETURN R7 1
+  FORGLOOP R2 2 [-12]
+  JUMP [+16]
+  LOADK R4 K2 ["BasePart"]
+  NAMECALL R2 R1 K0 ["IsA"]
+  CALL R2 2 1
+  JUMPIF R2 [+5]
+  LOADK R4 K3 ["Decal"]
+  NAMECALL R2 R1 K0 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+6]
+  MOVE R5 R1
+  NAMECALL R3 R0 K1 ["HasToolAncestor"]
+  CALL R3 2 1
+  NOT R2 R3
+  RETURN R2 1
+  LOADB R2 0
+  RETURN R2 1
+
+PROTO_4:
+  JUMPIFNOT R1 [+25]
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["IsValidPartToModify"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+7]
+  GETTABLEKS R2 R0 K1 ["cachedParts"]
+  LOADB R3 1
+  SETTABLE R3 R2 R1
+  LOADB R2 1
+  SETTABLEKS R2 R0 K2 ["transparencyDirty"]
+  GETIMPORT R2 K4 [pairs]
+  NAMECALL R3 R1 K5 ["GetChildren"]
+  CALL R3 1 -1
+  CALL R2 -1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R6
+  NAMECALL R7 R0 K6 ["CachePartsRecursive"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R1 K1 [pairs]
+  GETTABLEKS R2 R0 K2 ["cachedParts"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  LOADN R6 0
+  SETTABLEKS R6 R4 K3 ["LocalTransparencyModifier"]
+  FORGLOOP R1 2 [-4]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K2 ["cachedParts"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K4 ["transparencyDirty"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["lastTransparency"]
+  GETTABLEKS R1 R0 K6 ["descendantAddedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K6 ["descendantAddedConn"]
+  NAMECALL R1 R1 K7 ["disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K6 ["descendantAddedConn"]
+  GETTABLEKS R1 R0 K8 ["descendantRemovingConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K8 ["descendantRemovingConn"]
+  NAMECALL R1 R1 K7 ["disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K8 ["descendantRemovingConn"]
+  GETIMPORT R1 K1 [pairs]
+  GETTABLEKS R2 R0 K9 ["toolDescendantAddedConns"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  NAMECALL R6 R5 K10 ["Disconnect"]
+  CALL R6 1 0
+  GETTABLEKS R6 R0 K9 ["toolDescendantAddedConns"]
+  LOADNIL R7
+  SETTABLE R7 R6 R4
+  FORGLOOP R1 2 [-8]
+  GETIMPORT R1 K1 [pairs]
+  GETTABLEKS R2 R0 K11 ["toolDescendantRemovingConns"]
+  CALL R1 1 3
+  FORGPREP_NEXT R1
+  NAMECALL R6 R5 K10 ["Disconnect"]
+  CALL R6 1 0
+  GETTABLEKS R6 R0 K11 ["toolDescendantRemovingConns"]
+  LOADNIL R7
+  SETTABLE R7 R6 R4
+  FORGLOOP R1 2 [-8]
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["cachedParts"]
+  LOADNIL R2
+  SETTABLE R2 R1 R0
+  LOADK R3 K1 ["BasePart"]
+  NAMECALL R1 R0 K2 ["IsA"]
+  CALL R1 2 1
+  JUMPIF R1 [+5]
+  LOADK R3 K3 ["Decal"]
+  NAMECALL R1 R0 K2 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+3]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K4 ["LocalTransparencyModifier"]
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R1 K1 [wait]
+  CALL R1 0 0
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+21]
+  JUMPIFNOT R0 [+20]
+  GETUPVAL R3 0
+  NAMECALL R1 R0 K2 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R1 1
+  MOVE R3 R0
+  NAMECALL R1 R1 K3 ["IsValidPartToModify"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["cachedParts"]
+  LOADB R2 1
+  SETTABLE R2 R1 R0
+  GETUPVAL R1 1
+  LOADB R2 1
+  SETTABLEKS R2 R1 K5 ["transparencyDirty"]
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["IsValidPartToModify"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+10]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["cachedParts"]
+  LOADB R2 1
+  SETTABLE R2 R1 R0
+  GETUPVAL R1 0
+  LOADB R2 1
+  SETTABLEKS R2 R1 K2 ["transparencyDirty"]
+  RETURN R0 0
+  LOADK R3 K3 ["Tool"]
+  NAMECALL R1 R0 K4 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+47]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["toolDescendantAddedConns"]
+  GETTABLE R1 R2 R0
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["toolDescendantAddedConns"]
+  GETTABLE R1 R2 R0
+  NAMECALL R1 R1 K6 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K5 ["toolDescendantAddedConns"]
+  GETTABLEKS R2 R0 K7 ["DescendantAdded"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U0
+  NAMECALL R2 R2 K8 ["Connect"]
+  CALL R2 2 1
+  SETTABLE R2 R1 R0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K9 ["toolDescendantRemovingConns"]
+  GETTABLE R1 R2 R0
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K9 ["toolDescendantRemovingConns"]
+  GETTABLE R1 R2 R0
+  NAMECALL R1 R1 K10 ["disconnect"]
+  CALL R1 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K9 ["toolDescendantRemovingConns"]
+  GETTABLEKS R2 R0 K11 ["DescendantRemoving"]
+  NEWCLOSURE R4 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U0
+  NAMECALL R2 R2 K8 ["Connect"]
+  CALL R2 2 1
+  SETTABLE R2 R1 R0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["cachedParts"]
+  GETTABLE R1 R2 R0
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["cachedParts"]
+  LOADNIL R2
+  SETTABLE R2 R1 R0
+  LOADN R1 0
+  SETTABLEKS R1 R0 K1 ["LocalTransparencyModifier"]
+  RETURN R0 0
+
+PROTO_10:
+  NAMECALL R2 R0 K0 ["TeardownTransparency"]
+  CALL R2 1 0
+  GETTABLEKS R2 R0 K1 ["descendantAddedConn"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R2 R0 K1 ["descendantAddedConn"]
+  NAMECALL R2 R2 K2 ["disconnect"]
+  CALL R2 1 0
+  GETTABLEKS R2 R1 K3 ["DescendantAdded"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  NAMECALL R2 R2 K4 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K1 ["descendantAddedConn"]
+  GETTABLEKS R2 R0 K5 ["descendantRemovingConn"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R2 R0 K5 ["descendantRemovingConn"]
+  NAMECALL R2 R2 K2 ["disconnect"]
+  CALL R2 1 0
+  GETTABLEKS R2 R1 K6 ["DescendantRemoving"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K7 ["connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K5 ["descendantRemovingConn"]
+  MOVE R4 R1
+  NAMECALL R2 R0 K8 ["CachePartsRecursive"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R2 R0 K0 ["enabled"]
+  JUMPIFEQ R2 R1 [+3]
+  SETTABLEKS R1 R0 K0 ["enabled"]
+  RETURN R0 0
+
+PROTO_12:
+  LOADNIL R2
+  JUMPIFNOT R1 [+7]
+  LOADK R5 K0 ["Humanoid"]
+  NAMECALL R3 R1 K1 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+2]
+  GETTABLEKS R2 R1 K2 ["Parent"]
+  JUMPIFNOT R1 [+12]
+  LOADK R5 K3 ["VehicleSeat"]
+  NAMECALL R3 R1 K1 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+7]
+  GETTABLEKS R3 R1 K4 ["Occupant"]
+  JUMPIFNOT R3 [+4]
+  GETTABLEKS R3 R1 K4 ["Occupant"]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  JUMPIFNOT R2 [+5]
+  MOVE R5 R2
+  NAMECALL R3 R0 K5 ["SetupTransparency"]
+  CALL R3 2 0
+  RETURN R0 0
+  NAMECALL R3 R0 K6 ["TeardownTransparency"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETIMPORT R3 K1 [workspace]
+  GETTABLEKS R2 R3 K2 ["CurrentCamera"]
+  JUMPIFNOT R2 [+147]
+  GETTABLEKS R3 R0 K3 ["enabled"]
+  JUMPIFNOT R3 [+144]
+  GETTABLEKS R6 R2 K4 ["Focus"]
+  GETTABLEKS R5 R6 K5 ["p"]
+  GETTABLEKS R7 R2 K6 ["CoordinateFrame"]
+  GETTABLEKS R6 R7 K5 ["p"]
+  SUB R4 R5 R6
+  GETTABLEKS R3 R4 K7 ["magnitude"]
+  LOADN R5 2
+  JUMPIFNOTLT R3 R5 [+5]
+  SUBK R6 R3 K10 [0.5]
+  DIVK R5 R6 K9 [1.5]
+  SUBRK R4 R8 K5 ["p"]
+  JUMPIF R4 [+1]
+  LOADN R4 0
+  LOADK R5 K10 [0.5]
+  JUMPIFNOTLT R4 R5 [+2]
+  LOADN R4 0
+  GETTABLEKS R5 R0 K11 ["lastTransparency"]
+  JUMPIFNOT R5 [+26]
+  LOADN R5 1
+  JUMPIFNOTLT R4 R5 [+24]
+  GETTABLEKS R5 R0 K11 ["lastTransparency"]
+  LOADK R6 K12 [0.95]
+  JUMPIFNOTLT R5 R6 [+19]
+  GETTABLEKS R6 R0 K11 ["lastTransparency"]
+  SUB R5 R4 R6
+  LOADK R7 K13 [2.8]
+  MUL R6 R7 R1
+  MINUS R9 R6
+  FASTCALL3 MATH_CLAMP R5 R9 R6
+  MOVE R8 R5
+  MOVE R10 R6
+  GETIMPORT R7 K16 [math.clamp]
+  CALL R7 3 1
+  MOVE R5 R7
+  GETTABLEKS R7 R0 K11 ["lastTransparency"]
+  ADD R4 R7 R5
+  JUMP [+3]
+  LOADB R5 1
+  SETTABLEKS R5 R0 K17 ["transparencyDirty"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K18 ["Round"]
+  MOVE R7 R4
+  LOADN R8 2
+  CALL R6 2 1
+  LOADN R7 0
+  LOADN R8 1
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R5 K16 [math.clamp]
+  CALL R5 3 1
+  MOVE R4 R5
+  GETTABLEKS R5 R0 K17 ["transparencyDirty"]
+  JUMPIF R5 [+4]
+  GETTABLEKS R5 R0 K11 ["lastTransparency"]
+  JUMPIFEQ R5 R4 [+70]
+  GETIMPORT R5 K20 [pairs]
+  GETTABLEKS R6 R0 K21 ["cachedParts"]
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K22 ["VREnabled"]
+  JUMPIFNOT R10 [+50]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K23 ["AvatarGestures"]
+  JUMPIFNOT R10 [+46]
+  NEWTABLE R10 8 0
+  GETIMPORT R11 K27 [Enum.AccessoryType.Hat]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K29 [Enum.AccessoryType.Hair]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K31 [Enum.AccessoryType.Face]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K33 [Enum.AccessoryType.Eyebrow]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETIMPORT R11 K35 [Enum.AccessoryType.Eyelash]
+  LOADB R12 1
+  SETTABLE R12 R10 R11
+  GETTABLEKS R11 R8 K36 ["Parent"]
+  LOADK R13 K37 ["Accessory"]
+  NAMECALL R11 R11 K38 ["IsA"]
+  CALL R11 2 1
+  JUMPIFNOT R11 [+6]
+  GETTABLEKS R13 R8 K36 ["Parent"]
+  GETTABLEKS R12 R13 K25 ["AccessoryType"]
+  GETTABLE R11 R10 R12
+  JUMPIF R11 [+4]
+  GETTABLEKS R11 R8 K39 ["Name"]
+  JUMPIFNOTEQKS R11 K40 ["Head"] [+4]
+  SETTABLEKS R4 R8 K41 ["LocalTransparencyModifier"]
+  JUMP [+6]
+  LOADN R11 0
+  SETTABLEKS R11 R8 K41 ["LocalTransparencyModifier"]
+  JUMP [+2]
+  SETTABLEKS R4 R8 K41 ["LocalTransparencyModifier"]
+  FORGLOOP R5 2 [-57]
+  LOADB R5 0
+  SETTABLEKS R5 R0 K17 ["transparencyDirty"]
+  SETTABLEKS R4 R0 K11 ["lastTransparency"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["VRService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  NEWTABLE R1 0 9
+  LOADK R2 K4 ["BasePart"]
+  LOADK R3 K5 ["Decal"]
+  LOADK R4 K6 ["Beam"]
+  LOADK R5 K7 ["ParticleEmitter"]
+  LOADK R6 K8 ["Trail"]
+  LOADK R7 K9 ["Fire"]
+  LOADK R8 K10 ["Smoke"]
+  LOADK R9 K11 ["Sparkles"]
+  LOADK R10 K12 ["Explosion"]
+  SETLIST R1 R2 9 [1]
+  GETIMPORT R2 K14 [require]
+  GETIMPORT R4 K16 [script]
+  GETTABLEKS R3 R4 K17 ["Parent"]
+  LOADK R5 K18 ["CameraUtils"]
+  NAMECALL R3 R3 K19 ["WaitForChild"]
+  CALL R3 2 -1
+  CALL R2 -1 1
+  LOADNIL R3
+  GETIMPORT R4 K21 [pcall]
+  DUPCLOSURE R5 K22 [PROTO_0]
+  CALL R4 1 2
+  AND R3 R4 R5
+  NEWTABLE R4 16 0
+  SETTABLEKS R4 R4 K23 ["__index"]
+  DUPCLOSURE R5 K24 [PROTO_1]
+  CAPTURE VAL R4
+  SETTABLEKS R5 R4 K25 ["new"]
+  DUPCLOSURE R5 K26 [PROTO_2]
+  SETTABLEKS R5 R4 K27 ["HasToolAncestor"]
+  NEWCLOSURE R5 P3
+  CAPTURE REF R3
+  CAPTURE VAL R1
+  SETTABLEKS R5 R4 K28 ["IsValidPartToModify"]
+  DUPCLOSURE R5 K29 [PROTO_4]
+  SETTABLEKS R5 R4 K30 ["CachePartsRecursive"]
+  DUPCLOSURE R5 K31 [PROTO_5]
+  SETTABLEKS R5 R4 K32 ["TeardownTransparency"]
+  DUPCLOSURE R5 K33 [PROTO_10]
+  SETTABLEKS R5 R4 K34 ["SetupTransparency"]
+  DUPCLOSURE R5 K35 [PROTO_11]
+  SETTABLEKS R5 R4 K36 ["Enable"]
+  DUPCLOSURE R5 K37 [PROTO_12]
+  SETTABLEKS R5 R4 K38 ["SetSubject"]
+  DUPCLOSURE R5 K39 [PROTO_13]
+  CAPTURE VAL R2
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K40 ["Update"]
+  CLOSEUPVALS R3
+  RETURN R4 1

@@ -1,0 +1,169 @@
+PROTO_0:
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  GETUPVAL R3 1
+  NEWTABLE R4 16 0
+  LOADB R5 1
+  SETTABLEKS R5 R4 K1 ["Visible"]
+  GETTABLEKS R5 R0 K2 ["AnchorPoint"]
+  SETTABLEKS R5 R4 K2 ["AnchorPoint"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K3 ["BackgroundTransparency"]
+  LOADK R5 K4 ["rbxasset://textures/ui/MenuBar/divider.png"]
+  SETTABLEKS R5 R4 K5 ["Image"]
+  GETIMPORT R5 K8 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 1
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K9 ["Position"]
+  GETIMPORT R5 K8 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 28
+  LOADN R8 0
+  LOADN R9 36
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K10 ["Size"]
+  GETTABLEKS R5 R0 K11 ["layoutOrder"]
+  SETTABLEKS R5 R4 K12 ["LayoutOrder"]
+  MOVE R5 R1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K13 ["RoundedRect"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K14 ["SelectionImageObject"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K15 ["Event"]
+  GETTABLEKS R5 R6 K16 ["Activated"]
+  DUPCLOSURE R6 K17 [PROTO_0]
+  SETTABLE R6 R4 R5
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K15 ["Event"]
+  GETTABLEKS R5 R6 K18 ["SelectionGained"]
+  GETTABLEKS R6 R0 K19 ["onSelectionGained"]
+  SETTABLE R6 R4 R5
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K15 ["Event"]
+  GETTABLEKS R5 R6 K20 ["SelectionLost"]
+  GETTABLEKS R6 R0 K21 ["onSelectionLost"]
+  SETTABLE R6 R4 R5
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K22 ["Ref"]
+  GETTABLEKS R6 R0 K23 ["forwardRef"]
+  SETTABLE R6 R4 R5
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K1 ["Dictionary"]
+  GETTABLEKS R4 R5 K2 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K4 [{"forwardRef"}]
+  SETTABLEKS R1 R6 K3 ["forwardRef"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["t"]
+  GETTABLEKS R3 R1 K9 ["Roact"]
+  GETTABLEKS R4 R1 K10 ["UIBlox"]
+  GETTABLEKS R5 R1 K11 ["Cryo"]
+  GETTABLEKS R8 R4 K12 ["App"]
+  GETTABLEKS R7 R8 K13 ["SelectionImage"]
+  GETTABLEKS R6 R7 K14 ["withSelectionCursorProvider"]
+  GETTABLEKS R9 R4 K12 ["App"]
+  GETTABLEKS R8 R9 K13 ["SelectionImage"]
+  GETTABLEKS R7 R8 K15 ["CursorKind"]
+  GETTABLEKS R10 R4 K16 ["Core"]
+  GETTABLEKS R9 R10 K17 ["ImageSet"]
+  GETTABLEKS R8 R9 K18 ["ImageSetButton"]
+  GETIMPORT R9 K1 [game]
+  LOADK R11 K19 ["StarterGui"]
+  NAMECALL R9 R9 K3 ["GetService"]
+  CALL R9 2 1
+  GETIMPORT R10 K1 [game]
+  LOADK R12 K20 ["CoreGui"]
+  NAMECALL R10 R10 K3 ["GetService"]
+  CALL R10 2 1
+  LOADK R13 K21 ["RobloxGui"]
+  NAMECALL R11 R10 K22 ["WaitForChild"]
+  CALL R11 2 1
+  GETIMPORT R12 K1 [game]
+  LOADK R14 K23 ["StarterPlayer"]
+  NAMECALL R12 R12 K3 ["GetService"]
+  CALL R12 2 1
+  GETTABLEKS R13 R2 K24 ["strictInterface"]
+  DUPTABLE R14 K32 [{"AnchorPoint", "Position", "layoutOrder", "onActivated", "onSelectionGained", "onSelectionLost", "forwardRef"}]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K34 ["Vector2"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K25 ["AnchorPoint"]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K35 ["UDim2"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K26 ["Position"]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K36 ["integer"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K27 ["layoutOrder"]
+  GETTABLEKS R15 R2 K37 ["callback"]
+  SETTABLEKS R15 R14 K28 ["onActivated"]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K37 ["callback"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K29 ["onSelectionGained"]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K37 ["callback"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K30 ["onSelectionLost"]
+  GETTABLEKS R15 R2 K33 ["optional"]
+  GETTABLEKS R16 R2 K38 ["table"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K31 ["forwardRef"]
+  CALL R13 1 1
+  DUPCLOSURE R14 K39 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  DUPCLOSURE R15 K40 [PROTO_3]
+  CAPTURE VAL R6
+  CAPTURE VAL R14
+  GETTABLEKS R16 R3 K31 ["forwardRef"]
+  DUPCLOSURE R17 K41 [PROTO_4]
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R5
+  CALL R16 1 -1
+  RETURN R16 -1

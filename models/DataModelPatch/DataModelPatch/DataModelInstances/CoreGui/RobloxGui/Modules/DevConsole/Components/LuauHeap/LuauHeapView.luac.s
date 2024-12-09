@@ -1,0 +1,1261 @@
+PROTO_0:
+  NAMECALL R1 R0 K0 ["renderChildren"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  LOADK R3 K0 ["TagBreakdown"]
+  NAMECALL R1 R0 K1 ["renderChildrenStats"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_2:
+  LOADK R3 K0 ["MemcatBreakdown"]
+  NAMECALL R1 R0 K1 ["renderChildrenStats"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  LOADK R3 K0 ["UserdataBreakdown"]
+  NAMECALL R1 R0 K1 ["renderChildrenStats"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_4:
+  NAMECALL R1 R0 K0 ["renderChildrenRefs"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["dispatchSetLuauHeapActiveSnapshot"]
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["dispatchSetLuauHeapCompareSnapshot"]
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["data"]
+  NEWTABLE R2 0 0
+  MOVE R3 R1
+  LOADNIL R4
+  LOADNIL R5
+  FORGPREP R3
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K2 ["createElement"]
+  GETUPVAL R9 1
+  DUPTABLE R10 K9 [{"size", "inset", "isExpanded", "isExpandable", "layoutOrder", "onButtonPress"}]
+  GETIMPORT R11 K12 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  GETUPVAL R15 2
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["size"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K4 ["inset"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K5 ["isExpanded"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K6 ["isExpandable"]
+  SETTABLEKS R6 R10 K7 ["layoutOrder"]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R6
+  SETTABLEKS R11 R10 K8 ["onButtonPress"]
+  DUPTABLE R11 K19 [{"name", "HorizontalHighlightTop", "HorizontalHighlightBottom", "HorizontalHighlightLeft", "HorizontalHighlightRight", "Compare"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  GETUPVAL R13 3
+  DUPTABLE R14 K22 [{"text", "size", "pos"}]
+  LOADK R16 K23 ["Snapshot #%*"]
+  MOVE R18 R6
+  NAMECALL R16 R16 K24 ["format"]
+  CALL R16 2 1
+  MOVE R15 R16
+  SETTABLEKS R15 R14 K20 ["text"]
+  GETIMPORT R15 K12 [UDim2.new]
+  GETIMPORT R16 K26 [UDim.new]
+  LOADN R17 1
+  LOADN R18 0
+  CALL R16 2 1
+  GETIMPORT R17 K26 [UDim.new]
+  LOADN R18 1
+  LOADN R19 0
+  CALL R17 2 -1
+  CALL R15 -1 1
+  SETTABLEKS R15 R14 K3 ["size"]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 0
+  GETUPVAL R17 4
+  LOADN R18 0
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K21 ["pos"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K13 ["name"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K27 ["activeSnapshot"]
+  JUMPIFNOTEQ R13 R6 [+20]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  LOADK R13 K28 ["Frame"]
+  DUPTABLE R14 K31 [{"Size", "BackgroundColor3"}]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 0
+  GETUPVAL R19 5
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K29 ["Size"]
+  GETUPVAL R15 6
+  SETTABLEKS R15 R14 K30 ["BackgroundColor3"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K14 ["HorizontalHighlightTop"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K27 ["activeSnapshot"]
+  JUMPIFNOTEQ R13 R6 [+30]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  LOADK R13 K28 ["Frame"]
+  DUPTABLE R14 K33 [{"Size", "Position", "BackgroundColor3"}]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 0
+  GETUPVAL R19 5
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K29 ["Size"]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 1
+  GETUPVAL R20 5
+  MINUS R19 R20
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K32 ["Position"]
+  GETUPVAL R15 6
+  SETTABLEKS R15 R14 K30 ["BackgroundColor3"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K15 ["HorizontalHighlightBottom"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K27 ["activeSnapshot"]
+  JUMPIFNOTEQ R13 R6 [+20]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  LOADK R13 K28 ["Frame"]
+  DUPTABLE R14 K31 [{"Size", "BackgroundColor3"}]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 0
+  GETUPVAL R17 5
+  LOADN R18 1
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K29 ["Size"]
+  GETUPVAL R15 6
+  SETTABLEKS R15 R14 K30 ["BackgroundColor3"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K16 ["HorizontalHighlightLeft"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K27 ["activeSnapshot"]
+  JUMPIFNOTEQ R13 R6 [+30]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  LOADK R13 K28 ["Frame"]
+  DUPTABLE R14 K33 [{"Size", "Position", "BackgroundColor3"}]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 0
+  GETUPVAL R17 5
+  LOADN R18 1
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K29 ["Size"]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADN R16 1
+  GETUPVAL R18 5
+  MINUS R17 R18
+  LOADN R18 0
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K32 ["Position"]
+  GETUPVAL R15 6
+  SETTABLEKS R15 R14 K30 ["BackgroundColor3"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K17 ["HorizontalHighlightRight"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K27 ["activeSnapshot"]
+  JUMPIFEQ R13 R6 [+34]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K2 ["createElement"]
+  GETUPVAL R13 7
+  DUPTABLE R14 K35 [{"text", "size", "pos", "onClicked"}]
+  LOADK R15 K18 ["Compare"]
+  SETTABLEKS R15 R14 K20 ["text"]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADK R16 K36 [0.3]
+  LOADN R17 250
+  LOADN R18 1
+  LOADN R19 250
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K3 ["size"]
+  GETIMPORT R15 K12 [UDim2.new]
+  LOADK R16 K37 [0.7]
+  LOADN R17 3
+  LOADN R18 0
+  LOADN R19 3
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K21 ["pos"]
+  NEWCLOSURE R15 P1
+  CAPTURE VAL R0
+  CAPTURE VAL R6
+  SETTABLEKS R15 R14 K34 ["onClicked"]
+  CALL R12 2 1
+  JUMP [+1]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K18 ["Compare"]
+  CALL R8 3 1
+  SETTABLE R8 R2 R6
+  FORGLOOP R3 2 [-248]
+  RETURN R2 1
+
+PROTO_8:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["data"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["activeSnapshot"]
+  GETTABLE R1 R2 R3
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["data"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K3 ["compareSnapshot"]
+  GETTABLE R2 R3 R4
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K8 [{"layoutOrder", "depth", "data", "compare"}]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K5 ["layoutOrder"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K6 ["depth"]
+  GETTABLEKS R6 R1 K9 ["Graph"]
+  SETTABLEKS R6 R5 K1 ["data"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R6 R2 K9 ["Graph"]
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K7 ["compare"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_9:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["data"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K2 ["activeSnapshot"]
+  GETTABLE R2 R3 R4
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["data"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K3 ["compareSnapshot"]
+  GETTABLE R3 R4 R5
+  GETTABLE R4 R2 R1
+  JUMPIFNOT R3 [+2]
+  GETTABLE R5 R3 R1
+  JUMP [+1]
+  LOADNIL R5
+  NEWTABLE R6 0 0
+  MOVE R7 R4
+  LOADNIL R8
+  LOADNIL R9
+  FORGPREP R7
+  LOADNIL R12
+  JUMPIFNOT R5 [+15]
+  GETIMPORT R13 K5 [ipairs]
+  MOVE R14 R5
+  CALL R13 1 3
+  FORGPREP_INEXT R13
+  GETTABLEKS R18 R11 K6 ["Name"]
+  GETTABLEKS R19 R17 K6 ["Name"]
+  JUMPIFNOTEQ R18 R19 [+3]
+  MOVE R12 R17
+  JUMP [+2]
+  FORGLOOP R13 2 [inext] [-9]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  GETUPVAL R14 1
+  DUPTABLE R15 K11 [{"layoutOrder", "depth", "data", "compare"}]
+  GETTABLEKS R17 R11 K12 ["Size"]
+  MINUS R16 R17
+  SETTABLEKS R16 R15 K8 ["layoutOrder"]
+  LOADN R16 0
+  SETTABLEKS R16 R15 K9 ["depth"]
+  SETTABLEKS R11 R15 K1 ["data"]
+  SETTABLEKS R12 R15 K10 ["compare"]
+  CALL R13 2 1
+  SETTABLE R13 R6 R10
+  FORGLOOP R7 2 [-37]
+  RETURN R6 1
+
+PROTO_10:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["data"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["activeSnapshot"]
+  GETTABLE R1 R2 R3
+  GETTABLEKS R2 R1 K3 ["Refs"]
+  JUMPIF R2 [+3]
+  NEWTABLE R3 0 0
+  RETURN R3 1
+  FASTCALL1 ASSERT R2 [+3]
+  MOVE R4 R2
+  GETIMPORT R3 K5 [assert]
+  CALL R3 1 0
+  GETTABLEKS R3 R2 K6 ["Roots"]
+  NEWTABLE R4 0 0
+  MOVE R5 R3
+  LOADNIL R6
+  LOADNIL R7
+  FORGPREP R5
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  GETUPVAL R11 1
+  DUPTABLE R12 K10 [{"layoutOrder", "depth", "data"}]
+  GETTABLEKS R14 R9 K11 ["Instances"]
+  MINUS R13 R14
+  SETTABLEKS R13 R12 K8 ["layoutOrder"]
+  LOADN R13 0
+  SETTABLEKS R13 R12 K9 ["depth"]
+  SETTABLEKS R9 R12 K1 ["data"]
+  CALL R10 2 1
+  SETTABLE R10 R4 R8
+  FORGLOOP R5 2 [-18]
+  RETURN R4 1
+
+PROTO_11:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"activeTab"}]
+  SETTABLEKS R0 R3 K0 ["activeTab"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  DUPTABLE R3 K1 [{"activeTab"}]
+  SETTABLEKS R0 R3 K0 ["activeTab"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K5 [{"text", "size", "pos", "onClicked"}]
+  SETTABLEKS R1 R5 K1 ["text"]
+  GETIMPORT R6 K8 [UDim2.new]
+  LOADN R7 0
+  GETUPVAL R8 2
+  LOADN R9 0
+  GETUPVAL R10 3
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K2 ["size"]
+  GETIMPORT R6 K8 [UDim2.new]
+  LOADN R7 0
+  GETUPVAL R9 2
+  MUL R8 R9 R2
+  LOADN R9 0
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K3 ["pos"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  SETTABLEKS R6 R5 K4 ["onClicked"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_14:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["activeTab"]
+  JUMPIFNOTEQ R3 R0 [+42]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  LOADK R3 K3 ["Frame"]
+  DUPTABLE R4 K9 [{"Size", "Position", "BorderSizePixel", "BackgroundColor3", "ZIndex"}]
+  GETIMPORT R5 K12 [UDim2.new]
+  LOADN R6 0
+  GETUPVAL R7 2
+  LOADN R8 0
+  GETUPVAL R9 3
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K4 ["Size"]
+  GETIMPORT R5 K12 [UDim2.new]
+  LOADN R6 0
+  GETUPVAL R8 2
+  MUL R7 R8 R1
+  LOADN R8 0
+  GETUPVAL R10 4
+  GETUPVAL R11 3
+  SUB R9 R10 R11
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K5 ["Position"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K6 ["BorderSizePixel"]
+  GETUPVAL R7 5
+  GETTABLEKS R6 R7 K13 ["Color"]
+  GETTABLEKS R5 R6 K14 ["HighlightBlue"]
+  SETTABLEKS R5 R4 K7 ["BackgroundColor3"]
+  LOADN R5 10
+  SETTABLEKS R5 R4 K8 ["ZIndex"]
+  CALL R2 2 1
+  RETURN R2 1
+  LOADNIL R2
+  RETURN R2 1
+
+PROTO_15:
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NEWCLOSURE R4 P1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  NEWCLOSURE R5 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U5
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K0 ["createElement"]
+  LOADK R7 K1 ["Frame"]
+  DUPTABLE R8 K5 [{"Size", "Position", "BackgroundTransparency"}]
+  SETTABLEKS R1 R8 K2 ["Size"]
+  SETTABLEKS R2 R8 K3 ["Position"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K4 ["BackgroundTransparency"]
+  DUPTABLE R9 K16 [{"Graph", "GraphHighlight", "Tags", "TagHighlight", "Memcat", "MemcatHighlight", "Userdata", "UserdataHighlight", "Refs", "RefHighlight"}]
+  MOVE R10 R4
+  LOADK R11 K17 ["graph"]
+  LOADK R12 K6 ["Graph"]
+  LOADN R13 0
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K6 ["Graph"]
+  MOVE R10 R5
+  LOADK R11 K17 ["graph"]
+  LOADN R12 0
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K7 ["GraphHighlight"]
+  MOVE R10 R4
+  LOADK R11 K18 ["tag"]
+  LOADK R12 K19 ["Object Tags"]
+  LOADN R13 1
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K8 ["Tags"]
+  MOVE R10 R5
+  LOADK R11 K18 ["tag"]
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K9 ["TagHighlight"]
+  MOVE R10 R4
+  LOADK R11 K20 ["memcat"]
+  LOADK R12 K21 ["Memory Categories"]
+  LOADN R13 2
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K10 ["Memcat"]
+  MOVE R10 R5
+  LOADK R11 K20 ["memcat"]
+  LOADN R12 2
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K11 ["MemcatHighlight"]
+  MOVE R10 R4
+  LOADK R11 K22 ["userdata"]
+  LOADK R12 K23 ["Object Classes"]
+  LOADN R13 3
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K12 ["Userdata"]
+  MOVE R10 R5
+  LOADK R11 K22 ["userdata"]
+  LOADN R12 3
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K13 ["UserdataHighlight"]
+  MOVE R10 R4
+  LOADK R11 K24 ["refs"]
+  LOADK R12 K25 ["Unique References"]
+  LOADN R13 4
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K14 ["Refs"]
+  MOVE R10 R5
+  LOADK R11 K24 ["refs"]
+  LOADN R12 4
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K15 ["RefHighlight"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+PROTO_16:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["createElement"]
+  LOADK R5 K1 ["Frame"]
+  DUPTABLE R6 K5 [{"Size", "Position", "BackgroundTransparency"}]
+  GETIMPORT R7 K8 [UDim2.new]
+  GETUPVAL R9 1
+  SUBRK R8 R9 K9 [1]
+  LOADN R9 0
+  LOADN R10 0
+  GETUPVAL R11 2
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K2 ["Size"]
+  GETIMPORT R7 K8 [UDim2.new]
+  GETUPVAL R8 1
+  LOADN R9 0
+  MOVE R10 R1
+  MOVE R11 R2
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K3 ["Position"]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K4 ["BackgroundTransparency"]
+  DUPTABLE R7 K17 [{"First", "Second", "Third", "TopHorizontal", "LowerHorizontal", "Vertical1", "Vertical2"}]
+  GETTABLEN R9 R3 1
+  JUMPIFNOT R9 [+37]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 3
+  DUPTABLE R10 K22 [{"text", "size", "pos", "sortfunction"}]
+  GETTABLEN R11 R3 1
+  SETTABLEKS R11 R10 K18 ["text"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R14 4
+  MULK R13 R14 K23 [2]
+  SUBRK R12 R9 K13 ["TopHorizontal"]
+  GETUPVAL R15 5
+  MINUS R14 R15
+  GETUPVAL R15 6
+  SUB R13 R14 R15
+  LOADN R14 0
+  GETUPVAL R15 2
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K19 ["size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 0
+  GETUPVAL R13 6
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K20 ["pos"]
+  GETTABLEKS R11 R0 K24 ["onSortChanged"]
+  SETTABLEKS R11 R10 K21 ["sortfunction"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K10 ["First"]
+  GETTABLEN R9 R3 2
+  JUMPIFNOT R9 [+35]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 3
+  DUPTABLE R10 K22 [{"text", "size", "pos", "sortfunction"}]
+  GETTABLEN R11 R3 2
+  SETTABLEKS R11 R10 K18 ["text"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R12 4
+  GETUPVAL R14 6
+  MINUS R13 R14
+  LOADN R14 0
+  GETUPVAL R15 2
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K19 ["size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R14 4
+  MULK R13 R14 K23 [2]
+  SUBRK R12 R9 K13 ["TopHorizontal"]
+  GETUPVAL R13 5
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K20 ["pos"]
+  GETTABLEKS R11 R0 K24 ["onSortChanged"]
+  SETTABLEKS R11 R10 K21 ["sortfunction"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K11 ["Second"]
+  GETTABLEN R9 R3 3
+  JUMPIFNOT R9 [+34]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 3
+  DUPTABLE R10 K22 [{"text", "size", "pos", "sortfunction"}]
+  GETTABLEN R11 R3 3
+  SETTABLEKS R11 R10 K18 ["text"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R12 4
+  GETUPVAL R14 6
+  MINUS R13 R14
+  LOADN R14 0
+  GETUPVAL R15 2
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K19 ["size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R13 4
+  SUBRK R12 R9 K13 ["TopHorizontal"]
+  GETUPVAL R13 5
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K20 ["pos"]
+  GETTABLEKS R11 R0 K24 ["onSortChanged"]
+  SETTABLEKS R11 R10 K21 ["sortfunction"]
+  CALL R8 2 1
+  JUMP [+1]
+  LOADNIL R8
+  SETTABLEKS R8 R7 K12 ["Third"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  LOADK R9 K1 ["Frame"]
+  DUPTABLE R10 K27 [{"Size", "BackgroundColor3", "BorderSizePixel"}]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 1
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETUPVAL R11 7
+  SETTABLEKS R11 R10 K25 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K26 ["BorderSizePixel"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K13 ["TopHorizontal"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  LOADK R9 K1 ["Frame"]
+  DUPTABLE R10 K28 [{"Size", "Position", "BackgroundColor3", "BorderSizePixel"}]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  GETUPVAL R15 8
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["Position"]
+  GETUPVAL R11 7
+  SETTABLEKS R11 R10 K25 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K26 ["BorderSizePixel"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K14 ["LowerHorizontal"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  LOADK R9 K1 ["Frame"]
+  DUPTABLE R10 K28 [{"Size", "Position", "BackgroundColor3", "BorderSizePixel"}]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 0
+  GETUPVAL R13 8
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R13 4
+  SUBRK R12 R9 K13 ["TopHorizontal"]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["Position"]
+  GETUPVAL R11 7
+  SETTABLEKS R11 R10 K25 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K26 ["BorderSizePixel"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K15 ["Vertical1"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  LOADK R9 K1 ["Frame"]
+  DUPTABLE R10 K28 [{"Size", "Position", "BackgroundColor3", "BorderSizePixel"}]
+  GETIMPORT R11 K8 [UDim2.new]
+  LOADN R12 0
+  GETUPVAL R13 8
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETIMPORT R11 K8 [UDim2.new]
+  GETUPVAL R14 4
+  MULK R13 R14 K23 [2]
+  SUBRK R12 R9 K13 ["TopHorizontal"]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["Position"]
+  GETUPVAL R11 7
+  SETTABLEKS R11 R10 K25 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K26 ["BorderSizePixel"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K16 ["Vertical2"]
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_17:
+  DUPTABLE R1 K1 [{"activeTab"}]
+  LOADK R2 K2 ["graph"]
+  SETTABLEKS R2 R1 K0 ["activeTab"]
+  SETTABLEKS R1 R0 K3 ["state"]
+  RETURN R0 0
+
+PROTO_18:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["layoutOrder"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["size"]
+  LOADNIL R3
+  GETUPVAL R5 0
+  GETTABLEKS R7 R0 K3 ["state"]
+  GETTABLEKS R6 R7 K4 ["activeTab"]
+  GETTABLE R4 R5 R6
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["data"]
+  JUMPIFNOT R5 [+7]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K5 ["data"]
+  LENGTH R5 R6
+  JUMPIFNOTEQKN R5 K6 [0] [+41]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K7 ["createElement"]
+  LOADK R6 K8 ["TextLabel"]
+  DUPTABLE R7 K15 [{"Size", "Position", "Text", "TextColor3", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R8 K18 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K9 ["Size"]
+  GETIMPORT R8 K18 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K10 ["Position"]
+  LOADK R8 K19 ["Capture a Snapshot to view details"]
+  SETTABLEKS R8 R7 K11 ["Text"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K20 ["Color"]
+  GETTABLEKS R8 R9 K11 ["Text"]
+  SETTABLEKS R8 R7 K12 ["TextColor3"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K13 ["BackgroundTransparency"]
+  SETTABLEKS R1 R7 K14 ["LayoutOrder"]
+  CALL R5 2 1
+  MOVE R3 R5
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K7 ["createElement"]
+  LOADK R6 K21 ["Frame"]
+  DUPTABLE R7 K22 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  SETTABLEKS R2 R7 K9 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K13 ["BackgroundTransparency"]
+  SETTABLEKS R1 R7 K14 ["LayoutOrder"]
+  DUPTABLE R8 K29 [{"SnapshotHeader", "Snapshots", "Tabs", "Hint", "Headers", "Entries"}]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  GETUPVAL R10 3
+  DUPTABLE R11 K32 [{"text", "size", "pos"}]
+  LOADK R12 K24 ["Snapshots"]
+  SETTABLEKS R12 R11 K30 ["text"]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R13 4
+  GETUPVAL R15 5
+  MINUS R14 R15
+  LOADN R15 0
+  GETUPVAL R16 6
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K2 ["size"]
+  GETIMPORT R12 K18 [UDim2.new]
+  LOADN R13 0
+  GETUPVAL R14 5
+  LOADN R15 0
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K31 ["pos"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K23 ["SnapshotHeader"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K33 ["ScrollingFrame"]
+  DUPTABLE R11 K38 [{"Size", "Position", "BackgroundTransparency", "VerticalScrollBarInset", "ScrollBarThickness", "CanvasSize", "AutomaticCanvasSize"}]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R13 4
+  LOADN R14 252
+  LOADN R15 1
+  GETUPVAL R17 6
+  MINUS R16 R17
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K9 ["Size"]
+  GETIMPORT R12 K18 [UDim2.new]
+  LOADN R13 0
+  LOADN R14 2
+  LOADN R15 0
+  GETUPVAL R16 6
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K10 ["Position"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K13 ["BackgroundTransparency"]
+  GETIMPORT R12 K42 [Enum.ScrollBarInset.None]
+  SETTABLEKS R12 R11 K34 ["VerticalScrollBarInset"]
+  LOADN R12 5
+  SETTABLEKS R12 R11 K35 ["ScrollBarThickness"]
+  GETIMPORT R12 K44 [UDim2.fromScale]
+  LOADN R13 0
+  LOADN R14 0
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K36 ["CanvasSize"]
+  GETIMPORT R12 K47 [Enum.AutomaticSize.Y]
+  SETTABLEKS R12 R11 K37 ["AutomaticCanvasSize"]
+  DUPTABLE R12 K51 [{"Layout", "Stroke", "Children"}]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K52 ["UIListLayout"]
+  DUPTABLE R15 K55 [{"FillDirection", "SortOrder"}]
+  GETIMPORT R16 K57 [Enum.FillDirection.Vertical]
+  SETTABLEKS R16 R15 K53 ["FillDirection"]
+  GETIMPORT R16 K58 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R16 R15 K54 ["SortOrder"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K48 ["Layout"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K59 ["UIStroke"]
+  DUPTABLE R15 K61 [{"Thickness", "Color"}]
+  LOADN R16 2
+  SETTABLEKS R16 R15 K60 ["Thickness"]
+  GETIMPORT R16 K63 [Color3.new]
+  LOADK R17 K64 [0.6]
+  LOADK R18 K64 [0.6]
+  LOADK R19 K64 [0.6]
+  CALL R16 3 1
+  SETTABLEKS R16 R15 K20 ["Color"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K49 ["Stroke"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K65 ["createFragment"]
+  NAMECALL R14 R0 K66 ["renderSnapshotList"]
+  CALL R14 1 -1
+  CALL R13 -1 1
+  SETTABLEKS R13 R12 K50 ["Children"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K24 ["Snapshots"]
+  GETIMPORT R11 K18 [UDim2.new]
+  GETUPVAL R13 4
+  SUBRK R12 R67 K13 ["BackgroundTransparency"]
+  LOADN R13 0
+  LOADN R14 0
+  GETUPVAL R15 7
+  CALL R11 4 1
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R13 4
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 0
+  CALL R12 4 -1
+  NAMECALL R9 R0 K68 ["createTabSelector"]
+  CALL R9 -1 1
+  SETTABLEKS R9 R8 K25 ["Tabs"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K8 ["TextLabel"]
+  DUPTABLE R11 K69 [{"Size", "Position", "Text", "TextColor3", "BackgroundTransparency"}]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R14 4
+  SUBRK R13 R67 K14 ["LayoutOrder"]
+  LOADN R14 0
+  LOADN R15 0
+  GETUPVAL R16 8
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K9 ["Size"]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R13 4
+  LOADN R14 0
+  LOADN R15 0
+  GETUPVAL R16 7
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K10 ["Position"]
+  GETTABLEKS R12 R4 K70 ["hint"]
+  SETTABLEKS R12 R11 K11 ["Text"]
+  GETUPVAL R14 2
+  GETTABLEKS R13 R14 K20 ["Color"]
+  GETTABLEKS R12 R13 K11 ["Text"]
+  SETTABLEKS R12 R11 K12 ["TextColor3"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K13 ["BackgroundTransparency"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K26 ["Hint"]
+  LOADN R11 0
+  GETUPVAL R13 7
+  GETUPVAL R14 8
+  ADD R12 R13 R14
+  GETTABLEKS R13 R4 K71 ["headers"]
+  NAMECALL R9 R0 K72 ["createStatsTableHeader"]
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K27 ["Headers"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K33 ["ScrollingFrame"]
+  DUPTABLE R11 K38 [{"Size", "Position", "BackgroundTransparency", "VerticalScrollBarInset", "ScrollBarThickness", "CanvasSize", "AutomaticCanvasSize"}]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R14 4
+  SUBRK R13 R67 K14 ["LayoutOrder"]
+  LOADN R14 0
+  LOADN R15 1
+  GETUPVAL R19 7
+  GETUPVAL R20 8
+  ADD R18 R19 R20
+  GETUPVAL R19 6
+  ADD R17 R18 R19
+  MINUS R16 R17
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K9 ["Size"]
+  GETIMPORT R12 K18 [UDim2.new]
+  GETUPVAL R13 4
+  LOADN R14 0
+  LOADN R15 0
+  GETUPVAL R18 7
+  GETUPVAL R19 8
+  ADD R17 R18 R19
+  GETUPVAL R18 6
+  ADD R16 R17 R18
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K10 ["Position"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K13 ["BackgroundTransparency"]
+  GETIMPORT R12 K42 [Enum.ScrollBarInset.None]
+  SETTABLEKS R12 R11 K34 ["VerticalScrollBarInset"]
+  LOADN R12 5
+  SETTABLEKS R12 R11 K35 ["ScrollBarThickness"]
+  GETIMPORT R12 K44 [UDim2.fromScale]
+  LOADN R13 0
+  LOADN R14 0
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K36 ["CanvasSize"]
+  GETIMPORT R12 K47 [Enum.AutomaticSize.Y]
+  SETTABLEKS R12 R11 K37 ["AutomaticCanvasSize"]
+  DUPTABLE R12 K73 [{"Layout", "Children"}]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K52 ["UIListLayout"]
+  DUPTABLE R15 K55 [{"FillDirection", "SortOrder"}]
+  GETIMPORT R16 K57 [Enum.FillDirection.Vertical]
+  SETTABLEKS R16 R15 K53 ["FillDirection"]
+  GETIMPORT R16 K58 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R16 R15 K54 ["SortOrder"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K48 ["Layout"]
+  JUMPIFNOT R3 [+2]
+  MOVE R13 R3
+  JUMP [+8]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K65 ["createFragment"]
+  GETTABLEKS R14 R4 K74 ["initFragmentSource"]
+  MOVE R15 R0
+  CALL R14 1 -1
+  CALL R13 -1 1
+  SETTABLEKS R13 R12 K50 ["Children"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K28 ["Entries"]
+  CALL R5 3 -1
+  RETURN R5 -1
+
+PROTO_19:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_20:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_21:
+  DUPTABLE R1 K2 [{"dispatchSetLuauHeapActiveSnapshot", "dispatchSetLuauHeapCompareSnapshot"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["dispatchSetLuauHeapActiveSnapshot"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["dispatchSetLuauHeapCompareSnapshot"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R7 K10 [script]
+  GETTABLEKS R6 R7 K11 ["Parent"]
+  GETTABLEKS R5 R6 K11 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K12 ["Components"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R5 R3 K13 ["HeaderButton"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R3 K14 ["BannerButton"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R3 K15 ["CellLabel"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R3 K16 ["BoxButton"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETIMPORT R11 K10 [script]
+  GETTABLEKS R10 R11 K11 ["Parent"]
+  GETTABLEKS R9 R10 K17 ["LuauHeapViewEntry"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETIMPORT R12 K10 [script]
+  GETTABLEKS R11 R12 K11 ["Parent"]
+  GETTABLEKS R10 R11 K18 ["LuauHeapViewStatEntry"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETIMPORT R13 K10 [script]
+  GETTABLEKS R12 R13 K11 ["Parent"]
+  GETTABLEKS R11 R12 K19 ["LuauHeapViewRefEntry"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETIMPORT R14 K10 [script]
+  GETTABLEKS R13 R14 K11 ["Parent"]
+  GETTABLEKS R12 R13 K20 ["LuauHeapTypes"]
+  CALL R11 1 1
+  GETIMPORT R16 K10 [script]
+  GETTABLEKS R15 R16 K11 ["Parent"]
+  GETTABLEKS R14 R15 K11 ["Parent"]
+  GETTABLEKS R13 R14 K11 ["Parent"]
+  GETTABLEKS R12 R13 K21 ["Actions"]
+  GETIMPORT R13 K5 [require]
+  GETTABLEKS R14 R12 K22 ["SetLuauHeapActiveSnapshot"]
+  CALL R13 1 1
+  GETIMPORT R14 K5 [require]
+  GETTABLEKS R15 R12 K23 ["SetLuauHeapCompareSnapshot"]
+  CALL R14 1 1
+  GETIMPORT R15 K5 [require]
+  GETIMPORT R20 K10 [script]
+  GETTABLEKS R19 R20 K11 ["Parent"]
+  GETTABLEKS R18 R19 K11 ["Parent"]
+  GETTABLEKS R17 R18 K11 ["Parent"]
+  GETTABLEKS R16 R17 K24 ["Constants"]
+  CALL R15 1 1
+  GETTABLEKS R17 R15 K25 ["GeneralFormatting"]
+  GETTABLEKS R16 R17 K26 ["LineWidth"]
+  GETTABLEKS R18 R15 K25 ["GeneralFormatting"]
+  GETTABLEKS R17 R18 K27 ["LineColor"]
+  GETTABLEKS R19 R15 K25 ["GeneralFormatting"]
+  GETTABLEKS R18 R19 K28 ["HeaderFrameHeight"]
+  GETTABLEKS R20 R15 K25 ["GeneralFormatting"]
+  GETTABLEKS R19 R20 K29 ["EntryFrameHeight"]
+  GETTABLEKS R21 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R20 R21 K31 ["ValueCellWidth"]
+  GETTABLEKS R22 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R21 R22 K32 ["CellPadding"]
+  GETTABLEKS R23 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R22 R23 K33 ["ValuePadding"]
+  GETTABLEKS R24 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R23 R24 K34 ["SnapshotWidth"]
+  GETTABLEKS R25 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R24 R25 K35 ["SnapshotHighlightSize"]
+  GETTABLEKS R26 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R25 R26 K36 ["TabsHeight"]
+  GETTABLEKS R27 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R26 R27 K37 ["TabButtonWidth"]
+  GETTABLEKS R28 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R27 R28 K38 ["TabButtonHeight"]
+  GETTABLEKS R29 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R28 R29 K39 ["TabButtonPad"]
+  GETTABLEKS R30 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R29 R30 K40 ["TabHighlightHeight"]
+  GETTABLEKS R31 R15 K30 ["LuauHeapFormatting"]
+  GETTABLEKS R30 R31 K41 ["TableHintHeight"]
+  NEWTABLE R31 8 0
+  DUPTABLE R32 K45 [{"hint", "headers", "initFragmentSource"}]
+  LOADK R33 K46 ["Graph displays the size of the objects in Luau VM aggregated by the shortest path from the root Engine references to them.
+		Most important root references are ModuleScript tables and functions connected to signals or the task scheduler."]
+  SETTABLEKS R33 R32 K42 ["hint"]
+  NEWTABLE R33 0 3
+  LOADK R34 K47 ["Name"]
+  LOADK R35 K48 ["Size"]
+  LOADK R36 K49 ["Self"]
+  SETLIST R33 R34 3 [1]
+  SETTABLEKS R33 R32 K43 ["headers"]
+  DUPCLOSURE R33 K50 [PROTO_0]
+  SETTABLEKS R33 R32 K44 ["initFragmentSource"]
+  SETTABLEKS R32 R31 K51 ["graph"]
+  DUPTABLE R32 K45 [{"hint", "headers", "initFragmentSource"}]
+  LOADK R33 K52 ["This memory breakdown displays how much memory is used by Luau VM types."]
+  SETTABLEKS R33 R32 K42 ["hint"]
+  NEWTABLE R33 0 3
+  LOADK R34 K47 ["Name"]
+  LOADK R35 K48 ["Size"]
+  LOADK R36 K53 ["Count"]
+  SETLIST R33 R34 3 [1]
+  SETTABLEKS R33 R32 K43 ["headers"]
+  DUPCLOSURE R33 K54 [PROTO_1]
+  SETTABLEKS R33 R32 K44 ["initFragmentSource"]
+  SETTABLEKS R32 R31 K55 ["tag"]
+  DUPTABLE R32 K45 [{"hint", "headers", "initFragmentSource"}]
+  LOADK R33 K56 ["Memory separated by the category at the time of allocation.
+		By default, memory category is assigned to a subset of scripts.
+		Custom memory category can be created using 'debug.setmemorycategory' API."]
+  SETTABLEKS R33 R32 K42 ["hint"]
+  NEWTABLE R33 0 3
+  LOADK R34 K47 ["Name"]
+  LOADK R35 K48 ["Size"]
+  LOADK R36 K53 ["Count"]
+  SETLIST R33 R34 3 [1]
+  SETTABLEKS R33 R32 K43 ["headers"]
+  DUPCLOSURE R33 K57 [PROTO_2]
+  SETTABLEKS R33 R32 K44 ["initFragmentSource"]
+  SETTABLEKS R32 R31 K58 ["memcat"]
+  DUPTABLE R32 K45 [{"hint", "headers", "initFragmentSource"}]
+  LOADK R33 K59 ["This breakdown shows how much memory inside Luau VM is taken by custom Roblox engine classes.
+		For DataModel classes like 'Part' this does not include the memory taken inside the engine itself."]
+  SETTABLEKS R33 R32 K42 ["hint"]
+  NEWTABLE R33 0 3
+  LOADK R34 K47 ["Name"]
+  LOADK R35 K48 ["Size"]
+  LOADK R36 K53 ["Count"]
+  SETLIST R33 R34 3 [1]
+  SETTABLEKS R33 R32 K43 ["headers"]
+  DUPCLOSURE R33 K60 [PROTO_3]
+  SETTABLEKS R33 R32 K44 ["initFragmentSource"]
+  SETTABLEKS R32 R31 K61 ["userdata"]
+  DUPTABLE R32 K45 [{"hint", "headers", "initFragmentSource"}]
+  LOADK R33 K62 ["This view shows engine DataModel instances that are only referenced by Luau VM and are not directly parented to the DataModel.
+		For each instance, it will show the set of paths that make it accessible and prevent garbage collection.
+		Most often, engine Luau references come from ModuleScript tables, active signal connections and active coroutines in the task scheduler."]
+  SETTABLEKS R33 R32 K42 ["hint"]
+  NEWTABLE R33 0 3
+  LOADK R34 K47 ["Name"]
+  LOADK R35 K53 ["Count"]
+  LOADK R36 K63 ["Total Instances"]
+  SETLIST R33 R34 3 [1]
+  SETTABLEKS R33 R32 K43 ["headers"]
+  DUPCLOSURE R33 K64 [PROTO_4]
+  SETTABLEKS R33 R32 K44 ["initFragmentSource"]
+  SETTABLEKS R32 R31 K65 ["refs"]
+  GETTABLEKS R32 R1 K66 ["PureComponent"]
+  LOADK R34 K67 ["LuauHeapView"]
+  NAMECALL R32 R32 K68 ["extend"]
+  CALL R32 2 1
+  DUPCLOSURE R33 K69 [PROTO_7]
+  CAPTURE VAL R1
+  CAPTURE VAL R5
+  CAPTURE VAL R19
+  CAPTURE VAL R6
+  CAPTURE VAL R21
+  CAPTURE VAL R24
+  CAPTURE VAL R17
+  CAPTURE VAL R7
+  SETTABLEKS R33 R32 K70 ["renderSnapshotList"]
+  DUPCLOSURE R33 K71 [PROTO_8]
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  SETTABLEKS R33 R32 K72 ["renderChildren"]
+  DUPCLOSURE R33 K73 [PROTO_9]
+  CAPTURE VAL R1
+  CAPTURE VAL R9
+  SETTABLEKS R33 R32 K74 ["renderChildrenStats"]
+  DUPCLOSURE R33 K75 [PROTO_10]
+  CAPTURE VAL R1
+  CAPTURE VAL R10
+  SETTABLEKS R33 R32 K76 ["renderChildrenRefs"]
+  DUPCLOSURE R33 K77 [PROTO_15]
+  CAPTURE VAL R1
+  CAPTURE VAL R7
+  CAPTURE VAL R26
+  CAPTURE VAL R27
+  CAPTURE VAL R29
+  CAPTURE VAL R15
+  SETTABLEKS R33 R32 K78 ["createTabSelector"]
+  DUPCLOSURE R33 K79 [PROTO_16]
+  CAPTURE VAL R1
+  CAPTURE VAL R23
+  CAPTURE VAL R18
+  CAPTURE VAL R4
+  CAPTURE VAL R20
+  CAPTURE VAL R22
+  CAPTURE VAL R21
+  CAPTURE VAL R17
+  CAPTURE VAL R16
+  SETTABLEKS R33 R32 K80 ["createStatsTableHeader"]
+  DUPCLOSURE R33 K81 [PROTO_17]
+  SETTABLEKS R33 R32 K82 ["init"]
+  DUPCLOSURE R33 K83 [PROTO_18]
+  CAPTURE VAL R31
+  CAPTURE VAL R1
+  CAPTURE VAL R15
+  CAPTURE VAL R4
+  CAPTURE VAL R23
+  CAPTURE VAL R21
+  CAPTURE VAL R18
+  CAPTURE VAL R25
+  CAPTURE VAL R30
+  SETTABLEKS R33 R32 K84 ["render"]
+  DUPCLOSURE R33 K85 [PROTO_21]
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  GETTABLEKS R34 R2 K86 ["UNSTABLE_connect2"]
+  LOADNIL R35
+  MOVE R36 R33
+  CALL R34 2 1
+  MOVE R35 R32
+  CALL R34 1 -1
+  RETURN R34 -1

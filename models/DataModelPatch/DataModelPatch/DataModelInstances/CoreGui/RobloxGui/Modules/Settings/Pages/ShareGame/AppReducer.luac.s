@@ -1,0 +1,161 @@
+PROTO_0:
+  MOVE R2 R0
+  JUMPIF R2 [+2]
+  NEWTABLE R2 0 0
+  MOVE R0 R2
+  DUPTABLE R2 K12 [{"ConversationsSearch", "DeviceInfo", "Invites", "Page", "PlaceInfos", "Toasts", "Users", "Friends", "FriendCount", "ShareLinks", "GameInfo", "NetworkStatus"}]
+  GETUPVAL R3 0
+  GETTABLEKS R4 R0 K0 ["ConversationsSearch"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K0 ["ConversationsSearch"]
+  GETUPVAL R3 1
+  GETTABLEKS R4 R0 K1 ["DeviceInfo"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["DeviceInfo"]
+  GETUPVAL R3 2
+  GETTABLEKS R4 R0 K2 ["Invites"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["Invites"]
+  GETUPVAL R3 3
+  GETTABLEKS R4 R0 K3 ["Page"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K3 ["Page"]
+  GETUPVAL R3 4
+  GETTABLEKS R4 R0 K4 ["PlaceInfos"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K4 ["PlaceInfos"]
+  GETUPVAL R3 5
+  GETTABLEKS R4 R0 K5 ["Toasts"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K5 ["Toasts"]
+  GETUPVAL R3 6
+  GETTABLEKS R4 R0 K6 ["Users"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K6 ["Users"]
+  GETUPVAL R3 7
+  GETTABLEKS R4 R0 K7 ["Friends"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K7 ["Friends"]
+  GETUPVAL R3 8
+  GETTABLEKS R4 R0 K8 ["FriendCount"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K8 ["FriendCount"]
+  GETUPVAL R3 9
+  GETTABLEKS R4 R0 K9 ["ShareLinks"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K9 ["ShareLinks"]
+  GETUPVAL R3 10
+  GETTABLEKS R4 R0 K10 ["GameInfo"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K10 ["GameInfo"]
+  GETUPVAL R3 11
+  GETTABLEKS R4 R0 K11 ["NetworkStatus"]
+  MOVE R5 R1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K11 ["NetworkStatus"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K4 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETTABLEKS R2 R3 K5 ["RobloxGui"]
+  GETTABLEKS R1 R2 K6 ["Modules"]
+  GETTABLEKS R4 R1 K7 ["Settings"]
+  GETTABLEKS R3 R4 K8 ["Pages"]
+  GETTABLEKS R2 R3 K9 ["ShareGame"]
+  GETIMPORT R4 K11 [require]
+  GETTABLEKS R7 R0 K12 ["Workspace"]
+  GETTABLEKS R6 R7 K13 ["Packages"]
+  GETTABLEKS R5 R6 K14 ["NotificationsCommon"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K15 ["ReducerDependencies"]
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R9 R0 K12 ["Workspace"]
+  GETTABLEKS R8 R9 K13 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["PlaceInfoRodux"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K17 ["Reducers"]
+  GETTABLEKS R4 R5 K18 ["PlaceInfosReducer"]
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R10 R0 K12 ["Workspace"]
+  GETTABLEKS R9 R10 K13 ["Packages"]
+  GETTABLEKS R8 R9 K19 ["UserLib"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K17 ["Reducers"]
+  GETTABLEKS R5 R6 K20 ["UserReducer"]
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R11 R0 K12 ["Workspace"]
+  GETTABLEKS R10 R11 K13 ["Packages"]
+  GETTABLEKS R9 R10 K21 ["LegacyFriendsRodux"]
+  CALL R8 1 1
+  GETTABLEKS R7 R8 K17 ["Reducers"]
+  GETTABLEKS R6 R7 K22 ["Friends"]
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R12 R0 K12 ["Workspace"]
+  GETTABLEKS R11 R12 K13 ["Packages"]
+  GETTABLEKS R10 R11 K21 ["LegacyFriendsRodux"]
+  CALL R9 1 1
+  GETTABLEKS R8 R9 K17 ["Reducers"]
+  GETTABLEKS R7 R8 K23 ["FriendCount"]
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R10 R2 K17 ["Reducers"]
+  GETTABLEKS R9 R10 K24 ["ConversationsSearch"]
+  CALL R8 1 1
+  GETIMPORT R9 K11 [require]
+  GETTABLEKS R11 R2 K17 ["Reducers"]
+  GETTABLEKS R10 R11 K25 ["DeviceInfo"]
+  CALL R9 1 1
+  GETIMPORT R10 K11 [require]
+  GETTABLEKS R12 R2 K17 ["Reducers"]
+  GETTABLEKS R11 R12 K26 ["Invites"]
+  CALL R10 1 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R13 R2 K17 ["Reducers"]
+  GETTABLEKS R12 R13 K27 ["GameInfo"]
+  CALL R11 1 1
+  GETIMPORT R12 K11 [require]
+  GETTABLEKS R14 R2 K17 ["Reducers"]
+  GETTABLEKS R13 R14 K28 ["Page"]
+  CALL R12 1 1
+  GETIMPORT R13 K11 [require]
+  GETTABLEKS R15 R2 K17 ["Reducers"]
+  GETTABLEKS R14 R15 K29 ["Toasts"]
+  CALL R13 1 1
+  GETTABLEKS R14 R3 K30 ["RoduxShareLinks"]
+  GETTABLEKS R15 R3 K31 ["RoduxNetworking"]
+  GETTABLEKS R16 R15 K32 ["installReducer"]
+  CALL R16 0 1
+  GETTABLEKS R17 R14 K32 ["installReducer"]
+  CALL R17 0 1
+  DUPCLOSURE R18 K33 [PROTO_0]
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R12
+  CAPTURE VAL R4
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R17
+  CAPTURE VAL R11
+  CAPTURE VAL R16
+  RETURN R18 1

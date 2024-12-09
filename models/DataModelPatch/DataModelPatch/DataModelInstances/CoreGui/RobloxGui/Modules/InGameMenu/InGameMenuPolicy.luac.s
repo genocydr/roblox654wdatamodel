@@ -1,0 +1,156 @@
+PROTO_0:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["EnableInGameHomeIcon"]
+  ORK R0 R1 K0 [False]
+  RETURN R0 1
+  GETUPVAL R0 2
+  CALL R0 0 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["NativeCloseIntercept"]
+  NAMECALL R0 R0 K3 ["GetEngineFeature"]
+  CALL R0 2 1
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+17]
+  JUMPIFNOT R0 [+16]
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+11]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K4 ["InExperienceCanViewEducationalPopup"]
+  JUMPIFNOTEQKNIL R2 [+3]
+  LOADB R1 1
+  RETURN R1 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K4 ["InExperienceCanViewEducationalPopup"]
+  RETURN R1 1
+  LOADB R1 1
+  RETURN R1 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+3]
+  GETUPVAL R0 1
+  CALL R0 0 1
+  JUMPIF R0 [+1]
+  LOADN R0 0
+  RETURN R0 1
+
+PROTO_3:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["GameInfoShowChatFeatures"]
+  ORK R0 R1 K0 [False]
+  RETURN R0 1
+  LOADB R0 0
+  RETURN R0 1
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["FullscreenTitleBarEnabled"]
+  ORK R0 R1 K0 [False]
+  RETURN R0 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DisplayCheckboxInVoiceConsent"]
+  JUMPIFNOTEQKNIL R0 [+3]
+  LOADB R0 1
+  RETURN R0 1
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["DisplayCheckboxInVoiceConsent"]
+  RETURN R0 1
+
+PROTO_6:
+  DUPTABLE R1 K6 [{"enableInGameHomeIcon", "enableEducationalPopup", "educationalPopupMaxDisplayCount", "getGameInfoShowChatFeatures", "enableFullscreenTitleBar", "getDisplayCheckboxInVoiceConsent"}]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K0 ["enableInGameHomeIcon"]
+  NEWCLOSURE R2 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K1 ["enableEducationalPopup"]
+  DUPCLOSURE R2 K7 [PROTO_2]
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U3
+  SETTABLEKS R2 R1 K2 ["educationalPopupMaxDisplayCount"]
+  NEWCLOSURE R2 P3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K3 ["getGameInfoShowChatFeatures"]
+  NEWCLOSURE R2 P4
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K4 ["enableFullscreenTitleBar"]
+  NEWCLOSURE R2 P5
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K5 ["getDisplayCheckboxInVoiceConsent"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["PolicyProvider"]
+  GETTABLEKS R5 R0 K9 ["Workspace"]
+  GETTABLEKS R4 R5 K6 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["SharedFlags"]
+  GETIMPORT R5 K5 [require]
+  MOVE R6 R3
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K11 ["GetFFlagUseVoiceExitBetaLanguage"]
+  GETIMPORT R6 K5 [require]
+  MOVE R7 R3
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K12 ["GetFFlagGateEducationalPopupVisibilityViaGUAC"]
+  GETTABLEKS R7 R2 K13 ["GetPolicyImplementations"]
+  GETTABLEKS R6 R7 K14 ["MemStorageService"]
+  LOADK R7 K15 ["app-policy"]
+  CALL R6 1 1
+  GETTABLEKS R7 R2 K16 ["withGetPolicyImplementation"]
+  MOVE R8 R6
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETIMPORT R13 K18 [script]
+  GETTABLEKS R12 R13 K19 ["Parent"]
+  GETTABLEKS R11 R12 K19 ["Parent"]
+  GETTABLEKS R10 R11 K20 ["Flags"]
+  GETTABLEKS R9 R10 K21 ["GetFIntEducationalPopupDisplayMaxCount"]
+  CALL R8 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R13 R0 K9 ["Workspace"]
+  GETTABLEKS R12 R13 K6 ["Packages"]
+  GETTABLEKS R11 R12 K10 ["SharedFlags"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K22 ["isSubjectToDesktopPolicies"]
+  GETIMPORT R10 K1 [game]
+  LOADK R12 K23 ["UseGUACforDUARPolicy"]
+  LOADB R13 0
+  NAMECALL R10 R10 K24 ["DefineFastFlag"]
+  CALL R10 3 1
+  DUPCLOSURE R11 K25 [PROTO_6]
+  CAPTURE VAL R10
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  CAPTURE VAL R4
+  SETTABLEKS R11 R7 K26 ["Mapper"]
+  RETURN R7 1

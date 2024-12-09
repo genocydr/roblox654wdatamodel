@@ -1,0 +1,381 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Array"]
+  GETTABLEKS R1 R2 K1 ["indexOf"]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLE R1 R2 R0
+  GETUPVAL R2 1
+  SETTABLEKS R1 R2 K0 ["VRComfortSetting"]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K1 ["AnalyticsSettingsChangeName"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K2 ["AnalyticsSettingsVRComfortSettingChangeName"]
+  DUPTABLE R5 K4 [{"mode"}]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K6 [tostring]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K3 ["mode"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R3 K1 [{"selectedMode"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["VRComfortSetting"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K3 ["Array"]
+  GETTABLEKS R6 R7 K4 ["indexOf"]
+  GETUPVAL R7 2
+  MOVE R8 R5
+  CALL R6 2 1
+  MOVE R4 R6
+  SETTABLEKS R4 R3 K0 ["selectedMode"]
+  NAMECALL R1 R0 K5 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selectedMode"}]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["VRComfortSetting"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K3 ["Array"]
+  GETTABLEKS R5 R6 K4 ["indexOf"]
+  GETUPVAL R6 3
+  MOVE R7 R4
+  CALL R5 2 1
+  MOVE R3 R5
+  SETTABLEKS R3 R2 K0 ["selectedMode"]
+  NAMECALL R0 R0 K5 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLE R1 R2 R0
+  GETUPVAL R2 1
+  SETTABLEKS R1 R2 K0 ["VRComfortSetting"]
+  GETUPVAL R2 2
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K1 ["AnalyticsSettingsChangeName"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K2 ["AnalyticsSettingsVRComfortSettingChangeName"]
+  DUPTABLE R5 K4 [{"mode"}]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K6 [tostring]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K3 ["mode"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_5:
+  DUPTABLE R2 K1 [{"tabName"}]
+  GETUPVAL R4 0
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R6 R0
+  GETIMPORT R5 K3 [tostring]
+  CALL R5 1 1
+  GETTABLE R3 R4 R5
+  SETTABLEKS R3 R2 K0 ["tabName"]
+  RETURN R2 1
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"VRComfortSettingListener", "ComfortSettingEntrySelector"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K7 [{"event", "callback"}]
+  GETUPVAL R6 2
+  SETTABLEKS R6 R5 K5 ["event"]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R6 R5 K6 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["VRComfortSettingListener"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  LOADK R4 K8 ["Frame"]
+  DUPTABLE R5 K14 [{"Size", "AutomaticSize", "BackgroundTransparency", "LayoutOrder", "ZIndex"}]
+  GETIMPORT R6 K17 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K9 ["Size"]
+  GETIMPORT R6 K20 [Enum.AutomaticSize.Y]
+  SETTABLEKS R6 R5 K10 ["AutomaticSize"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K11 ["BackgroundTransparency"]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K21 ["props"]
+  GETTABLEKS R6 R7 K12 ["LayoutOrder"]
+  SETTABLEKS R6 R5 K12 ["LayoutOrder"]
+  LOADN R6 2
+  SETTABLEKS R6 R5 K13 ["ZIndex"]
+  DUPTABLE R6 K25 [{"Padding", "ListLayout", "InputDescription", "Frame"}]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K26 ["UIPadding"]
+  DUPTABLE R9 K31 [{"PaddingLeft", "PaddingRight", "PaddingBottom", "PaddingTop"}]
+  GETIMPORT R10 K33 [UDim.new]
+  LOADN R11 0
+  LOADN R12 24
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K27 ["PaddingLeft"]
+  GETIMPORT R10 K33 [UDim.new]
+  LOADN R11 0
+  LOADN R12 24
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K28 ["PaddingRight"]
+  GETIMPORT R10 K33 [UDim.new]
+  LOADN R11 0
+  LOADN R12 15
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K29 ["PaddingBottom"]
+  GETIMPORT R10 K33 [UDim.new]
+  LOADN R11 0
+  LOADN R12 15
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K30 ["PaddingTop"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K22 ["Padding"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K34 ["UIListLayout"]
+  DUPTABLE R9 K38 [{"FillDirection", "HorizontalAlignment", "SortOrder", "Padding"}]
+  GETIMPORT R10 K40 [Enum.FillDirection.Vertical]
+  SETTABLEKS R10 R9 K35 ["FillDirection"]
+  GETIMPORT R10 K42 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R10 R9 K36 ["HorizontalAlignment"]
+  GETIMPORT R10 K43 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R10 R9 K37 ["SortOrder"]
+  GETIMPORT R10 K33 [UDim.new]
+  LOADN R11 0
+  LOADN R12 20
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K22 ["Padding"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K23 ["ListLayout"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  GETUPVAL R8 7
+  DUPTABLE R9 K49 [{"themeKey", "fontKey", "Text", "Size", "AutomaticSize", "TextWrapped", "LayoutOrder", "TextXAlignment"}]
+  LOADK R10 K50 ["TextDefault"]
+  SETTABLEKS R10 R9 K44 ["themeKey"]
+  LOADK R10 K51 ["CaptionHeader"]
+  SETTABLEKS R10 R9 K45 ["fontKey"]
+  GETTABLEKS R10 R0 K52 ["Description"]
+  SETTABLEKS R10 R9 K46 ["Text"]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADK R11 K53 [0.9]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K9 ["Size"]
+  GETIMPORT R10 K20 [Enum.AutomaticSize.Y]
+  SETTABLEKS R10 R9 K10 ["AutomaticSize"]
+  LOADB R10 1
+  SETTABLEKS R10 R9 K47 ["TextWrapped"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K12 ["LayoutOrder"]
+  GETIMPORT R10 K54 [Enum.TextXAlignment.Left]
+  SETTABLEKS R10 R9 K48 ["TextXAlignment"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K24 ["InputDescription"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K8 ["Frame"]
+  DUPTABLE R9 K55 [{"Size", "AutomaticSize", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R10 K17 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K9 ["Size"]
+  GETIMPORT R10 K20 [Enum.AutomaticSize.Y]
+  SETTABLEKS R10 R9 K10 ["AutomaticSize"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K11 ["BackgroundTransparency"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K12 ["LayoutOrder"]
+  DUPTABLE R10 K57 [{"SegmentedControl"}]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K4 ["createElement"]
+  GETUPVAL R12 8
+  DUPTABLE R13 K62 [{"width", "selectedTabIndex", "onTabActivated", "tabs"}]
+  GETIMPORT R14 K33 [UDim.new]
+  LOADN R15 1
+  LOADN R16 0
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K58 ["width"]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K63 ["state"]
+  GETTABLEKS R14 R15 K64 ["selectedMode"]
+  SETTABLEKS R14 R13 K59 ["selectedTabIndex"]
+  DUPCLOSURE R14 K65 [PROTO_4]
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  SETTABLEKS R14 R13 K60 ["onTabActivated"]
+  GETUPVAL R16 5
+  GETTABLEKS R15 R16 K66 ["Array"]
+  GETTABLEKS R14 R15 K67 ["map"]
+  GETUPVAL R15 6
+  NEWCLOSURE R16 P2
+  CAPTURE VAL R0
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K61 ["tabs"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K56 ["SegmentedControl"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K8 ["Frame"]
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K2 ["ComfortSettingEntrySelector"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K5 [UserSettings]
+  CALL R2 0 1
+  GETTABLEKS R1 R2 K6 ["GameSettings"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R0 K9 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["LuauPolyfill"]
+  CALL R2 1 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K11 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K12 ["Roact"]
+  CALL R4 1 1
+  GETTABLEKS R5 R3 K13 ["t"]
+  GETTABLEKS R6 R3 K14 ["UIBlox"]
+  GETTABLEKS R9 R6 K15 ["App"]
+  GETTABLEKS R8 R9 K16 ["Control"]
+  GETTABLEKS R7 R8 K17 ["SegmentedControl"]
+  GETIMPORT R11 K19 [script]
+  GETTABLEKS R10 R11 K20 ["Parent"]
+  GETTABLEKS R9 R10 K20 ["Parent"]
+  GETTABLEKS R8 R9 K20 ["Parent"]
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R8 K21 ["Components"]
+  GETTABLEKS R10 R11 K22 ["ThemedTextLabel"]
+  CALL R9 1 1
+  LOADK R12 K23 ["VRComfortSetting"]
+  NAMECALL R10 R1 K24 ["GetPropertyChangedSignal"]
+  CALL R10 2 1
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R13 R8 K25 ["Utility"]
+  GETTABLEKS R12 R13 K26 ["ExternalEventConnection"]
+  CALL R11 1 1
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R14 R8 K27 ["Localization"]
+  GETTABLEKS R13 R14 K28 ["withLocalization"]
+  CALL R12 1 1
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R8 K25 ["Utility"]
+  GETTABLEKS R14 R15 K29 ["SendAnalytics"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R16 R8 K30 ["Resources"]
+  GETTABLEKS R15 R16 K31 ["Constants"]
+  CALL R14 1 1
+  NEWTABLE R15 8 0
+  LOADK R16 K32 ["CoreScripts.InGameMenu.GameSettings.ComfortSettingsDescription"]
+  SETTABLEKS R16 R15 K33 ["Description"]
+  LOADK R16 K34 ["CoreScripts.InGameMenu.GameSettings.ComfortSettingComfort"]
+  SETTABLEKS R16 R15 K35 ["Enum.VRComfortSetting.Comfort"]
+  LOADK R16 K36 ["CoreScripts.InGameMenu.GameSettings.ComfortSettingNormal"]
+  SETTABLEKS R16 R15 K37 ["Enum.VRComfortSetting.Normal"]
+  LOADK R16 K38 ["CoreScripts.InGameMenu.GameSettings.ComfortSettingExpert"]
+  SETTABLEKS R16 R15 K39 ["Enum.VRComfortSetting.Expert"]
+  LOADK R16 K40 ["CoreScripts.InGameMenu.GameSettings.ComfortSettingCustom"]
+  SETTABLEKS R16 R15 K41 ["Enum.VRComfortSetting.Custom"]
+  GETIMPORT R16 K43 [Enum.VRComfortSetting]
+  NAMECALL R16 R16 K44 ["GetEnumItems"]
+  CALL R16 1 1
+  DUPCLOSURE R17 K45 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R16
+  DUPCLOSURE R18 K46 [PROTO_1]
+  CAPTURE VAL R16
+  CAPTURE VAL R1
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  GETTABLEKS R19 R4 K47 ["PureComponent"]
+  LOADK R21 K48 ["ComfortSettingsEntry"]
+  NAMECALL R19 R19 K49 ["extend"]
+  CALL R19 2 1
+  GETTABLEKS R20 R5 K50 ["strictInterface"]
+  DUPTABLE R21 K52 [{"LayoutOrder"}]
+  GETTABLEKS R22 R5 K53 ["optional"]
+  GETTABLEKS R23 R5 K54 ["integer"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K51 ["LayoutOrder"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K55 ["validateProps"]
+  DUPCLOSURE R20 K56 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R16
+  SETTABLEKS R20 R19 K57 ["init"]
+  DUPCLOSURE R20 K58 [PROTO_7]
+  CAPTURE VAL R12
+  CAPTURE VAL R15
+  CAPTURE VAL R4
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R16
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  SETTABLEKS R20 R19 K59 ["render"]
+  RETURN R19 1

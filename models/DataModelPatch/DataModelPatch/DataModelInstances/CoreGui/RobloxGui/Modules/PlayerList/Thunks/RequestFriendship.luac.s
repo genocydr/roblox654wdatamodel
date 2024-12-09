@@ -1,0 +1,172 @@
+PROTO_0:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+24]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["PlayerDropDown-RequestFriendship"]
+  NAMECALL R0 R0 K1 ["ReportCounter"]
+  CALL R0 2 0
+  GETUPVAL R0 1
+  LOADK R2 K2 ["Game"]
+  LOADK R3 K3 ["RequestFriendship"]
+  LOADK R4 K4 ["PlayerDropDown"]
+  NAMECALL R0 R0 K5 ["TrackEvent"]
+  CALL R0 4 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K6 ["Parent"]
+  GETUPVAL R1 3
+  JUMPIFNOTEQ R0 R1 [+107]
+  GETUPVAL R0 4
+  GETUPVAL R2 2
+  NAMECALL R0 R0 K3 ["RequestFriendship"]
+  CALL R0 2 0
+  RETURN R0 0
+  GETUPVAL R0 5
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["UserId"]
+  NAMECALL R0 R0 K8 ["GetFriendCountAsync"]
+  CALL R0 2 1
+  GETUPVAL R1 5
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K7 ["UserId"]
+  NAMECALL R1 R1 K8 ["GetFriendCountAsync"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+1]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  LOADN R2 200
+  JUMPIFNOTLT R1 R2 [+28]
+  LOADN R2 200
+  JUMPIFNOTLT R0 R2 [+25]
+  GETUPVAL R2 1
+  LOADK R4 K0 ["PlayerDropDown-RequestFriendship"]
+  NAMECALL R2 R2 K1 ["ReportCounter"]
+  CALL R2 2 0
+  GETUPVAL R2 1
+  LOADK R4 K2 ["Game"]
+  LOADK R5 K3 ["RequestFriendship"]
+  LOADK R6 K4 ["PlayerDropDown"]
+  NAMECALL R2 R2 K5 ["TrackEvent"]
+  CALL R2 4 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["Parent"]
+  GETUPVAL R3 3
+  JUMPIFNOTEQ R2 R3 [+60]
+  GETUPVAL R2 4
+  GETUPVAL R4 2
+  NAMECALL R2 R2 K3 ["RequestFriendship"]
+  CALL R2 2 0
+  RETURN R0 0
+  LOADN R2 200
+  JUMPIFNOTLE R2 R1 [+20]
+  GETUPVAL R3 6
+  JUMPIFNOT R3 [+2]
+  LOADK R2 K9 ["Cannot accept friend request"]
+  JUMP [+1]
+  LOADK R2 K10 ["Cannot send friend request"]
+  GETUPVAL R3 7
+  DUPTABLE R5 K14 [{"Title", "Text", "Duration"}]
+  SETTABLEKS R2 R5 K11 ["Title"]
+  LOADK R6 K15 ["You are at the max friends limit."]
+  SETTABLEKS R6 R5 K12 ["Text"]
+  LOADN R6 5
+  SETTABLEKS R6 R5 K13 ["Duration"]
+  NAMECALL R3 R3 K16 ["Fire"]
+  CALL R3 2 0
+  RETURN R0 0
+  LOADN R2 200
+  JUMPIFNOTLE R2 R0 [+29]
+  GETUPVAL R3 6
+  JUMPIFNOT R3 [+2]
+  LOADK R2 K9 ["Cannot accept friend request"]
+  JUMP [+1]
+  LOADK R2 K10 ["Cannot send friend request"]
+  GETUPVAL R3 8
+  LOADK R5 K17 ["PlayerDropDown.OtherPlayerFriendLimit"]
+  DUPTABLE R6 K19 [{"RBX_NAME"}]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K20 ["Name"]
+  SETTABLEKS R7 R6 K18 ["RBX_NAME"]
+  NAMECALL R3 R3 K21 ["FormatByKey"]
+  CALL R3 3 1
+  GETUPVAL R4 7
+  DUPTABLE R6 K14 [{"Title", "Text", "Duration"}]
+  SETTABLEKS R2 R6 K11 ["Title"]
+  SETTABLEKS R3 R6 K12 ["Text"]
+  LOADN R7 5
+  SETTABLEKS R7 R6 K13 ["Duration"]
+  NAMECALL R4 R4 K16 ["Fire"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETIMPORT R0 K2 [coroutine.wrap]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CALL R0 1 1
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R1
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RbxAnalyticsService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETTABLEKS R3 R2 K6 ["LocalPlayer"]
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R0 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [require]
+  GETTABLEKS R7 R4 K11 ["Modules"]
+  GETTABLEKS R6 R7 K12 ["RobloxTranslator"]
+  CALL R5 1 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R4 K11 ["Modules"]
+  GETTABLEKS R7 R8 K13 ["FriendingUtility"]
+  CALL R6 1 1
+  LOADK R9 K14 ["SendNotificationInfo"]
+  NAMECALL R7 R4 K8 ["WaitForChild"]
+  CALL R7 2 1
+  GETIMPORT R8 K10 [require]
+  GETTABLEKS R11 R4 K11 ["Modules"]
+  GETTABLEKS R10 R11 K15 ["Flags"]
+  GETTABLEKS R9 R10 K16 ["FFlagRemoveHardCodedFriendLimitPrompt"]
+  CALL R8 1 1
+  DUPCLOSURE R9 K17 [PROTO_2]
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R5
+  RETURN R9 1

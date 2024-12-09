@@ -1,0 +1,111 @@
+PROTO_0:
+  LOADNIL R0
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K0 ["GetPlatform"]
+  CALL R2 1 -1
+  CALL R1 -1 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K1 ["Web"]
+  JUMPIFNOTEQ R1 R2 [+8]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 4
+  CALL R2 1 1
+  MOVE R0 R2
+  JUMP [+11]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K3 ["Mobile"]
+  JUMPIFNOTEQ R1 R2 [+7]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 5
+  CALL R2 1 1
+  MOVE R0 R2
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K0 ["GetPlatform"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [Enum.Platform.XBoxOne]
+  JUMPIFNOTEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  LOADK R4 K8 ["Folder"]
+  NEWTABLE R5 0 0
+  DUPTABLE R6 K12 [{"MarketPlaceServiceEventConnector", "InputTypeManager", "UpsellFinishedConnector"}]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R8 6
+  CALL R7 1 1
+  SETTABLEKS R7 R6 K9 ["MarketPlaceServiceEventConnector"]
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R8 7
+  CALL R7 1 1
+  JUMPIF R7 [+1]
+  LOADNIL R7
+  SETTABLEKS R7 R6 K10 ["InputTypeManager"]
+  SETTABLEKS R0 R6 K11 ["UpsellFinishedConnector"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["UserInputService"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["CorePackages"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R2 K10 ["Workspace"]
+  GETTABLEKS R5 R6 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["PurchasePromptDeps"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["Roact"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K14 ["Enums"]
+  GETTABLEKS R6 R7 K15 ["UpsellFlow"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R0 K16 ["NativeUpsell"]
+  GETTABLEKS R7 R8 K17 ["getUpsellFlow"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETIMPORT R10 K1 [script]
+  GETTABLEKS R9 R10 K2 ["Parent"]
+  GETTABLEKS R8 R9 K18 ["MarketplaceServiceEventConnector"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETIMPORT R11 K1 [script]
+  GETTABLEKS R10 R11 K2 ["Parent"]
+  GETTABLEKS R9 R10 K19 ["InputTypeManager"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETIMPORT R12 K1 [script]
+  GETTABLEKS R11 R12 K2 ["Parent"]
+  GETTABLEKS R10 R11 K20 ["BrowserPurchaseFinishedConnector"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETIMPORT R13 K1 [script]
+  GETTABLEKS R12 R13 K2 ["Parent"]
+  GETTABLEKS R11 R12 K21 ["NativePurchaseFinishedConnector"]
+  CALL R10 1 1
+  DUPCLOSURE R11 K22 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R1
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  RETURN R11 1

@@ -1,0 +1,92 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["StoreProvider"]
+  DUPTABLE R3 K3 [{"store"}]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K2 ["store"]
+  DUPTABLE R4 K5 [{"Story"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 3
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K6 ["Dictionary"]
+  GETTABLEKS R7 R8 K7 ["join"]
+  MOVE R8 R0
+  DUPTABLE R9 K9 [{"chatSettings"}]
+  GETUPVAL R10 5
+  SETTABLEKS R10 R9 K8 ["chatSettings"]
+  CALL R7 2 -1
+  CALL R5 -1 1
+  SETTABLEKS R5 R4 K4 ["Story"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K11 ["init"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R9 R0 K12 ["Workspace"]
+  GETTABLEKS R8 R9 K6 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["RobloxAppUIBloxConfig"]
+  CALL R6 1 -1
+  CALL R5 -1 0
+  GETIMPORT R5 K5 [require]
+  GETIMPORT R9 K15 [script]
+  GETTABLEKS R8 R9 K16 ["Parent"]
+  GETTABLEKS R7 R8 K17 ["Helpers"]
+  GETTABLEKS R6 R7 K18 ["StoryStore"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETIMPORT R9 K15 [script]
+  GETTABLEKS R8 R9 K16 ["Parent"]
+  GETTABLEKS R7 R8 K19 ["ChatSettings"]
+  CALL R6 1 1
+  GETTABLEKS R7 R2 K20 ["setGlobalConfig"]
+  DUPTABLE R8 K23 [{"elementTracing", "propValidation"}]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K21 ["elementTracing"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K22 ["propValidation"]
+  CALL R7 1 0
+  DUPTABLE R7 K26 [{"roact", "mapStory"}]
+  SETTABLEKS R2 R7 K24 ["roact"]
+  DUPCLOSURE R8 K27 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  SETTABLEKS R8 R7 K25 ["mapStory"]
+  RETURN R7 1

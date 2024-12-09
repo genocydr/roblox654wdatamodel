@@ -1,0 +1,196 @@
+PROTO_0:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"volume"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K4 ["MasterVolume"]
+  MULK R5 R6 K3 [10]
+  ADDK R4 R5 K2 [0.5]
+  FASTCALL1 MATH_FLOOR R4 [+2]
+  GETIMPORT R3 K7 [math.floor]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K0 ["volume"]
+  NAMECALL R0 R0 K8 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R1 R0 K0 ["onVolumeChanged"]
+  GETTABLEKS R1 R0 K0 ["onVolumeChanged"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  DIVK R2 R0 K0 [10]
+  SETTABLEKS R2 R1 K1 ["MasterVolume"]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K2 ["Play"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K3 ["AnalyticsSettingsChangeName"]
+  LOADNIL R3
+  NEWTABLE R4 0 0
+  LOADB R5 1
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"VolumeSlider", "VolumeListener"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K15 [{"labelKey", "LayoutOrder", "min", "max", "stepInterval", "value", "valueChanged", "canCaptureFocus", "isMenuOpen", "buttonRef"}]
+  LOADK R6 K16 ["CoreScripts.InGameMenu.GameSettings.Volume"]
+  SETTABLEKS R6 R5 K5 ["labelKey"]
+  GETTABLEKS R7 R0 K17 ["props"]
+  GETTABLEKS R6 R7 K6 ["LayoutOrder"]
+  SETTABLEKS R6 R5 K6 ["LayoutOrder"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K7 ["min"]
+  LOADN R6 10
+  SETTABLEKS R6 R5 K8 ["max"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K9 ["stepInterval"]
+  GETTABLEKS R7 R0 K18 ["state"]
+  GETTABLEKS R6 R7 K19 ["volume"]
+  SETTABLEKS R6 R5 K10 ["value"]
+  DUPCLOSURE R6 K20 [PROTO_2]
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  SETTABLEKS R6 R5 K11 ["valueChanged"]
+  GETTABLEKS R7 R0 K17 ["props"]
+  GETTABLEKS R6 R7 K12 ["canCaptureFocus"]
+  SETTABLEKS R6 R5 K12 ["canCaptureFocus"]
+  GETTABLEKS R7 R0 K17 ["props"]
+  GETTABLEKS R6 R7 K13 ["isMenuOpen"]
+  SETTABLEKS R6 R5 K13 ["isMenuOpen"]
+  GETTABLEKS R7 R0 K17 ["props"]
+  GETTABLEKS R6 R7 K14 ["buttonRef"]
+  SETTABLEKS R6 R5 K14 ["buttonRef"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["VolumeSlider"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 6
+  DUPTABLE R5 K23 [{"event", "callback"}]
+  GETUPVAL R6 7
+  SETTABLEKS R6 R5 K21 ["event"]
+  GETTABLEKS R6 R0 K24 ["onVolumeChanged"]
+  SETTABLEKS R6 R5 K22 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["VolumeListener"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R1 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["InGameMenuDependencies"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["Roact"]
+  GETTABLEKS R4 R2 K10 ["t"]
+  GETIMPORT R5 K12 [UserSettings]
+  CALL R5 0 1
+  LOADK R7 K13 ["UserGameSettings"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  LOADK R8 K14 ["MasterVolume"]
+  NAMECALL R6 R5 K15 ["GetPropertyChangedSignal"]
+  CALL R6 2 1
+  GETIMPORT R10 K17 [script]
+  GETTABLEKS R9 R10 K18 ["Parent"]
+  GETTABLEKS R8 R9 K18 ["Parent"]
+  GETTABLEKS R7 R8 K18 ["Parent"]
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R7 K19 ["Utility"]
+  GETTABLEKS R9 R10 K20 ["ExternalEventConnection"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETIMPORT R12 K17 [script]
+  GETTABLEKS R11 R12 K18 ["Parent"]
+  GETTABLEKS R10 R11 K21 ["SliderEntry"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R7 K19 ["Utility"]
+  GETTABLEKS R11 R12 K22 ["SendAnalytics"]
+  CALL R10 1 1
+  GETIMPORT R11 K6 [require]
+  GETTABLEKS R13 R7 K23 ["Resources"]
+  GETTABLEKS R12 R13 K24 ["Constants"]
+  CALL R11 1 1
+  GETTABLEKS R12 R0 K25 ["RobloxGui"]
+  LOADK R14 K26 ["Sounds"]
+  NAMECALL R12 R12 K27 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMPIFNOTEQKNIL R12 [+12]
+  GETIMPORT R12 K30 [Instance.new]
+  LOADK R13 K31 ["Folder"]
+  CALL R12 1 1
+  LOADK R13 K26 ["Sounds"]
+  SETTABLEKS R13 R12 K32 ["Name"]
+  GETTABLEKS R13 R0 K25 ["RobloxGui"]
+  SETTABLEKS R13 R12 K18 ["Parent"]
+  GETIMPORT R12 K30 [Instance.new]
+  LOADK R13 K33 ["Sound"]
+  GETTABLEKS R15 R0 K25 ["RobloxGui"]
+  GETTABLEKS R14 R15 K26 ["Sounds"]
+  CALL R12 2 1
+  LOADK R13 K34 ["VolumeChangeSound"]
+  SETTABLEKS R13 R12 K32 ["Name"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K35 ["Volume"]
+  LOADK R13 K36 ["rbxasset://sounds/uuhhh.mp3"]
+  SETTABLEKS R13 R12 K37 ["SoundId"]
+  GETTABLEKS R13 R3 K38 ["PureComponent"]
+  LOADK R15 K39 ["VolumeEntry"]
+  NAMECALL R13 R13 K40 ["extend"]
+  CALL R13 2 1
+  GETTABLEKS R14 R4 K41 ["strictInterface"]
+  DUPTABLE R15 K46 [{"LayoutOrder", "canCaptureFocus", "isMenuOpen", "buttonRef"}]
+  GETTABLEKS R16 R4 K47 ["integer"]
+  SETTABLEKS R16 R15 K42 ["LayoutOrder"]
+  GETTABLEKS R16 R4 K48 ["optional"]
+  GETTABLEKS R17 R4 K49 ["boolean"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K43 ["canCaptureFocus"]
+  GETTABLEKS R16 R4 K48 ["optional"]
+  GETTABLEKS R17 R4 K49 ["boolean"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K44 ["isMenuOpen"]
+  GETTABLEKS R16 R4 K48 ["optional"]
+  GETTABLEKS R17 R4 K50 ["table"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K45 ["buttonRef"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K51 ["validateProps"]
+  DUPCLOSURE R14 K52 [PROTO_1]
+  CAPTURE VAL R5
+  SETTABLEKS R14 R13 K53 ["init"]
+  DUPCLOSURE R14 K54 [PROTO_3]
+  CAPTURE VAL R3
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R8
+  CAPTURE VAL R6
+  SETTABLEKS R14 R13 K55 ["render"]
+  RETURN R13 1

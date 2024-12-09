@@ -1,0 +1,651 @@
+PROTO_0:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetRobloxVersion"]
+  CALL R1 1 1
+  GETIMPORT R2 K3 [string.format]
+  LOADK R3 K4 ["%s-%s"]
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_1:
+  LOADK R1 K0 [""]
+  LOADB R2 1
+  LOADK R5 K1 ["[^
+]+"]
+  NAMECALL R3 R0 K2 ["gmatch"]
+  CALL R3 2 3
+  FORGPREP R3
+  JUMPIFNOT R2 [+3]
+  MOVE R1 R6
+  LOADB R2 0
+  JUMP [+4]
+  MOVE R8 R1
+  LOADK R9 K3 [" | "]
+  MOVE R10 R6
+  CONCAT R1 R8 R10
+  FORGLOOP R3 1 [-9]
+  RETURN R1 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  NEWTABLE R4 0 6
+  LOADK R5 K0 ["---- Unhandled Error Handler -----"]
+  GETIMPORT R6 K3 [string.format]
+  LOADK R7 K4 ["Current App<%s, %d> : 
+%s
+"]
+  FASTCALL1 TYPE R0 [+3]
+  MOVE R9 R0
+  GETIMPORT R8 K6 [type]
+  CALL R8 1 1
+  LENGTH R9 R0
+  MOVE R10 R0
+  CALL R6 4 1
+  GETIMPORT R7 K3 [string.format]
+  LOADK R8 K7 ["Message<%s,%d> :
+%s
+"]
+  FASTCALL1 TYPE R1 [+3]
+  MOVE R10 R1
+  GETIMPORT R9 K6 [type]
+  CALL R9 1 1
+  LENGTH R10 R1
+  MOVE R11 R1
+  CALL R7 4 1
+  GETIMPORT R8 K3 [string.format]
+  LOADK R9 K8 ["Stack<%s,%d> :
+%s"]
+  FASTCALL1 TYPE R2 [+3]
+  MOVE R11 R2
+  GETIMPORT R10 K6 [type]
+  CALL R10 1 1
+  LENGTH R11 R2
+  MOVE R12 R2
+  CALL R8 4 1
+  GETIMPORT R9 K3 [string.format]
+  LOADK R10 K9 ["Script<%s> :
+%s"]
+  FASTCALL1 TYPE R3 [+3]
+  MOVE R12 R3
+  GETIMPORT R11 K6 [type]
+  CALL R11 1 1
+  NAMECALL R12 R3 K10 ["GetFullName"]
+  CALL R12 1 -1
+  CALL R9 -1 1
+  LOADK R10 K11 ["----------------------------------"]
+  SETLIST R4 R5 6 [1]
+  GETIMPORT R5 K13 [print]
+  GETIMPORT R6 K16 [table.concat]
+  MOVE R7 R4
+  LOADK R8 K17 ["
+"]
+  CALL R6 2 -1
+  CALL R5 -1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["GoogleAnalytics"]
+  GETTABLEKS R5 R1 K1 ["productName"]
+  GETTABLEKS R6 R1 K2 ["errorMessage"]
+  GETTABLEKS R7 R1 K3 ["errorStack"]
+  MOVE R8 R2
+  NAMECALL R3 R3 K4 ["trackEvent"]
+  CALL R3 5 0
+  RETURN R0 0
+
+PROTO_5:
+  DUPTABLE R4 K4 [{"app", "err", "stack", "script"}]
+  SETTABLEKS R0 R4 K0 ["app"]
+  SETTABLEKS R1 R4 K1 ["err"]
+  SETTABLEKS R2 R4 K2 ["stack"]
+  NAMECALL R5 R3 K5 ["GetFullName"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K3 ["script"]
+  GETUPVAL R5 0
+  GETUPVAL R7 1
+  LOADNIL R8
+  MOVE R9 R4
+  NAMECALL R5 R5 K6 ["logRobloxTelemetryEvent"]
+  CALL R5 4 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["Diag"]
+  GETUPVAL R2 1
+  LOADN R3 1
+  NAMECALL R0 R0 K1 ["reportCounter"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["Diag"]
+  GETUPVAL R2 1
+  LOADN R3 1
+  NAMECALL R0 R0 K1 ["reportCounter"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["Diag"]
+  GETUPVAL R2 1
+  LOADN R3 1
+  NAMECALL R0 R0 K1 ["reportCounter"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["unstable_parseReactError"]
+  GETUPVAL R1 1
+  CALL R0 1 2
+  GETTABLEKS R2 R0 K1 ["message"]
+  SETUPVAL R2 1
+  GETTABLEKS R2 R0 K2 ["stack"]
+  JUMPIF R2 [+1]
+  GETUPVAL R2 2
+  SETUPVAL R2 2
+  GETUPVAL R3 3
+  OR R2 R3 R1
+  SETUPVAL R2 3
+  GETUPVAL R2 4
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  GETUPVAL R6 5
+  GETUPVAL R7 3
+  NAMECALL R2 R2 K3 ["handleError"]
+  CALL R2 5 0
+  RETURN R0 0
+
+PROTO_10:
+  GETIMPORT R4 K1 [pcall]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U0
+  CAPTURE REF R0
+  CAPTURE REF R1
+  CAPTURE REF R3
+  CAPTURE UPVAL U1
+  CAPTURE VAL R2
+  CALL R4 1 2
+  JUMPIF R4 [+8]
+  GETIMPORT R6 K3 [warn]
+  GETIMPORT R7 K6 [string.format]
+  LOADK R8 K7 ["An error occurred while reporting an error : %s"]
+  MOVE R9 R5
+  CALL R7 2 -1
+  CALL R6 -1 0
+  CLOSEUPVALS R0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["delete"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R0 K1 [tick]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["_rateLimitNextTick"]
+  JUMPIFNOTLT R1 R0 [+12]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K3 ["_processRateLimitingTick"]
+  CALL R1 1 0
+  GETUPVAL R1 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["_rateLimitingIntervalSec"]
+  ADD R2 R0 R3
+  SETTABLEKS R2 R1 K2 ["_rateLimitNextTick"]
+  RETURN R0 0
+
+PROTO_13:
+  JUMPIF R0 [+3]
+  GETUPVAL R3 0
+  GETTABLEKS R0 R3 K0 ["Error"]
+  MOVE R3 R1
+  JUMPIF R3 [+1]
+  GETUPVAL R3 1
+  MOVE R1 R3
+  DUPTABLE R3 K14 [{"_isInstance", "_verbose", "_signalConnectionToken", "_shouldReportDiag", "_shouldReportGoogleAnalytics", "_shouldReportInflux", "_currentApp", "_reportQueueGA", "_backtraceReporter", "_rateLimitingThreshold", "_rateLimitingIntervalSec", "_rateLimitCounts", "_rateLimitNextTick"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K1 ["_isInstance"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K2 ["_verbose"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K3 ["_signalConnectionToken"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K4 ["_shouldReportDiag"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K5 ["_shouldReportGoogleAnalytics"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K6 ["_shouldReportInflux"]
+  LOADK R4 K15 ["Unknown"]
+  SETTABLEKS R4 R3 K7 ["_currentApp"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K8 ["_reportQueueGA"]
+  SETTABLEKS R2 R3 K9 ["_backtraceReporter"]
+  GETUPVAL R4 2
+  SETTABLEKS R4 R3 K10 ["_rateLimitingThreshold"]
+  SETTABLEKS R1 R3 K11 ["_rateLimitingIntervalSec"]
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R3 K12 ["_rateLimitCounts"]
+  GETIMPORT R5 K17 [tick]
+  CALL R5 0 1
+  ADD R4 R5 R1
+  SETTABLEKS R4 R3 K13 ["_rateLimitNextTick"]
+  GETUPVAL R6 3
+  FASTCALL2 SETMETATABLE R3 R6 [+4]
+  MOVE R5 R3
+  GETIMPORT R4 K19 [setmetatable]
+  CALL R4 2 0
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K20 ["new"]
+  GETUPVAL R5 5
+  DUPTABLE R6 K22 [{"queueKeyLimit"}]
+  LOADN R7 10
+  SETTABLEKS R7 R6 K21 ["queueKeyLimit"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K8 ["_reportQueueGA"]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U6
+  CAPTURE VAL R3
+  NAMECALL R4 R0 K23 ["connect"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["_signalConnectionToken"]
+  GETUPVAL R4 7
+  NAMECALL R4 R4 K24 ["IsStudio"]
+  CALL R4 1 1
+  JUMPIF R4 [+12]
+  GETIMPORT R5 K26 [_G]
+  GETTABLEKS R4 R5 K27 ["__TESTEZ_RUNNING_TEST__"]
+  JUMPIF R4 [+7]
+  GETIMPORT R4 K29 [game]
+  NEWCLOSURE R6 P1
+  CAPTURE VAL R3
+  NAMECALL R4 R4 K30 ["BindToClose"]
+  CALL R4 2 0
+  GETUPVAL R5 7
+  GETTABLEKS R4 R5 K31 ["Heartbeat"]
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R3
+  NAMECALL R4 R4 K23 ["connect"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K32 ["_rateLimitHeartbeatConnectionToken"]
+  RETURN R3 1
+
+PROTO_14:
+  LOADN R1 0
+  GETIMPORT R2 K1 [pairs]
+  GETTABLEKS R3 R0 K2 ["_rateLimitCounts"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R7 R0 K3 ["_rateLimitingThreshold"]
+  JUMPIFNOTLE R7 R6 [+2]
+  ADDK R1 R1 K4 [1]
+  GETTABLEKS R8 R0 K3 ["_rateLimitingThreshold"]
+  SUB R7 R6 R8
+  GETUPVAL R8 0
+  JUMPIFNOTLT R8 R7 [+6]
+  GETTABLEKS R8 R0 K2 ["_rateLimitCounts"]
+  GETUPVAL R9 0
+  SETTABLE R9 R8 R5
+  JUMP [+11]
+  LOADN R8 0
+  JUMPIFNOTLE R7 R8 [+6]
+  GETTABLEKS R8 R0 K2 ["_rateLimitCounts"]
+  LOADNIL R9
+  SETTABLE R9 R8 R5
+  JUMP [+3]
+  GETTABLEKS R8 R0 K2 ["_rateLimitCounts"]
+  SETTABLE R7 R8 R5
+  FORGLOOP R2 2 [-28]
+  LOADN R2 0
+  JUMPIFNOTLT R2 R1 [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["Diag"]
+  GETUPVAL R4 2
+  LOADN R5 1
+  NAMECALL R2 R2 K6 ["reportCounter"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_15:
+  MOVE R4 R1
+  MOVE R5 R2
+  CONCAT R3 R4 R5
+  GETTABLEKS R6 R0 K1 ["_rateLimitCounts"]
+  GETTABLE R5 R6 R3
+  ORK R4 R5 K0 [0]
+  GETTABLEKS R5 R0 K1 ["_rateLimitCounts"]
+  ADDK R6 R4 K2 [1]
+  SETTABLE R6 R5 R3
+  GETTABLEKS R6 R0 K3 ["_rateLimitingThreshold"]
+  JUMPIFLE R6 R4 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  RETURN R5 1
+
+PROTO_16:
+  GETTABLEKS R1 R0 K0 ["_rateLimitHeartbeatConnectionToken"]
+  JUMPIFEQKNIL R1 [+6]
+  GETTABLEKS R1 R0 K0 ["_rateLimitHeartbeatConnectionToken"]
+  NAMECALL R1 R1 K1 ["disconnect"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["_signalConnectionToken"]
+  NAMECALL R1 R1 K1 ["disconnect"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K3 ["_reportQueueGA"]
+  NAMECALL R1 R1 K4 ["reportAllErrors"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K3 ["_reportQueueGA"]
+  NAMECALL R1 R1 K5 ["stopTimer"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K6 ["_backtraceReporter"]
+  JUMPIFEQKNIL R1 [+6]
+  GETTABLEKS R1 R0 K6 ["_backtraceReporter"]
+  NAMECALL R1 R1 K7 ["stop"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_17:
+  FASTCALL1 TYPE R1 [+3]
+  MOVE R3 R1
+  GETIMPORT R2 K1 [type]
+  CALL R2 1 1
+  JUMPIFEQKS R2 K2 ["string"] [+5]
+  GETIMPORT R2 K4 [error]
+  LOADK R3 K5 ["appName must be a string"]
+  CALL R2 1 0
+  SETTABLEKS R1 R0 K6 ["_currentApp"]
+  RETURN R0 0
+
+PROTO_18:
+  GETTABLEKS R1 R0 K0 ["_reportQueueGA"]
+  NAMECALL R1 R1 K1 ["startTimer"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_19:
+  GETTABLEKS R1 R0 K0 ["_reportQueueGA"]
+  NAMECALL R1 R1 K1 ["stopTimer"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_20:
+  GETTABLEKS R6 R0 K0 ["_currentApp"]
+  GETUPVAL R7 0
+  NAMECALL R7 R7 K1 ["GetRobloxVersion"]
+  CALL R7 1 1
+  GETIMPORT R8 K4 [string.format]
+  LOADK R9 K5 ["%s-%s"]
+  MOVE R10 R6
+  MOVE R11 R7
+  CALL R8 3 1
+  MOVE R5 R8
+  GETTABLEKS R6 R0 K6 ["_verbose"]
+  JUMPIFNOT R6 [+6]
+  GETUPVAL R6 1
+  MOVE R7 R5
+  MOVE R8 R1
+  MOVE R9 R2
+  MOVE R10 R3
+  CALL R6 4 0
+  GETUPVAL R6 2
+  MOVE R7 R1
+  CALL R6 1 1
+  GETUPVAL R7 2
+  MOVE R8 R2
+  CALL R7 1 1
+  LOADK R9 K7 [""]
+  LOADB R10 1
+  LOADK R13 K8 ["[^
+]+"]
+  NAMECALL R11 R7 K9 ["gmatch"]
+  CALL R11 2 3
+  FORGPREP R11
+  JUMPIFNOT R10 [+3]
+  MOVE R9 R14
+  LOADB R10 0
+  JUMP [+4]
+  MOVE R16 R9
+  LOADK R17 K10 [" | "]
+  MOVE R18 R14
+  CONCAT R9 R16 R18
+  FORGLOOP R11 1 [-9]
+  MOVE R8 R9
+  JUMPIFEQKNIL R4 [+6]
+  MOVE R9 R4
+  GETUPVAL R10 2
+  MOVE R11 R9
+  CALL R10 1 1
+  MOVE R4 R10
+  MOVE R11 R6
+  MOVE R12 R8
+  NAMECALL R9 R0 K11 ["_processErrorForRateLimiting"]
+  CALL R9 3 1
+  JUMPIFNOT R9 [+1]
+  RETURN R0 0
+  GETIMPORT R9 K4 [string.format]
+  LOADK R10 K12 ["%s | %s"]
+  MOVE R11 R6
+  MOVE R12 R7
+  CALL R9 3 1
+  GETTABLEKS R10 R0 K13 ["_shouldReportGoogleAnalytics"]
+  JUMPIFNOT R10 [+13]
+  GETTABLEKS R10 R0 K14 ["_reportQueueGA"]
+  MOVE R12 R9
+  DUPTABLE R13 K18 [{"productName", "errorMessage", "errorStack"}]
+  SETTABLEKS R5 R13 K15 ["productName"]
+  SETTABLEKS R6 R13 K16 ["errorMessage"]
+  SETTABLEKS R8 R13 K17 ["errorStack"]
+  NAMECALL R10 R10 K19 ["addError"]
+  CALL R10 3 0
+  GETTABLEKS R10 R0 K20 ["_backtraceReporter"]
+  JUMPIFEQKNIL R10 [+9]
+  GETTABLEKS R10 R0 K20 ["_backtraceReporter"]
+  MOVE R12 R6
+  MOVE R13 R7
+  MOVE R14 R4
+  NAMECALL R10 R10 K21 ["reportErrorDeferred"]
+  CALL R10 4 0
+  GETTABLEKS R10 R0 K22 ["_shouldReportInflux"]
+  JUMPIFNOT R10 [+19]
+  DUPTABLE R10 K27 [{"app", "err", "stack", "script"}]
+  SETTABLEKS R5 R10 K23 ["app"]
+  SETTABLEKS R6 R10 K24 ["err"]
+  SETTABLEKS R8 R10 K25 ["stack"]
+  NAMECALL R11 R3 K28 ["GetFullName"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K26 ["script"]
+  GETUPVAL R11 3
+  GETUPVAL R13 4
+  LOADNIL R14
+  MOVE R15 R10
+  NAMECALL R11 R11 K29 ["logRobloxTelemetryEvent"]
+  CALL R11 4 0
+  GETTABLEKS R10 R0 K30 ["_shouldReportDiag"]
+  JUMPIFNOT R10 [+24]
+  GETUPVAL R10 5
+  JUMPIFNOT R10 [+6]
+  GETUPVAL R10 3
+  GETUPVAL R12 6
+  LOADN R13 1
+  NAMECALL R10 R10 K31 ["logRobloxTelemetryCounter"]
+  CALL R10 3 0
+  GETUPVAL R11 7
+  GETTABLEKS R10 R11 K32 ["Diag"]
+  GETUPVAL R12 8
+  LOADN R13 1
+  NAMECALL R10 R10 K33 ["reportCounter"]
+  CALL R10 3 0
+  GETUPVAL R11 7
+  GETTABLEKS R10 R11 K32 ["Diag"]
+  GETUPVAL R12 9
+  LOADN R13 1
+  NAMECALL R10 R10 K33 ["reportCounter"]
+  CALL R10 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ScriptContext"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RunService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R2 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["React"]
+  CALL R3 1 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R2 K10 ["Workspace"]
+  GETTABLEKS R7 R8 K8 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["ErrorReporters"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K12 ["ErrorQueue"]
+  GETIMPORT R5 K7 [require]
+  GETIMPORT R8 K14 [script]
+  GETTABLEKS R7 R8 K15 ["Parent"]
+  GETTABLEKS R6 R7 K16 ["removePII"]
+  CALL R5 1 1
+  GETIMPORT R7 K7 [require]
+  GETIMPORT R10 K14 [script]
+  GETTABLEKS R9 R10 K15 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Analytics"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K18 ["new"]
+  CALL R6 0 1
+  GETIMPORT R8 K7 [require]
+  GETTABLEKS R11 R2 K10 ["Workspace"]
+  GETTABLEKS R10 R11 K8 ["Packages"]
+  GETTABLEKS R9 R10 K19 ["LoggingProtocol"]
+  CALL R8 1 1
+  GETTABLEKS R7 R8 K20 ["default"]
+  GETIMPORT R8 K7 [require]
+  GETIMPORT R12 K14 [script]
+  GETTABLEKS R11 R12 K15 ["Parent"]
+  GETTABLEKS R10 R11 K21 ["RobloxTelemetryConfigs"]
+  GETTABLEKS R9 R10 K22 ["LuaShellErrors"]
+  CALL R8 1 1
+  GETIMPORT R9 K7 [require]
+  GETIMPORT R13 K14 [script]
+  GETTABLEKS R12 R13 K15 ["Parent"]
+  GETTABLEKS R11 R12 K21 ["RobloxTelemetryConfigs"]
+  GETTABLEKS R10 R11 K23 ["LuaErrorV2CounterConfig"]
+  CALL R9 1 1
+  GETIMPORT R10 K25 [settings]
+  CALL R10 0 1
+  LOADK R12 K26 ["LuaAppsDiagErrorCounter"]
+  NAMECALL R10 R10 K27 ["GetFVariable"]
+  CALL R10 2 1
+  GETIMPORT R11 K1 [game]
+  LOADK R13 K28 ["LuaErrorByPlatformCounter"]
+  LOADK R14 K29 ["LuaErrorPlatformOther"]
+  NAMECALL R11 R11 K30 ["DefineFastString"]
+  CALL R11 3 1
+  GETIMPORT R12 K1 [game]
+  LOADK R14 K31 ["EnableLuaErrorV2Counter"]
+  LOADB R15 0
+  NAMECALL R12 R12 K32 ["DefineFastFlag"]
+  CALL R12 3 1
+  GETIMPORT R14 K25 [settings]
+  CALL R14 0 1
+  LOADK R16 K33 ["LuaAppErrorReporterRateLimitThreshold"]
+  NAMECALL R14 R14 K27 ["GetFVariable"]
+  CALL R14 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R13 K35 [tonumber]
+  CALL R13 -1 1
+  GETIMPORT R15 K25 [settings]
+  CALL R15 0 1
+  LOADK R17 K36 ["LuaAppErrorReporterRateLimitIntervalInSec"]
+  NAMECALL R15 R15 K27 ["GetFVariable"]
+  CALL R15 2 -1
+  FASTCALL TONUMBER [+2]
+  GETIMPORT R14 K35 [tonumber]
+  CALL R14 -1 1
+  GETIMPORT R15 K25 [settings]
+  CALL R15 0 1
+  LOADK R17 K37 ["LuaAppsDiagRateLimitedErrorsCounter"]
+  NAMECALL R15 R15 K27 ["GetFVariable"]
+  CALL R15 2 1
+  LOADN R17 2
+  MUL R16 R17 R13
+  DUPCLOSURE R17 K38 [PROTO_0]
+  CAPTURE VAL R1
+  DUPCLOSURE R18 K39 [PROTO_1]
+  DUPCLOSURE R19 K40 [PROTO_2]
+  CAPTURE VAL R5
+  DUPCLOSURE R20 K41 [PROTO_3]
+  DUPCLOSURE R21 K42 [PROTO_4]
+  CAPTURE VAL R6
+  DUPCLOSURE R22 K43 [PROTO_5]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  DUPCLOSURE R23 K44 [PROTO_6]
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  DUPCLOSURE R24 K45 [PROTO_7]
+  CAPTURE VAL R6
+  CAPTURE VAL R11
+  DUPCLOSURE R25 K46 [PROTO_8]
+  CAPTURE VAL R6
+  CAPTURE VAL R15
+  NEWTABLE R26 16 0
+  SETTABLEKS R26 R26 K47 ["__index"]
+  DUPCLOSURE R27 K48 [PROTO_13]
+  CAPTURE VAL R0
+  CAPTURE VAL R14
+  CAPTURE VAL R13
+  CAPTURE VAL R26
+  CAPTURE VAL R4
+  CAPTURE VAL R21
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  SETTABLEKS R27 R26 K18 ["new"]
+  DUPCLOSURE R27 K49 [PROTO_14]
+  CAPTURE VAL R16
+  CAPTURE VAL R6
+  CAPTURE VAL R15
+  SETTABLEKS R27 R26 K50 ["_processRateLimitingTick"]
+  DUPCLOSURE R27 K51 [PROTO_15]
+  SETTABLEKS R27 R26 K52 ["_processErrorForRateLimiting"]
+  DUPCLOSURE R27 K53 [PROTO_16]
+  SETTABLEKS R27 R26 K54 ["delete"]
+  DUPCLOSURE R27 K55 [PROTO_17]
+  SETTABLEKS R27 R26 K56 ["setCurrentApp"]
+  DUPCLOSURE R27 K57 [PROTO_18]
+  SETTABLEKS R27 R26 K58 ["startQueueTimers"]
+  DUPCLOSURE R27 K59 [PROTO_19]
+  SETTABLEKS R27 R26 K60 ["stopQueueTimers"]
+  DUPCLOSURE R27 K61 [PROTO_20]
+  CAPTURE VAL R1
+  CAPTURE VAL R20
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R12
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  SETTABLEKS R27 R26 K62 ["handleError"]
+  RETURN R26 1

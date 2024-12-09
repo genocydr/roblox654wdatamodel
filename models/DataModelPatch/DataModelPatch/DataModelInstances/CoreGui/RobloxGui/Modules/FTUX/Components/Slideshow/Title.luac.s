@@ -1,0 +1,95 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K1 ["App"]
+  GETTABLEKS R3 R4 K2 ["Text"]
+  GETTABLEKS R2 R3 K3 ["StyledTextLabel"]
+  DUPTABLE R3 K10 [{"text", "fontStyle", "colorStyle", "textXAlignment", "size", "layoutOrder"}]
+  GETTABLEKS R4 R0 K11 ["titleText"]
+  SETTABLEKS R4 R3 K4 ["text"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K12 ["SubHeader1"]
+  SETTABLEKS R4 R3 K5 ["fontStyle"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K13 ["TextEmphasis"]
+  SETTABLEKS R4 R3 K6 ["colorStyle"]
+  GETIMPORT R4 K17 [Enum.TextXAlignment.Left]
+  SETTABLEKS R4 R3 K7 ["textXAlignment"]
+  GETIMPORT R4 K20 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADK R7 K21 [0.031]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K8 ["size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K9 ["layoutOrder"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETTABLEKS R2 R1 K0 ["Theme"]
+  GETTABLEKS R3 R1 K1 ["Font"]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R0 K2 ["platform"]
+  GETTABLE R4 R5 R6
+  GETTABLEKS R7 R0 K3 ["currentIndex"]
+  GETTABLE R6 R4 R7
+  GETTABLEKS R5 R6 K4 ["title"]
+  GETUPVAL R6 2
+  DUPTABLE R7 K6 [{"titleText"}]
+  SETTABLEKS R5 R7 K5 ["titleText"]
+  CALL R6 1 1
+  NEWCLOSURE R7 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CALL R6 1 -1
+  RETURN R6 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["React"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["UIBlox"]
+  CALL R2 1 1
+  GETTABLEKS R5 R2 K9 ["Core"]
+  GETTABLEKS R4 R5 K10 ["Style"]
+  GETTABLEKS R3 R4 K11 ["useStyle"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R8 R0 K12 ["Workspace"]
+  GETTABLEKS R7 R8 K6 ["Packages"]
+  GETTABLEKS R6 R7 K13 ["Localization"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K14 ["withLocalization"]
+  GETIMPORT R8 K16 [script]
+  GETTABLEKS R7 R8 K17 ["Parent"]
+  GETTABLEKS R6 R7 K17 ["Parent"]
+  GETTABLEKS R5 R6 K17 ["Parent"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R5 K18 ["Resources"]
+  GETTABLEKS R7 R8 K19 ["FTUXSlideshowData"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R5 K20 ["Enums"]
+  GETTABLEKS R8 R9 K21 ["PlatformEnum"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K22 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  RETURN R8 1

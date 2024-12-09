@@ -64,82 +64,85 @@ PROTO_2:
 PROTO_3:
   GETUPVAL R4 0
   GETTABLE R3 R4 R1
-  JUMPIFNOT R3 [+3]
+  JUMPIFNOT R3 [+7]
   GETUPVAL R4 0
   GETTABLE R3 R4 R1
+  GETUPVAL R4 1
+  JUMPIFNOT R4 [+2]
+  SETTABLEKS R2 R3 K0 ["onClose"]
   RETURN R3 1
-  LOADK R4 K0 ["Menus/%*"]
+  LOADK R4 K1 ["Menus/%*"]
   MOVE R6 R1
-  NAMECALL R4 R4 K1 ["format"]
+  NAMECALL R4 R4 K2 ["format"]
   CALL R4 2 1
   MOVE R3 R4
   MOVE R6 R3
-  DUPTABLE R7 K10 [{"Id", "InitialEnabled", "MinSize", "Modal", "Popup", "Resizable", "Size", "Title"}]
-  SETTABLEKS R3 R7 K2 ["Id"]
+  DUPTABLE R7 K11 [{"Id", "InitialEnabled", "MinSize", "Modal", "Popup", "Resizable", "Size", "Title"}]
+  SETTABLEKS R3 R7 K3 ["Id"]
   LOADB R8 0
-  SETTABLEKS R8 R7 K3 ["InitialEnabled"]
-  GETIMPORT R8 K13 [Vector2.new]
+  SETTABLEKS R8 R7 K4 ["InitialEnabled"]
+  GETIMPORT R8 K14 [Vector2.new]
   LOADN R9 100
   LOADN R10 100
   CALL R8 2 1
-  SETTABLEKS R8 R7 K4 ["MinSize"]
+  SETTABLEKS R8 R7 K5 ["MinSize"]
   LOADB R8 0
-  SETTABLEKS R8 R7 K5 ["Modal"]
-  GETUPVAL R9 1
+  SETTABLEKS R8 R7 K6 ["Modal"]
+  GETUPVAL R9 2
   CALL R9 0 1
   JUMPIFNOT R9 [+5]
-  DUPTABLE R8 K15 [{"PassesThroughMouseEvents"}]
+  DUPTABLE R8 K16 [{"PassesThroughMouseEvents"}]
   LOADB R9 1
-  SETTABLEKS R9 R8 K14 ["PassesThroughMouseEvents"]
+  SETTABLEKS R9 R8 K15 ["PassesThroughMouseEvents"]
   JUMP [+4]
-  DUPTABLE R8 K17 [{"GrabsMouse"}]
+  DUPTABLE R8 K18 [{"GrabsMouse"}]
   LOADB R9 0
-  SETTABLEKS R9 R8 K16 ["GrabsMouse"]
-  SETTABLEKS R8 R7 K6 ["Popup"]
+  SETTABLEKS R9 R8 K17 ["GrabsMouse"]
+  SETTABLEKS R8 R7 K7 ["Popup"]
   LOADB R8 1
-  SETTABLEKS R8 R7 K7 ["Resizable"]
-  GETIMPORT R8 K13 [Vector2.new]
+  SETTABLEKS R8 R7 K8 ["Resizable"]
+  GETIMPORT R8 K14 [Vector2.new]
   LOADN R9 100
   LOADN R10 100
   CALL R8 2 1
-  SETTABLEKS R8 R7 K8 ["Size"]
-  SETTABLEKS R3 R7 K9 ["Title"]
-  NAMECALL R4 R0 K18 ["CreateQWidgetPluginGui"]
+  SETTABLEKS R8 R7 K9 ["Size"]
+  SETTABLEKS R3 R7 K10 ["Title"]
+  NAMECALL R4 R0 K19 ["CreateQWidgetPluginGui"]
   CALL R4 3 1
-  GETIMPORT R5 K22 [Enum.ZIndexBehavior.Sibling]
-  SETTABLEKS R5 R4 K20 ["ZIndexBehavior"]
-  GETUPVAL R6 2
-  GETTABLEKS R5 R6 K23 ["createRoot"]
+  GETIMPORT R5 K23 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R5 R4 K21 ["ZIndexBehavior"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K24 ["createRoot"]
   MOVE R6 R4
   CALL R5 1 1
-  DUPTABLE R6 K30 [{"depth", "uri", "panel", "root", "open", "Panels"}]
+  DUPTABLE R6 K31 [{"depth", "uri", "panel", "root", "open", "Panels"}]
   GETUPVAL R9 0
   LENGTH R8 R9
-  ADDK R7 R8 K31 [1]
-  SETTABLEKS R7 R6 K24 ["depth"]
-  GETUPVAL R7 3
-  NAMECALL R8 R0 K32 ["GetUri"]
-  CALL R8 1 1
-  DUPTABLE R9 K35 [{"Category", "ItemId"}]
-  LOADK R10 K29 ["Panels"]
-  SETTABLEKS R10 R9 K33 ["Category"]
-  SETTABLEKS R3 R9 K34 ["ItemId"]
-  CALL R7 2 1
-  SETTABLEKS R7 R6 K25 ["uri"]
-  SETTABLEKS R4 R6 K26 ["panel"]
-  SETTABLEKS R5 R6 K27 ["root"]
-  LOADB R7 0
-  SETTABLEKS R7 R6 K28 ["open"]
-  LOADK R9 K29 ["Panels"]
-  NAMECALL R7 R0 K36 ["GetPluginComponent"]
-  CALL R7 2 1
-  SETTABLEKS R7 R6 K29 ["Panels"]
+  ADDK R7 R8 K32 [1]
+  SETTABLEKS R7 R6 K25 ["depth"]
   GETUPVAL R7 4
+  NAMECALL R8 R0 K33 ["GetUri"]
+  CALL R8 1 1
+  DUPTABLE R9 K36 [{"Category", "ItemId"}]
+  LOADK R10 K30 ["Panels"]
+  SETTABLEKS R10 R9 K34 ["Category"]
+  SETTABLEKS R3 R9 K35 ["ItemId"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K26 ["uri"]
+  SETTABLEKS R4 R6 K27 ["panel"]
+  SETTABLEKS R5 R6 K28 ["root"]
+  LOADB R7 0
+  SETTABLEKS R7 R6 K29 ["open"]
+  LOADK R9 K30 ["Panels"]
+  NAMECALL R7 R0 K37 ["GetPluginComponent"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K30 ["Panels"]
+  GETUPVAL R7 1
   JUMPIFNOT R7 [+7]
-  GETUPVAL R7 3
+  GETUPVAL R7 4
   MOVE R8 R6
   DUPTABLE R9 K38 [{"onClose"}]
-  SETTABLEKS R2 R9 K37 ["onClose"]
+  SETTABLEKS R2 R9 K0 ["onClose"]
   CALL R7 2 1
   MOVE R6 R7
   GETUPVAL R7 0
@@ -548,10 +551,10 @@ MAIN:
   CAPTURE VAL R15
   DUPCLOSURE R22 K33 [PROTO_3]
   CAPTURE VAL R19
+  CAPTURE VAL R15
   CAPTURE VAL R16
   CAPTURE VAL R2
   CAPTURE VAL R8
-  CAPTURE VAL R15
   CAPTURE VAL R21
   NEWCLOSURE R23 P2
   CAPTURE VAL R11

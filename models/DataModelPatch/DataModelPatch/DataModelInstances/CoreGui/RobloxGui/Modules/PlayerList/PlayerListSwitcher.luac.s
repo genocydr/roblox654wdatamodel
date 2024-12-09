@@ -1,0 +1,189 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setPlayerListVisible"]
+  GETUPVAL R2 0
+  CALL R2 0 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_1:
+  DUPTABLE R2 K1 [{"ThemeProvider"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K4 [{"style"}]
+  DUPTABLE R6 K7 [{"themeName", "fontName"}]
+  GETTABLEKS R9 R0 K8 ["props"]
+  GETTABLEKS R8 R9 K9 ["appStyleForUiModeStyleProvider"]
+  GETTABLEKS R7 R8 K5 ["themeName"]
+  SETTABLEKS R7 R6 K5 ["themeName"]
+  GETTABLEKS R9 R0 K8 ["props"]
+  GETTABLEKS R8 R9 K9 ["appStyleForUiModeStyleProvider"]
+  GETTABLEKS R7 R8 K6 ["fontName"]
+  SETTABLEKS R7 R6 K6 ["fontName"]
+  SETTABLEKS R6 R5 K3 ["style"]
+  MOVE R6 R1
+  CALL R3 3 1
+  SETTABLEKS R3 R2 K0 ["ThemeProvider"]
+  RETURN R2 1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K2 [{"layoutValues"}]
+  GETUPVAL R4 2
+  GETUPVAL R5 3
+  NAMECALL R5 R5 K3 ["IsEnabled"]
+  CALL R5 1 -1
+  CALL R4 -1 1
+  SETTABLEKS R4 R3 K1 ["layoutValues"]
+  DUPTABLE R6 K5 [{"PlayerListApp"}]
+  GETTABLEKS R9 R0 K6 ["props"]
+  GETTABLEKS R8 R9 K7 ["isSmallTouchDevice"]
+  JUMPIFNOT R8 [+13]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["createElement"]
+  GETUPVAL R8 4
+  DUPTABLE R9 K9 [{"setLayerCollectorEnabled"}]
+  GETTABLEKS R11 R0 K6 ["props"]
+  GETTABLEKS R10 R11 K8 ["setLayerCollectorEnabled"]
+  SETTABLEKS R10 R9 K8 ["setLayerCollectorEnabled"]
+  CALL R7 2 1
+  JUMPIF R7 [+12]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["createElement"]
+  GETUPVAL R8 5
+  DUPTABLE R9 K9 [{"setLayerCollectorEnabled"}]
+  GETTABLEKS R11 R0 K6 ["props"]
+  GETTABLEKS R10 R11 K8 ["setLayerCollectorEnabled"]
+  SETTABLEKS R10 R9 K8 ["setLayerCollectorEnabled"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K4 ["PlayerListApp"]
+  NAMECALL R4 R0 K10 ["wrapWithUiModeStyleProvider"]
+  CALL R4 2 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["setPlayerListVisible"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["isSmallTouchDevice"]
+  NOT R2 R3
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"isSmallTouchDevice"}]
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K0 ["isSmallTouchDevice"]
+  SETTABLEKS R2 R1 K0 ["isSmallTouchDevice"]
+  RETURN R1 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"setPlayerListVisible"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setPlayerListVisible"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["RoactRodux"]
+  CALL R4 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R9 R0 K12 ["Workspace"]
+  GETTABLEKS R8 R9 K9 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["Style"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K14 ["UiModeStyleProvider"]
+  GETIMPORT R7 K16 [script]
+  GETTABLEKS R6 R7 K17 ["Parent"]
+  GETTABLEKS R8 R6 K18 ["Components"]
+  GETTABLEKS R7 R8 K19 ["Connection"]
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R11 R6 K18 ["Components"]
+  GETTABLEKS R10 R11 K20 ["Presentation"]
+  GETTABLEKS R9 R10 K21 ["PlayerListApp"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R12 R6 K18 ["Components"]
+  GETTABLEKS R11 R12 K22 ["PresentationMobile"]
+  GETTABLEKS R10 R11 K21 ["PlayerListApp"]
+  CALL R9 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R11 R7 K23 ["LayoutValues"]
+  CALL R10 1 1
+  GETTABLEKS R11 R10 K24 ["Provider"]
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R13 R6 K25 ["CreateLayoutValues"]
+  CALL R12 1 1
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R2 K26 ["Modules"]
+  GETTABLEKS R14 R15 K27 ["TenFootInterface"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R16 R6 K28 ["Actions"]
+  GETTABLEKS R15 R16 K29 ["SetPlayerListVisibility"]
+  CALL R14 1 1
+  GETIMPORT R15 K8 [require]
+  GETTABLEKS R16 R6 K30 ["PlayerListInitialVisibleState"]
+  CALL R15 1 1
+  GETTABLEKS R16 R3 K31 ["PureComponent"]
+  LOADK R18 K32 ["PlayerListSwitcher"]
+  NAMECALL R16 R16 K33 ["extend"]
+  CALL R16 2 1
+  DUPCLOSURE R17 K34 [PROTO_0]
+  CAPTURE VAL R15
+  SETTABLEKS R17 R16 K35 ["didMount"]
+  DUPCLOSURE R17 K36 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  SETTABLEKS R17 R16 K37 ["wrapWithUiModeStyleProvider"]
+  DUPCLOSURE R17 K38 [PROTO_2]
+  CAPTURE VAL R3
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R9
+  CAPTURE VAL R8
+  SETTABLEKS R17 R16 K39 ["render"]
+  DUPCLOSURE R17 K40 [PROTO_3]
+  SETTABLEKS R17 R16 K41 ["didUpdate"]
+  DUPCLOSURE R17 K42 [PROTO_4]
+  DUPCLOSURE R18 K43 [PROTO_6]
+  CAPTURE VAL R14
+  GETTABLEKS R19 R4 K44 ["connect"]
+  MOVE R20 R17
+  MOVE R21 R18
+  CALL R19 2 1
+  MOVE R20 R16
+  CALL R19 1 -1
+  RETURN R19 -1

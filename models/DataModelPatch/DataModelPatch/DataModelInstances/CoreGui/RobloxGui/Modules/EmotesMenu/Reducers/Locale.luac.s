@@ -1,0 +1,32 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["locale"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Rodux"]
+  CALL R1 1 1
+  GETIMPORT R3 K9 [script]
+  GETTABLEKS R2 R3 K10 ["Parent"]
+  GETTABLEKS R3 R2 K10 ["Parent"]
+  GETTABLEKS R4 R3 K11 ["Actions"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K12 ["SetLocale"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R3 K13 ["Constants"]
+  CALL R6 1 1
+  GETTABLEKS R7 R1 K14 ["createReducer"]
+  GETTABLEKS R8 R6 K15 ["FallbackLocale"]
+  NEWTABLE R9 1 0
+  GETTABLEKS R10 R5 K16 ["name"]
+  DUPCLOSURE R11 K17 [PROTO_0]
+  SETTABLE R11 R9 R10
+  CALL R7 2 -1
+  RETURN R7 -1

@@ -1,0 +1,74 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["onBrowserWindowClosed"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K4 [{"event", "callback"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K5 ["BrowserWindowClosed"]
+  SETTABLEKS R5 R4 K2 ["event"]
+  SETTABLEKS R1 R4 K3 ["callback"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R1 0 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R1 K1 [{"onBrowserWindowClosed"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["onBrowserWindowClosed"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["GuiService"]
+  NAMECALL R1 R1 K6 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K7 ["CorePackages"]
+  NAMECALL R2 R2 K6 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R6 R2 K10 ["Workspace"]
+  GETTABLEKS R5 R6 K11 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["PurchasePromptDeps"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["Roact"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K14 ["Thunks"]
+  GETTABLEKS R6 R7 K15 ["retryAfterUpsell"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R7 R0 K16 ["connectToStore"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETIMPORT R10 K1 [script]
+  GETTABLEKS R9 R10 K2 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["ExternalEventConnection"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K18 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  DUPCLOSURE R9 K19 [PROTO_2]
+  CAPTURE VAL R5
+  MOVE R10 R6
+  LOADNIL R11
+  MOVE R12 R9
+  CALL R10 2 1
+  MOVE R11 R8
+  CALL R10 1 1
+  MOVE R8 R10
+  RETURN R8 1

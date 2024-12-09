@@ -1,0 +1,22 @@
+MAIN:
+  PREPVARARGS 0
+  DUPTABLE R0 K9 [{"None", "VideoNoPermission", "NotAvailable", "FeatureDisabled", "LODCameraRecommendDisable", "NoDynamicHeadEquipped", "VideoUnsupported", "UnsupportedDevice", "CameraUnavailable"}]
+  LOADK R1 K0 ["None"]
+  SETTABLEKS R1 R0 K0 ["None"]
+  LOADK R1 K1 ["VideoNoPermission"]
+  SETTABLEKS R1 R0 K1 ["VideoNoPermission"]
+  LOADK R1 K2 ["NotAvailable"]
+  SETTABLEKS R1 R0 K2 ["NotAvailable"]
+  LOADK R1 K3 ["FeatureDisabled"]
+  SETTABLEKS R1 R0 K3 ["FeatureDisabled"]
+  LOADK R1 K4 ["LODCameraRecommendDisable"]
+  SETTABLEKS R1 R0 K4 ["LODCameraRecommendDisable"]
+  LOADK R1 K5 ["NoDynamicHeadEquipped"]
+  SETTABLEKS R1 R0 K5 ["NoDynamicHeadEquipped"]
+  LOADK R1 K6 ["VideoUnsupported"]
+  SETTABLEKS R1 R0 K6 ["VideoUnsupported"]
+  LOADK R1 K7 ["UnsupportedDevice"]
+  SETTABLEKS R1 R0 K7 ["UnsupportedDevice"]
+  LOADK R1 K8 ["CameraUnavailable"]
+  SETTABLEKS R1 R0 K8 ["CameraUnavailable"]
+  RETURN R0 1

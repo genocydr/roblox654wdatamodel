@@ -1,0 +1,158 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["isEmpty"]
+  GETTABLEKS R3 R0 K1 ["queue"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+10]
+  DUPTABLE R2 K3 [{"queue", "infoQueue"}]
+  GETTABLEKS R3 R0 K1 ["queue"]
+  SETTABLEKS R3 R2 K1 ["queue"]
+  GETTABLEKS R3 R0 K2 ["infoQueue"]
+  SETTABLEKS R3 R2 K2 ["infoQueue"]
+  RETURN R2 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["Dictionary"]
+  GETTABLEKS R2 R3 K5 ["join"]
+  GETTABLEKS R4 R0 K2 ["infoQueue"]
+  GETTABLEN R3 R4 1
+  DUPTABLE R4 K7 [{"promptType", "queue", "infoQueue"}]
+  GETTABLEKS R6 R0 K1 ["queue"]
+  GETTABLEN R5 R6 1
+  SETTABLEKS R5 R4 K6 ["promptType"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K8 ["List"]
+  GETTABLEKS R5 R6 K9 ["removeIndex"]
+  GETTABLEKS R6 R0 K1 ["queue"]
+  LOADN R7 1
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K1 ["queue"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K8 ["List"]
+  GETTABLEKS R5 R6 K9 ["removeIndex"]
+  GETTABLEKS R6 R0 K2 ["infoQueue"]
+  LOADN R7 1
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K2 ["infoQueue"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["promptType"]
+  JUMPIFNOTEQKNIL R2 [+16]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["Dictionary"]
+  GETTABLEKS R2 R3 K2 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"promptType"}]
+  GETTABLEKS R5 R1 K0 ["promptType"]
+  SETTABLEKS R5 R4 K0 ["promptType"]
+  GETTABLEKS R5 R1 K4 ["promptInfo"]
+  CALL R2 3 -1
+  RETURN R2 -1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["Dictionary"]
+  GETTABLEKS R2 R3 K2 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K7 [{"queue", "infoQueue"}]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K8 ["List"]
+  GETTABLEKS R5 R6 K2 ["join"]
+  GETTABLEKS R6 R0 K5 ["queue"]
+  NEWTABLE R7 0 1
+  GETTABLEKS R8 R1 K0 ["promptType"]
+  SETLIST R7 R8 1 [1]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K5 ["queue"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K8 ["List"]
+  GETTABLEKS R5 R6 K2 ["join"]
+  GETTABLEKS R6 R0 K6 ["infoQueue"]
+  NEWTABLE R7 0 1
+  GETTABLEKS R8 R1 K4 ["promptInfo"]
+  SETLIST R7 R8 1 [1]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K6 ["infoQueue"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"promptType"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["EnterOutfitName"]
+  SETTABLEKS R5 R4 K2 ["promptType"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Rodux"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Cryo"]
+  CALL R2 1 1
+  GETIMPORT R4 K10 [script]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETTABLEKS R4 R3 K11 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K12 ["PromptType"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R4 K13 ["Actions"]
+  GETTABLEKS R7 R8 K14 ["CloseOpenPrompt"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K13 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["OpenPrompt"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R4 K13 ["Actions"]
+  GETTABLEKS R9 R10 K16 ["CreateOutfitConfirmed"]
+  CALL R8 1 1
+  DUPTABLE R9 K26 [{"promptType", "humanoidDescription", "rigType", "itemId", "itemType", "itemName", "isFavorited", "queue", "infoQueue"}]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K17 ["promptType"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K18 ["humanoidDescription"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K19 ["rigType"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K20 ["itemId"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K21 ["itemType"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K22 ["itemName"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K23 ["isFavorited"]
+  NEWTABLE R10 0 0
+  SETTABLEKS R10 R9 K24 ["queue"]
+  NEWTABLE R10 0 0
+  SETTABLEKS R10 R9 K25 ["infoQueue"]
+  GETTABLEKS R10 R1 K27 ["createReducer"]
+  MOVE R11 R9
+  NEWTABLE R12 4 0
+  GETTABLEKS R13 R6 K28 ["name"]
+  DUPCLOSURE R14 K29 [PROTO_0]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R7 K28 ["name"]
+  DUPCLOSURE R14 K30 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R8 K28 ["name"]
+  DUPCLOSURE R14 K31 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  SETTABLE R14 R12 R13
+  CALL R10 2 1
+  RETURN R10 1

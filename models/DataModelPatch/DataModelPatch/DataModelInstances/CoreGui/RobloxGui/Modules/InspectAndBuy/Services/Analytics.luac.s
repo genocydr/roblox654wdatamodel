@@ -1,0 +1,285 @@
+PROTO_0:
+  LOADK R0 K0 ["Service(Analytics)"]
+  RETURN R0 1
+
+PROTO_1:
+  NEWTABLE R0 0 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["inspectUser"]
+  MOVE R4 R0
+  NAMECALL R1 R1 K1 ["report"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R2 K2 [{"itemType", "itemID"}]
+  SETTABLEKS R0 R2 K0 ["itemType"]
+  SETTABLEKS R1 R2 K1 ["itemID"]
+  GETUPVAL R3 0
+  LOADK R5 K3 ["tryItem"]
+  MOVE R6 R2
+  NAMECALL R3 R3 K4 ["report"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_3:
+  DUPTABLE R6 K6 [{"itemType", "itemID", "favorite", "success", "failureReason", "favoriteCount"}]
+  SETTABLEKS R0 R6 K0 ["itemType"]
+  SETTABLEKS R1 R6 K1 ["itemID"]
+  SETTABLEKS R2 R6 K2 ["favorite"]
+  SETTABLEKS R3 R6 K3 ["success"]
+  SETTABLEKS R4 R6 K4 ["failureReason"]
+  SETTABLEKS R5 R6 K5 ["favoriteCount"]
+  GETUPVAL R7 0
+  LOADK R9 K7 ["favoriteItem"]
+  MOVE R10 R6
+  NAMECALL R7 R7 K8 ["report"]
+  CALL R7 3 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R2 K2 [{"itemType", "itemID"}]
+  SETTABLEKS R0 R2 K0 ["itemType"]
+  SETTABLEKS R1 R2 K1 ["itemID"]
+  GETUPVAL R3 0
+  LOADK R5 K3 ["purchaseAttemptItem"]
+  MOVE R6 R2
+  NAMECALL R3 R3 K4 ["report"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_5:
+  DUPTABLE R2 K2 [{"itemType", "itemID"}]
+  SETTABLEKS R0 R2 K0 ["itemType"]
+  SETTABLEKS R1 R2 K1 ["itemID"]
+  GETUPVAL R3 0
+  LOADK R5 K3 ["purchaseSuccessItem"]
+  MOVE R6 R2
+  NAMECALL R3 R3 K4 ["report"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_6:
+  DUPTABLE R2 K2 [{"itemType", "itemID"}]
+  SETTABLEKS R0 R2 K0 ["itemType"]
+  SETTABLEKS R1 R2 K1 ["itemID"]
+  GETUPVAL R3 0
+  LOADK R5 K3 ["itemDetailView"]
+  MOVE R6 R2
+  NAMECALL R3 R3 K4 ["report"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetPlatform"]
+  CALL R0 1 1
+  LOADK R1 K1 ["Unknown"]
+  GETIMPORT R2 K5 [Enum.Platform.Windows]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K4 ["Windows"]
+  RETURN R1 1
+  GETIMPORT R2 K7 [Enum.Platform.OSX]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K6 ["OSX"]
+  RETURN R1 1
+  GETIMPORT R2 K9 [Enum.Platform.IOS]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K8 ["IOS"]
+  RETURN R1 1
+  GETIMPORT R2 K11 [Enum.Platform.Android]
+  JUMPIFNOTEQ R0 R2 [+22]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K12 ["GetUserAgent"]
+  CALL R2 1 1
+  GETIMPORT R3 K15 [string.find]
+  MOVE R4 R2
+  LOADK R5 K16 ["AmazonAppStore"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+2]
+  LOADK R1 K17 ["Amazon"]
+  JUMP [+1]
+  LOADK R1 K10 ["Android"]
+  GETIMPORT R3 K15 [string.find]
+  MOVE R4 R2
+  LOADK R5 K18 ["OculusQuest3Store"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+31]
+  LOADK R1 K19 ["Quest"]
+  RETURN R1 1
+  GETIMPORT R2 K21 [Enum.Platform.XBoxOne]
+  JUMPIFEQ R0 R2 [+5]
+  GETIMPORT R2 K23 [Enum.Platform.XBox360]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K24 ["XBox"]
+  RETURN R1 1
+  GETIMPORT R2 K26 [Enum.Platform.UWP]
+  JUMPIFNOTEQ R0 R2 [+3]
+  LOADK R1 K25 ["UWP"]
+  RETURN R1 1
+  GETIMPORT R2 K28 [Enum.Platform.PS4]
+  JUMPIFEQ R0 R2 [+9]
+  GETIMPORT R2 K30 [Enum.Platform.PS3]
+  JUMPIFEQ R0 R2 [+5]
+  GETIMPORT R2 K32 [Enum.Platform.PS5]
+  JUMPIFNOTEQ R0 R2 [+2]
+  LOADK R1 K33 ["PlayStation"]
+  RETURN R1 1
+
+PROTO_8:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["IsStudio"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  LOADK R2 K1 ["inspectAndBuy"]
+  LOADK R3 K2 ["_"]
+  GETUPVAL R7 1
+  GETTABLEKS R4 R7 K3 ["platformStr"]
+  LOADK R5 K2 ["_"]
+  MOVE R6 R0
+  CONCAT R1 R2 R6
+  GETUPVAL R2 2
+  MOVE R4 R1
+  NAMECALL R2 R2 K4 ["ReportCounter"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_9:
+  NEWTABLE R2 16 0
+  GETUPVAL R5 0
+  FASTCALL2 SETMETATABLE R2 R5 [+4]
+  MOVE R4 R2
+  GETIMPORT R3 K1 [setmetatable]
+  CALL R3 2 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["new"]
+  GETUPVAL R4 2
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K3 ["eventStream"]
+  GETIMPORT R5 K5 [game]
+  GETTABLEKS R4 R5 K6 ["PlaceId"]
+  FASTCALL1 TOSTRING R4 [+2]
+  GETIMPORT R3 K8 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K9 ["pid"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K10 ["LocalPlayer"]
+  GETTABLEKS R4 R5 K11 ["UserId"]
+  FASTCALL1 TOSTRING R4 [+2]
+  GETIMPORT R3 K8 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K12 ["uid"]
+  LOADK R3 K13 ["inspectAndBuy"]
+  SETTABLEKS R3 R2 K14 ["feature"]
+  SETTABLEKS R0 R2 K15 ["inspecteeUid"]
+  SETTABLEKS R1 R2 K16 ["ctx"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K17 ["reportOpenInspectMenu"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K18 ["reportTryOnButtonClicked"]
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K19 ["reportFavoriteItem"]
+  NEWCLOSURE R3 P3
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K20 ["reportPurchaseAttempt"]
+  NEWCLOSURE R3 P4
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K21 ["reportPurchaseSuccess"]
+  NEWCLOSURE R3 P5
+  CAPTURE VAL R2
+  SETTABLEKS R3 R2 K22 ["reportItemDetailPageOpened"]
+  DUPCLOSURE R3 K23 [PROTO_7]
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  MOVE R4 R3
+  CALL R4 0 1
+  SETTABLEKS R4 R2 K24 ["platformStr"]
+  NEWCLOSURE R4 P7
+  CAPTURE UPVAL U6
+  CAPTURE VAL R2
+  CAPTURE UPVAL U2
+  SETTABLEKS R4 R2 K25 ["sendCounter"]
+  RETURN R2 1
+
+PROTO_10:
+  DUPTABLE R3 K4 [{"pid", "uid", "inspecteeUid", "feature"}]
+  GETTABLEKS R4 R0 K0 ["pid"]
+  SETTABLEKS R4 R3 K0 ["pid"]
+  GETTABLEKS R4 R0 K1 ["uid"]
+  SETTABLEKS R4 R3 K1 ["uid"]
+  GETTABLEKS R4 R0 K2 ["inspecteeUid"]
+  SETTABLEKS R4 R3 K2 ["inspecteeUid"]
+  LOADK R4 K5 ["inspectAndBuy"]
+  SETTABLEKS R4 R3 K3 ["feature"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K6 ["Dictionary"]
+  GETTABLEKS R4 R5 K7 ["join"]
+  MOVE R5 R3
+  MOVE R6 R2
+  CALL R4 2 1
+  GETTABLEKS R5 R0 K8 ["eventStream"]
+  GETTABLEKS R7 R0 K9 ["ctx"]
+  MOVE R8 R1
+  MOVE R9 R4
+  NAMECALL R5 R5 K10 ["sendEventDeferred"]
+  CALL R5 4 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["RbxAnalyticsService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Cryo"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K10 ["UserInputService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K11 ["RunService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K12 ["HttpService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R9 K7 [require]
+  GETTABLEKS R12 R0 K13 ["Workspace"]
+  GETTABLEKS R11 R12 K8 ["Packages"]
+  GETTABLEKS R10 R11 K14 ["Analytics"]
+  CALL R9 1 1
+  GETTABLEKS R8 R9 K15 ["AnalyticsReporters"]
+  GETTABLEKS R7 R8 K16 ["EventStream"]
+  NEWTABLE R8 4 0
+  SETTABLEKS R8 R8 K17 ["__index"]
+  DUPCLOSURE R9 K18 [PROTO_0]
+  SETTABLEKS R9 R8 K19 ["__tostring"]
+  DUPCLOSURE R9 K20 [PROTO_9]
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  SETTABLEKS R9 R8 K21 ["new"]
+  DUPCLOSURE R9 K22 [PROTO_10]
+  CAPTURE VAL R3
+  SETTABLEKS R9 R8 K23 ["report"]
+  RETURN R8 1

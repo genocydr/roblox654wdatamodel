@@ -37,6 +37,8 @@ local FFlagErrorPromptResizesHeight = require(RobloxGui.Modules.Flags.FFlagError
 local FFlagRemoveKickWhitespaceSub = require(RobloxGui.Modules.Flags.FFlagRemoveKickWhitespaceSub)
 local FFlagEmptyKickMessageTranslation = require(RobloxGui.Modules.Flags.FFlagEmptyKickMessageTranslation)
 
+local FFlagAllowDisconnectGuiForOkUnknown = require(RobloxGui.Modules.Flags.FFlagAllowDisconnectGuiForOkUnknown)
+
 local function safeGetFInt(name, defaultValue)
 	local success, result = pcall(function()
 		return tonumber(settings():GetFVariable(name))
@@ -401,8 +403,17 @@ end
 
 -- state transit function
 local function stateTransit(errorType, errorCode, oldState)
-	if errorType == Enum.ConnectionError.OK then
-		return ConnectionPromptState.NONE
+	-- This is necessary because we always pre-run onErrorMessageChanged() on connecting to a new game, to
+	-- clear any bad state, assuming that the new GuiService in that new state will be initialized to 
+	-- ConnectionError::OK.
+	if FFlagAllowDisconnectGuiForOkUnknown then
+		if errorCode == Enum.ConnectionError.OK then
+			return ConnectionPromptState.NONE
+		end
+	else
+		if errorType == Enum.ConnectionError.OK then
+			return ConnectionPromptState.NONE
+		end
 	end
 
 	if oldState == ConnectionPromptState.NONE then
@@ -410,6 +421,14 @@ local function stateTransit(errorType, errorCode, oldState)
 			return ConnectionPromptState.RECONNECT_DISABLED
 		end
 		lastErrorTimeStamp = tick()
+
+		if FFlagAllowDisconnectGuiForOkUnknown then
+			assert(errorCode ~= Enum.ConnectionError.OK)
+			if errorType == Enum.ConnectionError.OK then
+				-- If disconnected due to ConnectionError.UNKNOWN, or some other state, prompt reconnect
+				return ConnectionPromptState.RECONNECT_DISCONNECT
+			end
+		end
 
 		if errorType == Enum.ConnectionError.DisconnectErrors then
 			-- reconnection will be delayed after graceTimeout

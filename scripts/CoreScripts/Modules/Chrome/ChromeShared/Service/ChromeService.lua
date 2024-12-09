@@ -20,9 +20,13 @@ local NotifySignal = utils.NotifySignal
 local AvailabilitySignal = utils.AvailabilitySignal
 local Types = require(Root.Service.Types)
 local Constants = require(Root.Unibar.Constants)
--- APPEXP-2053 TODO: Remove all use of RobloxGui from ChromeShared
-local ChromeEnabled = require(Root.Parent.Enabled)
 local PeekService = require(Root.Service.PeekService)
+
+local GetFFlagRefactorChromeAssert = require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagRefactorChromeAssert
+local ChromeEnabled
+if not GetFFlagRefactorChromeAssert() then
+	ChromeEnabled = require(Root.Parent.Enabled)
+end
 
 local GetFFlagEnableChromeEscapeFix = require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagEnableChromeEscapeFix
 -- APPEXP-2053 TODO: Remove all use of RobloxGui from ChromeShared
@@ -38,6 +42,8 @@ local GetFFlagChromePeekArchitecture =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromePeekArchitecture
 local GetFFlagChromeTrackWindowStatus = require(Root.Parent.Flags.GetFFlagChromeTrackWindowStatus)
 local GetFFlagChromeTrackWindowPosition = require(Root.Parent.Flags.GetFFlagChromeTrackWindowPosition)
+local GetFFlagChromeDefaultWindowStartingPosition =
+	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeDefaultWindowStartingPosition
 
 local DEFAULT_PINS = game:DefineFastString("ChromeServiceDefaultPins", "leaderboard,trust_and_safety")
 
@@ -308,12 +314,14 @@ function ChromeService.new(): ChromeService
 
 	local service = (setmetatable(self, ChromeService) :: any) :: ChromeService
 
-	if GetFFlagFixChromeReferences() then
-		--[[ If you're hitting this assert, try the following:
-			local Chrome = RobloxGui.Modules.Chrome
-			local ChromeEnabled = require(Chrome.Parent.Enabled)
-			local ChromeService = if ChromeEnabled() then require(Chrome.Service) else nil ]]
-		assert(ChromeEnabled(), "ChromeService should not be initialized when Chrome is not enabled")
+	if not GetFFlagRefactorChromeAssert() then
+		if GetFFlagFixChromeReferences() then
+			--[[ If you're hitting this assert, try the following:
+				local Chrome = RobloxGui.Modules.Chrome
+				local ChromeEnabled = require(Chrome.Enabled)
+				local ChromeService = if ChromeEnabled() then require(Chrome.Service) else nil ]]
+			assert(ChromeEnabled(), "ChromeService should not be initialized when Chrome is not enabled")
+		end
 	end
 
 	-- todo: Consider moving this outside of ChromeService to reduce dependency on Roblox instances
@@ -722,14 +730,28 @@ function ChromeService:register(component: Types.IntegrationRegisterProps): Type
 		self._onIntegrationStatusChanged:fire(component.id, self._integrationsStatus[component.id])
 	end
 
-	if GetFFlagChromeTrackWindowPosition() and component.startingWindowPosition then
-		local windowPos
-		if component.persistWindowState then
-			windowPos = self:getWindowPositionFromStore(component.id) or component.startingWindowPosition
-		else
-			windowPos = component.startingWindowPosition
+	if GetFFlagChromeDefaultWindowStartingPosition() then
+		if GetFFlagChromeTrackWindowPosition() then
+			local windowPos = UDim2.fromOffset(Constants.MENU_ICON_SCREEN_SIDE_OFFSET, Constants.WINDOW_DEFAULT_PADDING)
+			if component.startingWindowPosition then
+				if component.persistWindowState then
+					windowPos = self:getWindowPositionFromStore(component.id) or component.startingWindowPosition
+				else
+					windowPos = component.startingWindowPosition
+				end
+			end
+			self._windowPositions[component.id] = windowPos
 		end
-		self._windowPositions[component.id] = windowPos
+	else
+		if GetFFlagChromeTrackWindowPosition() and component.startingWindowPosition then
+			local windowPos
+			if component.persistWindowState then
+				windowPos = self:getWindowPositionFromStore(component.id) or component.startingWindowPosition
+			else
+				windowPos = component.startingWindowPosition
+			end
+			self._windowPositions[component.id] = windowPos
+		end
 	end
 
 	-- Add a containerWidthSlots signal for integrations with containers if missing

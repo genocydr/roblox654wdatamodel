@@ -1,0 +1,73 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["createElement"]
+  LOADK R1 K1 ["Frame"]
+  DUPTABLE R2 K7 [{"Size", "Position", "AnchorPoint", "BackgroundColor3", "BackgroundTransparency"}]
+  GETIMPORT R3 K10 [UDim2.new]
+  LOADN R4 0
+  LOADN R5 160
+  LOADN R6 0
+  LOADN R7 160
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K2 ["Size"]
+  GETIMPORT R3 K10 [UDim2.new]
+  LOADK R4 K11 [0.5]
+  LOADN R5 0
+  LOADK R6 K11 [0.5]
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K3 ["Position"]
+  GETIMPORT R3 K13 [Vector2.new]
+  LOADK R4 K11 [0.5]
+  LOADK R5 K11 [0.5]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K4 ["AnchorPoint"]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K5 ["BackgroundColor3"]
+  LOADK R3 K14 [0.1]
+  SETTABLEKS R3 R2 K6 ["BackgroundTransparency"]
+  NEWTABLE R3 0 2
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["createElement"]
+  LOADK R5 K15 ["UICorner"]
+  DUPTABLE R6 K17 [{"CornerRadius"}]
+  GETIMPORT R7 K19 [UDim.new]
+  LOADN R8 0
+  LOADN R9 4
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K16 ["CornerRadius"]
+  CALL R4 2 1
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 2
+  CALL R5 1 -1
+  SETLIST R3 R4 -1 [1]
+  CALL R0 3 -1
+  RETURN R0 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R6 R0 K8 ["Workspace"]
+  GETTABLEKS R5 R6 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["AppBlox"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K10 ["LoadingBar"]
+  GETIMPORT R3 K13 [Color3.fromRGB]
+  LOADN R4 41
+  LOADN R5 41
+  LOADN R6 41
+  CALL R3 3 1
+  DUPCLOSURE R4 K14 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  RETURN R4 1

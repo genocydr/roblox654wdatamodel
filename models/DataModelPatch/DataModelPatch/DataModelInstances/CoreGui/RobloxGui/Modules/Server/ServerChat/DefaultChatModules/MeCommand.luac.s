@@ -1,0 +1,54 @@
+PROTO_0:
+  GETTABLEKS R3 R1 K0 ["Message"]
+  JUMPIFNOT R3 [+18]
+  LOADN R6 1
+  LOADN R7 4
+  FASTCALL3 STRING_SUB R3 R6 R7
+  MOVE R5 R3
+  GETIMPORT R4 K3 [string.sub]
+  CALL R4 3 1
+  NAMECALL R4 R4 K4 ["lower"]
+  CALL R4 1 1
+  JUMPIFNOTEQKS R4 K5 ["/me "] [+6]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["MessageTypeMeCommand"]
+  SETTABLEKS R4 R1 K7 ["MessageType"]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+11]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["AllowMeCommand"]
+  JUMPIFNOT R1 [+7]
+  DUPCLOSURE R1 K1 [PROTO_0]
+  CAPTURE UPVAL U1
+  LOADK R4 K2 ["me_command"]
+  MOVE R5 R1
+  NAMECALL R2 R0 K3 ["RegisterFilterMessageFunction"]
+  CALL R2 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Chat"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["ClientChatModules"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K7 [require]
+  LOADK R5 K8 ["ChatConstants"]
+  NAMECALL R3 R1 K5 ["WaitForChild"]
+  CALL R3 2 -1
+  CALL R2 -1 1
+  GETIMPORT R3 K7 [require]
+  LOADK R6 K9 ["ChatSettings"]
+  NAMECALL R4 R1 K5 ["WaitForChild"]
+  CALL R4 2 -1
+  CALL R3 -1 1
+  DUPCLOSURE R4 K10 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  RETURN R4 1

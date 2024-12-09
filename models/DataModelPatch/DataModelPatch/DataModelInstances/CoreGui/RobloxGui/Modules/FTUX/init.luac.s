@@ -1,0 +1,122 @@
+PROTO_0:
+  GETIMPORT R2 K1 [game]
+  GETTABLEKS R1 R2 K2 ["StarterGui"]
+  GETIMPORT R3 K6 [Enum.CoreGuiType.PlayerList]
+  LOADB R4 0
+  NAMECALL R1 R1 K7 ["SetCoreGuiEnabled"]
+  CALL R1 3 0
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K2 ["StarterGui"]
+  NAMECALL R1 R1 K8 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R3 K10 [Enum.CoreGuiType.Chat]
+  LOADB R4 0
+  NAMECALL R1 R1 K7 ["SetCoreGuiEnabled"]
+  CALL R1 3 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K11 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K13 [{"localization"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K14 ["new"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K15 ["RobloxLocaleId"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K12 ["localization"]
+  DUPTABLE R4 K17 [{"FTUXMenu"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K11 ["createElement"]
+  LOADK R6 K18 ["ScreenGui"]
+  NEWTABLE R7 0 0
+  DUPTABLE R8 K20 [{"ThemeProvider"}]
+  GETUPVAL R9 4
+  DUPTABLE R10 K22 [{"FtuxPanel"}]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K11 ["createElement"]
+  GETUPVAL R12 5
+  DUPTABLE R13 K24 [{"platform"}]
+  SETTABLEKS R0 R13 K23 ["platform"]
+  NEWTABLE R14 0 0
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K21 ["FtuxPanel"]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K19 ["ThemeProvider"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K16 ["FTUXMenu"]
+  CALL R1 3 1
+  GETUPVAL R2 6
+  MOVE R3 R0
+  CALL R2 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K25 ["mount"]
+  MOVE R3 R1
+  GETUPVAL R4 7
+  LOADK R5 K16 ["FTUXMenu"]
+  CALL R2 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["LocalizationService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R1 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Roact"]
+  CALL R3 1 1
+  LOADK R6 K10 ["RobloxGui"]
+  NAMECALL R4 R0 K11 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R4 K12 ["Modules"]
+  GETTABLEKS R7 R8 K13 ["Common"]
+  GETTABLEKS R6 R7 K14 ["renderWithCoreScriptsStyleProvider"]
+  CALL R5 1 1
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R10 R1 K15 ["Workspace"]
+  GETTABLEKS R9 R10 K8 ["Packages"]
+  GETTABLEKS R8 R9 K16 ["InExperienceLocales"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K17 ["Localization"]
+  GETIMPORT R8 K7 [require]
+  GETTABLEKS R11 R1 K15 ["Workspace"]
+  GETTABLEKS R10 R11 K8 ["Packages"]
+  GETTABLEKS R9 R10 K17 ["Localization"]
+  CALL R8 1 1
+  GETTABLEKS R7 R8 K18 ["LocalizationProvider"]
+  GETIMPORT R8 K7 [require]
+  GETIMPORT R11 K20 [script]
+  GETTABLEKS R10 R11 K21 ["Components"]
+  GETTABLEKS R9 R10 K22 ["FTUXPanel"]
+  CALL R8 1 1
+  GETIMPORT R9 K7 [require]
+  GETIMPORT R12 K20 [script]
+  GETTABLEKS R11 R12 K23 ["Features"]
+  GETTABLEKS R10 R11 K24 ["GetFeatures"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETIMPORT R13 K20 [script]
+  GETTABLEKS R12 R13 K25 ["Enums"]
+  GETTABLEKS R11 R12 K26 ["PlatformEnum"]
+  CALL R10 1 1
+  DUPTABLE R11 K28 [{"mountFtuxMenu"}]
+  DUPCLOSURE R12 K29 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R0
+  SETTABLEKS R12 R11 K27 ["mountFtuxMenu"]
+  RETURN R11 1

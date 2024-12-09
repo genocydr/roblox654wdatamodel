@@ -12,7 +12,7 @@ local Images = UIBlox.App.ImageSet.Images
 local SelfieViewModule = Chrome.Parent.SelfieView
 local SelfieView = require(SelfieViewModule)
 local VoiceChatServiceManager = require(RobloxGui.Modules.VoiceChat.VoiceChatServiceManager).default
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local RedVoiceDot = require(Chrome.Integrations.RedVoiceDot)
 
 local Constants = require(Chrome.ChromeShared.Unibar.Constants)

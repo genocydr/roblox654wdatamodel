@@ -1,0 +1,79 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["LocalPlayer"]
+  JUMPIF R0 [+12]
+  GETUPVAL R1 0
+  LOADK R3 K0 ["LocalPlayer"]
+  NAMECALL R1 R1 K1 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NAMECALL R1 R1 K2 ["Wait"]
+  CALL R1 1 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["LocalPlayer"]
+  JUMPBACK [-13]
+  GETIMPORT R1 K4 [game]
+  LOADK R3 K5 ["EnableChromeDefaultOpenForcedUserIds"]
+  NAMECALL R1 R1 K6 ["GetFastString"]
+  CALL R1 2 1
+  LOADK R4 K7 ["%d+"]
+  NAMECALL R2 R1 K8 ["gmatch"]
+  CALL R2 2 3
+  FORGPREP R2
+  FASTCALL1 TONUMBER R5 [+3]
+  MOVE R8 R5
+  GETIMPORT R7 K10 [tonumber]
+  CALL R7 1 1
+  GETTABLEKS R8 R0 K11 ["UserId"]
+  JUMPIFNOTEQ R7 R8 [+3]
+  LOADB R7 1
+  RETURN R7 1
+  FORGLOOP R2 1 [-12]
+  GETUPVAL R2 1
+  CALL R2 0 1
+  JUMPIFNOT R2 [+9]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K12 ["default"]
+  NAMECALL R2 R2 K13 ["shouldDefaultOpen"]
+  CALL R2 1 1
+  JUMPIFNOT R2 [+2]
+  LOADB R2 1
+  RETURN R2 1
+  GETIMPORT R2 K4 [game]
+  LOADK R4 K14 ["EnableChromeDefaultOpen"]
+  NAMECALL R2 R2 K15 ["GetFastFlag"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["Players"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R0 K10 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["IsExperienceMenuABTestEnabled"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R0 K10 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["ExperienceMenuABTestManager"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [game]
+  LOADK R6 K13 ["EnableChromeDefaultOpen"]
+  LOADB R7 0
+  NAMECALL R4 R4 K14 ["DefineFastFlag"]
+  CALL R4 3 0
+  GETIMPORT R4 K5 [game]
+  LOADK R6 K15 ["EnableChromeDefaultOpenForcedUserIds"]
+  LOADK R7 K16 [""]
+  NAMECALL R4 R4 K17 ["DefineFastString"]
+  CALL R4 3 0
+  DUPCLOSURE R4 K18 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  RETURN R4 1

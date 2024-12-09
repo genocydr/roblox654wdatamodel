@@ -10,7 +10,10 @@ local useStyle = UIBlox.Core.Style.useStyle
 local ChromeService = require(Root.Service)
 local ChromeAnalytics = require(Root.Analytics.ChromeAnalytics)
 
-local _integrations = require(Root.Parent.Integrations)
+local GetFFlagChromeCentralizedConfiguration =
+	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeCentralizedConfiguration
+
+local _integrations = if GetFFlagChromeCentralizedConfiguration() then nil else require(Root.Parent.Integrations)
 local SubMenu = require(Root.Unibar.SubMenu)
 local WindowManager = require(Root.Unibar.WindowManager)
 local Constants = require(Root.Unibar.Constants)
@@ -44,8 +47,6 @@ local GetFFlagChromeUsePreferredTransparency =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeUsePreferredTransparency
 local GetFFlagPostLaunchUnibarDesignTweaks =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagPostLaunchUnibarDesignTweaks
-local GetFFlagChromeCentralizedConfiguration =
-	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeCentralizedConfiguration
 
 local FFlagReshufflePartyIconsInUnibar = game:DefineFastFlag("ReshufflePartyIconsInUnibar", false)
 

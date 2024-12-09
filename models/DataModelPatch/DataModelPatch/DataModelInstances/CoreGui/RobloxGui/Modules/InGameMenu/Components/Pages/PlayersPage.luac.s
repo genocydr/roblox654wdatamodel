@@ -1,0 +1,1452 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 1
+  DUPTABLE R3 K1 [{"selectedPlayerRef"}]
+  SETTABLEKS R0 R3 K0 ["selectedPlayerRef"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  DUPTABLE R3 K4 [{"selectedPlayerRef", "firstPlayerRef"}]
+  SETTABLEKS R0 R3 K0 ["selectedPlayerRef"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K5 ["None"]
+  SETTABLEKS R4 R3 K3 ["firstPlayerRef"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"firstPlayerRef"}]
+  SETTABLEKS R0 R3 K0 ["firstPlayerRef"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"selectedPlayerPosition"}]
+  GETTABLEKS R4 R0 K2 ["AbsolutePosition"]
+  SETTABLEKS R4 R3 K0 ["selectedPlayerPosition"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["GetPlayerByUserId"]
+  CALL R1 2 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["state"]
+  GETTABLEKS R2 R3 K2 ["selectedPlayer"]
+  JUMPIFNOTEQ R2 R1 [+12]
+  GETUPVAL R2 1
+  DUPTABLE R4 K3 [{"selectedPlayer"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K4 ["None"]
+  SETTABLEKS R5 R4 K2 ["selectedPlayer"]
+  NAMECALL R2 R2 K5 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+  GETUPVAL R2 1
+  DUPTABLE R4 K3 [{"selectedPlayer"}]
+  SETTABLEKS R1 R4 K2 ["selectedPlayer"]
+  NAMECALL R2 R2 K5 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R3 K8 [{"players", "selectedPlayer", "selectedPlayerPosition", "pageSizeY", "voiceChatEnabled", "allMuted", "selectedPlayerRef", "firstPlayerRef"}]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K9 ["GetPlayers"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K0 ["players"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K1 ["selectedPlayer"]
+  GETIMPORT R4 K12 [Vector2.new]
+  LOADN R5 0
+  LOADN R6 0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["selectedPlayerPosition"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K3 ["pageSizeY"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K4 ["voiceChatEnabled"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K5 ["allMuted"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K6 ["selectedPlayerRef"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K7 ["firstPlayerRef"]
+  NAMECALL R1 R0 K13 ["setState"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  SETTABLEKS R1 R0 K14 ["setSelectedPlayerRef"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K15 ["setFirstPlayerRef"]
+  GETUPVAL R1 3
+  JUMPIFNOT R1 [+10]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K16 ["positionChanged"]
+  NEWCLOSURE R1 P3
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  SETTABLEKS R1 R0 K17 ["toggleMoreActions"]
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R3 R0 K0 ["Name"]
+  NAMECALL R3 R3 K1 ["lower"]
+  CALL R3 1 1
+  GETTABLEKS R4 R1 K0 ["Name"]
+  NAMECALL R4 R4 K1 ["lower"]
+  CALL R4 1 1
+  JUMPIFLT R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_6:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"selectedPlayerPosition"}]
+  GETTABLEKS R4 R0 K2 ["AbsolutePosition"]
+  SETTABLEKS R4 R3 K0 ["selectedPlayerPosition"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["selectedPlayer"]
+  GETUPVAL R1 1
+  JUMPIFNOTEQ R0 R1 [+12]
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"selectedPlayer"}]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["None"]
+  SETTABLEKS R3 R2 K1 ["selectedPlayer"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"selectedPlayer"}]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K1 ["selectedPlayer"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["List"]
+  GETTABLEKS R2 R3 K1 ["sort"]
+  MOVE R3 R1
+  GETUPVAL R4 1
+  CALL R2 2 1
+  LOADN R3 0
+  NEWTABLE R4 1 0
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K2 ["createElement"]
+  LOADK R6 K3 ["UIListLayout"]
+  DUPTABLE R7 K6 [{"SortOrder", "HorizontalAlignment"}]
+  GETIMPORT R8 K9 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R8 R7 K4 ["SortOrder"]
+  GETIMPORT R8 K11 [Enum.HorizontalAlignment.Right]
+  SETTABLEKS R8 R7 K5 ["HorizontalAlignment"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K12 ["ListLayout"]
+  GETIMPORT R5 K14 [pairs]
+  MOVE R6 R2
+  CALL R5 1 3
+  FORGPREP_NEXT R5
+  GETUPVAL R11 3
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R10 R9 K15 ["UserId"]
+  JUMPIF R10 [+1]
+  MOVE R10 R8
+  GETUPVAL R12 3
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R11 R0 K16 ["positionChanged"]
+  JUMPIF R11 [+2]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R0
+  GETUPVAL R13 3
+  JUMPIFNOT R13 [+3]
+  GETTABLEKS R12 R0 K17 ["toggleMoreActions"]
+  JUMPIF R12 [+4]
+  NEWCLOSURE R12 P1
+  CAPTURE VAL R0
+  CAPTURE VAL R9
+  CAPTURE UPVAL U2
+  LOADNIL R13
+  JUMPIFNOTEQKN R8 K18 [1] [+9]
+  GETTABLEKS R15 R0 K19 ["state"]
+  GETTABLEKS R14 R15 K20 ["selectedPlayer"]
+  JUMPIF R14 [+3]
+  GETTABLEKS R13 R0 K21 ["setFirstPlayerRef"]
+  JUMP [+8]
+  GETTABLEKS R15 R0 K19 ["state"]
+  GETTABLEKS R14 R15 K20 ["selectedPlayer"]
+  JUMPIFNOTEQ R14 R9 [+3]
+  GETTABLEKS R13 R0 K22 ["setSelectedPlayerRef"]
+  LOADK R14 K23 ["MicLight"]
+  GETUPVAL R15 4
+  CALL R15 0 1
+  JUMPIFNOT R15 [+9]
+  GETUPVAL R17 5
+  GETTABLEKS R16 R17 K24 ["LocalPlayer"]
+  JUMPIFEQ R9 R16 [+3]
+  LOADK R15 K25 ["SpeakerLight"]
+  JUMP [+1]
+  LOADK R15 K23 ["MicLight"]
+  MOVE R14 R15
+  LOADK R16 K26 ["player_"]
+  MOVE R17 R10
+  CONCAT R15 R16 R17
+  GETUPVAL R17 2
+  GETTABLEKS R16 R17 K2 ["createElement"]
+  GETUPVAL R17 6
+  NEWTABLE R18 16 0
+  GETTABLEKS R19 R9 K27 ["Name"]
+  SETTABLEKS R19 R18 K28 ["username"]
+  GETTABLEKS R19 R9 K29 ["DisplayName"]
+  SETTABLEKS R19 R18 K30 ["displayName"]
+  GETTABLEKS R19 R9 K15 ["UserId"]
+  SETTABLEKS R19 R18 K31 ["userId"]
+  LOADB R19 1
+  SETTABLEKS R19 R18 K32 ["isOnline"]
+  GETTABLEKS R21 R0 K19 ["state"]
+  GETTABLEKS R20 R21 K20 ["selectedPlayer"]
+  JUMPIFEQ R20 R9 [+2]
+  LOADB R19 0 +1
+  LOADB R19 1
+  SETTABLEKS R19 R18 K33 ["isSelected"]
+  SETTABLEKS R3 R18 K8 ["LayoutOrder"]
+  SETTABLEKS R12 R18 K34 ["onActivated"]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K35 ["Change"]
+  GETTABLEKS R19 R20 K36 ["AbsolutePosition"]
+  GETTABLEKS R22 R0 K19 ["state"]
+  GETTABLEKS R21 R22 K20 ["selectedPlayer"]
+  JUMPIFNOTEQ R21 R9 [+3]
+  MOVE R20 R11
+  JUMPIF R20 [+1]
+  LOADNIL R20
+  SETTABLE R20 R18 R19
+  GETUPVAL R20 2
+  GETTABLEKS R19 R20 K37 ["Ref"]
+  SETTABLE R13 R18 R19
+  DUPTABLE R19 K39 [{"Icon"}]
+  GETTABLEKS R21 R0 K40 ["props"]
+  GETTABLEKS R20 R21 K41 ["voiceEnabled"]
+  JUMPIFNOT R20 [+27]
+  LOADB R20 0
+  GETUPVAL R22 5
+  GETTABLEKS R21 R22 K24 ["LocalPlayer"]
+  JUMPIFEQ R9 R21 [+22]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K2 ["createElement"]
+  GETUPVAL R21 7
+  DUPTABLE R22 K45 [{"userId", "hideOnError", "iconStyle", "onClicked"}]
+  GETTABLEKS R24 R9 K15 ["UserId"]
+  FASTCALL1 TOSTRING R24 [+2]
+  GETIMPORT R23 K47 [tostring]
+  CALL R23 1 1
+  SETTABLEKS R23 R22 K31 ["userId"]
+  LOADB R23 1
+  SETTABLEKS R23 R22 K42 ["hideOnError"]
+  SETTABLEKS R14 R22 K43 ["iconStyle"]
+  SETTABLEKS R12 R22 K44 ["onClicked"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K38 ["Icon"]
+  CALL R16 3 1
+  SETTABLE R16 R4 R15
+  ADDK R3 R3 K18 [1]
+  LENGTH R15 R2
+  JUMPIFNOTLT R8 R15 [+23]
+  LOADK R16 K48 ["divider_"]
+  MOVE R17 R10
+  CONCAT R15 R16 R17
+  GETUPVAL R17 2
+  GETTABLEKS R16 R17 K2 ["createElement"]
+  GETUPVAL R17 8
+  DUPTABLE R18 K50 [{"LayoutOrder", "Size"}]
+  SETTABLEKS R3 R18 K8 ["LayoutOrder"]
+  GETIMPORT R19 K53 [UDim2.new]
+  LOADN R20 1
+  LOADN R21 152
+  LOADN R22 0
+  LOADN R23 1
+  CALL R19 4 1
+  SETTABLEKS R19 R18 K49 ["Size"]
+  CALL R16 2 1
+  SETTABLE R16 R4 R15
+  ADDK R3 R3 K18 [1]
+  FORGLOOP R5 2 [-175]
+  RETURN R4 1
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["selectedPlayer"]
+  GETUPVAL R1 1
+  GETIMPORT R2 K5 [Enum.FriendStatus.Friend]
+  JUMPIFEQ R1 R2 [+6]
+  GETUPVAL R1 1
+  GETIMPORT R2 K7 [Enum.FriendStatus.FriendRequestSent]
+  JUMPIFNOTEQ R1 R2 [+9]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["LocalPlayer"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K9 ["RevokeFriendship"]
+  CALL R1 2 0
+  JUMP [+22]
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["LocalPlayer"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K10 ["RequestFriendship"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  LOADK R3 K11 ["PlayersMenu-RequestFriendship"]
+  NAMECALL R1 R1 K12 ["ReportCounter"]
+  CALL R1 2 0
+  GETUPVAL R1 4
+  GETUPVAL R3 5
+  GETTABLEKS R2 R3 K13 ["AnalyticsMenuActionName"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K14 ["AnalyticsRequestFriendName"]
+  NEWTABLE R4 0 0
+  CALL R1 3 0
+  GETUPVAL R1 0
+  DUPTABLE R3 K15 [{"selectedPlayer"}]
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K16 ["None"]
+  SETTABLEKS R4 R3 K1 ["selectedPlayer"]
+  NAMECALL R1 R1 K17 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R0 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["selectedPlayer"]
+  GETTABLEKS R2 R3 K2 ["UserId"]
+  LOADK R3 K3 ["escapeMenu"]
+  NAMECALL R0 R0 K4 ["InspectPlayerFromUserIdWithCtx"]
+  CALL R0 3 0
+  GETUPVAL R0 1
+  DUPTABLE R2 K5 [{"selectedPlayer"}]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K6 ["None"]
+  SETTABLEKS R3 R2 K1 ["selectedPlayer"]
+  NAMECALL R0 R0 K7 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K8 ["props"]
+  GETTABLEKS R0 R1 K9 ["closeMenu"]
+  CALL R0 0 0
+  GETUPVAL R0 3
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K10 ["AnalyticsMenuActionName"]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K11 ["AnalyticsExamineAvatarName"]
+  NEWTABLE R3 0 0
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["selectedPlayer"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["openReportDialogForPlayer"]
+  MOVE R2 R0
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["AnalyticsMenuActionName"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  DUPTABLE R3 K4 [{"selectedPlayer"}]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K5 ["None"]
+  SETTABLEKS R4 R3 K1 ["selectedPlayer"]
+  NAMECALL R1 R1 K6 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["selectedPlayer"]
+  GETUPVAL R1 1
+  LOADK R3 K2 ["Muting Player {}"]
+  GETTABLEKS R4 R0 K3 ["UserId"]
+  NAMECALL R1 R1 K4 ["debug"]
+  CALL R1 3 0
+  GETUPVAL R1 2
+  GETTABLEKS R3 R0 K3 ["UserId"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K5 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R4 R5 K6 ["IN_GAME_MENU"]
+  NAMECALL R1 R1 K7 ["ToggleMutePlayer"]
+  CALL R1 3 0
+  GETUPVAL R1 0
+  DUPTABLE R3 K8 [{"selectedPlayer"}]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K9 ["None"]
+  SETTABLEKS R4 R3 K1 ["selectedPlayer"]
+  NAMECALL R1 R1 K10 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["unblockPlayer"]
+  GETUPVAL R1 2
+  CALL R0 1 0
+  JUMP [+7]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K2 ["blockPlayer"]
+  GETUPVAL R1 2
+  CALL R0 1 0
+  GETUPVAL R0 1
+  DUPTABLE R2 K4 [{"selectedPlayer"}]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K5 ["None"]
+  SETTABLEKS R3 R2 K3 ["selectedPlayer"]
+  NAMECALL R0 R0 K6 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_14:
+  NEWTABLE R2 0 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["selectedPlayer"]
+  JUMPIFEQKNIL R3 [+249]
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["selectedPlayer"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["LocalPlayer"]
+  JUMPIFEQ R3 R4 [+79]
+  GETIMPORT R3 K6 [Enum.FriendStatus.Unknown]
+  GETTABLEKS R6 R0 K7 ["props"]
+  GETTABLEKS R5 R6 K8 ["friends"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K1 ["selectedPlayer"]
+  GETTABLEKS R6 R7 K9 ["UserId"]
+  GETTABLE R4 R5 R6
+  JUMPIFNOT R4 [+11]
+  GETTABLEKS R5 R0 K7 ["props"]
+  GETTABLEKS R4 R5 K8 ["friends"]
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K1 ["selectedPlayer"]
+  GETTABLEKS R5 R6 K9 ["UserId"]
+  GETTABLE R3 R4 R5
+  GETTABLEKS R4 R1 K10 ["addFriend"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K11 ["icons/actions/friends/friendAdd"]
+  GETIMPORT R6 K13 [Enum.FriendStatus.Friend]
+  JUMPIFNOTEQ R3 R6 [+7]
+  GETTABLEKS R4 R1 K14 ["unfriend"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K15 ["icons/actions/friends/friendRemove"]
+  JUMP [+16]
+  GETIMPORT R6 K17 [Enum.FriendStatus.FriendRequestSent]
+  JUMPIFNOTEQ R3 R6 [+7]
+  GETTABLEKS R4 R1 K18 ["cancelFriend"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K15 ["icons/actions/friends/friendRemove"]
+  JUMP [+6]
+  GETIMPORT R6 K20 [Enum.FriendStatus.FriendRequestReceived]
+  JUMPIFNOTEQ R3 R6 [+3]
+  GETTABLEKS R4 R1 K21 ["acceptFriend"]
+  DUPTABLE R8 K25 [{"text", "icon", "onActivated"}]
+  SETTABLEKS R4 R8 K22 ["text"]
+  SETTABLEKS R5 R8 K23 ["icon"]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R0
+  CAPTURE REF R3
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  SETTABLEKS R9 R8 K24 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R2 R8 [+4]
+  MOVE R7 R2
+  GETIMPORT R6 K28 [table.insert]
+  CALL R6 2 0
+  CLOSEUPVALS R3
+  DUPTABLE R5 K25 [{"text", "icon", "onActivated"}]
+  GETTABLEKS R6 R1 K29 ["viewAvatar"]
+  SETTABLEKS R6 R5 K22 ["text"]
+  GETUPVAL R8 6
+  GETTABLEKS R7 R8 K30 ["Images"]
+  GETTABLEKS R6 R7 K31 ["ViewAvatar"]
+  SETTABLEKS R6 R5 K23 ["icon"]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U7
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  SETTABLEKS R6 R5 K24 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R2 R5 [+4]
+  MOVE R4 R2
+  GETIMPORT R3 K28 [table.insert]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["selectedPlayer"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["LocalPlayer"]
+  JUMPIFEQ R3 R4 [+127]
+  DUPTABLE R5 K25 [{"text", "icon", "onActivated"}]
+  GETTABLEKS R6 R1 K32 ["reportAbuse"]
+  SETTABLEKS R6 R5 K22 ["text"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K33 ["icons/actions/feedback"]
+  SETTABLEKS R6 R5 K23 ["icon"]
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  SETTABLEKS R6 R5 K24 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R2 R5 [+4]
+  MOVE R4 R2
+  GETIMPORT R3 K28 [table.insert]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K7 ["props"]
+  GETTABLEKS R3 R4 K34 ["voiceEnabled"]
+  JUMPIFNOT R3 [+61]
+  GETUPVAL R5 9
+  GETTABLEKS R4 R5 K35 ["participants"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K1 ["selectedPlayer"]
+  GETTABLEKS R6 R7 K9 ["UserId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K37 [tostring]
+  CALL R5 1 1
+  GETTABLE R3 R4 R5
+  JUMPIFNOT R3 [+46]
+  GETTABLEKS R4 R3 K38 ["isMutedLocally"]
+  DUPTABLE R7 K25 [{"text", "icon", "onActivated"}]
+  JUMPIFNOT R4 [+2]
+  LOADK R8 K39 ["Unmute Player"]
+  JUMP [+1]
+  LOADK R8 K40 ["Mute Player"]
+  SETTABLEKS R8 R7 K22 ["text"]
+  GETUPVAL R9 10
+  CALL R9 0 1
+  JUMPIFNOT R9 [+10]
+  GETUPVAL R8 9
+  JUMPIFNOT R4 [+2]
+  LOADK R10 K41 ["Unmute"]
+  JUMP [+1]
+  LOADK R10 K42 ["Mute"]
+  LOADK R11 K43 ["Misc"]
+  NAMECALL R8 R8 K44 ["GetIcon"]
+  CALL R8 3 1
+  JUMPIF R8 [+8]
+  GETUPVAL R8 9
+  JUMPIFNOT R4 [+2]
+  LOADK R10 K45 ["Blank"]
+  JUMP [+1]
+  LOADK R10 K46 ["Muted"]
+  NAMECALL R8 R8 K44 ["GetIcon"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K23 ["icon"]
+  NEWCLOSURE R8 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U5
+  SETTABLEKS R8 R7 K24 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R2 R7 [+4]
+  MOVE R6 R2
+  GETIMPORT R5 K28 [table.insert]
+  CALL R5 2 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["selectedPlayer"]
+  GETUPVAL R4 13
+  GETTABLEKS R6 R3 K9 ["UserId"]
+  NAMECALL R4 R4 K47 ["IsPlayerBlockedByUserId"]
+  CALL R4 2 1
+  DUPTABLE R7 K25 [{"text", "icon", "onActivated"}]
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R8 R1 K48 ["unblockPlayer"]
+  JUMPIF R8 [+2]
+  GETTABLEKS R8 R1 K49 ["blockPlayer"]
+  SETTABLEKS R8 R7 K22 ["text"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K50 ["icons/actions/block"]
+  SETTABLEKS R8 R7 K23 ["icon"]
+  NEWCLOSURE R8 P4
+  CAPTURE VAL R4
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  CAPTURE UPVAL U5
+  SETTABLEKS R8 R7 K24 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R2 R7 [+4]
+  MOVE R6 R2
+  GETIMPORT R5 K28 [table.insert]
+  CALL R5 2 0
+  RETURN R2 1
+
+PROTO_15:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  JUMPIF R2 [+5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["firstPlayerRef"]
+  SETTABLEKS R2 R1 K2 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_16:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["selectedPlayerRef"]
+  JUMPIF R1 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["state"]
+  GETTABLEKS R1 R2 K2 ["firstPlayerRef"]
+  SETTABLEKS R1 R0 K3 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_17:
+  LOADNIL R2
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+16]
+  LOADB R3 1
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["currentPage"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K2 ["MainPagePageKey"]
+  JUMPIFEQ R4 R5 [+6]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K3 ["isCurrentZoneActive"]
+  NOT R3 R4
+  MOVE R2 R3
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 3
+  DUPTABLE R5 K8 [{"isFocused", "shouldForgetPreviousSelection", "didFocus"}]
+  MOVE R6 R1
+  JUMPIFNOT R6 [+37]
+  LOADB R6 0
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K1 ["currentPage"]
+  JUMPIFNOTEQKS R7 K9 ["Players"] [+31]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K10 ["isMenuOpen"]
+  JUMPIFNOT R6 [+25]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K11 ["isReportDialogOpen"]
+  NOT R6 R7
+  JUMPIFNOT R6 [+19]
+  GETTABLEKS R8 R0 K12 ["state"]
+  GETTABLEKS R7 R8 K13 ["selectedPlayer"]
+  NOT R6 R7
+  JUMPIFNOT R6 [+13]
+  GETTABLEKS R8 R0 K12 ["state"]
+  GETTABLEKS R7 R8 K14 ["selectedPlayerRef"]
+  JUMPIF R7 [+4]
+  GETTABLEKS R8 R0 K12 ["state"]
+  GETTABLEKS R7 R8 K15 ["firstPlayerRef"]
+  JUMPIFNOTEQKNIL R7 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K5 ["isFocused"]
+  SETTABLEKS R2 R5 K6 ["shouldForgetPreviousSelection"]
+  GETUPVAL R7 0
+  CALL R7 0 1
+  JUMPIFNOT R7 [+4]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  JUMPIF R6 [+3]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K7 ["didFocus"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_18:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selectedPlayer"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["None"]
+  SETTABLEKS R3 R2 K0 ["selectedPlayer"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_19:
+  GETUPVAL R0 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["allMuted"]
+  NOT R2 R3
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K2 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K3 ["IN_GAME_MENU"]
+  NAMECALL R0 R0 K4 ["MuteAll"]
+  CALL R0 3 0
+  GETUPVAL R0 1
+  DUPTABLE R2 K5 [{"allMuted"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K0 ["state"]
+  GETTABLEKS R4 R5 K1 ["allMuted"]
+  NOT R3 R4
+  SETTABLEKS R3 R2 K1 ["allMuted"]
+  NAMECALL R0 R0 K6 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_20:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"pageSizeY"}]
+  GETTABLEKS R5 R0 K2 ["AbsoluteSize"]
+  GETTABLEKS R4 R5 K3 ["Y"]
+  SETTABLEKS R4 R3 K0 ["pageSizeY"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_21:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  NEWTABLE R3 4 0
+  LOADN R4 1
+  SETTABLEKS R4 R3 K2 ["BackgroundTransparency"]
+  GETIMPORT R4 K5 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K6 ["Size"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["Change"]
+  GETTABLEKS R4 R5 K8 ["AbsoluteSize"]
+  NEWCLOSURE R5 P0
+  CAPTURE UPVAL U1
+  SETTABLE R5 R3 R4
+  DUPTABLE R4 K11 [{"PlayerList", "MoreActionsMenu"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 2
+  DUPTABLE R7 K15 [{"Position", "Size", "CanvasSize", "ScrollingEnabled"}]
+  GETIMPORT R8 K5 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K12 ["Position"]
+  GETIMPORT R8 K5 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K6 ["Size"]
+  GETIMPORT R8 K5 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  GETUPVAL R16 1
+  GETTABLEKS R15 R16 K17 ["state"]
+  GETTABLEKS R14 R15 K18 ["players"]
+  LENGTH R13 R14
+  MULK R12 R13 K16 [72]
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K13 ["CanvasSize"]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K17 ["state"]
+  GETTABLEKS R9 R10 K19 ["selectedPlayer"]
+  JUMPIFEQKNIL R9 [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K14 ["ScrollingEnabled"]
+  GETUPVAL R8 1
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K17 ["state"]
+  GETTABLEKS R10 R11 K18 ["players"]
+  NAMECALL R8 R8 K20 ["renderListEntries"]
+  CALL R8 2 -1
+  CALL R5 -1 1
+  SETTABLEKS R5 R4 K9 ["PlayerList"]
+  GETUPVAL R5 3
+  SETTABLEKS R5 R4 K10 ["MoreActionsMenu"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_22:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"players"}]
+  GETUPVAL R3 1
+  NAMECALL R3 R3 K2 ["GetPlayers"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K0 ["players"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_23:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selectedPlayer"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["None"]
+  SETTABLEKS R3 R2 K0 ["selectedPlayer"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_24:
+  LOADN R3 0
+  LOADN R4 0
+  NEWTABLE R5 0 0
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K1 ["selectedPlayer"]
+  JUMPIFEQKNIL R6 [+64]
+  MOVE R8 R1
+  NAMECALL R6 R0 K2 ["getMoreActions"]
+  CALL R6 2 1
+  MOVE R5 R6
+  LENGTH R7 R5
+  MULK R6 R7 K3 [56]
+  GETTABLEKS R9 R0 K4 ["props"]
+  GETTABLEKS R8 R9 K5 ["screenSize"]
+  GETTABLEKS R7 R8 K6 ["X"]
+  GETTABLEKS R10 R0 K4 ["props"]
+  GETTABLEKS R9 R10 K5 ["screenSize"]
+  GETTABLEKS R8 R9 K7 ["Y"]
+  GETTABLEKS R13 R0 K0 ["state"]
+  GETTABLEKS R12 R13 K8 ["selectedPlayerPosition"]
+  GETTABLEKS R11 R12 K7 ["Y"]
+  ADD R10 R11 R6
+  GETUPVAL R11 0
+  ADD R9 R10 R11
+  JUMPIFNOTLT R9 R8 [+8]
+  GETTABLEKS R10 R0 K0 ["state"]
+  GETTABLEKS R9 R10 K8 ["selectedPlayerPosition"]
+  GETTABLEKS R3 R9 K7 ["Y"]
+  JUMP [+3]
+  SUB R9 R8 R6
+  GETUPVAL R10 0
+  SUB R3 R9 R10
+  GETTABLEKS R15 R0 K0 ["state"]
+  GETTABLEKS R14 R15 K8 ["selectedPlayerPosition"]
+  GETTABLEKS R13 R14 K6 ["X"]
+  ADDK R12 R13 K12 [400]
+  ADDK R11 R12 K11 [20]
+  ADDK R10 R11 K10 [352]
+  ADDK R9 R10 K9 [24]
+  JUMPIFNOTLE R9 R7 [+10]
+  GETTABLEKS R12 R0 K0 ["state"]
+  GETTABLEKS R11 R12 K8 ["selectedPlayerPosition"]
+  GETTABLEKS R10 R11 K6 ["X"]
+  ADDK R9 R10 K12 [400]
+  ADDK R4 R9 K11 [20]
+  JUMP [+2]
+  SUBK R9 R7 K10 [352]
+  SUBK R4 R9 K9 [24]
+  LOADNIL R6
+  GETTABLEKS R8 R0 K4 ["props"]
+  GETTABLEKS R7 R8 K13 ["isGamepadLastInput"]
+  JUMPIFNOT R7 [+10]
+  GETTABLEKS R9 R0 K4 ["props"]
+  GETTABLEKS R8 R9 K14 ["isRespawnDialogOpen"]
+  NOT R7 R8
+  JUMPIFNOT R7 [+4]
+  GETTABLEKS R8 R0 K4 ["props"]
+  GETTABLEKS R7 R8 K15 ["isCurrentZoneActive"]
+  GETTABLEKS R10 R0 K0 ["state"]
+  GETTABLEKS R9 R10 K1 ["selectedPlayer"]
+  JUMPIFNOT R9 [+23]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K16 ["createElement"]
+  GETUPVAL R9 2
+  DUPTABLE R10 K23 [{"moreActions", "actionWidth", "xOffset", "yOffset", "canCaptureFocus", "onClose"}]
+  SETTABLEKS R5 R10 K17 ["moreActions"]
+  LOADN R11 96
+  SETTABLEKS R11 R10 K18 ["actionWidth"]
+  SETTABLEKS R4 R10 K19 ["xOffset"]
+  SETTABLEKS R3 R10 K20 ["yOffset"]
+  SETTABLEKS R7 R10 K21 ["canCaptureFocus"]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R11 R10 K22 ["onClose"]
+  CALL R8 2 1
+  JUMPIF R8 [+1]
+  LOADNIL R8
+  MOVE R6 R8
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K16 ["createElement"]
+  GETUPVAL R9 3
+  DUPTABLE R10 K26 [{"pageTitle", "titleChildren"}]
+  GETTABLEKS R12 R0 K4 ["props"]
+  GETTABLEKS R11 R12 K24 ["pageTitle"]
+  SETTABLEKS R11 R10 K24 ["pageTitle"]
+  GETTABLEKS R12 R0 K4 ["props"]
+  GETTABLEKS R11 R12 K27 ["voiceEnabled"]
+  JUMPIFNOT R11 [+68]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K16 ["createElement"]
+  LOADK R12 K28 ["ImageButton"]
+  NEWTABLE R13 8 0
+  GETIMPORT R14 K31 [UDim2.fromOffset]
+  LOADN R15 36
+  LOADN R16 36
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K32 ["Size"]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K33 ["BackgroundTransparency"]
+  GETIMPORT R14 K36 [Vector2.new]
+  LOADN R15 1
+  LOADK R16 K37 [0.5]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K38 ["AnchorPoint"]
+  LOADN R14 0
+  SETTABLEKS R14 R13 K39 ["BorderSizePixel"]
+  GETIMPORT R14 K40 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 4
+  LOADK R17 K37 [0.5]
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K41 ["Position"]
+  GETUPVAL R14 4
+  GETTABLEKS R18 R0 K0 ["state"]
+  GETTABLEKS R17 R18 K42 ["allMuted"]
+  JUMPIFNOT R17 [+2]
+  LOADK R16 K43 ["UnmuteAll"]
+  JUMP [+1]
+  LOADK R16 K44 ["MuteAll"]
+  LOADK R17 K45 ["Misc"]
+  NAMECALL R14 R14 K46 ["GetIcon"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K47 ["Image"]
+  GETUPVAL R16 1
+  GETTABLEKS R15 R16 K48 ["Event"]
+  GETTABLEKS R14 R15 K49 ["Activated"]
+  NEWCLOSURE R15 P1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  SETTABLE R15 R13 R14
+  MOVE R14 R2
+  GETUPVAL R16 6
+  GETTABLEKS R15 R16 K50 ["RoundedRect"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K51 ["SelectionImageObject"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K25 ["titleChildren"]
+  DUPTABLE R11 K55 [{"PlayerListContent", "FocusHandler", "Watcher"}]
+  GETUPVAL R12 7
+  NEWCLOSURE R13 P2
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U8
+  CAPTURE REF R6
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K52 ["PlayerListContent"]
+  MOVE R14 R7
+  NAMECALL R12 R0 K56 ["renderFocusHandler"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K53 ["FocusHandler"]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K16 ["createElement"]
+  GETUPVAL R13 9
+  DUPTABLE R14 K60 [{"desiredPage", "onNavigateTo", "onNavigateAway"}]
+  LOADK R15 K61 ["Players"]
+  SETTABLEKS R15 R14 K57 ["desiredPage"]
+  NEWCLOSURE R15 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U10
+  SETTABLEKS R15 R14 K58 ["onNavigateTo"]
+  NEWCLOSURE R15 P4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R15 R14 K59 ["onNavigateAway"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K54 ["Watcher"]
+  CALL R8 3 -1
+  CLOSEUPVALS R6
+  RETURN R8 -1
+
+PROTO_25:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  NAMECALL R1 R1 K0 ["renderWithLocalizedAndSelectionCursor"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_26:
+  GETUPVAL R2 0
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_27:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["renderWithLocalized"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_28:
+  GETUPVAL R1 0
+  DUPTABLE R2 K8 [{"addFriend", "acceptFriend", "unfriend", "cancelFriend", "viewAvatar", "reportAbuse", "blockPlayer", "unblockPlayer"}]
+  LOADK R3 K9 ["CoreScripts.InGameMenu.Actions.AddFriend"]
+  SETTABLEKS R3 R2 K0 ["addFriend"]
+  LOADK R3 K10 ["CoreScripts.InGameMenu.Actions.AcceptFriend"]
+  SETTABLEKS R3 R2 K1 ["acceptFriend"]
+  LOADK R3 K11 ["CoreScripts.InGameMenu.Actions.Unfriend"]
+  SETTABLEKS R3 R2 K2 ["unfriend"]
+  LOADK R3 K12 ["CoreScripts.InGameMenu.Actions.CancelFriend"]
+  SETTABLEKS R3 R2 K3 ["cancelFriend"]
+  LOADK R3 K13 ["CoreScripts.InGameMenu.Actions.ViewAvatar"]
+  SETTABLEKS R3 R2 K4 ["viewAvatar"]
+  LOADK R3 K14 ["CoreScripts.InGameMenu.Actions.ReportAbuse"]
+  SETTABLEKS R3 R2 K5 ["reportAbuse"]
+  LOADK R3 K15 ["CoreScripts.InGameMenu.Actions.BlockPlayer"]
+  SETTABLEKS R3 R2 K6 ["blockPlayer"]
+  LOADK R3 K16 ["CoreScripts.InGameMenu.Actions.UnblockPlayer"]
+  SETTABLEKS R3 R2 K7 ["unblockPlayer"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_29:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["isMenuOpen"]
+  JUMPIFNOT R3 [+18]
+  GETTABLEKS R3 R1 K1 ["isMenuOpen"]
+  JUMPIF R3 [+15]
+  DUPTABLE R5 K4 [{"players", "selectedPlayer"}]
+  GETUPVAL R6 0
+  NAMECALL R6 R6 K5 ["GetPlayers"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K2 ["players"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["None"]
+  SETTABLEKS R6 R5 K3 ["selectedPlayer"]
+  NAMECALL R3 R0 K7 ["setState"]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K8 ["state"]
+  GETTABLEKS R3 R4 K9 ["selectedPlayerRef"]
+  JUMPIFNOT R3 [+16]
+  GETTABLEKS R5 R0 K8 ["state"]
+  GETTABLEKS R4 R5 K10 ["selectedPlayerPosition"]
+  GETTABLEKS R5 R3 K11 ["AbsolutePosition"]
+  JUMPIFEQ R4 R5 [+9]
+  DUPTABLE R6 K12 [{"selectedPlayerPosition"}]
+  GETTABLEKS R7 R3 K11 ["AbsolutePosition"]
+  SETTABLEKS R7 R6 K10 ["selectedPlayerPosition"]
+  NAMECALL R4 R0 K7 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_30:
+  DUPTABLE R2 K10 [{"isMenuOpen", "voiceEnabled", "friends", "inspectMenuEnabled", "screenSize", "currentPage", "isRespawnDialogOpen", "isReportDialogOpen", "isGamepadLastInput", "isCurrentZoneActive"}]
+  GETTABLEKS R3 R0 K0 ["isMenuOpen"]
+  SETTABLEKS R3 R2 K0 ["isMenuOpen"]
+  GETTABLEKS R4 R0 K11 ["voiceState"]
+  GETTABLEKS R3 R4 K1 ["voiceEnabled"]
+  SETTABLEKS R3 R2 K1 ["voiceEnabled"]
+  GETTABLEKS R3 R0 K2 ["friends"]
+  SETTABLEKS R3 R2 K2 ["friends"]
+  GETTABLEKS R4 R0 K12 ["displayOptions"]
+  GETTABLEKS R3 R4 K3 ["inspectMenuEnabled"]
+  SETTABLEKS R3 R2 K3 ["inspectMenuEnabled"]
+  GETTABLEKS R3 R0 K4 ["screenSize"]
+  SETTABLEKS R3 R2 K4 ["screenSize"]
+  GETTABLEKS R3 R0 K13 ["menuPage"]
+  SETTABLEKS R3 R2 K5 ["currentPage"]
+  GETTABLEKS R4 R0 K14 ["respawn"]
+  GETTABLEKS R3 R4 K15 ["dialogOpen"]
+  SETTABLEKS R3 R2 K6 ["isRespawnDialogOpen"]
+  GETTABLEKS R4 R0 K16 ["report"]
+  GETTABLEKS R3 R4 K15 ["dialogOpen"]
+  JUMPIF R3 [+4]
+  GETTABLEKS R4 R0 K16 ["report"]
+  GETTABLEKS R3 R4 K17 ["reportSentOpen"]
+  SETTABLEKS R3 R2 K7 ["isReportDialogOpen"]
+  GETTABLEKS R5 R0 K12 ["displayOptions"]
+  GETTABLEKS R4 R5 K18 ["inputType"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K19 ["InputType"]
+  GETTABLEKS R5 R6 K20 ["Gamepad"]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K8 ["isGamepadLastInput"]
+  GETTABLEKS R4 R0 K21 ["currentZone"]
+  JUMPIFEQKN R4 K22 [1] [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R2 K9 ["isCurrentZoneActive"]
+  RETURN R2 1
+
+PROTO_31:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_32:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_33:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_34:
+  DUPTABLE R1 K3 [{"closeMenu", "blockPlayer", "unblockPlayer"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["closeMenu"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["blockPlayer"]
+  NEWCLOSURE R2 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R1 K2 ["unblockPlayer"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["GuiService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["RbxAnalyticsService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  LOADK R7 K8 ["RobloxGui"]
+  NAMECALL R5 R4 K9 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R8 R1 K12 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["InGameMenuDependencies"]
+  CALL R6 1 1
+  GETTABLEKS R7 R6 K14 ["Roact"]
+  GETTABLEKS R8 R6 K15 ["UIBlox"]
+  GETTABLEKS R9 R6 K16 ["Cryo"]
+  GETTABLEKS R10 R6 K17 ["RoactRodux"]
+  GETTABLEKS R11 R6 K18 ["t"]
+  GETTABLEKS R14 R8 K19 ["App"]
+  GETTABLEKS R13 R14 K20 ["SelectionImage"]
+  GETTABLEKS R12 R13 K21 ["withSelectionCursorProvider"]
+  GETTABLEKS R15 R8 K19 ["App"]
+  GETTABLEKS R14 R15 K20 ["SelectionImage"]
+  GETTABLEKS R13 R14 K22 ["CursorKind"]
+  GETTABLEKS R16 R8 K23 ["Core"]
+  GETTABLEKS R15 R16 K24 ["Style"]
+  GETTABLEKS R14 R15 K25 ["withStyle"]
+  GETTABLEKS R17 R8 K19 ["App"]
+  GETTABLEKS R16 R17 K26 ["ImageSet"]
+  GETTABLEKS R15 R16 K27 ["Images"]
+  GETIMPORT R19 K29 [script]
+  GETTABLEKS R18 R19 K30 ["Parent"]
+  GETTABLEKS R17 R18 K30 ["Parent"]
+  GETTABLEKS R16 R17 K30 ["Parent"]
+  GETIMPORT R17 K11 [require]
+  GETTABLEKS R19 R16 K31 ["Localization"]
+  GETTABLEKS R18 R19 K32 ["withLocalization"]
+  CALL R17 1 1
+  GETTABLEKS R18 R16 K33 ["Flags"]
+  GETIMPORT R19 K11 [require]
+  GETTABLEKS R20 R18 K34 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R19 1 1
+  GETIMPORT R20 K11 [require]
+  GETTABLEKS R23 R5 K35 ["Modules"]
+  GETTABLEKS R22 R23 K33 ["Flags"]
+  GETTABLEKS R21 R22 K36 ["GetFFlagEnableVoiceChatSpeakerIcons"]
+  CALL R20 1 1
+  GETIMPORT R21 K11 [require]
+  GETIMPORT R26 K29 [script]
+  GETTABLEKS R25 R26 K30 ["Parent"]
+  GETTABLEKS R24 R25 K30 ["Parent"]
+  GETTABLEKS R23 R24 K37 ["Connection"]
+  GETTABLEKS R22 R23 K38 ["FocusHandler"]
+  CALL R21 1 1
+  GETIMPORT R22 K11 [require]
+  GETTABLEKS R26 R5 K35 ["Modules"]
+  GETTABLEKS R25 R26 K39 ["VoiceChat"]
+  GETTABLEKS R24 R25 K40 ["Components"]
+  GETTABLEKS R23 R24 K41 ["VoiceIndicator"]
+  CALL R22 1 1
+  GETIMPORT R23 K11 [require]
+  GETTABLEKS R26 R5 K35 ["Modules"]
+  GETTABLEKS R25 R26 K39 ["VoiceChat"]
+  GETTABLEKS R24 R25 K42 ["Constants"]
+  CALL R23 1 1
+  GETIMPORT R24 K11 [require]
+  GETTABLEKS R26 R16 K40 ["Components"]
+  GETTABLEKS R25 R26 K43 ["PlayerLabelV2"]
+  CALL R24 1 1
+  GETIMPORT R25 K11 [require]
+  GETTABLEKS R27 R16 K40 ["Components"]
+  GETTABLEKS R26 R27 K44 ["PlayerContextualMenu"]
+  CALL R25 1 1
+  GETIMPORT R26 K11 [require]
+  GETTABLEKS R28 R16 K33 ["Flags"]
+  GETTABLEKS R27 R28 K45 ["FFlagLuaMenuPerfImprovements"]
+  CALL R26 1 1
+  GETIMPORT R27 K11 [require]
+  GETTABLEKS R29 R16 K40 ["Components"]
+  GETTABLEKS R28 R29 K46 ["PageNavigationWatcher"]
+  CALL R27 1 1
+  GETIMPORT R28 K11 [require]
+  GETTABLEKS R30 R16 K40 ["Components"]
+  GETTABLEKS R29 R30 K47 ["Divider"]
+  CALL R28 1 1
+  GETIMPORT R29 K11 [require]
+  GETTABLEKS R31 R16 K40 ["Components"]
+  GETTABLEKS R30 R31 K48 ["BarOnTopScrollingFrame"]
+  CALL R29 1 1
+  GETIMPORT R30 K11 [require]
+  GETTABLEKS R32 R16 K40 ["Components"]
+  GETTABLEKS R31 R32 K49 ["Page"]
+  CALL R30 1 1
+  GETIMPORT R31 K11 [require]
+  GETTABLEKS R33 R16 K50 ["Thunks"]
+  GETTABLEKS R32 R33 K51 ["CloseMenu"]
+  CALL R31 1 1
+  GETIMPORT R32 K11 [require]
+  GETTABLEKS R34 R16 K52 ["Resources"]
+  GETTABLEKS R33 R34 K53 ["Assets"]
+  CALL R32 1 1
+  GETIMPORT R33 K11 [require]
+  GETTABLEKS R35 R16 K52 ["Resources"]
+  GETTABLEKS R34 R35 K42 ["Constants"]
+  CALL R33 1 1
+  GETIMPORT R34 K11 [require]
+  GETTABLEKS R36 R16 K54 ["Utility"]
+  GETTABLEKS R35 R36 K55 ["SendAnalytics"]
+  CALL R34 1 1
+  GETIMPORT R36 K11 [require]
+  GETTABLEKS R39 R5 K35 ["Modules"]
+  GETTABLEKS R38 R39 K39 ["VoiceChat"]
+  GETTABLEKS R37 R38 K56 ["VoiceChatServiceManager"]
+  CALL R36 1 1
+  GETTABLEKS R35 R36 K57 ["default"]
+  GETIMPORT R36 K11 [require]
+  GETTABLEKS R38 R5 K35 ["Modules"]
+  GETTABLEKS R37 R38 K58 ["BlockingUtility"]
+  CALL R36 1 1
+  GETIMPORT R37 K11 [require]
+  GETTABLEKS R41 R5 K35 ["Modules"]
+  GETTABLEKS R40 R41 K59 ["PlayerList"]
+  GETTABLEKS R39 R40 K50 ["Thunks"]
+  GETTABLEKS R38 R39 K60 ["BlockPlayer"]
+  CALL R37 1 1
+  GETIMPORT R38 K11 [require]
+  GETTABLEKS R42 R5 K35 ["Modules"]
+  GETTABLEKS R41 R42 K59 ["PlayerList"]
+  GETTABLEKS R40 R41 K50 ["Thunks"]
+  GETTABLEKS R39 R40 K61 ["UnblockPlayer"]
+  CALL R38 1 1
+  GETIMPORT R39 K11 [require]
+  GETTABLEKS R41 R5 K35 ["Modules"]
+  GETTABLEKS R40 R41 K62 ["TrustAndSafety"]
+  CALL R39 1 1
+  GETIMPORT R41 K11 [require]
+  GETTABLEKS R44 R1 K63 ["Workspace"]
+  GETTABLEKS R43 R44 K12 ["Packages"]
+  GETTABLEKS R42 R43 K64 ["CoreScriptsInitializer"]
+  CALL R41 1 1
+  GETTABLEKS R40 R41 K65 ["CoreLogger"]
+  GETIMPORT R43 K29 [script]
+  GETTABLEKS R42 R43 K66 ["Name"]
+  NAMECALL R40 R40 K67 ["new"]
+  CALL R40 2 1
+  GETIMPORT R41 K69 [settings]
+  CALL R41 0 1
+  LOADK R43 K70 ["InGameGlobalGuiInset"]
+  NAMECALL R41 R41 K71 ["GetFVariable"]
+  CALL R41 2 1
+  ADDK R42 R41 K72 [24]
+  GETTABLEKS R43 R7 K73 ["PureComponent"]
+  LOADK R45 K74 ["PlayersPage"]
+  NAMECALL R43 R43 K75 ["extend"]
+  CALL R43 2 1
+  GETTABLEKS R44 R11 K76 ["strictInterface"]
+  DUPTABLE R45 K91 [{"isMenuOpen", "voiceEnabled", "inspectMenuEnabled", "friends", "closeMenu", "blockPlayer", "unblockPlayer", "pageTitle", "screenSize", "currentPage", "isRespawnDialogOpen", "isReportDialogOpen", "isGamepadLastInput", "isCurrentZoneActive"}]
+  GETTABLEKS R46 R11 K92 ["boolean"]
+  SETTABLEKS R46 R45 K77 ["isMenuOpen"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K92 ["boolean"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K78 ["voiceEnabled"]
+  GETTABLEKS R46 R11 K92 ["boolean"]
+  SETTABLEKS R46 R45 K79 ["inspectMenuEnabled"]
+  GETTABLEKS R46 R11 K94 ["map"]
+  GETTABLEKS R47 R11 K95 ["integer"]
+  GETTABLEKS R48 R11 K96 ["enum"]
+  GETIMPORT R49 K99 [Enum.FriendStatus]
+  CALL R48 1 -1
+  CALL R46 -1 1
+  SETTABLEKS R46 R45 K80 ["friends"]
+  GETTABLEKS R46 R11 K100 ["callback"]
+  SETTABLEKS R46 R45 K81 ["closeMenu"]
+  GETTABLEKS R46 R11 K100 ["callback"]
+  SETTABLEKS R46 R45 K82 ["blockPlayer"]
+  GETTABLEKS R46 R11 K100 ["callback"]
+  SETTABLEKS R46 R45 K83 ["unblockPlayer"]
+  GETTABLEKS R46 R11 K101 ["string"]
+  SETTABLEKS R46 R45 K84 ["pageTitle"]
+  GETTABLEKS R46 R11 K102 ["Vector2"]
+  SETTABLEKS R46 R45 K85 ["screenSize"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K101 ["string"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K86 ["currentPage"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K92 ["boolean"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K87 ["isRespawnDialogOpen"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K92 ["boolean"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K88 ["isReportDialogOpen"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K92 ["boolean"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K89 ["isGamepadLastInput"]
+  GETTABLEKS R46 R11 K93 ["optional"]
+  GETTABLEKS R47 R11 K92 ["boolean"]
+  CALL R46 1 1
+  SETTABLEKS R46 R45 K90 ["isCurrentZoneActive"]
+  CALL R44 1 1
+  SETTABLEKS R44 R43 K103 ["validateProps"]
+  DUPCLOSURE R44 K104 [PROTO_4]
+  CAPTURE VAL R0
+  CAPTURE VAL R19
+  CAPTURE VAL R7
+  CAPTURE VAL R26
+  SETTABLEKS R44 R43 K105 ["init"]
+  DUPCLOSURE R44 K106 [PROTO_5]
+  DUPCLOSURE R45 K107 [PROTO_8]
+  CAPTURE VAL R9
+  CAPTURE VAL R44
+  CAPTURE VAL R7
+  CAPTURE VAL R26
+  CAPTURE VAL R20
+  CAPTURE VAL R0
+  CAPTURE VAL R24
+  CAPTURE VAL R22
+  CAPTURE VAL R28
+  SETTABLEKS R45 R43 K108 ["renderListEntries"]
+  DUPCLOSURE R45 K109 [PROTO_14]
+  CAPTURE VAL R0
+  CAPTURE VAL R15
+  CAPTURE VAL R3
+  CAPTURE VAL R34
+  CAPTURE VAL R33
+  CAPTURE VAL R7
+  CAPTURE VAL R32
+  CAPTURE VAL R2
+  CAPTURE VAL R39
+  CAPTURE VAL R35
+  CAPTURE VAL R20
+  CAPTURE VAL R40
+  CAPTURE VAL R23
+  CAPTURE VAL R36
+  SETTABLEKS R45 R43 K110 ["getMoreActions"]
+  DUPCLOSURE R45 K111 [PROTO_17]
+  CAPTURE VAL R19
+  CAPTURE VAL R33
+  CAPTURE VAL R7
+  CAPTURE VAL R21
+  CAPTURE VAL R2
+  SETTABLEKS R45 R43 K112 ["renderFocusHandler"]
+  DUPCLOSURE R45 K113 [PROTO_24]
+  CAPTURE VAL R42
+  CAPTURE VAL R7
+  CAPTURE VAL R25
+  CAPTURE VAL R30
+  CAPTURE VAL R35
+  CAPTURE VAL R23
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R29
+  CAPTURE VAL R27
+  CAPTURE VAL R0
+  SETTABLEKS R45 R43 K114 ["renderWithLocalizedAndSelectionCursor"]
+  DUPCLOSURE R45 K115 [PROTO_26]
+  CAPTURE VAL R12
+  SETTABLEKS R45 R43 K116 ["renderWithLocalized"]
+  DUPCLOSURE R45 K117 [PROTO_28]
+  CAPTURE VAL R17
+  SETTABLEKS R45 R43 K118 ["render"]
+  DUPCLOSURE R45 K119 [PROTO_29]
+  CAPTURE VAL R0
+  CAPTURE VAL R7
+  SETTABLEKS R45 R43 K120 ["didUpdate"]
+  GETTABLEKS R45 R10 K121 ["UNSTABLE_connect2"]
+  DUPCLOSURE R46 K122 [PROTO_30]
+  CAPTURE VAL R33
+  DUPCLOSURE R47 K123 [PROTO_34]
+  CAPTURE VAL R31
+  CAPTURE VAL R37
+  CAPTURE VAL R38
+  CALL R45 2 1
+  MOVE R46 R43
+  CALL R45 1 -1
+  RETURN R45 -1

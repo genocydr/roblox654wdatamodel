@@ -1,0 +1,81 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"closingApp"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K2 ["closingApp"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"closingApp"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["closingApp"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"menuIconTooltipOpen"}]
+  GETTABLEKS R5 R1 K2 ["menuIconTooltipOpen"]
+  SETTABLEKS R5 R4 K2 ["menuIconTooltipOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Rodux"]
+  GETTABLEKS R3 R1 K9 ["Cryo"]
+  GETIMPORT R6 K11 [script]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R4 K13 ["Actions"]
+  GETTABLEKS R6 R7 K14 ["OpenNativeClosePrompt"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R4 K13 ["Actions"]
+  GETTABLEKS R7 R8 K15 ["CloseNativeClosePrompt"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K13 ["Actions"]
+  GETTABLEKS R8 R9 K16 ["SetMenuIconTooltipOpen"]
+  CALL R7 1 1
+  GETTABLEKS R8 R2 K17 ["createReducer"]
+  DUPTABLE R9 K20 [{"closingApp", "menuIconTooltipOpen"}]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K18 ["closingApp"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K19 ["menuIconTooltipOpen"]
+  NEWTABLE R10 4 0
+  GETTABLEKS R11 R5 K21 ["name"]
+  DUPCLOSURE R12 K22 [PROTO_0]
+  CAPTURE VAL R3
+  SETTABLE R12 R10 R11
+  GETTABLEKS R11 R6 K21 ["name"]
+  DUPCLOSURE R12 K23 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLE R12 R10 R11
+  GETTABLEKS R11 R7 K21 ["name"]
+  DUPCLOSURE R12 K24 [PROTO_2]
+  CAPTURE VAL R3
+  SETTABLE R12 R10 R11
+  CALL R8 2 -1
+  RETURN R8 -1

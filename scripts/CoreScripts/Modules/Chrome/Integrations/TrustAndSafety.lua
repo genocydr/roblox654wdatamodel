@@ -4,7 +4,7 @@ local CoreGui = game:GetService("CoreGui")
 local CorePackages = game:GetService("CorePackages")
 local RobloxGui = CoreGui:WaitForChild("RobloxGui")
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local CommonIcon = require(Chrome.Integrations.CommonIcon)
 local SignalLib = require(CorePackages.Workspace.Packages.AppCommonLib)
 local Signal = SignalLib.Signal

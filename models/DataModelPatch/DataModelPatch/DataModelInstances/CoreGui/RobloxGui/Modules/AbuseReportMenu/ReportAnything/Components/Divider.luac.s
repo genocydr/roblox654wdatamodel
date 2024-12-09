@@ -1,0 +1,66 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["Dictionary"]
+  GETTABLEKS R3 R4 K3 ["join"]
+  DUPTABLE R4 K5 [{"Size"}]
+  GETIMPORT R5 K8 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 0
+  LOADN R8 0
+  LOADN R9 1
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K4 ["Size"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K12 [{"BorderSizePixel", "BackgroundColor3", "BackgroundTransparency"}]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K9 ["BorderSizePixel"]
+  GETTABLEKS R9 R0 K13 ["Theme"]
+  GETTABLEKS R8 R9 K14 ["Divider"]
+  GETTABLEKS R7 R8 K15 ["Color"]
+  SETTABLEKS R7 R6 K10 ["BackgroundColor3"]
+  GETTABLEKS R9 R0 K13 ["Theme"]
+  GETTABLEKS R8 R9 K14 ["Divider"]
+  GETTABLEKS R7 R8 K16 ["Transparency"]
+  SETTABLEKS R7 R6 K11 ["BackgroundTransparency"]
+  CALL R3 3 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["UIBlox"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Cryo"]
+  CALL R3 1 1
+  GETTABLEKS R6 R1 K10 ["Core"]
+  GETTABLEKS R5 R6 K11 ["Style"]
+  GETTABLEKS R4 R5 K12 ["withStyle"]
+  DUPCLOSURE R5 K13 [PROTO_1]
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  RETURN R5 1

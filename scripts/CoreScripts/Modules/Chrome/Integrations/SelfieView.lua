@@ -3,7 +3,7 @@ local Chrome = script:FindFirstAncestor("Chrome")
 
 local CorePackages = game:GetService("CorePackages")
 local React = require(CorePackages.Packages.React)
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local ChromeUtils = require(Chrome.ChromeShared.Service.ChromeUtils)
 local VideoCaptureService = game:GetService("VideoCaptureService")
 local FaceAnimatorService = game:GetService("FaceAnimatorService")
@@ -28,6 +28,8 @@ local GetFFlagChromeSelfViewIgnoreCoreGui = require(Chrome.Flags.GetFFlagChromeS
 local GetFFlagAddChromeActivatedEvents = require(Chrome.Flags.GetFFlagAddChromeActivatedEvents)
 local GetFFlagChromeTrackWindowPosition = require(Chrome.Flags.GetFFlagChromeTrackWindowPosition)
 local GetFFlagChromeTrackWindowStatus = require(Chrome.Flags.GetFFlagChromeTrackWindowStatus)
+local GetFFlagChromeDefaultWindowStartingPosition =
+	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagChromeDefaultWindowStartingPosition
 
 local SelfieView = require(SelfieViewModule)
 local FaceChatUtils = require(SelfieViewModule.Utils.FaceChatUtils)
@@ -66,9 +68,9 @@ local selfieViewChromeIntegration = ChromeService:register({
 	-- Relevant ticket: https://roblox.atlassian.net/browse/APPEXP-817
 	-- hotkeyCodes = { Enum.KeyCode.LeftControl, Enum.KeyCode.LeftAlt, Enum.KeyCode.T },
 	windowSize = windowSize,
-	startingWindowPosition = startingWindowPosition,
+	startingWindowPosition = if GetFFlagChromeDefaultWindowStartingPosition() then nil else startingWindowPosition,
 	windowDefaultOpen = not GetFFlagDisableSelfViewDefaultOpen(),
-	windowAnchorPoint = Vector2.new(0, 0),
+	windowAnchorPoint = if GetFFlagChromeDefaultWindowStartingPosition() then nil else Vector2.new(0, 0),
 	initialAvailability = AvailabilitySignalState.Unavailable,
 	persistWindowState = GetFFlagChromeTrackWindowPosition() or GetFFlagChromeTrackWindowStatus() or nil,
 	activated = function()

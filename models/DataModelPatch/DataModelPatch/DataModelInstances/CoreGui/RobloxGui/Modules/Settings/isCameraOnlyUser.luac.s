@@ -1,0 +1,131 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIF R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETIMPORT R0 K1 [pcall]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["GetClientFeaturesAsync"]
+  GETUPVAL R2 1
+  CALL R0 2 2
+  JUMPIF R0 [+6]
+  GETIMPORT R2 K4 [warn]
+  LOADK R3 K5 ["Unable to get Client Features from AvatarChatService"]
+  CALL R2 1 0
+  LOADB R2 0
+  RETURN R2 1
+  GETUPVAL R2 1
+  MOVE R4 R1
+  GETIMPORT R5 K9 [Enum.AvatarChatServiceFeature.PlaceVideo]
+  NAMECALL R2 R2 K10 ["IsEnabled"]
+  CALL R2 3 1
+  GETUPVAL R3 1
+  MOVE R5 R1
+  GETIMPORT R6 K12 [Enum.AvatarChatServiceFeature.UserVideo]
+  NAMECALL R3 R3 K10 ["IsEnabled"]
+  CALL R3 3 1
+  GETUPVAL R4 1
+  MOVE R6 R1
+  GETIMPORT R7 K14 [Enum.AvatarChatServiceFeature.UserVideoEligible]
+  NAMECALL R4 R4 K10 ["IsEnabled"]
+  CALL R4 3 1
+  GETUPVAL R5 1
+  MOVE R7 R1
+  GETIMPORT R8 K16 [Enum.AvatarChatServiceFeature.PlaceAudio]
+  NAMECALL R5 R5 K10 ["IsEnabled"]
+  CALL R5 3 1
+  GETUPVAL R6 1
+  MOVE R8 R1
+  GETIMPORT R9 K18 [Enum.AvatarChatServiceFeature.UserAudio]
+  NAMECALL R6 R6 K10 ["IsEnabled"]
+  CALL R6 3 1
+  GETUPVAL R7 1
+  MOVE R9 R1
+  GETIMPORT R10 K20 [Enum.AvatarChatServiceFeature.UserAudioEligible]
+  NAMECALL R7 R7 K10 ["IsEnabled"]
+  CALL R7 3 1
+  LOADNIL R8
+  GETUPVAL R9 2
+  CALL R9 0 1
+  JUMPIFNOT R9 [+6]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K21 ["GetDevices"]
+  CALL R9 0 1
+  MOVE R8 R9
+  JUMP [+5]
+  GETUPVAL R9 4
+  NAMECALL R9 R9 K22 ["GetCameraDevices"]
+  CALL R9 1 1
+  MOVE R8 R9
+  GETUPVAL R10 5
+  GETTABLEKS R9 R10 K23 ["isEmpty"]
+  MOVE R10 R8
+  CALL R9 1 1
+  JUMPIFNOT R9 [+2]
+  LOADB R9 0
+  RETURN R9 1
+  AND R9 R6 R7
+  AND R10 R3 R4
+  JUMPIF R2 [+2]
+  LOADB R11 0
+  RETURN R11 1
+  JUMPIFNOT R5 [+3]
+  JUMPIFNOT R9 [+2]
+  LOADB R11 0
+  RETURN R11 1
+  JUMPIFNOT R10 [+2]
+  LOADB R11 1
+  RETURN R11 1
+  LOADB R11 0
+  RETURN R11 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["AvatarChatService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["VideoCaptureService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CorePackages"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R3 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Cryo"]
+  CALL R4 1 1
+  LOADK R7 K11 ["RobloxGui"]
+  NAMECALL R5 R1 K12 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R10 R3 K13 ["Workspace"]
+  GETTABLEKS R9 R10 K9 ["Packages"]
+  GETTABLEKS R8 R9 K14 ["SharedFlags"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K15 ["GetFFlagAvatarChatServiceEnabled"]
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R10 R5 K16 ["Modules"]
+  GETTABLEKS R9 R10 K17 ["Flags"]
+  GETTABLEKS R8 R9 K18 ["getFFlagUseCameraDevicesListener"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R11 R5 K16 ["Modules"]
+  GETTABLEKS R10 R11 K19 ["Settings"]
+  GETTABLEKS R9 R10 K20 ["cameraDevicesHelper"]
+  CALL R8 1 1
+  DUPCLOSURE R9 K21 [PROTO_0]
+  CAPTURE VAL R6
+  CAPTURE VAL R0
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  RETURN R9 1

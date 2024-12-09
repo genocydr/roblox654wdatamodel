@@ -1,0 +1,189 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["Y"]
+  GETTABLEKS R3 R0 K1 ["X"]
+  JUMPIFLT R3 R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K2 ["GetPlatform"]
+  CALL R2 1 1
+  LOADB R3 1
+  GETIMPORT R4 K6 [Enum.Platform.IOS]
+  JUMPIFEQ R2 R4 [+7]
+  GETIMPORT R4 K8 [Enum.Platform.Android]
+  JUMPIFEQ R2 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  DUPTABLE R4 K13 [{"size", "portraitOrientation", "tinyPortrait", "isMobileDevice"}]
+  SETTABLEKS R0 R4 K9 ["size"]
+  SETTABLEKS R1 R4 K10 ["portraitOrientation"]
+  MOVE R5 R3
+  JUMPIFNOT R5 [+9]
+  MOVE R5 R1
+  JUMPIFNOT R5 [+7]
+  GETTABLEKS R6 R0 K1 ["X"]
+  LOADN R7 104
+  JUMPIFLT R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  SETTABLEKS R5 R4 K11 ["tinyPortrait"]
+  SETTABLEKS R3 R4 K12 ["isMobileDevice"]
+  RETURN R4 1
+
+PROTO_1:
+  GETIMPORT R1 K2 [Vector2.new]
+  GETTABLEKS R2 R0 K3 ["X"]
+  GETTABLEKS R3 R0 K4 ["Y"]
+  CALL R1 2 1
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K5 ["set"]
+  CALL R2 2 0
+  GETUPVAL R2 1
+  GETGLOBAL R4 K6 ["createViewportInfo"]
+  MOVE R5 R1
+  CALL R4 1 -1
+  NAMECALL R2 R2 K5 ["set"]
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["Disconnect"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETGLOBAL R0 K0 ["updateViewportSize"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["ViewportSize"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+7]
+  GETIMPORT R1 K1 [pcall]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CALL R1 1 0
+  LOADNIL R1
+  SETUPVAL R1 0
+  JUMPIFNOT R0 [+34]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K2 ["GetPlatform"]
+  CALL R1 1 1
+  GETUPVAL R2 2
+  LOADB R4 1
+  GETIMPORT R5 K6 [Enum.Platform.IOS]
+  JUMPIFEQ R1 R5 [+7]
+  GETIMPORT R5 K8 [Enum.Platform.Android]
+  JUMPIFEQ R1 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  NAMECALL R2 R2 K9 ["set"]
+  CALL R2 2 0
+  LOADK R4 K10 ["ViewportSize"]
+  NAMECALL R2 R0 K11 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K12 ["Connect"]
+  CALL R2 2 1
+  SETUPVAL R2 0
+  GETGLOBAL R2 K13 ["updateViewportSize"]
+  GETTABLEKS R3 R0 K10 ["ViewportSize"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETGLOBAL R0 K0 ["setCurrentCamera"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["CurrentCamera"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["get"]
+  CALL R0 1 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["TouchEnabled"]
+  JUMPIFNOT R1 [+13]
+  LOADB R1 1
+  GETTABLEKS R2 R0 K2 ["Y"]
+  LOADN R3 244
+  JUMPIFLT R2 R3 [+8]
+  GETTABLEKS R2 R0 K3 ["X"]
+  LOADN R3 188
+  JUMPIFLT R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["ChromeShared"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["Workspace"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K5 [game]
+  LOADK R4 K8 ["UserInputService"]
+  NAMECALL R2 R2 K7 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K10 [require]
+  GETTABLEKS R5 R0 K11 ["Service"]
+  GETTABLEKS R4 R5 K12 ["ChromeUtils"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K13 ["ObservableValue"]
+  GETTABLEKS R5 R4 K14 ["new"]
+  GETIMPORT R6 K16 [Vector2.new]
+  LOADN R7 0
+  LOADN R8 0
+  CALL R6 2 -1
+  CALL R5 -1 1
+  GETTABLEKS R6 R4 K14 ["new"]
+  LOADB R7 0
+  CALL R6 1 1
+  LOADNIL R7
+  DUPCLOSURE R8 K17 [PROTO_0]
+  CAPTURE VAL R2
+  SETGLOBAL R8 K18 ["createViewportInfo"]
+  GETTABLEKS R8 R4 K14 ["new"]
+  GETGLOBAL R9 K18 ["createViewportInfo"]
+  GETIMPORT R10 K20 [Vector2.zero]
+  CALL R9 1 -1
+  CALL R8 -1 1
+  DUPCLOSURE R9 K21 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  SETGLOBAL R9 K22 ["updateViewportSize"]
+  NEWCLOSURE R9 P2
+  CAPTURE REF R7
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  SETGLOBAL R9 K23 ["setCurrentCamera"]
+  LOADK R11 K24 ["CurrentCamera"]
+  NAMECALL R9 R1 K25 ["GetPropertyChangedSignal"]
+  CALL R9 2 1
+  DUPCLOSURE R11 K26 [PROTO_5]
+  CAPTURE VAL R1
+  NAMECALL R9 R9 K27 ["Connect"]
+  CALL R9 2 0
+  GETGLOBAL R9 K23 ["setCurrentCamera"]
+  GETTABLEKS R10 R1 K24 ["CurrentCamera"]
+  CALL R9 1 0
+  DUPTABLE R9 K32 [{"screenSize", "mobileDevice", "viewport", "isSmallTouchScreen"}]
+  SETTABLEKS R5 R9 K28 ["screenSize"]
+  SETTABLEKS R6 R9 K29 ["mobileDevice"]
+  SETTABLEKS R8 R9 K30 ["viewport"]
+  DUPCLOSURE R10 K33 [PROTO_6]
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  SETTABLEKS R10 R9 K31 ["isSmallTouchScreen"]
+  CLOSEUPVALS R7
+  RETURN R9 1

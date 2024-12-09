@@ -1,0 +1,112 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K5 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R4 K8 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 45
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K2 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["LayoutOrder"]
+  SETTABLEKS R4 R3 K4 ["LayoutOrder"]
+  DUPTABLE R4 K10 [{"HeaderText"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 2
+  DUPTABLE R7 K16 [{"fontKey", "themeKey", "Text", "TextXAlignment", "Position", "Size"}]
+  LOADK R8 K17 ["CaptionHeader"]
+  SETTABLEKS R8 R7 K11 ["fontKey"]
+  LOADK R8 K18 ["TextMuted"]
+  SETTABLEKS R8 R7 K12 ["themeKey"]
+  GETTABLEKS R8 R0 K19 ["title"]
+  SETTABLEKS R8 R7 K13 ["Text"]
+  GETIMPORT R8 K22 [Enum.TextXAlignment.Left]
+  SETTABLEKS R8 R7 K14 ["TextXAlignment"]
+  GETIMPORT R8 K8 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 20
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K15 ["Position"]
+  GETIMPORT R8 K8 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 17
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K2 ["Size"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["HeaderText"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["propValidation"]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  FASTCALL ASSERT [+2]
+  GETIMPORT R1 K2 [assert]
+  CALL R1 -1 0
+  GETUPVAL R1 2
+  DUPTABLE R2 K4 [{"title"}]
+  GETTABLEKS R3 R0 K3 ["title"]
+  SETTABLEKS R3 R2 K3 ["title"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["t"]
+  GETIMPORT R7 K11 [script]
+  GETTABLEKS R6 R7 K12 ["Parent"]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K13 ["GlobalConfig"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R4 K14 ["Components"]
+  GETTABLEKS R7 R8 K15 ["ThemedTextLabel"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K16 ["Localization"]
+  GETTABLEKS R8 R9 K17 ["withLocalization"]
+  CALL R7 1 1
+  GETTABLEKS R8 R3 K18 ["strictInterface"]
+  DUPTABLE R9 K21 [{"title", "LayoutOrder"}]
+  GETTABLEKS R10 R3 K22 ["string"]
+  SETTABLEKS R10 R9 K19 ["title"]
+  GETTABLEKS R10 R3 K23 ["integer"]
+  SETTABLEKS R10 R9 K20 ["LayoutOrder"]
+  CALL R8 1 1
+  DUPCLOSURE R9 K24 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  RETURN R9 1

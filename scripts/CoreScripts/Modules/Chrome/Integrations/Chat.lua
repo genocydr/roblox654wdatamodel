@@ -8,7 +8,7 @@ local Chat = game:GetService("Chat")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local ChromeUtils = require(Chrome.ChromeShared.Service.ChromeUtils)
 local ChromeIntegrationUtils = require(Chrome.Integrations.ChromeIntegrationUtils)
 local ViewportUtil = require(Chrome.ChromeShared.Service.ViewportUtil)
@@ -30,13 +30,21 @@ local GetFFlagAddChromeActivatedEvents = require(Chrome.Flags.GetFFlagAddChromeA
 local GetFFlagRemoveChromeRobloxGuiReferences = SharedFlags.GetFFlagRemoveChromeRobloxGuiReferences
 local getFFlagExpChatGetLabelAndIconFromUtil = SharedFlags.getFFlagExpChatGetLabelAndIconFromUtil
 local getExperienceChatVisualConfig = require(CorePackages.Workspace.Packages.ExpChat).getExperienceChatVisualConfig
+local getFFlagExpChatAlwaysRunTCS = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagExpChatAlwaysRunTCS
 
 local unreadMessages = 0
 -- note: do not rely on ChatSelector:GetVisibility after startup; it's state is incorrect if user opens via keyboard shortcut
 local chatVisibility: boolean = ChatSelector:GetVisibility()
 local chatChromeIntegration
 
-local chatVisibilitySignal = MappedSignal.new(ChatSelector.VisibilityStateChanged, function()
+local chatSelectorVisibilitySignal
+if getFFlagExpChatAlwaysRunTCS() then
+	chatSelectorVisibilitySignal = ChatSelector.ChromeVisibilityStateChanged
+else
+	chatSelectorVisibilitySignal = ChatSelector.VisibilityStateChanged
+end
+
+local chatVisibilitySignal = MappedSignal.new(chatSelectorVisibilitySignal, function()
 	return chatVisibility
 end, function(visibility)
 	if not GuiService.MenuIsOpen then

@@ -1,0 +1,683 @@
+PROTO_0:
+  GETIMPORT R2 K2 [utf8.len]
+  GETIMPORT R3 K4 [utf8.nfcnormalize]
+  MOVE R4 R0
+  CALL R3 1 -1
+  CALL R2 -1 1
+  JUMPIFNOTEQKNIL R2 [+3]
+  LOADB R3 1
+  RETURN R3 1
+  JUMPIFLT R1 R2 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["wasInitiallyFocused"]
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["props"]
+  GETTABLEKS R0 R1 K2 ["nameTextBoxRef"]
+  JUMPIFNOT R0 [+17]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["props"]
+  GETTABLEKS R0 R1 K2 ["nameTextBoxRef"]
+  NAMECALL R0 R0 K3 ["getValue"]
+  CALL R0 1 1
+  JUMP [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["props"]
+  GETTABLEKS R0 R1 K2 ["nameTextBoxRef"]
+  NAMECALL R0 R0 K3 ["getValue"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+13]
+  GETIMPORT R3 K5 [game]
+  NAMECALL R1 R0 K6 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+7]
+  NAMECALL R1 R0 K7 ["CaptureFocus"]
+  CALL R1 1 0
+  GETUPVAL R1 0
+  LOADB R2 1
+  SETTABLEKS R2 R1 K0 ["wasInitiallyFocused"]
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["Text"]
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+6]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K1 ["props"]
+  GETTABLEKS R2 R3 K2 ["maxLength"]
+  JUMP [+1]
+  LOADN R2 50
+  MOVE R4 R1
+  GETIMPORT R5 K5 [utf8.len]
+  GETIMPORT R6 K7 [utf8.nfcnormalize]
+  MOVE R7 R4
+  CALL R6 1 -1
+  CALL R5 -1 1
+  JUMPIFNOTEQKNIL R5 [+3]
+  LOADB R3 1
+  JUMP [+5]
+  JUMPIFLT R2 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  JUMP [0]
+  JUMPIFNOT R3 [+17]
+  GETIMPORT R4 K10 [utf8.offset]
+  MOVE R5 R1
+  ADDK R6 R2 K8 [1]
+  CALL R4 2 1
+  SUBK R3 R4 K8 [1]
+  LOADN R6 1
+  FASTCALL3 STRING_SUB R1 R6 R3
+  MOVE R5 R1
+  MOVE R7 R3
+  GETIMPORT R4 K13 [string.sub]
+  CALL R4 3 1
+  MOVE R1 R4
+  SETTABLEKS R1 R0 K0 ["Text"]
+  GETUPVAL R3 1
+  MOVE R5 R1
+  NAMECALL R3 R3 K14 ["checkIsNameValid"]
+  CALL R3 2 1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K15 ["state"]
+  GETTABLEKS R4 R5 K16 ["lastValidName"]
+  JUMPIFNOT R3 [+2]
+  GETTABLEKS R4 R0 K0 ["Text"]
+  GETUPVAL R5 1
+  DUPTABLE R7 K19 [{"lastValidName", "isNameValid", "name"}]
+  SETTABLEKS R4 R7 K16 ["lastValidName"]
+  SETTABLEKS R3 R7 K17 ["isNameValid"]
+  SETTABLEKS R1 R7 K18 ["name"]
+  NAMECALL R5 R5 K20 ["setState"]
+  CALL R5 2 0
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K1 ["props"]
+  GETTABLEKS R5 R6 K21 ["onNameUpdated"]
+  MOVE R6 R1
+  MOVE R7 R3
+  CALL R5 2 0
+  RETURN R0 0
+
+PROTO_3:
+  DUPTABLE R3 K3 [{"name", "lastValidName", "isNameValid"}]
+  GETTABLEKS R6 R0 K5 ["props"]
+  GETTABLEKS R5 R6 K6 ["defaultName"]
+  ORK R4 R5 K4 [""]
+  SETTABLEKS R4 R3 K0 ["name"]
+  LOADK R4 K4 [""]
+  SETTABLEKS R4 R3 K1 ["lastValidName"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K2 ["isNameValid"]
+  NAMECALL R1 R0 K7 ["setState"]
+  CALL R1 2 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K8 ["wasInitiallyFocused"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R1 R0 K9 ["tryFocusTextBox"]
+  NEWCLOSURE R1 P1
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K10 ["onTextChanged"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  JUMPIF R2 [+20]
+  GETIMPORT R2 K2 [string.match]
+  MOVE R3 R1
+  LOADK R4 K3 ["[0-9a-zA-Z_'%s]+$"]
+  CALL R2 2 1
+  JUMPIF R2 [+2]
+  LOADB R2 0
+  RETURN R2 1
+  LOADN R4 1
+  LOADN R5 1
+  FASTCALL3 STRING_SUB R1 R4 R5
+  MOVE R3 R1
+  GETIMPORT R2 K5 [string.sub]
+  CALL R2 3 1
+  JUMPIFNOTEQKS R2 K6 [" "] [+3]
+  LOADB R2 0
+  RETURN R2 1
+  GETIMPORT R2 K2 [string.match]
+  MOVE R3 R1
+  LOADK R4 K7 ["^%s*$"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+2]
+  LOADB R2 0
+  RETURN R2 1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_5:
+  GETTABLEKS R3 R1 K0 ["Font"]
+  GETTABLEKS R4 R1 K1 ["Theme"]
+  GETTABLEKS R5 R3 K2 ["Body"]
+  GETTABLEKS R7 R0 K3 ["state"]
+  GETTABLEKS R6 R7 K4 ["isNameValid"]
+  NOT R7 R6
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K5 ["createElement"]
+  LOADK R9 K6 ["Frame"]
+  DUPTABLE R10 K10 [{"BackgroundColor3", "LayoutOrder", "Size"}]
+  GETTABLEKS R12 R4 K11 ["BackgroundMuted"]
+  GETTABLEKS R11 R12 K12 ["Color"]
+  SETTABLEKS R11 R10 K7 ["BackgroundColor3"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K8 ["LayoutOrder"]
+  GETTABLEKS R12 R0 K13 ["props"]
+  GETTABLEKS R11 R12 K9 ["Size"]
+  SETTABLEKS R11 R10 K9 ["Size"]
+  DUPTABLE R11 K17 [{"Textbox", "UICorner", "UIStroke"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K18 ["TextBox"]
+  NEWTABLE R14 32 0
+  GETTABLEKS R16 R0 K3 ["state"]
+  GETTABLEKS R15 R16 K19 ["name"]
+  SETTABLEKS R15 R14 K20 ["Text"]
+  LOADN R15 1
+  SETTABLEKS R15 R14 K21 ["BackgroundTransparency"]
+  LOADB R15 0
+  SETTABLEKS R15 R14 K22 ["ClearTextOnFocus"]
+  GETTABLEKS R15 R5 K0 ["Font"]
+  SETTABLEKS R15 R14 K0 ["Font"]
+  GETTABLEKS R16 R3 K23 ["BaseSize"]
+  GETTABLEKS R17 R5 K24 ["RelativeSize"]
+  MUL R15 R16 R17
+  SETTABLEKS R15 R14 K25 ["TextSize"]
+  GETTABLEKS R16 R4 K26 ["PlaceHolder"]
+  GETTABLEKS R15 R16 K12 ["Color"]
+  SETTABLEKS R15 R14 K27 ["PlaceholderColor3"]
+  GETTABLEKS R16 R0 K13 ["props"]
+  GETTABLEKS R15 R16 K28 ["defaultName"]
+  SETTABLEKS R15 R14 K29 ["PlaceholderText"]
+  GETIMPORT R15 K32 [UDim2.fromOffset]
+  LOADN R16 6
+  LOADN R17 0
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K33 ["Position"]
+  GETIMPORT R15 K35 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 244
+  LOADN R18 1
+  LOADN R19 0
+  CALL R15 4 1
+  SETTABLEKS R15 R14 K9 ["Size"]
+  GETTABLEKS R16 R4 K36 ["TextDefault"]
+  GETTABLEKS R15 R16 K12 ["Color"]
+  SETTABLEKS R15 R14 K37 ["TextColor3"]
+  GETIMPORT R15 K41 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R15 R14 K39 ["TextTruncate"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K42 ["TextWrapped"]
+  GETIMPORT R15 K45 [Enum.TextXAlignment.Left]
+  SETTABLEKS R15 R14 K43 ["TextXAlignment"]
+  GETTABLEKS R17 R0 K13 ["props"]
+  GETTABLEKS R16 R17 K46 ["centerText"]
+  JUMPIF R16 [+3]
+  GETIMPORT R15 K49 [Enum.TextYAlignment.Top]
+  JUMP [+1]
+  LOADNIL R15
+  SETTABLEKS R15 R14 K47 ["TextYAlignment"]
+  LOADB R15 1
+  SETTABLEKS R15 R14 K50 ["OverlayNativeInput"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K51 ["Change"]
+  GETTABLEKS R15 R16 K20 ["Text"]
+  GETTABLEKS R16 R0 K52 ["onTextChanged"]
+  SETTABLE R16 R14 R15
+  MOVE R15 R2
+  GETUPVAL R17 2
+  GETTABLEKS R16 R17 K53 ["InputFields"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K54 ["SelectionImageObject"]
+  GETTABLEKS R16 R0 K13 ["props"]
+  GETTABLEKS R15 R16 K55 ["NextSelectionDown"]
+  SETTABLEKS R15 R14 K55 ["NextSelectionDown"]
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K56 ["Ref"]
+  GETTABLEKS R17 R0 K13 ["props"]
+  GETTABLEKS R16 R17 K57 ["nameTextBoxRef"]
+  SETTABLE R16 R14 R15
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K58 ["Event"]
+  GETTABLEKS R15 R16 K59 ["AncestryChanged"]
+  GETTABLEKS R16 R0 K60 ["tryFocusTextBox"]
+  SETTABLE R16 R14 R15
+  DUPTABLE R15 K62 [{"UIPadding"}]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K5 ["createElement"]
+  LOADK R17 K61 ["UIPadding"]
+  DUPTABLE R18 K66 [{"PaddingLeft", "PaddingRight", "PaddingTop"}]
+  GETIMPORT R19 K68 [UDim.new]
+  LOADN R20 0
+  LOADN R21 6
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K63 ["PaddingLeft"]
+  GETIMPORT R19 K68 [UDim.new]
+  LOADN R20 0
+  LOADN R21 6
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K64 ["PaddingRight"]
+  GETTABLEKS R21 R0 K13 ["props"]
+  GETTABLEKS R20 R21 K46 ["centerText"]
+  JUMPIF R20 [+6]
+  GETIMPORT R19 K68 [UDim.new]
+  LOADN R20 0
+  LOADN R21 6
+  CALL R19 2 1
+  JUMP [+1]
+  LOADNIL R19
+  SETTABLEKS R19 R18 K65 ["PaddingTop"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K61 ["UIPadding"]
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K14 ["Textbox"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  LOADK R13 K15 ["UICorner"]
+  DUPTABLE R14 K70 [{"CornerRadius"}]
+  GETIMPORT R15 K68 [UDim.new]
+  LOADN R16 0
+  LOADN R17 8
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K69 ["CornerRadius"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K15 ["UICorner"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K5 ["createElement"]
+  LOADK R13 K16 ["UIStroke"]
+  DUPTABLE R14 K74 [{"Thickness", "Transparency", "Color", "ApplyStrokeMode"}]
+  LOADK R15 K75 [0.5]
+  SETTABLEKS R15 R14 K71 ["Thickness"]
+  GETTABLEKS R16 R4 K76 ["Divider"]
+  GETTABLEKS R15 R16 K72 ["Transparency"]
+  SETTABLEKS R15 R14 K72 ["Transparency"]
+  GETTABLEKS R16 R4 K76 ["Divider"]
+  GETTABLEKS R15 R16 K12 ["Color"]
+  SETTABLEKS R15 R14 K12 ["Color"]
+  GETIMPORT R15 K78 [Enum.ApplyStrokeMode.Border]
+  SETTABLEKS R15 R14 K73 ["ApplyStrokeMode"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K16 ["UIStroke"]
+  CALL R8 3 1
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K5 ["createElement"]
+  GETUPVAL R10 3
+  DUPTABLE R11 K84 [{"BackgroundTransparency", "Image", "ImageColor3", "ImageTransparency", "LayoutOrder", "ScaleType", "Size", "SliceCenter"}]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K21 ["BackgroundTransparency"]
+  GETUPVAL R12 4
+  SETTABLEKS R12 R11 K79 ["Image"]
+  GETTABLEKS R13 R4 K85 ["UIDefault"]
+  GETTABLEKS R12 R13 K12 ["Color"]
+  SETTABLEKS R12 R11 K80 ["ImageColor3"]
+  GETTABLEKS R13 R4 K85 ["UIDefault"]
+  GETTABLEKS R12 R13 K72 ["Transparency"]
+  SETTABLEKS R12 R11 K81 ["ImageTransparency"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K8 ["LayoutOrder"]
+  GETIMPORT R12 K87 [Enum.ScaleType.Slice]
+  SETTABLEKS R12 R11 K82 ["ScaleType"]
+  GETIMPORT R12 K35 [UDim2.new]
+  LOADN R13 1
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 30
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K9 ["Size"]
+  GETUPVAL R12 5
+  SETTABLEKS R12 R11 K83 ["SliceCenter"]
+  DUPTABLE R12 K88 [{"Textbox"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K5 ["createElement"]
+  GETUPVAL R15 1
+  GETTABLEKS R14 R15 K18 ["TextBox"]
+  NEWTABLE R15 32 0
+  GETTABLEKS R17 R0 K3 ["state"]
+  GETTABLEKS R16 R17 K19 ["name"]
+  SETTABLEKS R16 R15 K20 ["Text"]
+  LOADN R16 1
+  SETTABLEKS R16 R15 K21 ["BackgroundTransparency"]
+  LOADB R16 0
+  SETTABLEKS R16 R15 K22 ["ClearTextOnFocus"]
+  GETTABLEKS R17 R3 K89 ["CaptionBody"]
+  GETTABLEKS R16 R17 K0 ["Font"]
+  SETTABLEKS R16 R15 K0 ["Font"]
+  GETTABLEKS R17 R3 K23 ["BaseSize"]
+  GETTABLEKS R19 R3 K89 ["CaptionBody"]
+  GETTABLEKS R18 R19 K24 ["RelativeSize"]
+  MUL R16 R17 R18
+  SETTABLEKS R16 R15 K25 ["TextSize"]
+  GETTABLEKS R17 R4 K26 ["PlaceHolder"]
+  GETTABLEKS R16 R17 K12 ["Color"]
+  SETTABLEKS R16 R15 K27 ["PlaceholderColor3"]
+  GETUPVAL R16 6
+  LOADK R18 K90 ["CoreScripts.PublishAssetPrompt.AssetNamePlaceholder"]
+  NAMECALL R16 R16 K91 ["FormatByKey"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K29 ["PlaceholderText"]
+  GETIMPORT R16 K32 [UDim2.fromOffset]
+  LOADN R17 6
+  LOADN R18 0
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K33 ["Position"]
+  GETIMPORT R16 K35 [UDim2.new]
+  LOADN R17 1
+  LOADN R18 244
+  LOADN R19 1
+  LOADN R20 0
+  CALL R16 4 1
+  SETTABLEKS R16 R15 K9 ["Size"]
+  GETTABLEKS R17 R4 K36 ["TextDefault"]
+  GETTABLEKS R16 R17 K12 ["Color"]
+  SETTABLEKS R16 R15 K37 ["TextColor3"]
+  GETIMPORT R16 K41 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R16 R15 K39 ["TextTruncate"]
+  LOADB R16 1
+  SETTABLEKS R16 R15 K42 ["TextWrapped"]
+  GETIMPORT R16 K45 [Enum.TextXAlignment.Left]
+  SETTABLEKS R16 R15 K43 ["TextXAlignment"]
+  LOADB R16 1
+  SETTABLEKS R16 R15 K50 ["OverlayNativeInput"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K51 ["Change"]
+  GETTABLEKS R16 R17 K20 ["Text"]
+  GETTABLEKS R17 R0 K52 ["onTextChanged"]
+  SETTABLE R17 R15 R16
+  MOVE R16 R2
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K53 ["InputFields"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K54 ["SelectionImageObject"]
+  GETTABLEKS R17 R0 K13 ["props"]
+  GETTABLEKS R16 R17 K55 ["NextSelectionDown"]
+  SETTABLEKS R16 R15 K55 ["NextSelectionDown"]
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K56 ["Ref"]
+  GETTABLEKS R18 R0 K13 ["props"]
+  GETTABLEKS R17 R18 K57 ["nameTextBoxRef"]
+  SETTABLE R17 R15 R16
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K58 ["Event"]
+  GETTABLEKS R16 R17 K59 ["AncestryChanged"]
+  GETTABLEKS R17 R0 K60 ["tryFocusTextBox"]
+  SETTABLE R17 R15 R16
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K14 ["Textbox"]
+  CALL R9 3 1
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K5 ["createElement"]
+  LOADK R11 K6 ["Frame"]
+  DUPTABLE R12 K92 [{"BackgroundTransparency", "Size", "Position", "LayoutOrder"}]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K21 ["BackgroundTransparency"]
+  GETTABLEKS R14 R0 K13 ["props"]
+  GETTABLEKS R13 R14 K9 ["Size"]
+  SETTABLEKS R13 R12 K9 ["Size"]
+  GETTABLEKS R14 R0 K13 ["props"]
+  GETTABLEKS R13 R14 K33 ["Position"]
+  SETTABLEKS R13 R12 K33 ["Position"]
+  GETUPVAL R14 7
+  JUMPIFNOT R14 [+5]
+  GETTABLEKS R14 R0 K13 ["props"]
+  GETTABLEKS R13 R14 K8 ["LayoutOrder"]
+  JUMP [+1]
+  LOADNIL R13
+  SETTABLEKS R13 R12 K8 ["LayoutOrder"]
+  DUPTABLE R13 K95 [{"TextBoxContainer", "WarningText"}]
+  GETUPVAL R15 7
+  JUMPIFNOT R15 [+2]
+  MOVE R14 R8
+  JUMP [+1]
+  MOVE R14 R9
+  SETTABLEKS R14 R13 K93 ["TextBoxContainer"]
+  MOVE R14 R7
+  JUMPIFNOT R14 [+70]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K5 ["createElement"]
+  LOADK R15 K96 ["TextLabel"]
+  DUPTABLE R16 K97 [{"Position", "BackgroundTransparency", "Text", "LayoutOrder", "TextXAlignment", "TextYAlignment", "Size", "TextColor3", "TextWrapped", "Font", "TextSize"}]
+  GETIMPORT R17 K35 [UDim2.new]
+  LOADN R18 0
+  LOADN R19 0
+  LOADN R20 1
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K33 ["Position"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K21 ["BackgroundTransparency"]
+  GETUPVAL R18 8
+  JUMPIFNOT R18 [+5]
+  GETTABLEKS R18 R0 K13 ["props"]
+  GETTABLEKS R17 R18 K98 ["invalidInputText"]
+  JUMP [+5]
+  GETUPVAL R17 6
+  LOADK R19 K99 ["CoreScripts.PublishAssetPrompt.InvalidName"]
+  NAMECALL R17 R17 K91 ["FormatByKey"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K20 ["Text"]
+  LOADN R17 2
+  SETTABLEKS R17 R16 K8 ["LayoutOrder"]
+  GETIMPORT R17 K45 [Enum.TextXAlignment.Left]
+  SETTABLEKS R17 R16 K43 ["TextXAlignment"]
+  GETIMPORT R17 K49 [Enum.TextYAlignment.Top]
+  SETTABLEKS R17 R16 K47 ["TextYAlignment"]
+  GETIMPORT R17 K35 [UDim2.new]
+  LOADN R18 1
+  LOADN R19 0
+  LOADN R20 0
+  LOADN R21 20
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K9 ["Size"]
+  GETTABLEKS R18 R4 K100 ["Alert"]
+  GETTABLEKS R17 R18 K12 ["Color"]
+  SETTABLEKS R17 R16 K37 ["TextColor3"]
+  LOADB R17 1
+  SETTABLEKS R17 R16 K42 ["TextWrapped"]
+  GETTABLEKS R18 R3 K2 ["Body"]
+  GETTABLEKS R17 R18 K0 ["Font"]
+  SETTABLEKS R17 R16 K0 ["Font"]
+  LOADN R17 12
+  SETTABLEKS R17 R16 K25 ["TextSize"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K94 ["WarningText"]
+  CALL R10 3 -1
+  RETURN R10 -1
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  NAMECALL R1 R1 K0 ["renderWithProviders"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_8:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_9:
+  GETTABLEKS R1 R0 K0 ["tryFocusTextBox"]
+  CALL R1 0 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["t"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["RoactGamepad"]
+  CALL R4 1 1
+  LOADK R7 K11 ["RobloxGui"]
+  NAMECALL R5 R1 K12 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R5 K13 ["Modules"]
+  GETTABLEKS R7 R8 K14 ["RobloxTranslator"]
+  CALL R6 1 1
+  GETTABLEKS R7 R4 K15 ["Focusable"]
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R0 K7 ["Packages"]
+  GETTABLEKS R9 R10 K16 ["UIBlox"]
+  CALL R8 1 1
+  GETTABLEKS R10 R8 K17 ["Style"]
+  GETTABLEKS R9 R10 K18 ["withStyle"]
+  GETTABLEKS R12 R8 K19 ["App"]
+  GETTABLEKS R11 R12 K20 ["SelectionImage"]
+  GETTABLEKS R10 R11 K21 ["withSelectionCursorProvider"]
+  GETTABLEKS R13 R8 K19 ["App"]
+  GETTABLEKS R12 R13 K20 ["SelectionImage"]
+  GETTABLEKS R11 R12 K22 ["CursorKind"]
+  GETTABLEKS R14 R8 K19 ["App"]
+  GETTABLEKS R13 R14 K23 ["ImageSet"]
+  GETTABLEKS R12 R13 K24 ["Images"]
+  GETTABLEKS R15 R8 K25 ["Core"]
+  GETTABLEKS R14 R15 K23 ["ImageSet"]
+  GETTABLEKS R13 R14 K26 ["ImageSetLabel"]
+  GETTABLEKS R14 R12 K27 ["component_assets/circle_17_stroke_1"]
+  GETIMPORT R15 K30 [Rect.new]
+  LOADN R16 8
+  LOADN R17 8
+  LOADN R18 8
+  LOADN R19 8
+  CALL R15 4 1
+  GETTABLEKS R16 R2 K31 ["PureComponent"]
+  LOADK R18 K32 ["NameTextBox"]
+  NAMECALL R16 R16 K33 ["extend"]
+  CALL R16 2 1
+  GETIMPORT R17 K1 [game]
+  LOADK R19 K34 ["RemoveNameRegex"]
+  LOADB R20 0
+  NAMECALL R17 R17 K35 ["DefineFastFlag"]
+  CALL R17 3 1
+  GETIMPORT R18 K6 [require]
+  GETIMPORT R23 K37 [script]
+  GETTABLEKS R22 R23 K38 ["Parent"]
+  GETTABLEKS R21 R22 K38 ["Parent"]
+  GETTABLEKS R20 R21 K38 ["Parent"]
+  GETTABLEKS R19 R20 K39 ["FFlagPublishAvatarPromptEnabled"]
+  CALL R18 1 1
+  GETIMPORT R19 K6 [require]
+  GETIMPORT R24 K37 [script]
+  GETTABLEKS R23 R24 K38 ["Parent"]
+  GETTABLEKS R22 R23 K38 ["Parent"]
+  GETTABLEKS R21 R22 K38 ["Parent"]
+  GETTABLEKS R20 R21 K40 ["FFlagPromptCreateAvatarDescriptionInvalidFix"]
+  CALL R19 1 1
+  GETTABLEKS R20 R3 K41 ["strictInterface"]
+  DUPTABLE R21 K52 [{"Size", "Position", "centerText", "maxLength", "onNameUpdated", "LayoutOrder", "nameTextBoxRef", "NextSelectionDown", "defaultName", "invalidInputText"}]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K54 ["UDim2"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K42 ["Size"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K54 ["UDim2"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K43 ["Position"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K55 ["boolean"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K44 ["centerText"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K56 ["number"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K45 ["maxLength"]
+  GETTABLEKS R22 R3 K57 ["callback"]
+  SETTABLEKS R22 R21 K46 ["onNameUpdated"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K56 ["number"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K47 ["LayoutOrder"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K58 ["table"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K48 ["nameTextBoxRef"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K58 ["table"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K49 ["NextSelectionDown"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K59 ["string"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K50 ["defaultName"]
+  GETTABLEKS R22 R3 K53 ["optional"]
+  GETTABLEKS R23 R3 K59 ["string"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K51 ["invalidInputText"]
+  CALL R20 1 1
+  SETTABLEKS R20 R16 K60 ["validateProps"]
+  DUPTABLE R20 K61 [{"maxLength", "centerText", "invalidInputText"}]
+  LOADN R21 50
+  SETTABLEKS R21 R20 K45 ["maxLength"]
+  LOADB R21 1
+  SETTABLEKS R21 R20 K44 ["centerText"]
+  LOADK R23 K62 ["CoreScripts.PublishAssetPrompt.InvalidName"]
+  NAMECALL R21 R6 K63 ["FormatByKey"]
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K51 ["invalidInputText"]
+  SETTABLEKS R20 R16 K64 ["defaultProps"]
+  DUPCLOSURE R20 K65 [PROTO_0]
+  DUPCLOSURE R21 K66 [PROTO_3]
+  CAPTURE VAL R18
+  SETTABLEKS R21 R16 K67 ["init"]
+  DUPCLOSURE R21 K68 [PROTO_4]
+  CAPTURE VAL R17
+  SETTABLEKS R21 R16 K69 ["checkIsNameValid"]
+  DUPCLOSURE R21 K70 [PROTO_5]
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R11
+  CAPTURE VAL R13
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  CAPTURE VAL R6
+  CAPTURE VAL R18
+  CAPTURE VAL R19
+  SETTABLEKS R21 R16 K71 ["renderWithProviders"]
+  DUPCLOSURE R21 K72 [PROTO_8]
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  SETTABLEKS R21 R16 K73 ["render"]
+  DUPCLOSURE R21 K74 [PROTO_9]
+  SETTABLEKS R21 R16 K75 ["didMount"]
+  RETURN R16 1

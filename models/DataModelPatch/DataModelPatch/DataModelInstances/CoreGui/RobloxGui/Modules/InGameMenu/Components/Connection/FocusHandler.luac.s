@@ -1,0 +1,414 @@
+PROTO_0:
+  GETUPVAL R1 0
+  SETTABLEKS R1 R0 K0 ["id"]
+  GETUPVAL R2 0
+  ADDK R1 R2 K1 [1]
+  SETUPVAL R1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Children"]
+  GETTABLE R2 R3 R4
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isFocused"]
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["requestFocusForHandlerId"]
+  GETTABLEKS R2 R0 K3 ["id"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isFocused"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["didFocus"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["shouldForgetPreviousSelection"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R3 R1 K1 ["shouldForgetPreviousSelection"]
+  NOT R2 R3
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K2 ["previousSelections"]
+  GETTABLEKS R5 R0 K3 ["id"]
+  GETTABLE R3 R4 R5
+  JUMPIF R2 [+8]
+  JUMPIFEQKNIL R3 [+15]
+  GETIMPORT R6 K5 [game]
+  NAMECALL R4 R3 K6 ["IsDescendantOf"]
+  CALL R4 2 1
+  JUMPIF R4 [+8]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K7 ["forgetLastSelectionForHandlerId"]
+  GETTABLEKS R5 R0 K3 ["id"]
+  CALL R4 1 0
+  LOADNIL R3
+  LOADB R4 0
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K8 ["candidateHandlerId"]
+  GETTABLEKS R6 R0 K3 ["id"]
+  JUMPIFEQ R5 R6 [+9]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K8 ["candidateHandlerId"]
+  JUMPIFNOTEQKNIL R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  LOADB R5 0
+  GETTABLEKS R6 R1 K8 ["candidateHandlerId"]
+  GETTABLEKS R7 R0 K3 ["id"]
+  JUMPIFEQ R6 R7 [+7]
+  GETTABLEKS R6 R1 K8 ["candidateHandlerId"]
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  LOADB R6 0
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K9 ["currentHandlerId"]
+  GETTABLEKS R8 R0 K3 ["id"]
+  JUMPIFNOTEQ R7 R8 [+9]
+  GETTABLEKS R7 R1 K9 ["currentHandlerId"]
+  GETTABLEKS R8 R0 K3 ["id"]
+  JUMPIFNOTEQ R7 R8 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  LOADB R7 0
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K9 ["currentHandlerId"]
+  JUMPIFNOTEQKNIL R8 [+14]
+  LOADB R7 0
+  GETTABLEKS R8 R1 K9 ["currentHandlerId"]
+  JUMPIFEQKNIL R8 [+9]
+  GETTABLEKS R8 R1 K9 ["currentHandlerId"]
+  GETTABLEKS R9 R0 K3 ["id"]
+  JUMPIFNOTEQ R8 R9 [+2]
+  LOADB R7 0 +1
+  LOADB R7 1
+  MOVE R8 R7
+  JUMPIFNOT R8 [+6]
+  NOT R8 R4
+  JUMPIFNOT R8 [+4]
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K10 ["isFocused"]
+  GETTABLEKS R10 R1 K10 ["isFocused"]
+  NOT R9 R10
+  JUMPIFNOT R9 [+4]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K10 ["isFocused"]
+  GETTABLEKS R11 R1 K10 ["isFocused"]
+  JUMPIFNOT R11 [+6]
+  GETTABLEKS R12 R0 K0 ["props"]
+  GETTABLEKS R11 R12 K10 ["isFocused"]
+  NOT R10 R11
+  JUMPIF R10 [+3]
+  MOVE R10 R4
+  JUMPIFNOT R10 [+1]
+  NOT R10 R5
+  LOADB R11 0
+  GETTABLEKS R12 R1 K9 ["currentHandlerId"]
+  GETTABLEKS R13 R0 K3 ["id"]
+  JUMPIFNOTEQ R12 R13 [+11]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K9 ["currentHandlerId"]
+  GETTABLEKS R13 R0 K3 ["id"]
+  JUMPIFNOTEQ R12 R13 [+2]
+  LOADB R11 0 +1
+  LOADB R11 1
+  JUMPIF R9 [+1]
+  JUMPIFNOT R8 [+8]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K11 ["requestFocusForHandlerId"]
+  GETTABLEKS R13 R0 K3 ["id"]
+  CALL R12 1 0
+  JUMP [+12]
+  JUMPIFNOT R6 [+11]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K12 ["didFocus"]
+  JUMPIFNOT R12 [+6]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K12 ["didFocus"]
+  MOVE R13 R3
+  CALL R12 1 0
+  JUMPIFNOT R10 [+19]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K9 ["currentHandlerId"]
+  GETTABLEKS R13 R0 K3 ["id"]
+  JUMPIFNOTEQ R12 R13 [+12]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K13 ["blurCurrentFocusHandler"]
+  GETTABLEKS R13 R0 K3 ["id"]
+  GETTABLEKS R15 R0 K0 ["props"]
+  GETTABLEKS R14 R15 K1 ["shouldForgetPreviousSelection"]
+  CALL R12 2 0
+  JUMPIFNOT R11 [+10]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K14 ["didBlur"]
+  JUMPIFNOT R12 [+5]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K14 ["didBlur"]
+  CALL R12 0 0
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["isFocused"]
+  JUMPIFNOT R2 [+14]
+  GETTABLEKS R2 R1 K1 ["isFocused"]
+  JUMPIF R2 [+11]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["didFocus"]
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["didFocus"]
+  CALL R2 0 0
+  RETURN R0 0
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["isFocused"]
+  JUMPIF R2 [+13]
+  GETTABLEKS R2 R1 K1 ["isFocused"]
+  JUMPIFNOT R2 [+10]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K3 ["didBlur"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K3 ["didBlur"]
+  CALL R2 0 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isFocused"]
+  JUMPIFNOT R1 [+19]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["blurCurrentFocusHandler"]
+  GETTABLEKS R2 R0 K3 ["id"]
+  LOADB R3 1
+  CALL R1 2 0
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K4 ["didBlur"]
+  JUMPIFNOT R1 [+13]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K4 ["didBlur"]
+  CALL R1 0 0
+  RETURN R0 0
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K5 ["forgetLastSelectionForHandlerId"]
+  GETTABLEKS R2 R0 K3 ["id"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["isFocused"]
+  JUMPIFNOT R1 [+10]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["didBlur"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["didBlur"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K1 ["Dictionary"]
+  GETTABLEKS R3 R4 K2 ["join"]
+  GETUPVAL R4 3
+  DUPTABLE R5 K9 [{"currentHandlerId", "previousSelections", "requestFocusForHandlerId", "forgetLastSelectionForHandlerId", "blurCurrentFocusHandler", "candidateHandlerId"}]
+  GETTABLEKS R6 R0 K3 ["currentHandlerId"]
+  SETTABLEKS R6 R5 K3 ["currentHandlerId"]
+  GETTABLEKS R6 R0 K4 ["previousSelections"]
+  SETTABLEKS R6 R5 K4 ["previousSelections"]
+  GETTABLEKS R6 R0 K5 ["requestFocusForHandlerId"]
+  SETTABLEKS R6 R5 K5 ["requestFocusForHandlerId"]
+  GETTABLEKS R6 R0 K6 ["forgetLastSelectionForHandlerId"]
+  SETTABLEKS R6 R5 K6 ["forgetLastSelectionForHandlerId"]
+  GETTABLEKS R6 R0 K7 ["blurCurrentFocusHandler"]
+  SETTABLEKS R6 R5 K7 ["blurCurrentFocusHandler"]
+  GETTABLEKS R6 R0 K8 ["candidateHandlerId"]
+  SETTABLEKS R6 R5 K8 ["candidateHandlerId"]
+  CALL R3 2 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Consumer"]
+  DUPTABLE R3 K3 [{"render"}]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  SETTABLEKS R4 R3 K2 ["render"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["t"]
+  GETTABLEKS R3 R1 K9 ["Roact"]
+  GETTABLEKS R4 R1 K10 ["Cryo"]
+  GETIMPORT R5 K5 [require]
+  GETIMPORT R11 K12 [script]
+  GETTABLEKS R10 R11 K13 ["Parent"]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K14 ["Flags"]
+  GETTABLEKS R6 R7 K15 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETIMPORT R10 K12 [script]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["FocusHandlerUtils"]
+  GETTABLEKS R7 R8 K17 ["FocusHandlerContext"]
+  CALL R6 1 1
+  LOADN R7 1
+  GETTABLEKS R8 R3 K18 ["PureComponent"]
+  LOADK R10 K19 ["FocusHandler"]
+  NAMECALL R8 R8 K20 ["extend"]
+  CALL R8 2 1
+  GETTABLEKS R9 R2 K21 ["strictInterface"]
+  NEWTABLE R10 16 0
+  GETTABLEKS R11 R2 K22 ["boolean"]
+  SETTABLEKS R11 R10 K23 ["isFocused"]
+  GETTABLEKS R11 R2 K24 ["optional"]
+  GETTABLEKS R12 R2 K25 ["callback"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K26 ["didFocus"]
+  GETTABLEKS R11 R2 K24 ["optional"]
+  GETTABLEKS R12 R2 K25 ["callback"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K27 ["didBlur"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+6]
+  GETTABLEKS R11 R2 K24 ["optional"]
+  GETTABLEKS R12 R2 K22 ["boolean"]
+  CALL R11 1 1
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K28 ["shouldForgetPreviousSelection"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+6]
+  GETTABLEKS R11 R2 K24 ["optional"]
+  GETTABLEKS R12 R2 K29 ["number"]
+  CALL R11 1 1
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K30 ["currentHandlerId"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+6]
+  GETTABLEKS R11 R2 K24 ["optional"]
+  GETTABLEKS R12 R2 K29 ["number"]
+  CALL R11 1 1
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K31 ["candidateHandlerId"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R11 R2 K32 ["table"]
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K33 ["previousSelections"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R11 R2 K25 ["callback"]
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K34 ["requestFocusForHandlerId"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R11 R2 K25 ["callback"]
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K35 ["forgetLastSelectionForHandlerId"]
+  MOVE R12 R5
+  CALL R12 0 1
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R11 R2 K25 ["callback"]
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K36 ["blurCurrentFocusHandler"]
+  GETTABLEKS R11 R3 K37 ["Children"]
+  GETTABLEKS R12 R2 K24 ["optional"]
+  GETTABLEKS R13 R2 K32 ["table"]
+  CALL R12 1 1
+  SETTABLE R12 R10 R11
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K38 ["validateProps"]
+  MOVE R9 R5
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  NEWCLOSURE R9 P0
+  CAPTURE REF R7
+  SETTABLEKS R9 R8 K39 ["init"]
+  DUPCLOSURE R9 K40 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLEKS R9 R8 K41 ["render"]
+  MOVE R9 R5
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  DUPCLOSURE R9 K42 [PROTO_2]
+  SETTABLEKS R9 R8 K43 ["didMount"]
+  JUMP [+3]
+  DUPCLOSURE R9 K44 [PROTO_3]
+  SETTABLEKS R9 R8 K43 ["didMount"]
+  MOVE R9 R5
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  DUPCLOSURE R9 K45 [PROTO_4]
+  SETTABLEKS R9 R8 K46 ["didUpdate"]
+  JUMP [+3]
+  DUPCLOSURE R9 K47 [PROTO_5]
+  SETTABLEKS R9 R8 K46 ["didUpdate"]
+  MOVE R9 R5
+  CALL R9 0 1
+  JUMPIFNOT R9 [+4]
+  DUPCLOSURE R9 K48 [PROTO_6]
+  SETTABLEKS R9 R8 K49 ["willUnmount"]
+  JUMP [+3]
+  DUPCLOSURE R9 K50 [PROTO_7]
+  SETTABLEKS R9 R8 K49 ["willUnmount"]
+  MOVE R9 R5
+  CALL R9 0 1
+  JUMPIFNOT R9 [+7]
+  DUPCLOSURE R9 K51 [PROTO_9]
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  CAPTURE VAL R4
+  CLOSEUPVALS R7
+  RETURN R9 1
+  CLOSEUPVALS R7
+  RETURN R8 1

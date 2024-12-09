@@ -1,0 +1,6 @@
+MAIN:
+  PREPVARARGS 0
+  NEWTABLE R0 1 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["UseDefaultAnimations"]
+  RETURN R0 1

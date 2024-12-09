@@ -9,7 +9,7 @@ MAIN:
   PREPVARARGS 0
   GETIMPORT R0 K1 [game]
   LOADK R2 K2 ["LuaRibbonSelectInput"]
-  LOADN R3 2
+  LOADN R3 3
   NAMECALL R0 R0 K3 ["SetFlagVersion"]
   CALL R0 3 0
   GETIMPORT R0 K1 [game]

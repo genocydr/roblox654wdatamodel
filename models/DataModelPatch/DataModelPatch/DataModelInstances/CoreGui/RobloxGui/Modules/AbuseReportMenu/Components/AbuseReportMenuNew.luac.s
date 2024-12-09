@@ -1,0 +1,1367 @@
+PROTO_0:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["GetUserLayerVariables"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETIMPORT R0 K1 [pcall]
+  DUPCLOSURE R1 K2 [PROTO_0]
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CALL R0 1 2
+  JUMPIFNOT R0 [+5]
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R3 2
+  GETTABLE R2 R1 R3
+  JUMPIFNOTEQKNIL R2 [+3]
+  LOADB R2 0
+  RETURN R2 1
+  GETUPVAL R2 0
+  GETUPVAL R4 1
+  NAMECALL R2 R2 K3 ["LogUserLayerExposure"]
+  CALL R2 2 0
+  GETUPVAL R3 2
+  GETTABLE R2 R1 R3
+  RETURN R2 1
+
+PROTO_2:
+  GETUPVAL R0 0
+  LOADB R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  LOADB R1 0
+  CALL R0 1 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["unmountAnnotationPage"]
+  CALL R0 0 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K1 ["unmountModalSelector"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["getAbuseReportSessionEntryPoint"]
+  CALL R0 1 1
+  JUMPIFNOTEQKS R0 K1 [""] [+11]
+  GETUPVAL R0 1
+  DUPTABLE R1 K3 [{"type"}]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["ReportAnythingActions"]
+  GETTABLEKS R2 R3 K5 ["ClearAll"]
+  SETTABLEKS R2 R1 K2 ["type"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["registerOnReportTabDisplayed"]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U1
+  CALL R0 1 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K1 ["registerOnReportTabHidden"]
+  NEWCLOSURE R1 P1
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CALL R0 1 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["registerSetNextPlayerToReport"]
+  NEWCLOSURE R1 P2
+  CAPTURE UPVAL U4
+  CALL R0 1 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K3 ["registerOnMenuWidthChange"]
+  NEWCLOSURE R1 P3
+  CAPTURE UPVAL U5
+  CALL R0 1 0
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K4 ["registerOnSettingsHidden"]
+  NEWCLOSURE R1 P4
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  JUMPIF R0 [+13]
+  GETUPVAL R0 1
+  LOADN R1 0
+  CALL R0 1 0
+  GETUPVAL R0 2
+  CALL R0 0 1
+  JUMPIFNOT R0 [+28]
+  GETUPVAL R0 3
+  LOADN R1 1
+  CALL R0 1 0
+  GETUPVAL R0 4
+  LOADB R1 0
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R0 5
+  NAMECALL R0 R0 K0 ["GetPlayers"]
+  CALL R0 1 1
+  LENGTH R1 R0
+  LOADN R2 1
+  JUMPIFNOTLE R1 R2 [+8]
+  GETUPVAL R1 6
+  LOADB R2 1
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADN R2 2
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  LOADN R2 1
+  CALL R1 1 0
+  GETUPVAL R1 6
+  LOADB R2 0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+56]
+  GETUPVAL R0 1
+  DUPTABLE R1 K2 [{"type", "timestamp"}]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K3 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K4 ["SetMenuOpenedTimestamp"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  GETIMPORT R4 K7 [workspace]
+  NAMECALL R4 R4 K8 ["GetServerTimeNow"]
+  CALL R4 1 1
+  MULK R3 R4 K5 [1000]
+  FASTCALL1 MATH_FLOOR R3 [+2]
+  GETIMPORT R2 K11 [math.floor]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K1 ["timestamp"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  LOADK R2 K12 ["ReportPage"]
+  NAMECALL R0 R0 K13 ["startAbuseReportSession"]
+  CALL R0 2 0
+  GETUPVAL R0 4
+  GETUPVAL R1 1
+  CALL R0 1 1
+  JUMPIFNOT R0 [+25]
+  GETIMPORT R1 K15 [pcall]
+  DUPCLOSURE R2 K16 [PROTO_0]
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CALL R1 1 2
+  JUMPIFNOT R1 [+5]
+  JUMPIFNOT R2 [+4]
+  GETUPVAL R4 7
+  GETTABLE R3 R2 R4
+  JUMPIFNOTEQKNIL R3 [+3]
+  LOADB R0 0
+  JUMP [+7]
+  GETUPVAL R3 5
+  GETUPVAL R5 6
+  NAMECALL R3 R3 K17 ["LogUserLayerExposure"]
+  CALL R3 2 0
+  GETUPVAL R3 7
+  GETTABLE R0 R2 R3
+  JUMPIFNOT R0 [+3]
+  GETUPVAL R0 8
+  LOADB R1 1
+  CALL R0 1 0
+  GETIMPORT R2 K19 [game]
+  GETTABLEKS R1 R2 K20 ["Workspace"]
+  GETTABLEKS R0 R1 K21 ["CurrentCamera"]
+  JUMPIFEQKNIL R0 [+32]
+  GETTABLEKS R1 R0 K22 ["ViewportSize"]
+  GETUPVAL R2 9
+  DUPTABLE R3 K25 [{"width", "height"}]
+  GETTABLEKS R4 R1 K26 ["X"]
+  SETTABLEKS R4 R3 K23 ["width"]
+  GETTABLEKS R4 R1 K27 ["Y"]
+  SETTABLEKS R4 R3 K24 ["height"]
+  CALL R2 1 0
+  GETUPVAL R2 1
+  DUPTABLE R3 K30 [{"type", "viewportSizeX", "viewportSizeY"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K3 ["AnalyticsActions"]
+  GETTABLEKS R4 R5 K31 ["SetViewportInformation"]
+  SETTABLEKS R4 R3 K0 ["type"]
+  GETTABLEKS R4 R1 K26 ["X"]
+  SETTABLEKS R4 R3 K28 ["viewportSizeX"]
+  GETTABLEKS R4 R1 K27 ["Y"]
+  SETTABLEKS R4 R3 K29 ["viewportSizeY"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R0 0
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["ReportAnythingActions"]
+  GETTABLEKS R2 R3 K3 ["ClearAnnotationFlowProperties"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K5 ["IncrementExperiencePersonChanged"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  GETUPVAL R5 4
+  SUBK R4 R5 K6 [1]
+  SUBK R3 R4 K6 [1]
+  GETUPVAL R5 5
+  LENGTH R4 R5
+  MOD R2 R3 R4
+  ADDK R1 R2 K6 [1]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["ReportAnythingActions"]
+  GETTABLEKS R2 R3 K3 ["ClearAnnotationFlowProperties"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K5 ["IncrementExperiencePersonChanged"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  GETUPVAL R5 4
+  SUBK R4 R5 K6 [1]
+  ADDK R3 R4 K6 [1]
+  GETUPVAL R5 5
+  LENGTH R4 R5
+  MOD R2 R3 R4
+  ADDK R1 R2 K6 [1]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R0 0
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["ReportAnythingActions"]
+  GETTABLEKS R2 R3 K3 ["ClearAnnotationFlowProperties"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K5 ["IncrementExperiencePersonChanged"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  GETUPVAL R5 4
+  SUBK R4 R5 K6 [1]
+  SUBK R3 R4 K6 [1]
+  GETUPVAL R5 5
+  LENGTH R4 R5
+  MOD R2 R3 R4
+  ADDK R1 R2 K6 [1]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R0 0
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["ReportAnythingActions"]
+  GETTABLEKS R2 R3 K3 ["ClearAnnotationFlowProperties"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  DUPTABLE R1 K1 [{"type"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["AnalyticsActions"]
+  GETTABLEKS R2 R3 K5 ["IncrementExperiencePersonChanged"]
+  SETTABLEKS R2 R1 K0 ["type"]
+  CALL R0 1 0
+  GETUPVAL R0 3
+  GETUPVAL R5 4
+  SUBK R4 R5 K6 [1]
+  ADDK R3 R4 K6 [1]
+  GETUPVAL R5 5
+  LENGTH R4 R5
+  MOD R2 R3 R4
+  ADDK R1 R2 K6 [1]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_16:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useState"]
+  LOADB R2 0
+  CALL R1 1 2
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["useState"]
+  LOADN R4 1
+  CALL R3 1 2
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["useState"]
+  LOADN R6 1
+  CALL R5 1 2
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["useState"]
+  LOADNIL R8
+  CALL R7 1 2
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["useState"]
+  LOADN R10 0
+  CALL R9 1 2
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K0 ["useState"]
+  LOADB R12 0
+  CALL R11 1 2
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["useState"]
+  LOADB R14 0
+  CALL R13 1 2
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K0 ["useState"]
+  DUPTABLE R16 K3 [{"width", "height"}]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K1 ["width"]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K2 ["height"]
+  CALL R15 1 2
+  LOADB R17 0
+  GETTABLEKS R18 R15 K1 ["width"]
+  GETTABLEKS R19 R15 K2 ["height"]
+  JUMPIFNOTLT R18 R19 [+8]
+  GETTABLEKS R18 R15 K1 ["width"]
+  LOADN R19 188
+  JUMPIFLT R18 R19 [+2]
+  LOADB R17 0 +1
+  LOADB R17 1
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K4 ["useReducer"]
+  GETUPVAL R19 1
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K5 ["AnalyticsInitialState"]
+  CALL R18 2 2
+  GETUPVAL R21 3
+  GETTABLE R20 R21 R3
+  GETUPVAL R22 4
+  GETTABLE R21 R22 R5
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K6 ["useCallback"]
+  GETUPVAL R23 5
+  MOVE R24 R18
+  MOVE R25 R19
+  MOVE R26 R8
+  MOVE R27 R21
+  CALL R23 4 1
+  NEWTABLE R24 0 2
+  MOVE R25 R18
+  MOVE R26 R5
+  SETLIST R24 R25 2 [1]
+  CALL R22 2 1
+  GETUPVAL R23 6
+  MOVE R24 R1
+  GETTABLEKS R25 R0 K7 ["hideReportTab"]
+  GETTABLEKS R26 R0 K8 ["showReportTab"]
+  MOVE R27 R22
+  CALL R23 4 2
+  GETUPVAL R25 7
+  CALL R25 0 1
+  GETUPVAL R26 8
+  GETUPVAL R28 2
+  GETTABLEKS R27 R28 K9 ["localizationKeys"]
+  CALL R26 1 1
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K10 ["useEffect"]
+  NEWCLOSURE R28 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE VAL R8
+  CAPTURE VAL R10
+  CAPTURE UPVAL U11
+  CAPTURE VAL R24
+  CAPTURE UPVAL U2
+  NEWTABLE R29 0 0
+  CALL R27 2 0
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K10 ["useEffect"]
+  NEWCLOSURE R28 P1
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  CAPTURE UPVAL U12
+  CAPTURE VAL R4
+  CAPTURE VAL R14
+  CAPTURE UPVAL U13
+  CAPTURE VAL R12
+  NEWTABLE R29 0 1
+  MOVE R30 R1
+  SETLIST R29 R30 1 [1]
+  CALL R27 2 0
+  GETUPVAL R28 0
+  GETTABLEKS R27 R28 K10 ["useEffect"]
+  NEWCLOSURE R28 P2
+  CAPTURE VAL R1
+  CAPTURE VAL R19
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CAPTURE VAL R14
+  CAPTURE VAL R16
+  NEWTABLE R29 0 2
+  MOVE R30 R1
+  MOVE R31 R9
+  SETLIST R29 R30 2 [1]
+  CALL R27 2 0
+  LOADNIL R27
+  DUPTABLE R28 K23 [{"onReportComplete", "reportAnythingAnalytics", "reportAnythingState", "reportAnythingDispatch", "hideReportTab", "isReportTabVisible", "showReportSentPage", "analyticsState", "analyticsDispatch", "preselectedPlayer", "setPreselectedPlayer", "menuWidth", "viewportDimension"}]
+  GETTABLEKS R29 R0 K11 ["onReportComplete"]
+  SETTABLEKS R29 R28 K11 ["onReportComplete"]
+  GETUPVAL R29 18
+  SETTABLEKS R29 R28 K12 ["reportAnythingAnalytics"]
+  SETTABLEKS R23 R28 K13 ["reportAnythingState"]
+  SETTABLEKS R24 R28 K14 ["reportAnythingDispatch"]
+  GETTABLEKS R29 R0 K7 ["hideReportTab"]
+  SETTABLEKS R29 R28 K7 ["hideReportTab"]
+  SETTABLEKS R1 R28 K15 ["isReportTabVisible"]
+  GETTABLEKS R29 R0 K16 ["showReportSentPage"]
+  SETTABLEKS R29 R28 K16 ["showReportSentPage"]
+  SETTABLEKS R18 R28 K17 ["analyticsState"]
+  SETTABLEKS R19 R28 K18 ["analyticsDispatch"]
+  SETTABLEKS R7 R28 K19 ["preselectedPlayer"]
+  SETTABLEKS R8 R28 K20 ["setPreselectedPlayer"]
+  SETTABLEKS R9 R28 K21 ["menuWidth"]
+  SETTABLEKS R15 R28 K22 ["viewportDimension"]
+  GETUPVAL R30 19
+  GETTABLEKS R29 R30 K24 ["Person"]
+  JUMPIFNOTEQ R21 R29 [+13]
+  GETUPVAL R30 0
+  GETTABLEKS R29 R30 K25 ["createElement"]
+  GETUPVAL R30 20
+  DUPTABLE R31 K28 [{"utilityProps", "isSmallPortraitViewport"}]
+  SETTABLEKS R28 R31 K26 ["utilityProps"]
+  SETTABLEKS R17 R31 K27 ["isSmallPortraitViewport"]
+  CALL R29 2 1
+  MOVE R27 R29
+  JUMP [+16]
+  GETUPVAL R30 19
+  GETTABLEKS R29 R30 K29 ["Experience"]
+  JUMPIFNOTEQ R21 R29 [+12]
+  GETUPVAL R30 0
+  GETTABLEKS R29 R30 K25 ["createElement"]
+  GETUPVAL R30 21
+  DUPTABLE R31 K28 [{"utilityProps", "isSmallPortraitViewport"}]
+  SETTABLEKS R28 R31 K26 ["utilityProps"]
+  SETTABLEKS R17 R31 K27 ["isSmallPortraitViewport"]
+  CALL R29 2 1
+  MOVE R27 R29
+  GETUPVAL R29 22
+  CALL R29 0 1
+  JUMPIFNOT R29 [+408]
+  GETUPVAL R30 0
+  GETTABLEKS R29 R30 K25 ["createElement"]
+  LOADK R30 K30 ["Frame"]
+  DUPTABLE R31 K35 [{"BackgroundTransparency", "AutomaticSize", "Size", "Position"}]
+  LOADN R32 1
+  SETTABLEKS R32 R31 K31 ["BackgroundTransparency"]
+  GETIMPORT R32 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R32 R31 K32 ["AutomaticSize"]
+  GETIMPORT R32 K41 [UDim2.new]
+  LOADN R33 1
+  LOADN R34 0
+  LOADN R35 0
+  LOADN R36 0
+  CALL R32 4 1
+  SETTABLEKS R32 R31 K33 ["Size"]
+  GETIMPORT R32 K41 [UDim2.new]
+  LOADN R33 0
+  LOADN R34 0
+  LOADN R35 0
+  GETTABLEKS R36 R25 K42 ["TopPadding"]
+  CALL R32 4 1
+  SETTABLEKS R32 R31 K34 ["Position"]
+  DUPTABLE R32 K44 [{"FocusNavigationCoreScriptsWrapper"}]
+  GETUPVAL R34 0
+  GETTABLEKS R33 R34 K25 ["createElement"]
+  GETUPVAL R34 23
+  DUPTABLE R35 K49 [{"selectionGroupName", "focusNavigableSurfaceIdentifier", "automaticSize", "size"}]
+  GETUPVAL R37 2
+  GETTABLEKS R36 R37 K50 ["AbuseReportMenuRootName"]
+  SETTABLEKS R36 R35 K45 ["selectionGroupName"]
+  GETUPVAL R37 24
+  GETTABLEKS R36 R37 K51 ["RouterView"]
+  SETTABLEKS R36 R35 K46 ["focusNavigableSurfaceIdentifier"]
+  GETIMPORT R36 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R36 R35 K47 ["automaticSize"]
+  GETIMPORT R36 K41 [UDim2.new]
+  LOADN R37 1
+  LOADN R38 0
+  LOADN R39 0
+  LOADN R40 0
+  CALL R36 4 1
+  SETTABLEKS R36 R35 K48 ["size"]
+  NEWTABLE R36 1 0
+  GETUPVAL R38 2
+  GETTABLEKS R37 R38 K52 ["AbuseReportMenuPlaceholderFrame"]
+  GETUPVAL R39 0
+  GETTABLEKS R38 R39 K25 ["createElement"]
+  LOADK R39 K30 ["Frame"]
+  DUPTABLE R40 K54 [{"Size", "BackgroundTransparency", "BorderSizePixel"}]
+  GETIMPORT R41 K56 [UDim2.fromScale]
+  LOADN R42 1
+  LOADN R43 1
+  CALL R41 2 1
+  SETTABLEKS R41 R40 K33 ["Size"]
+  LOADN R41 1
+  SETTABLEKS R41 R40 K31 ["BackgroundTransparency"]
+  LOADN R41 0
+  SETTABLEKS R41 R40 K53 ["BorderSizePixel"]
+  DUPTABLE R41 K58 [{"MenuLayoutFrame"}]
+  GETUPVAL R43 0
+  GETTABLEKS R42 R43 K25 ["createElement"]
+  LOADK R43 K30 ["Frame"]
+  DUPTABLE R44 K59 [{"BackgroundTransparency", "AutomaticSize", "Size"}]
+  LOADN R45 1
+  SETTABLEKS R45 R44 K31 ["BackgroundTransparency"]
+  GETIMPORT R45 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R45 R44 K32 ["AutomaticSize"]
+  GETIMPORT R45 K41 [UDim2.new]
+  LOADN R46 1
+  LOADN R47 0
+  LOADN R48 0
+  LOADN R49 0
+  CALL R45 4 1
+  SETTABLEKS R45 R44 K33 ["Size"]
+  DUPTABLE R45 K63 [{"Layout", "SelectInSceneToggleFrame", "Menu"}]
+  GETUPVAL R47 0
+  GETTABLEKS R46 R47 K25 ["createElement"]
+  LOADK R47 K64 ["UIListLayout"]
+  DUPTABLE R48 K69 [{"FillDirection", "SortOrder", "HorizontalAlignment", "Padding"}]
+  GETIMPORT R49 K71 [Enum.FillDirection.Vertical]
+  SETTABLEKS R49 R48 K65 ["FillDirection"]
+  GETIMPORT R49 K73 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R49 R48 K66 ["SortOrder"]
+  LOADN R49 0
+  SETTABLEKS R49 R48 K67 ["HorizontalAlignment"]
+  GETIMPORT R49 K75 [UDim.new]
+  LOADN R50 0
+  LOADN R51 12
+  CALL R49 2 1
+  SETTABLEKS R49 R48 K68 ["Padding"]
+  CALL R46 2 1
+  SETTABLEKS R46 R45 K60 ["Layout"]
+  JUMPIFNOT R13 [+71]
+  GETUPVAL R47 0
+  GETTABLEKS R46 R47 K25 ["createElement"]
+  LOADK R47 K30 ["Frame"]
+  DUPTABLE R48 K77 [{"BackgroundTransparency", "AutomaticSize", "Position", "AnchorPoint", "LayoutOrder"}]
+  LOADN R49 1
+  SETTABLEKS R49 R48 K31 ["BackgroundTransparency"]
+  GETIMPORT R49 K79 [Enum.AutomaticSize.XY]
+  SETTABLEKS R49 R48 K32 ["AutomaticSize"]
+  GETIMPORT R49 K41 [UDim2.new]
+  LOADK R50 K80 [0.5]
+  LOADN R51 0
+  LOADN R52 0
+  LOADN R53 0
+  CALL R49 4 1
+  SETTABLEKS R49 R48 K34 ["Position"]
+  GETIMPORT R49 K82 [Vector2.new]
+  LOADK R50 K80 [0.5]
+  LOADN R51 0
+  CALL R49 2 1
+  SETTABLEKS R49 R48 K76 ["AnchorPoint"]
+  LOADN R49 0
+  SETTABLEKS R49 R48 K72 ["LayoutOrder"]
+  DUPTABLE R49 K84 [{"SelectInSceneToggle"}]
+  GETUPVAL R51 0
+  GETTABLEKS R50 R51 K25 ["createElement"]
+  GETUPVAL R51 25
+  DUPTABLE R52 K88 [{"onTabActivated", "selectedTabIndex", "tabs", "width"}]
+  NEWCLOSURE R53 P3
+  CAPTURE VAL R4
+  SETTABLEKS R53 R52 K85 ["onTabActivated"]
+  SETTABLEKS R3 R52 K86 ["selectedTabIndex"]
+  NEWTABLE R53 0 2
+  DUPTABLE R54 K90 [{"tabName"}]
+  GETTABLEKS R55 R26 K91 ["BuildAReport"]
+  SETTABLEKS R55 R54 K89 ["tabName"]
+  DUPTABLE R55 K90 [{"tabName"}]
+  GETTABLEKS R56 R26 K92 ["SelectInScene"]
+  SETTABLEKS R56 R55 K89 ["tabName"]
+  SETLIST R53 R54 2 [1]
+  SETTABLEKS R53 R52 K87 ["tabs"]
+  GETIMPORT R53 K75 [UDim.new]
+  LOADN R54 0
+  MOVE R55 R9
+  CALL R53 2 1
+  SETTABLEKS R53 R52 K1 ["width"]
+  CALL R50 2 1
+  SETTABLEKS R50 R49 K83 ["SelectInSceneToggle"]
+  CALL R46 3 1
+  JUMP [+1]
+  LOADNIL R46
+  SETTABLEKS R46 R45 K61 ["SelectInSceneToggleFrame"]
+  GETUPVAL R48 26
+  GETTABLEKS R47 R48 K92 ["SelectInScene"]
+  JUMPIFNOTEQ R20 R47 [+12]
+  GETUPVAL R47 0
+  GETTABLEKS R46 R47 K25 ["createElement"]
+  GETUPVAL R47 27
+  DUPTABLE R48 K93 [{"hideReportTab"}]
+  GETTABLEKS R49 R0 K7 ["hideReportTab"]
+  SETTABLEKS R49 R48 K7 ["hideReportTab"]
+  CALL R46 2 1
+  JUMP [+173]
+  GETUPVAL R48 26
+  GETTABLEKS R47 R48 K94 ["Classic"]
+  JUMPIFNOTEQ R20 R47 [+168]
+  GETUPVAL R47 0
+  GETTABLEKS R46 R47 K25 ["createElement"]
+  LOADK R47 K30 ["Frame"]
+  DUPTABLE R48 K95 [{"BackgroundTransparency", "AutomaticSize", "Size", "LayoutOrder"}]
+  LOADN R49 1
+  SETTABLEKS R49 R48 K31 ["BackgroundTransparency"]
+  GETIMPORT R49 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R49 R48 K32 ["AutomaticSize"]
+  GETIMPORT R49 K41 [UDim2.new]
+  LOADN R50 1
+  LOADN R51 0
+  LOADN R52 0
+  LOADN R53 0
+  CALL R49 4 1
+  SETTABLEKS R49 R48 K33 ["Size"]
+  LOADN R49 1
+  SETTABLEKS R49 R48 K72 ["LayoutOrder"]
+  DUPTABLE R49 K99 [{"Layout", "ReportTypeSelector", "MenuItemsContainer", "DSALinkFrame"}]
+  GETUPVAL R51 0
+  GETTABLEKS R50 R51 K25 ["createElement"]
+  LOADK R51 K64 ["UIListLayout"]
+  DUPTABLE R52 K100 [{"FillDirection", "SortOrder", "Padding"}]
+  GETIMPORT R53 K71 [Enum.FillDirection.Vertical]
+  SETTABLEKS R53 R52 K65 ["FillDirection"]
+  GETIMPORT R53 K73 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R53 R52 K66 ["SortOrder"]
+  GETIMPORT R53 K75 [UDim.new]
+  LOADN R54 0
+  GETTABLEKS R55 R25 K101 ["ItemPadding"]
+  CALL R53 2 1
+  SETTABLEKS R53 R52 K68 ["Padding"]
+  CALL R50 2 1
+  SETTABLEKS R50 R49 K60 ["Layout"]
+  GETUPVAL R51 0
+  GETTABLEKS R50 R51 K25 ["createElement"]
+  GETUPVAL R51 28
+  DUPTABLE R52 K108 [{"label", "abuseType", "layoutOrder", "utilityProps", "isSelectionDisabled", "menuWidth", "isSmallPortraitViewport", "onClickLeft", "onClickRight"}]
+  GETTABLEKS R53 R26 K109 ["ReportType"]
+  SETTABLEKS R53 R52 K102 ["label"]
+  GETUPVAL R55 4
+  GETTABLE R54 R55 R5
+  GETTABLE R53 R26 R54
+  SETTABLEKS R53 R52 K103 ["abuseType"]
+  LOADN R53 0
+  SETTABLEKS R53 R52 K104 ["layoutOrder"]
+  SETTABLEKS R28 R52 K26 ["utilityProps"]
+  SETTABLEKS R11 R52 K105 ["isSelectionDisabled"]
+  SETTABLEKS R9 R52 K21 ["menuWidth"]
+  SETTABLEKS R17 R52 K27 ["isSmallPortraitViewport"]
+  NEWCLOSURE R53 P4
+  CAPTURE VAL R24
+  CAPTURE UPVAL U2
+  CAPTURE VAL R19
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE UPVAL U4
+  SETTABLEKS R53 R52 K106 ["onClickLeft"]
+  NEWCLOSURE R53 P5
+  CAPTURE VAL R24
+  CAPTURE UPVAL U2
+  CAPTURE VAL R19
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE UPVAL U4
+  SETTABLEKS R53 R52 K107 ["onClickRight"]
+  CALL R50 2 1
+  SETTABLEKS R50 R49 K96 ["ReportTypeSelector"]
+  GETUPVAL R51 0
+  GETTABLEKS R50 R51 K25 ["createElement"]
+  LOADK R51 K30 ["Frame"]
+  DUPTABLE R52 K110 [{"BackgroundTransparency", "LayoutOrder", "AutomaticSize", "Size"}]
+  LOADN R53 1
+  SETTABLEKS R53 R52 K31 ["BackgroundTransparency"]
+  LOADN R53 1
+  SETTABLEKS R53 R52 K72 ["LayoutOrder"]
+  GETIMPORT R53 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R53 R52 K32 ["AutomaticSize"]
+  GETIMPORT R53 K41 [UDim2.new]
+  LOADN R54 1
+  LOADN R55 0
+  LOADN R56 0
+  LOADN R57 0
+  CALL R53 4 1
+  SETTABLEKS R53 R52 K33 ["Size"]
+  DUPTABLE R53 K112 [{"MenuItems"}]
+  SETTABLEKS R27 R53 K111 ["MenuItems"]
+  CALL R50 3 1
+  SETTABLEKS R50 R49 K97 ["MenuItemsContainer"]
+  GETUPVAL R51 29
+  CALL R51 0 1
+  JUMPIFNOT R51 [+34]
+  GETUPVAL R51 0
+  GETTABLEKS R50 R51 K25 ["createElement"]
+  LOADK R51 K30 ["Frame"]
+  DUPTABLE R52 K110 [{"BackgroundTransparency", "LayoutOrder", "AutomaticSize", "Size"}]
+  LOADN R53 1
+  SETTABLEKS R53 R52 K31 ["BackgroundTransparency"]
+  LOADN R53 2
+  SETTABLEKS R53 R52 K72 ["LayoutOrder"]
+  GETIMPORT R53 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R53 R52 K32 ["AutomaticSize"]
+  GETIMPORT R53 K41 [UDim2.new]
+  LOADN R54 1
+  LOADN R55 0
+  LOADN R56 0
+  LOADN R57 0
+  CALL R53 4 1
+  SETTABLEKS R53 R52 K33 ["Size"]
+  DUPTABLE R53 K114 [{"DSALink"}]
+  GETUPVAL R55 0
+  GETTABLEKS R54 R55 K25 ["createElement"]
+  GETUPVAL R55 30
+  CALL R54 1 1
+  SETTABLEKS R54 R53 K113 ["DSALink"]
+  CALL R50 3 1
+  JUMP [+1]
+  LOADNIL R50
+  SETTABLEKS R50 R49 K98 ["DSALinkFrame"]
+  CALL R46 3 1
+  JUMP [+1]
+  LOADNIL R46
+  SETTABLEKS R46 R45 K62 ["Menu"]
+  CALL R42 3 1
+  SETTABLEKS R42 R41 K57 ["MenuLayoutFrame"]
+  CALL R38 3 1
+  SETTABLE R38 R36 R37
+  CALL R33 3 1
+  SETTABLEKS R33 R32 K43 ["FocusNavigationCoreScriptsWrapper"]
+  CALL R29 3 -1
+  RETURN R29 -1
+  GETUPVAL R30 0
+  GETTABLEKS R29 R30 K25 ["createElement"]
+  LOADK R30 K30 ["Frame"]
+  DUPTABLE R31 K35 [{"BackgroundTransparency", "AutomaticSize", "Size", "Position"}]
+  LOADN R32 1
+  SETTABLEKS R32 R31 K31 ["BackgroundTransparency"]
+  GETIMPORT R32 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R32 R31 K32 ["AutomaticSize"]
+  GETIMPORT R32 K41 [UDim2.new]
+  LOADN R33 1
+  LOADN R34 0
+  LOADN R35 0
+  LOADN R36 0
+  CALL R32 4 1
+  SETTABLEKS R32 R31 K33 ["Size"]
+  GETIMPORT R32 K41 [UDim2.new]
+  LOADN R33 0
+  LOADN R34 0
+  LOADN R35 0
+  GETTABLEKS R36 R25 K42 ["TopPadding"]
+  CALL R32 4 1
+  SETTABLEKS R32 R31 K34 ["Position"]
+  DUPTABLE R32 K58 [{"MenuLayoutFrame"}]
+  GETUPVAL R34 0
+  GETTABLEKS R33 R34 K25 ["createElement"]
+  LOADK R34 K30 ["Frame"]
+  DUPTABLE R35 K59 [{"BackgroundTransparency", "AutomaticSize", "Size"}]
+  LOADN R36 1
+  SETTABLEKS R36 R35 K31 ["BackgroundTransparency"]
+  GETIMPORT R36 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R36 R35 K32 ["AutomaticSize"]
+  GETIMPORT R36 K41 [UDim2.new]
+  LOADN R37 1
+  LOADN R38 0
+  LOADN R39 0
+  LOADN R40 0
+  CALL R36 4 1
+  SETTABLEKS R36 R35 K33 ["Size"]
+  DUPTABLE R36 K63 [{"Layout", "SelectInSceneToggleFrame", "Menu"}]
+  GETUPVAL R38 0
+  GETTABLEKS R37 R38 K25 ["createElement"]
+  LOADK R38 K64 ["UIListLayout"]
+  DUPTABLE R39 K69 [{"FillDirection", "SortOrder", "HorizontalAlignment", "Padding"}]
+  GETIMPORT R40 K71 [Enum.FillDirection.Vertical]
+  SETTABLEKS R40 R39 K65 ["FillDirection"]
+  GETIMPORT R40 K73 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R40 R39 K66 ["SortOrder"]
+  LOADN R40 0
+  SETTABLEKS R40 R39 K67 ["HorizontalAlignment"]
+  GETIMPORT R40 K75 [UDim.new]
+  LOADN R41 0
+  LOADN R42 12
+  CALL R40 2 1
+  SETTABLEKS R40 R39 K68 ["Padding"]
+  CALL R37 2 1
+  SETTABLEKS R37 R36 K60 ["Layout"]
+  JUMPIFNOT R13 [+71]
+  GETUPVAL R38 0
+  GETTABLEKS R37 R38 K25 ["createElement"]
+  LOADK R38 K30 ["Frame"]
+  DUPTABLE R39 K77 [{"BackgroundTransparency", "AutomaticSize", "Position", "AnchorPoint", "LayoutOrder"}]
+  LOADN R40 1
+  SETTABLEKS R40 R39 K31 ["BackgroundTransparency"]
+  GETIMPORT R40 K79 [Enum.AutomaticSize.XY]
+  SETTABLEKS R40 R39 K32 ["AutomaticSize"]
+  GETIMPORT R40 K41 [UDim2.new]
+  LOADK R41 K80 [0.5]
+  LOADN R42 0
+  LOADN R43 0
+  LOADN R44 0
+  CALL R40 4 1
+  SETTABLEKS R40 R39 K34 ["Position"]
+  GETIMPORT R40 K82 [Vector2.new]
+  LOADK R41 K80 [0.5]
+  LOADN R42 0
+  CALL R40 2 1
+  SETTABLEKS R40 R39 K76 ["AnchorPoint"]
+  LOADN R40 0
+  SETTABLEKS R40 R39 K72 ["LayoutOrder"]
+  DUPTABLE R40 K84 [{"SelectInSceneToggle"}]
+  GETUPVAL R42 0
+  GETTABLEKS R41 R42 K25 ["createElement"]
+  GETUPVAL R42 25
+  DUPTABLE R43 K88 [{"onTabActivated", "selectedTabIndex", "tabs", "width"}]
+  NEWCLOSURE R44 P6
+  CAPTURE VAL R4
+  SETTABLEKS R44 R43 K85 ["onTabActivated"]
+  SETTABLEKS R3 R43 K86 ["selectedTabIndex"]
+  NEWTABLE R44 0 2
+  DUPTABLE R45 K90 [{"tabName"}]
+  GETTABLEKS R46 R26 K91 ["BuildAReport"]
+  SETTABLEKS R46 R45 K89 ["tabName"]
+  DUPTABLE R46 K90 [{"tabName"}]
+  GETTABLEKS R47 R26 K92 ["SelectInScene"]
+  SETTABLEKS R47 R46 K89 ["tabName"]
+  SETLIST R44 R45 2 [1]
+  SETTABLEKS R44 R43 K87 ["tabs"]
+  GETIMPORT R44 K75 [UDim.new]
+  LOADN R45 0
+  MOVE R46 R9
+  CALL R44 2 1
+  SETTABLEKS R44 R43 K1 ["width"]
+  CALL R41 2 1
+  SETTABLEKS R41 R40 K83 ["SelectInSceneToggle"]
+  CALL R37 3 1
+  JUMP [+1]
+  LOADNIL R37
+  SETTABLEKS R37 R36 K61 ["SelectInSceneToggleFrame"]
+  GETUPVAL R39 26
+  GETTABLEKS R38 R39 K92 ["SelectInScene"]
+  JUMPIFNOTEQ R20 R38 [+12]
+  GETUPVAL R38 0
+  GETTABLEKS R37 R38 K25 ["createElement"]
+  GETUPVAL R38 27
+  DUPTABLE R39 K93 [{"hideReportTab"}]
+  GETTABLEKS R40 R0 K7 ["hideReportTab"]
+  SETTABLEKS R40 R39 K7 ["hideReportTab"]
+  CALL R37 2 1
+  JUMP [+173]
+  GETUPVAL R39 26
+  GETTABLEKS R38 R39 K94 ["Classic"]
+  JUMPIFNOTEQ R20 R38 [+168]
+  GETUPVAL R38 0
+  GETTABLEKS R37 R38 K25 ["createElement"]
+  LOADK R38 K30 ["Frame"]
+  DUPTABLE R39 K95 [{"BackgroundTransparency", "AutomaticSize", "Size", "LayoutOrder"}]
+  LOADN R40 1
+  SETTABLEKS R40 R39 K31 ["BackgroundTransparency"]
+  GETIMPORT R40 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R40 R39 K32 ["AutomaticSize"]
+  GETIMPORT R40 K41 [UDim2.new]
+  LOADN R41 1
+  LOADN R42 0
+  LOADN R43 0
+  LOADN R44 0
+  CALL R40 4 1
+  SETTABLEKS R40 R39 K33 ["Size"]
+  LOADN R40 1
+  SETTABLEKS R40 R39 K72 ["LayoutOrder"]
+  DUPTABLE R40 K99 [{"Layout", "ReportTypeSelector", "MenuItemsContainer", "DSALinkFrame"}]
+  GETUPVAL R42 0
+  GETTABLEKS R41 R42 K25 ["createElement"]
+  LOADK R42 K64 ["UIListLayout"]
+  DUPTABLE R43 K100 [{"FillDirection", "SortOrder", "Padding"}]
+  GETIMPORT R44 K71 [Enum.FillDirection.Vertical]
+  SETTABLEKS R44 R43 K65 ["FillDirection"]
+  GETIMPORT R44 K73 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R44 R43 K66 ["SortOrder"]
+  GETIMPORT R44 K75 [UDim.new]
+  LOADN R45 0
+  GETTABLEKS R46 R25 K101 ["ItemPadding"]
+  CALL R44 2 1
+  SETTABLEKS R44 R43 K68 ["Padding"]
+  CALL R41 2 1
+  SETTABLEKS R41 R40 K60 ["Layout"]
+  GETUPVAL R42 0
+  GETTABLEKS R41 R42 K25 ["createElement"]
+  GETUPVAL R42 28
+  DUPTABLE R43 K108 [{"label", "abuseType", "layoutOrder", "utilityProps", "isSelectionDisabled", "menuWidth", "isSmallPortraitViewport", "onClickLeft", "onClickRight"}]
+  GETTABLEKS R44 R26 K109 ["ReportType"]
+  SETTABLEKS R44 R43 K102 ["label"]
+  GETUPVAL R46 4
+  GETTABLE R45 R46 R5
+  GETTABLE R44 R26 R45
+  SETTABLEKS R44 R43 K103 ["abuseType"]
+  LOADN R44 0
+  SETTABLEKS R44 R43 K104 ["layoutOrder"]
+  SETTABLEKS R28 R43 K26 ["utilityProps"]
+  SETTABLEKS R11 R43 K105 ["isSelectionDisabled"]
+  SETTABLEKS R9 R43 K21 ["menuWidth"]
+  SETTABLEKS R17 R43 K27 ["isSmallPortraitViewport"]
+  NEWCLOSURE R44 P7
+  CAPTURE VAL R24
+  CAPTURE UPVAL U2
+  CAPTURE VAL R19
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE UPVAL U4
+  SETTABLEKS R44 R43 K106 ["onClickLeft"]
+  NEWCLOSURE R44 P8
+  CAPTURE VAL R24
+  CAPTURE UPVAL U2
+  CAPTURE VAL R19
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  CAPTURE UPVAL U4
+  SETTABLEKS R44 R43 K107 ["onClickRight"]
+  CALL R41 2 1
+  SETTABLEKS R41 R40 K96 ["ReportTypeSelector"]
+  GETUPVAL R42 0
+  GETTABLEKS R41 R42 K25 ["createElement"]
+  LOADK R42 K30 ["Frame"]
+  DUPTABLE R43 K110 [{"BackgroundTransparency", "LayoutOrder", "AutomaticSize", "Size"}]
+  LOADN R44 1
+  SETTABLEKS R44 R43 K31 ["BackgroundTransparency"]
+  LOADN R44 1
+  SETTABLEKS R44 R43 K72 ["LayoutOrder"]
+  GETIMPORT R44 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R44 R43 K32 ["AutomaticSize"]
+  GETIMPORT R44 K41 [UDim2.new]
+  LOADN R45 1
+  LOADN R46 0
+  LOADN R47 0
+  LOADN R48 0
+  CALL R44 4 1
+  SETTABLEKS R44 R43 K33 ["Size"]
+  DUPTABLE R44 K112 [{"MenuItems"}]
+  SETTABLEKS R27 R44 K111 ["MenuItems"]
+  CALL R41 3 1
+  SETTABLEKS R41 R40 K97 ["MenuItemsContainer"]
+  GETUPVAL R42 29
+  CALL R42 0 1
+  JUMPIFNOT R42 [+34]
+  GETUPVAL R42 0
+  GETTABLEKS R41 R42 K25 ["createElement"]
+  LOADK R42 K30 ["Frame"]
+  DUPTABLE R43 K110 [{"BackgroundTransparency", "LayoutOrder", "AutomaticSize", "Size"}]
+  LOADN R44 1
+  SETTABLEKS R44 R43 K31 ["BackgroundTransparency"]
+  LOADN R44 2
+  SETTABLEKS R44 R43 K72 ["LayoutOrder"]
+  GETIMPORT R44 K38 [Enum.AutomaticSize.Y]
+  SETTABLEKS R44 R43 K32 ["AutomaticSize"]
+  GETIMPORT R44 K41 [UDim2.new]
+  LOADN R45 1
+  LOADN R46 0
+  LOADN R47 0
+  LOADN R48 0
+  CALL R44 4 1
+  SETTABLEKS R44 R43 K33 ["Size"]
+  DUPTABLE R44 K114 [{"DSALink"}]
+  GETUPVAL R46 0
+  GETTABLEKS R45 R46 K25 ["createElement"]
+  GETUPVAL R46 30
+  CALL R45 1 1
+  SETTABLEKS R45 R44 K113 ["DSALink"]
+  CALL R41 3 1
+  JUMP [+1]
+  LOADNIL R41
+  SETTABLEKS R41 R40 K98 ["DSALinkFrame"]
+  CALL R37 3 1
+  JUMP [+1]
+  LOADNIL R37
+  SETTABLEKS R37 R36 K62 ["Menu"]
+  CALL R33 3 1
+  SETTABLEKS R33 R32 K57 ["MenuLayoutFrame"]
+  CALL R29 3 -1
+  RETURN R29 -1
+
+PROTO_17:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["RobloxLocaleId"]
+  CALL R1 1 1
+  GETUPVAL R2 2
+  CALL R2 0 1
+  JUMPIFNOT R2 [+49]
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 4
+  DUPTABLE R4 K4 [{"withDarkTheme"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K3 ["withDarkTheme"]
+  DUPTABLE R5 K6 [{"LocalizationProvider"}]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K2 ["createElement"]
+  GETUPVAL R7 5
+  DUPTABLE R8 K8 [{"localization"}]
+  SETTABLEKS R1 R8 K7 ["localization"]
+  DUPTABLE R9 K10 [{"FocusNavigationProvider"}]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K2 ["createElement"]
+  GETUPVAL R13 6
+  GETTABLEKS R12 R13 K11 ["FocusNavigationContext"]
+  GETTABLEKS R11 R12 K12 ["Provider"]
+  DUPTABLE R12 K14 [{"value"}]
+  GETUPVAL R13 7
+  SETTABLEKS R13 R12 K13 ["value"]
+  NEWTABLE R13 1 0
+  GETUPVAL R15 8
+  GETTABLEKS R14 R15 K15 ["AbuseReportMenuRootName"]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K2 ["createElement"]
+  GETUPVAL R16 9
+  MOVE R17 R0
+  CALL R15 2 1
+  SETTABLE R15 R13 R14
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K9 ["FocusNavigationProvider"]
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K5 ["LocalizationProvider"]
+  CALL R2 3 -1
+  RETURN R2 -1
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 4
+  DUPTABLE R4 K4 [{"withDarkTheme"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K3 ["withDarkTheme"]
+  DUPTABLE R5 K6 [{"LocalizationProvider"}]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K2 ["createElement"]
+  GETUPVAL R7 5
+  DUPTABLE R8 K8 [{"localization"}]
+  SETTABLEKS R1 R8 K7 ["localization"]
+  DUPTABLE R9 K10 [{"FocusNavigationProvider"}]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K2 ["createElement"]
+  GETUPVAL R13 6
+  GETTABLEKS R12 R13 K11 ["FocusNavigationContext"]
+  GETTABLEKS R11 R12 K12 ["Provider"]
+  DUPTABLE R12 K14 [{"value"}]
+  GETUPVAL R13 7
+  SETTABLEKS R13 R12 K13 ["value"]
+  DUPTABLE R13 K17 [{"FocusNavigationCoreScriptsWrapper"}]
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K2 ["createElement"]
+  GETUPVAL R15 10
+  DUPTABLE R16 K22 [{"selectionGroupName", "focusNavigableSurfaceIdentifier", "automaticSize", "size"}]
+  GETUPVAL R18 8
+  GETTABLEKS R17 R18 K15 ["AbuseReportMenuRootName"]
+  SETTABLEKS R17 R16 K18 ["selectionGroupName"]
+  GETUPVAL R18 11
+  GETTABLEKS R17 R18 K23 ["RouterView"]
+  SETTABLEKS R17 R16 K19 ["focusNavigableSurfaceIdentifier"]
+  GETIMPORT R17 K27 [Enum.AutomaticSize.Y]
+  SETTABLEKS R17 R16 K20 ["automaticSize"]
+  GETIMPORT R17 K29 [UDim2.new]
+  LOADN R18 1
+  LOADN R19 0
+  LOADN R20 0
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K21 ["size"]
+  NEWTABLE R17 1 0
+  GETUPVAL R19 8
+  GETTABLEKS R18 R19 K15 ["AbuseReportMenuRootName"]
+  GETUPVAL R20 3
+  GETTABLEKS R19 R20 K2 ["createElement"]
+  GETUPVAL R20 9
+  MOVE R21 R0
+  CALL R19 2 1
+  SETTABLE R19 R17 R18
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K16 ["FocusNavigationCoreScriptsWrapper"]
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K9 ["FocusNavigationProvider"]
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K5 ["LocalizationProvider"]
+  CALL R2 3 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K5 [game]
+  LOADK R4 K8 ["IXPService"]
+  NAMECALL R2 R2 K7 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K5 [game]
+  LOADK R5 K9 ["LocalizationService"]
+  NAMECALL R3 R3 K7 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K5 [game]
+  LOADK R6 K10 ["Players"]
+  NAMECALL R4 R4 K7 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K12 [require]
+  GETTABLEKS R7 R1 K13 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["React"]
+  CALL R5 1 1
+  GETIMPORT R6 K12 [require]
+  GETTABLEKS R9 R1 K15 ["Workspace"]
+  GETTABLEKS R8 R9 K13 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["Style"]
+  CALL R6 1 1
+  GETIMPORT R7 K12 [require]
+  GETTABLEKS R9 R0 K17 ["Components"]
+  GETTABLEKS R8 R9 K18 ["ReportTypeSelector"]
+  CALL R7 1 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R10 R0 K17 ["Components"]
+  GETTABLEKS R9 R10 K19 ["Constants"]
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K20 ["ReportModes"]
+  GETTABLEKS R10 R8 K21 ["ReportTypes"]
+  GETIMPORT R11 K12 [require]
+  GETTABLEKS R13 R0 K17 ["Components"]
+  GETTABLEKS R12 R13 K22 ["SelectInSceneReportMenu"]
+  CALL R11 1 1
+  GETIMPORT R12 K12 [require]
+  GETTABLEKS R15 R0 K17 ["Components"]
+  GETTABLEKS R14 R15 K23 ["Containers"]
+  GETTABLEKS R13 R14 K24 ["ReportPersonMenuItemsContainer"]
+  CALL R12 1 1
+  GETIMPORT R13 K12 [require]
+  GETTABLEKS R16 R0 K17 ["Components"]
+  GETTABLEKS R15 R16 K23 ["Containers"]
+  GETTABLEKS R14 R15 K25 ["ReportExperienceMenuItemsContainer"]
+  CALL R13 1 1
+  GETIMPORT R14 K12 [require]
+  GETTABLEKS R17 R0 K26 ["ReportAnything"]
+  GETTABLEKS R16 R17 K27 ["Utility"]
+  GETTABLEKS R15 R16 K28 ["ReportAnythingAnalytics"]
+  CALL R14 1 1
+  GETIMPORT R15 K12 [require]
+  GETTABLEKS R17 R0 K29 ["Analytics"]
+  GETTABLEKS R16 R17 K30 ["ReportAbuseAnalytics"]
+  CALL R15 1 1
+  GETIMPORT R16 K12 [require]
+  GETTABLEKS R19 R0 K26 ["ReportAnything"]
+  GETTABLEKS R18 R19 K17 ["Components"]
+  GETTABLEKS R17 R18 K31 ["AnnotationModal"]
+  CALL R16 1 1
+  GETIMPORT R17 K12 [require]
+  GETTABLEKS R19 R0 K17 ["Components"]
+  GETTABLEKS R18 R19 K32 ["ModalBasedSelectorDialogController"]
+  CALL R17 1 1
+  GETIMPORT R19 K12 [require]
+  GETTABLEKS R22 R1 K15 ["Workspace"]
+  GETTABLEKS R21 R22 K13 ["Packages"]
+  GETTABLEKS R20 R21 K33 ["InExperienceLocales"]
+  CALL R19 1 1
+  GETTABLEKS R18 R19 K34 ["Localization"]
+  GETIMPORT R20 K12 [require]
+  GETTABLEKS R23 R1 K15 ["Workspace"]
+  GETTABLEKS R22 R23 K13 ["Packages"]
+  GETTABLEKS R21 R22 K34 ["Localization"]
+  CALL R20 1 1
+  GETTABLEKS R19 R20 K35 ["LocalizationProvider"]
+  GETIMPORT R22 K12 [require]
+  GETTABLEKS R25 R1 K15 ["Workspace"]
+  GETTABLEKS R24 R25 K13 ["Packages"]
+  GETTABLEKS R23 R24 K34 ["Localization"]
+  CALL R22 1 1
+  GETTABLEKS R21 R22 K36 ["Hooks"]
+  GETTABLEKS R20 R21 K37 ["useLocalization"]
+  GETIMPORT R21 K12 [require]
+  GETTABLEKS R23 R0 K36 ["Hooks"]
+  GETTABLEKS R22 R23 K38 ["useReportAnythingWithScreenshot"]
+  CALL R21 1 1
+  GETIMPORT R22 K12 [require]
+  GETTABLEKS R24 R0 K27 ["Utility"]
+  GETTABLEKS R23 R24 K39 ["getMenuItemSizings"]
+  CALL R22 1 1
+  GETIMPORT R23 K12 [require]
+  GETTABLEKS R25 R0 K40 ["Reducers"]
+  GETTABLEKS R24 R25 K41 ["analyticsReducer"]
+  CALL R23 1 1
+  GETIMPORT R24 K12 [require]
+  GETTABLEKS R26 R0 K17 ["Components"]
+  GETTABLEKS R25 R26 K42 ["createCleanup"]
+  CALL R24 1 1
+  GETIMPORT R25 K12 [require]
+  GETTABLEKS R28 R1 K15 ["Workspace"]
+  GETTABLEKS R27 R28 K13 ["Packages"]
+  GETTABLEKS R26 R27 K43 ["DsaIllegalContentReporting"]
+  CALL R25 1 1
+  GETTABLEKS R26 R25 K44 ["isShowEUDSAIllegalContentReportingLink"]
+  GETTABLEKS R27 R25 K45 ["DSAReportLink"]
+  GETTABLEKS R28 R6 K46 ["StyleProviderWithDefaultTheme"]
+  GETIMPORT R29 K12 [require]
+  GETTABLEKS R31 R1 K13 ["Packages"]
+  GETTABLEKS R30 R31 K47 ["ReactFocusNavigation"]
+  CALL R29 1 1
+  GETIMPORT R30 K12 [require]
+  GETTABLEKS R33 R1 K15 ["Workspace"]
+  GETTABLEKS R32 R33 K13 ["Packages"]
+  GETTABLEKS R31 R32 K48 ["FocusNavigationUtils"]
+  CALL R30 1 1
+  GETTABLEKS R31 R30 K49 ["FocusNavigationCoreScriptsWrapper"]
+  GETTABLEKS R32 R30 K50 ["FocusNavigableSurfaceIdentifierEnum"]
+  GETTABLEKS R34 R29 K51 ["FocusNavigationService"]
+  GETTABLEKS R33 R34 K52 ["new"]
+  GETTABLEKS R35 R29 K53 ["EngineInterface"]
+  GETTABLEKS R34 R35 K54 ["CoreGui"]
+  CALL R33 1 1
+  GETIMPORT R35 K12 [require]
+  GETTABLEKS R38 R1 K15 ["Workspace"]
+  GETTABLEKS R37 R38 K13 ["Packages"]
+  GETTABLEKS R36 R37 K55 ["SharedFlags"]
+  CALL R35 1 1
+  GETTABLEKS R34 R35 K56 ["GetFFlagSelectInSceneReportMenu"]
+  GETIMPORT R36 K12 [require]
+  GETTABLEKS R39 R1 K15 ["Workspace"]
+  GETTABLEKS R38 R39 K13 ["Packages"]
+  GETTABLEKS R37 R38 K55 ["SharedFlags"]
+  CALL R36 1 1
+  GETTABLEKS R35 R36 K57 ["GetFFlagAbuseReportMenuConsoleSupportRefactor"]
+  GETIMPORT R37 K12 [require]
+  GETTABLEKS R40 R1 K15 ["Workspace"]
+  GETTABLEKS R39 R40 K13 ["Packages"]
+  GETTABLEKS R38 R39 K55 ["SharedFlags"]
+  CALL R37 1 1
+  GETTABLEKS R36 R37 K58 ["FStringReportMenuIXPLayer"]
+  GETIMPORT R37 K5 [game]
+  LOADK R39 K59 ["SelectInSceneIXPField"]
+  LOADK R40 K60 ["EnableSelectInScene"]
+  NAMECALL R37 R37 K61 ["DefineFastString"]
+  CALL R37 3 1
+  GETIMPORT R38 K12 [require]
+  GETTABLEKS R40 R0 K27 ["Utility"]
+  GETTABLEKS R39 R40 K62 ["isShowSelectInSceneReportMenu"]
+  CALL R38 1 1
+  GETIMPORT R39 K12 [require]
+  GETTABLEKS R41 R1 K13 ["Packages"]
+  GETTABLEKS R40 R41 K63 ["UIBlox"]
+  CALL R39 1 1
+  GETTABLEKS R42 R39 K64 ["App"]
+  GETTABLEKS R41 R42 K65 ["Control"]
+  GETTABLEKS R40 R41 K66 ["SegmentedControl"]
+  NEWTABLE R41 0 2
+  GETTABLEKS R42 R9 K67 ["Classic"]
+  GETTABLEKS R43 R9 K68 ["SelectInScene"]
+  SETLIST R41 R42 2 [1]
+  NEWTABLE R42 0 2
+  GETTABLEKS R43 R10 K69 ["Person"]
+  GETTABLEKS R44 R10 K70 ["Experience"]
+  SETLIST R42 R43 2 [1]
+  DUPCLOSURE R43 K71 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R36
+  CAPTURE VAL R37
+  DUPCLOSURE R44 K72 [PROTO_16]
+  CAPTURE VAL R5
+  CAPTURE VAL R23
+  CAPTURE VAL R8
+  CAPTURE VAL R41
+  CAPTURE VAL R42
+  CAPTURE VAL R24
+  CAPTURE VAL R21
+  CAPTURE VAL R22
+  CAPTURE VAL R20
+  CAPTURE VAL R16
+  CAPTURE VAL R17
+  CAPTURE VAL R15
+  CAPTURE VAL R34
+  CAPTURE VAL R4
+  CAPTURE VAL R38
+  CAPTURE VAL R2
+  CAPTURE VAL R36
+  CAPTURE VAL R37
+  CAPTURE VAL R14
+  CAPTURE VAL R10
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R35
+  CAPTURE VAL R31
+  CAPTURE VAL R32
+  CAPTURE VAL R40
+  CAPTURE VAL R9
+  CAPTURE VAL R11
+  CAPTURE VAL R7
+  CAPTURE VAL R26
+  CAPTURE VAL R27
+  DUPCLOSURE R45 K73 [PROTO_17]
+  CAPTURE VAL R18
+  CAPTURE VAL R3
+  CAPTURE VAL R35
+  CAPTURE VAL R5
+  CAPTURE VAL R28
+  CAPTURE VAL R19
+  CAPTURE VAL R29
+  CAPTURE VAL R33
+  CAPTURE VAL R8
+  CAPTURE VAL R44
+  CAPTURE VAL R31
+  CAPTURE VAL R32
+  RETURN R45 1

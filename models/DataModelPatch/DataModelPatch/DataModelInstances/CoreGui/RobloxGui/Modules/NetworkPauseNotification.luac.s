@@ -1,0 +1,570 @@
+PROTO_0:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+2]
+  LOADN R0 0
+  JUMP [+1]
+  LOADN R0 1
+  GETUPVAL R1 1
+  LOADK R2 K0 ["ImageLabel"]
+  CALL R1 1 1
+  NEWTABLE R2 16 5
+  LOADK R8 K1 ["NetworkPause"]
+  SETTABLEKS R8 R2 K2 ["Name"]
+  LOADK R8 K3 ["rbxasset://textures/ui/PurchasePrompt/LoadingBG.png"]
+  SETTABLEKS R8 R2 K4 ["Image"]
+  GETIMPORT R8 K8 [Enum.ScaleType.Slice]
+  SETTABLEKS R8 R2 K6 ["ScaleType"]
+  GETIMPORT R8 K11 [Rect.new]
+  LOADN R9 8
+  LOADN R10 8
+  LOADN R11 12
+  LOADN R12 12
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K12 ["SliceCenter"]
+  GETIMPORT R8 K14 [Vector2.new]
+  LOADK R9 K15 [0.5]
+  LOADK R10 K15 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R2 K16 ["AnchorPoint"]
+  GETIMPORT R8 K18 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K19 ["Size"]
+  GETIMPORT R8 K18 [UDim2.new]
+  LOADK R9 K15 [0.5]
+  LOADN R10 0
+  LOADK R11 K15 [0.5]
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R2 K20 ["Position"]
+  GETIMPORT R8 K23 [Color3.fromRGB]
+  LOADN R9 122
+  LOADN R10 122
+  LOADN R11 122
+  CALL R8 3 1
+  SETTABLEKS R8 R2 K24 ["ImageColor3"]
+  SETTABLEKS R0 R2 K25 ["ImageTransparency"]
+  LOADN R8 1
+  SETTABLEKS R8 R2 K26 ["BackgroundTransparency"]
+  GETUPVAL R3 1
+  LOADK R4 K27 ["UISizeConstraint"]
+  CALL R3 1 1
+  DUPTABLE R4 K29 [{"MaxSize"}]
+  GETIMPORT R5 K14 [Vector2.new]
+  LOADN R6 56
+  LOADN R7 251
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K28 ["MaxSize"]
+  CALL R3 1 1
+  GETUPVAL R4 1
+  LOADK R5 K30 ["UIPadding"]
+  CALL R4 1 1
+  DUPTABLE R5 K35 [{"PaddingTop", "PaddingLeft", "PaddingRight", "PaddingBottom"}]
+  GETIMPORT R6 K37 [UDim.new]
+  LOADN R7 0
+  LOADN R8 24
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K31 ["PaddingTop"]
+  GETIMPORT R6 K37 [UDim.new]
+  LOADN R7 0
+  LOADN R8 24
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K32 ["PaddingLeft"]
+  GETIMPORT R6 K37 [UDim.new]
+  LOADN R7 0
+  LOADN R8 24
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K33 ["PaddingRight"]
+  GETIMPORT R6 K37 [UDim.new]
+  LOADN R7 0
+  LOADN R8 24
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K34 ["PaddingBottom"]
+  CALL R4 1 1
+  GETUPVAL R5 1
+  LOADK R6 K38 ["Frame"]
+  CALL R5 1 1
+  DUPTABLE R6 K41 [{"Name", "BorderSizePixel", "BackgroundColor3", "Size", "Position", "BackgroundTransparency"}]
+  LOADK R7 K42 ["Accent"]
+  SETTABLEKS R7 R6 K2 ["Name"]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K39 ["BorderSizePixel"]
+  GETIMPORT R7 K23 [Color3.fromRGB]
+  LOADN R8 66
+  LOADN R9 66
+  LOADN R10 66
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K40 ["BackgroundColor3"]
+  GETIMPORT R7 K18 [UDim2.new]
+  LOADN R8 1
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 1
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K19 ["Size"]
+  GETIMPORT R7 K18 [UDim2.new]
+  LOADN R8 0
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 88
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K20 ["Position"]
+  SETTABLEKS R0 R6 K26 ["BackgroundTransparency"]
+  CALL R5 1 1
+  GETUPVAL R6 1
+  LOADK R7 K38 ["Frame"]
+  CALL R6 1 1
+  NEWTABLE R7 4 2
+  LOADK R10 K43 ["Upper"]
+  SETTABLEKS R10 R7 K2 ["Name"]
+  GETIMPORT R10 K18 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 88
+  CALL R10 4 1
+  SETTABLEKS R10 R7 K19 ["Size"]
+  LOADN R10 1
+  SETTABLEKS R10 R7 K26 ["BackgroundTransparency"]
+  GETUPVAL R8 1
+  LOADK R9 K38 ["Frame"]
+  CALL R8 1 1
+  NEWTABLE R9 8 1
+  LOADK R11 K44 ["IconContainer"]
+  SETTABLEKS R11 R9 K2 ["Name"]
+  GETIMPORT R11 K18 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 40
+  LOADN R14 0
+  LOADN R15 37
+  CALL R11 4 1
+  SETTABLEKS R11 R9 K19 ["Size"]
+  GETIMPORT R11 K14 [Vector2.new]
+  LOADK R12 K15 [0.5]
+  LOADN R13 0
+  CALL R11 2 1
+  SETTABLEKS R11 R9 K16 ["AnchorPoint"]
+  GETIMPORT R11 K18 [UDim2.new]
+  LOADK R12 K15 [0.5]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R9 K20 ["Position"]
+  LOADN R11 1
+  SETTABLEKS R11 R9 K26 ["BackgroundTransparency"]
+  GETUPVAL R10 1
+  LOADK R11 K0 ["ImageLabel"]
+  CALL R10 1 1
+  DUPTABLE R11 K45 [{"Name", "BackgroundTransparency", "Image", "Size", "Position", "AnchorPoint", "ImageTransparency"}]
+  LOADK R12 K46 ["Icon"]
+  SETTABLEKS R12 R11 K2 ["Name"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K26 ["BackgroundTransparency"]
+  LOADK R12 K47 ["rbxasset://textures/ui/NetworkPause/no connection.png"]
+  SETTABLEKS R12 R11 K4 ["Image"]
+  GETUPVAL R12 2
+  SETTABLEKS R12 R11 K19 ["Size"]
+  GETIMPORT R12 K18 [UDim2.new]
+  LOADK R13 K15 [0.5]
+  LOADN R14 0
+  LOADK R15 K48 [0.88]
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K20 ["Position"]
+  GETIMPORT R12 K14 [Vector2.new]
+  LOADK R13 K15 [0.5]
+  LOADK R14 K48 [0.88]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K16 ["AnchorPoint"]
+  SETTABLEKS R0 R11 K25 ["ImageTransparency"]
+  CALL R10 1 -1
+  SETLIST R9 R10 -1 [1]
+  CALL R8 1 1
+  GETUPVAL R9 1
+  LOADK R10 K49 ["TextLabel"]
+  CALL R9 1 1
+  DUPTABLE R10 K56 [{"Name", "Font", "Text", "TextSize", "TextWrapped", "Size", "Position", "BackgroundTransparency", "TextColor3", "TextTransparency"}]
+  LOADK R11 K57 ["Label"]
+  SETTABLEKS R11 R10 K2 ["Name"]
+  GETUPVAL R12 3
+  GETTABLEKS R11 R12 K58 ["default"]
+  NAMECALL R11 R11 K59 ["getBold"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K50 ["Font"]
+  GETUPVAL R12 4
+  JUMPIFNOT R12 [+6]
+  GETUPVAL R11 5
+  LOADK R13 K60 ["InGame.GameplayPaused.Title"]
+  NAMECALL R11 R11 K61 ["FormatByKey"]
+  CALL R11 2 1
+  JUMPIF R11 [+1]
+  LOADK R11 K62 ["Gameplay Paused"]
+  SETTABLEKS R11 R10 K51 ["Text"]
+  LOADN R11 22
+  SETTABLEKS R11 R10 K52 ["TextSize"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K53 ["TextWrapped"]
+  GETIMPORT R11 K18 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 22
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K19 ["Size"]
+  GETIMPORT R11 K18 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 54
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K20 ["Position"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K26 ["BackgroundTransparency"]
+  GETIMPORT R11 K23 [Color3.fromRGB]
+  LOADN R12 255
+  LOADN R13 255
+  LOADN R14 255
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K54 ["TextColor3"]
+  SETTABLEKS R0 R10 K55 ["TextTransparency"]
+  CALL R9 1 -1
+  SETLIST R7 R8 -1 [1]
+  CALL R6 1 1
+  GETUPVAL R7 1
+  LOADK R8 K49 ["TextLabel"]
+  CALL R7 1 1
+  DUPTABLE R8 K63 [{"Name", "Font", "Text", "TextColor3", "TextSize", "TextWrapped", "Position", "Size", "BackgroundTransparency", "TextTransparency"}]
+  LOADK R9 K64 ["Lower"]
+  SETTABLEKS R9 R8 K2 ["Name"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K58 ["default"]
+  NAMECALL R9 R9 K65 ["getDefault"]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K50 ["Font"]
+  GETUPVAL R10 4
+  JUMPIFNOT R10 [+6]
+  GETUPVAL R9 5
+  LOADK R11 K66 ["InGame.GameplayPaused.Body"]
+  NAMECALL R9 R9 K61 ["FormatByKey"]
+  CALL R9 2 1
+  JUMPIF R9 [+1]
+  LOADK R9 K67 ["Gameplay has been paused: please wait while the game content loads."]
+  SETTABLEKS R9 R8 K51 ["Text"]
+  GETIMPORT R9 K23 [Color3.fromRGB]
+  LOADN R10 190
+  LOADN R11 190
+  LOADN R12 190
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K54 ["TextColor3"]
+  LOADN R9 18
+  SETTABLEKS R9 R8 K52 ["TextSize"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K53 ["TextWrapped"]
+  GETIMPORT R9 K18 [UDim2.new]
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 89
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K20 ["Position"]
+  GETIMPORT R9 K18 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADN R12 1
+  LOADN R13 167
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K19 ["Size"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K26 ["BackgroundTransparency"]
+  SETTABLEKS R0 R8 K55 ["TextTransparency"]
+  CALL R7 1 -1
+  SETLIST R2 R3 -1 [1]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["ImageTransparency"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["Lower"]
+  SETTABLEKS R0 R1 K2 ["TextTransparency"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["Accent"]
+  SETTABLEKS R0 R1 K4 ["BackgroundTransparency"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K5 ["Upper"]
+  GETTABLEKS R1 R2 K6 ["Label"]
+  SETTABLEKS R0 R1 K2 ["TextTransparency"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["Upper"]
+  GETTABLEKS R2 R3 K7 ["IconContainer"]
+  GETTABLEKS R1 R2 K8 ["Icon"]
+  SETTABLEKS R0 R1 K0 ["ImageTransparency"]
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R1 K3 [Enum.PlaybackState.Completed]
+  JUMPIFNOTEQ R0 R1 [+15]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["Upper"]
+  GETTABLEKS R2 R3 K5 ["IconContainer"]
+  GETTABLEKS R1 R2 K6 ["Icon"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K7 ["ImageTransparency"]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K8 ["Play"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  NEWTABLE R1 4 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  GETUPVAL R1 1
+  CALL R1 0 1
+  GETUPVAL R2 2
+  JUMPIF R2 [+9]
+  LOADK R4 K2 ["ImageTransparency"]
+  NAMECALL R2 R1 K3 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R1
+  NAMECALL R2 R2 K4 ["Connect"]
+  CALL R2 2 0
+  GETUPVAL R2 3
+  MOVE R4 R1
+  GETUPVAL R5 4
+  DUPTABLE R6 K5 [{"ImageTransparency"}]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K2 ["ImageTransparency"]
+  NAMECALL R2 R2 K6 ["Create"]
+  CALL R2 4 1
+  GETUPVAL R3 3
+  MOVE R5 R1
+  GETUPVAL R6 4
+  DUPTABLE R7 K5 [{"ImageTransparency"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K2 ["ImageTransparency"]
+  NAMECALL R3 R3 K6 ["Create"]
+  CALL R3 4 1
+  GETUPVAL R4 3
+  GETTABLEKS R8 R1 K7 ["Upper"]
+  GETTABLEKS R7 R8 K8 ["IconContainer"]
+  GETTABLEKS R6 R7 K9 ["Icon"]
+  GETUPVAL R7 5
+  DUPTABLE R8 K11 [{"Size", "ImageTransparency"}]
+  GETUPVAL R9 6
+  SETTABLEKS R9 R8 K10 ["Size"]
+  LOADK R9 K12 [0.75]
+  SETTABLEKS R9 R8 K2 ["ImageTransparency"]
+  NAMECALL R4 R4 K6 ["Create"]
+  CALL R4 4 1
+  GETUPVAL R5 2
+  JUMPIF R5 [+8]
+  GETTABLEKS R5 R2 K13 ["Completed"]
+  NEWCLOSURE R7 P1
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  NAMECALL R5 R5 K4 ["Connect"]
+  CALL R5 2 0
+  SETTABLEKS R1 R0 K14 ["__gui"]
+  LOADNIL R5
+  SETTABLEKS R5 R0 K15 ["__guiParent"]
+  LOADB R5 0
+  SETTABLEKS R5 R0 K16 ["__show"]
+  DUPTABLE R5 K20 [{"show", "hide", "pulse"}]
+  SETTABLEKS R2 R5 K17 ["show"]
+  SETTABLEKS R3 R5 K18 ["hide"]
+  SETTABLEKS R4 R5 K19 ["pulse"]
+  SETTABLEKS R5 R0 K21 ["__animations"]
+  RETURN R0 1
+
+PROTO_4:
+  GETTABLEKS R4 R0 K0 ["__gui"]
+  GETTABLEKS R3 R4 K1 ["Upper"]
+  GETTABLEKS R2 R3 K2 ["IconContainer"]
+  GETTABLEKS R1 R2 K3 ["Icon"]
+  GETUPVAL R2 0
+  SETTABLEKS R2 R1 K4 ["Size"]
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+28]
+  GETTABLEKS R4 R0 K0 ["__gui"]
+  GETTABLEKS R3 R4 K1 ["Upper"]
+  GETTABLEKS R2 R3 K2 ["IconContainer"]
+  GETTABLEKS R1 R2 K3 ["Icon"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K5 ["ImageTransparency"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K6 ["__show"]
+  GETTABLEKS R1 R0 K0 ["__gui"]
+  GETTABLEKS R2 R0 K7 ["__guiParent"]
+  SETTABLEKS R2 R1 K8 ["Parent"]
+  GETTABLEKS R2 R0 K9 ["__animations"]
+  GETTABLEKS R1 R2 K10 ["pulse"]
+  NAMECALL R1 R1 K11 ["Play"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R1 2
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R2 R0 K9 ["__animations"]
+  GETTABLEKS R1 R2 K12 ["hide"]
+  NAMECALL R1 R1 K13 ["Cancel"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K9 ["__animations"]
+  GETTABLEKS R1 R2 K14 ["show"]
+  NAMECALL R1 R1 K11 ["Play"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+16]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["__show"]
+  GETTABLEKS R1 R0 K1 ["__gui"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K2 ["Parent"]
+  GETTABLEKS R2 R0 K3 ["__animations"]
+  GETTABLEKS R1 R2 K4 ["pulse"]
+  NAMECALL R1 R1 K5 ["Cancel"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETTABLEKS R2 R0 K3 ["__animations"]
+  GETTABLEKS R1 R2 K4 ["pulse"]
+  NAMECALL R1 R1 K5 ["Cancel"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R2 R0 K3 ["__animations"]
+  GETTABLEKS R1 R2 K6 ["show"]
+  NAMECALL R1 R1 K5 ["Cancel"]
+  CALL R1 1 0
+  GETTABLEKS R2 R0 K3 ["__animations"]
+  GETTABLEKS R1 R2 K7 ["hide"]
+  NAMECALL R1 R1 K8 ["Play"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+10]
+  SETTABLEKS R1 R0 K0 ["__guiParent"]
+  GETTABLEKS R2 R0 K1 ["__show"]
+  JUMPIFNOT R2 [+9]
+  GETTABLEKS R2 R0 K2 ["__gui"]
+  SETTABLEKS R1 R2 K3 ["Parent"]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K2 ["__gui"]
+  SETTABLEKS R1 R2 K3 ["Parent"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K2 [UDim2.new]
+  LOADK R1 K3 [1.1]
+  LOADN R2 0
+  LOADK R3 K3 [1.1]
+  LOADN R4 0
+  CALL R0 4 1
+  GETIMPORT R1 K2 [UDim2.new]
+  LOADK R2 K4 [0.9]
+  LOADN R3 0
+  LOADK R4 K4 [0.9]
+  LOADN R5 0
+  CALL R1 4 1
+  GETIMPORT R2 K6 [game]
+  LOADK R4 K7 ["TweenService"]
+  NAMECALL R2 R2 K8 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K6 [game]
+  LOADK R5 K9 ["CoreGui"]
+  NAMECALL R3 R3 K8 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K10 ["RobloxGui"]
+  NAMECALL R4 R3 K11 ["WaitForChild"]
+  CALL R4 2 1
+  LOADK R7 K12 ["Modules"]
+  NAMECALL R5 R4 K11 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K6 [game]
+  LOADK R8 K13 ["CorePackages"]
+  NAMECALL R6 R6 K8 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R8 K15 [require]
+  GETTABLEKS R11 R6 K16 ["Workspace"]
+  GETTABLEKS R10 R11 K17 ["Packages"]
+  GETTABLEKS R9 R10 K18 ["Style"]
+  CALL R8 1 1
+  GETTABLEKS R7 R8 K19 ["AppFonts"]
+  GETIMPORT R8 K15 [require]
+  GETTABLEKS R9 R5 K20 ["RobloxTranslator"]
+  CALL R8 1 1
+  GETIMPORT R10 K15 [require]
+  GETTABLEKS R13 R6 K16 ["Workspace"]
+  GETTABLEKS R12 R13 K17 ["Packages"]
+  GETTABLEKS R11 R12 K21 ["AppCommonLib"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K22 ["Create"]
+  GETIMPORT R10 K24 [TweenInfo.new]
+  LOADK R11 K25 [0.15]
+  GETIMPORT R12 K29 [Enum.EasingStyle.Sine]
+  CALL R10 2 1
+  GETIMPORT R11 K24 [TweenInfo.new]
+  LOADK R12 K30 [0.6]
+  GETIMPORT R13 K29 [Enum.EasingStyle.Sine]
+  GETIMPORT R14 K33 [Enum.EasingDirection.InOut]
+  LOADN R15 255
+  LOADB R16 1
+  CALL R11 5 1
+  GETIMPORT R12 K6 [game]
+  LOADK R14 K34 ["LocalizeGameplayPaused"]
+  LOADB R15 0
+  NAMECALL R12 R12 K35 ["DefineFastFlag"]
+  CALL R12 3 1
+  GETIMPORT R13 K6 [game]
+  LOADK R15 K36 ["NetworkPauseNotifTweenCancel"]
+  LOADB R16 0
+  NAMECALL R13 R13 K35 ["DefineFastFlag"]
+  CALL R13 3 1
+  GETIMPORT R14 K6 [game]
+  LOADK R16 K37 ["NetworkPauseNoAnimation"]
+  LOADB R17 0
+  NAMECALL R14 R14 K35 ["DefineFastFlag"]
+  CALL R14 3 1
+  DUPCLOSURE R15 K38 [PROTO_0]
+  CAPTURE VAL R14
+  CAPTURE VAL R9
+  CAPTURE VAL R1
+  CAPTURE VAL R7
+  CAPTURE VAL R12
+  CAPTURE VAL R8
+  NEWTABLE R16 8 0
+  SETTABLEKS R16 R16 K39 ["__index"]
+  DUPCLOSURE R17 K40 [PROTO_3]
+  CAPTURE VAL R16
+  CAPTURE VAL R15
+  CAPTURE VAL R14
+  CAPTURE VAL R2
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R0
+  SETTABLEKS R17 R16 K1 ["new"]
+  DUPCLOSURE R17 K41 [PROTO_4]
+  CAPTURE VAL R1
+  CAPTURE VAL R14
+  CAPTURE VAL R13
+  SETTABLEKS R17 R16 K42 ["Show"]
+  DUPCLOSURE R17 K43 [PROTO_5]
+  CAPTURE VAL R14
+  CAPTURE VAL R13
+  SETTABLEKS R17 R16 K44 ["Hide"]
+  DUPCLOSURE R17 K45 [PROTO_6]
+  CAPTURE VAL R14
+  SETTABLEKS R17 R16 K46 ["SetParent"]
+  RETURN R16 1

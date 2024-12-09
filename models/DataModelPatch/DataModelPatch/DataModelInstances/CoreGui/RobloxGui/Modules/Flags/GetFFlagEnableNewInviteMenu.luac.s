@@ -1,0 +1,62 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["LocalPlayer"]
+  JUMPIF R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETIMPORT R0 K2 [game]
+  LOADK R2 K3 ["EnableNewInviteMenuStyle"]
+  NAMECALL R0 R0 K4 ["GetFastFlag"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+2]
+  LOADB R0 1
+  RETURN R0 1
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["LocalPlayer"]
+  GETIMPORT R1 K2 [game]
+  LOADK R3 K5 ["EnableNewInviteMenuStyleRollout"]
+  NAMECALL R1 R1 K6 ["GetFastInt"]
+  CALL R1 2 1
+  GETTABLEKS R3 R0 K8 ["UserId"]
+  MODK R2 R3 K7 [100]
+  JUMPIFNOTLT R2 R1 [+3]
+  LOADB R1 1
+  RETURN R1 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K9 ["default"]
+  NAMECALL R1 R1 K10 ["getStyleEnabled"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETTABLEKS R3 R1 K5 ["RobloxGui"]
+  GETTABLEKS R2 R3 K6 ["Modules"]
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R7 R2 K9 ["Settings"]
+  GETTABLEKS R6 R7 K10 ["Pages"]
+  GETTABLEKS R5 R6 K11 ["ShareGame"]
+  GETTABLEKS R4 R5 K12 ["NewInviteMenuExperimentManager"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K13 ["EnableNewInviteMenuStyleRollout"]
+  LOADN R7 0
+  NAMECALL R4 R4 K14 ["DefineFastInt"]
+  CALL R4 3 0
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K15 ["EnableNewInviteMenuStyle"]
+  LOADB R7 0
+  NAMECALL R4 R4 K16 ["DefineFastFlag"]
+  CALL R4 3 0
+  DUPCLOSURE R4 K17 [PROTO_0]
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  RETURN R4 1

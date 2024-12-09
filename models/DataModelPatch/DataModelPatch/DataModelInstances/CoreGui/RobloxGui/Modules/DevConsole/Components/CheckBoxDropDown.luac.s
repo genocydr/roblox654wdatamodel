@@ -1,0 +1,142 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["Children"]
+  GETTABLE R1 R2 R3
+  JUMPIF R1 [+2]
+  NEWTABLE R1 0 0
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["absolutePosition"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["frameWidth"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["elementHeight"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["numElements"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K6 ["dropdownTargetGui"]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K7 ["onCloseCheckBox"]
+  MUL R8 R4 R5
+  GETIMPORT R9 K10 [UDim2.new]
+  LOADN R10 0
+  MOVE R11 R3
+  LOADN R12 0
+  LOADN R14 24
+  ADD R13 R14 R8
+  CALL R9 4 1
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K11 ["createElement"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K12 ["Portal"]
+  DUPTABLE R12 K14 [{"target"}]
+  JUMPIFEQKNIL R6 [+3]
+  MOVE R13 R6
+  JUMPIF R13 [+8]
+  GETIMPORT R14 K16 [game]
+  LOADK R16 K17 ["CoreGui"]
+  NAMECALL R14 R14 K18 ["GetService"]
+  CALL R14 2 1
+  GETTABLEKS R13 R14 K19 ["DevConsoleMaster"]
+  SETTABLEKS R13 R12 K13 ["target"]
+  DUPTABLE R13 K21 [{"InputCatcher"}]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K11 ["createElement"]
+  LOADK R15 K22 ["Frame"]
+  NEWTABLE R16 4 0
+  GETIMPORT R17 K10 [UDim2.new]
+  LOADN R18 1
+  LOADN R19 0
+  LOADN R20 1
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K23 ["Size"]
+  GETIMPORT R17 K10 [UDim2.new]
+  LOADN R18 0
+  LOADN R19 0
+  LOADN R20 0
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K24 ["Position"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K25 ["BackgroundTransparency"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K26 ["Event"]
+  GETTABLEKS R17 R18 K27 ["InputEnded"]
+  SETTABLE R7 R16 R17
+  DUPTABLE R17 K29 [{"OuterFrame"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K11 ["createElement"]
+  LOADK R19 K30 ["ImageButton"]
+  DUPTABLE R20 K33 [{"Size", "AutoButtonColor", "Position", "BackgroundColor3", "BackgroundTransparency"}]
+  SETTABLEKS R9 R20 K23 ["Size"]
+  LOADB R21 0
+  SETTABLEKS R21 R20 K31 ["AutoButtonColor"]
+  SETTABLEKS R2 R20 K24 ["Position"]
+  GETUPVAL R23 1
+  GETTABLEKS R22 R23 K34 ["Color"]
+  GETTABLEKS R21 R22 K35 ["TextBoxGray"]
+  SETTABLEKS R21 R20 K32 ["BackgroundColor3"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K25 ["BackgroundTransparency"]
+  DUPTABLE R21 K37 [{"innerFrame"}]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K11 ["createElement"]
+  LOADK R23 K22 ["Frame"]
+  DUPTABLE R24 K38 [{"Position", "Size", "BackgroundTransparency"}]
+  GETIMPORT R25 K10 [UDim2.new]
+  LOADN R26 0
+  LOADN R27 12
+  LOADN R28 0
+  LOADN R29 12
+  CALL R25 4 1
+  SETTABLEKS R25 R24 K24 ["Position"]
+  GETIMPORT R25 K10 [UDim2.new]
+  LOADN R26 0
+  MOVE R27 R3
+  LOADN R28 0
+  MOVE R29 R8
+  CALL R25 4 1
+  SETTABLEKS R25 R24 K23 ["Size"]
+  LOADN R25 1
+  SETTABLEKS R25 R24 K25 ["BackgroundTransparency"]
+  MOVE R25 R1
+  CALL R22 3 1
+  SETTABLEKS R22 R21 K36 ["innerFrame"]
+  CALL R18 3 1
+  SETTABLEKS R18 R17 K28 ["OuterFrame"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K20 ["InputCatcher"]
+  CALL R10 3 -1
+  RETURN R10 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K4 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETTABLEKS R1 R2 K5 ["RobloxGui"]
+  GETIMPORT R2 K7 [require]
+  GETTABLEKS R4 R0 K8 ["Packages"]
+  GETTABLEKS R3 R4 K9 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K7 [require]
+  GETIMPORT R7 K11 [script]
+  GETTABLEKS R6 R7 K12 ["Parent"]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K13 ["Constants"]
+  CALL R3 1 1
+  GETTABLEKS R4 R2 K14 ["Component"]
+  LOADK R6 K15 ["CheckBoxDropDown"]
+  NAMECALL R4 R4 K16 ["extend"]
+  CALL R4 2 1
+  DUPCLOSURE R5 K17 [PROTO_0]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  SETTABLEKS R5 R4 K18 ["render"]
+  RETURN R4 1

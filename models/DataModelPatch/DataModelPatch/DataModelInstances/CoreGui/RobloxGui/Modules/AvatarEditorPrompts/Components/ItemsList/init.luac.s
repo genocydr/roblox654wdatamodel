@@ -1,0 +1,864 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["frameRef"]
+  NAMECALL R0 R0 K1 ["getValue"]
+  CALL R0 1 1
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["itemListScrollableUpdated"]
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["state"]
+  GETTABLEKS R2 R3 K5 ["canvasSizeY"]
+  GETTABLEKS R4 R0 K6 ["AbsoluteSize"]
+  GETTABLEKS R3 R4 K7 ["Y"]
+  JUMPIFLT R3 R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K8 ["lastWasScrollable"]
+  JUMPIFEQ R1 R2 [+15]
+  GETUPVAL R2 0
+  SETTABLEKS R1 R2 K8 ["lastWasScrollable"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["props"]
+  GETTABLEKS R2 R3 K3 ["itemListScrollableUpdated"]
+  MOVE R3 R1
+  GETTABLEKS R5 R0 K6 ["AbsoluteSize"]
+  GETTABLEKS R4 R5 K7 ["Y"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"canvasSizeY"}]
+  GETTABLEKS R5 R0 K2 ["AbsoluteContentSize"]
+  GETTABLEKS R4 R5 K3 ["Y"]
+  SETTABLEKS R4 R3 K0 ["canvasSizeY"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["frameRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETTABLEKS R3 R0 K2 ["AbsolutePosition"]
+  GETTABLEKS R2 R3 K3 ["Y"]
+  GETTABLEKS R4 R1 K2 ["AbsolutePosition"]
+  GETTABLEKS R3 R4 K3 ["Y"]
+  JUMPIFNOTLT R2 R3 [+7]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K4 ["updateTopGradientVisibleBinding"]
+  LOADB R3 1
+  CALL R2 1 0
+  RETURN R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K4 ["updateTopGradientVisibleBinding"]
+  LOADB R3 0
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["frameRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETTABLEKS R4 R0 K2 ["AbsolutePosition"]
+  GETTABLEKS R3 R4 K3 ["Y"]
+  GETTABLEKS R5 R0 K4 ["AbsoluteSize"]
+  GETTABLEKS R4 R5 K3 ["Y"]
+  ADD R2 R3 R4
+  GETTABLEKS R5 R1 K2 ["AbsolutePosition"]
+  GETTABLEKS R4 R5 K3 ["Y"]
+  GETTABLEKS R6 R1 K4 ["AbsoluteSize"]
+  GETTABLEKS R5 R6 K3 ["Y"]
+  ADD R3 R4 R5
+  JUMPIFNOTLT R3 R2 [+7]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["updateBottomGradientVisibleBinding"]
+  LOADB R5 1
+  CALL R4 1 0
+  RETURN R0 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["updateBottomGradientVisibleBinding"]
+  LOADB R5 0
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["mounted"]
+  JUMPIFNOT R1 [+26]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["addAnalyticsInfo"]
+  GETTABLEKS R2 R0 K3 ["addedAssetIds"]
+  GETTABLEKS R3 R0 K4 ["removedAssetIds"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  DUPTABLE R3 K8 [{"loading", "addedAssetNames", "removedAssetNames"}]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K5 ["loading"]
+  GETTABLEKS R4 R0 K9 ["addedNames"]
+  SETTABLEKS R4 R3 K6 ["addedAssetNames"]
+  GETTABLEKS R4 R0 K10 ["removedNames"]
+  SETTABLEKS R4 R3 K7 ["removedAssetNames"]
+  NAMECALL R1 R1 K11 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["mounted"]
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 0
+  DUPTABLE R3 K2 [{"loading"}]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K1 ["loading"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["humanoidDescription"]
+  CALL R0 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  NEWCLOSURE R3 P1
+  CAPTURE UPVAL U1
+  NAMECALL R0 R0 K2 ["andThen"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R0 K2 [coroutine.wrap]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CALL R0 1 1
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"loading"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["loading"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["props"]
+  GETTABLEKS R0 R1 K4 ["humanoidDescription"]
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K5 ["loadAssetNames"]
+  CALL R0 0 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["props"]
+  GETTABLEKS R0 R1 K6 ["retryLoadDescription"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_9:
+  DUPTABLE R3 K4 [{"canvasSizeY", "loading", "addedAssetNames", "removedAssetNames"}]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K0 ["canvasSizeY"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K1 ["loading"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K2 ["addedAssetNames"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K3 ["removedAssetNames"]
+  NAMECALL R1 R0 K5 ["setState"]
+  CALL R1 2 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K6 ["mounted"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K8 ["frameRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K9 ["createBinding"]
+  LOADB R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K10 ["topGradientVisibleBinding"]
+  SETTABLEKS R2 R0 K11 ["updateTopGradientVisibleBinding"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K9 ["createBinding"]
+  LOADB R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K12 ["bottomGradientVisibleBinding"]
+  SETTABLEKS R2 R0 K13 ["updateBottomGradientVisibleBinding"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K14 ["addedSectionRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K15 ["removedSectionRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K7 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K16 ["noChangedAssetsRef"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K17 ["lastWasScrollable"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K18 ["checkIsScrollable"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K19 ["onContentSizeChanged"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K20 ["firstEntryPositionChanged"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K21 ["lastEntryPositionChanged"]
+  NEWCLOSURE R1 P4
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K22 ["loadAssetNames"]
+  NEWCLOSURE R1 P5
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K23 ["onRetryLoading"]
+  RETURN R0 0
+
+PROTO_10:
+  NEWTABLE R1 0 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["addedAssetNames"]
+  LENGTH R2 R3
+  LOADN R3 0
+  JUMPIFNOTLT R3 R2 [+91]
+  GETUPVAL R2 0
+  LOADK R4 K2 ["CoreScripts.AvatarEditorPrompts.Adding"]
+  NAMECALL R2 R2 K3 ["FormatByKey"]
+  CALL R2 2 1
+  MOVE R4 R1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K5 ["Focusable"]
+  GETUPVAL R8 3
+  GETTABLE R6 R7 R8
+  NEWTABLE R7 8 0
+  SETTABLEKS R2 R7 K6 ["headerText"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K1 ["addedAssetNames"]
+  SETTABLEKS R8 R7 K7 ["items"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K8 ["layoutOrder"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K9 ["isFirstSection"]
+  GETTABLEKS R11 R0 K0 ["state"]
+  GETTABLEKS R10 R11 K10 ["removedAssetNames"]
+  LENGTH R9 R10
+  JUMPIFEQKN R9 K11 [0] [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K12 ["isLastSection"]
+  GETTABLEKS R8 R0 K13 ["removedSectionRef"]
+  SETTABLEKS R8 R7 K14 ["NextSelectionDown"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K15 ["Ref"]
+  GETTABLEKS R9 R0 K16 ["addedSectionRef"]
+  SETTABLE R9 R7 R8
+  CALL R5 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R3 K19 [table.insert]
+  CALL R3 -1 0
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K10 ["removedAssetNames"]
+  LENGTH R3 R4
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+27]
+  MOVE R4 R1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  LOADK R6 K20 ["Frame"]
+  DUPTABLE R7 K24 [{"BackgroundTransparency", "Size", "LayoutOrder"}]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K21 ["BackgroundTransparency"]
+  GETIMPORT R8 K27 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 20
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K22 ["Size"]
+  LOADN R8 2
+  SETTABLEKS R8 R7 K23 ["LayoutOrder"]
+  CALL R5 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R3 K19 [table.insert]
+  CALL R3 -1 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K10 ["removedAssetNames"]
+  LENGTH R2 R3
+  LOADN R3 0
+  JUMPIFNOTLT R3 R2 [+57]
+  GETUPVAL R2 0
+  LOADK R4 K28 ["CoreScripts.AvatarEditorPrompts.Removing"]
+  NAMECALL R2 R2 K3 ["FormatByKey"]
+  CALL R2 2 1
+  MOVE R4 R1
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K5 ["Focusable"]
+  GETUPVAL R8 3
+  GETTABLE R6 R7 R8
+  NEWTABLE R7 8 0
+  SETTABLEKS R2 R7 K6 ["headerText"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K10 ["removedAssetNames"]
+  SETTABLEKS R8 R7 K7 ["items"]
+  LOADN R8 3
+  SETTABLEKS R8 R7 K8 ["layoutOrder"]
+  GETTABLEKS R11 R0 K0 ["state"]
+  GETTABLEKS R10 R11 K1 ["addedAssetNames"]
+  LENGTH R9 R10
+  JUMPIFEQKN R9 K11 [0] [+2]
+  LOADB R8 0 +1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K9 ["isFirstSection"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K12 ["isLastSection"]
+  GETTABLEKS R8 R0 K16 ["addedSectionRef"]
+  SETTABLEKS R8 R7 K29 ["NextSelectionUp"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K15 ["Ref"]
+  GETTABLEKS R9 R0 K13 ["removedSectionRef"]
+  SETTABLE R9 R7 R8
+  CALL R5 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R3 K19 [table.insert]
+  CALL R3 -1 0
+  LOADB R2 0
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K1 ["addedAssetNames"]
+  LENGTH R3 R4
+  JUMPIFNOTEQKN R3 K11 [0] [+10]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K10 ["removedAssetNames"]
+  LENGTH R3 R4
+  JUMPIFEQKN R3 K11 [0] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  JUMPIFNOT R2 [+42]
+  GETUPVAL R3 0
+  LOADK R5 K30 ["CoreScripts.AvatarEditorPrompts.NoChangedAssets"]
+  NAMECALL R3 R3 K3 ["FormatByKey"]
+  CALL R3 2 1
+  MOVE R5 R1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K4 ["createElement"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K5 ["Focusable"]
+  GETUPVAL R9 3
+  GETTABLE R7 R8 R9
+  NEWTABLE R8 8 0
+  SETTABLEKS R3 R8 K6 ["headerText"]
+  NEWTABLE R9 0 0
+  SETTABLEKS R9 R8 K7 ["items"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K8 ["layoutOrder"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K9 ["isFirstSection"]
+  LOADB R9 1
+  SETTABLEKS R9 R8 K12 ["isLastSection"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K15 ["Ref"]
+  GETTABLEKS R10 R0 K31 ["noChangedAssetsRef"]
+  SETTABLE R10 R8 R9
+  CALL R6 2 -1
+  FASTCALL TABLE_INSERT [+2]
+  GETIMPORT R4 K19 [table.insert]
+  CALL R4 -1 0
+  RETURN R1 1
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["Theme"]
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K1 ["createEntriesList"]
+  CALL R2 1 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  LOADK R4 K3 ["UIListLayout"]
+  NEWTABLE R5 8 0
+  GETIMPORT R6 K7 [Enum.FillDirection.Vertical]
+  SETTABLEKS R6 R5 K5 ["FillDirection"]
+  GETIMPORT R6 K10 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R6 R5 K8 ["HorizontalAlignment"]
+  GETIMPORT R6 K13 [UDim.new]
+  LOADN R7 0
+  LOADN R8 10
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K14 ["Padding"]
+  GETIMPORT R6 K17 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R6 R5 K15 ["SortOrder"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K18 ["Change"]
+  GETTABLEKS R6 R7 K19 ["AbsoluteContentSize"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K20 ["onContentSizeChanged"]
+  SETTABLE R7 R5 R6
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K21 ["Layout"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["createElement"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K22 ["Focusable"]
+  GETTABLEKS R4 R5 K23 ["Frame"]
+  NEWTABLE R5 4 0
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K24 ["addedSectionRef"]
+  SETTABLEKS R6 R5 K25 ["defaultChild"]
+  GETIMPORT R6 K28 [UDim2.fromScale]
+  LOADN R7 1
+  LOADN R8 1
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K29 ["Size"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K30 ["BackgroundTransparency"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K31 ["Ref"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K32 ["frameRef"]
+  SETTABLE R7 R5 R6
+  DUPTABLE R6 K36 [{"TopGradient", "ScrollView", "BottomGradient"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  LOADK R8 K23 ["Frame"]
+  DUPTABLE R9 K42 [{"Visible", "Size", "Position", "BackgroundColor3", "BorderSizePixel", "ZIndex"}]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K43 ["topGradientVisibleBinding"]
+  SETTABLEKS R10 R9 K37 ["Visible"]
+  GETIMPORT R10 K44 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 30
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K29 ["Size"]
+  GETIMPORT R10 K28 [UDim2.fromScale]
+  LOADN R11 0
+  LOADN R12 0
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K38 ["Position"]
+  GETIMPORT R10 K46 [Color3.new]
+  LOADN R11 1
+  LOADN R12 1
+  LOADN R13 1
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K39 ["BackgroundColor3"]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K40 ["BorderSizePixel"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K41 ["ZIndex"]
+  DUPTABLE R10 K48 [{"UIGradient"}]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K2 ["createElement"]
+  LOADK R12 K47 ["UIGradient"]
+  DUPTABLE R13 K52 [{"Rotation", "Color", "Transparency"}]
+  LOADN R14 90
+  SETTABLEKS R14 R13 K49 ["Rotation"]
+  GETIMPORT R14 K54 [ColorSequence.new]
+  NEWTABLE R15 0 2
+  GETIMPORT R16 K56 [ColorSequenceKeypoint.new]
+  LOADN R17 0
+  GETTABLEKS R19 R1 K57 ["BackgroundUIDefault"]
+  GETTABLEKS R18 R19 K50 ["Color"]
+  CALL R16 2 1
+  GETIMPORT R17 K56 [ColorSequenceKeypoint.new]
+  LOADN R18 1
+  GETTABLEKS R20 R1 K57 ["BackgroundUIDefault"]
+  GETTABLEKS R19 R20 K50 ["Color"]
+  CALL R17 2 -1
+  SETLIST R15 R16 -1 [1]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K50 ["Color"]
+  GETIMPORT R14 K59 [NumberSequence.new]
+  NEWTABLE R15 0 2
+  GETIMPORT R16 K61 [NumberSequenceKeypoint.new]
+  LOADN R17 0
+  LOADN R18 0
+  CALL R16 2 1
+  GETIMPORT R17 K61 [NumberSequenceKeypoint.new]
+  LOADN R18 1
+  LOADN R19 1
+  CALL R17 2 -1
+  SETLIST R15 R16 -1 [1]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K51 ["Transparency"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K47 ["UIGradient"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K33 ["TopGradient"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  GETUPVAL R8 3
+  DUPTABLE R9 K64 [{"size", "canvasSizeY"}]
+  GETIMPORT R10 K28 [UDim2.fromScale]
+  LOADN R11 1
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K62 ["size"]
+  GETIMPORT R10 K13 [UDim.new]
+  LOADN R11 0
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K65 ["state"]
+  GETTABLEKS R12 R13 K63 ["canvasSizeY"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K63 ["canvasSizeY"]
+  MOVE R10 R2
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K34 ["ScrollView"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K2 ["createElement"]
+  LOADK R8 K23 ["Frame"]
+  DUPTABLE R9 K67 [{"Visible", "Size", "Position", "AnchorPoint", "BackgroundColor3", "BorderSizePixel", "ZIndex"}]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K68 ["bottomGradientVisibleBinding"]
+  SETTABLEKS R10 R9 K37 ["Visible"]
+  GETIMPORT R10 K44 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 30
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K29 ["Size"]
+  GETIMPORT R10 K28 [UDim2.fromScale]
+  LOADN R11 0
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K38 ["Position"]
+  GETIMPORT R10 K70 [Vector2.new]
+  LOADN R11 0
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K66 ["AnchorPoint"]
+  GETIMPORT R10 K46 [Color3.new]
+  LOADN R11 1
+  LOADN R12 1
+  LOADN R13 1
+  CALL R10 3 1
+  SETTABLEKS R10 R9 K39 ["BackgroundColor3"]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K40 ["BorderSizePixel"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K41 ["ZIndex"]
+  DUPTABLE R10 K48 [{"UIGradient"}]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K2 ["createElement"]
+  LOADK R12 K47 ["UIGradient"]
+  DUPTABLE R13 K52 [{"Rotation", "Color", "Transparency"}]
+  LOADN R14 90
+  SETTABLEKS R14 R13 K49 ["Rotation"]
+  GETIMPORT R14 K54 [ColorSequence.new]
+  NEWTABLE R15 0 2
+  GETIMPORT R16 K56 [ColorSequenceKeypoint.new]
+  LOADN R17 0
+  GETTABLEKS R19 R1 K57 ["BackgroundUIDefault"]
+  GETTABLEKS R18 R19 K50 ["Color"]
+  CALL R16 2 1
+  GETIMPORT R17 K56 [ColorSequenceKeypoint.new]
+  LOADN R18 1
+  GETTABLEKS R20 R1 K57 ["BackgroundUIDefault"]
+  GETTABLEKS R19 R20 K50 ["Color"]
+  CALL R17 2 -1
+  SETLIST R15 R16 -1 [1]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K50 ["Color"]
+  GETIMPORT R14 K59 [NumberSequence.new]
+  NEWTABLE R15 0 2
+  GETIMPORT R16 K61 [NumberSequenceKeypoint.new]
+  LOADN R17 0
+  LOADN R18 1
+  CALL R16 2 1
+  GETIMPORT R17 K61 [NumberSequenceKeypoint.new]
+  LOADN R18 1
+  LOADN R19 0
+  CALL R17 2 -1
+  SETLIST R15 R16 -1 [1]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K51 ["Transparency"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K47 ["UIGradient"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K35 ["BottomGradient"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_12:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_13:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K4 [{"Size", "Position", "AnchorPoint"}]
+  GETIMPORT R4 K7 [UDim2.fromScale]
+  LOADN R5 1
+  LOADN R6 1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K1 ["Size"]
+  GETIMPORT R4 K7 [UDim2.fromScale]
+  LOADK R5 K8 [0.5]
+  LOADK R6 K8 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["Position"]
+  GETIMPORT R4 K11 [Vector2.new]
+  LOADK R5 K8 [0.5]
+  LOADK R6 K8 [0.5]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["AnchorPoint"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_14:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K4 [{"text", "size", "onActivated"}]
+  GETUPVAL R4 2
+  LOADK R6 K5 ["CoreScripts.AvatarEditorPrompts.ItemsListLoadingFailed"]
+  NAMECALL R4 R4 K6 ["FormatByKey"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K1 ["text"]
+  GETIMPORT R4 K9 [UDim2.fromScale]
+  LOADN R5 1
+  LOADN R6 1
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["size"]
+  GETTABLEKS R4 R0 K10 ["onRetryLoading"]
+  SETTABLEKS R4 R3 K3 ["onActivated"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_15:
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["loading"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R3 R0 K2 ["props"]
+  GETTABLEKS R2 R3 K3 ["loadingFailed"]
+  NOT R1 R2
+  JUMPIFNOT R1 [+4]
+  NAMECALL R2 R0 K4 ["renderLoading"]
+  CALL R2 1 -1
+  RETURN R2 -1
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K5 ["addedAssetNames"]
+  JUMPIFNOT R2 [+4]
+  NAMECALL R2 R0 K6 ["renderItemsList"]
+  CALL R2 1 -1
+  RETURN R2 -1
+  NAMECALL R2 R0 K7 ["renderFailed"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_16:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  GETTABLEKS R2 R0 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["humanoidDescription"]
+  JUMPIFNOT R1 [+3]
+  GETTABLEKS R1 R0 K3 ["loadAssetNames"]
+  CALL R1 0 0
+  GETTABLEKS R1 R0 K4 ["checkIsScrollable"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_17:
+  GETTABLEKS R3 R0 K0 ["checkIsScrollable"]
+  CALL R3 0 0
+  GETTABLEKS R3 R1 K1 ["humanoidDescription"]
+  GETTABLEKS R5 R0 K2 ["props"]
+  GETTABLEKS R4 R5 K1 ["humanoidDescription"]
+  JUMPIFEQ R3 R4 [+21]
+  DUPTABLE R5 K6 [{"loading", "addedAssetNames", "removedAssetNames"}]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K3 ["loading"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K7 ["None"]
+  SETTABLEKS R6 R5 K4 ["addedAssetNames"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K7 ["None"]
+  SETTABLEKS R6 R5 K5 ["removedAssetNames"]
+  NAMECALL R3 R0 K8 ["setState"]
+  CALL R3 2 0
+  GETTABLEKS R3 R0 K9 ["loadAssetNames"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_18:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["mounted"]
+  RETURN R0 0
+
+PROTO_19:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_20:
+  DUPTABLE R1 K1 [{"addAnalyticsInfo"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["addAnalyticsInfo"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactGamepad"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["RoactRodux"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R7 R0 K7 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["t"]
+  CALL R5 1 1
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R0 K7 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["UIBlox"]
+  CALL R6 1 1
+  GETTABLEKS R9 R6 K13 ["App"]
+  GETTABLEKS R8 R9 K14 ["Container"]
+  GETTABLEKS R7 R8 K15 ["VerticalScrollViewWithMargin"]
+  GETTABLEKS R9 R6 K16 ["Style"]
+  GETTABLEKS R8 R9 K17 ["withStyle"]
+  GETTABLEKS R11 R6 K13 ["App"]
+  GETTABLEKS R10 R11 K18 ["Loading"]
+  GETTABLEKS R9 R10 K19 ["ShimmerPanel"]
+  GETTABLEKS R12 R6 K13 ["App"]
+  GETTABLEKS R11 R12 K20 ["Indicator"]
+  GETTABLEKS R10 R11 K21 ["EmptyState"]
+  GETIMPORT R11 K6 [require]
+  GETIMPORT R13 K23 [script]
+  GETTABLEKS R12 R13 K24 ["ListSection"]
+  CALL R11 1 1
+  GETIMPORT R14 K23 [script]
+  GETTABLEKS R13 R14 K25 ["Parent"]
+  GETTABLEKS R12 R13 K25 ["Parent"]
+  GETIMPORT R13 K6 [require]
+  GETTABLEKS R14 R12 K26 ["GetAssetsDifference"]
+  CALL R13 1 1
+  GETIMPORT R14 K6 [require]
+  GETTABLEKS R16 R12 K27 ["Actions"]
+  GETTABLEKS R15 R16 K28 ["AddAnalyticsInfo"]
+  CALL R14 1 1
+  LOADK R17 K29 ["RobloxGui"]
+  NAMECALL R15 R1 K30 ["WaitForChild"]
+  CALL R15 2 1
+  GETIMPORT R16 K6 [require]
+  GETTABLEKS R18 R15 K31 ["Modules"]
+  GETTABLEKS R17 R18 K32 ["RobloxTranslator"]
+  CALL R16 1 1
+  GETTABLEKS R17 R2 K33 ["PureComponent"]
+  LOADK R19 K34 ["ItemsList"]
+  NAMECALL R17 R17 K35 ["extend"]
+  CALL R17 2 1
+  GETTABLEKS R18 R5 K36 ["strictInterface"]
+  DUPTABLE R19 K42 [{"humanoidDescription", "loadingFailed", "retryLoadDescription", "itemListScrollableUpdated", "addAnalyticsInfo"}]
+  GETTABLEKS R20 R5 K43 ["optional"]
+  GETTABLEKS R21 R5 K44 ["instanceOf"]
+  LOADK R22 K45 ["HumanoidDescription"]
+  CALL R21 1 -1
+  CALL R20 -1 1
+  SETTABLEKS R20 R19 K37 ["humanoidDescription"]
+  GETTABLEKS R20 R5 K46 ["boolean"]
+  SETTABLEKS R20 R19 K38 ["loadingFailed"]
+  GETTABLEKS R20 R5 K47 ["callback"]
+  SETTABLEKS R20 R19 K39 ["retryLoadDescription"]
+  GETTABLEKS R20 R5 K43 ["optional"]
+  GETTABLEKS R21 R5 K47 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K40 ["itemListScrollableUpdated"]
+  GETTABLEKS R20 R5 K47 ["callback"]
+  SETTABLEKS R20 R19 K41 ["addAnalyticsInfo"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K48 ["validateProps"]
+  DUPCLOSURE R18 K49 [PROTO_9]
+  CAPTURE VAL R2
+  CAPTURE VAL R13
+  SETTABLEKS R18 R17 K50 ["init"]
+  DUPCLOSURE R18 K51 [PROTO_10]
+  CAPTURE VAL R16
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R11
+  SETTABLEKS R18 R17 K52 ["createEntriesList"]
+  DUPCLOSURE R18 K53 [PROTO_12]
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  SETTABLEKS R18 R17 K54 ["renderItemsList"]
+  DUPCLOSURE R18 K55 [PROTO_13]
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  SETTABLEKS R18 R17 K56 ["renderLoading"]
+  DUPCLOSURE R18 K57 [PROTO_14]
+  CAPTURE VAL R2
+  CAPTURE VAL R10
+  CAPTURE VAL R16
+  SETTABLEKS R18 R17 K58 ["renderFailed"]
+  DUPCLOSURE R18 K59 [PROTO_15]
+  SETTABLEKS R18 R17 K60 ["render"]
+  DUPCLOSURE R18 K61 [PROTO_16]
+  SETTABLEKS R18 R17 K62 ["didMount"]
+  DUPCLOSURE R18 K63 [PROTO_17]
+  CAPTURE VAL R2
+  SETTABLEKS R18 R17 K64 ["didUpdate"]
+  DUPCLOSURE R18 K65 [PROTO_18]
+  SETTABLEKS R18 R17 K66 ["willUnmount"]
+  DUPCLOSURE R18 K67 [PROTO_20]
+  CAPTURE VAL R14
+  GETTABLEKS R19 R4 K68 ["connect"]
+  LOADNIL R20
+  MOVE R21 R18
+  CALL R19 2 1
+  MOVE R20 R17
+  CALL R19 1 -1
+  RETURN R19 -1

@@ -1,0 +1,438 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["player"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["Utils"]
+  GETTABLEKS R2 R3 K3 ["isPlayerVerified"]
+  MOVE R3 R1
+  CALL R2 1 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  LOADK R4 K5 ["TextButton"]
+  DUPTABLE R5 K11 [{"BackgroundTransparency", "Text", "Size", "LayoutOrder", "Selectable"}]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K6 ["BackgroundTransparency"]
+  LOADK R6 K12 [""]
+  SETTABLEKS R6 R5 K7 ["Text"]
+  GETIMPORT R6 K15 [UDim2.new]
+  LOADN R7 1
+  LOADN R8 0
+  LOADN R9 0
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K16 ["DropDownHeaderSizeY"]
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K8 ["Size"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K9 ["LayoutOrder"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K10 ["Selectable"]
+  DUPTABLE R6 K20 [{"Background", "AvatarImage", "Divider"}]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K21 ["ImageLabel"]
+  DUPTABLE R9 K26 [{"BackgroundTransparency", "Image", "ImageTransparency", "Size", "Position", "AnchorPoint"}]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K6 ["BackgroundTransparency"]
+  LOADK R10 K27 ["rbxasset://textures/ui/PlayerList/NewAvatarBackground.png"]
+  SETTABLEKS R10 R9 K22 ["Image"]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K23 ["ImageTransparency"]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K28 ["DropDownHeaderBackgroundSize"]
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K8 ["Size"]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 1
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K24 ["Position"]
+  GETIMPORT R10 K30 [Vector2.new]
+  LOADN R11 0
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K25 ["AnchorPoint"]
+  DUPTABLE R10 K32 [{"TextContainerFrame"}]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K4 ["createElement"]
+  LOADK R12 K33 ["Frame"]
+  DUPTABLE R13 K34 [{"BackgroundTransparency", "Size", "Position"}]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K6 ["BackgroundTransparency"]
+  GETIMPORT R14 K15 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 132
+  LOADN R17 1
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K8 ["Size"]
+  GETIMPORT R14 K15 [UDim2.new]
+  LOADN R15 0
+  LOADN R16 107
+  LOADN R17 0
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K24 ["Position"]
+  DUPTABLE R14 K38 [{"Layout", "DisplayName", "PlayerName"}]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K4 ["createElement"]
+  LOADK R16 K39 ["UIListLayout"]
+  DUPTABLE R17 K44 [{"SortOrder", "FillDirection", "Padding", "VerticalAlignment"}]
+  GETIMPORT R18 K46 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R18 R17 K40 ["SortOrder"]
+  GETIMPORT R18 K48 [Enum.FillDirection.Vertical]
+  SETTABLEKS R18 R17 K41 ["FillDirection"]
+  GETIMPORT R18 K50 [UDim.new]
+  LOADN R19 0
+  LOADN R20 0
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K42 ["Padding"]
+  GETIMPORT R18 K52 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R18 R17 K43 ["VerticalAlignment"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K35 ["Layout"]
+  JUMPIFNOT R2 [+58]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K4 ["createElement"]
+  GETUPVAL R16 4
+  DUPTABLE R17 K61 [{"fontStyle", "colorStyle", "fluidSizing", "emoji", "maxSize", "LayoutOrder", "Text", "TextXAlignment", "TextTruncate", "BackgroundTransparency", "TextScaled"}]
+  GETTABLEKS R19 R0 K62 ["Font"]
+  GETTABLEKS R18 R19 K63 ["Header2"]
+  SETTABLEKS R18 R17 K53 ["fontStyle"]
+  GETTABLEKS R19 R0 K64 ["Theme"]
+  GETTABLEKS R18 R19 K65 ["TextEmphasis"]
+  SETTABLEKS R18 R17 K54 ["colorStyle"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K55 ["fluidSizing"]
+  GETUPVAL R19 5
+  GETTABLEKS R18 R19 K66 ["Verified"]
+  SETTABLEKS R18 R17 K56 ["emoji"]
+  GETIMPORT R18 K30 [Vector2.new]
+  GETUPVAL R21 3
+  GETTABLEKS R20 R21 K68 ["PlayerDropDownSizeX"]
+  SUBK R19 R20 K67 [124]
+  LOADN R20 22
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K57 ["maxSize"]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K9 ["LayoutOrder"]
+  GETTABLEKS R18 R1 K36 ["DisplayName"]
+  SETTABLEKS R18 R17 K7 ["Text"]
+  GETIMPORT R18 K70 [Enum.TextXAlignment.Left]
+  SETTABLEKS R18 R17 K58 ["TextXAlignment"]
+  GETIMPORT R18 K72 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R18 R17 K59 ["TextTruncate"]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K6 ["BackgroundTransparency"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K60 ["TextScaled"]
+  CALL R15 2 1
+  JUMPIF R15 [+108]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K4 ["createElement"]
+  LOADK R16 K73 ["TextLabel"]
+  DUPTABLE R17 K77 [{"LayoutOrder", "Size", "Text", "Font", "TextSize", "TextColor3", "TextTransparency", "TextXAlignment", "TextTruncate", "BackgroundTransparency", "TextScaled"}]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K9 ["LayoutOrder"]
+  GETIMPORT R18 K15 [UDim2.new]
+  LOADN R19 1
+  LOADN R20 0
+  LOADN R21 0
+  LOADN R22 22
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K8 ["Size"]
+  GETTABLEKS R18 R1 K36 ["DisplayName"]
+  SETTABLEKS R18 R17 K7 ["Text"]
+  GETTABLEKS R20 R0 K62 ["Font"]
+  GETTABLEKS R19 R20 K63 ["Header2"]
+  GETTABLEKS R18 R19 K62 ["Font"]
+  SETTABLEKS R18 R17 K62 ["Font"]
+  GETTABLEKS R20 R0 K62 ["Font"]
+  GETTABLEKS R19 R20 K78 ["BaseSize"]
+  GETTABLEKS R22 R0 K62 ["Font"]
+  GETTABLEKS R21 R22 K63 ["Header2"]
+  GETTABLEKS R20 R21 K79 ["RelativeSize"]
+  MUL R18 R19 R20
+  SETTABLEKS R18 R17 K74 ["TextSize"]
+  GETTABLEKS R20 R0 K64 ["Theme"]
+  GETTABLEKS R19 R20 K65 ["TextEmphasis"]
+  GETTABLEKS R18 R19 K80 ["Color"]
+  SETTABLEKS R18 R17 K75 ["TextColor3"]
+  GETTABLEKS R20 R0 K64 ["Theme"]
+  GETTABLEKS R19 R20 K65 ["TextEmphasis"]
+  GETTABLEKS R18 R19 K81 ["Transparency"]
+  SETTABLEKS R18 R17 K76 ["TextTransparency"]
+  GETIMPORT R18 K70 [Enum.TextXAlignment.Left]
+  SETTABLEKS R18 R17 K58 ["TextXAlignment"]
+  GETIMPORT R18 K72 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R18 R17 K59 ["TextTruncate"]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K6 ["BackgroundTransparency"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K60 ["TextScaled"]
+  DUPTABLE R18 K83 [{"SizeConstraint"}]
+  GETUPVAL R20 2
+  GETTABLEKS R19 R20 K4 ["createElement"]
+  LOADK R20 K84 ["UITextSizeConstraint"]
+  DUPTABLE R21 K87 [{"MaxTextSize", "MinTextSize"}]
+  GETTABLEKS R24 R0 K62 ["Font"]
+  GETTABLEKS R23 R24 K78 ["BaseSize"]
+  GETTABLEKS R26 R0 K62 ["Font"]
+  GETTABLEKS R25 R26 K63 ["Header2"]
+  GETTABLEKS R24 R25 K79 ["RelativeSize"]
+  MUL R22 R23 R24
+  SETTABLEKS R22 R21 K85 ["MaxTextSize"]
+  GETTABLEKS R24 R0 K62 ["Font"]
+  GETTABLEKS R23 R24 K78 ["BaseSize"]
+  GETTABLEKS R26 R0 K62 ["Font"]
+  GETTABLEKS R25 R26 K88 ["Footer"]
+  GETTABLEKS R24 R25 K79 ["RelativeSize"]
+  MUL R22 R23 R24
+  SETTABLEKS R22 R21 K86 ["MinTextSize"]
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K82 ["SizeConstraint"]
+  CALL R15 3 1
+  SETTABLEKS R15 R14 K36 ["DisplayName"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K4 ["createElement"]
+  LOADK R16 K73 ["TextLabel"]
+  DUPTABLE R17 K77 [{"LayoutOrder", "Size", "Text", "Font", "TextSize", "TextColor3", "TextTransparency", "TextXAlignment", "TextTruncate", "BackgroundTransparency", "TextScaled"}]
+  LOADN R18 2
+  SETTABLEKS R18 R17 K9 ["LayoutOrder"]
+  GETIMPORT R18 K15 [UDim2.new]
+  LOADN R19 1
+  LOADN R20 0
+  LOADN R21 0
+  LOADN R22 22
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K8 ["Size"]
+  LOADK R19 K89 ["@"]
+  GETTABLEKS R20 R1 K90 ["Name"]
+  CONCAT R18 R19 R20
+  SETTABLEKS R18 R17 K7 ["Text"]
+  GETTABLEKS R20 R0 K62 ["Font"]
+  GETTABLEKS R19 R20 K91 ["CaptionHeader"]
+  GETTABLEKS R18 R19 K62 ["Font"]
+  SETTABLEKS R18 R17 K62 ["Font"]
+  GETTABLEKS R20 R0 K62 ["Font"]
+  GETTABLEKS R19 R20 K78 ["BaseSize"]
+  GETTABLEKS R22 R0 K62 ["Font"]
+  GETTABLEKS R21 R22 K91 ["CaptionHeader"]
+  GETTABLEKS R20 R21 K79 ["RelativeSize"]
+  MUL R18 R19 R20
+  SETTABLEKS R18 R17 K74 ["TextSize"]
+  GETTABLEKS R20 R0 K64 ["Theme"]
+  GETTABLEKS R19 R20 K92 ["TextMuted"]
+  GETTABLEKS R18 R19 K80 ["Color"]
+  SETTABLEKS R18 R17 K75 ["TextColor3"]
+  GETTABLEKS R20 R0 K64 ["Theme"]
+  GETTABLEKS R19 R20 K92 ["TextMuted"]
+  GETTABLEKS R18 R19 K81 ["Transparency"]
+  SETTABLEKS R18 R17 K76 ["TextTransparency"]
+  GETIMPORT R18 K70 [Enum.TextXAlignment.Left]
+  SETTABLEKS R18 R17 K58 ["TextXAlignment"]
+  GETIMPORT R18 K72 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R18 R17 K59 ["TextTruncate"]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K6 ["BackgroundTransparency"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K60 ["TextScaled"]
+  DUPTABLE R18 K83 [{"SizeConstraint"}]
+  GETUPVAL R20 2
+  GETTABLEKS R19 R20 K4 ["createElement"]
+  LOADK R20 K84 ["UITextSizeConstraint"]
+  DUPTABLE R21 K87 [{"MaxTextSize", "MinTextSize"}]
+  GETTABLEKS R24 R0 K62 ["Font"]
+  GETTABLEKS R23 R24 K78 ["BaseSize"]
+  GETTABLEKS R26 R0 K62 ["Font"]
+  GETTABLEKS R25 R26 K91 ["CaptionHeader"]
+  GETTABLEKS R24 R25 K79 ["RelativeSize"]
+  MUL R22 R23 R24
+  SETTABLEKS R22 R21 K85 ["MaxTextSize"]
+  GETTABLEKS R24 R0 K62 ["Font"]
+  GETTABLEKS R23 R24 K78 ["BaseSize"]
+  GETTABLEKS R26 R0 K62 ["Font"]
+  GETTABLEKS R25 R26 K88 ["Footer"]
+  GETTABLEKS R24 R25 K79 ["RelativeSize"]
+  MUL R22 R23 R24
+  SETTABLEKS R22 R21 K86 ["MinTextSize"]
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K82 ["SizeConstraint"]
+  CALL R15 3 1
+  SETTABLEKS R15 R14 K37 ["PlayerName"]
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K31 ["TextContainerFrame"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K17 ["Background"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K21 ["ImageLabel"]
+  DUPTABLE R9 K94 [{"Position", "Size", "AnchorPoint", "BackgroundTransparency", "Image", "ZIndex"}]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 56
+  LOADN R13 0
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K24 ["Position"]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 0
+  GETUPVAL R13 3
+  GETTABLEKS R12 R13 K16 ["DropDownHeaderSizeY"]
+  LOADN R13 0
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K16 ["DropDownHeaderSizeY"]
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K8 ["Size"]
+  GETIMPORT R10 K30 [Vector2.new]
+  LOADK R11 K95 [0.5]
+  LOADN R12 0
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K25 ["AnchorPoint"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K6 ["BackgroundTransparency"]
+  LOADK R11 K96 ["rbxthumb://type=AvatarHeadShot&id="]
+  GETTABLEKS R12 R1 K97 ["UserId"]
+  LOADK R13 K98 ["&w=150&h=150"]
+  CONCAT R10 R11 R13
+  SETTABLEKS R10 R9 K22 ["Image"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K93 ["ZIndex"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K18 ["AvatarImage"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["props"]
+  GETTABLEKS R8 R9 K99 ["lastButton"]
+  NOT R7 R8
+  JUMPIFNOT R7 [+53]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K33 ["Frame"]
+  DUPTABLE R9 K102 [{"Size", "Position", "AnchorPoint", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel", "ZIndex"}]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 1
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K8 ["Size"]
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 1
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K24 ["Position"]
+  GETIMPORT R10 K30 [Vector2.new]
+  LOADN R11 0
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K25 ["AnchorPoint"]
+  GETTABLEKS R12 R0 K64 ["Theme"]
+  GETTABLEKS R11 R12 K19 ["Divider"]
+  GETTABLEKS R10 R11 K81 ["Transparency"]
+  SETTABLEKS R10 R9 K6 ["BackgroundTransparency"]
+  GETTABLEKS R12 R0 K64 ["Theme"]
+  GETTABLEKS R11 R12 K19 ["Divider"]
+  GETTABLEKS R10 R11 K80 ["Color"]
+  SETTABLEKS R10 R9 K100 ["BackgroundColor3"]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K101 ["BorderSizePixel"]
+  LOADN R10 3
+  SETTABLEKS R10 R9 K93 ["ZIndex"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K19 ["Divider"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["t"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["UIBlox"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R0 K10 ["Workspace"]
+  GETTABLEKS R6 R7 K6 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["UserLib"]
+  CALL R4 1 1
+  GETTABLEKS R6 R3 K12 ["Style"]
+  GETTABLEKS R5 R6 K13 ["withStyle"]
+  GETIMPORT R8 K15 [script]
+  GETTABLEKS R7 R8 K16 ["Parent"]
+  GETTABLEKS R6 R7 K16 ["Parent"]
+  GETTABLEKS R7 R6 K17 ["Connection"]
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R7 K18 ["LayoutValues"]
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K19 ["WithLayoutValues"]
+  GETTABLEKS R12 R3 K20 ["Core"]
+  GETTABLEKS R11 R12 K21 ["Text"]
+  GETTABLEKS R10 R11 K22 ["EmojiTextLabel"]
+  GETTABLEKS R14 R3 K23 ["App"]
+  GETTABLEKS R13 R14 K24 ["Emoji"]
+  GETTABLEKS R12 R13 K25 ["Enum"]
+  GETTABLEKS R11 R12 K24 ["Emoji"]
+  GETTABLEKS R12 R1 K26 ["PureComponent"]
+  LOADK R14 K27 ["DropDownPlayerHeader"]
+  NAMECALL R12 R12 K28 ["extend"]
+  CALL R12 2 1
+  GETTABLEKS R13 R2 K29 ["strictInterface"]
+  DUPTABLE R14 K31 [{"player"}]
+  GETTABLEKS R15 R2 K32 ["instanceIsA"]
+  LOADK R16 K33 ["Player"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K30 ["player"]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K34 ["validateProps"]
+  DUPCLOSURE R13 K35 [PROTO_2]
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R1
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  SETTABLEKS R13 R12 K36 ["render"]
+  RETURN R12 1

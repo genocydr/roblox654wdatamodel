@@ -2,7 +2,7 @@ local Chrome = script:FindFirstAncestor("Chrome")
 
 local CorePackages = game:GetService("CorePackages")
 
-local ChromeService = require(Chrome.ChromeShared.Service)
+local ChromeService = require(Chrome.Service)
 local React = require(CorePackages.Packages.React)
 local Songbird = require(CorePackages.Workspace.Packages.Songbird)
 local ContainerSlotSignal = require(Chrome.ChromeShared.Service.ContainerSlotSignal)

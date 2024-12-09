@@ -1,0 +1,912 @@
+PROTO_0:
+  DUPTABLE R1 K5 [{"isHovered", "isPressed", "sizeX", "absolutePosX", "absolutePosY"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["isHovered"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["isPressed"]
+  LOADN R2 100
+  SETTABLEKS R2 R1 K2 ["sizeX"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K3 ["absolutePosX"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K4 ["absolutePosY"]
+  SETTABLEKS R1 R0 K6 ["state"]
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["animatingPercentage"]
+  JUMPIFNOTEQKNIL R2 [+4]
+  LOADN R2 0
+  LOADN R3 0
+  RETURN R2 2
+  GETTABLEKS R4 R0 K2 ["state"]
+  GETTABLEKS R3 R4 K3 ["sizeX"]
+  GETTABLEKS R4 R1 K4 ["DropDownRightOptionSize"]
+  SUB R2 R3 R4
+  GETTABLEKS R3 R1 K4 ["DropDownRightOptionSize"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K5 ["animatingDecline"]
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R4 R1 K4 ["DropDownRightOptionSize"]
+  SUB R2 R2 R4
+  GETTABLEKS R6 R0 K2 ["state"]
+  GETTABLEKS R5 R6 K3 ["sizeX"]
+  GETTABLEKS R6 R1 K4 ["DropDownRightOptionSize"]
+  SUB R4 R5 R6
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K1 ["animatingPercentage"]
+  MUL R5 R4 R6
+  ADD R3 R3 R5
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K1 ["animatingPercentage"]
+  MUL R6 R4 R7
+  MULK R5 R6 K6 [0.5]
+  SUB R2 R2 R5
+  ADD R5 R2 R3
+  GETTABLEKS R7 R0 K2 ["state"]
+  GETTABLEKS R6 R7 K3 ["sizeX"]
+  JUMPIFNOTLT R6 R5 [+8]
+  ADD R6 R2 R3
+  GETTABLEKS R8 R0 K2 ["state"]
+  GETTABLEKS R7 R8 K3 ["sizeX"]
+  SUB R5 R6 R7
+  SUB R2 R2 R5
+  RETURN R2 2
+
+PROTO_2:
+  GETUPVAL R0 0
+  JUMPIF R0 [+8]
+  GETUPVAL R0 1
+  DUPTABLE R2 K1 [{"isPressed"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["isPressed"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"isPressed"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["isPressed"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  JUMPIF R0 [+8]
+  GETUPVAL R0 1
+  DUPTABLE R2 K1 [{"isHovered"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["isHovered"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"isHovered", "isPressed"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["isHovered"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["isPressed"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"sizeX"}]
+  GETTABLEKS R5 R0 K2 ["AbsoluteSize"]
+  GETTABLEKS R4 R5 K3 ["X"]
+  SETTABLEKS R4 R3 K0 ["sizeX"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  DUPTABLE R3 K2 [{"absolutePosX", "absolutePosY"}]
+  GETTABLEKS R5 R0 K3 ["AbsolutePosition"]
+  GETTABLEKS R4 R5 K4 ["X"]
+  SETTABLEKS R4 R3 K0 ["absolutePosX"]
+  GETTABLEKS R5 R0 K3 ["AbsolutePosition"]
+  GETTABLEKS R4 R5 K5 ["Y"]
+  SETTABLEKS R4 R3 K1 ["absolutePosY"]
+  NAMECALL R1 R1 K6 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETTABLEKS R3 R0 K0 ["Theme"]
+  GETTABLEKS R2 R3 K1 ["BackgroundUIContrast"]
+  GETTABLEKS R1 R2 K2 ["Color"]
+  JUMP [+6]
+  GETTABLEKS R3 R0 K0 ["Theme"]
+  GETTABLEKS R2 R3 K3 ["BackgroundContrast"]
+  GETTABLEKS R1 R2 K2 ["Color"]
+  DUPTABLE R2 K5 [{"Color", "Transparency"}]
+  SETTABLEKS R1 R2 K2 ["Color"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K6 ["OverrideBackgroundTransparency"]
+  GETTABLEKS R6 R0 K7 ["Settings"]
+  GETTABLEKS R5 R6 K8 ["PreferredTransparency"]
+  MUL R3 R4 R5
+  SETTABLEKS R3 R2 K4 ["Transparency"]
+  DUPTABLE R3 K9 [{"Transparency", "Color"}]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["Transparency"]
+  GETIMPORT R4 K12 [Color3.new]
+  LOADN R5 1
+  LOADN R6 1
+  LOADN R7 1
+  CALL R4 3 1
+  SETTABLEKS R4 R3 K2 ["Color"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K13 ["state"]
+  GETTABLEKS R4 R5 K14 ["isPressed"]
+  JUMPIFNOT R4 [+5]
+  GETTABLEKS R4 R0 K0 ["Theme"]
+  GETTABLEKS R3 R4 K15 ["BackgroundOnPress"]
+  JUMP [+10]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K13 ["state"]
+  GETTABLEKS R4 R5 K16 ["isHovered"]
+  JUMPIFNOT R4 [+4]
+  GETTABLEKS R4 R0 K0 ["Theme"]
+  GETTABLEKS R3 R4 K17 ["BackgroundOnHover"]
+  LOADK R4 K18 [""]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K19 ["props"]
+  GETTABLEKS R5 R6 K20 ["lastButton"]
+  JUMPIFNOT R5 [+1]
+  LOADK R4 K21 ["rbxasset://textures/ui/BottomRoundedRect8px.png"]
+  LOADB R5 1
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K19 ["props"]
+  GETTABLEKS R6 R7 K22 ["onActivated"]
+  JUMPIFNOTEQKNIL R6 [+6]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K19 ["props"]
+  GETTABLEKS R5 R6 K23 ["animatingAccept"]
+  LOADB R6 1
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K19 ["props"]
+  GETTABLEKS R7 R8 K24 ["onDecline"]
+  JUMPIFNOTEQKNIL R7 [+6]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K19 ["props"]
+  GETTABLEKS R6 R7 K25 ["animatingDecline"]
+  LOADB R7 1
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K19 ["props"]
+  GETTABLEKS R8 R9 K24 ["onDecline"]
+  JUMPIFNOTEQKNIL R8 [+14]
+  LOADB R7 1
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K19 ["props"]
+  GETTABLEKS R8 R9 K26 ["animatingPercentage"]
+  JUMPIFNOTEQKNIL R8 [+6]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K19 ["props"]
+  GETTABLEKS R7 R8 K27 ["forceShowOptions"]
+  GETUPVAL R8 2
+  GETUPVAL R10 1
+  NAMECALL R8 R8 K28 ["getColorBackgroundAnimation"]
+  CALL R8 2 2
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K29 ["Green"]
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K19 ["props"]
+  GETTABLEKS R11 R12 K25 ["animatingDecline"]
+  JUMPIFNOT R11 [+4]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K30 ["Red"]
+  JUMP [+9]
+  GETUPVAL R13 2
+  GETTABLEKS R12 R13 K19 ["props"]
+  GETTABLEKS R11 R12 K27 ["forceShowOptions"]
+  JUMPIFNOT R11 [+3]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K31 ["White"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K33 ["DropDownPadding"]
+  MULK R12 R13 K32 [2]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K34 ["DropDownIconSize"]
+  ADD R11 R12 R13
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K35 ["DropDownRightOptionSize"]
+  MULK R12 R13 K32 [2]
+  JUMPIFNOT R7 [+1]
+  ADD R11 R11 R12
+  NEWCLOSURE R13 P0
+  CAPTURE VAL R7
+  CAPTURE UPVAL U2
+  NEWCLOSURE R14 P1
+  CAPTURE UPVAL U2
+  GETUPVAL R16 4
+  GETTABLEKS R15 R16 K36 ["createElement"]
+  LOADK R16 K37 ["ImageButton"]
+  NEWTABLE R17 32 0
+  GETUPVAL R20 2
+  GETTABLEKS R19 R20 K19 ["props"]
+  GETTABLEKS R18 R19 K38 ["layoutOrder"]
+  SETTABLEKS R18 R17 K39 ["LayoutOrder"]
+  SETTABLEKS R4 R17 K40 ["Image"]
+  GETIMPORT R18 K44 [Enum.ScaleType.Slice]
+  SETTABLEKS R18 R17 K42 ["ScaleType"]
+  GETIMPORT R18 K46 [Rect.new]
+  LOADN R19 8
+  LOADN R20 8
+  LOADN R21 24
+  LOADN R22 16
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K47 ["SliceCenter"]
+  LOADK R18 K48 [0.5]
+  SETTABLEKS R18 R17 K49 ["SliceScale"]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K19 ["props"]
+  GETTABLEKS R19 R20 K20 ["lastButton"]
+  JUMPIFNOT R19 [+3]
+  GETTABLEKS R18 R2 K4 ["Transparency"]
+  JUMPIF R18 [+1]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K50 ["ImageTransparency"]
+  GETTABLEKS R18 R2 K2 ["Color"]
+  SETTABLEKS R18 R17 K51 ["ImageColor3"]
+  GETIMPORT R18 K53 [UDim2.new]
+  LOADN R19 1
+  LOADN R20 0
+  LOADN R21 0
+  GETUPVAL R23 1
+  GETTABLEKS R22 R23 K54 ["DropDownButtonSizeY"]
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K55 ["Size"]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K19 ["props"]
+  GETTABLEKS R19 R20 K20 ["lastButton"]
+  JUMPIFNOT R19 [+2]
+  LOADN R18 1
+  JUMP [+2]
+  GETTABLEKS R18 R2 K4 ["Transparency"]
+  SETTABLEKS R18 R17 K56 ["BackgroundTransparency"]
+  GETTABLEKS R18 R2 K2 ["Color"]
+  SETTABLEKS R18 R17 K57 ["BackgroundColor3"]
+  LOADB R18 0
+  SETTABLEKS R18 R17 K58 ["AutoButtonColor"]
+  LOADN R18 0
+  SETTABLEKS R18 R17 K59 ["BorderSizePixel"]
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K60 ["Event"]
+  GETTABLEKS R18 R19 K61 ["Activated"]
+  JUMPIF R7 [+6]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K19 ["props"]
+  GETTABLEKS R19 R20 K22 ["onActivated"]
+  JUMPIF R19 [+1]
+  LOADNIL R19
+  SETTABLE R19 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K60 ["Event"]
+  GETTABLEKS R18 R19 K62 ["MouseEnter"]
+  NEWCLOSURE R19 P2
+  CAPTURE VAL R7
+  CAPTURE UPVAL U2
+  SETTABLE R19 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K60 ["Event"]
+  GETTABLEKS R18 R19 K63 ["MouseLeave"]
+  NEWCLOSURE R19 P3
+  CAPTURE UPVAL U2
+  SETTABLE R19 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K64 ["Change"]
+  GETTABLEKS R18 R19 K65 ["AbsoluteSize"]
+  NEWCLOSURE R19 P4
+  CAPTURE UPVAL U2
+  SETTABLE R19 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K64 ["Change"]
+  GETTABLEKS R18 R19 K66 ["AbsolutePosition"]
+  NEWCLOSURE R19 P5
+  CAPTURE UPVAL U2
+  SETTABLE R19 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K60 ["Event"]
+  GETTABLEKS R18 R19 K67 ["MouseButton1Down"]
+  SETTABLE R13 R17 R18
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K60 ["Event"]
+  GETTABLEKS R18 R19 K68 ["MouseButton1Up"]
+  SETTABLE R14 R17 R18
+  DUPTABLE R18 K73 [{"ColorBackground", "HoverBackground", "DismissInputHandler", "Divider"}]
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K36 ["createElement"]
+  LOADK R20 K74 ["ImageLabel"]
+  DUPTABLE R21 K78 [{"Visible", "ZIndex", "Size", "Position", "Image", "ScaleType", "SliceCenter", "SliceScale", "ImageTransparency", "ImageColor3", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K26 ["animatingPercentage"]
+  JUMPIFNOTEQKNIL R23 [+2]
+  LOADB R22 0 +1
+  LOADB R22 1
+  SETTABLEKS R22 R21 K75 ["Visible"]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K76 ["ZIndex"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 0
+  MOVE R24 R9
+  LOADN R25 1
+  LOADN R26 0
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K55 ["Size"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 0
+  MOVE R24 R8
+  LOADN R25 0
+  LOADN R26 0
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K77 ["Position"]
+  SETTABLEKS R4 R21 K40 ["Image"]
+  GETIMPORT R22 K44 [Enum.ScaleType.Slice]
+  SETTABLEKS R22 R21 K42 ["ScaleType"]
+  GETIMPORT R22 K46 [Rect.new]
+  LOADN R23 8
+  LOADN R24 8
+  LOADN R25 24
+  LOADN R26 16
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K47 ["SliceCenter"]
+  LOADK R22 K48 [0.5]
+  SETTABLEKS R22 R21 K49 ["SliceScale"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K20 ["lastButton"]
+  JUMPIFNOT R23 [+4]
+  GETUPVAL R23 1
+  GETTABLEKS R22 R23 K79 ["IconButtonBackgroundTransparency"]
+  JUMPIF R22 [+1]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K50 ["ImageTransparency"]
+  SETTABLEKS R10 R21 K51 ["ImageColor3"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K20 ["lastButton"]
+  JUMPIFNOT R23 [+2]
+  LOADN R22 1
+  JUMP [+3]
+  GETUPVAL R23 1
+  GETTABLEKS R22 R23 K79 ["IconButtonBackgroundTransparency"]
+  SETTABLEKS R22 R21 K56 ["BackgroundTransparency"]
+  SETTABLEKS R10 R21 K57 ["BackgroundColor3"]
+  LOADN R22 0
+  SETTABLEKS R22 R21 K59 ["BorderSizePixel"]
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K69 ["ColorBackground"]
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K36 ["createElement"]
+  LOADK R20 K74 ["ImageLabel"]
+  DUPTABLE R21 K80 [{"ZIndex", "Size", "Image", "ScaleType", "SliceCenter", "SliceScale", "ImageTransparency", "ImageColor3", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  LOADN R22 2
+  SETTABLEKS R22 R21 K76 ["ZIndex"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 1
+  LOADN R24 0
+  LOADN R25 1
+  LOADN R26 0
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K55 ["Size"]
+  SETTABLEKS R4 R21 K40 ["Image"]
+  GETIMPORT R22 K44 [Enum.ScaleType.Slice]
+  SETTABLEKS R22 R21 K42 ["ScaleType"]
+  GETIMPORT R22 K46 [Rect.new]
+  LOADN R23 8
+  LOADN R24 8
+  LOADN R25 24
+  LOADN R26 16
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K47 ["SliceCenter"]
+  LOADK R22 K48 [0.5]
+  SETTABLEKS R22 R21 K49 ["SliceScale"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K20 ["lastButton"]
+  JUMPIFNOT R23 [+3]
+  GETTABLEKS R22 R3 K4 ["Transparency"]
+  JUMPIF R22 [+1]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K50 ["ImageTransparency"]
+  GETTABLEKS R22 R3 K2 ["Color"]
+  SETTABLEKS R22 R21 K51 ["ImageColor3"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K20 ["lastButton"]
+  JUMPIFNOT R23 [+2]
+  LOADN R22 1
+  JUMP [+2]
+  GETTABLEKS R22 R3 K4 ["Transparency"]
+  SETTABLEKS R22 R21 K56 ["BackgroundTransparency"]
+  GETTABLEKS R22 R3 K2 ["Color"]
+  SETTABLEKS R22 R21 K57 ["BackgroundColor3"]
+  LOADN R22 0
+  SETTABLEKS R22 R21 K59 ["BorderSizePixel"]
+  DUPTABLE R22 K86 [{"InitalPadding", "ListLayout", "Icon", "Text", "ButtonContainer"}]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K36 ["createElement"]
+  LOADK R24 K87 ["UIPadding"]
+  DUPTABLE R25 K89 [{"PaddingLeft"}]
+  GETIMPORT R26 K91 [UDim.new]
+  LOADN R27 0
+  GETUPVAL R29 1
+  GETTABLEKS R28 R29 K33 ["DropDownPadding"]
+  CALL R26 2 1
+  SETTABLEKS R26 R25 K88 ["PaddingLeft"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K81 ["InitalPadding"]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K36 ["createElement"]
+  LOADK R24 K92 ["UIListLayout"]
+  DUPTABLE R25 K97 [{"SortOrder", "FillDirection", "VerticalAlignment", "Padding"}]
+  GETIMPORT R26 K98 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R26 R25 K93 ["SortOrder"]
+  GETIMPORT R26 K100 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R26 R25 K94 ["FillDirection"]
+  GETIMPORT R26 K102 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R26 R25 K95 ["VerticalAlignment"]
+  GETIMPORT R26 K91 [UDim.new]
+  LOADN R27 0
+  GETUPVAL R29 1
+  GETTABLEKS R28 R29 K33 ["DropDownPadding"]
+  CALL R26 2 1
+  SETTABLEKS R26 R25 K96 ["Padding"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K82 ["ListLayout"]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K36 ["createElement"]
+  GETUPVAL R24 5
+  DUPTABLE R25 K103 [{"LayoutOrder", "Size", "ImageColor3", "Image", "BackgroundTransparency"}]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K39 ["LayoutOrder"]
+  GETIMPORT R26 K53 [UDim2.new]
+  LOADN R27 0
+  GETUPVAL R29 1
+  GETTABLEKS R28 R29 K34 ["DropDownIconSize"]
+  LOADN R29 0
+  GETUPVAL R31 1
+  GETTABLEKS R30 R31 K34 ["DropDownIconSize"]
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K55 ["Size"]
+  GETTABLEKS R28 R0 K0 ["Theme"]
+  GETTABLEKS R27 R28 K104 ["IconEmphasis"]
+  GETTABLEKS R26 R27 K2 ["Color"]
+  SETTABLEKS R26 R25 K51 ["ImageColor3"]
+  GETUPVAL R28 2
+  GETTABLEKS R27 R28 K19 ["props"]
+  GETTABLEKS R26 R27 K105 ["icon"]
+  SETTABLEKS R26 R25 K40 ["Image"]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K56 ["BackgroundTransparency"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K83 ["Icon"]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K36 ["createElement"]
+  LOADK R24 K106 ["TextLabel"]
+  DUPTABLE R25 K113 [{"LayoutOrder", "Size", "Text", "Font", "TextSize", "TextColor3", "TextTransparency", "TextXAlignment", "TextTruncate", "BackgroundTransparency"}]
+  LOADN R26 2
+  SETTABLEKS R26 R25 K39 ["LayoutOrder"]
+  GETIMPORT R26 K53 [UDim2.new]
+  LOADN R27 1
+  MINUS R28 R11
+  LOADN R29 1
+  LOADN R30 0
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K55 ["Size"]
+  GETUPVAL R28 2
+  GETTABLEKS R27 R28 K19 ["props"]
+  GETTABLEKS R26 R27 K114 ["text"]
+  SETTABLEKS R26 R25 K84 ["Text"]
+  GETTABLEKS R28 R0 K107 ["Font"]
+  GETTABLEKS R27 R28 K115 ["Header2"]
+  GETTABLEKS R26 R27 K107 ["Font"]
+  SETTABLEKS R26 R25 K107 ["Font"]
+  GETTABLEKS R28 R0 K107 ["Font"]
+  GETTABLEKS R27 R28 K116 ["BaseSize"]
+  GETTABLEKS R30 R0 K107 ["Font"]
+  GETTABLEKS R29 R30 K115 ["Header2"]
+  GETTABLEKS R28 R29 K117 ["RelativeSize"]
+  MUL R26 R27 R28
+  SETTABLEKS R26 R25 K108 ["TextSize"]
+  GETTABLEKS R28 R0 K0 ["Theme"]
+  GETTABLEKS R27 R28 K118 ["TextEmphasis"]
+  GETTABLEKS R26 R27 K2 ["Color"]
+  SETTABLEKS R26 R25 K109 ["TextColor3"]
+  GETTABLEKS R28 R0 K0 ["Theme"]
+  GETTABLEKS R27 R28 K118 ["TextEmphasis"]
+  GETTABLEKS R26 R27 K4 ["Transparency"]
+  SETTABLEKS R26 R25 K110 ["TextTransparency"]
+  GETIMPORT R26 K120 [Enum.TextXAlignment.Left]
+  SETTABLEKS R26 R25 K111 ["TextXAlignment"]
+  GETIMPORT R26 K122 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R26 R25 K112 ["TextTruncate"]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K56 ["BackgroundTransparency"]
+  CALL R23 2 1
+  SETTABLEKS R23 R22 K84 ["Text"]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K36 ["createElement"]
+  LOADK R24 K123 ["Frame"]
+  DUPTABLE R25 K124 [{"LayoutOrder", "Visible", "BackgroundTransparency", "Size"}]
+  LOADN R26 3
+  SETTABLEKS R26 R25 K39 ["LayoutOrder"]
+  SETTABLEKS R7 R25 K75 ["Visible"]
+  LOADN R26 1
+  SETTABLEKS R26 R25 K56 ["BackgroundTransparency"]
+  GETIMPORT R26 K53 [UDim2.new]
+  LOADN R27 0
+  MOVE R28 R12
+  LOADN R29 1
+  LOADN R30 0
+  CALL R26 4 1
+  SETTABLEKS R26 R25 K55 ["Size"]
+  DUPTABLE R26 K127 [{"ConfirmButton", "DeclineButton"}]
+  JUMPIFNOT R5 [+63]
+  GETUPVAL R28 4
+  GETTABLEKS R27 R28 K36 ["createElement"]
+  GETUPVAL R28 6
+  DUPTABLE R29 K132 [{"size", "position", "backgroundColor", "icon", "showBackground", "onActivated"}]
+  GETIMPORT R30 K53 [UDim2.new]
+  LOADK R31 K48 [0.5]
+  LOADN R32 0
+  LOADN R33 1
+  LOADN R34 0
+  CALL R30 4 1
+  SETTABLEKS R30 R29 K128 ["size"]
+  GETIMPORT R30 K53 [UDim2.new]
+  LOADK R31 K48 [0.5]
+  LOADN R32 0
+  LOADN R33 0
+  LOADN R34 0
+  CALL R30 4 1
+  SETTABLEKS R30 R29 K129 ["position"]
+  GETUPVAL R33 2
+  GETTABLEKS R32 R33 K19 ["props"]
+  GETTABLEKS R31 R32 K24 ["onDecline"]
+  JUMPIFNOT R31 [+4]
+  GETUPVAL R31 3
+  GETTABLEKS R30 R31 K29 ["Green"]
+  JUMPIF R30 [+3]
+  GETUPVAL R31 3
+  GETTABLEKS R30 R31 K31 ["White"]
+  SETTABLEKS R30 R29 K130 ["backgroundColor"]
+  GETUPVAL R31 7
+  GETTABLEKS R30 R31 K133 ["icons/actions/accept"]
+  SETTABLEKS R30 R29 K105 ["icon"]
+  GETUPVAL R33 2
+  GETTABLEKS R32 R33 K19 ["props"]
+  GETTABLEKS R31 R32 K26 ["animatingPercentage"]
+  JUMPIFEQKNIL R31 [+2]
+  LOADB R30 0 +1
+  LOADB R30 1
+  SETTABLEKS R30 R29 K131 ["showBackground"]
+  GETUPVAL R32 2
+  GETTABLEKS R31 R32 K19 ["props"]
+  GETTABLEKS R30 R31 K22 ["onActivated"]
+  SETTABLEKS R30 R29 K22 ["onActivated"]
+  CALL R27 2 1
+  JUMPIF R27 [+1]
+  LOADNIL R27
+  SETTABLEKS R27 R26 K125 ["ConfirmButton"]
+  JUMPIFNOT R6 [+53]
+  GETUPVAL R28 4
+  GETTABLEKS R27 R28 K36 ["createElement"]
+  GETUPVAL R28 6
+  DUPTABLE R29 K132 [{"size", "position", "backgroundColor", "icon", "showBackground", "onActivated"}]
+  GETIMPORT R30 K53 [UDim2.new]
+  LOADK R31 K48 [0.5]
+  LOADN R32 0
+  LOADN R33 1
+  LOADN R34 0
+  CALL R30 4 1
+  SETTABLEKS R30 R29 K128 ["size"]
+  GETIMPORT R30 K53 [UDim2.new]
+  LOADN R31 0
+  LOADN R32 0
+  LOADN R33 0
+  LOADN R34 0
+  CALL R30 4 1
+  SETTABLEKS R30 R29 K129 ["position"]
+  GETUPVAL R31 3
+  GETTABLEKS R30 R31 K30 ["Red"]
+  SETTABLEKS R30 R29 K130 ["backgroundColor"]
+  GETUPVAL R31 7
+  GETTABLEKS R30 R31 K134 ["icons/actions/reject"]
+  SETTABLEKS R30 R29 K105 ["icon"]
+  GETUPVAL R33 2
+  GETTABLEKS R32 R33 K19 ["props"]
+  GETTABLEKS R31 R32 K26 ["animatingPercentage"]
+  JUMPIFEQKNIL R31 [+2]
+  LOADB R30 0 +1
+  LOADB R30 1
+  SETTABLEKS R30 R29 K131 ["showBackground"]
+  GETUPVAL R32 2
+  GETTABLEKS R31 R32 K19 ["props"]
+  GETTABLEKS R30 R31 K24 ["onDecline"]
+  SETTABLEKS R30 R29 K22 ["onActivated"]
+  CALL R27 2 1
+  JUMPIF R27 [+1]
+  LOADNIL R27
+  SETTABLEKS R27 R26 K126 ["DeclineButton"]
+  CALL R23 3 1
+  SETTABLEKS R23 R22 K85 ["ButtonContainer"]
+  CALL R19 3 1
+  SETTABLEKS R19 R18 K70 ["HoverBackground"]
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K36 ["createElement"]
+  LOADK R20 K37 ["ImageButton"]
+  NEWTABLE R21 8 0
+  LOADK R22 K18 [""]
+  SETTABLEKS R22 R21 K40 ["Image"]
+  LOADN R22 1
+  SETTABLEKS R22 R21 K56 ["BackgroundTransparency"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 0
+  GETUPVAL R26 2
+  GETTABLEKS R25 R26 K19 ["props"]
+  GETTABLEKS R24 R25 K135 ["screenSizeX"]
+  LOADN R25 0
+  GETUPVAL R28 2
+  GETTABLEKS R27 R28 K19 ["props"]
+  GETTABLEKS R26 R27 K136 ["screenSizeY"]
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K55 ["Size"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 0
+  GETUPVAL R27 2
+  GETTABLEKS R26 R27 K13 ["state"]
+  GETTABLEKS R25 R26 K137 ["absolutePosX"]
+  MINUS R24 R25
+  LOADN R25 0
+  GETUPVAL R29 2
+  GETTABLEKS R28 R29 K13 ["state"]
+  GETTABLEKS R27 R28 K138 ["absolutePosY"]
+  MINUS R26 R27
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K77 ["Position"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K139 ["onDismiss"]
+  JUMPIFNOTEQKNIL R23 [+2]
+  LOADB R22 0 +1
+  LOADB R22 1
+  SETTABLEKS R22 R21 K75 ["Visible"]
+  GETUPVAL R24 4
+  GETTABLEKS R23 R24 K60 ["Event"]
+  GETTABLEKS R22 R23 K61 ["Activated"]
+  GETUPVAL R25 2
+  GETTABLEKS R24 R25 K19 ["props"]
+  GETTABLEKS R23 R24 K139 ["onDismiss"]
+  SETTABLE R23 R21 R22
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K71 ["DismissInputHandler"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K19 ["props"]
+  GETTABLEKS R20 R21 K20 ["lastButton"]
+  NOT R19 R20
+  JUMPIFNOT R19 [+53]
+  GETUPVAL R20 4
+  GETTABLEKS R19 R20 K36 ["createElement"]
+  LOADK R20 K123 ["Frame"]
+  DUPTABLE R21 K141 [{"ZIndex", "Size", "Position", "AnchorPoint", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  LOADN R22 3
+  SETTABLEKS R22 R21 K76 ["ZIndex"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 1
+  LOADN R24 0
+  LOADN R25 0
+  LOADN R26 1
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K55 ["Size"]
+  GETIMPORT R22 K53 [UDim2.new]
+  LOADN R23 0
+  LOADN R24 0
+  LOADN R25 1
+  LOADN R26 0
+  CALL R22 4 1
+  SETTABLEKS R22 R21 K77 ["Position"]
+  GETIMPORT R22 K143 [Vector2.new]
+  LOADN R23 0
+  LOADN R24 1
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K140 ["AnchorPoint"]
+  GETTABLEKS R24 R0 K0 ["Theme"]
+  GETTABLEKS R23 R24 K72 ["Divider"]
+  GETTABLEKS R22 R23 K4 ["Transparency"]
+  SETTABLEKS R22 R21 K56 ["BackgroundTransparency"]
+  GETTABLEKS R24 R0 K0 ["Theme"]
+  GETTABLEKS R23 R24 K72 ["Divider"]
+  GETTABLEKS R22 R23 K2 ["Color"]
+  SETTABLEKS R22 R21 K57 ["BackgroundColor3"]
+  LOADN R22 0
+  SETTABLEKS R22 R21 K59 ["BorderSizePixel"]
+  CALL R19 2 1
+  SETTABLEKS R19 R18 K72 ["Divider"]
+  CALL R15 3 -1
+  RETURN R15 -1
+
+PROTO_9:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_10:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_11:
+  DUPTABLE R1 K2 [{"screenSizeX", "screenSizeY"}]
+  GETTABLEKS R3 R0 K3 ["screenSize"]
+  GETTABLEKS R2 R3 K4 ["X"]
+  SETTABLEKS R2 R1 K0 ["screenSizeX"]
+  GETTABLEKS R3 R0 K3 ["screenSize"]
+  GETTABLEKS R2 R3 K5 ["Y"]
+  SETTABLEKS R2 R1 K1 ["screenSizeY"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["t"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETTABLEKS R6 R4 K11 ["Style"]
+  GETTABLEKS R5 R6 K12 ["withStyle"]
+  GETIMPORT R8 K14 [script]
+  GETTABLEKS R7 R8 K15 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["Parent"]
+  GETTABLEKS R7 R6 K16 ["Connection"]
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R7 K17 ["LayoutValues"]
+  CALL R8 1 1
+  GETTABLEKS R9 R8 K18 ["WithLayoutValues"]
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R6 K19 ["PresentationCommon"]
+  GETTABLEKS R11 R12 K20 ["IconButton"]
+  CALL R10 1 1
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R15 R0 K21 ["Workspace"]
+  GETTABLEKS R14 R15 K6 ["Packages"]
+  GETTABLEKS R13 R14 K11 ["Style"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K22 ["Colors"]
+  GETTABLEKS R14 R4 K23 ["Core"]
+  GETTABLEKS R13 R14 K24 ["ImageSet"]
+  GETTABLEKS R12 R13 K25 ["ImageSetLabel"]
+  GETTABLEKS R15 R4 K26 ["App"]
+  GETTABLEKS R14 R15 K24 ["ImageSet"]
+  GETTABLEKS R13 R14 K27 ["Images"]
+  GETIMPORT R14 K1 [game]
+  LOADK R16 K28 ["CoreGui"]
+  NAMECALL R14 R14 K3 ["GetService"]
+  CALL R14 2 1
+  LOADK R17 K29 ["RobloxGui"]
+  NAMECALL R15 R14 K30 ["WaitForChild"]
+  CALL R15 2 1
+  GETIMPORT R16 K5 [require]
+  GETTABLEKS R19 R15 K31 ["Modules"]
+  GETTABLEKS R18 R19 K32 ["Chrome"]
+  GETTABLEKS R17 R18 K33 ["Enabled"]
+  CALL R16 1 1
+  GETTABLEKS R17 R1 K34 ["PureComponent"]
+  LOADK R19 K35 ["DropDownButton"]
+  NAMECALL R17 R17 K36 ["extend"]
+  CALL R17 2 1
+  GETTABLEKS R18 R3 K37 ["strictInterface"]
+  DUPTABLE R19 K51 [{"text", "layoutOrder", "icon", "lastButton", "forceShowOptions", "screenSizeX", "screenSizeY", "onActivated", "onDecline", "onDismiss", "animatingAccept", "animatingDecline", "animatingPercentage"}]
+  GETTABLEKS R20 R3 K52 ["string"]
+  SETTABLEKS R20 R19 K38 ["text"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K54 ["integer"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K39 ["layoutOrder"]
+  GETTABLEKS R20 R3 K55 ["union"]
+  GETTABLEKS R21 R3 K52 ["string"]
+  GETTABLEKS R22 R3 K56 ["table"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K40 ["icon"]
+  GETTABLEKS R20 R3 K57 ["boolean"]
+  SETTABLEKS R20 R19 K41 ["lastButton"]
+  GETTABLEKS R20 R3 K57 ["boolean"]
+  SETTABLEKS R20 R19 K42 ["forceShowOptions"]
+  GETTABLEKS R20 R3 K58 ["number"]
+  SETTABLEKS R20 R19 K43 ["screenSizeX"]
+  GETTABLEKS R20 R3 K58 ["number"]
+  SETTABLEKS R20 R19 K44 ["screenSizeY"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K59 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K45 ["onActivated"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K59 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K46 ["onDecline"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K59 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K47 ["onDismiss"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K57 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K48 ["animatingAccept"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K57 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K49 ["animatingDecline"]
+  GETTABLEKS R20 R3 K53 ["optional"]
+  GETTABLEKS R21 R3 K58 ["number"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K50 ["animatingPercentage"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K60 ["validateProps"]
+  DUPCLOSURE R18 K61 [PROTO_0]
+  SETTABLEKS R18 R17 K62 ["init"]
+  DUPCLOSURE R18 K63 [PROTO_1]
+  SETTABLEKS R18 R17 K64 ["getColorBackgroundAnimation"]
+  DUPCLOSURE R18 K65 [PROTO_10]
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R16
+  CAPTURE VAL R11
+  CAPTURE VAL R1
+  CAPTURE VAL R12
+  CAPTURE VAL R10
+  CAPTURE VAL R13
+  SETTABLEKS R18 R17 K66 ["render"]
+  DUPCLOSURE R18 K67 [PROTO_11]
+  GETTABLEKS R19 R2 K68 ["UNSTABLE_connect2"]
+  MOVE R20 R18
+  LOADNIL R21
+  CALL R19 2 1
+  MOVE R20 R17
+  CALL R19 1 -1
+  RETURN R19 -1

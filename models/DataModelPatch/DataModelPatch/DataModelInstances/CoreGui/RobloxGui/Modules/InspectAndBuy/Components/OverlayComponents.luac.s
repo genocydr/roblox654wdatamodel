@@ -1,0 +1,17 @@
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R3 R0 K5 ["Enums"]
+  GETTABLEKS R2 R3 K6 ["Overlay"]
+  CALL R1 1 1
+  GETIMPORT R2 K4 [require]
+  GETTABLEKS R4 R0 K7 ["Components"]
+  GETTABLEKS R3 R4 K8 ["AttributionTraversal"]
+  CALL R2 1 1
+  NEWTABLE R3 1 0
+  GETTABLEKS R4 R1 K8 ["AttributionTraversal"]
+  SETTABLE R2 R3 R4
+  RETURN R3 1

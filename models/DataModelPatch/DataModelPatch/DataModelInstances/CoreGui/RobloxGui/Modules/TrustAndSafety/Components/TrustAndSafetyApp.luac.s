@@ -1,0 +1,201 @@
+PROTO_0:
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K1 ["Provider"]
+  NEWTABLE R3 0 0
+  DUPTABLE R4 K3 [{"Gui"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K4 ["ScreenGui"]
+  NEWTABLE R7 8 0
+  LOADB R8 0
+  SETTABLEKS R8 R7 K5 ["AutoLocalize"]
+  LOADN R8 8
+  SETTABLEKS R8 R7 K6 ["DisplayOrder"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K7 ["IgnoreGuiInset"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K8 ["OnTopOfCoreBlur"]
+  GETIMPORT R8 K12 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R8 R7 K10 ["ZIndexBehavior"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K13 ["Change"]
+  GETTABLEKS R8 R9 K14 ["AbsoluteSize"]
+  GETTABLEKS R10 R0 K15 ["props"]
+  GETTABLEKS R9 R10 K16 ["setScreenSize"]
+  SETTABLE R9 R7 R8
+  DUPTABLE R8 K18 [{"Content"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K19 ["Frame"]
+  DUPTABLE R11 K23 [{"BackgroundTransparency", "Size", "Visible"}]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K20 ["BackgroundTransparency"]
+  GETIMPORT R12 K26 [UDim2.new]
+  LOADN R13 1
+  LOADN R14 0
+  LOADN R15 1
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K21 ["Size"]
+  GETTABLEKS R13 R0 K15 ["props"]
+  GETTABLEKS R12 R13 K27 ["visible"]
+  SETTABLEKS R12 R11 K22 ["Visible"]
+  DUPTABLE R12 K33 [{"ReportCategoryDialog", "ReportMenu", "ReportDialog", "ReportSentDialog", "Toast"}]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 2
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K28 ["ReportCategoryDialog"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 3
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K29 ["ReportMenu"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 4
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K30 ["ReportDialog"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 5
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K31 ["ReportSentDialog"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K0 ["createElement"]
+  GETUPVAL R14 6
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K32 ["Toast"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K17 ["Content"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K2 ["Gui"]
+  CALL R1 3 1
+  GETUPVAL R2 7
+  DUPTABLE R3 K35 [{"VoiceStateContextProvider"}]
+  SETTABLEKS R1 R3 K34 ["VoiceStateContextProvider"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_2:
+  DUPTABLE R2 K1 [{"visible"}]
+  GETTABLEKS R4 R0 K2 ["displayOptions"]
+  GETTABLEKS R3 R4 K0 ["visible"]
+  SETTABLEKS R3 R2 K0 ["visible"]
+  RETURN R2 1
+
+PROTO_3:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  GETTABLEKS R3 R0 K0 ["AbsoluteSize"]
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"setScreenSize"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setScreenSize"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K10 ["Roact"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K9 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["RoactRodux"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K9 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["t"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R9 R2 K13 ["Modules"]
+  GETTABLEKS R8 R9 K14 ["Common"]
+  GETTABLEKS R7 R8 K15 ["renderWithCoreScriptsStyleProvider"]
+  CALL R6 1 1
+  GETIMPORT R9 K17 [script]
+  GETTABLEKS R8 R9 K18 ["Parent"]
+  GETTABLEKS R7 R8 K18 ["Parent"]
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R10 R7 K19 ["Actions"]
+  GETTABLEKS R9 R10 K20 ["SetScreenSize"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R11 R7 K21 ["Components"]
+  GETTABLEKS R10 R11 K22 ["ReportMenu"]
+  CALL R9 1 1
+  GETIMPORT R10 K8 [require]
+  GETTABLEKS R12 R7 K21 ["Components"]
+  GETTABLEKS R11 R12 K23 ["ReportDialog"]
+  CALL R10 1 1
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R13 R7 K21 ["Components"]
+  GETTABLEKS R12 R13 K24 ["ReportCategoryDialog"]
+  CALL R11 1 1
+  GETIMPORT R12 K8 [require]
+  GETTABLEKS R14 R7 K21 ["Components"]
+  GETTABLEKS R13 R14 K25 ["ReportSentDialog"]
+  CALL R12 1 1
+  GETIMPORT R13 K8 [require]
+  GETTABLEKS R15 R7 K21 ["Components"]
+  GETTABLEKS R14 R15 K26 ["Toast"]
+  CALL R13 1 1
+  GETIMPORT R14 K8 [require]
+  GETTABLEKS R17 R2 K13 ["Modules"]
+  GETTABLEKS R16 R17 K27 ["VoiceChat"]
+  GETTABLEKS R15 R16 K28 ["VoiceStateContext"]
+  CALL R14 1 1
+  GETTABLEKS R15 R3 K29 ["PureComponent"]
+  LOADK R17 K30 ["TrustAndSafetyApp"]
+  NAMECALL R15 R15 K31 ["extend"]
+  CALL R15 2 1
+  GETTABLEKS R16 R5 K32 ["strictInterface"]
+  DUPTABLE R17 K35 [{"setScreenSize", "visible"}]
+  GETTABLEKS R18 R5 K36 ["callback"]
+  SETTABLEKS R18 R17 K33 ["setScreenSize"]
+  GETTABLEKS R18 R5 K37 ["boolean"]
+  SETTABLEKS R18 R17 K34 ["visible"]
+  CALL R16 1 1
+  SETTABLEKS R16 R15 K38 ["validateProps"]
+  DUPCLOSURE R16 K39 [PROTO_0]
+  SETTABLEKS R16 R15 K40 ["init"]
+  DUPCLOSURE R16 K41 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R14
+  CAPTURE VAL R11
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  CAPTURE VAL R6
+  SETTABLEKS R16 R15 K42 ["render"]
+  GETTABLEKS R16 R4 K43 ["UNSTABLE_connect2"]
+  DUPCLOSURE R17 K44 [PROTO_2]
+  DUPCLOSURE R18 K45 [PROTO_4]
+  CAPTURE VAL R8
+  CALL R16 2 1
+  MOVE R17 R15
+  CALL R16 1 -1
+  RETURN R16 -1

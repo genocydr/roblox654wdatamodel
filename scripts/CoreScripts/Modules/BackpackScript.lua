@@ -9,7 +9,6 @@ local RobloxGui = CoreGui:WaitForChild("RobloxGui")
 local CorePackages = game:GetService("CorePackages")
 local InExperienceAppChatModal = require(CorePackages.Workspace.Packages.AppChat).App.InExperienceAppChatModal
 local getFFlagAppChatCoreUIConflictFix = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagAppChatCoreUIConflictFix
-local FFlagVRBackpackImproved = game:DefineFastFlag("VRBackpackImproved", false)
 
 local BackpackScript = {}
 BackpackScript.OpenClose = nil -- Function to toggle open/close
@@ -158,29 +157,11 @@ local CharConns = {} -- Holds character connections to be cleared later
 local GamepadEnabled = false -- determines if our gui needs to be gamepad friendly
 local TimeOfLastToolChange = 0
 
-local IsVR = VRService.VREnabled and not FFlagVRBackpackImproved -- Are we currently using a VR device?
-
--- This should be removed with FFlagVRBackpackImproved
-local function OldVREnabled()
-	return VRService.VREnabled and not FFlagVRBackpackImproved
-end
-local NumberOfHotbarSlots = IsVR and HOTBAR_SLOTS_VR or (IS_PHONE and HOTBAR_SLOTS_MINI or HOTBAR_SLOTS_FULL) -- Number of slots shown at the bottom
-local NumberOfInventoryRows = IsVR and INVENTORY_ROWS_VR or (IS_PHONE and INVENTORY_ROWS_MINI or INVENTORY_ROWS_FULL) -- How many rows in the popped-up inventory
+local NumberOfHotbarSlots = IS_PHONE and HOTBAR_SLOTS_MINI or HOTBAR_SLOTS_FULL -- Number of slots shown at the bottom
+local NumberOfInventoryRows = IS_PHONE and INVENTORY_ROWS_MINI or INVENTORY_ROWS_FULL -- How many rows in the popped-up inventory
 local BackpackPanel = nil
 
 local lastEquippedSlot = nil
-
--- remove with FFlagVRBackpackImproved
-local function EvaluateBackpackPanelVisibility(enabled)
-	return enabled and StarterGui:GetCoreGuiEnabled(Enum.CoreGuiType.Backpack) and TopbarEnabled and OldVREnabled()
-end
-
--- remove with FFlagVRBackpackImproved
-local function ShowVRBackpackPopup()
-	if BackpackPanel and EvaluateBackpackPanelVisibility(true) then
-		BackpackPanel:ForceShowForSeconds(2)
-	end
-end
 
 BackpackScript.BackpackEmpty = Create "BindableEvent" {
 	Name = "BackpackEmpty"
@@ -259,7 +240,7 @@ local function AdjustHotbarFrames()
 		end
 	end
 
-	OpenInventoryButton.Visible = not inventoryOpen and (hotbarIsVisible or not isInventoryEmpty()) and not OldVREnabled()
+	OpenInventoryButton.Visible = not inventoryOpen and (hotbarIsVisible or not isInventoryEmpty())
 	OpenInventoryButton.Position = UDim2.new(0.5, -15, 1, hotbarIsVisible and -110 or -50)
 	BackpackScript.IsHotbarVisible = hotbarIsVisible
 end
@@ -283,11 +264,11 @@ end
 local function UpdateBackpackLayout()
 	HotbarFrame.Size = UDim2.new(0, ICON_BUFFER + (NumberOfHotbarSlots * (ICON_SIZE + ICON_BUFFER)), 0, ICON_BUFFER + ICON_SIZE + ICON_BUFFER)
 	HotbarFrame.Position = UDim2.new(0.5, -HotbarFrame.Size.X.Offset / 2, 1, -HotbarFrame.Size.Y.Offset)
-	InventoryFrame.Size = UDim2.new(0, HotbarFrame.Size.X.Offset, 0, (HotbarFrame.Size.Y.Offset * NumberOfInventoryRows) + INVENTORY_HEADER_SIZE + (IsVR and 2*INVENTORY_ARROWS_BUFFER_VR or 0))
+	InventoryFrame.Size = UDim2.new(0, HotbarFrame.Size.X.Offset, 0, (HotbarFrame.Size.Y.Offset * NumberOfInventoryRows) + INVENTORY_HEADER_SIZE)
 	InventoryFrame.Position = UDim2.new(0.5, -InventoryFrame.Size.X.Offset / 2, 1, HotbarFrame.Position.Y.Offset - InventoryFrame.Size.Y.Offset)
 
-	ScrollingFrame.Size = UDim2.new(1, ScrollingFrame.ScrollBarThickness + 1, 1, -INVENTORY_HEADER_SIZE - (IsVR and 2*INVENTORY_ARROWS_BUFFER_VR or 0))
-	ScrollingFrame.Position = UDim2.new(0, 0, 0, INVENTORY_HEADER_SIZE + (IsVR and INVENTORY_ARROWS_BUFFER_VR or 0))
+	ScrollingFrame.Size = UDim2.new(1, ScrollingFrame.ScrollBarThickness + 1, 1, -INVENTORY_HEADER_SIZE)
+	ScrollingFrame.Position = UDim2.new(0, 0, 0, INVENTORY_HEADER_SIZE)
 	AdjustHotbarFrames()
 	AdjustInventoryFrames()
 end
@@ -364,29 +345,8 @@ local function MakeSlot(parent, index)
 	-- Slot Functions --
 
 	local function UpdateSlotFading()
-		if OldVREnabled() and BackpackPanel then
-			local panelTransparency = BackpackPanel.transparency
-			local slotTransparency = slotFadeLocked
-
-			-- This equation multiplies the two transparencies together.
-			local finalTransparency = panelTransparency + slotTransparency - panelTransparency * slotTransparency
-
-			SlotFrame.BackgroundTransparency = finalTransparency
-			SlotFrame.TextTransparency = finalTransparency
-			if ToolIcon then
-				ToolIcon.ImageTransparency = InventoryFrame.Visible and 0 or panelTransparency
-			end
-			if HighlightFrame then
-				for _, child in pairs(HighlightFrame:GetChildren()) do
-					child.BackgroundTransparency = finalTransparency
-				end
-			end
-
-			SlotFrame.SelectionImageObject = SelectionObj
-		else
-			SlotFrame.SelectionImageObject = nil
-			SlotFrame.BackgroundTransparency = (SlotFrame.Draggable) and 0 or slotFadeLocked
-		end
+		SlotFrame.SelectionImageObject = nil
+		SlotFrame.BackgroundTransparency = (SlotFrame.Draggable) and 0 or slotFadeLocked
 		SlotFrame.BackgroundColor3 = (SlotFrame.Draggable) and SLOT_DRAGGABLE_COLOR or BACKGROUND_COLOR
 	end
 
@@ -440,7 +400,7 @@ local function MakeSlot(parent, index)
 		local hotbarSlot = (self.Index <= NumberOfHotbarSlots)
 		local inventoryOpen = InventoryFrame.Visible
 
-		if (not hotbarSlot or inventoryOpen) and not OldVREnabled() then
+		if (not hotbarSlot or inventoryOpen) then
 			SlotFrame.Draggable = true
 		end
 
@@ -571,11 +531,7 @@ local function MakeSlot(parent, index)
 
 	function slot:SetClickability(on) -- (Happens on open/close arrow)
 		if self.Tool then
-			if OldVREnabled() then
-				SlotFrame.Draggable = false
-			else
-				SlotFrame.Draggable = not on
-			end
+			SlotFrame.Draggable = not on
 			UpdateSlotFading()
 		end
 	end
@@ -711,11 +667,6 @@ local function MakeSlot(parent, index)
 
 		SlotFrame.DragBegin:connect(function(dragPoint)
 
-			if OldVREnabled() then
-				-- select instead of drag
-				return
-			end
-
 			Dragging[SlotFrame] = true
 			startPoint = dragPoint
 
@@ -755,12 +706,6 @@ local function MakeSlot(parent, index)
 		SlotFrame.DragStopped:connect(function(x, y)
 			if FakeSlotFrame then
 				FakeSlotFrame:Destroy()
-			end
-
-			if OldVREnabled() then
-				-- select instead of drag
-				slot:Select(false)
-				return
 			end
 
 			local now = tick()
@@ -939,7 +884,6 @@ local function OnChildAdded(child) -- To Character or Backpack
 	local tool = child
 
 	if tool.Parent == Character then
-		ShowVRBackpackPopup()
 		TimeOfLastToolChange = tick()
 	end
 
@@ -1003,7 +947,6 @@ local function OnChildRemoved(child) -- From Character or Backpack
 	end
 	local tool = child
 
-	ShowVRBackpackPopup()
 	TimeOfLastToolChange = tick()
 
 	-- Ignore this event if we're just moving between the two
@@ -1274,10 +1217,9 @@ function getGamepadSwapSlot()
 end
 
 function changeSlot(slot)
-	local swapInVr = not OldVREnabled() or InventoryFrame.Visible
 	local gamepadCursorEnabled = GamepadService.GamepadCursorEnabled
 
-	if slot.Frame == GuiService.SelectedCoreObject and swapInVr and not gamepadCursorEnabled then
+	if slot.Frame == GuiService.SelectedCoreObject and not gamepadCursorEnabled then
 		local currentlySelectedSlot = getGamepadSwapSlot()
 
 		if currentlySelectedSlot then
@@ -1309,20 +1251,6 @@ function changeSlot(slot)
 		end
 	else
 		slot:Select()
-		VRInventorySelector.SelectionImageObject.Visible = false
-	end
-end
-
--- Remove with FFlagVRBackpackImproved
-function vrMoveSlotToInventory()
-	if not OldVREnabled() then
-		return
-	end
-
-	local currentlySelectedSlot = getGamepadSwapSlot()
-	if currentlySelectedSlot and currentlySelectedSlot.Tool then
-		currentlySelectedSlot.Frame.BorderSizePixel = 0
-		currentlySelectedSlot:MoveToInventory()
 		VRInventorySelector.SelectionImageObject.Visible = false
 	end
 end
@@ -1528,10 +1456,6 @@ selectorImage.ScaleType = Enum.ScaleType.Slice
 selectorImage.SliceCenter = Rect.new(12,12,52,52)
 selectorImage.Visible = false
 VRInventorySelector.SelectionImageObject = selectorImage
-
-VRInventorySelector.MouseButton1Click:connect(function()
-	vrMoveSlotToInventory()
-end)
 
 -- Make the ScrollingFrame, which holds the rest of the Slots (however many)
 ScrollingFrame = NewGui('ScrollingFrame', 'ScrollingFrame')
@@ -1830,13 +1754,9 @@ do -- Make the Inventory expand/collapse arrow (unless TopBar)
 			if GamepadEnabled then
 				if GAMEPAD_INPUT_TYPES[UserInputService:GetLastInputType()] then
 					resizeGamepadHintsFrame()
-					gamepadHintsFrame.Visible = not OldVREnabled()
+					gamepadHintsFrame.Visible = true
 				end
 				enableGamepadInventoryControl()
-			end
-			if BackpackPanel and OldVREnabled() then
-				BackpackPanel:SetVisible(true)
-				BackpackPanel:RequestPositionUpdate()
 			end
 		else
 			if GamepadEnabled then
@@ -1944,55 +1864,6 @@ if getFFlagAppChatCoreUIConflictFix() then
 			BackpackScript.OpenClose()
 		end
 	end)
-end
-
-if not FFlagVRBackpackImproved then
-	local BackpackStateChangedInVRConn, VRModuleOpenedConn, VRModuleClosedConn = nil, nil, nil
-	local function OnVREnabled()
-		local Panel3D = require(CorePackages.Workspace.Packages.VrCommon).Panel3D
-
-		IsVR = false
-		OnCoreGuiChanged(backpackType, StarterGui:GetCoreGuiEnabled(backpackType))
-		OnCoreGuiChanged(healthType, StarterGui:GetCoreGuiEnabled(healthType))
-
-		VRInventorySelector.Visible = IsVR
-
-		local BackpackPanel = Panel3D.Get(BackpackScript.ModuleName)
-		BackpackPanel:SetVisible(EvaluateBackpackPanelVisibility(false))
-		BackpackPanel:LinkTo(nil)
-
-		MainFrame.Parent = RobloxGui
-		OpenInventoryButton.Parent = nil
-		CloseInventoryButton.Parent = nil
-
-		ScrollUpInventoryButton.Parent = nil
-		ScrollDownInventoryButton.Parent = nil
-		ScrollingFrame.ScrollingEnabled = true
-
-		-- Turn draggin back on
-		for _, slot in pairs(Slots) do
-			slot:SetClickability(true)
-		end
-
-		if BackpackStateChangedInVRConn then
-			BackpackStateChangedInVRConn:disconnect()
-			BackpackStateChangedInVRConn = nil
-		end
-		if VRModuleOpenedConn then
-			VRModuleOpenedConn:disconnect()
-			VRModuleOpenedConn = nil
-		end
-		if VRModuleClosedConn then
-			VRModuleClosedConn:disconnect()
-			VRModuleClosedConn = nil
-		end
-
-		NumberOfInventoryRows = IsVR and INVENTORY_ROWS_VR or (IS_PHONE and INVENTORY_ROWS_MINI or INVENTORY_ROWS_FULL)
-		local newSlotTotal = IsVR and HOTBAR_SLOTS_VR or (IS_PHONE and HOTBAR_SLOTS_MINI or HOTBAR_SLOTS_FULL)
-		SetNumberOfHotbarSlots(newSlotTotal)
-	end
-	VRService:GetPropertyChangedSignal("VREnabled"):connect(OnVREnabled)
-	OnVREnabled()
 end
 
 local function OnPreferredTransparencyChanged()

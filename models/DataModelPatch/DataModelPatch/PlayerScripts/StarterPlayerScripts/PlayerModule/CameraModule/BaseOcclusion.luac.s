@@ -1,0 +1,72 @@
+PROTO_0:
+  PREPVARARGS 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETVARARGS R2 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_1:
+  NEWTABLE R1 0 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  RETURN R0 1
+
+PROTO_2:
+  RETURN R0 0
+
+PROTO_3:
+  RETURN R0 0
+
+PROTO_4:
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R1 K1 [warn]
+  LOADK R2 K2 ["BaseOcclusion GetOcclusionMode must be overridden by derived classes"]
+  CALL R1 1 0
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_6:
+  GETIMPORT R2 K1 [warn]
+  LOADK R3 K2 ["BaseOcclusion Enable must be overridden by derived classes"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R4 K1 [warn]
+  LOADK R5 K2 ["BaseOcclusion Update must be overridden by derived classes"]
+  CALL R4 1 0
+  RETURN R2 2
+
+MAIN:
+  PREPVARARGS 0
+  NEWTABLE R0 8 0
+  SETTABLEKS R0 R0 K0 ["__index"]
+  DUPTABLE R3 K2 [{"__call"}]
+  DUPCLOSURE R4 K3 [PROTO_0]
+  CAPTURE VAL R0
+  SETTABLEKS R4 R3 K1 ["__call"]
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K5 [setmetatable]
+  CALL R1 2 0
+  DUPCLOSURE R1 K6 [PROTO_1]
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K7 ["new"]
+  DUPCLOSURE R1 K8 [PROTO_2]
+  SETTABLEKS R1 R0 K9 ["CharacterAdded"]
+  DUPCLOSURE R1 K10 [PROTO_3]
+  SETTABLEKS R1 R0 K11 ["CharacterRemoving"]
+  DUPCLOSURE R1 K12 [PROTO_4]
+  SETTABLEKS R1 R0 K13 ["OnCameraSubjectChanged"]
+  DUPCLOSURE R1 K14 [PROTO_5]
+  SETTABLEKS R1 R0 K15 ["GetOcclusionMode"]
+  DUPCLOSURE R1 K16 [PROTO_6]
+  SETTABLEKS R1 R0 K17 ["Enable"]
+  DUPCLOSURE R1 K18 [PROTO_7]
+  SETTABLEKS R1 R0 K19 ["Update"]
+  RETURN R0 1

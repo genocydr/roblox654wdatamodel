@@ -1,0 +1,395 @@
+PROTO_0:
+  GETTABLEKS R3 R0 K0 ["FriendIcons"]
+  GETTABLEKS R4 R1 K1 ["friendStatus"]
+  GETTABLE R2 R3 R4
+  GETTABLEKS R3 R1 K2 ["isBlocked"]
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R3 R0 K3 ["BlockedIcon"]
+  RETURN R3 1
+  JUMPIFNOT R2 [+1]
+  RETURN R2 1
+  LOADNIL R3
+  RETURN R3 1
+
+PROTO_1:
+  GETTABLEKS R5 R0 K0 ["MembershipIcons"]
+  GETTABLEKS R6 R1 K1 ["MembershipType"]
+  GETTABLE R4 R5 R6
+  GETTABLEKS R7 R0 K2 ["FriendIcons"]
+  GETTABLEKS R8 R3 K3 ["friendStatus"]
+  GETTABLE R6 R7 R8
+  GETTABLEKS R7 R3 K4 ["isBlocked"]
+  JUMPIFNOT R7 [+3]
+  GETTABLEKS R5 R0 K5 ["BlockedIcon"]
+  JUMP [+4]
+  JUMPIFNOT R6 [+2]
+  MOVE R5 R6
+  JUMP [+1]
+  LOADNIL R5
+  JUMPIFNOT R5 [+1]
+  RETURN R5 1
+  GETTABLEKS R6 R2 K6 ["isPlaceOwner"]
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R6 R0 K7 ["PlaceOwnerIcon"]
+  RETURN R6 1
+  GETTABLEKS R7 R0 K8 ["CustomPlayerIcons"]
+  GETTABLEKS R8 R1 K9 ["UserId"]
+  GETTABLE R6 R7 R8
+  JUMPIFNOT R6 [+6]
+  GETTABLEKS R7 R0 K8 ["CustomPlayerIcons"]
+  GETTABLEKS R8 R1 K9 ["UserId"]
+  GETTABLE R6 R7 R8
+  RETURN R6 1
+  GETTABLEKS R6 R2 K10 ["specialGroupIcon"]
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R6 R2 K10 ["specialGroupIcon"]
+  RETURN R6 1
+  GETTABLEKS R6 R3 K11 ["isFollowing"]
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R6 R0 K12 ["FollowingIcon"]
+  RETURN R6 1
+  JUMPIFNOT R4 [+1]
+  RETURN R4 1
+  LOADK R6 K13 [""]
+  RETURN R6 1
+
+PROTO_2:
+  LOADNIL R1
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+15]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["playerIconInfo"]
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["playerIconInfo"]
+  GETTABLEKS R2 R3 K2 ["avatarIcon"]
+  MOVE R1 R2
+  JUMP [+7]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["playerIconInfo"]
+  GETTABLEKS R1 R2 K2 ["avatarIcon"]
+  JUMPIFNOTEQKNIL R1 [+3]
+  GETTABLEKS R1 R0 K3 ["DefaultThumbnail"]
+  GETTABLEKS R2 R0 K4 ["IsTenFoot"]
+  JUMPIFNOT R2 [+64]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K5 ["createElement"]
+  LOADK R3 K6 ["ImageLabel"]
+  DUPTABLE R4 K11 [{"LayoutOrder", "Size", "BackgroundTransparency", "Image"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K0 ["props"]
+  GETTABLEKS R6 R7 K13 ["layoutOrder"]
+  ORK R5 R6 K12 [1]
+  SETTABLEKS R5 R4 K7 ["LayoutOrder"]
+  GETTABLEKS R5 R0 K14 ["PlayerIconBackgroundSize"]
+  SETTABLEKS R5 R4 K8 ["Size"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K9 ["BackgroundTransparency"]
+  GETTABLEKS R5 R0 K15 ["PlayerBackgroundImage"]
+  SETTABLEKS R5 R4 K10 ["Image"]
+  NEWTABLE R5 0 1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["createElement"]
+  LOADK R7 K6 ["ImageLabel"]
+  DUPTABLE R8 K19 [{"Size", "Position", "AnchorPoint", "BackgroundTransparency", "Image", "BorderSizePixel"}]
+  GETTABLEKS R9 R0 K20 ["PlayerIconSize"]
+  SETTABLEKS R9 R8 K8 ["Size"]
+  GETIMPORT R9 K23 [UDim2.new]
+  LOADK R10 K24 [0.5]
+  LOADN R11 0
+  LOADK R12 K24 [0.5]
+  LOADN R13 0
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K16 ["Position"]
+  GETIMPORT R9 K26 [Vector2.new]
+  LOADK R10 K24 [0.5]
+  LOADK R11 K24 [0.5]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K17 ["AnchorPoint"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K9 ["BackgroundTransparency"]
+  SETTABLEKS R1 R8 K10 ["Image"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K18 ["BorderSizePixel"]
+  CALL R6 2 -1
+  SETLIST R5 R6 -1 [1]
+  CALL R2 3 -1
+  RETURN R2 -1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K27 ["isSmallTouchDevice"]
+  JUMPIFNOT R2 [+108]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K5 ["createElement"]
+  GETUPVAL R3 3
+  DUPTABLE R4 K28 [{"AnchorPoint", "Position", "Size", "BackgroundTransparency", "Image", "BorderSizePixel"}]
+  GETIMPORT R5 K26 [Vector2.new]
+  LOADN R6 0
+  LOADK R7 K24 [0.5]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K17 ["AnchorPoint"]
+  GETIMPORT R5 K23 [UDim2.new]
+  LOADN R6 0
+  GETTABLEKS R7 R0 K29 ["PlayerNamePaddingXMobile"]
+  LOADK R8 K24 [0.5]
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K16 ["Position"]
+  GETTABLEKS R5 R0 K30 ["PlayerIconSizeMobile"]
+  SETTABLEKS R5 R4 K8 ["Size"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K9 ["BackgroundTransparency"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K0 ["props"]
+  GETTABLEKS R6 R7 K31 ["player"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K0 ["props"]
+  GETTABLEKS R7 R8 K1 ["playerIconInfo"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K0 ["props"]
+  GETTABLEKS R8 R9 K32 ["playerRelationship"]
+  GETTABLEKS R10 R0 K33 ["MembershipIcons"]
+  GETTABLEKS R11 R6 K34 ["MembershipType"]
+  GETTABLE R9 R10 R11
+  GETTABLEKS R12 R0 K35 ["FriendIcons"]
+  GETTABLEKS R13 R8 K36 ["friendStatus"]
+  GETTABLE R11 R12 R13
+  GETTABLEKS R12 R8 K37 ["isBlocked"]
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R10 R0 K38 ["BlockedIcon"]
+  JUMP [+4]
+  JUMPIFNOT R11 [+2]
+  MOVE R10 R11
+  JUMP [+1]
+  LOADNIL R10
+  JUMPIFNOT R10 [+2]
+  MOVE R5 R10
+  JUMP [+34]
+  GETTABLEKS R11 R7 K39 ["isPlaceOwner"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R0 K40 ["PlaceOwnerIcon"]
+  JUMP [+28]
+  GETTABLEKS R12 R0 K41 ["CustomPlayerIcons"]
+  GETTABLEKS R13 R6 K42 ["UserId"]
+  GETTABLE R11 R12 R13
+  JUMPIFNOT R11 [+6]
+  GETTABLEKS R11 R0 K41 ["CustomPlayerIcons"]
+  GETTABLEKS R12 R6 K42 ["UserId"]
+  GETTABLE R5 R11 R12
+  JUMP [+16]
+  GETTABLEKS R11 R7 K43 ["specialGroupIcon"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R7 K43 ["specialGroupIcon"]
+  JUMP [+10]
+  GETTABLEKS R11 R8 K44 ["isFollowing"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R0 K45 ["FollowingIcon"]
+  JUMP [+4]
+  JUMPIFNOT R9 [+2]
+  MOVE R5 R9
+  JUMP [+1]
+  LOADK R5 K46 [""]
+  SETTABLEKS R5 R4 K10 ["Image"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K18 ["BorderSizePixel"]
+  CALL R2 2 -1
+  RETURN R2 -1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K5 ["createElement"]
+  GETUPVAL R3 3
+  DUPTABLE R4 K47 [{"LayoutOrder", "Size", "BackgroundTransparency", "Image", "BorderSizePixel"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["props"]
+  GETTABLEKS R5 R6 K13 ["layoutOrder"]
+  SETTABLEKS R5 R4 K7 ["LayoutOrder"]
+  GETTABLEKS R5 R0 K20 ["PlayerIconSize"]
+  SETTABLEKS R5 R4 K8 ["Size"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K9 ["BackgroundTransparency"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K0 ["props"]
+  GETTABLEKS R6 R7 K31 ["player"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K0 ["props"]
+  GETTABLEKS R7 R8 K1 ["playerIconInfo"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K0 ["props"]
+  GETTABLEKS R8 R9 K32 ["playerRelationship"]
+  GETTABLEKS R10 R0 K33 ["MembershipIcons"]
+  GETTABLEKS R11 R6 K34 ["MembershipType"]
+  GETTABLE R9 R10 R11
+  GETTABLEKS R12 R0 K35 ["FriendIcons"]
+  GETTABLEKS R13 R8 K36 ["friendStatus"]
+  GETTABLE R11 R12 R13
+  GETTABLEKS R12 R8 K37 ["isBlocked"]
+  JUMPIFNOT R12 [+3]
+  GETTABLEKS R10 R0 K38 ["BlockedIcon"]
+  JUMP [+4]
+  JUMPIFNOT R11 [+2]
+  MOVE R10 R11
+  JUMP [+1]
+  LOADNIL R10
+  JUMPIFNOT R10 [+2]
+  MOVE R5 R10
+  JUMP [+34]
+  GETTABLEKS R11 R7 K39 ["isPlaceOwner"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R0 K40 ["PlaceOwnerIcon"]
+  JUMP [+28]
+  GETTABLEKS R12 R0 K41 ["CustomPlayerIcons"]
+  GETTABLEKS R13 R6 K42 ["UserId"]
+  GETTABLE R11 R12 R13
+  JUMPIFNOT R11 [+6]
+  GETTABLEKS R11 R0 K41 ["CustomPlayerIcons"]
+  GETTABLEKS R12 R6 K42 ["UserId"]
+  GETTABLE R5 R11 R12
+  JUMP [+16]
+  GETTABLEKS R11 R7 K43 ["specialGroupIcon"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R7 K43 ["specialGroupIcon"]
+  JUMP [+10]
+  GETTABLEKS R11 R8 K44 ["isFollowing"]
+  JUMPIFNOT R11 [+3]
+  GETTABLEKS R5 R0 K45 ["FollowingIcon"]
+  JUMP [+4]
+  JUMPIFNOT R9 [+2]
+  MOVE R5 R9
+  JUMP [+1]
+  LOADK R5 K46 [""]
+  SETTABLEKS R5 R4 K10 ["Image"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K18 ["BorderSizePixel"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"isSmallTouchDevice"}]
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K0 ["isSmallTouchDevice"]
+  SETTABLEKS R2 R1 K0 ["isSmallTouchDevice"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["Flags"]
+  GETTABLEKS R4 R5 K11 ["FFlagPlayerIconAvatarFix"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R0 K12 ["Packages"]
+  GETTABLEKS R5 R6 K13 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R0 K12 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R8 R0 K12 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["UIBlox"]
+  CALL R6 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R0 K12 ["Packages"]
+  GETTABLEKS R8 R9 K16 ["t"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R11 R2 K9 ["Modules"]
+  GETTABLEKS R10 R11 K17 ["Interfaces"]
+  GETTABLEKS R9 R10 K18 ["playerInterface"]
+  CALL R8 1 1
+  GETIMPORT R11 K20 [script]
+  GETTABLEKS R10 R11 K21 ["Parent"]
+  GETTABLEKS R9 R10 K21 ["Parent"]
+  GETTABLEKS R10 R9 K22 ["Connection"]
+  GETIMPORT R11 K8 [require]
+  GETTABLEKS R12 R10 K23 ["LayoutValues"]
+  CALL R11 1 1
+  GETTABLEKS R12 R11 K24 ["WithLayoutValues"]
+  GETTABLEKS R15 R6 K25 ["Core"]
+  GETTABLEKS R14 R15 K26 ["ImageSet"]
+  GETTABLEKS R13 R14 K27 ["ImageSetLabel"]
+  GETTABLEKS R14 R4 K28 ["PureComponent"]
+  LOADK R16 K29 ["PlayerIcon"]
+  NAMECALL R14 R14 K30 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R7 K31 ["strictInterface"]
+  DUPTABLE R16 K37 [{"player", "layoutOrder", "isSmallTouchDevice", "playerIconInfo", "playerRelationship"}]
+  SETTABLEKS R8 R16 K32 ["player"]
+  GETTABLEKS R17 R7 K38 ["optional"]
+  GETTABLEKS R18 R7 K39 ["integer"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K33 ["layoutOrder"]
+  GETTABLEKS R17 R7 K38 ["optional"]
+  GETTABLEKS R18 R7 K40 ["boolean"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K34 ["isSmallTouchDevice"]
+  GETTABLEKS R17 R7 K31 ["strictInterface"]
+  DUPTABLE R18 K44 [{"isPlaceOwner", "avatarIcon", "specialGroupIcon"}]
+  GETTABLEKS R19 R7 K40 ["boolean"]
+  SETTABLEKS R19 R18 K41 ["isPlaceOwner"]
+  GETTABLEKS R19 R7 K38 ["optional"]
+  GETTABLEKS R20 R7 K45 ["table"]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K42 ["avatarIcon"]
+  GETTABLEKS R19 R7 K38 ["optional"]
+  GETTABLEKS R20 R7 K45 ["table"]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K43 ["specialGroupIcon"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K35 ["playerIconInfo"]
+  GETTABLEKS R17 R7 K31 ["strictInterface"]
+  DUPTABLE R18 K50 [{"isBlocked", "friendStatus", "isFollowing", "isFollower"}]
+  GETTABLEKS R19 R7 K40 ["boolean"]
+  SETTABLEKS R19 R18 K46 ["isBlocked"]
+  GETTABLEKS R19 R7 K51 ["enum"]
+  GETIMPORT R20 K54 [Enum.FriendStatus]
+  CALL R19 1 1
+  SETTABLEKS R19 R18 K47 ["friendStatus"]
+  GETTABLEKS R19 R7 K40 ["boolean"]
+  SETTABLEKS R19 R18 K48 ["isFollowing"]
+  GETTABLEKS R19 R7 K40 ["boolean"]
+  SETTABLEKS R19 R18 K49 ["isFollower"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K36 ["playerRelationship"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K55 ["validateProps"]
+  DUPCLOSURE R15 K56 [PROTO_0]
+  DUPCLOSURE R16 K57 [PROTO_1]
+  DUPCLOSURE R17 K58 [PROTO_3]
+  CAPTURE VAL R12
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R13
+  SETTABLEKS R17 R14 K59 ["render"]
+  DUPCLOSURE R17 K60 [PROTO_4]
+  GETTABLEKS R18 R5 K61 ["connect"]
+  MOVE R19 R17
+  LOADNIL R20
+  CALL R18 2 1
+  MOVE R19 R14
+  CALL R18 1 -1
+  RETURN R18 -1

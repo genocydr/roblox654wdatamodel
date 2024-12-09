@@ -1,0 +1,493 @@
+PROTO_0:
+  NEWTABLE R1 4 0
+  GETUPVAL R4 0
+  FASTCALL2 SETMETATABLE R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K1 [setmetatable]
+  CALL R2 2 0
+  SETTABLEKS R0 R1 K2 ["_statType"]
+  GETIMPORT R2 K5 [Instance.new]
+  LOADK R3 K6 ["Frame"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K7 ["_frame"]
+  GETTABLEKS R2 R1 K7 ["_frame"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K8 ["BackgroundTransparency"]
+  GETTABLEKS R2 R1 K7 ["_frame"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K9 ["TextZIndex"]
+  SETTABLEKS R3 R2 K10 ["ZIndex"]
+  GETIMPORT R2 K5 [Instance.new]
+  LOADK R3 K11 ["TextLabel"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K13 ["StyleTextWidget"]
+  GETTABLEKS R3 R1 K12 ["_titleLabel"]
+  CALL R2 1 0
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K14 ["PanelTitleFontSize"]
+  SETTABLEKS R3 R2 K15 ["FontSize"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  NAMECALL R3 R1 K16 ["_getTitle"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K17 ["Text"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETTABLEKS R3 R1 K7 ["_frame"]
+  SETTABLEKS R3 R2 K18 ["Parent"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETUPVAL R3 2
+  SETTABLEKS R3 R2 K19 ["Size"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETUPVAL R3 3
+  SETTABLEKS R3 R2 K20 ["Position"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETIMPORT R3 K24 [Enum.TextXAlignment.Left]
+  SETTABLEKS R3 R2 K22 ["TextXAlignment"]
+  GETTABLEKS R2 R1 K12 ["_titleLabel"]
+  GETIMPORT R3 K27 [Enum.TextYAlignment.Top]
+  SETTABLEKS R3 R2 K25 ["TextYAlignment"]
+  NAMECALL R2 R1 K28 ["_addCurrentValueWidget"]
+  CALL R2 1 0
+  NAMECALL R2 R1 K29 ["_addTargetValueWidget"]
+  CALL R2 1 0
+  NAMECALL R2 R1 K30 ["_addAverageValueWidget"]
+  CALL R2 1 0
+  RETURN R1 1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["_performanceStats"]
+  JUMPIFNOTEQKNIL R1 [+3]
+  LOADN R1 0
+  RETURN R1 1
+  GETTABLEKS R1 R0 K0 ["_performanceStats"]
+  GETTABLEKS R3 R0 K1 ["_statMaxName"]
+  NAMECALL R1 R1 K2 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOTEQKNIL R1 [+3]
+  LOADN R2 0
+  RETURN R2 1
+  NAMECALL R2 R1 K3 ["GetValue"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETTABLEKS R2 R0 K1 ["_statType"]
+  LOADK R3 K2 ["Current"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K3 ["_currentValueWidget"]
+  GETTABLEKS R1 R0 K3 ["_currentValueWidget"]
+  GETTABLEKS R3 R0 K4 ["_frame"]
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  NAMECALL R1 R1 K5 ["PlaceInParent"]
+  CALL R1 4 0
+  GETTABLEKS R1 R0 K3 ["_currentValueWidget"]
+  NAMECALL R1 R1 K6 ["GetDecorationFrame"]
+  CALL R1 1 1
+  GETIMPORT R2 K8 [Instance.new]
+  LOADK R3 K9 ["ImageLabel"]
+  CALL R2 1 1
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADK R4 K12 [0.5]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K14 ["OvalKeySize"]
+  MINUS R6 R7
+  DIVK R5 R6 K13 [2]
+  LOADK R6 K12 [0.5]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K14 ["OvalKeySize"]
+  MINUS R8 R9
+  DIVK R7 R8 K13 [2]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K15 ["Position"]
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADN R4 0
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K14 ["OvalKeySize"]
+  LOADN R6 0
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K14 ["OvalKeySize"]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K16 ["Size"]
+  SETTABLEKS R1 R2 K17 ["Parent"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K18 ["BackgroundTransparency"]
+  LOADK R3 K19 ["rbxasset://textures/ui/PerformanceStats/OvalKey.png"]
+  SETTABLEKS R3 R2 K20 ["Image"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K21 ["BorderSizePixel"]
+  SETTABLEKS R2 R0 K22 ["_currentValueDecoration"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETTABLEKS R2 R0 K1 ["_statType"]
+  LOADK R3 K2 ["Target"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K3 ["_targetValueWidget"]
+  GETTABLEKS R1 R0 K3 ["_targetValueWidget"]
+  GETTABLEKS R3 R0 K4 ["_frame"]
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  NAMECALL R1 R1 K5 ["PlaceInParent"]
+  CALL R1 4 0
+  GETTABLEKS R1 R0 K3 ["_targetValueWidget"]
+  NAMECALL R1 R1 K6 ["GetDecorationFrame"]
+  CALL R1 1 1
+  GETIMPORT R2 K8 [Instance.new]
+  LOADK R3 K9 ["ImageLabel"]
+  CALL R2 1 1
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADK R4 K12 [0.5]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K14 ["TargetKeyWidth"]
+  MINUS R6 R7
+  DIVK R5 R6 K13 [2]
+  LOADK R6 K12 [0.5]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K15 ["TargetKeyHeight"]
+  MINUS R8 R9
+  DIVK R7 R8 K13 [2]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K16 ["Position"]
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADN R4 0
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K14 ["TargetKeyWidth"]
+  LOADN R6 0
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K15 ["TargetKeyHeight"]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K17 ["Size"]
+  SETTABLEKS R1 R2 K18 ["Parent"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K19 ["BackgroundTransparency"]
+  LOADK R3 K20 ["rbxasset://textures/ui/PerformanceStats/TargetKey.png"]
+  SETTABLEKS R3 R2 K21 ["Image"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETTABLEKS R2 R0 K1 ["_statType"]
+  LOADK R3 K2 ["Average"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K3 ["_averageValueWidget"]
+  GETTABLEKS R1 R0 K3 ["_averageValueWidget"]
+  GETTABLEKS R3 R0 K4 ["_frame"]
+  GETUPVAL R4 1
+  GETUPVAL R5 2
+  NAMECALL R1 R1 K5 ["PlaceInParent"]
+  CALL R1 4 0
+  GETTABLEKS R1 R0 K3 ["_averageValueWidget"]
+  NAMECALL R1 R1 K6 ["GetDecorationFrame"]
+  CALL R1 1 1
+  GETIMPORT R2 K8 [Instance.new]
+  LOADK R3 K9 ["Frame"]
+  CALL R2 1 1
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADN R4 0
+  LOADN R5 0
+  LOADK R6 K12 [0.5]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K14 ["GraphAverageLineTotalThickness"]
+  MINUS R8 R9
+  DIVK R7 R8 K13 [2]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K15 ["Position"]
+  GETIMPORT R3 K11 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 0
+  LOADN R6 0
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K16 ["GraphAverageLineInnerThickness"]
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K17 ["Size"]
+  SETTABLEKS R1 R2 K18 ["Parent"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K19 ["StyleAverageLine"]
+  MOVE R4 R2
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["TypeToName"]
+  GETTABLEKS R3 R0 K1 ["_statType"]
+  GETTABLE R1 R2 R3
+  RETURN R1 1
+
+PROTO_6:
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R3 R4 K1 ["Position"]
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R2 R4 K2 ["Size"]
+  GETTABLEKS R4 R0 K0 ["_frame"]
+  SETTABLEKS R1 R4 K3 ["Parent"]
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["_aggregator"]
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R2 R0 K0 ["_aggregator"]
+  GETTABLEKS R4 R0 K1 ["_listenerId"]
+  NAMECALL R2 R2 K2 ["RemoveListener"]
+  CALL R2 2 0
+  LOADNIL R2
+  SETTABLEKS R2 R0 K1 ["_listenerId"]
+  LOADNIL R2
+  SETTABLEKS R2 R0 K0 ["_aggregator"]
+  SETTABLEKS R1 R0 K0 ["_aggregator"]
+  NAMECALL R2 R0 K3 ["_refreshVisibility"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R2 R0 K0 ["_frame"]
+  SETTABLEKS R1 R2 K1 ["Visible"]
+  NAMECALL R2 R0 K2 ["_refreshVisibility"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["PerformanceStatsShouldBeVisible"]
+  CALL R1 0 1
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R2 R0 K1 ["_frame"]
+  GETTABLEKS R1 R2 K2 ["Visible"]
+  RETURN R1 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_10:
+  NAMECALL R1 R0 K0 ["_shouldBeVisible"]
+  CALL R1 1 1
+  JUMPIFNOT R1 [+7]
+  NAMECALL R1 R0 K1 ["_startListening"]
+  CALL R1 1 0
+  NAMECALL R1 R0 K2 ["_updateFromAggregator"]
+  CALL R1 1 0
+  RETURN R0 0
+  NAMECALL R1 R0 K3 ["_stopListening"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["_aggregator"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K1 ["_listenerId"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K0 ["_aggregator"]
+  GETTABLEKS R3 R0 K1 ["_listenerId"]
+  NAMECALL R1 R1 K2 ["RemoveListener"]
+  CALL R1 2 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["_listenerId"]
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["_updateFromAggregator"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["_aggregator"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K1 ["_listenerId"]
+  JUMPIFEQKNIL R1 [+2]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K0 ["_aggregator"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["AddListener"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K1 ["_listenerId"]
+  RETURN R0 0
+
+PROTO_14:
+  LOADN R1 0
+  LOADN R2 0
+  LOADN R3 0
+  GETTABLEKS R4 R0 K0 ["_aggregator"]
+  JUMPIFEQKNIL R4 [+19]
+  GETTABLEKS R4 R0 K0 ["_aggregator"]
+  NAMECALL R4 R4 K1 ["GetLatestValue"]
+  CALL R4 1 1
+  MOVE R1 R4
+  GETTABLEKS R4 R0 K0 ["_aggregator"]
+  NAMECALL R4 R4 K2 ["GetAverage"]
+  CALL R4 1 1
+  MOVE R2 R4
+  GETTABLEKS R4 R0 K0 ["_aggregator"]
+  NAMECALL R4 R4 K3 ["GetTarget"]
+  CALL R4 1 1
+  MOVE R3 R4
+  GETTABLEKS R4 R0 K4 ["_currentValueWidget"]
+  MOVE R6 R1
+  NAMECALL R4 R4 K5 ["SetValue"]
+  CALL R4 2 0
+  GETTABLEKS R4 R0 K6 ["_targetValueWidget"]
+  MOVE R6 R3
+  NAMECALL R4 R4 K5 ["SetValue"]
+  CALL R4 2 0
+  GETTABLEKS R4 R0 K7 ["_averageValueWidget"]
+  MOVE R6 R2
+  NAMECALL R4 R4 K5 ["SetValue"]
+  CALL R4 2 0
+  GETTABLEKS R4 R0 K8 ["_currentValueDecoration"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K9 ["GetColorForValue"]
+  MOVE R6 R1
+  MOVE R7 R3
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K10 ["ImageColor3"]
+  RETURN R0 0
+
+PROTO_15:
+  GETTABLEKS R2 R0 K0 ["_frame"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K2 ["_titleLabel"]
+  SETTABLEKS R1 R2 K1 ["ZIndex"]
+  GETTABLEKS R2 R0 K3 ["_currentValueWidget"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K4 ["SetZIndex"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K5 ["_averageValueWidget"]
+  MOVE R4 R1
+  NAMECALL R2 R2 K4 ["SetZIndex"]
+  CALL R2 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R5 R0 K6 ["RobloxGui"]
+  GETTABLEKS R4 R5 K7 ["Modules"]
+  GETTABLEKS R3 R4 K8 ["Stats"]
+  GETTABLEKS R2 R3 K9 ["StatsUtils"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R6 R0 K6 ["RobloxGui"]
+  GETTABLEKS R5 R6 K7 ["Modules"]
+  GETTABLEKS R4 R5 K8 ["Stats"]
+  GETTABLEKS R3 R4 K10 ["StatsAggregator"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R7 R0 K6 ["RobloxGui"]
+  GETTABLEKS R6 R7 K7 ["Modules"]
+  GETTABLEKS R5 R6 K8 ["Stats"]
+  GETTABLEKS R4 R5 K11 ["DecoratedValueLabel"]
+  CALL R3 1 1
+  GETTABLEKS R4 R1 K12 ["TextPanelTopMarginPix"]
+  GETIMPORT R5 K15 [UDim2.new]
+  LOADN R6 0
+  GETTABLEKS R7 R1 K16 ["TextPanelLeftMarginPix"]
+  LOADN R8 0
+  MOVE R9 R4
+  CALL R5 4 1
+  GETTABLEKS R6 R1 K17 ["TextPanelTitleHeightY"]
+  ADD R4 R4 R6
+  GETIMPORT R6 K15 [UDim2.new]
+  LOADN R7 0
+  GETTABLEKS R8 R1 K16 ["TextPanelLeftMarginPix"]
+  LOADN R9 0
+  MOVE R10 R4
+  CALL R6 4 1
+  GETTABLEKS R7 R1 K18 ["TextPanelLegendItemHeightY"]
+  ADD R4 R4 R7
+  GETIMPORT R7 K15 [UDim2.new]
+  LOADN R8 0
+  GETTABLEKS R9 R1 K16 ["TextPanelLeftMarginPix"]
+  LOADN R10 0
+  MOVE R11 R4
+  CALL R7 4 1
+  GETTABLEKS R8 R1 K18 ["TextPanelLegendItemHeightY"]
+  ADD R4 R4 R8
+  GETIMPORT R8 K15 [UDim2.new]
+  LOADN R9 0
+  GETTABLEKS R10 R1 K16 ["TextPanelLeftMarginPix"]
+  LOADN R11 0
+  MOVE R12 R4
+  CALL R8 4 1
+  GETIMPORT R9 K15 [UDim2.new]
+  LOADN R10 1
+  GETTABLEKS R13 R1 K16 ["TextPanelLeftMarginPix"]
+  MINUS R12 R13
+  MULK R11 R12 K19 [2]
+  LOADN R12 0
+  GETTABLEKS R13 R1 K17 ["TextPanelTitleHeightY"]
+  CALL R9 4 1
+  GETIMPORT R10 K15 [UDim2.new]
+  LOADN R11 1
+  GETTABLEKS R14 R1 K16 ["TextPanelLeftMarginPix"]
+  MINUS R13 R14
+  MULK R12 R13 K19 [2]
+  LOADN R13 0
+  GETTABLEKS R14 R1 K18 ["TextPanelLegendItemHeightY"]
+  CALL R10 4 1
+  NEWTABLE R11 16 0
+  SETTABLEKS R11 R11 K20 ["__index"]
+  DUPCLOSURE R12 K21 [PROTO_0]
+  CAPTURE VAL R11
+  CAPTURE VAL R1
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  SETTABLEKS R12 R11 K14 ["new"]
+  DUPCLOSURE R12 K22 [PROTO_1]
+  SETTABLEKS R12 R11 K23 ["_getTarget"]
+  DUPCLOSURE R12 K24 [PROTO_2]
+  CAPTURE VAL R3
+  CAPTURE VAL R10
+  CAPTURE VAL R6
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K25 ["_addCurrentValueWidget"]
+  DUPCLOSURE R12 K26 [PROTO_3]
+  CAPTURE VAL R3
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K27 ["_addTargetValueWidget"]
+  DUPCLOSURE R12 K28 [PROTO_4]
+  CAPTURE VAL R3
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K29 ["_addAverageValueWidget"]
+  DUPCLOSURE R12 K30 [PROTO_5]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K31 ["_getTitle"]
+  DUPCLOSURE R12 K32 [PROTO_6]
+  SETTABLEKS R12 R11 K33 ["PlaceInParent"]
+  DUPCLOSURE R12 K34 [PROTO_7]
+  SETTABLEKS R12 R11 K35 ["SetStatsAggregator"]
+  DUPCLOSURE R12 K36 [PROTO_8]
+  SETTABLEKS R12 R11 K37 ["SetVisible"]
+  DUPCLOSURE R12 K38 [PROTO_9]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K39 ["_shouldBeVisible"]
+  DUPCLOSURE R12 K40 [PROTO_10]
+  SETTABLEKS R12 R11 K41 ["_refreshVisibility"]
+  DUPCLOSURE R12 K42 [PROTO_11]
+  SETTABLEKS R12 R11 K43 ["_stopListening"]
+  DUPCLOSURE R12 K44 [PROTO_13]
+  SETTABLEKS R12 R11 K45 ["_startListening"]
+  DUPCLOSURE R12 K46 [PROTO_14]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R11 K47 ["_updateFromAggregator"]
+  DUPCLOSURE R12 K48 [PROTO_15]
+  SETTABLEKS R12 R11 K49 ["SetZIndex"]
+  RETURN R11 1

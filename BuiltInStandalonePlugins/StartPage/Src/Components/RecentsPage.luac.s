@@ -146,77 +146,114 @@ PROTO_4:
 
 PROTO_5:
   GETTABLEKS R1 R0 K0 ["IsPlaceholder"]
-  JUMPIF R1 [+27]
-  GETTABLEKS R1 R0 K1 ["FilePath"]
-  JUMPIFNOT R1 [+24]
+  JUMPIF R1 [+40]
+  GETTABLEKS R1 R0 K1 ["Id"]
+  JUMPIFNOT R1 [+37]
+  GETTABLEKS R1 R0 K2 ["RootPlaceId"]
+  JUMPIFNOT R1 [+34]
   GETUPVAL R1 0
-  GETTABLEKS R3 R0 K1 ["FilePath"]
-  LOADB R4 0
-  NAMECALL R1 R1 K2 ["openLocalFile"]
+  GETUPVAL R2 1
+  NAMECALL R2 R2 K3 ["GetUserId"]
+  CALL R2 1 1
+  GETTABLEKS R3 R0 K1 ["Id"]
+  GETTABLEKS R4 R0 K2 ["RootPlaceId"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K4 ["showVerifyAge"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K5 ["showAgeRestricted"]
+  CALL R1 5 0
+  GETUPVAL R1 3
+  JUMPIFNOT R1 [+46]
+  GETUPVAL R1 4
+  GETUPVAL R3 5
+  DUPTABLE R4 K9 [{"telemetryType", "telemetrySubtype", "action"}]
+  LOADK R5 K10 ["interaction"]
+  SETTABLEKS R5 R4 K6 ["telemetryType"]
+  LOADK R5 K11 ["place_open"]
+  SETTABLEKS R5 R4 K7 ["telemetrySubtype"]
+  LOADK R5 K12 ["recents_cloud"]
+  SETTABLEKS R5 R4 K8 ["action"]
+  NAMECALL R1 R1 K13 ["log"]
   CALL R1 3 0
-  GETUPVAL R1 1
+  RETURN R0 0
+  GETTABLEKS R1 R0 K0 ["IsPlaceholder"]
+  JUMPIF R1 [+27]
+  GETTABLEKS R1 R0 K14 ["FilePath"]
+  JUMPIFNOT R1 [+24]
+  GETUPVAL R1 6
+  GETTABLEKS R3 R0 K14 ["FilePath"]
+  LOADB R4 0
+  NAMECALL R1 R1 K15 ["openLocalFile"]
+  CALL R1 3 0
+  GETUPVAL R1 3
   JUMPIFNOT R1 [+15]
-  GETUPVAL R1 2
-  GETUPVAL R3 3
-  DUPTABLE R4 K6 [{"telemetryType", "telemetrySubtype", "action"}]
-  LOADK R5 K7 ["interaction"]
-  SETTABLEKS R5 R4 K3 ["telemetryType"]
-  LOADK R5 K8 ["place_open"]
-  SETTABLEKS R5 R4 K4 ["telemetrySubtype"]
-  LOADK R5 K9 ["experiences_local_tab"]
-  SETTABLEKS R5 R4 K5 ["action"]
-  NAMECALL R1 R1 K10 ["log"]
+  GETUPVAL R1 4
+  GETUPVAL R3 5
+  DUPTABLE R4 K9 [{"telemetryType", "telemetrySubtype", "action"}]
+  LOADK R5 K10 ["interaction"]
+  SETTABLEKS R5 R4 K6 ["telemetryType"]
+  LOADK R5 K11 ["place_open"]
+  SETTABLEKS R5 R4 K7 ["telemetrySubtype"]
+  LOADK R5 K16 ["recents_local"]
+  SETTABLEKS R5 R4 K8 ["action"]
+  NAMECALL R1 R1 K13 ["log"]
   CALL R1 3 0
   RETURN R0 0
 
 PROTO_6:
   GETUPVAL R1 0
-  NAMECALL R1 R1 K0 ["use"]
+  GETUPVAL R2 1
   CALL R1 1 1
-  GETUPVAL R3 1
-  GETTABLEKS R2 R3 K1 ["createElement"]
-  GETUPVAL R3 2
-  DUPTABLE R4 K13 [{"BaseQuery", "IsPrivacyVisible", "IsDateModifiedVisible", "IsDropdownMenuVisible", "IsCreatorNameVisible", "KebabMenu", "CellSize", "FetchItems", "NetworkQuery", "OnClick", "NetworkViewProps"}]
-  GETTABLEKS R5 R0 K2 ["BaseQuery"]
-  SETTABLEKS R5 R4 K2 ["BaseQuery"]
-  LOADB R5 1
-  SETTABLEKS R5 R4 K3 ["IsPrivacyVisible"]
-  LOADB R5 1
-  SETTABLEKS R5 R4 K4 ["IsDateModifiedVisible"]
-  LOADB R5 1
-  SETTABLEKS R5 R4 K5 ["IsDropdownMenuVisible"]
-  LOADB R5 1
-  SETTABLEKS R5 R4 K6 ["IsCreatorNameVisible"]
-  NEWTABLE R5 0 6
-  LOADK R6 K14 ["ConfigureExperience"]
-  LOADK R7 K15 ["ConfigurePlace"]
-  LOADK R8 K16 ["OpenPlace"]
-  LOADK R9 K17 ["PublicPrivateToggle"]
-  LOADK R10 K18 ["Archive"]
-  LOADK R11 K19 ["RemoveRecent"]
-  SETLIST R5 R6 6 [1]
-  SETTABLEKS R5 R4 K7 ["KebabMenu"]
-  GETUPVAL R5 3
-  SETTABLEKS R5 R4 K8 ["CellSize"]
-  GETUPVAL R5 4
-  SETTABLEKS R5 R4 K9 ["FetchItems"]
-  DUPTABLE R5 K23 [{"searchKey", "getRecentLocalFiles", "getRecentAPIGames"}]
-  LOADK R6 K24 ["Recents"]
-  SETTABLEKS R6 R5 K20 ["searchKey"]
+  GETUPVAL R2 2
+  NAMECALL R2 R2 K0 ["use"]
+  CALL R2 1 1
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K1 ["createElement"]
+  GETUPVAL R4 4
+  DUPTABLE R5 K13 [{"BaseQuery", "IsPrivacyVisible", "IsDateModifiedVisible", "IsDropdownMenuVisible", "IsCreatorNameVisible", "KebabMenu", "CellSize", "FetchItems", "NetworkQuery", "OnClick", "NetworkViewProps"}]
+  GETTABLEKS R6 R0 K2 ["BaseQuery"]
+  SETTABLEKS R6 R5 K2 ["BaseQuery"]
   LOADB R6 1
-  SETTABLEKS R6 R5 K21 ["getRecentLocalFiles"]
+  SETTABLEKS R6 R5 K3 ["IsPrivacyVisible"]
   LOADB R6 1
-  SETTABLEKS R6 R5 K22 ["getRecentAPIGames"]
-  SETTABLEKS R5 R4 K10 ["NetworkQuery"]
-  NEWCLOSURE R5 P0
-  CAPTURE UPVAL U5
-  CAPTURE UPVAL U6
-  CAPTURE VAL R1
+  SETTABLEKS R6 R5 K4 ["IsDateModifiedVisible"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K5 ["IsDropdownMenuVisible"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K6 ["IsCreatorNameVisible"]
+  NEWTABLE R6 0 6
+  LOADK R7 K14 ["ConfigureExperience"]
+  LOADK R8 K15 ["ConfigurePlace"]
+  LOADK R9 K16 ["OpenPlace"]
+  LOADK R10 K17 ["PublicPrivateToggle"]
+  LOADK R11 K18 ["Archive"]
+  LOADK R12 K19 ["RemoveRecent"]
+  SETLIST R6 R7 6 [1]
+  SETTABLEKS R6 R5 K7 ["KebabMenu"]
+  GETUPVAL R6 5
+  SETTABLEKS R6 R5 K8 ["CellSize"]
+  GETUPVAL R6 6
+  SETTABLEKS R6 R5 K9 ["FetchItems"]
+  DUPTABLE R6 K23 [{"searchKey", "getRecentLocalFiles", "getRecentAPIGames"}]
+  LOADK R7 K24 ["Recents"]
+  SETTABLEKS R7 R6 K20 ["searchKey"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K21 ["getRecentLocalFiles"]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K22 ["getRecentAPIGames"]
+  SETTABLEKS R6 R5 K10 ["NetworkQuery"]
+  NEWCLOSURE R6 P0
   CAPTURE UPVAL U7
-  SETTABLEKS R5 R4 K11 ["OnClick"]
-  SETTABLEKS R0 R4 K12 ["NetworkViewProps"]
-  CALL R2 2 -1
-  RETURN R2 -1
+  CAPTURE UPVAL U8
+  CAPTURE VAL R1
+  CAPTURE UPVAL U9
+  CAPTURE VAL R2
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  SETTABLEKS R6 R5 K11 ["OnClick"]
+  SETTABLEKS R0 R5 K12 ["NetworkViewProps"]
+  CALL R3 2 -1
+  RETURN R3 -1
 
 PROTO_7:
   GETUPVAL R1 0
@@ -275,161 +312,176 @@ MAIN:
   GETTABLEKS R3 R0 K6 ["Packages"]
   GETTABLEKS R2 R3 K7 ["React"]
   CALL R1 1 1
-  GETIMPORT R2 K5 [require]
-  GETTABLEKS R5 R0 K8 ["Src"]
-  GETTABLEKS R4 R5 K9 ["SharedFlags"]
-  GETTABLEKS R3 R4 K10 ["getFFlagLuaStartPageNetworkCache"]
-  CALL R2 1 1
-  CALL R2 0 1
+  GETTABLEKS R2 R1 K8 ["useContext"]
   GETIMPORT R3 K5 [require]
-  GETTABLEKS R6 R0 K8 ["Src"]
-  GETTABLEKS R5 R6 K9 ["SharedFlags"]
-  GETTABLEKS R4 R5 K11 ["getFFlagLuaStartPageQuickLoad"]
+  GETTABLEKS R6 R0 K9 ["Src"]
+  GETTABLEKS R5 R6 K10 ["SharedFlags"]
+  GETTABLEKS R4 R5 K11 ["getFFlagLuaStartPageNetworkCache"]
   CALL R3 1 1
   CALL R3 0 1
   GETIMPORT R4 K5 [require]
-  GETTABLEKS R7 R0 K8 ["Src"]
-  GETTABLEKS R6 R7 K9 ["SharedFlags"]
-  GETTABLEKS R5 R6 K12 ["getFFlagLuaStartPagePlaceOpenAttributionTelemetry"]
+  GETTABLEKS R7 R0 K9 ["Src"]
+  GETTABLEKS R6 R7 K10 ["SharedFlags"]
+  GETTABLEKS R5 R6 K12 ["getFFlagLuaStartPageQuickLoad"]
   CALL R4 1 1
   CALL R4 0 1
   GETIMPORT R5 K5 [require]
-  GETTABLEKS R8 R0 K8 ["Src"]
-  GETTABLEKS R7 R8 K9 ["SharedFlags"]
-  GETTABLEKS R6 R7 K13 ["getFFlagDynamicRecentsQuery"]
+  GETTABLEKS R8 R0 K9 ["Src"]
+  GETTABLEKS R7 R8 K10 ["SharedFlags"]
+  GETTABLEKS R6 R7 K13 ["getFFlagLuaStartPagePlaceOpenAttributionTelemetry"]
   CALL R5 1 1
   CALL R5 0 1
   GETIMPORT R6 K5 [require]
-  GETTABLEKS R9 R0 K8 ["Src"]
-  GETTABLEKS R8 R9 K14 ["Components"]
-  GETTABLEKS R7 R8 K15 ["GamePage"]
+  GETTABLEKS R9 R0 K9 ["Src"]
+  GETTABLEKS R8 R9 K10 ["SharedFlags"]
+  GETTABLEKS R7 R8 K14 ["getFFlagDynamicRecentsQuery"]
   CALL R6 1 1
+  CALL R6 0 1
   GETIMPORT R7 K5 [require]
-  GETTABLEKS R10 R0 K8 ["Src"]
-  GETTABLEKS R9 R10 K14 ["Components"]
-  GETTABLEKS R8 R9 K16 ["InfoTile"]
+  GETTABLEKS R10 R0 K9 ["Src"]
+  GETTABLEKS R9 R10 K15 ["Components"]
+  GETTABLEKS R8 R9 K16 ["GamePage"]
   CALL R7 1 1
-  JUMPIFNOT R2 [+10]
   GETIMPORT R8 K5 [require]
-  GETTABLEKS R11 R0 K8 ["Src"]
-  GETTABLEKS R10 R11 K14 ["Components"]
-  GETTABLEKS R9 R10 K17 ["NetworkView"]
+  GETTABLEKS R11 R0 K9 ["Src"]
+  GETTABLEKS R10 R11 K15 ["Components"]
+  GETTABLEKS R9 R10 K17 ["InfoTile"]
   CALL R8 1 1
-  JUMP [+9]
-  GETIMPORT R8 K5 [require]
-  GETTABLEKS R11 R0 K8 ["Src"]
-  GETTABLEKS R10 R11 K14 ["Components"]
-  GETTABLEKS R9 R10 K18 ["DEPRECATED_NetworkView"]
-  CALL R8 1 1
+  JUMPIFNOT R3 [+10]
   GETIMPORT R9 K5 [require]
-  GETTABLEKS R11 R0 K6 ["Packages"]
-  GETTABLEKS R10 R11 K19 ["Framework"]
+  GETTABLEKS R12 R0 K9 ["Src"]
+  GETTABLEKS R11 R12 K15 ["Components"]
+  GETTABLEKS R10 R11 K18 ["NetworkView"]
   CALL R9 1 1
-  GETTABLEKS R11 R9 K20 ["ContextServices"]
-  GETTABLEKS R10 R11 K21 ["Localization"]
-  GETIMPORT R11 K5 [require]
-  GETTABLEKS R14 R0 K8 ["Src"]
-  GETTABLEKS R13 R14 K22 ["Util"]
-  GETTABLEKS R12 R13 K23 ["Services"]
-  CALL R11 1 1
-  GETTABLEKS R12 R11 K24 ["StartPageManager"]
-  GETTABLEKS R13 R11 K25 ["StudioService"]
-  JUMPIFNOT R2 [+10]
-  GETIMPORT R14 K5 [require]
-  GETTABLEKS R17 R0 K8 ["Src"]
-  GETTABLEKS R16 R17 K26 ["Network"]
-  GETTABLEKS R15 R16 K27 ["DiscoverRecents"]
-  CALL R14 1 1
   JUMP [+9]
-  GETIMPORT R14 K5 [require]
-  GETTABLEKS R17 R0 K8 ["Src"]
-  GETTABLEKS R16 R17 K28 ["DEPRECATED_Network"]
-  GETTABLEKS R15 R16 K27 ["DiscoverRecents"]
-  CALL R14 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R12 R0 K9 ["Src"]
+  GETTABLEKS R11 R12 K15 ["Components"]
+  GETTABLEKS R10 R11 K19 ["DEPRECATED_NetworkView"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R0 K6 ["Packages"]
+  GETTABLEKS R11 R12 K20 ["Framework"]
+  CALL R10 1 1
+  GETTABLEKS R12 R10 K21 ["ContextServices"]
+  GETTABLEKS R11 R12 K22 ["Localization"]
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R15 R0 K9 ["Src"]
+  GETTABLEKS R14 R15 K23 ["Util"]
+  GETTABLEKS R13 R14 K24 ["Services"]
+  CALL R12 1 1
+  GETTABLEKS R13 R12 K25 ["StartPageManager"]
+  GETTABLEKS R14 R12 K26 ["StudioService"]
+  JUMPIFNOT R3 [+10]
   GETIMPORT R15 K5 [require]
-  GETTABLEKS R19 R0 K8 ["Src"]
-  GETTABLEKS R18 R19 K22 ["Util"]
-  GETTABLEKS R17 R18 K29 ["Telemetry"]
-  GETTABLEKS R16 R17 K30 ["TelemetryContext"]
+  GETTABLEKS R18 R0 K9 ["Src"]
+  GETTABLEKS R17 R18 K27 ["Network"]
+  GETTABLEKS R16 R17 K28 ["DiscoverRecents"]
+  CALL R15 1 1
+  JUMP [+9]
+  GETIMPORT R15 K5 [require]
+  GETTABLEKS R18 R0 K9 ["Src"]
+  GETTABLEKS R17 R18 K29 ["DEPRECATED_Network"]
+  GETTABLEKS R16 R17 K28 ["DiscoverRecents"]
   CALL R15 1 1
   GETIMPORT R16 K5 [require]
-  GETTABLEKS R20 R0 K8 ["Src"]
-  GETTABLEKS R19 R20 K22 ["Util"]
-  GETTABLEKS R18 R19 K29 ["Telemetry"]
-  GETTABLEKS R17 R18 K31 ["StartPageTelemetryEvent"]
+  GETTABLEKS R19 R0 K9 ["Src"]
+  GETTABLEKS R18 R19 K27 ["Network"]
+  GETTABLEKS R17 R18 K30 ["DiscoverCreatorEligibilityAndOpenPlace"]
   CALL R16 1 1
   GETIMPORT R17 K5 [require]
-  GETTABLEKS R19 R0 K6 ["Packages"]
-  GETTABLEKS R18 R19 K32 ["Dash"]
+  GETTABLEKS R21 R0 K9 ["Src"]
+  GETTABLEKS R20 R21 K23 ["Util"]
+  GETTABLEKS R19 R20 K31 ["Telemetry"]
+  GETTABLEKS R18 R19 K32 ["TelemetryContext"]
   CALL R17 1 1
-  GETTABLEKS R18 R17 K33 ["join"]
-  GETIMPORT R19 K36 [UDim2.new]
-  LOADN R20 0
-  LOADN R21 200
-  LOADN R22 0
-  LOADN R23 200
-  CALL R19 4 1
-  GETIMPORT R20 K36 [UDim2.new]
-  LOADN R21 0
-  LOADN R22 225
+  GETIMPORT R18 K5 [require]
+  GETTABLEKS R22 R0 K9 ["Src"]
+  GETTABLEKS R21 R22 K23 ["Util"]
+  GETTABLEKS R20 R21 K31 ["Telemetry"]
+  GETTABLEKS R19 R20 K33 ["StartPageTelemetryEvent"]
+  CALL R18 1 1
+  GETIMPORT R19 K5 [require]
+  GETTABLEKS R22 R0 K9 ["Src"]
+  GETTABLEKS R21 R22 K23 ["Util"]
+  GETTABLEKS R20 R21 K34 ["Dialogs"]
+  CALL R19 1 1
+  GETIMPORT R20 K5 [require]
+  GETTABLEKS R22 R0 K6 ["Packages"]
+  GETTABLEKS R21 R22 K35 ["Dash"]
+  CALL R20 1 1
+  GETTABLEKS R21 R20 K36 ["join"]
+  GETIMPORT R22 K39 [UDim2.new]
   LOADN R23 0
-  LOADN R24 92
-  CALL R20 4 1
-  JUMPIF R5 [+35]
-  DUPTABLE R21 K46 [{"searchKey", "search", "creatorType", "creatorTargetId", "isArchived", "isTemplates", "pageSize", "getRecentLocalFiles", "getRecentAPIGames"}]
-  LOADK R22 K47 ["Recents"]
-  SETTABLEKS R22 R21 K37 ["searchKey"]
-  LOADK R22 K48 [""]
-  SETTABLEKS R22 R21 K38 ["search"]
-  LOADK R22 K49 ["User"]
-  SETTABLEKS R22 R21 K39 ["creatorType"]
-  NAMECALL R23 R13 K50 ["GetUserId"]
-  CALL R23 1 -1
+  LOADN R24 200
+  LOADN R25 0
+  LOADN R26 200
+  CALL R22 4 1
+  GETIMPORT R23 K39 [UDim2.new]
+  LOADN R24 0
+  LOADN R25 225
+  LOADN R26 0
+  LOADN R27 92
+  CALL R23 4 1
+  JUMPIF R6 [+35]
+  DUPTABLE R24 K49 [{"searchKey", "search", "creatorType", "creatorTargetId", "isArchived", "isTemplates", "pageSize", "getRecentLocalFiles", "getRecentAPIGames"}]
+  LOADK R25 K50 ["Recents"]
+  SETTABLEKS R25 R24 K40 ["searchKey"]
+  LOADK R25 K51 [""]
+  SETTABLEKS R25 R24 K41 ["search"]
+  LOADK R25 K52 ["User"]
+  SETTABLEKS R25 R24 K42 ["creatorType"]
+  NAMECALL R26 R14 K53 ["GetUserId"]
+  CALL R26 1 -1
   FASTCALL TOSTRING [+2]
-  GETIMPORT R22 K52 [tostring]
-  CALL R22 -1 1
-  SETTABLEKS R22 R21 K40 ["creatorTargetId"]
-  LOADB R22 0
-  SETTABLEKS R22 R21 K41 ["isArchived"]
-  LOADB R22 0
-  SETTABLEKS R22 R21 K42 ["isTemplates"]
-  LOADN R22 10
-  SETTABLEKS R22 R21 K43 ["pageSize"]
-  LOADB R22 1
-  SETTABLEKS R22 R21 K44 ["getRecentLocalFiles"]
-  LOADB R22 1
-  SETTABLEKS R22 R21 K45 ["getRecentAPIGames"]
+  GETIMPORT R25 K55 [tostring]
+  CALL R25 -1 1
+  SETTABLEKS R25 R24 K43 ["creatorTargetId"]
+  LOADB R25 0
+  SETTABLEKS R25 R24 K44 ["isArchived"]
+  LOADB R25 0
+  SETTABLEKS R25 R24 K45 ["isTemplates"]
+  LOADN R25 10
+  SETTABLEKS R25 R24 K46 ["pageSize"]
+  LOADB R25 1
+  SETTABLEKS R25 R24 K47 ["getRecentLocalFiles"]
+  LOADB R25 1
+  SETTABLEKS R25 R24 K48 ["getRecentAPIGames"]
   JUMP [+1]
-  LOADNIL R21
-  DUPCLOSURE R22 K53 [PROTO_0]
-  CAPTURE VAL R5
-  CAPTURE VAL R13
-  GETIMPORT R23 K5 [require]
-  GETTABLEKS R25 R0 K8 ["Src"]
-  GETTABLEKS R24 R25 K54 ["Types"]
-  CALL R23 1 1
-  DUPCLOSURE R24 K55 [PROTO_4]
-  CAPTURE VAL R18
-  CAPTURE VAL R5
-  CAPTURE VAL R13
-  CAPTURE VAL R21
-  CAPTURE VAL R1
-  CAPTURE VAL R8
-  CAPTURE VAL R7
-  CAPTURE VAL R19
-  DUPCLOSURE R25 K56 [PROTO_6]
-  CAPTURE VAL R15
-  CAPTURE VAL R1
-  CAPTURE VAL R24
-  CAPTURE VAL R20
-  CAPTURE VAL R14
-  CAPTURE VAL R12
-  CAPTURE VAL R4
-  CAPTURE VAL R16
-  DUPCLOSURE R26 K57 [PROTO_7]
-  CAPTURE VAL R10
-  CAPTURE VAL R1
+  LOADNIL R24
+  DUPCLOSURE R25 K56 [PROTO_0]
   CAPTURE VAL R6
-  CAPTURE VAL R3
-  CAPTURE VAL R25
-  RETURN R26 1
+  CAPTURE VAL R14
+  GETIMPORT R26 K5 [require]
+  GETTABLEKS R28 R0 K9 ["Src"]
+  GETTABLEKS R27 R28 K57 ["Types"]
+  CALL R26 1 1
+  DUPCLOSURE R27 K58 [PROTO_4]
+  CAPTURE VAL R21
+  CAPTURE VAL R6
+  CAPTURE VAL R14
+  CAPTURE VAL R24
+  CAPTURE VAL R1
+  CAPTURE VAL R9
+  CAPTURE VAL R8
+  CAPTURE VAL R22
+  DUPCLOSURE R28 K59 [PROTO_6]
+  CAPTURE VAL R2
+  CAPTURE VAL R19
+  CAPTURE VAL R17
+  CAPTURE VAL R1
+  CAPTURE VAL R27
+  CAPTURE VAL R23
+  CAPTURE VAL R15
+  CAPTURE VAL R16
+  CAPTURE VAL R14
+  CAPTURE VAL R5
+  CAPTURE VAL R18
+  CAPTURE VAL R13
+  DUPCLOSURE R29 K60 [PROTO_7]
+  CAPTURE VAL R11
+  CAPTURE VAL R1
+  CAPTURE VAL R7
+  CAPTURE VAL R4
+  CAPTURE VAL R28
+  RETURN R29 1

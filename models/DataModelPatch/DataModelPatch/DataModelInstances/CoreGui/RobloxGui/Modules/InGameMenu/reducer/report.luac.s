@@ -1,0 +1,123 @@
+PROTO_0:
+  DUPTABLE R2 K4 [{"dialogOpen", "reportSentOpen", "userId", "userName"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["dialogOpen"]
+  GETTABLEKS R3 R0 K1 ["reportSentOpen"]
+  SETTABLEKS R3 R2 K1 ["reportSentOpen"]
+  GETTABLEKS R3 R1 K2 ["userId"]
+  SETTABLEKS R3 R2 K2 ["userId"]
+  GETTABLEKS R3 R1 K3 ["userName"]
+  SETTABLEKS R3 R2 K3 ["userName"]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"dialogOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["dialogOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"dialogOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["dialogOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"reportSentOpen"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K2 ["reportSentOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"reportSentOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K2 ["reportSentOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Rodux"]
+  GETTABLEKS R3 R1 K9 ["Cryo"]
+  GETIMPORT R6 K11 [script]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R4 K13 ["Actions"]
+  GETTABLEKS R6 R7 K14 ["OpenReportDialog"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R4 K13 ["Actions"]
+  GETTABLEKS R7 R8 K15 ["CloseReportDialog"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K13 ["Actions"]
+  GETTABLEKS R8 R9 K16 ["OpenReportSentDialog"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R4 K13 ["Actions"]
+  GETTABLEKS R9 R10 K17 ["CloseReportSentDialog"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R11 R4 K13 ["Actions"]
+  GETTABLEKS R10 R11 K18 ["SetCurrentPage"]
+  CALL R9 1 1
+  GETTABLEKS R10 R2 K19 ["createReducer"]
+  DUPTABLE R11 K24 [{"dialogOpen", "reportSentOpen", "userId", "userName"}]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K20 ["dialogOpen"]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K21 ["reportSentOpen"]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K22 ["userId"]
+  LOADNIL R12
+  SETTABLEKS R12 R11 K23 ["userName"]
+  NEWTABLE R12 8 0
+  GETTABLEKS R13 R5 K25 ["name"]
+  DUPCLOSURE R14 K26 [PROTO_0]
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R9 K25 ["name"]
+  DUPCLOSURE R14 K27 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R6 K25 ["name"]
+  DUPCLOSURE R14 K28 [PROTO_2]
+  CAPTURE VAL R3
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R7 K25 ["name"]
+  DUPCLOSURE R14 K29 [PROTO_3]
+  CAPTURE VAL R3
+  SETTABLE R14 R12 R13
+  GETTABLEKS R13 R8 K25 ["name"]
+  DUPCLOSURE R14 K30 [PROTO_4]
+  CAPTURE VAL R3
+  SETTABLE R14 R12 R13
+  CALL R10 2 -1
+  RETURN R10 -1

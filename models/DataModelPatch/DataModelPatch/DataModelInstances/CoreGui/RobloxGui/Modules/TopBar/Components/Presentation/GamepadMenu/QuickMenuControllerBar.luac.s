@@ -1,0 +1,239 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["chat"]
+  GETTABLEKS R1 R2 K1 ["visible"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+128]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["new"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K1 ["RobloxLocaleId"]
+  CALL R1 1 1
+  NEWTABLE R2 0 2
+  DUPTABLE R3 K4 [{"text", "keyCode"}]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K5 ["respawn"]
+  NAMECALL R4 R1 K6 ["Format"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["text"]
+  GETIMPORT R4 K10 [Enum.KeyCode.ButtonY]
+  SETTABLEKS R4 R3 K3 ["keyCode"]
+  DUPTABLE R4 K4 [{"text", "keyCode"}]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K11 ["leave"]
+  NAMECALL R5 R1 K6 ["Format"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K2 ["text"]
+  GETIMPORT R5 K13 [Enum.KeyCode.ButtonX]
+  SETTABLEKS R5 R4 K3 ["keyCode"]
+  SETLIST R2 R3 2 [1]
+  GETTABLEKS R3 R0 K14 ["chatMenuEnabled"]
+  JUMPIFNOT R3 [+34]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K15 ["useCallback"]
+  DUPCLOSURE R4 K16 [PROTO_0]
+  CALL R3 1 1
+  GETUPVAL R4 5
+  MOVE R5 R3
+  CALL R4 1 1
+  JUMPIFNOT R4 [+4]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K17 ["hideChat"]
+  JUMP [+3]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K18 ["showChat"]
+  LOADN R8 1
+  DUPTABLE R9 K4 [{"text", "keyCode"}]
+  MOVE R12 R5
+  NAMECALL R10 R1 K6 ["Format"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K2 ["text"]
+  GETIMPORT R10 K20 [Enum.KeyCode.ButtonR1]
+  SETTABLEKS R10 R9 K3 ["keyCode"]
+  FASTCALL3 TABLE_INSERT R2 R8 R9
+  MOVE R7 R2
+  GETIMPORT R6 K23 [table.insert]
+  CALL R6 3 0
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K24 ["createElement"]
+  GETUPVAL R5 6
+  GETTABLEKS R4 R5 K25 ["Portal"]
+  DUPTABLE R5 K27 [{"target"}]
+  GETUPVAL R6 7
+  SETTABLEKS R6 R5 K26 ["target"]
+  DUPTABLE R6 K29 [{"QuickMenuControllerBar"}]
+  GETUPVAL R8 4
+  GETTABLEKS R7 R8 K24 ["createElement"]
+  LOADK R8 K30 ["ScreenGui"]
+  DUPTABLE R9 K32 [{"DisplayOrder"}]
+  GETUPVAL R12 8
+  GETTABLEKS R11 R12 K31 ["DisplayOrder"]
+  GETTABLEKS R10 R11 K33 ["ControllerBar"]
+  SETTABLEKS R10 R9 K31 ["DisplayOrder"]
+  DUPTABLE R10 K34 [{"ControllerBar"}]
+  GETUPVAL R12 4
+  GETTABLEKS R11 R12 K24 ["createElement"]
+  GETUPVAL R12 9
+  DUPTABLE R13 K37 [{"leftHint", "rightHints"}]
+  DUPTABLE R14 K4 [{"text", "keyCode"}]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K38 ["back"]
+  NAMECALL R15 R1 K6 ["Format"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K2 ["text"]
+  GETIMPORT R15 K40 [Enum.KeyCode.ButtonB]
+  SETTABLEKS R15 R14 K3 ["keyCode"]
+  SETTABLEKS R14 R13 K35 ["leftHint"]
+  SETTABLEKS R2 R13 K36 ["rightHints"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K33 ["ControllerBar"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K28 ["QuickMenuControllerBar"]
+  CALL R3 3 -1
+  RETURN R3 -1
+  GETUPVAL R2 6
+  GETTABLEKS R1 R2 K24 ["createElement"]
+  GETUPVAL R3 6
+  GETTABLEKS R2 R3 K25 ["Portal"]
+  DUPTABLE R3 K27 [{"target"}]
+  GETUPVAL R4 7
+  SETTABLEKS R4 R3 K26 ["target"]
+  DUPTABLE R4 K29 [{"QuickMenuControllerBar"}]
+  GETUPVAL R6 6
+  GETTABLEKS R5 R6 K24 ["createElement"]
+  LOADK R6 K30 ["ScreenGui"]
+  DUPTABLE R7 K32 [{"DisplayOrder"}]
+  GETUPVAL R10 8
+  GETTABLEKS R9 R10 K31 ["DisplayOrder"]
+  GETTABLEKS R8 R9 K33 ["ControllerBar"]
+  SETTABLEKS R8 R7 K31 ["DisplayOrder"]
+  DUPTABLE R8 K34 [{"ControllerBar"}]
+  GETUPVAL R10 6
+  GETTABLEKS R9 R10 K24 ["createElement"]
+  GETUPVAL R10 9
+  DUPTABLE R11 K37 [{"leftHint", "rightHints"}]
+  DUPTABLE R12 K4 [{"text", "keyCode"}]
+  GETUPVAL R13 10
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K38 ["back"]
+  NAMECALL R13 R13 K41 ["FormatByKey"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K2 ["text"]
+  GETIMPORT R13 K40 [Enum.KeyCode.ButtonB]
+  SETTABLEKS R13 R12 K3 ["keyCode"]
+  SETTABLEKS R12 R11 K35 ["leftHint"]
+  NEWTABLE R12 0 2
+  DUPTABLE R13 K4 [{"text", "keyCode"}]
+  GETUPVAL R14 10
+  GETUPVAL R17 3
+  GETTABLEKS R16 R17 K5 ["respawn"]
+  NAMECALL R14 R14 K41 ["FormatByKey"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K2 ["text"]
+  GETIMPORT R14 K10 [Enum.KeyCode.ButtonY]
+  SETTABLEKS R14 R13 K3 ["keyCode"]
+  DUPTABLE R14 K4 [{"text", "keyCode"}]
+  GETUPVAL R15 10
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K11 ["leave"]
+  NAMECALL R15 R15 K41 ["FormatByKey"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K2 ["text"]
+  GETIMPORT R15 K13 [Enum.KeyCode.ButtonX]
+  SETTABLEKS R15 R14 K3 ["keyCode"]
+  SETLIST R12 R13 2 [1]
+  SETTABLEKS R12 R11 K36 ["rightHints"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K33 ["ControllerBar"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K28 ["QuickMenuControllerBar"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K7 ["LocalizationService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K10 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["React"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K10 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["Roact"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R0 K10 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["UIBlox"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R2 K14 ["Modules"]
+  GETTABLEKS R8 R9 K15 ["InGameMenuConstants"]
+  CALL R7 1 1
+  GETTABLEKS R10 R6 K16 ["App"]
+  GETTABLEKS R9 R10 K17 ["Bar"]
+  GETTABLEKS R8 R9 K18 ["ControllerBar"]
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R2 K14 ["Modules"]
+  GETTABLEKS R10 R11 K19 ["RobloxTranslator"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETTABLEKS R13 R0 K20 ["Workspace"]
+  GETTABLEKS R12 R13 K10 ["Packages"]
+  GETTABLEKS R11 R12 K21 ["SharedFlags"]
+  CALL R10 1 1
+  GETTABLEKS R11 R10 K22 ["GetFFlagReenableTextChatForTenFootInterfaces"]
+  GETIMPORT R13 K9 [require]
+  GETTABLEKS R16 R0 K20 ["Workspace"]
+  GETTABLEKS R15 R16 K10 ["Packages"]
+  GETTABLEKS R14 R15 K23 ["InExperienceLocales"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K24 ["Localization"]
+  GETIMPORT R16 K9 [require]
+  GETTABLEKS R19 R0 K20 ["Workspace"]
+  GETTABLEKS R18 R19 K10 ["Packages"]
+  GETTABLEKS R17 R18 K25 ["RoactUtils"]
+  CALL R16 1 1
+  GETTABLEKS R15 R16 K26 ["Hooks"]
+  GETTABLEKS R14 R15 K27 ["RoactRodux"]
+  GETTABLEKS R13 R14 K28 ["useSelector"]
+  DUPTABLE R14 K34 [{"back", "leave", "respawn", "showChat", "hideChat"}]
+  LOADK R15 K35 ["CoreScripts.TopBar.Back"]
+  SETTABLEKS R15 R14 K29 ["back"]
+  LOADK R15 K36 ["CoreScripts.TopBar.Leave"]
+  SETTABLEKS R15 R14 K30 ["leave"]
+  LOADK R15 K37 ["CoreScripts.TopBar.Respawn"]
+  SETTABLEKS R15 R14 K31 ["respawn"]
+  LOADK R15 K38 ["CoreScripts.TopBar.ShowChat"]
+  SETTABLEKS R15 R14 K32 ["showChat"]
+  LOADK R15 K39 ["CoreScripts.TopBar.HideChat"]
+  SETTABLEKS R15 R14 K33 ["hideChat"]
+  DUPCLOSURE R15 K40 [PROTO_1]
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R3
+  CAPTURE VAL R14
+  CAPTURE VAL R4
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  RETURN R15 1

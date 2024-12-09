@@ -1,0 +1,238 @@
+PROTO_0:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"utilTabHeight"}]
+  SETTABLEKS R0 R3 K0 ["utilTabHeight"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["dispatchServerStatsUpdateSearchFilter"]
+  MOVE R2 R0
+  NEWTABLE R3 0 0
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K0 ["onUtilTabHeightChanged"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K1 ["onSearchTermChanged"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["utilRef"]
+  DUPTABLE R1 K5 [{"utilTabHeight"}]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K4 ["utilTabHeight"]
+  SETTABLEKS R1 R0 K6 ["state"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["utilRef"]
+  GETTABLEKS R2 R3 K1 ["current"]
+  GETTABLEKS R1 R2 K2 ["Size"]
+  DUPTABLE R4 K4 [{"utilTabHeight"}]
+  GETTABLEKS R6 R1 K5 ["Y"]
+  GETTABLEKS R5 R6 K6 ["Offset"]
+  SETTABLEKS R5 R4 K3 ["utilTabHeight"]
+  NAMECALL R2 R0 K7 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R3 R0 K0 ["utilRef"]
+  GETTABLEKS R2 R3 K1 ["current"]
+  GETTABLEKS R1 R2 K2 ["Size"]
+  GETTABLEKS R3 R1 K3 ["Y"]
+  GETTABLEKS R2 R3 K4 ["Offset"]
+  GETTABLEKS R4 R0 K5 ["state"]
+  GETTABLEKS R3 R4 K6 ["utilTabHeight"]
+  JUMPIFEQ R2 R3 [+11]
+  DUPTABLE R4 K7 [{"utilTabHeight"}]
+  GETTABLEKS R6 R1 K3 ["Y"]
+  GETTABLEKS R5 R6 K4 ["Offset"]
+  SETTABLEKS R5 R4 K6 ["utilTabHeight"]
+  NAMECALL R2 R0 K8 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["size"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["formFactor"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["tabList"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["statsSearchTerm"]
+  GETTABLEKS R6 R0 K5 ["state"]
+  GETTABLEKS R5 R6 K6 ["utilTabHeight"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K7 ["createElement"]
+  LOADK R7 K8 ["Frame"]
+  DUPTABLE R8 K13 [{"Size", "BackgroundColor3", "BackgroundTransparency", "LayoutOrder"}]
+  SETTABLEKS R1 R8 K9 ["Size"]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K14 ["Color"]
+  GETTABLEKS R9 R10 K15 ["BaseGray"]
+  SETTABLEKS R9 R8 K10 ["BackgroundColor3"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K11 ["BackgroundTransparency"]
+  LOADN R9 3
+  SETTABLEKS R9 R8 K12 ["LayoutOrder"]
+  DUPTABLE R9 K19 [{"UIListLayout", "UtilAndTab", "ServerStats"}]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  LOADK R11 K16 ["UIListLayout"]
+  DUPTABLE R12 K22 [{"Padding", "SortOrder"}]
+  GETIMPORT R13 K25 [UDim.new]
+  LOADN R14 0
+  GETUPVAL R15 2
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K20 ["Padding"]
+  GETIMPORT R13 K27 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R13 R12 K21 ["SortOrder"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K16 ["UIListLayout"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  GETUPVAL R11 3
+  DUPTABLE R12 K34 [{"windowWidth", "formFactor", "tabList", "searchTerm", "layoutOrder", "refForParent", "onHeightChanged", "onSearchTermChanged"}]
+  GETTABLEKS R14 R1 K35 ["X"]
+  GETTABLEKS R13 R14 K36 ["Offset"]
+  SETTABLEKS R13 R12 K28 ["windowWidth"]
+  SETTABLEKS R2 R12 K2 ["formFactor"]
+  SETTABLEKS R3 R12 K3 ["tabList"]
+  SETTABLEKS R4 R12 K29 ["searchTerm"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K30 ["layoutOrder"]
+  GETTABLEKS R13 R0 K37 ["utilRef"]
+  SETTABLEKS R13 R12 K31 ["refForParent"]
+  GETTABLEKS R13 R0 K38 ["onUtilTabHeightChanged"]
+  SETTABLEKS R13 R12 K32 ["onHeightChanged"]
+  GETTABLEKS R13 R0 K33 ["onSearchTermChanged"]
+  SETTABLEKS R13 R12 K33 ["onSearchTermChanged"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K17 ["UtilAndTab"]
+  LOADB R10 0
+  LOADN R11 0
+  JUMPIFNOTLT R11 R5 [+21]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K7 ["createElement"]
+  GETUPVAL R11 4
+  DUPTABLE R12 K39 [{"size", "searchTerm", "layoutOrder"}]
+  GETIMPORT R13 K41 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 1
+  MINUS R17 R5
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K1 ["size"]
+  SETTABLEKS R4 R12 K29 ["searchTerm"]
+  LOADN R13 2
+  SETTABLEKS R13 R12 K30 ["layoutOrder"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K18 ["ServerStats"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+PROTO_6:
+  DUPTABLE R2 K1 [{"statsSearchTerm"}]
+  GETTABLEKS R4 R0 K2 ["ServerStatsData"]
+  GETTABLEKS R3 R4 K0 ["statsSearchTerm"]
+  SETTABLEKS R3 R2 K0 ["statsSearchTerm"]
+  RETURN R2 1
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_8:
+  DUPTABLE R1 K1 [{"dispatchServerStatsUpdateSearchFilter"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["dispatchServerStatsUpdateSearchFilter"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R7 K10 [script]
+  GETTABLEKS R6 R7 K11 ["Parent"]
+  GETTABLEKS R5 R6 K11 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K12 ["Components"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K13 ["ServerStats"]
+  GETTABLEKS R5 R6 K14 ["ServerStatsChart"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R3 K15 ["UtilAndTab"]
+  CALL R5 1 1
+  GETIMPORT R10 K10 [script]
+  GETTABLEKS R9 R10 K11 ["Parent"]
+  GETTABLEKS R8 R9 K11 ["Parent"]
+  GETTABLEKS R7 R8 K11 ["Parent"]
+  GETTABLEKS R6 R7 K16 ["Actions"]
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R6 K17 ["ServerStatsUpdateSearchFilter"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETIMPORT R13 K10 [script]
+  GETTABLEKS R12 R13 K11 ["Parent"]
+  GETTABLEKS R11 R12 K11 ["Parent"]
+  GETTABLEKS R10 R11 K11 ["Parent"]
+  GETTABLEKS R9 R10 K18 ["Constants"]
+  CALL R8 1 1
+  GETTABLEKS R10 R8 K19 ["GeneralFormatting"]
+  GETTABLEKS R9 R10 K20 ["MainRowPadding"]
+  GETTABLEKS R10 R1 K21 ["Component"]
+  LOADK R12 K22 ["MainViewServerStats"]
+  NAMECALL R10 R10 K23 ["extend"]
+  CALL R10 2 1
+  DUPCLOSURE R11 K24 [PROTO_2]
+  CAPTURE VAL R1
+  SETTABLEKS R11 R10 K25 ["init"]
+  DUPCLOSURE R11 K26 [PROTO_3]
+  SETTABLEKS R11 R10 K27 ["didMount"]
+  DUPCLOSURE R11 K28 [PROTO_4]
+  SETTABLEKS R11 R10 K29 ["didUpdate"]
+  DUPCLOSURE R11 K30 [PROTO_5]
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  SETTABLEKS R11 R10 K31 ["render"]
+  DUPCLOSURE R11 K32 [PROTO_6]
+  DUPCLOSURE R12 K33 [PROTO_8]
+  CAPTURE VAL R7
+  GETTABLEKS R13 R2 K34 ["UNSTABLE_connect2"]
+  MOVE R14 R11
+  MOVE R15 R12
+  CALL R13 2 1
+  MOVE R14 R10
+  CALL R13 1 -1
+  RETURN R13 -1

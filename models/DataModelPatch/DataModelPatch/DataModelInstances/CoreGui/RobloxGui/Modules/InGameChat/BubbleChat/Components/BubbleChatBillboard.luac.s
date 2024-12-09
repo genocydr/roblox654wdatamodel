@@ -1,0 +1,2173 @@
+PROTO_0:
+  JUMPIF R0 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+55]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["LocalPlayer"]
+  JUMPIFNOT R1 [+15]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["LocalPlayer"]
+  GETTABLEKS R1 R2 K1 ["Character"]
+  JUMPIFNOT R1 [+9]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["LocalPlayer"]
+  GETTABLEKS R1 R2 K1 ["Character"]
+  LOADK R3 K2 ["HumanoidRootPart"]
+  NAMECALL R1 R1 K3 ["FindFirstChild"]
+  CALL R1 2 1
+  MOVE R2 R1
+  JUMPIFNOT R2 [+7]
+  GETTABLEKS R2 R1 K4 ["CFrame"]
+  JUMPIFNOT R2 [+4]
+  GETTABLEKS R3 R1 K4 ["CFrame"]
+  GETTABLEKS R2 R3 K5 ["Position"]
+  GETIMPORT R4 K7 [workspace]
+  GETTABLEKS R3 R4 K8 ["CurrentCamera"]
+  JUMPIFNOT R3 [+8]
+  GETIMPORT R6 K7 [workspace]
+  GETTABLEKS R5 R6 K8 ["CurrentCamera"]
+  GETTABLEKS R4 R5 K4 ["CFrame"]
+  GETTABLEKS R3 R4 K5 ["Position"]
+  GETUPVAL R4 2
+  JUMPIF R4 [+1]
+  JUMPIF R2 [+7]
+  JUMPIF R3 [+2]
+  LOADNIL R4
+  RETURN R4 1
+  SUB R5 R0 R3
+  GETTABLEKS R4 R5 K9 ["Magnitude"]
+  RETURN R4 1
+  SUB R5 R0 R2
+  GETTABLEKS R4 R5 K9 ["Magnitude"]
+  RETURN R4 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["LocalPlayer"]
+  GETTABLEKS R1 R2 K1 ["Character"]
+  LOADK R3 K2 ["HumanoidRootPart"]
+  NAMECALL R1 R1 K3 ["FindFirstChild"]
+  CALL R1 2 1
+  GETIMPORT R3 K7 [workspace]
+  GETTABLEKS R2 R3 K8 ["CurrentCamera"]
+  JUMPIFNOT R2 [+8]
+  GETIMPORT R5 K7 [workspace]
+  GETTABLEKS R4 R5 K8 ["CurrentCamera"]
+  GETTABLEKS R3 R4 K4 ["CFrame"]
+  GETTABLEKS R2 R3 K5 ["Position"]
+  GETUPVAL R3 2
+  JUMPIF R3 [+1]
+  JUMPIF R1 [+7]
+  JUMPIF R2 [+2]
+  LOADNIL R3
+  RETURN R3 1
+  SUB R4 R0 R2
+  GETTABLEKS R3 R4 K9 ["Magnitude"]
+  RETURN R3 1
+  GETTABLEKS R6 R1 K4 ["CFrame"]
+  GETTABLEKS R5 R6 K5 ["Position"]
+  SUB R4 R0 R5
+  GETTABLEKS R3 R4 K9 ["Magnitude"]
+  RETURN R3 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["updateOffset"]
+  LOADN R3 0
+  LOADN R5 0
+  FASTCALL3 VECTOR R3 R0 R5
+  MOVE R4 R0
+  GETIMPORT R2 K3 [Vector3.new]
+  CALL R2 3 1
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selfViewOpen"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["getSelfViewIsOpenAndVisible"]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K0 ["selfViewOpen"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  JUMPIFNOT R0 [+19]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["isFadingOut"]
+  JUMPIF R0 [+15]
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K2 ["isFadingOut"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K3 ["userId"]
+  CALL R0 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["state"]
+  GETTABLEKS R0 R1 K5 ["hasMessage"]
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K6 ["isMounted"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 0
+  DUPTABLE R2 K7 [{"hasMessage"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K5 ["hasMessage"]
+  NAMECALL R0 R0 K8 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+17]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["voiceState"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K2 ["VOICE_STATE"]
+  GETTABLEKS R1 R2 K3 ["ERROR"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K4 ["RejoinPreviousChannel"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R0 4
+  CALL R0 0 1
+  JUMPIFNOT R0 [+17]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["voiceState"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K2 ["VOICE_STATE"]
+  GETTABLEKS R1 R2 K5 ["CONNECTING"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R0 3
+  NAMECALL R0 R0 K6 ["ShowVoiceChatLoadingMessage"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R0 3
+  LOADK R2 K7 ["LegacyBubbleChat"]
+  NAMECALL R0 R0 K8 ["ToggleMic"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["userId"]
+  FASTCALL1 TONUMBER R3 [+2]
+  GETIMPORT R2 K3 [tonumber]
+  CALL R2 1 1
+  GETUPVAL R4 1
+  NAMECALL R4 R4 K4 ["isShowingDueToEasierUnmuting"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K5 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K6 ["EASIER_UNMUTING"]
+  JUMP [+5]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K5 ["VOICE_CONTEXT_TYPE"]
+  GETTABLEKS R3 R4 K7 ["BUBBLE_CHAT"]
+  NAMECALL R0 R0 K8 ["ToggleMutePlayer"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["createElement"]
+  GETUPVAL R1 1
+  DUPTABLE R2 K4 [{"onClicked", "userId", "iconStyle"}]
+  GETUPVAL R3 2
+  SETTABLEKS R3 R2 K1 ["onClicked"]
+  GETUPVAL R3 3
+  SETTABLEKS R3 R2 K2 ["userId"]
+  GETUPVAL R3 4
+  SETTABLEKS R3 R2 K3 ["iconStyle"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_7:
+  GETUPVAL R0 0
+  GETIMPORT R2 K3 [Enum.CoreGuiType.SelfView]
+  NAMECALL R0 R0 K4 ["GetCoreGuiEnabled"]
+  CALL R0 2 1
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["state"]
+  GETTABLEKS R1 R2 K6 ["selfViewOpen"]
+  JUMPIFEQ R1 R0 [+8]
+  GETUPVAL R1 1
+  DUPTABLE R3 K7 [{"selfViewOpen"}]
+  SETTABLEKS R0 R3 K6 ["selfViewOpen"]
+  NAMECALL R1 R1 K8 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"selfViewOpen"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K2 ["getSelfViewIsOpenAndVisible"]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K0 ["selfViewOpen"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["GetLayerData"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_10:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["userId"]
+  GETTABLE R1 R0 R2
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  GETTABLEKS R2 R1 K2 ["isMuted"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["state"]
+  GETTABLEKS R3 R4 K2 ["isMuted"]
+  JUMPIFEQ R2 R3 [+10]
+  GETUPVAL R2 0
+  DUPTABLE R4 K4 [{"isMuted"}]
+  GETTABLEKS R5 R1 K2 ["isMuted"]
+  SETTABLEKS R5 R4 K2 ["isMuted"]
+  NAMECALL R2 R2 K5 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["getSelfViewIsOpenAndVisible"]
+  CALL R1 0 1
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+14]
+  GETUPVAL R2 2
+  GETIMPORT R4 K4 [Enum.CoreGuiType.All]
+  NAMECALL R2 R2 K5 ["GetCoreGuiEnabled"]
+  CALL R2 2 1
+  JUMPIF R2 [+8]
+  GETUPVAL R2 2
+  GETIMPORT R4 K7 [Enum.CoreGuiType.SelfView]
+  NAMECALL R2 R2 K5 ["GetCoreGuiEnabled"]
+  CALL R2 2 1
+  JUMP [+1]
+  LOADNIL R2
+  DUPTABLE R5 K21 [{"adornee", "isInsideRenderDistance", "isInsideMaximizeDistance", "savedChatSettings", "voiceTimedOut", "voiceStateCounter", "lastVoiceState", "selfViewOpen", "selfViewEnabled", "isInsideEasierUnmutingDistance", "isMuted", "isInEasierUnmutingTreatment", "haveLoggedUserExposure"}]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K8 ["adornee"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K9 ["isInsideRenderDistance"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K10 ["isInsideMaximizeDistance"]
+  GETTABLEKS R7 R0 K22 ["props"]
+  GETTABLEKS R6 R7 K23 ["chatSettings"]
+  SETTABLEKS R6 R5 K11 ["savedChatSettings"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K12 ["voiceTimedOut"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K13 ["voiceStateCounter"]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K14 ["lastVoiceState"]
+  SETTABLEKS R1 R5 K15 ["selfViewOpen"]
+  SETTABLEKS R2 R5 K16 ["selfViewEnabled"]
+  GETUPVAL R7 3
+  JUMPIFNOT R7 [+2]
+  LOADB R6 0
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K17 ["isInsideEasierUnmutingDistance"]
+  GETUPVAL R7 3
+  JUMPIFNOT R7 [+4]
+  GETUPVAL R7 4
+  JUMPIFNOT R7 [+2]
+  LOADB R6 0
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K18 ["isMuted"]
+  GETUPVAL R7 3
+  JUMPIFNOT R7 [+2]
+  LOADB R6 0
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K19 ["isInEasierUnmutingTreatment"]
+  GETUPVAL R7 3
+  JUMPIFNOT R7 [+2]
+  LOADB R6 0
+  JUMP [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K20 ["haveLoggedUserExposure"]
+  NAMECALL R3 R0 K24 ["setState"]
+  CALL R3 2 0
+  LOADB R3 0
+  SETTABLEKS R3 R0 K25 ["isMounted"]
+  GETUPVAL R4 5
+  GETTABLEKS R3 R4 K26 ["createBinding"]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R4 K29 [Vector3.new]
+  CALL R4 0 1
+  CALL R3 1 2
+  SETTABLEKS R3 R0 K30 ["offset"]
+  SETTABLEKS R4 R0 K31 ["updateOffset"]
+  GETUPVAL R4 6
+  GETTABLEKS R3 R4 K32 ["createSingleMotor"]
+  LOADN R4 0
+  CALL R3 1 1
+  SETTABLEKS R3 R0 K33 ["offsetMotor"]
+  GETTABLEKS R3 R0 K33 ["offsetMotor"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  NAMECALL R3 R3 K34 ["onStep"]
+  CALL R3 2 0
+  LOADN R3 0
+  SETTABLEKS R3 R0 K35 ["offsetGoal"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R3 R0 K36 ["onSelfViewVisibilityUpdated"]
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R0
+  SETTABLEKS R3 R0 K37 ["onLastBubbleFadeOut"]
+  GETTABLEKS R4 R0 K22 ["props"]
+  GETTABLEKS R3 R4 K38 ["voiceEnabled"]
+  JUMPIFNOT R3 [+66]
+  LOADNIL R3
+  GETTABLEKS R5 R0 K22 ["props"]
+  GETTABLEKS R4 R5 K39 ["userId"]
+  GETUPVAL R8 7
+  GETTABLEKS R7 R8 K40 ["LocalPlayer"]
+  GETTABLEKS R6 R7 K41 ["UserId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K43 [tostring]
+  CALL R5 1 1
+  JUMPIFNOTEQ R4 R5 [+8]
+  NEWCLOSURE R3 P3
+  CAPTURE UPVAL U8
+  CAPTURE VAL R0
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  JUMP [+4]
+  NEWCLOSURE R3 P4
+  CAPTURE UPVAL U10
+  CAPTURE VAL R0
+  CAPTURE UPVAL U12
+  GETTABLEKS R5 R0 K22 ["props"]
+  GETTABLEKS R4 R5 K39 ["userId"]
+  LOADK R5 K44 ["MicDark"]
+  GETUPVAL R6 13
+  CALL R6 0 1
+  JUMPIFNOT R6 [+15]
+  GETUPVAL R10 7
+  GETTABLEKS R9 R10 K40 ["LocalPlayer"]
+  GETTABLEKS R8 R9 K41 ["UserId"]
+  FASTCALL1 TOSTRING R8 [+2]
+  GETIMPORT R7 K43 [tostring]
+  CALL R7 1 1
+  JUMPIFEQ R4 R7 [+3]
+  LOADK R6 K45 ["SpeakerDark"]
+  JUMP [+1]
+  LOADK R6 K44 ["MicDark"]
+  MOVE R5 R6
+  NEWCLOSURE R6 P5
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U14
+  CAPTURE REF R3
+  CAPTURE VAL R4
+  CAPTURE REF R5
+  SETTABLEKS R6 R0 K46 ["renderInsert"]
+  GETIMPORT R6 K48 [Vector2.new]
+  LOADN R7 28
+  LOADN R8 28
+  CALL R6 2 1
+  SETTABLEKS R6 R0 K49 ["insertSize"]
+  CLOSEUPVALS R3
+  NEWCLOSURE R3 P6
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R3 R0 K50 ["onCoreGuiChanged"]
+  GETUPVAL R3 15
+  NEWCLOSURE R5 P7
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  NAMECALL R3 R3 K51 ["connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R0 K52 ["selfViewVisibilityUpdatedSignal"]
+  GETUPVAL R3 3
+  JUMPIFNOT R3 [+18]
+  GETIMPORT R3 K54 [pcall]
+  DUPCLOSURE R4 K55 [PROTO_9]
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CALL R3 1 2
+  JUMPIFNOT R3 [+11]
+  JUMPIFNOT R4 [+10]
+  GETUPVAL R6 18
+  GETTABLE R5 R4 R6
+  JUMPIFNOT R5 [+7]
+  DUPTABLE R7 K56 [{"isInEasierUnmutingTreatment"}]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K19 ["isInEasierUnmutingTreatment"]
+  NAMECALL R5 R0 K24 ["setState"]
+  CALL R5 2 0
+  GETUPVAL R3 3
+  JUMPIFNOT R3 [+19]
+  GETTABLEKS R4 R0 K57 ["state"]
+  GETTABLEKS R3 R4 K19 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R3 [+14]
+  GETUPVAL R3 4
+  JUMPIFNOT R3 [+12]
+  GETUPVAL R5 10
+  GETTABLEKS R4 R5 K58 ["participantsUpdate"]
+  GETTABLEKS R3 R4 K59 ["Event"]
+  NEWCLOSURE R5 P9
+  CAPTURE VAL R0
+  NAMECALL R3 R3 K60 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R0 K61 ["participantsUpdateConnection"]
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+29]
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R1 [+24]
+  LOADB R1 0
+  GETTABLEKS R3 R0 K2 ["props"]
+  GETTABLEKS R2 R3 K3 ["voiceState"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K4 ["VOICE_STATE"]
+  GETTABLEKS R3 R4 K5 ["LOCAL_MUTED"]
+  JUMPIFNOTEQ R2 R3 [+13]
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K6 ["isInsideEasierUnmutingDistance"]
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R2 2
+  JUMPIFNOT R2 [+4]
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K7 ["isMuted"]
+  NOT R1 R2
+  RETURN R1 1
+
+PROTO_13:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["voiceStateCounter"]
+  GETUPVAL R1 1
+  JUMPIFNOTEQ R0 R1 [+13]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["isMounted"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 0
+  DUPTABLE R2 K4 [{"voiceTimedOut"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K3 ["voiceTimedOut"]
+  NAMECALL R0 R0 K5 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_14:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["userId"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["LocalPlayer"]
+  GETTABLEKS R4 R5 K3 ["UserId"]
+  FASTCALL1 TOSTRING R4 [+2]
+  GETIMPORT R3 K5 [tostring]
+  CALL R3 1 1
+  JUMPIFEQ R2 R3 [+30]
+  GETTABLEKS R3 R0 K6 ["state"]
+  GETTABLEKS R2 R3 K7 ["lastVoiceState"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K8 ["VOICE_STATE"]
+  GETTABLEKS R3 R4 K9 ["TALKING"]
+  JUMPIFEQ R2 R3 [+19]
+  GETTABLEKS R3 R0 K6 ["state"]
+  GETTABLEKS R2 R3 K10 ["voiceStateCounter"]
+  JUMPIFEQ R2 R1 [+13]
+  GETTABLEKS R3 R0 K6 ["state"]
+  GETTABLEKS R2 R3 K10 ["voiceStateCounter"]
+  GETIMPORT R3 K12 [delay]
+  GETUPVAL R5 2
+  DIVK R4 R5 K13 [1000]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["state"]
+  GETTABLEKS R0 R1 K1 ["voiceStateCounter"]
+  GETUPVAL R1 1
+  JUMPIFNOTEQ R0 R1 [+13]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K2 ["isMounted"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R0 0
+  DUPTABLE R2 K4 [{"voiceTimedOut"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K3 ["voiceTimedOut"]
+  NAMECALL R0 R0 K5 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_16:
+  JUMPIFNOT R1 [+3]
+  GETTABLEKS R2 R1 K0 ["voiceStateCounter"]
+  JUMP [+1]
+  LOADNIL R2
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+5]
+  GETTABLEKS R4 R0 K1 ["state"]
+  GETTABLEKS R3 R4 K2 ["isInEasierUnmutingTreatment"]
+  JUMPIF R3 [+5]
+  MOVE R5 R2
+  NAMECALL R3 R0 K3 ["checkCounterForTimeout"]
+  CALL R3 2 -1
+  RETURN R3 -1
+  GETTABLEKS R5 R0 K4 ["props"]
+  GETTABLEKS R4 R5 K5 ["userId"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K6 ["LocalPlayer"]
+  GETTABLEKS R6 R7 K7 ["UserId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K9 [tostring]
+  CALL R5 1 1
+  JUMPIFNOTEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETTABLEKS R6 R0 K1 ["state"]
+  GETTABLEKS R5 R6 K0 ["voiceStateCounter"]
+  JUMPIFNOTEQ R5 R2 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  LOADB R5 0
+  GETTABLEKS R7 R0 K1 ["state"]
+  GETTABLEKS R6 R7 K10 ["lastVoiceState"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["VOICE_STATE"]
+  GETTABLEKS R7 R8 K12 ["TALKING"]
+  JUMPIFEQ R6 R7 [+14]
+  GETTABLEKS R7 R0 K1 ["state"]
+  GETTABLEKS R6 R7 K10 ["lastVoiceState"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K11 ["VOICE_STATE"]
+  GETTABLEKS R7 R8 K13 ["LOCAL_MUTED"]
+  JUMPIFNOTEQ R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  JUMPIFNOT R3 [+14]
+  JUMPIFNOT R4 [+13]
+  JUMPIFNOT R5 [+12]
+  GETTABLEKS R7 R0 K1 ["state"]
+  GETTABLEKS R6 R7 K0 ["voiceStateCounter"]
+  GETIMPORT R7 K15 [delay]
+  GETUPVAL R9 3
+  DIVK R8 R9 K16 [1000]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R6
+  CALL R7 2 0
+  RETURN R0 0
+
+PROTO_17:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K0 ["Character"]
+  NAMECALL R0 R0 K1 ["onCharacterAdded"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R1 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  NAMECALL R1 R1 K0 ["onCharacterAdded"]
+  CALL R1 3 0
+  RETURN R0 0
+
+PROTO_19:
+  GETUPVAL R0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["adornee"]
+  NAMECALL R0 R0 K2 ["getAdorneeInstance"]
+  CALL R0 2 1
+  GETIMPORT R2 K4 [workspace]
+  GETTABLEKS R1 R2 K5 ["CurrentCamera"]
+  JUMPIFNOT R1 [+104]
+  JUMPIFNOT R0 [+103]
+  LOADK R4 K6 ["Attachment"]
+  NAMECALL R2 R0 K7 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R1 R0 K8 ["WorldPosition"]
+  JUMPIF R1 [+2]
+  GETTABLEKS R1 R0 K9 ["Position"]
+  GETIMPORT R7 K4 [workspace]
+  GETTABLEKS R6 R7 K5 ["CurrentCamera"]
+  GETTABLEKS R5 R6 K10 ["CFrame"]
+  GETTABLEKS R4 R5 K9 ["Position"]
+  SUB R3 R4 R1
+  GETTABLEKS R2 R3 K11 ["Magnitude"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K0 ["state"]
+  GETTABLEKS R5 R6 K12 ["savedChatSettings"]
+  GETTABLEKS R4 R5 K13 ["MaxDistance"]
+  JUMPIFLT R2 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K12 ["savedChatSettings"]
+  GETTABLEKS R5 R6 K14 ["MinimizeDistance"]
+  JUMPIFLT R2 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  LOADB R5 0
+  GETUPVAL R6 1
+  JUMPIFNOT R6 [+17]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K15 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R6 [+11]
+  GETGLOBAL R6 K16 ["getEasierUnmutingDistance"]
+  MOVE R7 R1
+  CALL R6 1 1
+  JUMPIFEQKNIL R6 [+6]
+  GETUPVAL R7 2
+  JUMPIFLT R6 R7 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K17 ["isInsideMaximizeDistance"]
+  JUMPIFNOTEQ R4 R6 [+23]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K18 ["isInsideRenderDistance"]
+  JUMPIFNOTEQ R3 R6 [+16]
+  GETUPVAL R6 1
+  JUMPIFNOT R6 [+24]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K15 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R6 [+18]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["state"]
+  GETTABLEKS R6 R7 K19 ["isInsideEasierUnmutingDistance"]
+  JUMPIFEQ R5 R6 [+12]
+  GETUPVAL R6 0
+  DUPTABLE R8 K20 [{"isInsideRenderDistance", "isInsideMaximizeDistance", "isInsideEasierUnmutingDistance"}]
+  SETTABLEKS R3 R8 K18 ["isInsideRenderDistance"]
+  SETTABLEKS R4 R8 K17 ["isInsideMaximizeDistance"]
+  SETTABLEKS R5 R8 K19 ["isInsideEasierUnmutingDistance"]
+  NAMECALL R6 R6 K21 ["setState"]
+  CALL R6 2 0
+  GETUPVAL R1 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["adornee"]
+  NAMECALL R1 R1 K22 ["getVerticalOffset"]
+  CALL R1 2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K23 ["offsetGoal"]
+  SUB R3 R1 R4
+  FASTCALL1 MATH_ABS R3 [+2]
+  GETIMPORT R2 K26 [math.abs]
+  CALL R2 1 1
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K27 ["BILLBOARD_OFFSET_EPSILON"]
+  JUMPIFNOTLT R3 R2 [+16]
+  GETUPVAL R2 0
+  SETTABLEKS R1 R2 K23 ["offsetGoal"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K28 ["offsetMotor"]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K29 ["spring"]
+  MOVE R5 R1
+  GETUPVAL R6 5
+  CALL R4 2 -1
+  NAMECALL R2 R2 K30 ["setGoal"]
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_20:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  GETTABLEKS R2 R0 K1 ["props"]
+  GETTABLEKS R1 R2 K2 ["lastMessage"]
+  JUMPIFNOT R1 [+6]
+  GETTABLEKS R3 R0 K1 ["props"]
+  GETTABLEKS R2 R3 K2 ["lastMessage"]
+  GETTABLEKS R1 R2 K3 ["adornee"]
+  DUPTABLE R4 K4 [{"adornee"}]
+  SETTABLEKS R1 R4 K3 ["adornee"]
+  NAMECALL R2 R0 K5 ["setState"]
+  CALL R2 2 0
+  MOVE R4 R1
+  NAMECALL R2 R0 K6 ["getVerticalOffset"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K7 ["offsetGoal"]
+  GETTABLEKS R3 R0 K8 ["offsetMotor"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K9 ["instant"]
+  MOVE R6 R2
+  CALL R5 1 -1
+  NAMECALL R3 R3 K10 ["setGoal"]
+  CALL R3 -1 0
+  GETUPVAL R3 1
+  JUMPIFNOT R3 [+13]
+  GETUPVAL R3 2
+  CALL R3 0 1
+  JUMPIFNOT R3 [+7]
+  NAMECALL R3 R0 K11 ["getMicPermission"]
+  CALL R3 1 0
+  NAMECALL R3 R0 K12 ["getCameraPermissionWithoutRequest"]
+  CALL R3 1 0
+  JUMP [+3]
+  NAMECALL R3 R0 K13 ["getPermissions"]
+  CALL R3 1 0
+  LOADNIL R3
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R4 3
+  MOVE R6 R1
+  NAMECALL R4 R4 K14 ["GetPlayerFromCharacter"]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMP [+18]
+  GETTABLEKS R6 R0 K1 ["props"]
+  GETTABLEKS R5 R6 K15 ["userId"]
+  FASTCALL1 TONUMBER R5 [+2]
+  GETIMPORT R4 K17 [tonumber]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+9]
+  GETUPVAL R4 3
+  GETTABLEKS R7 R0 K1 ["props"]
+  GETTABLEKS R6 R7 K15 ["userId"]
+  NAMECALL R4 R4 K18 ["GetPlayerByUserId"]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMPIFNOT R3 [+20]
+  GETTABLEKS R4 R3 K19 ["Character"]
+  JUMPIFNOT R4 [+7]
+  GETIMPORT R4 K22 [coroutine.wrap]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE REF R3
+  CALL R4 1 1
+  CALL R4 0 0
+  GETTABLEKS R4 R3 K23 ["CharacterAdded"]
+  NEWCLOSURE R6 P1
+  CAPTURE VAL R0
+  CAPTURE REF R3
+  NAMECALL R4 R4 K24 ["Connect"]
+  CALL R4 2 1
+  SETTABLEKS R4 R0 K25 ["characterConn"]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K26 ["Heartbeat"]
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U8
+  NAMECALL R4 R4 K24 ["Connect"]
+  CALL R4 2 1
+  SETTABLEKS R4 R0 K27 ["heartbeatConn"]
+  GETUPVAL R4 5
+  JUMPIFNOT R4 [+10]
+  GETTABLEKS R5 R0 K28 ["state"]
+  GETTABLEKS R4 R5 K29 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R4 [+5]
+  LOADNIL R6
+  NAMECALL R4 R0 K30 ["checkCounterForTimeoutWithEasierUnmuting"]
+  CALL R4 2 0
+  JUMP [+4]
+  LOADNIL R6
+  NAMECALL R4 R0 K31 ["checkCounterForTimeout"]
+  CALL R4 2 0
+  CLOSEUPVALS R3
+  RETURN R0 0
+
+PROTO_21:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["Unmounting billboards for {}"]
+  GETTABLEKS R5 R0 K1 ["state"]
+  GETTABLEKS R4 R5 K2 ["shortId"]
+  NAMECALL R1 R1 K3 ["trace"]
+  CALL R1 3 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["isMounted"]
+  GETTABLEKS R1 R0 K5 ["characterConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K5 ["characterConn"]
+  NAMECALL R1 R1 K6 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["characterConn"]
+  GETTABLEKS R1 R0 K7 ["heartbeatConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K7 ["heartbeatConn"]
+  NAMECALL R1 R1 K6 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K7 ["heartbeatConn"]
+  GETTABLEKS R1 R0 K8 ["humanoidDiedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K8 ["humanoidDiedConn"]
+  NAMECALL R1 R1 K6 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K8 ["humanoidDiedConn"]
+  GETTABLEKS R1 R0 K9 ["offsetMotor"]
+  NAMECALL R1 R1 K10 ["destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K11 ["selfViewVisibilityUpdatedSignal"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K11 ["selfViewVisibilityUpdatedSignal"]
+  NAMECALL R1 R1 K12 ["disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K11 ["selfViewVisibilityUpdatedSignal"]
+  GETUPVAL R1 1
+  JUMPIFNOT R1 [+18]
+  GETTABLEKS R2 R0 K1 ["state"]
+  GETTABLEKS R1 R2 K13 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R1 [+13]
+  GETUPVAL R1 2
+  JUMPIFNOT R1 [+11]
+  GETTABLEKS R1 R0 K14 ["participantsUpdateConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K14 ["participantsUpdateConnection"]
+  NAMECALL R1 R1 K6 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K14 ["participantsUpdateConnection"]
+  RETURN R0 0
+
+PROTO_22:
+  PREPVARARGS 0
+  LOADN R2 1
+  GETUPVAL R3 0
+  LENGTH R0 R3
+  LOADN R1 1
+  FORNPREP R0
+  GETUPVAL R4 0
+  GETTABLE R3 R4 R2
+  NAMECALL R3 R3 K0 ["Disconnect"]
+  CALL R3 1 0
+  FORNLOOP R0
+  GETUPVAL R0 1
+  GETVARARGS R2 -1
+  NAMECALL R0 R0 K1 ["Fire"]
+  CALL R0 -1 -1
+  RETURN R0 -1
+
+PROTO_23:
+  PREPVARARGS 0
+  GETIMPORT R0 K2 [Instance.new]
+  LOADK R1 K3 ["BindableEvent"]
+  CALL R0 1 1
+  NEWTABLE R1 0 0
+  GETVARARGS R2 -1
+  SETLIST R1 R2 -1 [1]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  LOADN R5 1
+  LENGTH R3 R1
+  LOADN R4 1
+  FORNPREP R3
+  GETTABLE R6 R1 R5
+  MOVE R8 R2
+  NAMECALL R6 R6 K4 ["Connect"]
+  CALL R6 2 1
+  SETTABLE R6 R1 R5
+  FORNLOOP R3
+  GETTABLEKS R3 R0 K5 ["Event"]
+  NAMECALL R3 R3 K6 ["Wait"]
+  CALL R3 1 -1
+  RETURN R3 -1
+
+PROTO_24:
+  GETIMPORT R3 K1 [ipairs]
+  NAMECALL R4 R0 K2 ["GetChildren"]
+  CALL R4 1 -1
+  CALL R3 -1 3
+  FORGPREP_INEXT R3
+  GETTABLEKS R8 R7 K3 ["Name"]
+  JUMPIFNOTEQ R8 R1 [+7]
+  MOVE R10 R2
+  NAMECALL R8 R7 K4 ["IsA"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+1]
+  RETURN R7 1
+  FORGLOOP R3 2 [inext] [-11]
+  RETURN R0 0
+
+PROTO_25:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"adornee"}]
+  GETUPVAL R3 1
+  GETUPVAL R4 2
+  LOADK R5 K2 ["Head"]
+  LOADK R6 K3 ["BasePart"]
+  CALL R3 3 1
+  JUMPIF R3 [+1]
+  GETUPVAL R3 2
+  SETTABLEKS R3 R2 K0 ["adornee"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_26:
+  GETTABLEKS R3 R2 K0 ["Parent"]
+  JUMPIF R3 [+6]
+  GETUPVAL R3 0
+  GETTABLEKS R4 R2 K1 ["AncestryChanged"]
+  GETTABLEKS R5 R1 K2 ["CharacterAdded"]
+  CALL R3 2 0
+  GETTABLEKS R3 R1 K3 ["Character"]
+  JUMPIFNOTEQ R3 R2 [+4]
+  GETTABLEKS R3 R2 K0 ["Parent"]
+  JUMPIF R3 [+10]
+  GETUPVAL R3 1
+  LOADK R5 K4 ["Mismatched or unparented character in onCharacterAdded for {}"]
+  GETTABLEKS R7 R0 K5 ["state"]
+  GETTABLEKS R6 R7 K6 ["shortId"]
+  NAMECALL R3 R3 K7 ["debug"]
+  CALL R3 3 0
+  RETURN R0 0
+  LOADK R5 K8 ["Humanoid"]
+  NAMECALL R3 R2 K9 ["FindFirstChildOfClass"]
+  CALL R3 2 1
+  GETIMPORT R6 K11 [game]
+  NAMECALL R4 R2 K12 ["IsDescendantOf"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+15]
+  JUMPIF R3 [+14]
+  GETUPVAL R4 0
+  GETTABLEKS R5 R2 K13 ["ChildAdded"]
+  GETTABLEKS R6 R2 K1 ["AncestryChanged"]
+  GETTABLEKS R7 R1 K2 ["CharacterAdded"]
+  CALL R4 3 0
+  LOADK R6 K8 ["Humanoid"]
+  NAMECALL R4 R2 K9 ["FindFirstChildOfClass"]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMPBACK [-21]
+  GETTABLEKS R4 R1 K3 ["Character"]
+  JUMPIFNOTEQ R4 R2 [+7]
+  GETIMPORT R6 K11 [game]
+  NAMECALL R4 R2 K12 ["IsDescendantOf"]
+  CALL R4 2 1
+  JUMPIF R4 [+10]
+  GETUPVAL R4 1
+  LOADK R6 K4 ["Mismatched or unparented character in onCharacterAdded for {}"]
+  GETTABLEKS R8 R0 K5 ["state"]
+  GETTABLEKS R7 R8 K6 ["shortId"]
+  NAMECALL R4 R4 K7 ["debug"]
+  CALL R4 3 0
+  RETURN R0 0
+  LOADNIL R4
+  GETUPVAL R5 2
+  CALL R5 0 1
+  JUMPIFNOT R5 [+3]
+  GETTABLEKS R4 R2 K14 ["PrimaryPart"]
+  JUMP [+5]
+  LOADK R7 K15 ["HumanoidRootPart"]
+  NAMECALL R5 R2 K16 ["FindFirstChild"]
+  CALL R5 2 1
+  MOVE R4 R5
+  GETIMPORT R7 K11 [game]
+  NAMECALL R5 R2 K12 ["IsDescendantOf"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+21]
+  JUMPIF R4 [+20]
+  GETUPVAL R5 0
+  GETTABLEKS R6 R2 K13 ["ChildAdded"]
+  GETTABLEKS R7 R2 K1 ["AncestryChanged"]
+  GETTABLEKS R8 R1 K2 ["CharacterAdded"]
+  CALL R5 3 0
+  GETUPVAL R5 2
+  CALL R5 0 1
+  JUMPIFNOT R5 [+3]
+  GETTABLEKS R4 R2 K14 ["PrimaryPart"]
+  JUMP [+5]
+  LOADK R7 K15 ["HumanoidRootPart"]
+  NAMECALL R5 R2 K16 ["FindFirstChild"]
+  CALL R5 2 1
+  MOVE R4 R5
+  JUMPBACK [-27]
+  JUMPIFNOT R4 [+53]
+  GETIMPORT R7 K11 [game]
+  NAMECALL R5 R2 K12 ["IsDescendantOf"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+47]
+  GETTABLEKS R5 R1 K3 ["Character"]
+  JUMPIFNOTEQ R5 R2 [+44]
+  GETTABLEKS R5 R0 K17 ["isMounted"]
+  JUMPIFNOT R5 [+40]
+  GETUPVAL R5 3
+  MOVE R6 R2
+  LOADK R7 K18 ["Head"]
+  LOADK R8 K19 ["BasePart"]
+  CALL R5 3 1
+  DUPTABLE R8 K21 [{"adornee"}]
+  GETTABLEKS R10 R3 K22 ["Health"]
+  JUMPIFNOTEQKN R10 K23 [0] [+3]
+  MOVE R9 R5
+  JUMPIF R9 [+1]
+  MOVE R9 R2
+  SETTABLEKS R9 R8 K20 ["adornee"]
+  NAMECALL R6 R0 K24 ["setState"]
+  CALL R6 2 0
+  GETTABLEKS R6 R0 K25 ["humanoidDiedConn"]
+  JUMPIFNOT R6 [+8]
+  GETTABLEKS R6 R0 K25 ["humanoidDiedConn"]
+  NAMECALL R6 R6 K26 ["Disconnect"]
+  CALL R6 1 0
+  LOADNIL R6
+  SETTABLEKS R6 R0 K25 ["humanoidDiedConn"]
+  GETTABLEKS R6 R3 K27 ["Died"]
+  NEWCLOSURE R8 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  CAPTURE VAL R2
+  NAMECALL R6 R6 K28 ["Connect"]
+  CALL R6 2 1
+  SETTABLEKS R6 R0 K25 ["humanoidDiedConn"]
+  RETURN R0 0
+
+PROTO_27:
+  JUMPIFNOT R1 [+36]
+  LOADK R4 K0 ["Model"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+31]
+  NAMECALL R2 R1 K2 ["GetBoundingBox"]
+  CALL R2 1 2
+  MOVE R6 R1
+  NAMECALL R4 R0 K3 ["getAdorneeInstance"]
+  CALL R4 2 1
+  JUMPIF R4 [+4]
+  GETTABLEKS R6 R3 K5 ["Y"]
+  DIVK R5 R6 K4 [2]
+  RETURN R5 1
+  LOADK R7 K6 ["BasePart"]
+  NAMECALL R5 R4 K1 ["IsA"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+12]
+  GETTABLEKS R7 R4 K7 ["Position"]
+  NAMECALL R5 R2 K8 ["PointToObjectSpace"]
+  CALL R5 2 1
+  GETTABLEKS R8 R3 K5 ["Y"]
+  DIVK R7 R8 K4 [2]
+  GETTABLEKS R8 R5 K5 ["Y"]
+  SUB R6 R7 R8
+  RETURN R6 1
+  LOADN R5 0
+  RETURN R5 1
+  JUMPIFNOT R1 [+11]
+  LOADK R4 K6 ["BasePart"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R4 R1 K9 ["Size"]
+  GETTABLEKS R3 R4 K5 ["Y"]
+  DIVK R2 R3 K4 [2]
+  RETURN R2 1
+  LOADN R2 0
+  RETURN R2 1
+
+PROTO_28:
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  LOADK R4 K0 ["Model"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+31]
+  GETTABLEKS R6 R0 K2 ["state"]
+  GETTABLEKS R5 R6 K3 ["savedChatSettings"]
+  GETTABLEKS R4 R5 K4 ["AdorneeName"]
+  LOADB R5 1
+  NAMECALL R2 R1 K5 ["FindFirstChild"]
+  CALL R2 3 1
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+5]
+  MOVE R3 R2
+  JUMPIF R3 [+2]
+  GETTABLEKS R3 R1 K6 ["PrimaryPart"]
+  MOVE R2 R3
+  JUMPIFNOT R2 [+10]
+  LOADK R5 K7 ["BasePart"]
+  NAMECALL R3 R2 K1 ["IsA"]
+  CALL R3 2 1
+  JUMPIF R3 [+5]
+  LOADK R5 K8 ["Attachment"]
+  NAMECALL R3 R2 K1 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+13]
+  RETURN R2 1
+  RETURN R0 0
+  LOADK R4 K7 ["BasePart"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIF R2 [+5]
+  LOADK R4 K8 ["Attachment"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+1]
+  RETURN R1 1
+  RETURN R0 0
+
+PROTO_29:
+  GETUPVAL R1 0
+  DUPTABLE R3 K2 [{"hasCameraPermissions", "hasMicPermissions"}]
+  GETTABLEKS R4 R0 K0 ["hasCameraPermissions"]
+  SETTABLEKS R4 R3 K0 ["hasCameraPermissions"]
+  GETTABLEKS R4 R0 K1 ["hasMicPermissions"]
+  SETTABLEKS R4 R3 K1 ["hasMicPermissions"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_30:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  GETUPVAL R2 0
+  MOVE R3 R1
+  LOADNIL R4
+  LOADNIL R5
+  LOADK R6 K0 ["BubbleChatBillboard.getPermissions"]
+  CALL R2 4 -1
+  RETURN R2 -1
+
+PROTO_31:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"hasMicPermissions"}]
+  GETTABLEKS R4 R0 K0 ["hasMicPermissions"]
+  SETTABLEKS R4 R3 K0 ["hasMicPermissions"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_32:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  GETUPVAL R2 0
+  MOVE R3 R1
+  NEWTABLE R4 0 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["Permissions"]
+  GETTABLEKS R5 R6 K1 ["MICROPHONE_ACCESS"]
+  SETLIST R4 R5 1 [1]
+  LOADNIL R5
+  LOADK R6 K2 ["BubbleChatBillboard.getMicPermission"]
+  CALL R2 4 0
+  RETURN R0 0
+
+PROTO_33:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"hasCameraPermissions"}]
+  GETTABLEKS R4 R0 K0 ["hasCameraPermissions"]
+  SETTABLEKS R4 R3 K0 ["hasCameraPermissions"]
+  NAMECALL R1 R1 K2 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_34:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  GETUPVAL R2 0
+  MOVE R3 R1
+  NEWTABLE R4 0 1
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K0 ["Permissions"]
+  GETTABLEKS R5 R6 K1 ["CAMERA_ACCESS"]
+  SETLIST R4 R5 1 [1]
+  LOADB R5 1
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_35:
+  DUPTABLE R4 K1 [{"hasCameraPermissions"}]
+  SETTABLEKS R1 R4 K0 ["hasCameraPermissions"]
+  NAMECALL R2 R0 K2 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_36:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["voiceEnabled"]
+  JUMPIF R1 [+6]
+  GETUPVAL R1 0
+  JUMPIF R1 [+4]
+  GETUPVAL R1 1
+  JUMPIF R1 [+2]
+  LOADB R1 0
+  RETURN R1 1
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["userId"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K3 ["LocalPlayer"]
+  GETTABLEKS R4 R5 K4 ["UserId"]
+  FASTCALL1 TOSTRING R4 [+2]
+  GETIMPORT R3 K6 [tostring]
+  CALL R3 1 1
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  JUMPIFNOT R1 [+20]
+  GETUPVAL R2 3
+  JUMPIFNOT R2 [+4]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K7 ["VREnabled"]
+  JUMPIF R2 [+3]
+  GETUPVAL R2 5
+  CALL R2 0 1
+  JUMPIFNOT R2 [+2]
+  LOADB R2 0
+  RETURN R2 1
+  GETTABLEKS R3 R0 K8 ["state"]
+  GETTABLEKS R2 R3 K9 ["selfViewOpen"]
+  JUMPIF R2 [+2]
+  LOADB R2 1
+  RETURN R2 1
+  LOADB R2 0
+  RETURN R2 1
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["voiceEnabled"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R4 R0 K8 ["state"]
+  GETTABLEKS R3 R4 K10 ["voiceTimedOut"]
+  NOT R2 R3
+  GETUPVAL R3 6
+  CALL R3 0 1
+  JUMPIFNOT R3 [+1]
+  RETURN R2 1
+  JUMPIFNOT R2 [+19]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K11 ["bubbleChatEnabled"]
+  JUMPIFNOT R3 [+12]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K12 ["messageIds"]
+  JUMPIFNOT R3 [+7]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K12 ["messageIds"]
+  LENGTH R3 R4
+  JUMPIFNOTEQKN R3 K13 [0] [+3]
+  LOADB R3 1
+  RETURN R3 1
+  LOADB R3 0
+  RETURN R3 1
+
+PROTO_37:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["chatSettings"]
+  GETTABLEKS R1 R2 K2 ["TailVisible"]
+  JUMPIFNOT R1 [+4]
+  NAMECALL R2 R0 K3 ["getRenderVoiceAndCameraBubble"]
+  CALL R2 1 1
+  NOT R1 R2
+  RETURN R1 1
+
+PROTO_38:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R1 1
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["setCameraPermissionStateFromControl"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_39:
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["adornee"]
+  NAMECALL R1 R0 K2 ["getAdorneeInstance"]
+  CALL R1 2 1
+  GETTABLEKS R4 R0 K3 ["props"]
+  GETTABLEKS R3 R4 K4 ["userId"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K5 ["LocalPlayer"]
+  GETTABLEKS R5 R6 K6 ["UserId"]
+  FASTCALL1 TOSTRING R5 [+2]
+  GETIMPORT R4 K8 [tostring]
+  CALL R4 1 1
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K9 ["savedChatSettings"]
+  JUMPIF R1 [+10]
+  GETUPVAL R4 1
+  LOADK R6 K10 ["No adornee for {}"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K11 ["shortId"]
+  NAMECALL R4 R4 K12 ["trace"]
+  CALL R4 3 0
+  RETURN R0 0
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K13 ["isInsideRenderDistance"]
+  JUMPIF R4 [+10]
+  GETUPVAL R4 1
+  LOADK R6 K14 ["Not in range for {}"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K11 ["shortId"]
+  NAMECALL R4 R4 K12 ["trace"]
+  CALL R4 3 0
+  RETURN R0 0
+  GETUPVAL R4 2
+  JUMPIFNOT R4 [+38]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K15 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R4 [+33]
+  GETTABLEKS R5 R0 K3 ["props"]
+  GETTABLEKS R4 R5 K16 ["voiceState"]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K17 ["VOICE_STATE"]
+  GETTABLEKS R5 R6 K18 ["LOCAL_MUTED"]
+  JUMPIFNOTEQ R4 R5 [+23]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K19 ["isInsideEasierUnmutingDistance"]
+  JUMPIFNOT R4 [+7]
+  GETUPVAL R4 4
+  JUMPIFNOT R4 [+15]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K20 ["isMuted"]
+  JUMPIFNOT R4 [+10]
+  GETUPVAL R4 1
+  LOADK R6 K21 ["Unmute toggle not applicable for {}"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K11 ["shortId"]
+  NAMECALL R4 R4 K12 ["trace"]
+  CALL R4 3 0
+  RETURN R0 0
+  NEWTABLE R4 8 0
+  LOADNIL R5
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R6 R7 K22 ["voiceEnabled"]
+  JUMPIFNOT R6 [+5]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K23 ["voiceTimedOut"]
+  NOT R6 R7
+  GETUPVAL R7 5
+  JUMPIFNOT R7 [+9]
+  JUMPIFNOT R2 [+8]
+  MOVE R7 R6
+  JUMPIFNOT R7 [+5]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K24 ["selfViewOpen"]
+  NOT R7 R8
+  MOVE R6 R7
+  GETUPVAL R7 6
+  JUMPIFNOT R7 [+4]
+  GETUPVAL R8 7
+  GETTABLEKS R7 R8 K25 ["VREnabled"]
+  JUMPIF R7 [+3]
+  GETUPVAL R7 8
+  CALL R7 0 1
+  JUMPIFNOT R7 [+2]
+  JUMPIFNOT R2 [+1]
+  LOADB R6 0
+  GETUPVAL R7 5
+  JUMPIFNOT R7 [+112]
+  NAMECALL R7 R0 K26 ["getRenderVoiceAndCameraBubble"]
+  CALL R7 1 1
+  JUMPIFNOT R7 [+151]
+  DUPTABLE R7 K35 [{"chatSettings", "isInsideMaximizeDistance", "LayoutOrder", "isLocalPlayer", "hasCameraPermissions", "hasMicPermissions", "userId", "voiceEnabled", "setCameraPermissionStateFromControl", "isShowingDueToEasierUnmuting"}]
+  SETTABLEKS R3 R7 K27 ["chatSettings"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K28 ["isInsideMaximizeDistance"]
+  SETTABLEKS R8 R7 K28 ["isInsideMaximizeDistance"]
+  LOADN R8 2
+  SETTABLEKS R8 R7 K29 ["LayoutOrder"]
+  SETTABLEKS R2 R7 K30 ["isLocalPlayer"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K31 ["hasCameraPermissions"]
+  SETTABLEKS R8 R7 K31 ["hasCameraPermissions"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K32 ["hasMicPermissions"]
+  SETTABLEKS R8 R7 K32 ["hasMicPermissions"]
+  GETTABLEKS R9 R0 K3 ["props"]
+  GETTABLEKS R8 R9 K4 ["userId"]
+  SETTABLEKS R8 R7 K4 ["userId"]
+  GETTABLEKS R9 R0 K3 ["props"]
+  GETTABLEKS R8 R9 K22 ["voiceEnabled"]
+  SETTABLEKS R8 R7 K22 ["voiceEnabled"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U9
+  CAPTURE VAL R0
+  SETTABLEKS R8 R7 K33 ["setCameraPermissionStateFromControl"]
+  NAMECALL R8 R0 K34 ["isShowingDueToEasierUnmuting"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K34 ["isShowingDueToEasierUnmuting"]
+  GETUPVAL R9 10
+  JUMPIFNOT R9 [+7]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K36 ["createElement"]
+  GETUPVAL R9 12
+  MOVE R10 R7
+  CALL R8 2 1
+  JUMPIF R8 [+6]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K36 ["createElement"]
+  GETUPVAL R9 13
+  MOVE R10 R7
+  CALL R8 2 1
+  SETTABLEKS R8 R4 K37 ["VoiceAndCameraBubble"]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K36 ["createElement"]
+  LOADK R9 K38 ["UIListLayout"]
+  DUPTABLE R10 K43 [{"SortOrder", "HorizontalAlignment", "VerticalAlignment", "Padding"}]
+  GETIMPORT R11 K45 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R11 R10 K39 ["SortOrder"]
+  GETIMPORT R11 K47 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R11 R10 K40 ["HorizontalAlignment"]
+  GETIMPORT R11 K49 [Enum.VerticalAlignment.Bottom]
+  SETTABLEKS R11 R10 K41 ["VerticalAlignment"]
+  GETIMPORT R11 K52 [UDim.new]
+  LOADN R12 0
+  LOADN R13 8
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K42 ["Padding"]
+  CALL R8 2 1
+  SETTABLEKS R8 R4 K53 ["listLayout"]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K36 ["createElement"]
+  LOADK R9 K54 ["UIPadding"]
+  DUPTABLE R10 K56 [{"PaddingBottom"}]
+  GETIMPORT R11 K52 [UDim.new]
+  LOADN R12 0
+  LOADN R13 8
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K55 ["PaddingBottom"]
+  CALL R8 2 1
+  SETTABLEKS R8 R4 K57 ["padding"]
+  JUMP [+43]
+  JUMPIFNOT R6 [+42]
+  GETTABLEKS R8 R0 K3 ["props"]
+  GETTABLEKS R7 R8 K58 ["bubbleChatEnabled"]
+  JUMPIFNOT R7 [+12]
+  GETTABLEKS R8 R0 K3 ["props"]
+  GETTABLEKS R7 R8 K59 ["messageIds"]
+  JUMPIFNOT R7 [+7]
+  GETTABLEKS R9 R0 K3 ["props"]
+  GETTABLEKS R8 R9 K59 ["messageIds"]
+  LENGTH R7 R8
+  JUMPIFNOTEQKN R7 K60 [0] [+26]
+  GETUPVAL R8 11
+  GETTABLEKS R7 R8 K36 ["createElement"]
+  GETUPVAL R8 14
+  DUPTABLE R9 K64 [{"chatSettings", "renderInsert", "insertSize", "isDistant"}]
+  SETTABLEKS R3 R9 K27 ["chatSettings"]
+  GETTABLEKS R10 R0 K61 ["renderInsert"]
+  SETTABLEKS R10 R9 K61 ["renderInsert"]
+  GETTABLEKS R10 R0 K62 ["insertSize"]
+  SETTABLEKS R10 R9 K62 ["insertSize"]
+  GETTABLEKS R12 R0 K0 ["state"]
+  GETTABLEKS R11 R12 K28 ["isInsideMaximizeDistance"]
+  NOT R10 R11
+  SETTABLEKS R10 R9 K63 ["isDistant"]
+  CALL R7 2 1
+  SETTABLEKS R7 R4 K65 ["VoiceBubble"]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K66 ["hasMessage"]
+  JUMPIFNOT R7 [+91]
+  GETTABLEKS R8 R0 K0 ["state"]
+  GETTABLEKS R7 R8 K28 ["isInsideMaximizeDistance"]
+  JUMPIFNOT R7 [+45]
+  GETUPVAL R8 11
+  GETTABLEKS R7 R8 K36 ["createElement"]
+  GETUPVAL R8 15
+  DUPTABLE R9 K71 [{"userId", "isVisible", "onLastBubbleFadeOut", "chatSettings", "renderFirstInsert", "insertSize", "showCarat"}]
+  GETTABLEKS R11 R0 K3 ["props"]
+  GETTABLEKS R10 R11 K4 ["userId"]
+  SETTABLEKS R10 R9 K4 ["userId"]
+  GETTABLEKS R11 R0 K0 ["state"]
+  GETTABLEKS R10 R11 K28 ["isInsideMaximizeDistance"]
+  SETTABLEKS R10 R9 K67 ["isVisible"]
+  GETTABLEKS R10 R0 K68 ["onLastBubbleFadeOut"]
+  SETTABLEKS R10 R9 K68 ["onLastBubbleFadeOut"]
+  SETTABLEKS R3 R9 K27 ["chatSettings"]
+  GETUPVAL R11 5
+  JUMPIF R11 [+4]
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R10 R0 K61 ["renderInsert"]
+  JUMP [+1]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K69 ["renderFirstInsert"]
+  GETTABLEKS R10 R0 K62 ["insertSize"]
+  SETTABLEKS R10 R9 K62 ["insertSize"]
+  NAMECALL R10 R0 K72 ["shouldRenderCarat"]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K70 ["showCarat"]
+  CALL R7 2 1
+  SETTABLEKS R7 R4 K73 ["BubbleChatList"]
+  JUMP [+41]
+  GETUPVAL R8 11
+  GETTABLEKS R7 R8 K36 ["createElement"]
+  GETUPVAL R8 16
+  DUPTABLE R9 K76 [{"fadingOut", "onFadeOut", "chatSettings", "renderInsert", "insertSize"}]
+  GETTABLEKS R12 R0 K3 ["props"]
+  GETTABLEKS R11 R12 K59 ["messageIds"]
+  NOT R10 R11
+  JUMPIF R10 [+9]
+  GETTABLEKS R13 R0 K3 ["props"]
+  GETTABLEKS R12 R13 K59 ["messageIds"]
+  LENGTH R11 R12
+  JUMPIFEQKN R11 K60 [0] [+2]
+  LOADB R10 0 +1
+  LOADB R10 1
+  SETTABLEKS R10 R9 K74 ["fadingOut"]
+  GETTABLEKS R10 R0 K68 ["onLastBubbleFadeOut"]
+  SETTABLEKS R10 R9 K75 ["onFadeOut"]
+  SETTABLEKS R3 R9 K27 ["chatSettings"]
+  MOVE R10 R6
+  JUMPIFNOT R10 [+2]
+  GETTABLEKS R10 R0 K61 ["renderInsert"]
+  SETTABLEKS R10 R9 K61 ["renderInsert"]
+  GETTABLEKS R10 R0 K62 ["insertSize"]
+  SETTABLEKS R10 R9 K62 ["insertSize"]
+  CALL R7 2 1
+  SETTABLEKS R7 R4 K77 ["DistantBubble"]
+  MOVE R5 R6
+  GETUPVAL R7 5
+  JUMPIFNOT R7 [+4]
+  NAMECALL R7 R0 K26 ["getRenderVoiceAndCameraBubble"]
+  CALL R7 1 1
+  MOVE R5 R7
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R7 R3 K78 ["LocalPlayerStudsOffset"]
+  JUMPIF R7 [+1]
+  LOADK R7 K79 [{0, 1, 0.1}]
+  GETUPVAL R9 11
+  GETTABLEKS R8 R9 K36 ["createElement"]
+  LOADK R9 K80 ["BillboardGui"]
+  DUPTABLE R10 K88 [{"Adornee", "Active", "Size", "SizeOffset", "StudsOffset", "StudsOffsetWorldSpace", "ResetOnSpawn"}]
+  SETTABLEKS R1 R10 K81 ["Adornee"]
+  SETTABLEKS R5 R10 K82 ["Active"]
+  GETIMPORT R11 K91 [UDim2.fromOffset]
+  LOADN R12 244
+  LOADN R13 200
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K83 ["Size"]
+  GETIMPORT R11 K93 [Vector2.new]
+  LOADN R12 0
+  LOADK R13 K94 [0.5]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K84 ["SizeOffset"]
+  LOADN R13 0
+  GETTABLEKS R14 R3 K95 ["VerticalStudsOffset"]
+  LOADN R15 0
+  FASTCALL VECTOR [+2]
+  GETIMPORT R12 K97 [Vector3.new]
+  CALL R12 3 1
+  ADD R11 R7 R12
+  SETTABLEKS R11 R10 K85 ["StudsOffset"]
+  GETTABLEKS R11 R0 K98 ["offset"]
+  SETTABLEKS R11 R10 K86 ["StudsOffsetWorldSpace"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K87 ["ResetOnSpawn"]
+  MOVE R11 R4
+  CALL R8 3 -1
+  RETURN R8 -1
+
+PROTO_40:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["messageIds"]
+  JUMPIFNOT R3 [+7]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["messageIds"]
+  LENGTH R3 R4
+  JUMPIFNOTEQKN R3 K2 [0] [+9]
+  GETTABLEKS R4 R0 K3 ["state"]
+  GETTABLEKS R3 R4 K4 ["isInsideRenderDistance"]
+  JUMPIF R3 [+3]
+  GETTABLEKS R3 R0 K5 ["onLastBubbleFadeOut"]
+  CALL R3 0 0
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["messageIds"]
+  JUMPIFNOT R3 [+11]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["messageIds"]
+  LENGTH R3 R4
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+4]
+  LOADB R3 0
+  SETTABLEKS R3 R0 K6 ["isFadingOut"]
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+10]
+  GETTABLEKS R4 R0 K3 ["state"]
+  GETTABLEKS R3 R4 K7 ["isInEasierUnmutingTreatment"]
+  JUMPIFNOT R3 [+5]
+  MOVE R5 R2
+  NAMECALL R3 R0 K8 ["checkCounterForTimeoutWithEasierUnmuting"]
+  CALL R3 2 0
+  JUMP [+5]
+  GETTABLEKS R5 R2 K9 ["voiceStateCounter"]
+  NAMECALL R3 R0 K10 ["checkCounterForTimeout"]
+  CALL R3 2 0
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K11 ["userId"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K12 ["LocalPlayer"]
+  GETTABLEKS R6 R7 K13 ["UserId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K15 [tostring]
+  CALL R5 1 1
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+51]
+  JUMPIFNOT R3 [+50]
+  GETTABLEKS R5 R0 K3 ["state"]
+  GETTABLEKS R4 R5 K16 ["haveLoggedUserExposure"]
+  JUMPIF R4 [+45]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K17 ["voiceState"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K18 ["VOICE_STATE"]
+  GETTABLEKS R5 R6 K19 ["INACTIVE"]
+  JUMPIFEQ R4 R5 [+23]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K17 ["voiceState"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K18 ["VOICE_STATE"]
+  GETTABLEKS R5 R6 K20 ["TALKING"]
+  JUMPIFEQ R4 R5 [+12]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K17 ["voiceState"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K18 ["VOICE_STATE"]
+  GETTABLEKS R5 R6 K21 ["MUTED"]
+  JUMPIFNOTEQ R4 R5 [+13]
+  GETUPVAL R4 3
+  GETUPVAL R6 4
+  NAMECALL R4 R4 K22 ["LogUserLayerExposure"]
+  CALL R4 2 0
+  DUPTABLE R6 K23 [{"haveLoggedUserExposure"}]
+  LOADB R7 1
+  SETTABLEKS R7 R6 K16 ["haveLoggedUserExposure"]
+  NAMECALL R4 R0 K24 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_41:
+  LOADK R3 K0 ["..."]
+  GETTABLEKS R6 R0 K1 ["userId"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K3 [tostring]
+  CALL R5 1 1
+  FASTCALL2K STRING_SUB R5 K4 [+4]
+  LOADK R6 K4 [-4]
+  GETIMPORT R4 K7 [string.sub]
+  CALL R4 2 1
+  CONCAT R2 R3 R4
+  GETTABLEKS R4 R1 K8 ["hasMessage"]
+  NOT R3 R4
+  JUMPIFNOT R3 [+11]
+  GETTABLEKS R3 R0 K9 ["messageIds"]
+  JUMPIFNOT R3 [+8]
+  GETTABLEKS R5 R0 K9 ["messageIds"]
+  LENGTH R4 R5
+  LOADN R5 0
+  JUMPIFLT R5 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  LOADNIL R4
+  LOADNIL R5
+  LOADNIL R6
+  GETTABLEKS R7 R1 K10 ["lastVoiceState"]
+  GETTABLEKS R8 R0 K11 ["voiceState"]
+  JUMPIFEQ R7 R8 [+8]
+  GETTABLEKS R8 R1 K14 ["voiceStateCounter"]
+  ORK R7 R8 K13 [0]
+  ADDK R5 R7 K12 [1]
+  LOADB R6 0
+  GETTABLEKS R4 R0 K11 ["voiceState"]
+  DUPTABLE R7 K18 [{"hasMessage", "savedChatSettings", "shortId", "voiceStateCounter", "voiceTimedOut", "lastVoiceState"}]
+  ORK R8 R3 K19 []
+  SETTABLEKS R8 R7 K8 ["hasMessage"]
+  GETTABLEKS R8 R0 K20 ["lastMessage"]
+  JUMPIFNOT R8 [+2]
+  GETTABLEKS R8 R0 K21 ["chatSettings"]
+  SETTABLEKS R8 R7 K15 ["savedChatSettings"]
+  SETTABLEKS R2 R7 K16 ["shortId"]
+  SETTABLEKS R5 R7 K14 ["voiceStateCounter"]
+  SETTABLEKS R6 R7 K17 ["voiceTimedOut"]
+  SETTABLEKS R4 R7 K10 ["lastVoiceState"]
+  RETURN R7 1
+
+PROTO_42:
+  GETTABLEKS R3 R0 K0 ["userMessages"]
+  GETTABLEKS R4 R1 K1 ["userId"]
+  GETTABLE R2 R3 R4
+  MOVE R3 R2
+  JUMPIFNOT R3 [+7]
+  LOADB R3 0
+  LENGTH R4 R2
+  LOADN R5 1
+  JUMPIFNOTLE R5 R4 [+3]
+  LENGTH R4 R2
+  GETTABLE R3 R2 R4
+  MOVE R4 R3
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R5 R0 K2 ["messages"]
+  GETTABLE R4 R5 R3
+  GETTABLEKS R6 R0 K3 ["voiceState"]
+  GETTABLEKS R7 R1 K1 ["userId"]
+  GETTABLE R5 R6 R7
+  DUPTABLE R6 K7 [{"chatSettings", "messageIds", "lastMessage", "voiceState"}]
+  GETUPVAL R7 0
+  GETTABLEKS R8 R0 K4 ["chatSettings"]
+  MOVE R9 R4
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K4 ["chatSettings"]
+  SETTABLEKS R2 R6 K5 ["messageIds"]
+  SETTABLEKS R4 R6 K6 ["lastMessage"]
+  SETTABLEKS R5 R6 K3 ["voiceState"]
+  RETURN R6 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["RunService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R0 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K9 ["StarterGui"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K10 ["VRService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K12 [require]
+  GETIMPORT R11 K14 [script]
+  GETTABLEKS R10 R11 K15 ["Parent"]
+  GETTABLEKS R9 R10 K15 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["Logger"]
+  CALL R7 1 1
+  GETIMPORT R9 K14 [script]
+  GETTABLEKS R8 R9 K17 ["Name"]
+  CALL R7 1 1
+  GETIMPORT R8 K12 [require]
+  GETTABLEKS R10 R1 K18 ["Packages"]
+  GETTABLEKS R9 R10 K19 ["Roact"]
+  CALL R8 1 1
+  GETIMPORT R9 K12 [require]
+  GETTABLEKS R11 R1 K18 ["Packages"]
+  GETTABLEKS R10 R11 K20 ["RoactRodux"]
+  CALL R9 1 1
+  GETIMPORT R10 K12 [require]
+  GETTABLEKS R12 R1 K18 ["Packages"]
+  GETTABLEKS R11 R12 K21 ["t"]
+  CALL R10 1 1
+  GETIMPORT R11 K12 [require]
+  GETTABLEKS R13 R1 K18 ["Packages"]
+  GETTABLEKS R12 R13 K22 ["Otter"]
+  CALL R11 1 1
+  GETIMPORT R14 K12 [require]
+  GETTABLEKS R17 R1 K23 ["Workspace"]
+  GETTABLEKS R16 R17 K18 ["Packages"]
+  GETTABLEKS R15 R16 K24 ["PermissionsProtocol"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K24 ["PermissionsProtocol"]
+  GETTABLEKS R12 R13 K25 ["default"]
+  GETIMPORT R13 K12 [require]
+  GETTABLEKS R16 R4 K26 ["Modules"]
+  GETTABLEKS R15 R16 K27 ["Settings"]
+  GETTABLEKS R14 R15 K28 ["getCamMicPermissions"]
+  CALL R13 1 1
+  GETIMPORT R14 K12 [require]
+  GETIMPORT R17 K14 [script]
+  GETTABLEKS R16 R17 K15 ["Parent"]
+  GETTABLEKS R15 R16 K29 ["BubbleChatList"]
+  CALL R14 1 1
+  GETIMPORT R15 K12 [require]
+  GETIMPORT R18 K14 [script]
+  GETTABLEKS R17 R18 K15 ["Parent"]
+  GETTABLEKS R16 R17 K30 ["ChatBubbleDistant"]
+  CALL R15 1 1
+  GETIMPORT R16 K12 [require]
+  GETIMPORT R19 K14 [script]
+  GETTABLEKS R18 R19 K15 ["Parent"]
+  GETTABLEKS R17 R18 K31 ["VoiceBubble"]
+  CALL R16 1 1
+  GETIMPORT R17 K12 [require]
+  GETIMPORT R20 K14 [script]
+  GETTABLEKS R19 R20 K15 ["Parent"]
+  GETTABLEKS R18 R19 K32 ["ControlsBubble"]
+  CALL R17 1 1
+  GETIMPORT R18 K12 [require]
+  GETTABLEKS R22 R4 K26 ["Modules"]
+  GETTABLEKS R21 R22 K33 ["VoiceChat"]
+  GETTABLEKS R20 R21 K34 ["Components"]
+  GETTABLEKS R19 R20 K35 ["VoiceIndicator"]
+  CALL R18 1 1
+  GETIMPORT R19 K12 [require]
+  GETIMPORT R23 K14 [script]
+  GETTABLEKS R22 R23 K15 ["Parent"]
+  GETTABLEKS R21 R22 K15 ["Parent"]
+  GETTABLEKS R20 R21 K36 ["Types"]
+  CALL R19 1 1
+  GETIMPORT R20 K12 [require]
+  GETIMPORT R24 K14 [script]
+  GETTABLEKS R23 R24 K15 ["Parent"]
+  GETTABLEKS R22 R23 K15 ["Parent"]
+  GETTABLEKS R21 R22 K37 ["Constants"]
+  CALL R20 1 1
+  GETIMPORT R21 K12 [require]
+  GETIMPORT R26 K14 [script]
+  GETTABLEKS R25 R26 K15 ["Parent"]
+  GETTABLEKS R24 R25 K15 ["Parent"]
+  GETTABLEKS R23 R24 K38 ["Helpers"]
+  GETTABLEKS R22 R23 K39 ["getSettingsForMessage"]
+  CALL R21 1 1
+  GETIMPORT R22 K12 [require]
+  GETTABLEKS R25 R4 K26 ["Modules"]
+  GETTABLEKS R24 R25 K40 ["SelfView"]
+  GETTABLEKS R23 R24 K41 ["selfViewVisibilityUpdatedSignal"]
+  CALL R22 1 1
+  GETIMPORT R23 K12 [require]
+  GETTABLEKS R26 R4 K26 ["Modules"]
+  GETTABLEKS R25 R26 K42 ["Chrome"]
+  GETTABLEKS R24 R25 K43 ["Enabled"]
+  CALL R23 1 1
+  GETIMPORT R24 K12 [require]
+  GETTABLEKS R27 R4 K26 ["Modules"]
+  GETTABLEKS R26 R27 K33 ["VoiceChat"]
+  GETTABLEKS R25 R26 K37 ["Constants"]
+  CALL R24 1 1
+  GETIMPORT R26 K12 [require]
+  GETTABLEKS R29 R4 K26 ["Modules"]
+  GETTABLEKS R28 R29 K33 ["VoiceChat"]
+  GETTABLEKS R27 R28 K44 ["VoiceChatServiceManager"]
+  CALL R26 1 1
+  GETTABLEKS R25 R26 K25 ["default"]
+  GETIMPORT R26 K12 [require]
+  GETTABLEKS R29 R4 K26 ["Modules"]
+  GETTABLEKS R28 R29 K45 ["Flags"]
+  GETTABLEKS R27 R28 K46 ["GetFFlagEnableVoiceChatSpeakerIcons"]
+  CALL R26 1 1
+  GETIMPORT R27 K12 [require]
+  GETTABLEKS R30 R4 K26 ["Modules"]
+  GETTABLEKS R29 R30 K45 ["Flags"]
+  GETTABLEKS R28 R29 K47 ["GetFFlagMicConnectingToast"]
+  CALL R27 1 1
+  GETIMPORT R28 K12 [require]
+  GETTABLEKS R31 R4 K26 ["Modules"]
+  GETTABLEKS R30 R31 K45 ["Flags"]
+  GETTABLEKS R29 R30 K48 ["GetFFlagEnableVoiceChatManualReconnect"]
+  CALL R28 1 1
+  GETIMPORT R29 K12 [require]
+  GETTABLEKS R32 R4 K26 ["Modules"]
+  GETTABLEKS R31 R32 K45 ["Flags"]
+  GETTABLEKS R30 R31 K49 ["GetFFlagBubbleChatInexistantAdorneeFix"]
+  CALL R29 1 1
+  GETIMPORT R31 K12 [require]
+  GETTABLEKS R34 R1 K23 ["Workspace"]
+  GETTABLEKS R33 R34 K18 ["Packages"]
+  GETTABLEKS R32 R33 K50 ["SharedFlags"]
+  CALL R31 1 1
+  GETTABLEKS R30 R31 K51 ["GetFFlagAvatarChatCoreScriptSupport"]
+  CALL R30 0 1
+  GETIMPORT R31 K12 [require]
+  GETTABLEKS R34 R4 K26 ["Modules"]
+  GETTABLEKS R33 R34 K45 ["Flags"]
+  GETTABLEKS R32 R33 K52 ["FFlagEnableAvatarChatToggleUIUpgradeForLegacyChatService"]
+  CALL R31 1 1
+  GETIMPORT R32 K12 [require]
+  GETTABLEKS R35 R4 K26 ["Modules"]
+  GETTABLEKS R34 R35 K45 ["Flags"]
+  GETTABLEKS R33 R34 K53 ["GetFFlagShowSpeakerIconWithChatBubbles"]
+  CALL R32 1 1
+  GETIMPORT R33 K12 [require]
+  GETTABLEKS R36 R4 K26 ["Modules"]
+  GETTABLEKS R35 R36 K40 ["SelfView"]
+  GETTABLEKS R34 R35 K54 ["publicApi"]
+  CALL R33 1 1
+  GETIMPORT R34 K1 [game]
+  LOADK R36 K55 ["BubbleVoiceTimeoutMillis"]
+  LOADN R37 232
+  NAMECALL R34 R34 K56 ["DefineFastInt"]
+  CALL R34 3 1
+  GETIMPORT R35 K1 [game]
+  LOADK R37 K57 ["DebugAllowControlButtonsNoVoiceChat"]
+  LOADB R38 0
+  NAMECALL R35 R35 K58 ["DefineFastFlag"]
+  CALL R35 3 1
+  GETIMPORT R36 K12 [require]
+  GETTABLEKS R39 R4 K26 ["Modules"]
+  GETTABLEKS R38 R39 K45 ["Flags"]
+  GETTABLEKS R37 R38 K59 ["FFlagVRMoveVoiceIndicatorToBottomBar"]
+  CALL R36 1 1
+  GETIMPORT R37 K12 [require]
+  GETTABLEKS R40 R4 K26 ["Modules"]
+  GETTABLEKS R39 R40 K60 ["Common"]
+  GETTABLEKS R38 R39 K61 ["IXPServiceWrapper"]
+  CALL R37 1 1
+  GETIMPORT R38 K1 [game]
+  LOADK R40 K62 ["EasierUnmuting3"]
+  LOADB R41 0
+  NAMECALL R38 R38 K58 ["DefineFastFlag"]
+  CALL R38 3 1
+  GETIMPORT R39 K1 [game]
+  LOADK R41 K63 ["EasierUnmutingBasedOnCamera"]
+  LOADB R42 0
+  NAMECALL R39 R39 K58 ["DefineFastFlag"]
+  CALL R39 3 1
+  GETIMPORT R40 K1 [game]
+  LOADK R42 K64 ["EasierUnmutingHideIfMuted"]
+  LOADB R43 0
+  NAMECALL R40 R40 K58 ["DefineFastFlag"]
+  CALL R40 3 1
+  GETIMPORT R41 K1 [game]
+  LOADK R43 K65 ["EasierUnmutingDisplayDistance"]
+  LOADN R44 20
+  NAMECALL R41 R41 K56 ["DefineFastInt"]
+  CALL R41 3 1
+  GETIMPORT R42 K1 [game]
+  LOADK R44 K66 ["EasierUnmutingIXPLayerName"]
+  LOADK R45 K67 ["Voice.UserAgency"]
+  NAMECALL R42 R42 K68 ["DefineFastString"]
+  CALL R42 3 1
+  GETIMPORT R43 K1 [game]
+  LOADK R45 K69 ["EasierUnmutingIXPLayerValue"]
+  LOADK R46 K70 ["VoiceUserAgencyEnabled"]
+  NAMECALL R43 R43 K68 ["DefineFastString"]
+  CALL R43 3 1
+  GETIMPORT R44 K1 [game]
+  LOADK R46 K71 ["EasierUnmutingFixNonexistentCharacter"]
+  LOADB R47 0
+  NAMECALL R44 R44 K58 ["DefineFastFlag"]
+  CALL R44 3 1
+  GETIMPORT R45 K12 [require]
+  GETTABLEKS R48 R4 K26 ["Modules"]
+  GETTABLEKS R47 R48 K45 ["Flags"]
+  GETTABLEKS R46 R47 K72 ["getFFlagDoNotPromptCameraPermissionsOnMount"]
+  CALL R45 1 1
+  GETTABLEKS R46 R8 K73 ["PureComponent"]
+  LOADK R48 K74 ["BubbleChatBillboard"]
+  NAMECALL R46 R46 K75 ["extend"]
+  CALL R46 2 1
+  DUPTABLE R47 K78 [{"dampingRatio", "frequency"}]
+  LOADN R48 1
+  SETTABLEKS R48 R47 K76 ["dampingRatio"]
+  LOADN R48 4
+  SETTABLEKS R48 R47 K77 ["frequency"]
+  LOADNIL R48
+  JUMPIFNOT R31 [+10]
+  GETIMPORT R49 K12 [require]
+  GETIMPORT R52 K14 [script]
+  GETTABLEKS R51 R52 K15 ["Parent"]
+  GETTABLEKS R50 R51 K79 ["ControlsBubbleV2"]
+  CALL R49 1 1
+  MOVE R48 R49
+  GETTABLEKS R49 R10 K80 ["strictInterface"]
+  DUPTABLE R50 K89 [{"userId", "onFadeOut", "voiceEnabled", "bubbleChatEnabled", "chatSettings", "messageIds", "lastMessage", "voiceState"}]
+  GETTABLEKS R51 R10 K90 ["string"]
+  SETTABLEKS R51 R50 K81 ["userId"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R10 K92 ["callback"]
+  CALL R51 1 1
+  SETTABLEKS R51 R50 K82 ["onFadeOut"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R10 K93 ["boolean"]
+  CALL R51 1 1
+  SETTABLEKS R51 R50 K83 ["voiceEnabled"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R10 K93 ["boolean"]
+  CALL R51 1 1
+  SETTABLEKS R51 R50 K84 ["bubbleChatEnabled"]
+  GETTABLEKS R51 R19 K94 ["IChatSettings"]
+  SETTABLEKS R51 R50 K85 ["chatSettings"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R10 K95 ["array"]
+  GETTABLEKS R53 R10 K90 ["string"]
+  CALL R52 1 -1
+  CALL R51 -1 1
+  SETTABLEKS R51 R50 K86 ["messageIds"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R19 K96 ["IMessage"]
+  CALL R51 1 1
+  SETTABLEKS R51 R50 K87 ["lastMessage"]
+  GETTABLEKS R51 R10 K91 ["optional"]
+  GETTABLEKS R52 R10 K90 ["string"]
+  CALL R51 1 1
+  SETTABLEKS R51 R50 K88 ["voiceState"]
+  CALL R49 1 1
+  SETTABLEKS R49 R46 K97 ["validateProps"]
+  DUPCLOSURE R49 K98 [PROTO_0]
+  CAPTURE VAL R44
+  CAPTURE VAL R2
+  CAPTURE VAL R39
+  SETGLOBAL R49 K99 ["getEasierUnmutingDistance"]
+  DUPCLOSURE R49 K100 [PROTO_11]
+  CAPTURE VAL R33
+  CAPTURE VAL R30
+  CAPTURE VAL R5
+  CAPTURE VAL R38
+  CAPTURE VAL R40
+  CAPTURE VAL R8
+  CAPTURE VAL R11
+  CAPTURE VAL R2
+  CAPTURE VAL R28
+  CAPTURE VAL R20
+  CAPTURE VAL R25
+  CAPTURE VAL R27
+  CAPTURE VAL R24
+  CAPTURE VAL R26
+  CAPTURE VAL R18
+  CAPTURE VAL R22
+  CAPTURE VAL R37
+  CAPTURE VAL R42
+  CAPTURE VAL R43
+  SETTABLEKS R49 R46 K101 ["init"]
+  DUPCLOSURE R49 K102 [PROTO_12]
+  CAPTURE VAL R38
+  CAPTURE VAL R20
+  CAPTURE VAL R40
+  SETTABLEKS R49 R46 K103 ["isShowingDueToEasierUnmuting"]
+  DUPCLOSURE R49 K104 [PROTO_14]
+  CAPTURE VAL R2
+  CAPTURE VAL R20
+  CAPTURE VAL R34
+  SETTABLEKS R49 R46 K105 ["checkCounterForTimeout"]
+  DUPCLOSURE R49 K106 [PROTO_16]
+  CAPTURE VAL R38
+  CAPTURE VAL R2
+  CAPTURE VAL R20
+  CAPTURE VAL R34
+  SETTABLEKS R49 R46 K107 ["checkCounterForTimeoutWithEasierUnmuting"]
+  DUPCLOSURE R49 K108 [PROTO_20]
+  CAPTURE VAL R11
+  CAPTURE VAL R30
+  CAPTURE VAL R45
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R38
+  CAPTURE VAL R41
+  CAPTURE VAL R20
+  CAPTURE VAL R47
+  SETTABLEKS R49 R46 K109 ["didMount"]
+  DUPCLOSURE R49 K110 [PROTO_21]
+  CAPTURE VAL R7
+  CAPTURE VAL R38
+  CAPTURE VAL R40
+  SETTABLEKS R49 R46 K111 ["willUnmount"]
+  DUPCLOSURE R49 K112 [PROTO_23]
+  DUPCLOSURE R50 K113 [PROTO_24]
+  DUPCLOSURE R51 K114 [PROTO_26]
+  CAPTURE VAL R49
+  CAPTURE VAL R7
+  CAPTURE VAL R29
+  CAPTURE VAL R50
+  SETTABLEKS R51 R46 K115 ["onCharacterAdded"]
+  DUPCLOSURE R51 K116 [PROTO_27]
+  SETTABLEKS R51 R46 K117 ["getVerticalOffset"]
+  DUPCLOSURE R51 K118 [PROTO_28]
+  CAPTURE VAL R29
+  SETTABLEKS R51 R46 K119 ["getAdorneeInstance"]
+  DUPCLOSURE R51 K120 [PROTO_30]
+  CAPTURE VAL R13
+  SETTABLEKS R51 R46 K121 ["getPermissions"]
+  DUPCLOSURE R51 K122 [PROTO_32]
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  SETTABLEKS R51 R46 K123 ["getMicPermission"]
+  DUPCLOSURE R51 K124 [PROTO_34]
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  SETTABLEKS R51 R46 K125 ["getCameraPermissionWithoutRequest"]
+  DUPCLOSURE R51 K126 [PROTO_35]
+  SETTABLEKS R51 R46 K127 ["setCameraPermissionStateFromControl"]
+  DUPCLOSURE R51 K128 [PROTO_36]
+  CAPTURE VAL R35
+  CAPTURE VAL R30
+  CAPTURE VAL R2
+  CAPTURE VAL R36
+  CAPTURE VAL R6
+  CAPTURE VAL R23
+  CAPTURE VAL R32
+  SETTABLEKS R51 R46 K129 ["getRenderVoiceAndCameraBubble"]
+  DUPCLOSURE R51 K130 [PROTO_37]
+  SETTABLEKS R51 R46 K131 ["shouldRenderCarat"]
+  NEWCLOSURE R51 P18
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R38
+  CAPTURE VAL R20
+  CAPTURE VAL R40
+  CAPTURE VAL R30
+  CAPTURE VAL R36
+  CAPTURE VAL R6
+  CAPTURE VAL R23
+  CAPTURE VAL R45
+  CAPTURE VAL R31
+  CAPTURE VAL R8
+  CAPTURE REF R48
+  CAPTURE VAL R17
+  CAPTURE VAL R16
+  CAPTURE VAL R14
+  CAPTURE VAL R15
+  SETTABLEKS R51 R46 K132 ["render"]
+  DUPCLOSURE R51 K133 [PROTO_40]
+  CAPTURE VAL R38
+  CAPTURE VAL R2
+  CAPTURE VAL R20
+  CAPTURE VAL R37
+  CAPTURE VAL R42
+  SETTABLEKS R51 R46 K134 ["didUpdate"]
+  DUPCLOSURE R51 K135 [PROTO_41]
+  SETTABLEKS R51 R46 K136 ["getDerivedStateFromProps"]
+  DUPCLOSURE R51 K137 [PROTO_42]
+  CAPTURE VAL R21
+  GETTABLEKS R52 R9 K138 ["connect"]
+  MOVE R53 R51
+  CALL R52 1 1
+  MOVE R53 R46
+  CALL R52 1 -1
+  CLOSEUPVALS R48
+  RETURN R52 -1

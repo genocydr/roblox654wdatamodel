@@ -1,0 +1,339 @@
+PROTO_0:
+  NEWTABLE R2 16 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R2 R3 [+3]
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 1
+  SETTABLEKS R0 R1 K2 ["CONTROL_ACTION_PRIORITY"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K3 ["enabled"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K4 ["vehicleSeat"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K5 ["throttle"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K6 ["steer"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K7 ["acceleration"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K8 ["decceleration"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K9 ["turningRight"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K10 ["turningLeft"]
+  LOADK R2 K11 [{0, 0, 0}]
+  SETTABLEKS R2 R1 K12 ["vehicleMoveVector"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K13 ["autoPilot"]
+  GETTABLEKS R2 R1 K13 ["autoPilot"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K14 ["MaxSpeed"]
+  GETTABLEKS R2 R1 K13 ["autoPilot"]
+  LOADN R3 0
+  SETTABLEKS R3 R2 K15 ["MaxSteeringAngle"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R3 0
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R3 K0 ["OnThrottleAccel"]
+  CALL R3 4 0
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_2:
+  GETUPVAL R3 0
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R3 K0 ["OnThrottleDeccel"]
+  CALL R3 4 0
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_3:
+  GETUPVAL R3 0
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R3 K0 ["OnSteerRight"]
+  CALL R3 4 0
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_4:
+  GETUPVAL R3 0
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  NAMECALL R3 R3 K0 ["OnSteerLeft"]
+  CALL R3 4 0
+  GETIMPORT R3 K4 [Enum.ContextActionResult.Pass]
+  RETURN R3 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["throttleAccel"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETTABLEKS R6 R0 K1 ["CONTROL_ACTION_PRIORITY"]
+  GETIMPORT R7 K5 [Enum.KeyCode.ButtonR2]
+  NAMECALL R1 R1 K6 ["BindActionAtPriority"]
+  CALL R1 6 0
+  GETUPVAL R1 0
+  LOADK R3 K7 ["throttleDeccel"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETTABLEKS R6 R0 K1 ["CONTROL_ACTION_PRIORITY"]
+  GETIMPORT R7 K9 [Enum.KeyCode.ButtonL2]
+  NAMECALL R1 R1 K6 ["BindActionAtPriority"]
+  CALL R1 6 0
+  GETUPVAL R1 0
+  LOADK R3 K10 ["arrowSteerRight"]
+  NEWCLOSURE R4 P2
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETTABLEKS R6 R0 K1 ["CONTROL_ACTION_PRIORITY"]
+  GETIMPORT R7 K12 [Enum.KeyCode.Right]
+  NAMECALL R1 R1 K6 ["BindActionAtPriority"]
+  CALL R1 6 0
+  GETUPVAL R1 0
+  LOADK R3 K13 ["arrowSteerLeft"]
+  NEWCLOSURE R4 P3
+  CAPTURE VAL R0
+  LOADB R5 0
+  GETTABLEKS R6 R0 K1 ["CONTROL_ACTION_PRIORITY"]
+  GETIMPORT R7 K15 [Enum.KeyCode.Left]
+  NAMECALL R1 R1 K6 ["BindActionAtPriority"]
+  CALL R1 6 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R3 R0 K0 ["enabled"]
+  JUMPIFNOTEQ R1 R3 [+6]
+  GETTABLEKS R3 R0 K1 ["vehicleSeat"]
+  JUMPIFNOTEQ R2 R3 [+2]
+  RETURN R0 0
+  SETTABLEKS R1 R0 K0 ["enabled"]
+  LOADK R3 K2 [{0, 0, 0}]
+  SETTABLEKS R3 R0 K3 ["vehicleMoveVector"]
+  JUMPIFNOT R1 [+10]
+  JUMPIFNOT R2 [+32]
+  SETTABLEKS R2 R0 K1 ["vehicleSeat"]
+  NAMECALL R3 R0 K4 ["SetupAutoPilot"]
+  CALL R3 1 0
+  NAMECALL R3 R0 K5 ["BindContextActions"]
+  CALL R3 1 0
+  RETURN R0 0
+  GETUPVAL R3 0
+  LOADK R5 K6 ["throttleAccel"]
+  NAMECALL R3 R3 K7 ["UnbindAction"]
+  CALL R3 2 0
+  GETUPVAL R3 0
+  LOADK R5 K8 ["throttleDeccel"]
+  NAMECALL R3 R3 K7 ["UnbindAction"]
+  CALL R3 2 0
+  GETUPVAL R3 0
+  LOADK R5 K9 ["arrowSteerRight"]
+  NAMECALL R3 R3 K7 ["UnbindAction"]
+  CALL R3 2 0
+  GETUPVAL R3 0
+  LOADK R5 K10 ["arrowSteerLeft"]
+  NAMECALL R3 R3 K7 ["UnbindAction"]
+  CALL R3 2 0
+  LOADNIL R3
+  SETTABLEKS R3 R0 K1 ["vehicleSeat"]
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R4 K3 [Enum.UserInputState.End]
+  JUMPIFEQ R2 R4 [+5]
+  GETIMPORT R4 K5 [Enum.UserInputState.Cancel]
+  JUMPIFNOTEQ R2 R4 [+5]
+  LOADN R4 0
+  SETTABLEKS R4 R0 K6 ["acceleration"]
+  JUMP [+3]
+  LOADN R4 255
+  SETTABLEKS R4 R0 K6 ["acceleration"]
+  GETTABLEKS R5 R0 K6 ["acceleration"]
+  GETTABLEKS R6 R0 K7 ["decceleration"]
+  ADD R4 R5 R6
+  SETTABLEKS R4 R0 K8 ["throttle"]
+  RETURN R0 0
+
+PROTO_8:
+  GETIMPORT R4 K3 [Enum.UserInputState.End]
+  JUMPIFEQ R2 R4 [+5]
+  GETIMPORT R4 K5 [Enum.UserInputState.Cancel]
+  JUMPIFNOTEQ R2 R4 [+5]
+  LOADN R4 0
+  SETTABLEKS R4 R0 K6 ["decceleration"]
+  JUMP [+3]
+  LOADN R4 1
+  SETTABLEKS R4 R0 K6 ["decceleration"]
+  GETTABLEKS R5 R0 K7 ["acceleration"]
+  GETTABLEKS R6 R0 K6 ["decceleration"]
+  ADD R4 R5 R6
+  SETTABLEKS R4 R0 K8 ["throttle"]
+  RETURN R0 0
+
+PROTO_9:
+  GETIMPORT R4 K3 [Enum.UserInputState.End]
+  JUMPIFEQ R2 R4 [+5]
+  GETIMPORT R4 K5 [Enum.UserInputState.Cancel]
+  JUMPIFNOTEQ R2 R4 [+5]
+  LOADN R4 0
+  SETTABLEKS R4 R0 K6 ["turningRight"]
+  JUMP [+3]
+  LOADN R4 1
+  SETTABLEKS R4 R0 K6 ["turningRight"]
+  GETTABLEKS R5 R0 K6 ["turningRight"]
+  GETTABLEKS R6 R0 K7 ["turningLeft"]
+  ADD R4 R5 R6
+  SETTABLEKS R4 R0 K8 ["steer"]
+  RETURN R0 0
+
+PROTO_10:
+  GETIMPORT R4 K3 [Enum.UserInputState.End]
+  JUMPIFEQ R2 R4 [+5]
+  GETIMPORT R4 K5 [Enum.UserInputState.Cancel]
+  JUMPIFNOTEQ R2 R4 [+5]
+  LOADN R4 0
+  SETTABLEKS R4 R0 K6 ["turningLeft"]
+  JUMP [+3]
+  LOADN R4 255
+  SETTABLEKS R4 R0 K6 ["turningLeft"]
+  GETTABLEKS R5 R0 K7 ["turningRight"]
+  GETTABLEKS R6 R0 K6 ["turningLeft"]
+  ADD R4 R5 R6
+  SETTABLEKS R4 R0 K8 ["steer"]
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R4 R0 K0 ["vehicleSeat"]
+  JUMPIFNOT R4 [+68]
+  JUMPIFNOT R2 [+36]
+  GETTABLEKS R5 R0 K1 ["steer"]
+  LOADN R6 0
+  GETTABLEKS R7 R0 K2 ["throttle"]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R4 K5 [Vector3.new]
+  CALL R4 3 1
+  ADD R1 R1 R4
+  JUMPIFNOT R3 [+9]
+  JUMP [+8]
+  GETTABLEKS R4 R0 K0 ["vehicleSeat"]
+  GETTABLEKS R6 R0 K2 ["throttle"]
+  MINUS R5 R6
+  SETTABLEKS R5 R4 K6 ["ThrottleFloat"]
+  JUMP [+7]
+  GETTABLEKS R4 R0 K0 ["vehicleSeat"]
+  GETTABLEKS R6 R1 K7 ["Z"]
+  MINUS R5 R6
+  SETTABLEKS R5 R4 K6 ["ThrottleFloat"]
+  GETTABLEKS R4 R0 K0 ["vehicleSeat"]
+  GETTABLEKS R5 R1 K8 ["X"]
+  SETTABLEKS R5 R4 K9 ["SteerFloat"]
+  MOVE R4 R1
+  LOADB R5 1
+  RETURN R4 2
+  GETTABLEKS R7 R0 K0 ["vehicleSeat"]
+  GETTABLEKS R6 R7 K10 ["Occupant"]
+  GETTABLEKS R5 R6 K11 ["RootPart"]
+  GETTABLEKS R4 R5 K12 ["CFrame"]
+  MOVE R6 R1
+  NAMECALL R4 R4 K13 ["VectorToObjectSpace"]
+  CALL R4 2 1
+  GETTABLEKS R5 R0 K0 ["vehicleSeat"]
+  MOVE R8 R4
+  NAMECALL R6 R0 K14 ["ComputeThrottle"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K6 ["ThrottleFloat"]
+  GETTABLEKS R5 R0 K0 ["vehicleSeat"]
+  MOVE R8 R4
+  NAMECALL R6 R0 K15 ["ComputeSteer"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K9 ["SteerFloat"]
+  LOADK R5 K16 [{0, 0, 0}]
+  LOADB R6 1
+  RETURN R5 2
+  MOVE R4 R1
+  LOADB R5 0
+  RETURN R4 2
+
+PROTO_12:
+  LOADK R2 K0 [{0, 0, 0}]
+  JUMPIFEQ R1 R2 [+5]
+  GETTABLEKS R3 R1 K1 ["Z"]
+  MINUS R2 R3
+  RETURN R2 1
+  LOADN R2 0
+  RETURN R2 1
+
+PROTO_13:
+  LOADK R2 K0 [{0, 0, 0}]
+  JUMPIFEQ R1 R2 [+20]
+  GETTABLEKS R6 R1 K2 ["x"]
+  MINUS R5 R6
+  GETTABLEKS R7 R1 K3 ["z"]
+  MINUS R6 R7
+  FASTCALL2 MATH_ATAN2 R5 R6 [+3]
+  GETIMPORT R4 K6 [math.atan2]
+  CALL R4 2 1
+  MINUS R3 R4
+  MULK R2 R3 K1 [57.2957795130823]
+  GETTABLEKS R5 R0 K7 ["autoPilot"]
+  GETTABLEKS R4 R5 K8 ["MaxSteeringAngle"]
+  DIV R3 R2 R4
+  RETURN R3 1
+  LOADN R2 0
+  RETURN R2 1
+
+PROTO_14:
+  GETTABLEKS R1 R0 K0 ["autoPilot"]
+  GETTABLEKS R3 R0 K1 ["vehicleSeat"]
+  GETTABLEKS R2 R3 K2 ["MaxSpeed"]
+  SETTABLEKS R2 R1 K2 ["MaxSpeed"]
+  GETTABLEKS R1 R0 K0 ["autoPilot"]
+  LOADN R2 35
+  SETTABLEKS R2 R1 K3 ["MaxSteeringAngle"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ContextActionService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  NEWTABLE R1 16 0
+  SETTABLEKS R1 R1 K4 ["__index"]
+  DUPCLOSURE R2 K5 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLEKS R2 R1 K6 ["new"]
+  DUPCLOSURE R2 K7 [PROTO_5]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K8 ["BindContextActions"]
+  DUPCLOSURE R2 K9 [PROTO_6]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K10 ["Enable"]
+  DUPCLOSURE R2 K11 [PROTO_7]
+  SETTABLEKS R2 R1 K12 ["OnThrottleAccel"]
+  DUPCLOSURE R2 K13 [PROTO_8]
+  SETTABLEKS R2 R1 K14 ["OnThrottleDeccel"]
+  DUPCLOSURE R2 K15 [PROTO_9]
+  SETTABLEKS R2 R1 K16 ["OnSteerRight"]
+  DUPCLOSURE R2 K17 [PROTO_10]
+  SETTABLEKS R2 R1 K18 ["OnSteerLeft"]
+  DUPCLOSURE R2 K19 [PROTO_11]
+  SETTABLEKS R2 R1 K20 ["Update"]
+  DUPCLOSURE R2 K21 [PROTO_12]
+  SETTABLEKS R2 R1 K22 ["ComputeThrottle"]
+  DUPCLOSURE R2 K23 [PROTO_13]
+  SETTABLEKS R2 R1 K24 ["ComputeSteer"]
+  DUPCLOSURE R2 K25 [PROTO_14]
+  SETTABLEKS R2 R1 K26 ["SetupAutoPilot"]
+  RETURN R1 1

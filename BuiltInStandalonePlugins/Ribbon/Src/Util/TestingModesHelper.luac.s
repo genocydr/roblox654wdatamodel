@@ -124,6 +124,6 @@ MAIN:
   CAPTURE VAL R3
   CAPTURE VAL R4
   CAPTURE VAL R6
-  SETTABLEKS R8 R7 K23 ["getCurrentTestModeSettingValue"]
+  SETTABLEKS R8 R7 K23 ["getCurrentTestModeSettingValueAsync"]
   CLOSEUPVALS R5
   RETURN R7 1

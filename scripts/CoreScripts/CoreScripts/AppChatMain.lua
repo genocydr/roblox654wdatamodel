@@ -34,6 +34,7 @@ local GetFFlagAppChatInExpConnectIconEnableSquadIndicator =
 	require(RobloxGui.Modules.Chrome.Flags.GetFFlagAppChatInExpConnectIconEnableSquadIndicator)
 local TopBarTopMargin = require(RobloxGui.Modules.TopBar.Constants).TopBarTopMargin
 local getFFlagAppChatMoveApolloProvider = AppChat.Flags.getFFlagAppChatMoveApolloProvider
+local FFlagUpdateSquadInDefaultAppChatContainer = require(CorePackages.Workspace.Packages.SharedFlags).FFlagUpdateSquadInDefaultAppChatContainer
 
 local folder = Instance.new("Folder")
 folder.Name = "AppChat"
@@ -44,7 +45,9 @@ local store = Rodux.Store.new(AppChatReducer, nil, {
 	Rodux.thunkMiddleware,
 })
 
-local shouldUseIndependentAppChatContainer = InExperienceAppChatExperimentation.getShowPlatformChatInChrome()
+local shouldUseIndependentAppChatContainer = if FFlagUpdateSquadInDefaultAppChatContainer
+	then InExperienceAppChatExperimentation.default:shouldUseIndependentAppChatContainer()
+	else InExperienceAppChatExperimentation.default.getShowPlatformChatInChrome()
 local updateAppChatUnreadMessagesCount = SettingsHub.Instance.PlayersPage.UpdateAppChatUnreadMessagesCount
 local parentContainerContext: AppChat.ParentContainerContextType = {
 	getParentContainer = function()
@@ -66,7 +69,9 @@ local parentContainerContext: AppChat.ParentContainerContextType = {
 		SettingsHub:SwitchToPage(SettingsHub.Instance.AppChatPage)
 	end,
 	updateCurrentSquadId = function(squadId)
-		-- Unsupported for the old flow.
+		if FFlagUpdateSquadInDefaultAppChatContainer and SquadExperimentation.getSquadEntrypointsEnabled() then
+			SettingsHub.Instance.AppChatPage.SetCurrentSquadId(squadId)
+		end
 	end,
 }
 

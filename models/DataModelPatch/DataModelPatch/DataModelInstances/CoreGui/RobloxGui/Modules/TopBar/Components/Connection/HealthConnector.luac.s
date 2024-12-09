@@ -1,0 +1,375 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+11]
+  DUPTABLE R3 K2 [{"character", "humanoid"}]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K0 ["character"]
+  LOADNIL R4
+  SETTABLEKS R4 R3 K1 ["humanoid"]
+  NAMECALL R1 R0 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["Character"]
+  LOADNIL R2
+  JUMPIFNOT R1 [+5]
+  LOADK R5 K5 ["Humanoid"]
+  NAMECALL R3 R1 K6 ["FindFirstChildOfClass"]
+  CALL R3 2 1
+  MOVE R2 R3
+  DUPTABLE R5 K2 [{"character", "humanoid"}]
+  SETTABLEKS R1 R5 K0 ["character"]
+  SETTABLEKS R2 R5 K1 ["humanoid"]
+  NAMECALL R3 R0 K3 ["setState"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+19]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["Character"]
+  LOADNIL R2
+  JUMPIFNOT R1 [+5]
+  LOADK R5 K1 ["Humanoid"]
+  NAMECALL R3 R1 K2 ["FindFirstChildOfClass"]
+  CALL R3 2 1
+  MOVE R2 R3
+  DUPTABLE R5 K5 [{"character", "humanoid"}]
+  SETTABLEKS R1 R5 K3 ["character"]
+  SETTABLEKS R2 R5 K4 ["humanoid"]
+  NAMECALL R3 R0 K6 ["setState"]
+  CALL R3 2 0
+  RETURN R0 0
+  GETTABLEKS R2 R0 K7 ["state"]
+  GETTABLEKS R1 R2 K4 ["humanoid"]
+  JUMPIFNOT R1 [+17]
+  GETTABLEKS R2 R0 K8 ["props"]
+  GETTABLEKS R1 R2 K9 ["updateHealth"]
+  GETTABLEKS R4 R0 K7 ["state"]
+  GETTABLEKS R3 R4 K4 ["humanoid"]
+  GETTABLEKS R2 R3 K10 ["Health"]
+  GETTABLEKS R5 R0 K7 ["state"]
+  GETTABLEKS R4 R5 K4 ["humanoid"]
+  GETTABLEKS R3 R4 K11 ["MaxHealth"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["updateHealth"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["state"]
+  GETTABLEKS R3 R4 K3 ["humanoid"]
+  GETTABLEKS R2 R3 K4 ["Health"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["state"]
+  GETTABLEKS R4 R5 K3 ["humanoid"]
+  GETTABLEKS R3 R4 K5 ["MaxHealth"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["setIsDead"]
+  LOADB R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  LOADK R3 K0 ["Humanoid"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+7]
+  GETUPVAL R1 0
+  DUPTABLE R3 K3 [{"humanoid"}]
+  SETTABLEKS R0 R3 K2 ["humanoid"]
+  NAMECALL R1 R1 K4 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  DUPTABLE R3 K2 [{"humanoid", "character"}]
+  LOADK R6 K3 ["Humanoid"]
+  NAMECALL R4 R0 K4 ["FindFirstChildOfClass"]
+  CALL R4 2 1
+  JUMPIF R4 [+3]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K5 ["None"]
+  SETTABLEKS R4 R3 K0 ["humanoid"]
+  SETTABLEKS R0 R3 K1 ["character"]
+  NAMECALL R1 R1 K6 ["setState"]
+  CALL R1 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K7 ["props"]
+  GETTABLEKS R1 R2 K8 ["setIsDead"]
+  LOADB R2 0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"humanoid", "character"}]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["None"]
+  SETTABLEKS R3 R2 K0 ["humanoid"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["None"]
+  SETTABLEKS R3 R2 K1 ["character"]
+  NAMECALL R0 R0 K4 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_7:
+  NEWTABLE R1 0 0
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K1 ["humanoid"]
+  JUMPIFNOT R2 [+41]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K1 ["humanoid"]
+  GETTABLEKS R5 R6 K6 ["HealthChanged"]
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K7 ["HealthChangedConnection"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K1 ["humanoid"]
+  GETTABLEKS R5 R6 K8 ["Died"]
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P1
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K9 ["HumanoidDiedConnection"]
+  JUMP [+25]
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K10 ["character"]
+  JUMPIFNOT R2 [+20]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K10 ["character"]
+  GETTABLEKS R5 R6 K11 ["ChildAdded"]
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P2
+  CAPTURE VAL R0
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K12 ["ChildAddedConnection"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K13 ["CharacterAdded"]
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K14 ["CharacterAddedConnection"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K15 ["CharacterRemoving"]
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K16 ["CharacterRemovingConnection"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K17 ["createFragment"]
+  MOVE R3 R1
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_8:
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["humanoid"]
+  JUMPIFNOTEQKNIL R3 [+9]
+  GETTABLEKS R4 R0 K2 ["props"]
+  GETTABLEKS R3 R4 K3 ["updateHealth"]
+  LOADN R4 0
+  LOADN R5 0
+  CALL R3 2 0
+  JUMP [+31]
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["humanoid"]
+  GETTABLEKS R4 R2 K1 ["humanoid"]
+  JUMPIFEQ R3 R4 [+24]
+  GETTABLEKS R4 R0 K2 ["props"]
+  GETTABLEKS R3 R4 K4 ["setIsDead"]
+  LOADB R4 0
+  CALL R3 1 0
+  GETTABLEKS R4 R0 K2 ["props"]
+  GETTABLEKS R3 R4 K3 ["updateHealth"]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K1 ["humanoid"]
+  GETTABLEKS R4 R5 K5 ["Health"]
+  GETTABLEKS R7 R0 K0 ["state"]
+  GETTABLEKS R6 R7 K1 ["humanoid"]
+  GETTABLEKS R5 R6 K6 ["MaxHealth"]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K7 ["character"]
+  JUMPIFNOT R3 [+29]
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K7 ["character"]
+  GETTABLEKS R4 R2 K7 ["character"]
+  JUMPIFEQ R3 R4 [+22]
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K7 ["character"]
+  LOADK R5 K8 ["Humanoid"]
+  NAMECALL R3 R3 K9 ["FindFirstChildWhichIsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+12]
+  GETTABLEKS R5 R0 K0 ["state"]
+  GETTABLEKS R4 R5 K1 ["humanoid"]
+  JUMPIFEQ R3 R4 [+7]
+  DUPTABLE R6 K10 [{"humanoid"}]
+  SETTABLEKS R3 R6 K1 ["humanoid"]
+  NAMECALL R4 R0 K11 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_10:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_11:
+  DUPTABLE R1 K2 [{"setIsDead", "updateHealth"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["setIsDead"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["updateHealth"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R6 R5 K13 ["Parent"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K14 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["SetIsDead"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R6 K14 ["Actions"]
+  GETTABLEKS R9 R10 K16 ["UpdateHealth"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R12 R6 K13 ["Parent"]
+  GETTABLEKS R11 R12 K17 ["Common"]
+  GETTABLEKS R10 R11 K18 ["EventConnection"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R6 K19 ["Flags"]
+  GETTABLEKS R11 R12 K20 ["GetFFlagFixHealthDesync"]
+  CALL R10 1 1
+  GETTABLEKS R11 R1 K21 ["LocalPlayer"]
+  JUMPIF R11 [+10]
+  LOADK R14 K21 ["LocalPlayer"]
+  NAMECALL R12 R1 K22 ["GetPropertyChangedSignal"]
+  CALL R12 2 1
+  NAMECALL R12 R12 K23 ["Wait"]
+  CALL R12 1 0
+  GETTABLEKS R11 R1 K21 ["LocalPlayer"]
+  JUMPBACK [-11]
+  GETTABLEKS R12 R2 K24 ["PureComponent"]
+  LOADK R14 K25 ["HealthConnector"]
+  NAMECALL R12 R12 K26 ["extend"]
+  CALL R12 2 1
+  GETTABLEKS R13 R4 K27 ["strictInterface"]
+  DUPTABLE R14 K30 [{"setIsDead", "updateHealth"}]
+  GETTABLEKS R15 R4 K31 ["callback"]
+  SETTABLEKS R15 R14 K28 ["setIsDead"]
+  GETTABLEKS R15 R4 K31 ["callback"]
+  SETTABLEKS R15 R14 K29 ["updateHealth"]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K32 ["validateProps"]
+  NEWCLOSURE R13 P0
+  CAPTURE VAL R10
+  CAPTURE REF R11
+  SETTABLEKS R13 R12 K33 ["init"]
+  NEWCLOSURE R13 P1
+  CAPTURE VAL R10
+  CAPTURE REF R11
+  SETTABLEKS R13 R12 K34 ["didMount"]
+  NEWCLOSURE R13 P2
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  CAPTURE REF R11
+  SETTABLEKS R13 R12 K35 ["render"]
+  DUPCLOSURE R13 K36 [PROTO_8]
+  SETTABLEKS R13 R12 K37 ["didUpdate"]
+  DUPCLOSURE R13 K38 [PROTO_11]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  GETTABLEKS R14 R3 K39 ["UNSTABLE_connect2"]
+  LOADNIL R15
+  MOVE R16 R13
+  CALL R14 2 1
+  MOVE R15 R12
+  CALL R14 1 -1
+  CLOSEUPVALS R11
+  RETURN R14 -1

@@ -1,0 +1,45 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+10]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K0 ["default"]
+  GETTABLEKS R1 R2 K1 ["variant"]
+  GETTABLEKS R0 R1 K2 ["ShowPlatformChatChromeDropdownEntryPoint"]
+  JUMPIFNOT R0 [+2]
+  GETUPVAL R0 2
+  CALL R0 0 1
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["Chrome"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Workspace"]
+  GETTABLEKS R4 R5 K11 ["Packages"]
+  GETTABLEKS R3 R4 K12 ["AppChat"]
+  CALL R2 1 1
+  GETTABLEKS R4 R2 K13 ["App"]
+  GETTABLEKS R3 R4 K14 ["InExperienceAppChatExperimentation"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R1 K10 ["Workspace"]
+  GETTABLEKS R7 R8 K11 ["Packages"]
+  GETTABLEKS R6 R7 K15 ["SharedFlags"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K16 ["GetFFlagEnableAppChatInExperience"]
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R0 K17 ["Flags"]
+  GETTABLEKS R6 R7 K18 ["GetShouldShowPlatformChatBasedOnPolicy"]
+  CALL R5 1 1
+  DUPCLOSURE R6 K19 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  RETURN R6 1

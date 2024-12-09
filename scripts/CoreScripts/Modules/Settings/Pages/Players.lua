@@ -66,6 +66,7 @@ if GetFFlagLuaInExperienceCoreScriptsGameInviteUnification() then
 end
 local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
 local GetFFlagLuaAppEnableOpenTypeSupport = SharedFlags.GetFFlagLuaAppEnableOpenTypeSupport
+local FFlagUpdateSquadInDefaultAppChatContainer = SharedFlags.FFlagUpdateSquadInDefaultAppChatContainer
 
 local _, PlatformFriendsService = pcall(function()
 	return game:GetService("PlatformFriendsService")
@@ -166,12 +167,16 @@ local GetFFlagEnableAppChatInExperience = SharedFlags.GetFFlagEnableAppChatInExp
 local FIntSettingsHubPlayersButtonsResponsiveThreshold =
 	game:DefineFastInt("SettingsHubPlayersButtonsResponsiveThreshold", 200)
 local FFlagAppChatTiltMenuConnectIcon = game:DefineFastFlag("AppChatTiltMenuConnectIcon", false)
+local FFlagAppChatRebrandInNonChrome = SharedFlags.FFlagAppChatRebrandInNonChrome
 local BUTTON_ROW_HORIZONTAL_PADDING = 20
 local BUTTON_ROW_VERTICAL_PADDING = 16
 
 local FFlagEnablePlatformName = game:DefineFastFlag("EnablePlatformName", false)
 local FFlagCheckForNilUserIdOnPlayerList = game:DefineFastFlag("CheckForNilUserIdOnPlayerList", false)
+local FFlagEnablePlatformChatCanSeeChatTab = game:DefineFastFlag("EnablePlatformChatCanSeeChatTab", false)
 local ChromeEnabled = require(RobloxGui.Modules.Chrome.Enabled)()
+local GetShouldShowPlatformChatBasedOnPolicy =
+	require(RobloxGui.Modules.Chrome.Flags.GetShouldShowPlatformChatBasedOnPolicy)
 
 local MuteStatusIcons = VoiceChatServiceManager.MuteStatusIcons
 local PlayerMuteStatusIcons = VoiceChatServiceManager.PlayerMuteStatusIcons
@@ -190,7 +195,7 @@ local function Initialize()
 	--[[ Localization Package Initialization ]]
 	local LocalizationStrings
 	local localeId
-	if FFlagInExperienceMenuResetButtonTextToRespawn then
+	if FFlagInExperienceMenuResetButtonTextToRespawn or FFlagAppChatRebrandInNonChrome then
 		LocalizationStrings = {}
 		localeId = LocalizationService.RobloxLocaleId
 		if not LocalizationStrings[localeId] then
@@ -241,7 +246,10 @@ local function Initialize()
 
 	local function getShowAppChatTreatment()
 		return GetFFlagEnableAppChatInExperience()
-			and InExperienceAppChatExperimentation.default.variant.ShowPlatformChatTiltMenuEntryPoint
+			and InExperienceAppChatExperimentation.default.variant.ShowPlatformChatTiltMenuEntryPoint2
+			-- Not support with IndependentAppChatContainer
+			and (if FFlagUpdateSquadInDefaultAppChatContainer then not InExperienceAppChatExperimentation.default:shouldUseIndependentAppChatContainer() else true)
+			and (not FFlagEnablePlatformChatCanSeeChatTab or GetShouldShowPlatformChatBasedOnPolicy())
 	end
 
 	local function showRightSideButtons(player)
@@ -1324,7 +1332,13 @@ local function Initialize()
 			textLabel.TextTruncate = Enum.TextTruncate.AtEnd
 			textLabel.Font = Theme.font(Enum.Font.SourceSansSemibold, "Semibold")
 			textLabel.AutoLocalize = false
-			textLabel.Text = RobloxTranslator:FormatByKey("Feature.Chat.Label.RobloxConnect")
+			if FFlagAppChatRebrandInNonChrome then
+				if LocalizationStrings[localeId] then
+					textLabel.Text = LocalizationStrings[localeId]:Format(Constants.PartyLocalizedKey)
+				end
+			else
+				textLabel.Text = RobloxTranslator:FormatByKey("Feature.Chat.Label.RobloxConnect")
+			end
 
 			icon.Size = UDim2.new(0, 32, 0, 32)
 			icon.Position = UDim2.new(0, 18, 0, 16)
@@ -1333,9 +1347,14 @@ local function Initialize()
 				icon.AnchorPoint = Vector2.new(0, 0.5)
 				icon.Position = UDim2.new(0, 18, 0.5, 0)
 
-				local iconImg = if FFlagAppChatTiltMenuConnectIcon
-					then Theme.Images["icons/menu/platformChatOff"]
-					else Theme.Images["icons/menu/chat_off"]
+				local iconImg
+				if FFlagAppChatRebrandInNonChrome then
+					iconImg = Theme.Images["icons/menu/2-person-with-bubble"]
+				elseif FFlagAppChatTiltMenuConnectIcon then
+					iconImg = Theme.Images["icons/menu/platformChatOff"]
+				else
+					iconImg = Theme.Images["icons/menu/chat_off"]
+				end
 
 				icon.Image = iconImg.Image
 				icon.ImageRectOffset = iconImg.ImageRectOffset

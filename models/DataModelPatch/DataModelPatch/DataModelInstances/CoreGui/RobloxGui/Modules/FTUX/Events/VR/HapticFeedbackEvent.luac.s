@@ -1,0 +1,51 @@
+PROTO_0:
+  GETIMPORT R0 K3 [Enum.UserInputType.Gamepad1]
+  GETIMPORT R1 K5 [Enum.UserInputType.Gamepad2]
+  GETUPVAL R2 0
+  MOVE R4 R0
+  GETIMPORT R5 K8 [Enum.VibrationMotor.Large]
+  LOADN R6 10
+  NAMECALL R2 R2 K9 ["SetMotor"]
+  CALL R2 4 0
+  GETUPVAL R2 0
+  MOVE R4 R1
+  GETIMPORT R5 K8 [Enum.VibrationMotor.Large]
+  LOADN R6 10
+  NAMECALL R2 R2 K9 ["SetMotor"]
+  CALL R2 4 0
+  GETIMPORT R2 K12 [task.wait]
+  LOADN R3 1
+  CALL R2 1 0
+  GETUPVAL R2 0
+  MOVE R4 R0
+  GETIMPORT R5 K8 [Enum.VibrationMotor.Large]
+  LOADN R6 0
+  NAMECALL R2 R2 K9 ["SetMotor"]
+  CALL R2 4 0
+  GETUPVAL R2 0
+  MOVE R4 R1
+  GETIMPORT R5 K8 [Enum.VibrationMotor.Large]
+  LOADN R6 0
+  NAMECALL R2 R2 K9 ["SetMotor"]
+  CALL R2 4 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["HapticService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K8 ["Parent"]
+  GETTABLEKS R2 R3 K9 ["EventType"]
+  CALL R1 1 1
+  DUPTABLE R2 K11 [{"Name"}]
+  LOADK R3 K12 ["HapticFeedbackEvent"]
+  SETTABLEKS R3 R2 K10 ["Name"]
+  DUPCLOSURE R3 K13 [PROTO_0]
+  CAPTURE VAL R0
+  SETTABLEKS R3 R2 K14 ["StartEvent"]
+  RETURN R2 1

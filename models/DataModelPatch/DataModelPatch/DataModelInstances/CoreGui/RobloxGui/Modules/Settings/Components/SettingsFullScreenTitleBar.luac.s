@@ -1,0 +1,391 @@
+PROTO_0:
+  GETUPVAL R0 0
+  LOADB R2 1
+  NAMECALL R0 R0 K0 ["setTriggered"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  LOADB R2 0
+  NAMECALL R0 R0 K0 ["setTriggered"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["unsetTriggered"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["unsetTriggered"]
+  CALL R0 1 0
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"isTriggered"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["isTriggered"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R3 K1 [{"isTriggered"}]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K0 ["isTriggered"]
+  NAMECALL R1 R0 K2 ["setState"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K3 ["show"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K4 ["hide"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["cancel"]
+  NEWCLOSURE R1 P3
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K6 ["onFullscreenChanged"]
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["triggerPromise"]
+  GETUPVAL R0 0
+  DUPTABLE R2 K2 [{"isTriggered"}]
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K1 ["isTriggered"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_6:
+  NAMECALL R2 R0 K0 ["unsetTriggered"]
+  CALL R2 1 0
+  GETUPVAL R2 0
+  NAMECALL R2 R2 K1 ["InFullScreen"]
+  CALL R2 1 1
+  JUMPIF R2 [+5]
+  GETTABLEKS R3 R0 K2 ["props"]
+  GETTABLEKS R2 R3 K3 ["_mockFullScreen"]
+  JUMPIFNOT R2 [+15]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["delay"]
+  GETUPVAL R4 2
+  CALL R4 0 1
+  DIVK R3 R4 K5 [1000]
+  CALL R2 1 1
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  NAMECALL R2 R2 K6 ["andThenCall"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K7 ["triggerPromise"]
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R1 R0 K0 ["triggerPromise"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["triggerPromise"]
+  NAMECALL R1 R1 K1 ["cancel"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["triggerPromise"]
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["ToggleFullscreen"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  LOADNIL R2
+  SETTABLEKS R2 R1 K0 ["SelectedCoreObject"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["RenderStepped"]
+  NAMECALL R1 R1 K2 ["Wait"]
+  CALL R1 1 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K1 ["RenderStepped"]
+  NAMECALL R1 R1 K2 ["Wait"]
+  CALL R1 1 0
+  GETIMPORT R1 K4 [game]
+  NAMECALL R1 R1 K5 ["Shutdown"]
+  CALL R1 1 0
+  GETIMPORT R2 K7 [settings]
+  CALL R2 0 1
+  GETTABLEKS R1 R2 K8 ["Rendering"]
+  GETUPVAL R2 2
+  CALL R2 0 1
+  SETTABLEKS R2 R1 K9 ["QualityLevel"]
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["Portal"]
+  DUPTABLE R3 K3 [{"target"}]
+  GETUPVAL R4 1
+  SETTABLEKS R4 R3 K2 ["target"]
+  DUPTABLE R4 K5 [{"InGameFullscreenTitleBarScreen"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K6 ["ScreenGui"]
+  DUPTABLE R7 K11 [{"Enabled", "IgnoreGuiInset", "ZIndexBehavior", "DisplayOrder"}]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K7 ["Enabled"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K8 ["IgnoreGuiInset"]
+  GETIMPORT R8 K14 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R8 R7 K9 ["ZIndexBehavior"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K10 ["DisplayOrder"]
+  GETTABLEKS R8 R9 K15 ["FullscreenTitleBar"]
+  SETTABLEKS R8 R7 K10 ["DisplayOrder"]
+  DUPTABLE R8 K19 [{"FullscreenChangedEvent", "TriggerArea", "Bar"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  GETUPVAL R10 3
+  DUPTABLE R11 K22 [{"event", "callback"}]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K23 ["FullscreenChanged"]
+  SETTABLEKS R12 R11 K20 ["event"]
+  GETTABLEKS R12 R0 K24 ["onFullscreenChanged"]
+  SETTABLEKS R12 R11 K21 ["callback"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K16 ["FullscreenChangedEvent"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  LOADK R10 K25 ["Frame"]
+  NEWTABLE R11 8 0
+  LOADN R12 1
+  SETTABLEKS R12 R11 K26 ["BackgroundTransparency"]
+  LOADN R12 0
+  SETTABLEKS R12 R11 K27 ["BorderSizePixel"]
+  GETIMPORT R12 K30 [UDim2.new]
+  LOADN R13 1
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 1
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K31 ["Size"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K32 ["Event"]
+  GETTABLEKS R12 R13 K33 ["MouseEnter"]
+  GETTABLEKS R13 R0 K34 ["show"]
+  SETTABLE R13 R11 R12
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K32 ["Event"]
+  GETTABLEKS R12 R13 K35 ["MouseLeave"]
+  GETTABLEKS R13 R0 K36 ["cancel"]
+  SETTABLE R13 R11 R12
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K17 ["TriggerArea"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K0 ["createElement"]
+  GETUPVAL R10 5
+  DUPTABLE R11 K43 [{"title", "isTriggered", "onDisappear", "onHover", "exitFullscreen", "closeRoblox"}]
+  GETTABLEKS R13 R0 K44 ["props"]
+  GETTABLEKS R12 R13 K45 ["titleText"]
+  SETTABLEKS R12 R11 K37 ["title"]
+  GETTABLEKS R13 R0 K46 ["state"]
+  GETTABLEKS R12 R13 K38 ["isTriggered"]
+  SETTABLEKS R12 R11 K38 ["isTriggered"]
+  GETTABLEKS R12 R0 K47 ["hide"]
+  SETTABLEKS R12 R11 K39 ["onDisappear"]
+  GETTABLEKS R12 R0 K36 ["cancel"]
+  SETTABLEKS R12 R11 K40 ["onHover"]
+  GETTABLEKS R12 R0 K48 ["toggleFullscreen"]
+  SETTABLEKS R12 R11 K41 ["exitFullscreen"]
+  GETTABLEKS R13 R0 K44 ["props"]
+  GETTABLEKS R12 R13 K49 ["onClose"]
+  JUMPIF R12 [+2]
+  GETTABLEKS R12 R0 K50 ["leaveGame"]
+  SETTABLEKS R12 R11 K42 ["closeRoblox"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K18 ["Bar"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K4 ["InGameFullscreenTitleBarScreen"]
+  CALL R1 3 1
+  GETUPVAL R2 6
+  DUPTABLE R3 K51 [{"FullscreenTitleBar"}]
+  SETTABLEKS R1 R3 K15 ["FullscreenTitleBar"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_11:
+  NAMECALL R1 R0 K0 ["unsetTriggered"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_12:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["mount"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["createElement"]
+  GETUPVAL R5 1
+  MOVE R6 R0
+  JUMPIF R6 [+2]
+  NEWTABLE R6 0 0
+  CALL R4 2 1
+  MOVE R5 R1
+  MOVE R6 R2
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_13:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["update"]
+  MOVE R3 R0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["createElement"]
+  GETUPVAL R5 1
+  MOVE R6 R1
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_14:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["unmount"]
+  MOVE R2 R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["RunService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CoreGui"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R3 K8 ["WaitForChild"]
+  CALL R4 2 1
+  GETIMPORT R5 K10 [UserSettings]
+  CALL R5 0 1
+  LOADK R7 K11 ["UserGameSettings"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K13 [require]
+  GETTABLEKS R8 R0 K14 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["InGameMenuDependencies"]
+  CALL R6 1 1
+  GETTABLEKS R7 R6 K16 ["Roact"]
+  GETTABLEKS R8 R6 K17 ["UIBlox"]
+  GETTABLEKS R9 R6 K18 ["Promise"]
+  GETIMPORT R10 K13 [require]
+  GETTABLEKS R12 R0 K14 ["Packages"]
+  GETTABLEKS R11 R12 K19 ["Dash"]
+  CALL R10 1 1
+  GETTABLEKS R11 R6 K20 ["t"]
+  GETTABLEKS R13 R4 K21 ["Modules"]
+  GETTABLEKS R12 R13 K22 ["InGameMenu"]
+  GETIMPORT R13 K13 [require]
+  GETTABLEKS R15 R12 K23 ["Resources"]
+  GETTABLEKS R14 R15 K24 ["Constants"]
+  CALL R13 1 1
+  GETTABLEKS R16 R8 K25 ["App"]
+  GETTABLEKS R15 R16 K26 ["Bar"]
+  GETTABLEKS R14 R15 K27 ["FullscreenTitleBar"]
+  GETIMPORT R15 K13 [require]
+  GETTABLEKS R17 R12 K28 ["Utility"]
+  GETTABLEKS R16 R17 K29 ["ExternalEventConnection"]
+  CALL R15 1 1
+  GETIMPORT R17 K13 [require]
+  GETTABLEKS R20 R0 K30 ["Workspace"]
+  GETTABLEKS R19 R20 K14 ["Packages"]
+  GETTABLEKS R18 R19 K31 ["AppCommonLib"]
+  CALL R17 1 1
+  GETTABLEKS R16 R17 K32 ["GetDefaultQualityLevel"]
+  GETIMPORT R17 K13 [require]
+  GETTABLEKS R20 R4 K21 ["Modules"]
+  GETTABLEKS R19 R20 K33 ["Common"]
+  GETTABLEKS R18 R19 K34 ["renderWithCoreScriptsStyleProvider"]
+  CALL R17 1 1
+  GETIMPORT R18 K13 [require]
+  GETTABLEKS R20 R12 K35 ["Flags"]
+  GETTABLEKS R19 R20 K36 ["GetFIntFullscreenTitleBarTriggerDelayMillis"]
+  CALL R18 1 1
+  GETTABLEKS R19 R7 K37 ["PureComponent"]
+  LOADK R21 K38 ["SettingsFullScreenTitleBar"]
+  NAMECALL R19 R19 K39 ["extend"]
+  CALL R19 2 1
+  GETTABLEKS R20 R11 K40 ["strictInterface"]
+  DUPTABLE R21 K44 [{"titleText", "onClose", "_mockFullScreen"}]
+  GETTABLEKS R22 R11 K45 ["optional"]
+  GETTABLEKS R23 R11 K46 ["string"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K41 ["titleText"]
+  GETTABLEKS R22 R11 K45 ["optional"]
+  GETTABLEKS R23 R11 K47 ["callback"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K42 ["onClose"]
+  GETTABLEKS R22 R11 K45 ["optional"]
+  GETTABLEKS R23 R11 K48 ["boolean"]
+  CALL R22 1 1
+  SETTABLEKS R22 R21 K43 ["_mockFullScreen"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K49 ["validateProps"]
+  DUPTABLE R20 K50 [{"titleText"}]
+  LOADK R21 K51 ["Roblox"]
+  SETTABLEKS R21 R20 K41 ["titleText"]
+  SETTABLEKS R20 R19 K52 ["defaultProps"]
+  DUPCLOSURE R20 K53 [PROTO_4]
+  SETTABLEKS R20 R19 K54 ["init"]
+  DUPCLOSURE R20 K55 [PROTO_6]
+  CAPTURE VAL R5
+  CAPTURE VAL R9
+  CAPTURE VAL R18
+  SETTABLEKS R20 R19 K56 ["setTriggered"]
+  DUPCLOSURE R20 K57 [PROTO_7]
+  SETTABLEKS R20 R19 K58 ["unsetTriggered"]
+  DUPCLOSURE R20 K59 [PROTO_8]
+  CAPTURE VAL R1
+  SETTABLEKS R20 R19 K60 ["toggleFullscreen"]
+  DUPCLOSURE R20 K61 [PROTO_9]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R16
+  SETTABLEKS R20 R19 K62 ["leaveGame"]
+  DUPCLOSURE R20 K63 [PROTO_10]
+  CAPTURE VAL R7
+  CAPTURE VAL R3
+  CAPTURE VAL R13
+  CAPTURE VAL R15
+  CAPTURE VAL R5
+  CAPTURE VAL R14
+  CAPTURE VAL R17
+  SETTABLEKS R20 R19 K64 ["render"]
+  DUPCLOSURE R20 K65 [PROTO_11]
+  SETTABLEKS R20 R19 K66 ["willUnmount"]
+  DUPTABLE R20 K70 [{"mount", "update", "unmount"}]
+  DUPCLOSURE R21 K71 [PROTO_12]
+  CAPTURE VAL R7
+  CAPTURE VAL R19
+  SETTABLEKS R21 R20 K67 ["mount"]
+  DUPCLOSURE R21 K72 [PROTO_13]
+  CAPTURE VAL R7
+  CAPTURE VAL R19
+  SETTABLEKS R21 R20 K68 ["update"]
+  DUPCLOSURE R21 K73 [PROTO_14]
+  CAPTURE VAL R7
+  SETTABLEKS R21 R20 K69 ["unmount"]
+  RETURN R20 1

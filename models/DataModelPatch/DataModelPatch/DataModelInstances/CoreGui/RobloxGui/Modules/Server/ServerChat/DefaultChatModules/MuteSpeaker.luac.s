@@ -1,0 +1,427 @@
+PROTO_0:
+  GETIMPORT R0 K1 [require]
+  GETIMPORT R3 K3 [game]
+  LOADK R5 K4 ["Chat"]
+  NAMECALL R3 R3 K5 ["GetService"]
+  CALL R3 2 1
+  GETTABLEKS R2 R3 K6 ["ClientChatModules"]
+  GETTABLEKS R1 R2 K7 ["ChatLocalization"]
+  CALL R0 1 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_1:
+  RETURN R2 1
+
+PROTO_2:
+  MOVE R1 R0
+  LOADN R4 1
+  LOADN R5 1
+  FASTCALL3 STRING_SUB R0 R4 R5
+  MOVE R3 R0
+  GETIMPORT R2 K2 [string.sub]
+  CALL R2 3 1
+  JUMPIFNOTEQKS R2 K3 ["\""] [+18]
+  GETIMPORT R2 K5 [string.find]
+  MOVE R3 R0
+  LOADK R4 K3 ["\""]
+  LOADN R5 2
+  CALL R2 3 1
+  JUMPIFNOT R2 [+17]
+  LOADN R5 2
+  SUBK R6 R2 K6 [1]
+  FASTCALL3 STRING_SUB R0 R5 R6
+  MOVE R4 R0
+  GETIMPORT R3 K2 [string.sub]
+  CALL R3 3 1
+  MOVE R1 R3
+  RETURN R1 1
+  GETIMPORT R2 K8 [string.match]
+  MOVE R3 R0
+  LOADK R4 K9 ["^[^%s]+"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+1]
+  MOVE R1 R2
+  RETURN R1 1
+
+PROTO_3:
+  GETUPVAL R3 0
+  MOVE R4 R1
+  CALL R3 1 1
+  GETUPVAL R4 1
+  MOVE R6 R0
+  NAMECALL R4 R4 K0 ["GetSpeaker"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+148]
+  LOADNIL R5
+  LOADNIL R6
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R7 [+12]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["getUserNameFromChattedName"]
+  MOVE R8 R3
+  MOVE R9 R0
+  NAMECALL R10 R4 K3 ["GetNameForDisplay"]
+  CALL R10 1 -1
+  CALL R7 -1 2
+  MOVE R5 R7
+  MOVE R6 R8
+  JUMP [+9]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["getUserNameFromChattedName"]
+  MOVE R8 R3
+  MOVE R9 R0
+  LOADNIL R10
+  CALL R7 3 2
+  MOVE R5 R7
+  MOVE R6 R8
+  GETUPVAL R7 1
+  MOVE R9 R5
+  NAMECALL R7 R7 K0 ["GetSpeaker"]
+  CALL R7 2 1
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K5 ["ChattingToSelf"]
+  JUMPIFNOTEQ R6 R8 [+13]
+  GETUPVAL R10 4
+  LOADK R12 K6 ["GameChat_DoMuteCommand_CannotMuteSelf"]
+  LOADK R13 K7 ["You cannot mute yourself."]
+  NAMECALL R10 R10 K8 ["FormatMessageToSend"]
+  CALL R10 3 1
+  MOVE R11 R2
+  GETUPVAL R12 5
+  NAMECALL R8 R4 K9 ["SendSystemMessage"]
+  CALL R8 4 0
+  RETURN R0 0
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K10 ["NoMatches"]
+  JUMPIFNOTEQ R6 R8 [+28]
+  GETUPVAL R8 4
+  LOADK R10 K11 ["GameChat_MuteSpeaker_SpeakerDoesNotExist"]
+  GETIMPORT R11 K14 [string.format]
+  LOADK R12 K15 ["Speaker '%s' does not exist."]
+  FASTCALL1 TOSTRING R3 [+3]
+  MOVE R14 R3
+  GETIMPORT R13 K17 [tostring]
+  CALL R13 1 1
+  CALL R11 2 1
+  LOADK R12 K18 ["RBX_NAME"]
+  FASTCALL1 TOSTRING R5 [+3]
+  MOVE R14 R5
+  GETIMPORT R13 K17 [tostring]
+  CALL R13 1 1
+  NAMECALL R8 R8 K8 ["FormatMessageToSend"]
+  CALL R8 5 1
+  MOVE R11 R8
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  RETURN R0 0
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K19 ["MultipleMatches"]
+  JUMPIFNOTEQ R6 R8 [+25]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K20 ["getUsersWithDisplayNameString"]
+  MOVE R9 R3
+  MOVE R10 R0
+  CALL R8 2 1
+  GETUPVAL R11 4
+  LOADK R13 K21 ["InGame.Chat.Response.DisplayNameMultipleMatches"]
+  LOADK R14 K22 ["Warning: The following users have this display name: "]
+  NAMECALL R11 R11 K8 ["FormatMessageToSend"]
+  CALL R11 3 1
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  MOVE R11 R8
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  RETURN R0 0
+  JUMPIFNOT R7 [+31]
+  GETTABLEKS R10 R7 K23 ["Name"]
+  NAMECALL R8 R4 K24 ["AddMutedSpeaker"]
+  CALL R8 2 0
+  MOVE R8 R5
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R9 [+4]
+  NAMECALL R9 R7 K3 ["GetNameForDisplay"]
+  CALL R9 1 1
+  MOVE R8 R9
+  GETUPVAL R9 4
+  LOADK R11 K25 ["GameChat_ChatMain_SpeakerHasBeenMuted"]
+  GETIMPORT R12 K14 [string.format]
+  LOADK R13 K26 ["Speaker '%s' has been muted."]
+  MOVE R14 R8
+  CALL R12 2 1
+  LOADK R13 K18 ["RBX_NAME"]
+  MOVE R14 R8
+  NAMECALL R9 R9 K8 ["FormatMessageToSend"]
+  CALL R9 5 1
+  MOVE R12 R9
+  MOVE R13 R2
+  NAMECALL R10 R4 K9 ["SendSystemMessage"]
+  CALL R10 3 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R3 0
+  MOVE R4 R1
+  CALL R3 1 1
+  GETUPVAL R4 1
+  MOVE R6 R0
+  NAMECALL R4 R4 K0 ["GetSpeaker"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+149]
+  LOADNIL R5
+  LOADNIL R6
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R7 [+12]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["getUserNameFromChattedName"]
+  MOVE R8 R3
+  MOVE R9 R0
+  NAMECALL R10 R4 K3 ["GetNameForDisplay"]
+  CALL R10 1 -1
+  CALL R7 -1 2
+  MOVE R5 R7
+  MOVE R6 R8
+  JUMP [+9]
+  GETUPVAL R8 3
+  GETTABLEKS R7 R8 K2 ["getUserNameFromChattedName"]
+  MOVE R8 R3
+  MOVE R9 R0
+  LOADNIL R10
+  CALL R7 3 2
+  MOVE R5 R7
+  MOVE R6 R8
+  GETUPVAL R7 1
+  MOVE R9 R5
+  NAMECALL R7 R7 K0 ["GetSpeaker"]
+  CALL R7 2 1
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K5 ["ChattingToSelf"]
+  JUMPIFNOTEQ R6 R8 [+13]
+  GETUPVAL R10 4
+  LOADK R12 K6 ["GameChat_DoMuteCommand_CannotMuteSelf"]
+  LOADK R13 K7 ["You cannot mute yourself."]
+  NAMECALL R10 R10 K8 ["FormatMessageToSend"]
+  CALL R10 3 1
+  MOVE R11 R2
+  GETUPVAL R12 5
+  NAMECALL R8 R4 K9 ["SendSystemMessage"]
+  CALL R8 4 0
+  RETURN R0 0
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K10 ["NoMatches"]
+  JUMPIFNOTEQ R6 R8 [+28]
+  GETUPVAL R8 4
+  LOADK R10 K11 ["GameChat_MuteSpeaker_SpeakerDoesNotExist"]
+  GETIMPORT R11 K14 [string.format]
+  LOADK R12 K15 ["Speaker '%s' does not exist."]
+  FASTCALL1 TOSTRING R5 [+3]
+  MOVE R14 R5
+  GETIMPORT R13 K17 [tostring]
+  CALL R13 1 1
+  CALL R11 2 1
+  LOADK R12 K18 ["RBX_NAME"]
+  FASTCALL1 TOSTRING R5 [+3]
+  MOVE R14 R5
+  GETIMPORT R13 K17 [tostring]
+  CALL R13 1 1
+  NAMECALL R8 R8 K8 ["FormatMessageToSend"]
+  CALL R8 5 1
+  MOVE R11 R8
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  RETURN R0 0
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K4 ["CommandErrorCodes"]
+  GETTABLEKS R8 R9 K19 ["MultipleMatches"]
+  JUMPIFNOTEQ R6 R8 [+25]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K20 ["getUsersWithDisplayNameString"]
+  MOVE R9 R3
+  MOVE R10 R0
+  CALL R8 2 1
+  GETUPVAL R11 4
+  LOADK R13 K21 ["InGame.Chat.Response.DisplayNameMultipleMatches"]
+  LOADK R14 K22 ["Warning: The following users have this display name: "]
+  NAMECALL R11 R11 K8 ["FormatMessageToSend"]
+  CALL R11 3 1
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  MOVE R11 R8
+  MOVE R12 R2
+  GETUPVAL R13 5
+  NAMECALL R9 R4 K9 ["SendSystemMessage"]
+  CALL R9 4 0
+  RETURN R0 0
+  JUMPIFNOT R7 [+32]
+  GETTABLEKS R10 R7 K23 ["Name"]
+  NAMECALL R8 R4 K24 ["RemoveMutedSpeaker"]
+  CALL R8 2 0
+  MOVE R8 R5
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K1 ["PlayerDisplayNamesEnabled"]
+  JUMPIFNOT R9 [+4]
+  NAMECALL R9 R7 K3 ["GetNameForDisplay"]
+  CALL R9 1 1
+  MOVE R8 R9
+  GETUPVAL R9 4
+  LOADK R11 K25 ["GameChat_ChatMain_SpeakerHasBeenUnMuted"]
+  GETIMPORT R12 K14 [string.format]
+  LOADK R13 K26 ["Speaker '%s' has been unmuted."]
+  MOVE R14 R8
+  CALL R12 2 1
+  LOADK R13 K18 ["RBX_NAME"]
+  MOVE R14 R8
+  NAMECALL R9 R9 K8 ["FormatMessageToSend"]
+  CALL R9 5 1
+  MOVE R12 R9
+  MOVE R13 R2
+  NAMECALL R10 R4 K9 ["SendSystemMessage"]
+  CALL R10 3 0
+  RETURN R0 0
+  RETURN R0 0
+
+PROTO_5:
+  LOADB R3 0
+  LOADN R6 1
+  LOADN R7 6
+  FASTCALL3 STRING_SUB R1 R6 R7
+  MOVE R5 R1
+  GETIMPORT R4 K2 [string.sub]
+  CALL R4 3 1
+  NAMECALL R4 R4 K3 ["lower"]
+  CALL R4 1 1
+  JUMPIFNOTEQKS R4 K4 ["/mute "] [+14]
+  GETUPVAL R4 0
+  MOVE R5 R0
+  FASTCALL2K STRING_SUB R1 K5 [+5]
+  MOVE R7 R1
+  LOADK R8 K5 [7]
+  GETIMPORT R6 K2 [string.sub]
+  CALL R6 2 1
+  MOVE R7 R2
+  CALL R4 3 0
+  LOADB R3 1
+  RETURN R3 1
+  LOADN R6 1
+  LOADN R7 8
+  FASTCALL3 STRING_SUB R1 R6 R7
+  MOVE R5 R1
+  GETIMPORT R4 K2 [string.sub]
+  CALL R4 3 1
+  NAMECALL R4 R4 K3 ["lower"]
+  CALL R4 1 1
+  JUMPIFNOTEQKS R4 K6 ["/unmute "] [+13]
+  GETUPVAL R4 1
+  MOVE R5 R0
+  FASTCALL2K STRING_SUB R1 K7 [+5]
+  MOVE R7 R1
+  LOADK R8 K7 [9]
+  GETIMPORT R6 K2 [string.sub]
+  CALL R6 2 1
+  MOVE R7 R2
+  CALL R4 3 0
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_6:
+  DUPCLOSURE R1 K0 [PROTO_2]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  NEWCLOSURE R4 P3
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  LOADK R7 K1 ["mute_commands"]
+  MOVE R8 R4
+  GETUPVAL R10 4
+  GETTABLEKS R9 R10 K2 ["StandardPriority"]
+  NAMECALL R5 R0 K3 ["RegisterProcessCommandsFunction"]
+  CALL R5 4 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Chat"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["ClientChatModules"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  LOADK R4 K6 ["ChatModules"]
+  NAMECALL R2 R0 K5 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  LOADK R6 K9 ["ChatConstants"]
+  NAMECALL R4 R1 K5 ["WaitForChild"]
+  CALL R4 2 -1
+  CALL R3 -1 1
+  GETIMPORT R4 K8 [require]
+  LOADK R7 K10 ["ChatSettings"]
+  NAMECALL R5 R1 K5 ["WaitForChild"]
+  CALL R5 2 -1
+  CALL R4 -1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R2 K11 ["Utility"]
+  GETTABLEKS R6 R7 K12 ["DisplayNameHelpers"]
+  CALL R5 1 1
+  LOADNIL R6
+  GETIMPORT R7 K14 [pcall]
+  NEWCLOSURE R8 P0
+  CAPTURE REF R6
+  CALL R7 1 0
+  JUMPIFNOTEQKNIL R6 [+3]
+  NEWTABLE R6 0 0
+  GETTABLEKS R7 R6 K15 ["FormatMessageToSend"]
+  JUMPIFNOT R7 [+3]
+  GETTABLEKS R7 R6 K16 ["LocalizeFormattedMessage"]
+  JUMPIF R7 [+3]
+  DUPCLOSURE R7 K17 [PROTO_1]
+  SETTABLEKS R7 R6 K15 ["FormatMessageToSend"]
+  GETTABLEKS R7 R4 K18 ["ErrorMessageTextColor"]
+  JUMPIF R7 [+6]
+  GETIMPORT R7 K21 [Color3.fromRGB]
+  LOADN R8 245
+  LOADN R9 50
+  LOADN R10 50
+  CALL R7 3 1
+  DUPTABLE R8 K23 [{"ChatColor"}]
+  SETTABLEKS R7 R8 K22 ["ChatColor"]
+  NEWCLOSURE R9 P2
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE REF R6
+  CAPTURE VAL R8
+  CAPTURE VAL R3
+  CLOSEUPVALS R6
+  RETURN R9 1

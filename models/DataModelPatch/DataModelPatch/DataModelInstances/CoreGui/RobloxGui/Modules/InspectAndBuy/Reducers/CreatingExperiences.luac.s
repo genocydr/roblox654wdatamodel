@@ -1,0 +1,53 @@
+PROTO_0:
+  GETTABLEKS R2 R1 K0 ["experienceInfo"]
+  GETTABLEKS R3 R2 K1 ["universeId"]
+  JUMPIFNOTEQKNIL R3 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  FASTCALL2K ASSERT R5 K2 [+4]
+  LOADK R6 K2 ["Expected a universe id when setting an experiences's information."]
+  GETIMPORT R4 K4 [assert]
+  CALL R4 2 0
+  NEWTABLE R4 0 0
+  GETTABLE R5 R0 R3
+  JUMPIF R5 [+2]
+  NEWTABLE R5 0 0
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K5 ["Dictionary"]
+  GETTABLEKS R6 R7 K6 ["join"]
+  MOVE R7 R5
+  MOVE R8 R2
+  CALL R6 2 1
+  SETTABLE R6 R4 R3
+  RETURN R4 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Rodux"]
+  CALL R2 1 1
+  GETIMPORT R5 K10 [script]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K12 ["Actions"]
+  GETTABLEKS R5 R6 K13 ["SetExperienceInfo"]
+  CALL R4 1 1
+  GETTABLEKS R5 R2 K14 ["createReducer"]
+  NEWTABLE R6 0 0
+  NEWTABLE R7 1 0
+  GETTABLEKS R8 R4 K15 ["name"]
+  DUPCLOSURE R9 K16 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLE R9 R7 R8
+  CALL R5 2 -1
+  RETURN R5 -1

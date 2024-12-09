@@ -1,0 +1,290 @@
+PROTO_0:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["Part"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [workspace]
+  SETTABLEKS R2 R1 K6 ["Parent"]
+  GETTABLEKS R3 R0 K7 ["name"]
+  LOADK R4 K8 ["_Part"]
+  CONCAT R2 R3 R4
+  SETTABLEKS R2 R1 K9 ["Name"]
+  GETTABLEKS R2 R0 K10 ["cframe"]
+  SETTABLEKS R2 R1 K11 ["CFrame"]
+  GETTABLEKS R4 R0 K12 ["partSize"]
+  GETTABLEKS R3 R4 K13 ["X"]
+  GETTABLEKS R5 R0 K12 ["partSize"]
+  GETTABLEKS R4 R5 K14 ["Y"]
+  LOADK R5 K15 [0.002]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R2 K17 [Vector3.new]
+  CALL R2 3 1
+  SETTABLEKS R2 R1 K18 ["Size"]
+  LOADK R2 K19 [0.5]
+  SETTABLEKS R2 R1 K20 ["Transparency"]
+  GETIMPORT R2 K22 [Color3.new]
+  LOADN R3 0
+  LOADN R4 0
+  LOADN R5 0
+  CALL R2 3 1
+  SETTABLEKS R2 R1 K23 ["Color"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K24 ["CanCollide"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K25 ["CanTouch"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K26 ["Anchored"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["assign"]
+  NEWTABLE R2 0 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  CALL R1 3 1
+  GETTABLEKS R2 R1 K1 ["type"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K2 ["SpatialUIPartOnly"]
+  JUMPIFNOTEQ R2 R3 [+21]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["assign"]
+  NEWTABLE R3 0 0
+  GETUPVAL R4 3
+  GETTABLEKS R5 R1 K3 ["spatialPanelProps"]
+  CALL R2 3 1
+  GETUPVAL R3 4
+  MOVE R4 R2
+  CALL R3 1 1
+  DUPTABLE R4 K5 [{"type", "panelObject"}]
+  GETTABLEKS R5 R1 K1 ["type"]
+  SETTABLEKS R5 R4 K1 ["type"]
+  SETTABLEKS R3 R4 K4 ["panelObject"]
+  RETURN R4 1
+  GETTABLEKS R2 R1 K1 ["type"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K6 ["SpatialUI"]
+  JUMPIFNOTEQ R2 R3 [+85]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["assign"]
+  NEWTABLE R3 0 0
+  GETUPVAL R4 3
+  GETTABLEKS R5 R1 K3 ["spatialPanelProps"]
+  CALL R2 3 1
+  GETUPVAL R3 4
+  MOVE R4 R2
+  CALL R3 1 1
+  GETIMPORT R4 K9 [Instance.new]
+  LOADK R5 K10 ["SurfaceGui"]
+  GETUPVAL R6 5
+  CALL R4 2 1
+  GETTABLEKS R6 R2 K11 ["name"]
+  LOADK R7 K12 ["_SurfaceGui"]
+  CONCAT R5 R6 R7
+  SETTABLEKS R5 R4 K13 ["Name"]
+  GETTABLEKS R6 R2 K14 ["hidden"]
+  NOT R5 R6
+  SETTABLEKS R5 R4 K15 ["Enabled"]
+  GETTABLEKS R5 R2 K16 ["virtualScreenSize"]
+  SETTABLEKS R5 R4 K17 ["CanvasSize"]
+  GETTABLEKS R5 R2 K18 ["alwaysOnTop"]
+  SETTABLEKS R5 R4 K19 ["AlwaysOnTop"]
+  GETUPVAL R6 6
+  JUMPIFNOT R6 [+7]
+  GETTABLEKS R6 R2 K20 ["curvature"]
+  JUMPIFEQKN R6 K21 [0] [+4]
+  GETIMPORT R5 K25 [Enum.SurfaceGuiShape.CurvedHorizontally]
+  JUMP [+2]
+  GETIMPORT R5 K27 [Enum.SurfaceGuiShape.Flat]
+  SETTABLEKS R5 R4 K28 ["Shape"]
+  GETUPVAL R6 6
+  JUMPIFNOT R6 [+3]
+  GETTABLEKS R5 R2 K20 ["curvature"]
+  JUMP [+1]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K29 ["HorizontalCurvature"]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K30 ["Active"]
+  SETTABLEKS R3 R4 K31 ["Adornee"]
+  GETIMPORT R5 K34 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R5 R4 K32 ["ZIndexBehavior"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K35 ["LightInfluence"]
+  LOADN R5 0
+  SETTABLEKS R5 R4 K36 ["ZOffset"]
+  GETIMPORT R5 K39 [Enum.NormalId.Back]
+  SETTABLEKS R5 R4 K40 ["Face"]
+  DUPTABLE R5 K5 [{"type", "panelObject"}]
+  GETTABLEKS R6 R1 K1 ["type"]
+  SETTABLEKS R6 R5 K1 ["type"]
+  SETTABLEKS R4 R5 K4 ["panelObject"]
+  RETURN R5 1
+  GETTABLEKS R2 R1 K1 ["type"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K41 ["ScreenUI"]
+  JUMPIFNOTEQ R2 R3 [+42]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["assign"]
+  NEWTABLE R3 0 0
+  GETUPVAL R4 7
+  GETTABLEKS R5 R1 K42 ["screenGuiProps"]
+  CALL R2 3 1
+  GETIMPORT R3 K9 [Instance.new]
+  LOADK R4 K43 ["ScreenGui"]
+  GETUPVAL R5 5
+  CALL R3 2 1
+  GETTABLEKS R4 R2 K13 ["Name"]
+  SETTABLEKS R4 R3 K13 ["Name"]
+  GETTABLEKS R4 R2 K44 ["ResetOnSpawn"]
+  SETTABLEKS R4 R3 K44 ["ResetOnSpawn"]
+  GETTABLEKS R4 R2 K45 ["DisplayOrder"]
+  SETTABLEKS R4 R3 K45 ["DisplayOrder"]
+  GETTABLEKS R4 R2 K32 ["ZIndexBehavior"]
+  JUMPIFNOT R4 [+4]
+  GETTABLEKS R4 R2 K32 ["ZIndexBehavior"]
+  SETTABLEKS R4 R3 K32 ["ZIndexBehavior"]
+  DUPTABLE R4 K5 [{"type", "panelObject"}]
+  GETTABLEKS R5 R1 K1 ["type"]
+  SETTABLEKS R5 R4 K1 ["type"]
+  SETTABLEKS R3 R4 K4 ["panelObject"]
+  RETURN R4 1
+  GETIMPORT R2 K47 [print]
+  LOADK R4 K48 ["Invalid panel type: "]
+  GETTABLEKS R6 R1 K1 ["type"]
+  FASTCALL1 TOSTRING R6 [+2]
+  GETIMPORT R5 K50 [tostring]
+  CALL R5 1 1
+  CONCAT R3 R4 R5
+  CALL R2 1 0
+  LOADNIL R2
+  RETURN R2 1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["VREnabled"]
+  JUMPIFNOT R1 [+34]
+  GETUPVAL R1 1
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K1 ["COMPAT_PANEL_PROPS_MAP"]
+  GETTABLEKS R4 R0 K2 ["panelType"]
+  GETTABLE R2 R3 R4
+  CALL R1 1 1
+  JUMPIFNOTEQKNIL R1 [+3]
+  LOADNIL R2
+  RETURN R2 1
+  DUPTABLE R2 K6 [{"panelObject", "uiType", "panelType", "panelPositionProps"}]
+  GETTABLEKS R3 R1 K3 ["panelObject"]
+  SETTABLEKS R3 R2 K3 ["panelObject"]
+  GETTABLEKS R3 R1 K7 ["type"]
+  SETTABLEKS R3 R2 K4 ["uiType"]
+  GETTABLEKS R3 R0 K2 ["panelType"]
+  SETTABLEKS R3 R2 K2 ["panelType"]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K8 ["SPATIAL_PANEL_POSITION_PROPS_MAP"]
+  GETTABLEKS R5 R0 K2 ["panelType"]
+  GETTABLE R3 R4 R5
+  SETTABLEKS R3 R2 K5 ["panelPositionProps"]
+  RETURN R2 1
+  GETUPVAL R1 1
+  DUPTABLE R2 K10 [{"type", "screenGuiProps"}]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K11 ["ScreenUI"]
+  SETTABLEKS R3 R2 K7 ["type"]
+  GETTABLEKS R3 R0 K9 ["screenGuiProps"]
+  SETTABLEKS R3 R2 K9 ["screenGuiProps"]
+  CALL R1 1 1
+  JUMPIFNOTEQKNIL R1 [+3]
+  LOADNIL R2
+  RETURN R2 1
+  DUPTABLE R2 K6 [{"panelObject", "uiType", "panelType", "panelPositionProps"}]
+  GETTABLEKS R3 R1 K3 ["panelObject"]
+  SETTABLEKS R3 R2 K3 ["panelObject"]
+  GETTABLEKS R3 R1 K7 ["type"]
+  SETTABLEKS R3 R2 K4 ["uiType"]
+  GETTABLEKS R3 R0 K2 ["panelType"]
+  SETTABLEKS R3 R2 K2 ["panelType"]
+  LOADNIL R3
+  SETTABLEKS R3 R2 K5 ["panelPositionProps"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CurvedSurfaceGuisEnabled"]
+  NAMECALL R1 R1 K5 ["GetEngineFeature"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R4 K8 [script]
+  GETTABLEKS R3 R4 K9 ["Parent"]
+  GETIMPORT R4 K11 [require]
+  GETTABLEKS R5 R3 K12 ["Constants"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K13 ["SpatialUIType"]
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R8 R0 K14 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["LuauPolyfill"]
+  CALL R6 1 1
+  GETTABLEKS R7 R6 K16 ["Object"]
+  GETIMPORT R8 K1 [game]
+  LOADK R10 K17 ["VRService"]
+  NAMECALL R8 R8 K3 ["GetService"]
+  CALL R8 2 1
+  DUPTABLE R9 K21 [{"spatialPanelProps", "screenGuiProps", "type"}]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K18 ["spatialPanelProps"]
+  LOADNIL R10
+  SETTABLEKS R10 R9 K19 ["screenGuiProps"]
+  GETTABLEKS R10 R5 K22 ["ScreenUI"]
+  SETTABLEKS R10 R9 K20 ["type"]
+  DUPTABLE R10 K27 [{"Name", "ResetOnSpawn", "DisplayOrder", "ZIndexBehavior"}]
+  LOADK R11 K28 ["ScreenGui"]
+  SETTABLEKS R11 R10 K23 ["Name"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K24 ["ResetOnSpawn"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K25 ["DisplayOrder"]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K26 ["ZIndexBehavior"]
+  DUPTABLE R11 K36 [{"name", "partSize", "virtualScreenSize", "cframe", "alwaysOnTop", "hidden", "curvature"}]
+  LOADK R12 K37 [""]
+  SETTABLEKS R12 R11 K29 ["name"]
+  GETTABLEKS R12 R4 K38 ["DEFAULT_VR_PANEL_SIZE"]
+  SETTABLEKS R12 R11 K30 ["partSize"]
+  GETTABLEKS R13 R4 K38 ["DEFAULT_VR_PANEL_SIZE"]
+  GETTABLEKS R14 R4 K39 ["VR_PANEL_RESOLUTION_MULTIPLIER"]
+  MUL R12 R13 R14
+  SETTABLEKS R12 R11 K31 ["virtualScreenSize"]
+  GETIMPORT R12 K42 [CFrame.new]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R12 3 1
+  SETTABLEKS R12 R11 K32 ["cframe"]
+  LOADB R12 1
+  SETTABLEKS R12 R11 K33 ["alwaysOnTop"]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K34 ["hidden"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K35 ["curvature"]
+  DUPCLOSURE R12 K43 [PROTO_0]
+  DUPCLOSURE R13 K44 [PROTO_1]
+  CAPTURE VAL R7
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R11
+  CAPTURE VAL R12
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R10
+  DUPCLOSURE R14 K45 [PROTO_2]
+  CAPTURE VAL R8
+  CAPTURE VAL R13
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  RETURN R14 1

@@ -28,31 +28,36 @@ PROTO_8:
   RETURN R0 0
 
 PROTO_9:
-  DUPTABLE R1 K9 [{"SendGamepadEventAsync", "DEPRECATED_GetKeyboardShortcutAsync", "GetKeyboardShortcutAsync", "ConnectGamepadAsync", "UpdateKeyMappingAsync", "GetCurrentlyEmulatedDeviceAsync", "IsVREmulatorConnected", "SetActiveVRController", "DEPRECATED_SetVRActiveUserCFrameAsync"}]
-  DUPCLOSURE R2 K10 [PROTO_0]
+  RETURN R0 0
+
+PROTO_10:
+  DUPTABLE R1 K10 [{"SendGamepadEventAsync", "DEPRECATED_GetKeyboardShortcutAsync", "GetKeyboardShortcutAsync", "ConnectGamepadAsync", "UpdateKeyMappingAsync", "GetCurrentlyEmulatedDeviceAsync", "IsVREmulatorConnected", "SetActiveVRController", "DEPRECATED_SetVRActiveUserCFrameAsync", "SetVRUserCFrameActiveAsync"}]
+  DUPCLOSURE R2 K11 [PROTO_0]
   SETTABLEKS R2 R1 K0 ["SendGamepadEventAsync"]
-  DUPCLOSURE R2 K11 [PROTO_1]
+  DUPCLOSURE R2 K12 [PROTO_1]
   SETTABLEKS R2 R1 K1 ["DEPRECATED_GetKeyboardShortcutAsync"]
-  DUPCLOSURE R2 K12 [PROTO_2]
+  DUPCLOSURE R2 K13 [PROTO_2]
   SETTABLEKS R2 R1 K2 ["GetKeyboardShortcutAsync"]
-  DUPCLOSURE R2 K13 [PROTO_3]
+  DUPCLOSURE R2 K14 [PROTO_3]
   SETTABLEKS R2 R1 K3 ["ConnectGamepadAsync"]
-  DUPCLOSURE R2 K14 [PROTO_4]
+  DUPCLOSURE R2 K15 [PROTO_4]
   SETTABLEKS R2 R1 K4 ["UpdateKeyMappingAsync"]
-  DUPCLOSURE R2 K15 [PROTO_5]
+  DUPCLOSURE R2 K16 [PROTO_5]
   SETTABLEKS R2 R1 K5 ["GetCurrentlyEmulatedDeviceAsync"]
-  DUPCLOSURE R2 K16 [PROTO_6]
+  DUPCLOSURE R2 K17 [PROTO_6]
   SETTABLEKS R2 R1 K6 ["IsVREmulatorConnected"]
-  DUPCLOSURE R2 K17 [PROTO_7]
+  DUPCLOSURE R2 K18 [PROTO_7]
   SETTABLEKS R2 R1 K7 ["SetActiveVRController"]
-  DUPCLOSURE R2 K18 [PROTO_8]
+  DUPCLOSURE R2 K19 [PROTO_8]
   SETTABLEKS R2 R1 K8 ["DEPRECATED_SetVRActiveUserCFrameAsync"]
-  DUPTABLE R4 K20 [{"__index"}]
+  DUPCLOSURE R2 K20 [PROTO_9]
+  SETTABLEKS R2 R1 K9 ["SetVRUserCFrameActiveAsync"]
+  DUPTABLE R4 K22 [{"__index"}]
   GETUPVAL R5 0
-  SETTABLEKS R5 R4 K19 ["__index"]
+  SETTABLEKS R5 R4 K21 ["__index"]
   FASTCALL2 SETMETATABLE R1 R4 [+4]
   MOVE R3 R1
-  GETIMPORT R2 K22 [setmetatable]
+  GETIMPORT R2 K24 [setmetatable]
   CALL R2 2 0
   RETURN R1 1
 
@@ -60,7 +65,7 @@ MAIN:
   PREPVARARGS 0
   NEWTABLE R0 2 0
   SETTABLEKS R0 R0 K0 ["__index"]
-  DUPCLOSURE R1 K1 [PROTO_9]
+  DUPCLOSURE R1 K1 [PROTO_10]
   CAPTURE VAL R0
   SETTABLEKS R1 R0 K2 ["new"]
   RETURN R0 1

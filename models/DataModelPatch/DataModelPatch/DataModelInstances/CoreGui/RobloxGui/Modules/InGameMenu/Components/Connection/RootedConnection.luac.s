@@ -1,0 +1,101 @@
+PROTO_0:
+  GETIMPORT R3 K1 [game]
+  NAMECALL R1 R0 K2 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 0
+  DUPTABLE R3 K4 [{"isRooted"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K3 ["isRooted"]
+  NAMECALL R1 R1 K5 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  DUPTABLE R1 K1 [{"isRooted"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K0 ["isRooted"]
+  SETTABLEKS R1 R0 K2 ["state"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K4 ["rootRef"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["onAncestryChanged"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"Content", "Folder"}]
+  GETTABLEKS R4 R0 K4 ["props"]
+  GETTABLEKS R3 R4 K5 ["render"]
+  GETTABLEKS R5 R0 K6 ["state"]
+  GETTABLEKS R4 R5 K7 ["isRooted"]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K1 ["Content"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K8 ["createElement"]
+  LOADK R4 K2 ["Folder"]
+  NEWTABLE R5 2 0
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K9 ["Event"]
+  GETTABLEKS R6 R7 K10 ["AncestryChanged"]
+  GETTABLEKS R7 R0 K11 ["onAncestryChanged"]
+  SETTABLE R7 R5 R6
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K12 ["Ref"]
+  GETTABLEKS R7 R0 K13 ["rootRef"]
+  SETTABLE R7 R5 R6
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["Folder"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["rootRef"]
+  NAMECALL R1 R1 K1 ["getValue"]
+  CALL R1 1 1
+  GETIMPORT R3 K3 [game]
+  NAMECALL R1 R1 K4 ["IsDescendantOf"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+7]
+  DUPTABLE R3 K6 [{"isRooted"}]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K5 ["isRooted"]
+  NAMECALL R1 R0 K7 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["t"]
+  GETTABLEKS R4 R2 K10 ["PureComponent"]
+  LOADK R6 K11 ["RootedConnection"]
+  NAMECALL R4 R4 K12 ["extend"]
+  CALL R4 2 1
+  GETTABLEKS R5 R3 K13 ["strictInterface"]
+  DUPTABLE R6 K15 [{"render"}]
+  GETTABLEKS R7 R3 K16 ["callback"]
+  SETTABLEKS R7 R6 K14 ["render"]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K17 ["validateProps"]
+  DUPCLOSURE R5 K18 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLEKS R5 R4 K19 ["init"]
+  DUPCLOSURE R5 K20 [PROTO_2]
+  CAPTURE VAL R2
+  SETTABLEKS R5 R4 K14 ["render"]
+  DUPCLOSURE R5 K21 [PROTO_3]
+  SETTABLEKS R5 R4 K22 ["didMount"]
+  RETURN R4 1

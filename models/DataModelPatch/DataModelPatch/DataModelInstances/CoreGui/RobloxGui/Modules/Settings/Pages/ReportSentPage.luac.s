@@ -1,0 +1,446 @@
+PROTO_0:
+  GETUPVAL R4 0
+  LOADK R5 K0 ["TextLabel"]
+  CALL R4 1 1
+  DUPTABLE R5 K13 [{"Name", "LayoutOrder", "Size", "BackgroundTransparency", "AutomaticSize", "Text", "TextSize", "Font", "TextWrap", "TextColor3", "TextXAlignment", "Parent"}]
+  SETTABLEKS R0 R5 K1 ["Name"]
+  SETTABLEKS R3 R5 K2 ["LayoutOrder"]
+  GETIMPORT R6 K16 [UDim2.fromScale]
+  LOADN R7 1
+  LOADN R8 0
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K3 ["Size"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K4 ["BackgroundTransparency"]
+  GETIMPORT R6 K19 [Enum.AutomaticSize.Y]
+  SETTABLEKS R6 R5 K5 ["AutomaticSize"]
+  SETTABLEKS R1 R5 K6 ["Text"]
+  SETTABLEKS R2 R5 K7 ["TextSize"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K20 ["font"]
+  GETIMPORT R7 K22 [Enum.Font.SourceSansBold]
+  LOADK R8 K23 ["Bold"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K8 ["Font"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K9 ["TextWrap"]
+  GETIMPORT R6 K26 [Color3.fromRGB]
+  LOADN R7 255
+  LOADN R8 255
+  LOADN R9 255
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K10 ["TextColor3"]
+  GETIMPORT R6 K28 [Enum.TextXAlignment.Center]
+  SETTABLEKS R6 R5 K11 ["TextXAlignment"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K29 ["Root"]
+  SETTABLEKS R6 R5 K12 ["Parent"]
+  CALL R4 1 -1
+  RETURN R4 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  MOVE R6 R0
+  MOVE R7 R1
+  GETIMPORT R8 K2 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 50
+  CALL R8 4 1
+  MOVE R9 R3
+  NAMECALL R4 R4 K3 ["MakeStyledButton"]
+  CALL R4 5 2
+  SETTABLEKS R2 R4 K4 ["LayoutOrder"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K5 ["Root"]
+  SETTABLEKS R6 R4 K6 ["Parent"]
+  RETURN R4 2
+
+PROTO_2:
+  GETUPVAL R2 0
+  LOADK R3 K0 ["Frame"]
+  CALL R2 1 1
+  DUPTABLE R3 K5 [{"LayoutOrder", "Name", "Size", "Parent"}]
+  SETTABLEKS R1 R3 K1 ["LayoutOrder"]
+  LOADK R5 K6 ["Spacer"]
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K8 [tostring]
+  CALL R6 1 1
+  CONCAT R4 R5 R6
+  SETTABLEKS R4 R3 K2 ["Name"]
+  GETIMPORT R4 K11 [UDim2.fromOffset]
+  LOADN R5 0
+  MOVE R6 R0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["Size"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K12 ["Root"]
+  SETTABLEKS R4 R3 K4 ["Parent"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["HandleBlock"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["HandleDone"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["CreateNewPage"]
+  CALL R0 1 1
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["TabHeader"]
+  GETTABLEKS R1 R0 K2 ["PageListLayout"]
+  LOADNIL R2
+  SETTABLEKS R2 R1 K3 ["Parent"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["ShouldShowBottomBar"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K5 ["ShouldShowHubBar"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K6 ["IsPageClipped"]
+  GETTABLEKS R1 R0 K7 ["Page"]
+  LOADK R2 K8 ["ReportSentPage"]
+  SETTABLEKS R2 R1 K9 ["Name"]
+  GETTABLEKS R1 R0 K7 ["Page"]
+  GETIMPORT R2 K12 [UDim2.fromScale]
+  LOADN R3 1
+  LOADN R4 0
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K13 ["Size"]
+  GETTABLEKS R1 R0 K7 ["Page"]
+  GETIMPORT R2 K17 [Enum.AutomaticSize.Y]
+  SETTABLEKS R2 R1 K15 ["AutomaticSize"]
+  GETUPVAL R1 1
+  LOADK R2 K18 ["Frame"]
+  CALL R1 1 1
+  DUPTABLE R2 K20 [{"BackgroundTransparency", "Size", "Name", "Parent"}]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K19 ["BackgroundTransparency"]
+  GETIMPORT R3 K12 [UDim2.fromScale]
+  LOADN R4 1
+  LOADN R5 1
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K13 ["Size"]
+  LOADK R3 K21 ["ReportSentContents"]
+  SETTABLEKS R3 R2 K9 ["Name"]
+  GETTABLEKS R3 R0 K7 ["Page"]
+  SETTABLEKS R3 R2 K3 ["Parent"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K22 ["Root"]
+  GETUPVAL R1 1
+  LOADK R2 K23 ["UIListLayout"]
+  CALL R1 1 1
+  DUPTABLE R2 K28 [{"Name", "FillDirection", "VerticalAlignment", "HorizontalAlignment", "SortOrder", "Parent"}]
+  LOADK R3 K29 ["RootLayout"]
+  SETTABLEKS R3 R2 K9 ["Name"]
+  GETIMPORT R3 K31 [Enum.FillDirection.Vertical]
+  SETTABLEKS R3 R2 K24 ["FillDirection"]
+  GETIMPORT R3 K33 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R3 R2 K25 ["VerticalAlignment"]
+  GETIMPORT R3 K34 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R3 R2 K26 ["HorizontalAlignment"]
+  GETIMPORT R3 K36 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R3 R2 K27 ["SortOrder"]
+  GETTABLEKS R3 R0 K22 ["Root"]
+  SETTABLEKS R3 R2 K3 ["Parent"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K29 ["RootLayout"]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  NEWCLOSURE R2 P1
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  NEWCLOSURE R3 P2
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  GETUPVAL R4 4
+  LOADK R6 K37 ["Feature.SettingsHub.Heading.Report.ThanksForReport"]
+  NAMECALL R4 R4 K38 ["FormatByKey"]
+  CALL R4 2 1
+  MOVE R5 R1
+  LOADK R6 K39 ["TitleLabel"]
+  MOVE R7 R4
+  GETUPVAL R8 5
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R0 K39 ["TitleLabel"]
+  GETUPVAL R5 4
+  LOADK R7 K40 ["Feature.SettingsHub.Label.Report.ReceivedReportBody"]
+  NAMECALL R5 R5 K38 ["FormatByKey"]
+  CALL R5 2 1
+  MOVE R6 R1
+  LOADK R7 K41 ["BodyLabel"]
+  MOVE R8 R5
+  GETUPVAL R9 6
+  LOADN R10 1
+  CALL R6 4 1
+  SETTABLEKS R6 R0 K41 ["BodyLabel"]
+  MOVE R6 R3
+  LOADN R7 10
+  LOADN R8 2
+  CALL R6 2 1
+  SETTABLEKS R6 R0 K42 ["TopSpacer"]
+  GETUPVAL R6 4
+  LOADK R8 K43 ["Feature.SettingsHub.Label.Report.OtherActionsHeader"]
+  NAMECALL R6 R6 K38 ["FormatByKey"]
+  CALL R6 2 1
+  MOVE R7 R1
+  LOADK R8 K44 ["ActionHeader"]
+  MOVE R9 R6
+  GETUPVAL R10 7
+  LOADN R11 3
+  CALL R7 4 1
+  SETTABLEKS R7 R0 K44 ["ActionHeader"]
+  GETTABLEKS R7 R0 K44 ["ActionHeader"]
+  GETIMPORT R8 K47 [Enum.TextXAlignment.Left]
+  SETTABLEKS R8 R7 K45 ["TextXAlignment"]
+  GETUPVAL R7 4
+  LOADK R9 K48 ["Feature.SettingsHub.Action.Block"]
+  NAMECALL R7 R7 K38 ["FormatByKey"]
+  CALL R7 2 1
+  NEWCLOSURE R10 P3
+  CAPTURE VAL R0
+  GETUPVAL R11 3
+  LOADK R13 K49 ["BlockButton"]
+  MOVE R14 R7
+  GETIMPORT R15 K51 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 50
+  CALL R15 4 1
+  MOVE R16 R10
+  NAMECALL R11 R11 K52 ["MakeStyledButton"]
+  CALL R11 5 2
+  LOADN R13 4
+  SETTABLEKS R13 R11 K35 ["LayoutOrder"]
+  GETTABLEKS R13 R0 K22 ["Root"]
+  SETTABLEKS R13 R11 K3 ["Parent"]
+  MOVE R8 R11
+  MOVE R9 R12
+  SETTABLEKS R8 R0 K49 ["BlockButton"]
+  SETTABLEKS R9 R0 K53 ["BlockLabel"]
+  MOVE R8 R3
+  LOADN R9 20
+  LOADN R10 6
+  CALL R8 2 1
+  SETTABLEKS R8 R0 K54 ["MiddleSpacer"]
+  GETUPVAL R8 4
+  LOADK R10 K55 ["Feature.SettingsHub.Action.Report.Done"]
+  NAMECALL R8 R8 K38 ["FormatByKey"]
+  CALL R8 2 1
+  NEWCLOSURE R10 P4
+  CAPTURE VAL R0
+  GETUPVAL R11 3
+  LOADK R13 K56 ["DoneButton"]
+  MOVE R14 R8
+  GETIMPORT R15 K51 [UDim2.new]
+  LOADN R16 1
+  LOADN R17 0
+  LOADN R18 0
+  LOADN R19 50
+  CALL R15 4 1
+  MOVE R16 R10
+  NAMECALL R11 R11 K52 ["MakeStyledButton"]
+  CALL R11 5 2
+  LOADN R13 7
+  SETTABLEKS R13 R11 K35 ["LayoutOrder"]
+  GETTABLEKS R13 R0 K22 ["Root"]
+  SETTABLEKS R13 R11 K3 ["Parent"]
+  MOVE R9 R11
+  SETTABLEKS R9 R0 K56 ["DoneButton"]
+  RETURN R0 1
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["ReportedPlayer"]
+  JUMPIFNOT R1 [+46]
+  GETTABLEKS R1 R0 K1 ["TopSpacer"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  GETTABLEKS R1 R0 K3 ["ActionHeader"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  GETUPVAL R1 0
+  GETTABLEKS R4 R0 K0 ["ReportedPlayer"]
+  GETTABLEKS R3 R4 K4 ["UserId"]
+  NAMECALL R1 R1 K5 ["IsPlayerBlockedByUserId"]
+  CALL R1 2 1
+  GETTABLEKS R2 R0 K6 ["BlockButton"]
+  NOT R3 R1
+  SETTABLEKS R3 R2 K2 ["Visible"]
+  GETTABLEKS R3 R0 K0 ["ReportedPlayer"]
+  GETTABLEKS R2 R3 K7 ["DisplayName"]
+  GETTABLEKS R4 R0 K0 ["ReportedPlayer"]
+  GETTABLEKS R3 R4 K8 ["Name"]
+  GETUPVAL R4 1
+  LOADK R6 K9 ["Feature.SettingsHub.Label.Report.BlockDisplayName"]
+  DUPTABLE R7 K12 [{"DISPLAY_NAME", "RBX_NAME"}]
+  SETTABLEKS R2 R7 K10 ["DISPLAY_NAME"]
+  SETTABLEKS R3 R7 K11 ["RBX_NAME"]
+  NAMECALL R4 R4 K13 ["FormatByKey"]
+  CALL R4 3 1
+  GETTABLEKS R5 R0 K14 ["BlockLabel"]
+  SETTABLEKS R4 R5 K15 ["Text"]
+  RETURN R0 0
+  GETTABLEKS R1 R0 K1 ["TopSpacer"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  GETTABLEKS R1 R0 K3 ["ActionHeader"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  GETTABLEKS R1 R0 K6 ["BlockButton"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["Visible"]
+  RETURN R0 0
+
+PROTO_7:
+  SETTABLEKS R1 R0 K0 ["ReportedPlayer"]
+  NAMECALL R2 R0 K1 ["UpdateActions"]
+  CALL R2 1 0
+  GETTABLEKS R2 R0 K2 ["HubRef"]
+  GETUPVAL R4 0
+  LOADB R5 1
+  NAMECALL R2 R2 K3 ["SwitchToPage"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R1 R0 K0 ["ReportedPlayer"]
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["ReportedPlayer"]
+  GETUPVAL R3 1
+  CALL R1 2 0
+  NAMECALL R1 R0 K1 ["HandleDone"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R1 R0 K0 ["HubRef"]
+  LOADB R3 0
+  LOADB R4 1
+  NAMECALL R1 R1 K1 ["SetVisibility"]
+  CALL R1 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["Players"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["RbxAnalyticsService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["CorePackages"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  LOADK R6 K7 ["RobloxGui"]
+  NAMECALL R4 R0 K8 ["WaitForChild"]
+  CALL R4 2 1
+  LOADK R7 K9 ["Modules"]
+  NAMECALL R5 R4 K8 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K11 [require]
+  GETTABLEKS R7 R5 K12 ["BlockingUtility"]
+  CALL R6 1 1
+  GETIMPORT R7 K11 [require]
+  GETTABLEKS R9 R5 K13 ["Settings"]
+  GETTABLEKS R8 R9 K14 ["SettingsPageFactory"]
+  CALL R7 1 1
+  GETIMPORT R8 K11 [require]
+  GETTABLEKS R9 R5 K15 ["RobloxTranslator"]
+  CALL R8 1 1
+  GETIMPORT R9 K11 [require]
+  GETIMPORT R11 K17 [script]
+  LOADK R13 K13 ["Settings"]
+  NAMECALL R11 R11 K18 ["FindFirstAncestor"]
+  CALL R11 2 1
+  GETTABLEKS R10 R11 K19 ["onBlockButtonActivated"]
+  CALL R9 1 1
+  GETIMPORT R10 K11 [require]
+  GETIMPORT R13 K17 [script]
+  LOADK R15 K13 ["Settings"]
+  NAMECALL R13 R13 K18 ["FindFirstAncestor"]
+  CALL R13 2 1
+  GETTABLEKS R12 R13 K20 ["Analytics"]
+  GETTABLEKS R11 R12 K21 ["BlockingAnalytics"]
+  CALL R10 1 1
+  GETIMPORT R11 K11 [require]
+  GETTABLEKS R13 R5 K13 ["Settings"]
+  GETTABLEKS R12 R13 K22 ["Utility"]
+  CALL R11 1 1
+  GETIMPORT R12 K11 [require]
+  GETTABLEKS R14 R5 K13 ["Settings"]
+  GETTABLEKS R13 R14 K23 ["Theme"]
+  CALL R12 1 1
+  GETIMPORT R14 K11 [require]
+  GETTABLEKS R17 R3 K24 ["Workspace"]
+  GETTABLEKS R16 R17 K25 ["Packages"]
+  GETTABLEKS R15 R16 K26 ["AppCommonLib"]
+  CALL R14 1 1
+  GETTABLEKS R13 R14 K27 ["Create"]
+  GETTABLEKS R14 R1 K28 ["LocalPlayer"]
+  JUMPIF R14 [+8]
+  GETTABLEKS R15 R1 K29 ["ChildAdded"]
+  NAMECALL R15 R15 K30 ["wait"]
+  CALL R15 1 0
+  GETTABLEKS R14 R1 K28 ["LocalPlayer"]
+  JUMPBACK [-9]
+  GETTABLEKS R15 R10 K31 ["new"]
+  GETTABLEKS R16 R14 K32 ["UserId"]
+  DUPTABLE R17 K34 [{"EventStream"}]
+  SETTABLEKS R2 R17 K33 ["EventStream"]
+  CALL R15 2 1
+  GETTABLEKS R16 R12 K35 ["textSize"]
+  LOADN R17 36
+  CALL R16 1 1
+  GETTABLEKS R17 R12 K35 ["textSize"]
+  LOADN R18 24
+  CALL R17 1 1
+  GETTABLEKS R18 R12 K35 ["textSize"]
+  LOADN R19 16
+  CALL R18 1 1
+  DUPCLOSURE R19 K36 [PROTO_5]
+  CAPTURE VAL R7
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  CAPTURE VAL R8
+  CAPTURE VAL R16
+  CAPTURE VAL R17
+  CAPTURE VAL R18
+  MOVE R20 R19
+  CALL R20 0 1
+  DUPCLOSURE R21 K37 [PROTO_6]
+  CAPTURE VAL R6
+  CAPTURE VAL R8
+  SETTABLEKS R21 R20 K38 ["UpdateActions"]
+  DUPCLOSURE R21 K39 [PROTO_7]
+  CAPTURE VAL R20
+  SETTABLEKS R21 R20 K40 ["ShowReportedPlayer"]
+  DUPCLOSURE R21 K41 [PROTO_8]
+  CAPTURE VAL R9
+  CAPTURE VAL R15
+  SETTABLEKS R21 R20 K42 ["HandleBlock"]
+  DUPCLOSURE R21 K43 [PROTO_9]
+  SETTABLEKS R21 R20 K44 ["HandleDone"]
+  RETURN R20 1

@@ -48,6 +48,7 @@ local GetFFlagLocalMutedNilFix = require(CorePackages.Workspace.Packages.SharedF
 local GetFFlagConsolidateBubbleChat = require(RobloxGui.Modules.Flags.GetFFlagConsolidateBubbleChat)
 local GetFFlagBatchVoiceParticipantsUpdates = require(VoiceChatCore.Flags.GetFFlagBatchVoiceParticipantsUpdates)
 local FFlagFixMessageReceivedEventLeak = game:DefineFastFlag("FixMessageReceivedEventLeak", false)
+local getFFlagExpChatAlwaysRunTCS = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagExpChatAlwaysRunTCS
 
 local ExperienceChat = require(CorePackages.Workspace.Packages.ExpChat)
 local log = require(RobloxGui.Modules.InGameChat.BubbleChat.Logger)(script.Name)
@@ -99,7 +100,11 @@ chatStore = Rodux.Store.new(chatReducer, nil, {
 
 local gameLoadedConn
 local function isTextChatServiceOn()
-	return TextChatService.ChatVersion == Enum.ChatVersion.TextChatService
+	if getFFlagExpChatAlwaysRunTCS() then
+		return true
+	else
+		return TextChatService.ChatVersion == Enum.ChatVersion.TextChatService
+	end
 end
 if game:IsLoaded() and isTextChatServiceOn() then
 	-- If TextChatService is enabled, do not mount legacy BubbleChat

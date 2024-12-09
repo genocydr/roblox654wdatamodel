@@ -1,0 +1,221 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["instance"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["valueKey"]
+  GETTABLE R0 R1 R2
+  GETUPVAL R1 1
+  DUPTABLE R3 K3 [{"checked"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["onValue"]
+  JUMPIFEQ R0 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K2 ["checked"]
+  NAMECALL R1 R1 K5 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["lockedToOff"]
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K2 ["instance"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K3 ["valueKey"]
+  GETTABLE R1 R2 R3
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["onValue"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["instance"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["valueKey"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K5 ["offValue"]
+  SETTABLE R3 R1 R2
+  JUMP [+10]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["instance"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["valueKey"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["onValue"]
+  SETTABLE R3 R1 R2
+  GETUPVAL R1 2
+  GETUPVAL R3 3
+  GETTABLEKS R2 R3 K6 ["AnalyticsSettingsChangeName"]
+  LOADNIL R3
+  NEWTABLE R4 0 0
+  LOADB R5 1
+  CALL R1 4 0
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R3 R1 K0 ["instance"]
+  GETTABLEKS R4 R1 K1 ["valueKey"]
+  GETTABLE R2 R3 R4
+  GETTABLEKS R3 R1 K0 ["instance"]
+  GETTABLEKS R5 R1 K1 ["valueKey"]
+  NAMECALL R3 R3 K2 ["GetPropertyChangedSignal"]
+  CALL R3 2 1
+  SETTABLEKS R3 R0 K3 ["changeEvent"]
+  DUPTABLE R5 K5 [{"checked"}]
+  GETTABLEKS R7 R1 K6 ["lockedToOff"]
+  NOT R6 R7
+  JUMPIFNOT R6 [+6]
+  GETTABLEKS R7 R1 K7 ["onValue"]
+  JUMPIFEQ R2 R7 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  SETTABLEKS R6 R5 K4 ["checked"]
+  NAMECALL R3 R0 K8 ["setState"]
+  CALL R3 2 0
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  SETTABLEKS R3 R0 K9 ["onExternalChange"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  SETTABLEKS R3 R0 K10 ["onToggled"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["props"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["createFragment"]
+  DUPTABLE R3 K4 [{"Toggle", "Listener"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["createElement"]
+  GETUPVAL R5 1
+  DUPTABLE R6 K13 [{"checked", "lockedToOff", "labelKey", "LayoutOrder", "onToggled", "subtextEnabled", "subtextKey"}]
+  GETTABLEKS R8 R0 K14 ["state"]
+  GETTABLEKS R7 R8 K6 ["checked"]
+  SETTABLEKS R7 R6 K6 ["checked"]
+  GETTABLEKS R7 R1 K7 ["lockedToOff"]
+  SETTABLEKS R7 R6 K7 ["lockedToOff"]
+  GETTABLEKS R7 R1 K8 ["labelKey"]
+  SETTABLEKS R7 R6 K8 ["labelKey"]
+  GETTABLEKS R7 R1 K9 ["LayoutOrder"]
+  SETTABLEKS R7 R6 K9 ["LayoutOrder"]
+  GETTABLEKS R7 R0 K10 ["onToggled"]
+  SETTABLEKS R7 R6 K10 ["onToggled"]
+  GETTABLEKS R7 R1 K11 ["subtextEnabled"]
+  SETTABLEKS R7 R6 K11 ["subtextEnabled"]
+  GETTABLEKS R7 R1 K12 ["subtextKey"]
+  SETTABLEKS R7 R6 K12 ["subtextKey"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K2 ["Toggle"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["createElement"]
+  GETUPVAL R5 2
+  DUPTABLE R6 K17 [{"event", "callback"}]
+  GETTABLEKS R7 R0 K18 ["changeEvent"]
+  SETTABLEKS R7 R6 K15 ["event"]
+  GETTABLEKS R7 R0 K19 ["onExternalChange"]
+  SETTABLEKS R7 R6 K16 ["callback"]
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K3 ["Listener"]
+  CALL R2 1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Roact"]
+  GETTABLEKS R3 R1 K9 ["t"]
+  GETIMPORT R7 K11 [script]
+  GETTABLEKS R6 R7 K12 ["Parent"]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R4 K13 ["Utility"]
+  GETTABLEKS R6 R7 K14 ["ExternalEventConnection"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETIMPORT R9 K11 [script]
+  GETTABLEKS R8 R9 K12 ["Parent"]
+  GETTABLEKS R7 R8 K15 ["ToggleEntry"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R4 K13 ["Utility"]
+  GETTABLEKS R8 R9 K16 ["SendAnalytics"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R4 K17 ["Resources"]
+  GETTABLEKS R9 R10 K18 ["Constants"]
+  CALL R8 1 1
+  GETTABLEKS R9 R2 K19 ["PureComponent"]
+  LOADK R11 K20 ["AutoPropertyToggleEntry"]
+  NAMECALL R9 R9 K21 ["extend"]
+  CALL R9 2 1
+  GETTABLEKS R10 R3 K22 ["strictInterface"]
+  DUPTABLE R11 K32 [{"instance", "valueKey", "lockedToOff", "onValue", "offValue", "labelKey", "LayoutOrder", "subtextEnabled", "subtextKey"}]
+  GETTABLEKS R12 R3 K33 ["Instance"]
+  SETTABLEKS R12 R11 K23 ["instance"]
+  GETTABLEKS R12 R3 K34 ["string"]
+  SETTABLEKS R12 R11 K24 ["valueKey"]
+  GETTABLEKS R12 R3 K35 ["optional"]
+  GETTABLEKS R13 R3 K36 ["boolean"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K25 ["lockedToOff"]
+  GETTABLEKS R12 R3 K35 ["optional"]
+  GETTABLEKS R13 R3 K37 ["any"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K26 ["onValue"]
+  GETTABLEKS R12 R3 K35 ["optional"]
+  GETTABLEKS R13 R3 K37 ["any"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K27 ["offValue"]
+  GETTABLEKS R12 R3 K34 ["string"]
+  SETTABLEKS R12 R11 K28 ["labelKey"]
+  GETTABLEKS R12 R3 K38 ["integer"]
+  SETTABLEKS R12 R11 K29 ["LayoutOrder"]
+  GETTABLEKS R12 R3 K35 ["optional"]
+  GETTABLEKS R13 R3 K36 ["boolean"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K30 ["subtextEnabled"]
+  GETTABLEKS R12 R3 K35 ["optional"]
+  GETTABLEKS R13 R3 K34 ["string"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K31 ["subtextKey"]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K39 ["validateProps"]
+  DUPTABLE R10 K40 [{"onValue", "offValue", "lockedToOff", "subtextEnabled", "subtextKey"}]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K26 ["onValue"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K27 ["offValue"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K25 ["lockedToOff"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K30 ["subtextEnabled"]
+  LOADK R11 K41 [""]
+  SETTABLEKS R11 R10 K31 ["subtextKey"]
+  SETTABLEKS R10 R9 K42 ["defaultProps"]
+  DUPCLOSURE R10 K43 [PROTO_2]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  SETTABLEKS R10 R9 K44 ["init"]
+  DUPCLOSURE R10 K45 [PROTO_3]
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  SETTABLEKS R10 R9 K46 ["render"]
+  RETURN R9 1

@@ -1,0 +1,277 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["isGamepadMenuOpen"]
+  GETTABLEKS R3 R0 K1 ["menuOpen"]
+  JUMPIF R3 [+4]
+  GETTABLEKS R3 R1 K1 ["menuOpen"]
+  JUMPIFNOT R3 [+1]
+  LOADB R2 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Dictionary"]
+  GETTABLEKS R3 R4 K3 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K4 [{"menuOpen", "isGamepadMenuOpen"}]
+  GETTABLEKS R6 R1 K1 ["menuOpen"]
+  SETTABLEKS R6 R5 K1 ["menuOpen"]
+  SETTABLEKS R2 R5 K0 ["isGamepadMenuOpen"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"topbarEnabled"}]
+  GETTABLEKS R5 R1 K4 ["enabled"]
+  SETTABLEKS R5 R4 K2 ["topbarEnabled"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"isSmallTouchDevice"}]
+  GETTABLEKS R5 R1 K2 ["isSmallTouchDevice"]
+  SETTABLEKS R5 R4 K2 ["isSmallTouchDevice"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"screenSize"}]
+  GETTABLEKS R5 R1 K2 ["screenSize"]
+  SETTABLEKS R5 R4 K2 ["screenSize"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_4:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"inputType"}]
+  GETTABLEKS R5 R1 K2 ["inputType"]
+  SETTABLEKS R5 R4 K2 ["inputType"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_5:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"inspectMenuOpen"}]
+  GETTABLEKS R5 R1 K2 ["inspectMenuOpen"]
+  SETTABLEKS R5 R4 K2 ["inspectMenuOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_6:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"isGamepadMenuOpen", "isGamepadNavigationDialogOpen"}]
+  GETTABLEKS R5 R1 K5 ["open"]
+  SETTABLEKS R5 R4 K2 ["isGamepadMenuOpen"]
+  GETUPVAL R6 1
+  JUMPIFNOT R6 [+2]
+  LOADB R5 0
+  JUMP [+1]
+  LOADNIL R5
+  SETTABLEKS R5 R4 K3 ["isGamepadNavigationDialogOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_7:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"isGamepadNavigationDialogOpen"}]
+  GETTABLEKS R5 R1 K4 ["open"]
+  SETTABLEKS R5 R4 K2 ["isGamepadNavigationDialogOpen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_8:
+  GETIMPORT R2 K2 [table.clone]
+  GETTABLEKS R3 R0 K3 ["keepOutAreas"]
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K4 ["id"]
+  DUPTABLE R4 K7 [{"size", "position"}]
+  GETTABLEKS R5 R1 K5 ["size"]
+  SETTABLEKS R5 R4 K5 ["size"]
+  GETTABLEKS R5 R1 K6 ["position"]
+  SETTABLEKS R5 R4 K6 ["position"]
+  SETTABLE R4 R2 R3
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K8 ["Dictionary"]
+  GETTABLEKS R3 R4 K9 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K10 [{"keepOutAreas"}]
+  SETTABLEKS R2 R5 K3 ["keepOutAreas"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_9:
+  GETIMPORT R2 K2 [table.clone]
+  GETTABLEKS R3 R0 K3 ["keepOutAreas"]
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K4 ["id"]
+  LOADNIL R4
+  SETTABLE R4 R2 R3
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K5 ["Dictionary"]
+  GETTABLEKS R3 R4 K6 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K7 [{"keepOutAreas"}]
+  SETTABLEKS R2 R5 K3 ["keepOutAreas"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Rodux"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Cryo"]
+  CALL R2 1 1
+  GETIMPORT R5 K10 [script]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETTABLEKS R4 R3 K12 ["Actions"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K13 ["SetMenuOpen"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R4 K14 ["SetTopBarEnabled"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R4 K15 ["SetSmallTouchDevice"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R4 K16 ["SetScreenSize"]
+  CALL R8 1 1
+  GETIMPORT R9 K5 [require]
+  GETTABLEKS R10 R4 K17 ["SetKeepOutArea"]
+  CALL R9 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R11 R4 K18 ["RemoveKeepOutArea"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETTABLEKS R12 R4 K19 ["SetInputType"]
+  CALL R11 1 1
+  GETIMPORT R12 K5 [require]
+  GETTABLEKS R13 R4 K20 ["SetInspectMenuOpen"]
+  CALL R12 1 1
+  GETIMPORT R13 K5 [require]
+  GETTABLEKS R14 R4 K21 ["SetGamepadMenuOpen"]
+  CALL R13 1 1
+  GETIMPORT R14 K5 [require]
+  GETTABLEKS R15 R4 K22 ["SetGamepadNavigationDialogOpen"]
+  CALL R14 1 1
+  GETIMPORT R15 K5 [require]
+  GETIMPORT R20 K10 [script]
+  GETTABLEKS R19 R20 K11 ["Parent"]
+  GETTABLEKS R18 R19 K11 ["Parent"]
+  GETTABLEKS R17 R18 K23 ["Flags"]
+  GETTABLEKS R16 R17 K24 ["FFlagGamepadNavigationDialogABTest"]
+  CALL R15 1 1
+  GETIMPORT R16 K5 [require]
+  GETTABLEKS R17 R3 K25 ["Constants"]
+  CALL R16 1 1
+  GETTABLEKS R17 R16 K26 ["InputType"]
+  GETIMPORT R18 K1 [game]
+  LOADK R20 K27 ["CoreGui"]
+  NAMECALL R18 R18 K3 ["GetService"]
+  CALL R18 2 1
+  LOADK R21 K28 ["RobloxGui"]
+  NAMECALL R19 R18 K29 ["WaitForChild"]
+  CALL R19 2 1
+  DUPTABLE R20 K39 [{"menuOpen", "inspectMenuOpen", "topbarEnabled", "isSmallTouchDevice", "screenSize", "inputType", "isGamepadMenuOpen", "isGamepadNavigationDialogOpen", "keepOutAreas"}]
+  LOADB R21 0
+  SETTABLEKS R21 R20 K30 ["menuOpen"]
+  LOADB R21 0
+  SETTABLEKS R21 R20 K31 ["inspectMenuOpen"]
+  LOADB R21 1
+  SETTABLEKS R21 R20 K32 ["topbarEnabled"]
+  LOADB R21 0
+  SETTABLEKS R21 R20 K33 ["isSmallTouchDevice"]
+  GETIMPORT R21 K42 [Vector2.new]
+  LOADN R22 0
+  LOADN R23 0
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K34 ["screenSize"]
+  GETTABLEKS R21 R17 K43 ["MouseAndKeyBoard"]
+  SETTABLEKS R21 R20 K35 ["inputType"]
+  LOADB R21 0
+  SETTABLEKS R21 R20 K36 ["isGamepadMenuOpen"]
+  JUMPIFNOT R15 [+2]
+  LOADB R21 0
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K37 ["isGamepadNavigationDialogOpen"]
+  NEWTABLE R21 0 0
+  SETTABLEKS R21 R20 K38 ["keepOutAreas"]
+  GETTABLEKS R21 R1 K44 ["createReducer"]
+  MOVE R22 R20
+  NEWTABLE R23 16 0
+  GETTABLEKS R24 R5 K45 ["name"]
+  DUPCLOSURE R25 K46 [PROTO_0]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R6 K45 ["name"]
+  DUPCLOSURE R25 K47 [PROTO_1]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R7 K45 ["name"]
+  DUPCLOSURE R25 K48 [PROTO_2]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R8 K45 ["name"]
+  DUPCLOSURE R25 K49 [PROTO_3]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R11 K45 ["name"]
+  DUPCLOSURE R25 K50 [PROTO_4]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R12 K45 ["name"]
+  DUPCLOSURE R25 K51 [PROTO_5]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R13 K45 ["name"]
+  DUPCLOSURE R25 K52 [PROTO_6]
+  CAPTURE VAL R2
+  CAPTURE VAL R15
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R14 K45 ["name"]
+  JUMPIFNOT R15 [+3]
+  DUPCLOSURE R25 K53 [PROTO_7]
+  CAPTURE VAL R2
+  JUMP [+1]
+  LOADNIL R25
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R9 K45 ["name"]
+  DUPCLOSURE R25 K54 [PROTO_8]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  GETTABLEKS R24 R10 K45 ["name"]
+  DUPCLOSURE R25 K55 [PROTO_9]
+  CAPTURE VAL R2
+  SETTABLE R25 R23 R24
+  CALL R21 2 1
+  RETURN R21 1

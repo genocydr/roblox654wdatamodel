@@ -1,0 +1,35 @@
+PROTO_0:
+  GETIMPORT R1 K1 [print]
+  LOADK R3 K2 ["No message creator for message: "]
+  GETTABLEKS R4 R0 K3 ["Message"]
+  CONCAT R2 R3 R4
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  LOADK R4 K5 ["ChatSettings"]
+  NAMECALL R2 R0 K6 ["WaitForChild"]
+  CALL R2 2 -1
+  CALL R1 -1 1
+  GETIMPORT R2 K4 [require]
+  GETIMPORT R4 K1 [script]
+  GETTABLEKS R3 R4 K2 ["Parent"]
+  LOADK R5 K7 ["Util"]
+  NAMECALL R3 R3 K6 ["WaitForChild"]
+  CALL R3 2 -1
+  CALL R2 -1 1
+  DUPCLOSURE R3 K8 [PROTO_0]
+  SETGLOBAL R3 K9 ["CreateUnknownMessageLabel"]
+  NEWTABLE R3 2 0
+  GETTABLEKS R4 R2 K10 ["KEY_MESSAGE_TYPE"]
+  LOADK R5 K11 ["UnknownMessage"]
+  SETTABLE R5 R3 R4
+  GETTABLEKS R4 R2 K12 ["KEY_CREATOR_FUNCTION"]
+  GETGLOBAL R5 K9 ["CreateUnknownMessageLabel"]
+  SETTABLE R5 R3 R4
+  RETURN R3 1

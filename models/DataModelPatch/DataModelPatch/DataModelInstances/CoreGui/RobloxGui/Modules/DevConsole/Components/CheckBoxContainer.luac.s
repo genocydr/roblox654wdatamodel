@@ -1,0 +1,343 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["onCheckBoxChanged"]
+  MOVE R3 R2
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  GETIMPORT R3 K3 [Enum.UserInputType.MouseButton1]
+  JUMPIFEQ R2 R3 [+13]
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  GETIMPORT R3 K5 [Enum.UserInputType.Touch]
+  JUMPIFNOTEQ R2 R3 [+15]
+  GETTABLEKS R2 R1 K6 ["UserInputState"]
+  GETIMPORT R3 K8 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R2 R3 [+9]
+  GETUPVAL R2 0
+  DUPTABLE R4 K10 [{"expanded"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K9 ["expanded"]
+  NAMECALL R2 R2 K11 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  GETIMPORT R3 K3 [Enum.UserInputType.MouseButton1]
+  JUMPIFEQ R2 R3 [+13]
+  GETTABLEKS R2 R1 K0 ["UserInputType"]
+  GETIMPORT R3 K5 [Enum.UserInputType.Touch]
+  JUMPIFNOTEQ R2 R3 [+15]
+  GETTABLEKS R2 R1 K6 ["UserInputState"]
+  GETIMPORT R3 K8 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R2 R3 [+9]
+  GETUPVAL R2 0
+  DUPTABLE R4 K10 [{"expanded"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K9 ["expanded"]
+  NAMECALL R2 R2 K11 ["setState"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_3:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K0 ["onCheckBoxClicked"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K1 ["onCheckBoxExpanded"]
+  NEWCLOSURE R1 P2
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K2 ["onCloseCheckBox"]
+  GETTABLEKS R2 R0 K3 ["props"]
+  GETTABLEKS R1 R2 K4 ["orderedCheckBoxState"]
+  JUMPIF R1 [+4]
+  GETIMPORT R1 K6 [warn]
+  LOADK R2 K7 ["CheckBoxContainer must be passed a list of Box Names or else it only creates an empty frame"]
+  CALL R1 1 0
+  NEWTABLE R1 0 0
+  LOADN R2 0
+  LOADN R3 0
+  GETIMPORT R4 K9 [ipairs]
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R5 R7 K4 ["orderedCheckBoxState"]
+  CALL R4 1 3
+  FORGPREP_INEXT R4
+  GETUPVAL R9 0
+  GETTABLEKS R11 R8 K10 ["name"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K11 ["DefaultFontSize"]
+  GETTABLEKS R12 R13 K12 ["UtilBar"]
+  GETUPVAL R15 1
+  GETTABLEKS R14 R15 K13 ["Font"]
+  GETTABLEKS R13 R14 K12 ["UtilBar"]
+  GETIMPORT R14 K16 [Vector2.new]
+  LOADN R15 0
+  LOADN R16 0
+  CALL R14 2 -1
+  NAMECALL R9 R9 K17 ["GetTextSize"]
+  CALL R9 -1 1
+  GETTABLEKS R10 R9 K18 ["X"]
+  SETTABLE R10 R1 R7
+  GETTABLEKS R12 R9 K18 ["X"]
+  ADD R11 R2 R12
+  GETUPVAL R12 2
+  ADD R10 R11 R12
+  GETUPVAL R11 3
+  ADD R2 R10 R11
+  ADDK R3 R3 K19 [1]
+  FORGLOOP R4 2 [inext] [-33]
+  GETUPVAL R5 4
+  GETTABLEKS R4 R5 K20 ["createRef"]
+  CALL R4 0 1
+  SETTABLEKS R4 R0 K21 ["ref"]
+  DUPTABLE R4 K26 [{"expanded", "textWidths", "numCheckBoxes", "minFullLength"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K22 ["expanded"]
+  SETTABLEKS R1 R4 K23 ["textWidths"]
+  SETTABLEKS R3 R4 K24 ["numCheckBoxes"]
+  SETTABLEKS R2 R4 K25 ["minFullLength"]
+  SETTABLEKS R4 R0 K27 ["state"]
+  RETURN R0 0
+
+PROTO_4:
+  NEWTABLE R1 0 0
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["frameWidth"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["frameHeight"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K3 ["pos"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["layoutOrder"]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K5 ["orderedCheckBoxState"]
+  GETTABLEKS R8 R0 K6 ["state"]
+  GETTABLEKS R7 R8 K7 ["minFullLength"]
+  GETTABLEKS R9 R0 K6 ["state"]
+  GETTABLEKS R8 R9 K8 ["expanded"]
+  GETTABLEKS R10 R0 K6 ["state"]
+  GETTABLEKS R9 R10 K9 ["numCheckBoxes"]
+  LOADB R10 0
+  GETIMPORT R11 K11 [ipairs]
+  MOVE R12 R6
+  CALL R11 1 3
+  FORGPREP_INEXT R11
+  GETTABLEKS R16 R15 K12 ["name"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K13 ["createElement"]
+  GETUPVAL R18 1
+  DUPTABLE R19 K21 [{"name", "font", "fontSize", "checkBoxHeight", "frameHeight", "layoutOrder", "isSelected", "selectedColor", "unselectedColor", "onCheckBoxClicked"}]
+  GETTABLEKS R20 R15 K12 ["name"]
+  SETTABLEKS R20 R19 K12 ["name"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K22 ["Font"]
+  GETTABLEKS R20 R21 K23 ["UtilBar"]
+  SETTABLEKS R20 R19 K14 ["font"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K24 ["DefaultFontSize"]
+  GETTABLEKS R20 R21 K23 ["UtilBar"]
+  SETTABLEKS R20 R19 K15 ["fontSize"]
+  GETUPVAL R20 3
+  SETTABLEKS R20 R19 K16 ["checkBoxHeight"]
+  SETTABLEKS R3 R19 K2 ["frameHeight"]
+  SETTABLEKS R14 R19 K4 ["layoutOrder"]
+  GETTABLEKS R20 R15 K6 ["state"]
+  SETTABLEKS R20 R19 K17 ["isSelected"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K25 ["Color"]
+  GETTABLEKS R20 R21 K26 ["SelectedBlue"]
+  SETTABLEKS R20 R19 K18 ["selectedColor"]
+  GETUPVAL R22 2
+  GETTABLEKS R21 R22 K25 ["Color"]
+  GETTABLEKS R20 R21 K27 ["UnselectedGray"]
+  SETTABLEKS R20 R19 K19 ["unselectedColor"]
+  GETTABLEKS R20 R0 K20 ["onCheckBoxClicked"]
+  SETTABLEKS R20 R19 K20 ["onCheckBoxClicked"]
+  CALL R17 2 1
+  SETTABLE R17 R1 R16
+  MOVE R16 R10
+  JUMPIF R16 [+2]
+  GETTABLEKS R16 R15 K6 ["state"]
+  MOVE R10 R16
+  FORGLOOP R11 2 [inext] [-62]
+  JUMPIFNOTLT R2 R7 [+123]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K13 ["createElement"]
+  LOADK R12 K28 ["UIListLayout"]
+  DUPTABLE R13 K33 [{"HorizontalAlignment", "SortOrder", "VerticalAlignment", "FillDirection"}]
+  GETIMPORT R14 K36 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R14 R13 K29 ["HorizontalAlignment"]
+  GETIMPORT R14 K38 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R14 R13 K30 ["SortOrder"]
+  GETIMPORT R14 K40 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R14 R13 K31 ["VerticalAlignment"]
+  GETIMPORT R14 K42 [Enum.FillDirection.Vertical]
+  SETTABLEKS R14 R13 K32 ["FillDirection"]
+  CALL R11 2 1
+  SETTABLEKS R11 R1 K43 ["CheckBoxLayout"]
+  GETTABLEKS R13 R0 K44 ["ref"]
+  GETTABLEKS R12 R13 K45 ["current"]
+  AND R11 R12 R8
+  LOADNIL R12
+  JUMPIFNOT R11 [+18]
+  GETTABLEKS R15 R0 K44 ["ref"]
+  GETTABLEKS R14 R15 K45 ["current"]
+  GETTABLEKS R13 R14 K46 ["AbsolutePosition"]
+  GETIMPORT R14 K49 [UDim2.new]
+  LOADN R15 0
+  GETTABLEKS R16 R13 K50 ["X"]
+  LOADN R17 0
+  GETTABLEKS R20 R13 K52 ["Y"]
+  ADD R19 R20 R3
+  ADDK R18 R19 K51 [3]
+  CALL R14 4 1
+  MOVE R12 R14
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K13 ["createElement"]
+  LOADK R14 K53 ["ImageButton"]
+  NEWTABLE R15 8 0
+  GETIMPORT R16 K49 [UDim2.new]
+  LOADN R17 0
+  MOVE R18 R3
+  LOADN R19 0
+  MOVE R20 R3
+  CALL R16 4 1
+  SETTABLEKS R16 R15 K54 ["Size"]
+  SETTABLEKS R5 R15 K37 ["LayoutOrder"]
+  JUMPIFNOT R11 [+2]
+  GETUPVAL R16 4
+  JUMPIF R16 [+1]
+  GETUPVAL R16 5
+  SETTABLEKS R16 R15 K55 ["Image"]
+  LOADN R16 1
+  SETTABLEKS R16 R15 K56 ["BackgroundTransparency"]
+  GETUPVAL R18 2
+  GETTABLEKS R17 R18 K25 ["Color"]
+  GETTABLEKS R16 R17 K57 ["Text"]
+  SETTABLEKS R16 R15 K58 ["BorderColor3"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K59 ["Event"]
+  GETTABLEKS R16 R17 K60 ["InputEnded"]
+  GETTABLEKS R17 R0 K61 ["onCheckBoxExpanded"]
+  SETTABLE R17 R15 R16
+  GETUPVAL R17 0
+  GETTABLEKS R16 R17 K62 ["Ref"]
+  GETTABLEKS R17 R0 K44 ["ref"]
+  SETTABLE R17 R15 R16
+  DUPTABLE R16 K64 [{"DropDown"}]
+  MOVE R17 R11
+  JUMPIFNOT R17 [+19]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K13 ["createElement"]
+  GETUPVAL R18 6
+  DUPTABLE R19 K69 [{"absolutePosition", "frameWidth", "elementHeight", "numElements", "onCloseCheckBox"}]
+  SETTABLEKS R12 R19 K65 ["absolutePosition"]
+  SETTABLEKS R2 R19 K1 ["frameWidth"]
+  SETTABLEKS R3 R19 K66 ["elementHeight"]
+  SETTABLEKS R9 R19 K67 ["numElements"]
+  GETTABLEKS R20 R0 K68 ["onCloseCheckBox"]
+  SETTABLEKS R20 R19 K68 ["onCloseCheckBox"]
+  MOVE R20 R1
+  CALL R17 3 1
+  SETTABLEKS R17 R16 K63 ["DropDown"]
+  CALL R13 3 -1
+  RETURN R13 -1
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K13 ["createElement"]
+  LOADK R12 K28 ["UIListLayout"]
+  DUPTABLE R13 K33 [{"HorizontalAlignment", "SortOrder", "VerticalAlignment", "FillDirection"}]
+  GETIMPORT R14 K36 [Enum.HorizontalAlignment.Left]
+  SETTABLEKS R14 R13 K29 ["HorizontalAlignment"]
+  GETIMPORT R14 K38 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R14 R13 K30 ["SortOrder"]
+  GETIMPORT R14 K40 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R14 R13 K31 ["VerticalAlignment"]
+  GETIMPORT R14 K71 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R14 R13 K32 ["FillDirection"]
+  CALL R11 2 1
+  SETTABLEKS R11 R1 K43 ["CheckBoxLayout"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K13 ["createElement"]
+  LOADK R12 K72 ["Frame"]
+  DUPTABLE R13 K74 [{"Size", "Position", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R14 K49 [UDim2.new]
+  LOADN R15 0
+  MOVE R16 R2
+  LOADN R17 0
+  MOVE R18 R3
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K54 ["Size"]
+  SETTABLEKS R4 R13 K73 ["Position"]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K56 ["BackgroundTransparency"]
+  SETTABLEKS R5 R13 K37 ["LayoutOrder"]
+  MOVE R14 R1
+  CALL R11 3 -1
+  RETURN R11 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["TextService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R6 K10 [script]
+  GETTABLEKS R5 R6 K11 ["Parent"]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K12 ["Components"]
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R5 R3 K13 ["CheckBox"]
+  CALL R4 1 1
+  GETIMPORT R5 K6 [require]
+  GETTABLEKS R6 R3 K14 ["CheckBoxDropDown"]
+  CALL R5 1 1
+  GETIMPORT R6 K6 [require]
+  GETIMPORT R10 K10 [script]
+  GETTABLEKS R9 R10 K11 ["Parent"]
+  GETTABLEKS R8 R9 K11 ["Parent"]
+  GETTABLEKS R7 R8 K15 ["Constants"]
+  CALL R6 1 1
+  GETTABLEKS R8 R6 K16 ["UtilityBarFormatting"]
+  GETTABLEKS R7 R8 K17 ["CheckBoxHeight"]
+  GETTABLEKS R10 R6 K16 ["UtilityBarFormatting"]
+  GETTABLEKS R9 R10 K19 ["CheckBoxInnerPadding"]
+  MULK R8 R9 K18 [2]
+  GETTABLEKS R10 R6 K20 ["Image"]
+  GETTABLEKS R9 R10 K21 ["FilterUnfilled"]
+  GETTABLEKS R11 R6 K20 ["Image"]
+  GETTABLEKS R10 R11 K22 ["FilterFilled"]
+  GETTABLEKS R11 R2 K23 ["PureComponent"]
+  LOADK R13 K24 ["CheckBoxContainer"]
+  NAMECALL R11 R11 K25 ["extend"]
+  CALL R11 2 1
+  DUPCLOSURE R12 K26 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  SETTABLEKS R12 R11 K27 ["init"]
+  DUPCLOSURE R12 K28 [PROTO_4]
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R10
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  SETTABLEKS R12 R11 K29 ["render"]
+  RETURN R11 1

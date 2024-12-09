@@ -1,0 +1,173 @@
+PROTO_0:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["emotesPage"]
+  GETTABLEKS R1 R2 K2 ["currentEmotes"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K3 ["locale"]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["emotesPage"]
+  GETTABLEKS R3 R4 K4 ["numberEmotesLoaded"]
+  GETIMPORT R4 K6 [next]
+  MOVE R5 R1
+  CALL R4 1 1
+  JUMPIFNOTEQKNIL R4 [+29]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K7 ["UserEmotesEnabled"]
+  JUMPIFNOT R4 [+13]
+  JUMPIFNOTEQKN R3 K8 [0] [+12]
+  GETUPVAL R4 1
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K9 ["LocalizationKeys"]
+  GETTABLEKS R6 R7 K10 ["NoEmotesEquipped"]
+  MOVE R7 R2
+  NAMECALL R4 R4 K11 ["FormatByKeyForLocale"]
+  CALL R4 3 -1
+  RETURN R4 -1
+  GETUPVAL R4 1
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K9 ["LocalizationKeys"]
+  GETTABLEKS R6 R7 K12 ["EmotesDisabled"]
+  MOVE R7 R2
+  NAMECALL R4 R4 K11 ["FormatByKeyForLocale"]
+  CALL R4 3 -1
+  RETURN R4 -1
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K13 ["emotesWheel"]
+  GETTABLEKS R4 R5 K14 ["focusedSegmentIndex"]
+  GETTABLE R5 R1 R4
+  JUMPIFNOT R5 [+1]
+  RETURN R5 1
+  GETUPVAL R6 1
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K9 ["LocalizationKeys"]
+  GETTABLEKS R8 R9 K15 ["SelectAnEmote"]
+  MOVE R9 R2
+  NAMECALL R6 R6 K11 ["FormatByKeyForLocale"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+PROTO_1:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Layouts"]
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["layout"]
+  GETTABLE R1 R2 R3
+  NAMECALL R2 R0 K3 ["getWheelText"]
+  CALL R2 1 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  LOADK R4 K5 ["TextLabel"]
+  DUPTABLE R5 K16 [{"AnchorPoint", "Size", "Position", "BackgroundTransparency", "Text", "TextScaled", "TextSize", "TextColor3", "Font", "ZIndex"}]
+  GETIMPORT R6 K19 [Vector2.new]
+  LOADK R7 K20 [0.5]
+  LOADK R8 K20 [0.5]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K6 ["AnchorPoint"]
+  GETIMPORT R6 K22 [UDim2.new]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K23 ["InnerCircleSizeRatio"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K24 ["TextPadding"]
+  MINUS R8 R9
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K23 ["InnerCircleSizeRatio"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K24 ["TextPadding"]
+  MINUS R10 R11
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K7 ["Size"]
+  GETIMPORT R6 K22 [UDim2.new]
+  LOADK R7 K20 [0.5]
+  LOADN R8 0
+  LOADK R9 K20 [0.5]
+  LOADN R10 0
+  CALL R6 4 1
+  SETTABLEKS R6 R5 K8 ["Position"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K9 ["BackgroundTransparency"]
+  SETTABLEKS R2 R5 K10 ["Text"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K11 ["TextScaled"]
+  GETTABLEKS R6 R1 K25 ["MiddleTextSize"]
+  SETTABLEKS R6 R5 K12 ["TextSize"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K26 ["Colors"]
+  GETTABLEKS R6 R7 K27 ["White"]
+  SETTABLEKS R6 R5 K13 ["TextColor3"]
+  GETTABLEKS R6 R1 K28 ["MiddleTextFont"]
+  SETTABLEKS R6 R5 K14 ["Font"]
+  LOADN R6 5
+  SETTABLEKS R6 R5 K15 ["ZIndex"]
+  DUPTABLE R6 K30 [{"TextSizeConstraint"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K4 ["createElement"]
+  LOADK R8 K31 ["UITextSizeConstraint"]
+  DUPTABLE R9 K33 [{"MaxTextSize"}]
+  GETTABLEKS R10 R1 K25 ["MiddleTextSize"]
+  SETTABLEKS R10 R9 K32 ["MaxTextSize"]
+  CALL R7 2 1
+  SETTABLEKS R7 R6 K29 ["TextSizeConstraint"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_2:
+  DUPTABLE R1 K4 [{"emotesWheel", "emotesPage", "layout", "locale"}]
+  GETTABLEKS R2 R0 K0 ["emotesWheel"]
+  SETTABLEKS R2 R1 K0 ["emotesWheel"]
+  GETTABLEKS R2 R0 K1 ["emotesPage"]
+  SETTABLEKS R2 R1 K1 ["emotesPage"]
+  GETTABLEKS R2 R0 K2 ["layout"]
+  SETTABLEKS R2 R1 K2 ["layout"]
+  GETTABLEKS R2 R0 K3 ["locale"]
+  SETTABLEKS R2 R1 K3 ["locale"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["StarterPlayer"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R5 K11 [script]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETTABLEKS R5 R4 K12 ["Parent"]
+  GETTABLEKS R6 R5 K12 ["Parent"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R8 R5 K13 ["Constants"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R9 R6 K14 ["RobloxTranslator"]
+  CALL R8 1 1
+  GETTABLEKS R9 R2 K15 ["PureComponent"]
+  LOADK R11 K16 ["WheelText"]
+  NAMECALL R9 R9 K17 ["extend"]
+  CALL R9 2 1
+  DUPCLOSURE R10 K18 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  CAPTURE VAL R7
+  SETTABLEKS R10 R9 K19 ["getWheelText"]
+  DUPCLOSURE R10 K20 [PROTO_1]
+  CAPTURE VAL R7
+  CAPTURE VAL R2
+  SETTABLEKS R10 R9 K21 ["render"]
+  DUPCLOSURE R10 K22 [PROTO_2]
+  GETTABLEKS R11 R3 K23 ["connect"]
+  MOVE R12 R10
+  LOADNIL R13
+  CALL R11 2 1
+  MOVE R12 R9
+  CALL R11 1 -1
+  RETURN R11 -1

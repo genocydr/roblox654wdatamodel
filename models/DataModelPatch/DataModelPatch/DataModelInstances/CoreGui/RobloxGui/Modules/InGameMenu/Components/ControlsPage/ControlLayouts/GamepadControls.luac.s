@@ -1,0 +1,267 @@
+PROTO_0:
+  NEWTABLE R1 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  LOADK R3 K1 ["UIListLayout"]
+  DUPTABLE R4 K4 [{"SortOrder", "Padding"}]
+  GETIMPORT R5 K7 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R5 R4 K2 ["SortOrder"]
+  GETIMPORT R5 K10 [UDim.new]
+  LOADN R6 0
+  LOADN R7 21
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["Padding"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K11 ["ListLayout"]
+  GETIMPORT R2 K13 [ipairs]
+  MOVE R3 R0
+  CALL R2 1 3
+  FORGPREP_INEXT R2
+  LOADK R8 K14 ["controlLabel_"]
+  MOVE R9 R5
+  CONCAT R7 R8 R9
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 1
+  DUPTABLE R10 K20 [{"fontKey", "themeKey", "TextXAlignment", "Size", "Text", "LayoutOrder"}]
+  LOADK R11 K21 ["Header2"]
+  SETTABLEKS R11 R10 K15 ["fontKey"]
+  LOADK R11 K22 ["TextEmphasis"]
+  SETTABLEKS R11 R10 K16 ["themeKey"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K17 ["TextXAlignment"]
+  SETTABLEKS R11 R10 K17 ["TextXAlignment"]
+  GETIMPORT R11 K24 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 1
+  LOADN R14 0
+  LOADN R15 22
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K18 ["Size"]
+  SETTABLEKS R6 R10 K19 ["Text"]
+  SETTABLEKS R5 R10 K6 ["LayoutOrder"]
+  CALL R8 2 1
+  SETTABLE R8 R1 R7
+  FORGLOOP R2 2 [inext] [-35]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  LOADK R3 K25 ["Frame"]
+  DUPTABLE R4 K28 [{"Position", "Size", "BackgroundTransparency"}]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K26 ["Position"]
+  SETTABLEKS R5 R4 K26 ["Position"]
+  GETIMPORT R5 K24 [UDim2.new]
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 1
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K18 ["Size"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K27 ["BackgroundTransparency"]
+  MOVE R5 R1
+  CALL R2 3 -1
+  RETURN R2 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R2 R0 K0 ["controls"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetPlatform"]
+  CALL R1 1 1
+  LOADB R2 1
+  GETIMPORT R3 K4 [Enum.Platform.XBox360]
+  JUMPIFEQ R1 R3 [+7]
+  GETIMPORT R3 K6 [Enum.Platform.XBoxOne]
+  JUMPIFEQ R1 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K10 [{"titleText", "closeButtonRef"}]
+  LOADK R6 K11 ["CoreScripts.InGameMenu.Controls.GamepadTitle"]
+  SETTABLEKS R6 R5 K8 ["titleText"]
+  GETTABLEKS R6 R0 K9 ["closeButtonRef"]
+  SETTABLEKS R6 R5 K9 ["closeButtonRef"]
+  DUPTABLE R6 K13 [{"GamepadImage"}]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K7 ["createElement"]
+  GETUPVAL R8 3
+  NEWTABLE R9 8 0
+  LOADN R10 1
+  SETTABLEKS R10 R9 K14 ["BackgroundTransparency"]
+  JUMPIFNOT R2 [+6]
+  GETUPVAL R12 4
+  GETTABLEKS R11 R12 K15 ["Images"]
+  GETTABLEKS R10 R11 K16 ["GamepadXbox"]
+  JUMPIF R10 [+5]
+  GETUPVAL R12 4
+  GETTABLEKS R11 R12 K15 ["Images"]
+  GETTABLEKS R10 R11 K17 ["Gamepad"]
+  SETTABLEKS R10 R9 K18 ["Image"]
+  GETIMPORT R10 K21 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 217
+  LOADN R13 0
+  LOADN R14 209
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K22 ["Size"]
+  GETIMPORT R10 K21 [UDim2.new]
+  LOADK R11 K23 [0.5]
+  LOADK R12 K24 [16.5]
+  LOADK R13 K23 [0.5]
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K25 ["Position"]
+  GETIMPORT R10 K27 [Vector2.new]
+  LOADK R11 K23 [0.5]
+  LOADK R12 K23 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K28 ["AnchorPoint"]
+  GETUPVAL R11 5
+  GETTABLEKS R10 R11 K29 ["Tag"]
+  LOADK R11 K30 ["data-testid=GamepadInstructions"]
+  SETTABLE R11 R9 R10
+  DUPTABLE R10 K34 [{"LeftControlsList", "RightControlsList", "RightIconsControlslIst"}]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K7 ["createElement"]
+  GETUPVAL R12 6
+  DUPTABLE R13 K37 [{"TextXAlignment", "Position", "controls"}]
+  GETIMPORT R14 K39 [Enum.TextXAlignment.Right]
+  SETTABLEKS R14 R13 K35 ["TextXAlignment"]
+  GETIMPORT R14 K21 [UDim2.new]
+  LOADN R15 0
+  LOADN R16 230
+  LOADN R17 0
+  LOADN R18 62
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K25 ["Position"]
+  GETUPVAL R16 7
+  GETTABLEKS R15 R16 K40 ["gamepadLabels"]
+  GETTABLEKS R14 R15 K41 ["left"]
+  SETTABLEKS R14 R13 K36 ["controls"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K31 ["LeftControlsList"]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K7 ["createElement"]
+  GETUPVAL R12 6
+  DUPTABLE R13 K37 [{"TextXAlignment", "Position", "controls"}]
+  GETIMPORT R14 K43 [Enum.TextXAlignment.Left]
+  SETTABLEKS R14 R13 K35 ["TextXAlignment"]
+  GETIMPORT R14 K21 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 249
+  LOADN R17 0
+  LOADN R18 62
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K25 ["Position"]
+  GETUPVAL R16 7
+  GETTABLEKS R15 R16 K40 ["gamepadLabels"]
+  GETTABLEKS R14 R15 K44 ["right"]
+  SETTABLEKS R14 R13 K36 ["controls"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K32 ["RightControlsList"]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K7 ["createElement"]
+  GETUPVAL R12 6
+  DUPTABLE R13 K37 [{"TextXAlignment", "Position", "controls"}]
+  GETIMPORT R14 K43 [Enum.TextXAlignment.Left]
+  SETTABLEKS R14 R13 K35 ["TextXAlignment"]
+  GETIMPORT R14 K21 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 26
+  LOADN R17 0
+  GETUPVAL R18 8
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K25 ["Position"]
+  GETUPVAL R16 7
+  GETTABLEKS R15 R16 K40 ["gamepadLabels"]
+  GETTABLEKS R14 R15 K45 ["camera"]
+  SETTABLEKS R14 R13 K36 ["controls"]
+  CALL R11 2 1
+  SETTABLEKS R11 R10 K33 ["RightIconsControlslIst"]
+  CALL R7 3 1
+  SETTABLEKS R7 R6 K12 ["GamepadImage"]
+  CALL R3 3 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["UserInputService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R1 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["InGameMenuDependencies"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["Roact"]
+  GETTABLEKS R4 R2 K10 ["UIBlox"]
+  GETIMPORT R9 K12 [script]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETIMPORT R6 K6 [require]
+  GETIMPORT R10 K12 [script]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K14 ["ControlLayoutContainer"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R5 K15 ["Components"]
+  GETTABLEKS R8 R9 K16 ["ThemedTextLabel"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R5 K17 ["Resources"]
+  GETTABLEKS R9 R10 K18 ["Assets"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R11 R5 K17 ["Resources"]
+  GETTABLEKS R10 R11 K19 ["Controls"]
+  CALL R9 1 1
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R12 R1 K7 ["Packages"]
+  GETTABLEKS R11 R12 K20 ["React"]
+  CALL R10 1 1
+  GETIMPORT R11 K6 [require]
+  GETTABLEKS R13 R5 K21 ["Localization"]
+  GETTABLEKS R12 R13 K22 ["withLocalization"]
+  CALL R11 1 1
+  GETTABLEKS R14 R4 K23 ["Core"]
+  GETTABLEKS R13 R14 K24 ["ImageSet"]
+  GETTABLEKS R12 R13 K25 ["ImageSetLabel"]
+  GETTABLEKS R16 R9 K27 ["gamepadLabels"]
+  GETTABLEKS R15 R16 K28 ["right"]
+  LENGTH R14 R15
+  MULK R13 R14 K26 [43]
+  ADDK R14 R13 K29 [62]
+  DUPCLOSURE R15 K30 [PROTO_1]
+  CAPTURE VAL R11
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  DUPCLOSURE R16 K31 [PROTO_2]
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  CAPTURE VAL R6
+  CAPTURE VAL R12
+  CAPTURE VAL R8
+  CAPTURE VAL R10
+  CAPTURE VAL R15
+  CAPTURE VAL R9
+  CAPTURE VAL R14
+  RETURN R16 1

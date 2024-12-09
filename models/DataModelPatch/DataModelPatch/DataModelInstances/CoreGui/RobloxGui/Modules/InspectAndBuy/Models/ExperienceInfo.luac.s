@@ -1,0 +1,75 @@
+PROTO_0:
+  NEWTABLE R0 8 0
+  GETUPVAL R1 0
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K0 ["universeId"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K2 ["name"]
+  GETUPVAL R1 0
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["rootPlaceId"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K4 ["isPlayable"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K5 ["Playable"]
+  SETTABLEKS R1 R0 K6 ["playabilityStatus"]
+  RETURN R0 1
+
+PROTO_1:
+  NEWTABLE R1 4 0
+  GETTABLEKS R3 R0 K0 ["universeId"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K2 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K0 ["universeId"]
+  GETTABLEKS R2 R0 K3 ["isPlayable"]
+  SETTABLEKS R2 R1 K3 ["isPlayable"]
+  GETTABLEKS R2 R0 K4 ["playabilityStatus"]
+  SETTABLEKS R2 R1 K4 ["playabilityStatus"]
+  RETURN R1 1
+
+PROTO_2:
+  NEWTABLE R1 4 0
+  GETTABLEKS R3 R0 K0 ["id"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K2 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K3 ["universeId"]
+  GETTABLEKS R3 R0 K4 ["rootPlaceId"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K2 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K4 ["rootPlaceId"]
+  GETTABLEKS R2 R0 K5 ["name"]
+  SETTABLEKS R2 R1 K5 ["name"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K8 ["Parent"]
+  GETTABLEKS R2 R3 K9 ["MockId"]
+  CALL R1 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R0 K10 ["Workspace"]
+  GETTABLEKS R6 R7 K11 ["Packages"]
+  GETTABLEKS R5 R6 K12 ["PlayabilityRodux"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K13 ["Enums"]
+  GETTABLEKS R2 R3 K14 ["PlayabilityStatusEnum"]
+  NEWTABLE R3 4 0
+  DUPCLOSURE R4 K15 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  SETTABLEKS R4 R3 K16 ["mock"]
+  DUPCLOSURE R4 K17 [PROTO_1]
+  SETTABLEKS R4 R3 K18 ["fromGetPlayabilityStatus"]
+  DUPCLOSURE R4 K19 [PROTO_2]
+  SETTABLEKS R4 R3 K20 ["fromGetExperienceInfo"]
+  RETURN R3 1

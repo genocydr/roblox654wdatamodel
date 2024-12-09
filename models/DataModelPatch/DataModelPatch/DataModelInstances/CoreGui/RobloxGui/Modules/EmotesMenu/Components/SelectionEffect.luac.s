@@ -1,0 +1,158 @@
+PROTO_0:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["Layouts"]
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K2 ["layout"]
+  GETTABLE R1 R2 R3
+  GETTABLEKS R4 R0 K1 ["props"]
+  GETTABLEKS R3 R4 K3 ["emotesWheel"]
+  GETTABLEKS R2 R3 K4 ["focusedSegmentIndex"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K6 ["EmotesPerPage"]
+  DIVRK R5 R5 K6 ["EmotesPerPage"]
+  SUBK R6 R2 K7 [1]
+  MUL R4 R5 R6
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K8 ["SegmentsStartRotation"]
+  ADD R3 R4 R5
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K10 ["InnerCircleSizeRatio"]
+  DIVK R4 R5 K9 [2]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K6 ["EmotesPerPage"]
+  DIVRK R5 R5 K6 ["EmotesPerPage"]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K10 ["InnerCircleSizeRatio"]
+  DIVK R10 R5 K9 [2]
+  FASTCALL1 MATH_RAD R10 [+2]
+  GETIMPORT R9 K13 [math.rad]
+  CALL R9 1 1
+  FASTCALL1 MATH_SIN R9 [+2]
+  GETIMPORT R8 K15 [math.sin]
+  CALL R8 1 1
+  MUL R6 R7 R8
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K16 ["createElement"]
+  LOADK R8 K17 ["Frame"]
+  DUPTABLE R9 K24 [{"AnchorPoint", "Position", "Size", "BackgroundTransparency", "Rotation", "Visible"}]
+  GETIMPORT R10 K27 [Vector2.new]
+  LOADK R11 K28 [0.5]
+  LOADK R12 K28 [0.5]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K18 ["AnchorPoint"]
+  GETIMPORT R10 K30 [UDim2.new]
+  LOADK R11 K28 [0.5]
+  LOADN R12 0
+  LOADK R13 K28 [0.5]
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K19 ["Position"]
+  GETIMPORT R10 K30 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 0
+  LOADN R13 1
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K20 ["Size"]
+  LOADN R10 1
+  SETTABLEKS R10 R9 K21 ["BackgroundTransparency"]
+  SETTABLEKS R3 R9 K22 ["Rotation"]
+  JUMPIFNOTEQKN R2 K31 [0] [+2]
+  LOADB R10 0 +1
+  LOADB R10 1
+  SETTABLEKS R10 R9 K23 ["Visible"]
+  DUPTABLE R10 K33 [{"SelectedLine"}]
+  GETUPVAL R12 1
+  GETTABLEKS R11 R12 K16 ["createElement"]
+  LOADK R12 K34 ["ImageLabel"]
+  DUPTABLE R13 K37 [{"AnchorPoint", "Position", "Size", "BackgroundTransparency", "Image", "ZIndex"}]
+  GETIMPORT R14 K27 [Vector2.new]
+  LOADN R15 1
+  LOADK R16 K28 [0.5]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K18 ["AnchorPoint"]
+  GETIMPORT R14 K30 [UDim2.new]
+  LOADK R16 K28 [0.5]
+  ADD R15 R16 R4
+  GETTABLEKS R17 R1 K38 ["SelectedLinePadding"]
+  MINUS R16 R17
+  LOADK R17 K28 [0.5]
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K19 ["Position"]
+  GETIMPORT R14 K30 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 0
+  MOVE R17 R6
+  GETTABLEKS R19 R1 K38 ["SelectedLinePadding"]
+  MINUS R18 R19
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K20 ["Size"]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K21 ["BackgroundTransparency"]
+  GETTABLEKS R14 R1 K32 ["SelectedLine"]
+  SETTABLEKS R14 R13 K35 ["Image"]
+  LOADN R14 4
+  SETTABLEKS R14 R13 K36 ["ZIndex"]
+  DUPTABLE R14 K40 [{"AsspectRatioConstraint"}]
+  GETUPVAL R16 1
+  GETTABLEKS R15 R16 K16 ["createElement"]
+  LOADK R16 K41 ["UIAspectRatioConstraint"]
+  DUPTABLE R17 K43 [{"AspectRatio"}]
+  GETTABLEKS R20 R1 K44 ["SelectedLineImageSize"]
+  GETTABLEKS R19 R20 K45 ["X"]
+  GETTABLEKS R21 R1 K44 ["SelectedLineImageSize"]
+  GETTABLEKS R20 R21 K46 ["Y"]
+  DIV R18 R19 R20
+  SETTABLEKS R18 R17 K42 ["AspectRatio"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K39 ["AsspectRatioConstraint"]
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K32 ["SelectedLine"]
+  CALL R7 3 -1
+  RETURN R7 -1
+
+PROTO_1:
+  DUPTABLE R1 K2 [{"emotesWheel", "layout"}]
+  GETTABLEKS R2 R0 K0 ["emotesWheel"]
+  SETTABLEKS R2 R1 K0 ["emotesWheel"]
+  GETTABLEKS R2 R0 K1 ["layout"]
+  SETTABLEKS R2 R1 K1 ["layout"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R4 K10 [script]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETTABLEKS R4 R3 K11 ["Parent"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K12 ["Constants"]
+  CALL R5 1 1
+  GETTABLEKS R6 R1 K13 ["PureComponent"]
+  LOADK R8 K14 ["SelectionEffect"]
+  NAMECALL R6 R6 K15 ["extend"]
+  CALL R6 2 1
+  DUPCLOSURE R7 K16 [PROTO_0]
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  SETTABLEKS R7 R6 K17 ["render"]
+  DUPCLOSURE R7 K18 [PROTO_1]
+  GETTABLEKS R8 R2 K19 ["connect"]
+  MOVE R9 R7
+  LOADNIL R10
+  CALL R8 2 1
+  MOVE R9 R6
+  CALL R8 1 -1
+  RETURN R8 -1

@@ -1,0 +1,118 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+90]
+  GETUPVAL R1 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["Session"]
+  GETTABLEKS R4 R5 K1 ["StructuralIdentifier"]
+  GETTABLEKS R3 R4 K2 ["AbuseReport"]
+  NAMECALL R1 R1 K3 ["SessionExists"]
+  CALL R1 2 1
+  JUMPIF R1 [+25]
+  GETUPVAL R2 1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K0 ["Session"]
+  GETTABLEKS R5 R6 K1 ["StructuralIdentifier"]
+  GETTABLEKS R4 R5 K4 ["Level1"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K0 ["Session"]
+  GETTABLEKS R6 R7 K1 ["StructuralIdentifier"]
+  GETTABLEKS R5 R6 K2 ["AbuseReport"]
+  GETUPVAL R9 2
+  GETTABLEKS R8 R9 K0 ["Session"]
+  GETTABLEKS R7 R8 K1 ["StructuralIdentifier"]
+  GETTABLEKS R6 R7 K2 ["AbuseReport"]
+  NAMECALL R2 R2 K5 ["SetSession"]
+  CALL R2 4 0
+  GETUPVAL R2 1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K0 ["Session"]
+  GETTABLEKS R5 R6 K1 ["StructuralIdentifier"]
+  GETTABLEKS R4 R5 K2 ["AbuseReport"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K0 ["Session"]
+  GETTABLEKS R6 R7 K6 ["Metadata"]
+  GETTABLEKS R5 R6 K7 ["EntryPoint"]
+  MOVE R6 R0
+  NAMECALL R2 R2 K8 ["SetMetadata"]
+  CALL R2 4 0
+  GETUPVAL R2 1
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K0 ["Session"]
+  GETTABLEKS R5 R6 K1 ["StructuralIdentifier"]
+  GETTABLEKS R4 R5 K2 ["AbuseReport"]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K0 ["Session"]
+  GETTABLEKS R6 R7 K6 ["Metadata"]
+  GETTABLEKS R5 R6 K9 ["DeleteOnGameLeave"]
+  LOADK R6 K10 ["True"]
+  NAMECALL R2 R2 K8 ["SetMetadata"]
+  CALL R2 4 0
+  GETUPVAL R2 3
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K11 ["Analytics"]
+  GETTABLEKS R3 R4 K12 ["ReportFlowOpened"]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K11 ["Analytics"]
+  GETTABLEKS R4 R5 K12 ["ReportFlowOpened"]
+  DUPTABLE R5 K14 [{"source"}]
+  SETTABLEKS R0 R5 K13 ["source"]
+  CALL R2 3 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+23]
+  GETUPVAL R0 1
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K0 ["Session"]
+  GETTABLEKS R3 R4 K1 ["StructuralIdentifier"]
+  GETTABLEKS R2 R3 K2 ["AbuseReport"]
+  NAMECALL R0 R0 K3 ["SessionExists"]
+  CALL R0 2 1
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R1 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K0 ["Session"]
+  GETTABLEKS R4 R5 K1 ["StructuralIdentifier"]
+  GETTABLEKS R3 R4 K2 ["AbuseReport"]
+  NAMECALL R1 R1 K4 ["RemoveSession"]
+  CALL R1 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["SessionService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R3 K5 [script]
+  GETTABLEKS R2 R3 K6 ["Parent"]
+  GETTABLEKS R1 R2 K6 ["Parent"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R1 K9 ["Resources"]
+  GETTABLEKS R3 R4 K10 ["Constants"]
+  CALL R2 1 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R1 K11 ["Flags"]
+  GETTABLEKS R4 R5 K12 ["GetFFlagEnableARFlowSession"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R1 K13 ["Utility"]
+  GETTABLEKS R5 R6 K14 ["SendAnalytics"]
+  CALL R4 1 1
+  NEWTABLE R5 2 0
+  DUPCLOSURE R6 K15 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  SETTABLEKS R6 R5 K16 ["startAbuseReportSession"]
+  DUPCLOSURE R6 K17 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R0
+  CAPTURE VAL R2
+  SETTABLEKS R6 R5 K18 ["endAbuseReportSession"]
+  RETURN R5 1

@@ -1,0 +1,124 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["waitingForRecording"]
+  JUMPIFNOT R2 [+21]
+  JUMPIF R0 [+12]
+  GETIMPORT R2 K3 [warn]
+  MOVE R3 R1
+  CALL R2 1 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K4 ["dispatchSetRCCProfilerState"]
+  LOADB R3 0
+  CALL R2 1 0
+  RETURN R0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K4 ["dispatchSetRCCProfilerState"]
+  LOADB R3 0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+9]
+  GETTABLEKS R2 R1 K0 ["RCCProfilerDataComplete"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K1 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K2 ["completeSignal"]
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["completeSignal"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["completeSignal"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["completeSignal"]
+  RETURN R0 0
+
+PROTO_3:
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_4:
+  DUPTABLE R2 K1 [{"waitingForRecording"}]
+  GETTABLEKS R4 R0 K2 ["MicroProfiler"]
+  GETTABLEKS R3 R4 K0 ["waitingForRecording"]
+  SETTABLEKS R3 R2 K0 ["waitingForRecording"]
+  RETURN R2 1
+
+PROTO_5:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_6:
+  DUPTABLE R1 K1 [{"dispatchSetRCCProfilerState"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["dispatchSetRCCProfilerState"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETIMPORT R7 K7 [script]
+  GETTABLEKS R6 R7 K8 ["Parent"]
+  GETTABLEKS R5 R6 K8 ["Parent"]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  GETTABLEKS R3 R4 K9 ["Util"]
+  GETTABLEKS R2 R3 K10 ["getClientReplicator"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K11 ["Packages"]
+  GETTABLEKS R3 R4 K12 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K11 ["Packages"]
+  GETTABLEKS R4 R5 K13 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R8 K7 [script]
+  GETTABLEKS R7 R8 K8 ["Parent"]
+  GETTABLEKS R6 R7 K8 ["Parent"]
+  GETTABLEKS R5 R6 K8 ["Parent"]
+  GETTABLEKS R4 R5 K14 ["Actions"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R6 R4 K15 ["SetRCCProfilerState"]
+  CALL R5 1 1
+  GETTABLEKS R6 R2 K16 ["Component"]
+  LOADK R8 K17 ["RCCProfilerDataCompleteListener"]
+  NAMECALL R6 R6 K18 ["extend"]
+  CALL R6 2 1
+  DUPCLOSURE R7 K19 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLEKS R7 R6 K20 ["didMount"]
+  DUPCLOSURE R7 K21 [PROTO_2]
+  SETTABLEKS R7 R6 K22 ["willUnmount"]
+  DUPCLOSURE R7 K23 [PROTO_3]
+  SETTABLEKS R7 R6 K24 ["render"]
+  DUPCLOSURE R7 K25 [PROTO_4]
+  DUPCLOSURE R8 K26 [PROTO_6]
+  CAPTURE VAL R5
+  GETTABLEKS R9 R3 K27 ["UNSTABLE_connect2"]
+  MOVE R10 R7
+  MOVE R11 R8
+  CALL R9 2 1
+  MOVE R10 R6
+  CALL R9 1 -1
+  RETURN R9 -1

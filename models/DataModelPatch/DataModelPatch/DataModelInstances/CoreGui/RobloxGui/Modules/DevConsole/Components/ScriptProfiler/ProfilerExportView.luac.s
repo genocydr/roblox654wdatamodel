@@ -1,0 +1,562 @@
+PROTO_0:
+  LOADK R3 K0 [""]
+  JUMPIFNOT R0 [+2]
+  LOADK R4 K1 ["client"]
+  JUMP [+1]
+  LOADK R4 K2 ["server"]
+  MOVE R5 R1
+  JUMPIFNOT R5 [+2]
+  GETTABLEKS R5 R1 K3 ["SessionStartTime"]
+  JUMPIFNOT R5 [+6]
+  GETIMPORT R6 K6 [os.date]
+  LOADK R7 K7 ["%Y%b%d-%H%M%S-"]
+  DIVK R8 R5 K8 [1000]
+  CALL R6 2 1
+  ORK R3 R6 K0 [""]
+  LOADK R7 K9 ["scriptprofiler-"]
+  MOVE R8 R3
+  MOVE R9 R4
+  MOVE R10 R2
+  CONCAT R6 R7 R10
+  RETURN R6 1
+
+PROTO_1:
+  RETURN R0 0
+
+PROTO_2:
+  DUPTABLE R3 K2 [{"exportFilenameClient", "exportFilenameServer"}]
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R6 R7 K4 ["client"]
+  GETTABLEKS R5 R6 K5 ["data"]
+  LOADK R6 K6 [""]
+  MOVE R7 R5
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R5 K7 ["SessionStartTime"]
+  JUMPIFNOT R7 [+6]
+  GETIMPORT R8 K10 [os.date]
+  LOADK R9 K11 ["%Y%b%d-%H%M%S-"]
+  DIVK R10 R7 K12 [1000]
+  CALL R8 2 1
+  ORK R6 R8 K6 [""]
+  LOADK R8 K13 ["scriptprofiler-"]
+  MOVE R9 R6
+  LOADK R10 K4 ["client"]
+  LOADK R11 K14 [".json"]
+  CONCAT R4 R8 R11
+  SETTABLEKS R4 R3 K0 ["exportFilenameClient"]
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R6 R7 K15 ["server"]
+  GETTABLEKS R5 R6 K5 ["data"]
+  LOADK R6 K6 [""]
+  MOVE R7 R5
+  JUMPIFNOT R7 [+2]
+  GETTABLEKS R7 R5 K7 ["SessionStartTime"]
+  JUMPIFNOT R7 [+6]
+  GETIMPORT R8 K10 [os.date]
+  LOADK R9 K11 ["%Y%b%d-%H%M%S-"]
+  DIVK R10 R7 K12 [1000]
+  CALL R8 2 1
+  ORK R6 R8 K6 [""]
+  LOADK R8 K13 ["scriptprofiler-"]
+  MOVE R9 R6
+  LOADK R10 K15 ["server"]
+  LOADK R11 K14 [".json"]
+  CONCAT R4 R8 R11
+  SETTABLEKS R4 R3 K1 ["exportFilenameServer"]
+  NAMECALL R1 R0 K16 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_3:
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+10]
+  GETUPVAL R3 1
+  DUPTABLE R5 K1 [{"exportFilenameClient"}]
+  GETTABLEKS R6 R0 K2 ["text"]
+  SETTABLEKS R6 R5 K0 ["exportFilenameClient"]
+  NAMECALL R3 R3 K3 ["setState"]
+  CALL R3 2 0
+  RETURN R0 0
+  GETUPVAL R3 1
+  DUPTABLE R5 K5 [{"exportFilenameServer"}]
+  GETTABLEKS R6 R0 K2 ["text"]
+  SETTABLEKS R6 R5 K4 ["exportFilenameServer"]
+  NAMECALL R3 R3 K3 ["setState"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  GETUPVAL R3 2
+  NAMECALL R0 R0 K0 ["SaveScriptProfilingData"]
+  CALL R0 3 1
+  GETUPVAL R1 3
+  JUMPIFNOT R1 [+8]
+  GETUPVAL R1 4
+  DUPTABLE R3 K2 [{"clientSavePath"}]
+  SETTABLEKS R0 R3 K1 ["clientSavePath"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+  GETUPVAL R1 4
+  DUPTABLE R3 K5 [{"serverSavePath"}]
+  SETTABLEKS R0 R3 K4 ["serverSavePath"]
+  NAMECALL R1 R1 K3 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["createElement"]
+  LOADK R5 K1 ["TextLabel"]
+  DUPTABLE R6 K10 [{"Size", "Position", "BackgroundTransparency", "BackgroundColor3", "Text", "TextSize", "Font", "TextColor3"}]
+  GETIMPORT R7 K13 [UDim2.new]
+  LOADK R8 K14 [0.9]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 30
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K2 ["Size"]
+  GETIMPORT R7 K13 [UDim2.new]
+  LOADK R8 K15 [0.05]
+  LOADN R9 0
+  LOADN R10 0
+  LOADK R11 K16 [37.5]
+  CALL R7 4 1
+  SETTABLEKS R7 R6 K3 ["Position"]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K4 ["BackgroundTransparency"]
+  GETUPVAL R7 1
+  SETTABLEKS R7 R6 K5 ["BackgroundColor3"]
+  JUMPIFNOT R3 [+2]
+  LOADK R7 K17 [""]
+  JUMP [+1]
+  LOADK R7 K18 ["Complete a profiling session to export data"]
+  SETTABLEKS R7 R6 K6 ["Text"]
+  GETUPVAL R7 2
+  SETTABLEKS R7 R6 K7 ["TextSize"]
+  GETUPVAL R7 3
+  SETTABLEKS R7 R6 K8 ["Font"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K19 ["Color"]
+  GETTABLEKS R7 R8 K6 ["Text"]
+  SETTABLEKS R7 R6 K9 ["TextColor3"]
+  JUMPIFNOT R3 [+127]
+  DUPTABLE R7 K22 [{"InputField", "ExportButton"}]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 5
+  DUPTABLE R10 K28 [{"Text", "TextSize", "Font", "Size", "Position", "ShowNativeInput", "TextColor3", "TextXAlignment", "ClearTextOnFocus", "PlaceholderText", "TextBoxFocusLost"}]
+  SETTABLEKS R2 R10 K6 ["Text"]
+  GETUPVAL R11 2
+  SETTABLEKS R11 R10 K7 ["TextSize"]
+  GETUPVAL R11 3
+  SETTABLEKS R11 R10 K8 ["Font"]
+  GETIMPORT R11 K13 [UDim2.new]
+  LOADK R12 K29 [0.8]
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETIMPORT R11 K13 [UDim2.new]
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["Position"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K23 ["ShowNativeInput"]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K19 ["Color"]
+  GETTABLEKS R11 R12 K6 ["Text"]
+  SETTABLEKS R11 R10 K9 ["TextColor3"]
+  GETIMPORT R11 K32 [Enum.TextXAlignment.Left]
+  SETTABLEKS R11 R10 K24 ["TextXAlignment"]
+  LOADB R11 0
+  SETTABLEKS R11 R10 K25 ["ClearTextOnFocus"]
+  LOADK R11 K33 ["Filename for export"]
+  SETTABLEKS R11 R10 K26 ["PlaceholderText"]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  SETTABLEKS R11 R10 K27 ["TextBoxFocusLost"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K20 ["InputField"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  LOADK R9 K34 ["TextButton"]
+  NEWTABLE R10 16 0
+  GETIMPORT R11 K13 [UDim2.new]
+  LOADK R12 K35 [0.2]
+  LOADN R13 0
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K2 ["Size"]
+  GETIMPORT R11 K13 [UDim2.new]
+  LOADK R12 K29 [0.8]
+  LOADN R13 0
+  LOADN R14 0
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K3 ["Position"]
+  LOADK R11 K36 ["Export"]
+  SETTABLEKS R11 R10 K6 ["Text"]
+  GETUPVAL R11 6
+  SETTABLEKS R11 R10 K8 ["Font"]
+  GETUPVAL R11 2
+  SETTABLEKS R11 R10 K7 ["TextSize"]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K19 ["Color"]
+  GETTABLEKS R11 R12 K6 ["Text"]
+  SETTABLEKS R11 R10 K9 ["TextColor3"]
+  GETIMPORT R11 K38 [Enum.TextXAlignment.Center]
+  SETTABLEKS R11 R10 K24 ["TextXAlignment"]
+  GETIMPORT R11 K40 [Enum.TextYAlignment.Center]
+  SETTABLEKS R11 R10 K39 ["TextYAlignment"]
+  GETUPVAL R11 1
+  SETTABLEKS R11 R10 K5 ["BackgroundColor3"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K41 ["Event"]
+  GETTABLEKS R11 R12 K42 ["Activated"]
+  NEWCLOSURE R12 P1
+  CAPTURE UPVAL U7
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  SETTABLE R12 R10 R11
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K21 ["ExportButton"]
+  JUMP [+2]
+  NEWTABLE R7 0 0
+  CALL R4 3 -1
+  RETURN R4 -1
+
+PROTO_7:
+  LOADNIL R3
+  LOADNIL R4
+  LOADNIL R5
+  JUMPIFNOT R1 [+15]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R3 R6 K1 ["exportFilenameClient"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K3 ["client"]
+  GETTABLEKS R4 R6 K4 ["serializedData"]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K5 ["clientSavePath"]
+  JUMP [+14]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R3 R6 K6 ["exportFilenameServer"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K7 ["server"]
+  GETTABLEKS R4 R6 K4 ["serializedData"]
+  GETTABLEKS R6 R0 K0 ["state"]
+  GETTABLEKS R5 R6 K8 ["serverSavePath"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K9 ["createElement"]
+  LOADK R7 K10 ["Frame"]
+  DUPTABLE R8 K14 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R9 K17 [UDim2.new]
+  LOADN R10 1
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 90
+  CALL R9 4 1
+  SETTABLEKS R9 R8 K11 ["Size"]
+  LOADN R9 1
+  SETTABLEKS R9 R8 K12 ["BackgroundTransparency"]
+  LOADN R9 2
+  SETTABLEKS R9 R8 K13 ["LayoutOrder"]
+  DUPTABLE R9 K22 [{"Label", "HorizontalLine", "Export", "SavedPath"}]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K9 ["createElement"]
+  LOADK R11 K23 ["TextLabel"]
+  DUPTABLE R12 K32 [{"Size", "Position", "Text", "Font", "TextSize", "TextColor3", "TextXAlignment", "TextYAlignment", "BackgroundColor3", "BackgroundTransparency"}]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADN R14 0
+  GETUPVAL R15 1
+  LOADN R16 0
+  LOADN R17 30
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K11 ["Size"]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADK R14 K33 [0.1]
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K24 ["Position"]
+  SETTABLEKS R2 R12 K25 ["Text"]
+  GETUPVAL R13 2
+  SETTABLEKS R13 R12 K26 ["Font"]
+  GETUPVAL R13 3
+  SETTABLEKS R13 R12 K27 ["TextSize"]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K34 ["Color"]
+  GETTABLEKS R13 R14 K25 ["Text"]
+  SETTABLEKS R13 R12 K28 ["TextColor3"]
+  GETIMPORT R13 K37 [Enum.TextXAlignment.Left]
+  SETTABLEKS R13 R12 K29 ["TextXAlignment"]
+  GETIMPORT R13 K39 [Enum.TextYAlignment.Center]
+  SETTABLEKS R13 R12 K30 ["TextYAlignment"]
+  GETUPVAL R13 5
+  SETTABLEKS R13 R12 K31 ["BackgroundColor3"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K12 ["BackgroundTransparency"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K18 ["Label"]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K9 ["createElement"]
+  LOADK R11 K10 ["Frame"]
+  DUPTABLE R12 K40 [{"Size", "Position"}]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 1
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K11 ["Size"]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 30
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K24 ["Position"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K19 ["HorizontalLine"]
+  MOVE R12 R1
+  MOVE R13 R3
+  MOVE R14 R4
+  NAMECALL R10 R0 K41 ["renderExportInputAndButton"]
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K20 ["Export"]
+  JUMPIF R5 [+2]
+  LOADNIL R10
+  JUMP [+62]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K9 ["createElement"]
+  LOADK R11 K42 ["TextBox"]
+  DUPTABLE R12 K45 [{"Size", "Position", "Text", "Font", "TextSize", "TextColor3", "TextXAlignment", "TextYAlignment", "BackgroundColor3", "BackgroundTransparency", "TextEditable", "ClearTextOnFocus"}]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADK R14 K46 [0.95]
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 30
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K11 ["Size"]
+  GETIMPORT R13 K17 [UDim2.new]
+  LOADK R14 K47 [0.05]
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 75
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K24 ["Position"]
+  LOADK R14 K48 ["Saved to "]
+  MOVE R15 R5
+  CONCAT R13 R14 R15
+  SETTABLEKS R13 R12 K25 ["Text"]
+  GETUPVAL R13 2
+  SETTABLEKS R13 R12 K26 ["Font"]
+  GETUPVAL R13 3
+  SETTABLEKS R13 R12 K27 ["TextSize"]
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K34 ["Color"]
+  GETTABLEKS R13 R14 K25 ["Text"]
+  SETTABLEKS R13 R12 K28 ["TextColor3"]
+  GETIMPORT R13 K37 [Enum.TextXAlignment.Left]
+  SETTABLEKS R13 R12 K29 ["TextXAlignment"]
+  GETIMPORT R13 K39 [Enum.TextYAlignment.Center]
+  SETTABLEKS R13 R12 K30 ["TextYAlignment"]
+  GETUPVAL R13 5
+  SETTABLEKS R13 R12 K31 ["BackgroundColor3"]
+  LOADN R13 1
+  SETTABLEKS R13 R12 K12 ["BackgroundTransparency"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K43 ["TextEditable"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K44 ["ClearTextOnFocus"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K21 ["SavedPath"]
+  CALL R6 3 -1
+  RETURN R6 -1
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K6 [{"Size", "BackgroundColor3", "BackgroundTransparency", "LayoutOrder"}]
+  GETTABLEKS R5 R0 K7 ["props"]
+  GETTABLEKS R4 R5 K8 ["size"]
+  SETTABLEKS R4 R3 K2 ["Size"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K9 ["Color"]
+  GETTABLEKS R4 R5 K10 ["BaseGray"]
+  SETTABLEKS R4 R3 K3 ["BackgroundColor3"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["BackgroundTransparency"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K5 ["LayoutOrder"]
+  DUPTABLE R4 K15 [{"UIListLayout", "Row", "HorizontalLine", "Row2"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K11 ["UIListLayout"]
+  DUPTABLE R7 K18 [{"Padding", "SortOrder"}]
+  GETIMPORT R8 K21 [UDim.new]
+  LOADN R9 0
+  GETUPVAL R11 2
+  MULK R10 R11 K22 [2]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K16 ["Padding"]
+  GETIMPORT R8 K24 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R8 R7 K17 ["SortOrder"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K11 ["UIListLayout"]
+  LOADB R7 1
+  LOADK R8 K25 ["Client"]
+  NAMECALL R5 R0 K26 ["renderExportSection"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K12 ["Row"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K1 ["Frame"]
+  DUPTABLE R7 K27 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R8 K29 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  GETUPVAL R12 2
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K2 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K4 ["BackgroundTransparency"]
+  LOADN R8 3
+  SETTABLEKS R8 R7 K5 ["LayoutOrder"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K13 ["HorizontalLine"]
+  LOADB R7 0
+  LOADK R8 K30 ["Server"]
+  NAMECALL R5 R0 K26 ["renderExportSection"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K14 ["Row2"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_9:
+  DUPTABLE R2 K2 [{"client", "server"}]
+  GETTABLEKS R4 R0 K3 ["ScriptProfiler"]
+  GETTABLEKS R3 R4 K0 ["client"]
+  SETTABLEKS R3 R2 K0 ["client"]
+  GETTABLEKS R4 R0 K3 ["ScriptProfiler"]
+  GETTABLEKS R3 R4 K1 ["server"]
+  SETTABLEKS R3 R2 K1 ["server"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["RoactRodux"]
+  CALL R2 1 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K9 ["ScriptContext"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K10 ["ScriptProfilerService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K5 [require]
+  GETIMPORT R8 K12 [script]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K14 ["ProfilerDataFormatV2"]
+  CALL R5 1 1
+  GETIMPORT R10 K12 [script]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["Components"]
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R6 K16 ["ScrollingTextBox"]
+  CALL R7 1 1
+  GETIMPORT R12 K12 [script]
+  GETTABLEKS R11 R12 K13 ["Parent"]
+  GETTABLEKS R10 R11 K13 ["Parent"]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K17 ["Actions"]
+  GETIMPORT R9 K5 [require]
+  GETIMPORT R14 K12 [script]
+  GETTABLEKS R13 R14 K13 ["Parent"]
+  GETTABLEKS R12 R13 K13 ["Parent"]
+  GETTABLEKS R11 R12 K13 ["Parent"]
+  GETTABLEKS R10 R11 K18 ["Constants"]
+  CALL R9 1 1
+  GETTABLEKS R11 R9 K19 ["GeneralFormatting"]
+  GETTABLEKS R10 R11 K20 ["MainRowPadding"]
+  GETTABLEKS R12 R9 K21 ["Font"]
+  GETTABLEKS R11 R12 K22 ["MainWindowHeader"]
+  GETTABLEKS R13 R9 K21 ["Font"]
+  GETTABLEKS R12 R13 K23 ["MainWindow"]
+  GETTABLEKS R14 R9 K24 ["MicroProfilerFormatting"]
+  GETTABLEKS R13 R14 K25 ["ButtonTextSize"]
+  GETTABLEKS R15 R9 K26 ["Color"]
+  GETTABLEKS R14 R15 K27 ["UnselectedGray"]
+  GETTABLEKS R16 R9 K24 ["MicroProfilerFormatting"]
+  GETTABLEKS R15 R16 K28 ["ButtonWidth"]
+  GETTABLEKS R16 R1 K29 ["PureComponent"]
+  LOADK R18 K30 ["ProfilerExportView"]
+  NAMECALL R16 R16 K31 ["extend"]
+  CALL R16 2 1
+  DUPCLOSURE R17 K32 [PROTO_0]
+  DUPCLOSURE R18 K33 [PROTO_1]
+  SETTABLEKS R18 R16 K34 ["init"]
+  DUPCLOSURE R18 K35 [PROTO_2]
+  SETTABLEKS R18 R16 K36 ["didMount"]
+  DUPCLOSURE R18 K37 [PROTO_3]
+  SETTABLEKS R18 R16 K38 ["didUpdate"]
+  DUPCLOSURE R18 K39 [PROTO_6]
+  CAPTURE VAL R1
+  CAPTURE VAL R14
+  CAPTURE VAL R13
+  CAPTURE VAL R12
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  CAPTURE VAL R11
+  CAPTURE VAL R4
+  SETTABLEKS R18 R16 K40 ["renderExportInputAndButton"]
+  DUPCLOSURE R18 K41 [PROTO_7]
+  CAPTURE VAL R1
+  CAPTURE VAL R15
+  CAPTURE VAL R11
+  CAPTURE VAL R13
+  CAPTURE VAL R9
+  CAPTURE VAL R14
+  SETTABLEKS R18 R16 K42 ["renderExportSection"]
+  DUPCLOSURE R18 K43 [PROTO_8]
+  CAPTURE VAL R1
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  SETTABLEKS R18 R16 K44 ["render"]
+  DUPCLOSURE R18 K45 [PROTO_9]
+  GETTABLEKS R19 R2 K46 ["UNSTABLE_connect2"]
+  MOVE R20 R18
+  LOADNIL R21
+  CALL R19 2 1
+  MOVE R20 R16
+  CALL R19 1 -1
+  RETURN R19 -1

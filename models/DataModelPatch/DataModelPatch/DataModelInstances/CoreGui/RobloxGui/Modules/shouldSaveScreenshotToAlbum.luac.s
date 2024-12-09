@@ -1,0 +1,51 @@
+PROTO_0:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GetPlatform"]
+  CALL R0 1 1
+  LOADB R1 1
+  GETIMPORT R2 K4 [Enum.Platform.IOS]
+  JUMPIFEQ R0 R2 [+7]
+  GETIMPORT R2 K6 [Enum.Platform.Android]
+  JUMPIFEQ R0 R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  LOADB R2 0
+  GETUPVAL R3 1
+  CALL R3 0 1
+  JUMPIFNOT R3 [+7]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R3 2
+  NAMECALL R3 R3 K7 ["IsSubjectToChinaPolicies"]
+  CALL R3 1 1
+  JUMPIF R3 [+1]
+  LOADB R2 1
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["UserInputService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R0 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["Common"]
+  GETTABLEKS R4 R5 K11 ["PolicyService"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R7 R2 K9 ["Modules"]
+  GETTABLEKS R6 R7 K12 ["Flags"]
+  GETTABLEKS R5 R6 K13 ["GetFFlagScreenshotHudApi"]
+  CALL R4 1 1
+  DUPCLOSURE R5 K14 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  RETURN R5 1

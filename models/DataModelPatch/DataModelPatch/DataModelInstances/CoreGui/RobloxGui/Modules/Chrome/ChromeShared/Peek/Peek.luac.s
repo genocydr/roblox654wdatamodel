@@ -1,0 +1,405 @@
+PROTO_0:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+30]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["music_peek"]
+  DUPTABLE R3 K2 [{"integrations"}]
+  NEWTABLE R4 0 3
+  LOADK R5 K3 ["music_icon"]
+  LOADK R6 K4 ["peek_track_details"]
+  LOADK R7 K5 ["peek_close"]
+  SETLIST R4 R5 3 [1]
+  SETTABLEKS R4 R3 K1 ["integrations"]
+  NAMECALL R0 R0 K6 ["configurePeek"]
+  CALL R0 3 0
+  GETUPVAL R0 1
+  LOADK R2 K7 ["music_peek_portrait"]
+  DUPTABLE R3 K2 [{"integrations"}]
+  NEWTABLE R4 0 3
+  LOADK R5 K3 ["music_icon"]
+  LOADK R6 K4 ["peek_track_details"]
+  LOADK R7 K5 ["peek_close"]
+  SETLIST R4 R5 3 [1]
+  SETTABLEKS R4 R3 K1 ["integrations"]
+  NAMECALL R0 R0 K6 ["configurePeek"]
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_1:
+  SUB R5 R1 R0
+  MUL R4 R5 R2
+  ADD R3 R0 R4
+  RETURN R3 1
+
+PROTO_2:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["isSmallTouchScreen"]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["mobileDevice"]
+  NAMECALL R1 R1 K2 ["get"]
+  CALL R1 1 1
+  AND R2 R1 R0
+  RETURN R2 1
+
+PROTO_3:
+  JUMPIFNOTEQKN R0 K0 [0] [+5]
+  GETUPVAL R1 0
+  LOADNIL R2
+  SETTABLEKS R2 R1 K1 ["current"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Pressed"]
+  JUMPIFEQ R0 R1 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["Hover"]
+  JUMPIFNOTEQ R0 R1 [+6]
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K2 ["lockCurrentPeek"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R1 1
+  NAMECALL R1 R1 K3 ["unlockCurrentPeek"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  JUMPIFEQ R0 R1 [+33]
+  GETUPVAL R0 2
+  JUMPIFNOT R0 [+22]
+  GETUPVAL R1 2
+  LENGTH R0 R1
+  LOADN R1 0
+  JUMPIFNOTLT R1 R0 [+18]
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K0 ["current"]
+  JUMPIF R0 [+13]
+  GETUPVAL R0 3
+  GETUPVAL R1 2
+  SETTABLEKS R1 R0 K0 ["current"]
+  GETUPVAL R0 4
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K1 ["spring"]
+  LOADN R2 1
+  GETUPVAL R3 6
+  CALL R1 2 -1
+  CALL R0 -1 0
+  RETURN R0 0
+  GETUPVAL R0 4
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K1 ["spring"]
+  LOADN R2 0
+  GETUPVAL R3 6
+  CALL R1 2 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETIMPORT R1 K2 [UDim2.fromScale]
+  LOADN R2 0
+  LOADN R4 254
+  LOADN R6 2
+  MUL R5 R6 R0
+  ADD R3 R4 R5
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_7:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  GETUPVAL R2 1
+  LOADNIL R3
+  CALL R2 1 1
+  GETUPVAL R3 2
+  CALL R3 0 1
+  GETUPVAL R4 3
+  CALL R4 0 1
+  GETUPVAL R5 4
+  MOVE R6 R4
+  CALL R5 1 1
+  GETUPVAL R6 5
+  NEWCLOSURE R7 P0
+  CAPTURE VAL R2
+  NEWTABLE R8 0 0
+  CALL R6 2 1
+  GETUPVAL R8 6
+  GETTABLEKS R7 R8 K0 ["useAnimatedBinding"]
+  LOADN R8 0
+  MOVE R9 R6
+  CALL R7 2 2
+  GETUPVAL R9 5
+  DUPCLOSURE R10 K1 [PROTO_4]
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  NEWTABLE R11 0 0
+  CALL R9 2 1
+  GETUPVAL R10 9
+  NEWCLOSURE R11 P2
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U10
+  NEWTABLE R12 0 3
+  MOVE R13 R4
+  MOVE R14 R5
+  MOVE R15 R3
+  SETLIST R12 R13 3 [1]
+  CALL R10 2 0
+  GETUPVAL R10 11
+  GETUPVAL R11 8
+  GETUPVAL R12 12
+  CALL R12 0 -1
+  CALL R10 -1 0
+  GETTABLEKS R10 R2 K2 ["current"]
+  JUMPIFNOT R10 [+163]
+  GETUPVAL R11 13
+  GETTABLEKS R10 R11 K3 ["createElement"]
+  GETUPVAL R12 14
+  GETTABLEKS R11 R12 K4 ["View"]
+  DUPTABLE R12 K9 [{"Size", "LayoutOrder", "stateLayer", "onStateChanged"}]
+  GETIMPORT R13 K12 [UDim2.fromScale]
+  LOADN R14 1
+  LOADN R15 1
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K5 ["Size"]
+  GETTABLEKS R13 R0 K13 ["layoutOrder"]
+  SETTABLEKS R13 R12 K6 ["LayoutOrder"]
+  DUPTABLE R13 K15 [{"affordance"}]
+  GETUPVAL R15 15
+  GETTABLEKS R14 R15 K16 ["None"]
+  SETTABLEKS R14 R13 K14 ["affordance"]
+  SETTABLEKS R13 R12 K7 ["stateLayer"]
+  SETTABLEKS R9 R12 K8 ["onStateChanged"]
+  DUPTABLE R13 K18 [{"PeekContainer"}]
+  GETUPVAL R15 13
+  GETTABLEKS R14 R15 K3 ["createElement"]
+  LOADK R15 K19 ["Frame"]
+  DUPTABLE R16 K26 [{"Size", "Position", "BackgroundTransparency", "SelectionGroup", "SelectionBehaviorUp", "SelectionBehaviorLeft", "SelectionBehaviorRight"}]
+  GETIMPORT R17 K12 [UDim2.fromScale]
+  LOADN R18 1
+  LOADN R19 1
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K5 ["Size"]
+  DUPCLOSURE R19 K27 [PROTO_6]
+  NAMECALL R17 R7 K28 ["map"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K20 ["Position"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K21 ["BackgroundTransparency"]
+  LOADB R17 1
+  SETTABLEKS R17 R16 K22 ["SelectionGroup"]
+  GETIMPORT R17 K32 [Enum.SelectionBehavior.Stop]
+  SETTABLEKS R17 R16 K23 ["SelectionBehaviorUp"]
+  GETIMPORT R17 K32 [Enum.SelectionBehavior.Stop]
+  SETTABLEKS R17 R16 K24 ["SelectionBehaviorLeft"]
+  GETIMPORT R17 K32 [Enum.SelectionBehavior.Stop]
+  SETTABLEKS R17 R16 K25 ["SelectionBehaviorRight"]
+  DUPTABLE R17 K35 [{"Layout", "PeekPill"}]
+  GETUPVAL R19 13
+  GETTABLEKS R18 R19 K3 ["createElement"]
+  LOADK R19 K36 ["UIListLayout"]
+  DUPTABLE R20 K39 [{"HorizontalAlignment", "VerticalAlignment"}]
+  GETIMPORT R21 K41 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R21 R20 K37 ["HorizontalAlignment"]
+  GETIMPORT R21 K43 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R21 R20 K38 ["VerticalAlignment"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K33 ["Layout"]
+  GETUPVAL R19 13
+  GETTABLEKS R18 R19 K3 ["createElement"]
+  LOADK R19 K19 ["Frame"]
+  DUPTABLE R20 K47 [{"AutomaticSize", "Size", "BorderSizePixel", "BackgroundColor3", "BackgroundTransparency"}]
+  GETIMPORT R21 K49 [Enum.AutomaticSize.X]
+  SETTABLEKS R21 R20 K44 ["AutomaticSize"]
+  GETIMPORT R21 K12 [UDim2.fromScale]
+  LOADN R22 0
+  LOADN R23 1
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K5 ["Size"]
+  LOADN R21 0
+  SETTABLEKS R21 R20 K45 ["BorderSizePixel"]
+  GETTABLEKS R23 R1 K50 ["Theme"]
+  GETTABLEKS R22 R23 K51 ["BackgroundUIContrast"]
+  GETTABLEKS R21 R22 K52 ["Color"]
+  SETTABLEKS R21 R20 K46 ["BackgroundColor3"]
+  GETTABLEKS R24 R1 K50 ["Theme"]
+  GETTABLEKS R23 R24 K51 ["BackgroundUIContrast"]
+  GETTABLEKS R22 R23 K53 ["Transparency"]
+  GETTABLEKS R24 R1 K54 ["Settings"]
+  GETTABLEKS R23 R24 K55 ["PreferredTransparency"]
+  MUL R21 R22 R23
+  SETTABLEKS R21 R20 K21 ["BackgroundTransparency"]
+  DUPTABLE R21 K58 [{"UICorner", "IntegrationRow"}]
+  GETUPVAL R23 13
+  GETTABLEKS R22 R23 K3 ["createElement"]
+  LOADK R23 K56 ["UICorner"]
+  DUPTABLE R24 K60 [{"CornerRadius"}]
+  GETIMPORT R25 K63 [UDim.new]
+  LOADN R26 0
+  GETTABLEKS R29 R1 K64 ["Tokens"]
+  GETTABLEKS R28 R29 K65 ["Global"]
+  GETTABLEKS R27 R28 K66 ["Size_100"]
+  CALL R25 2 1
+  SETTABLEKS R25 R24 K59 ["CornerRadius"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K56 ["UICorner"]
+  GETUPVAL R23 13
+  GETTABLEKS R22 R23 K3 ["createElement"]
+  GETUPVAL R23 16
+  DUPTABLE R24 K68 [{"integrations"}]
+  GETTABLEKS R25 R2 K2 ["current"]
+  SETTABLEKS R25 R24 K67 ["integrations"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K57 ["IntegrationRow"]
+  CALL R18 3 1
+  SETTABLEKS R18 R17 K34 ["PeekPill"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K17 ["PeekContainer"]
+  CALL R10 3 -1
+  RETURN R10 -1
+  LOADNIL R10
+  RETURN R10 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["ChromeShared"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R5 R1 K10 ["Packages"]
+  GETTABLEKS R4 R5 K12 ["ReactOtter"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R1 K10 ["Packages"]
+  GETTABLEKS R5 R6 K13 ["ReactUtils"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R1 K14 ["Workspace"]
+  GETTABLEKS R7 R8 K10 ["Packages"]
+  GETTABLEKS R6 R7 K15 ["Songbird"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R1 K10 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["UIBlox"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R1 K10 ["Packages"]
+  GETTABLEKS R8 R9 K17 ["Foundation"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R9 R0 K18 ["Service"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R0 K19 ["Peek"]
+  GETTABLEKS R10 R11 K20 ["IntegrationRow"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETTABLEKS R12 R0 K21 ["Hooks"]
+  GETTABLEKS R11 R12 K22 ["useChromePeekId"]
+  CALL R10 1 1
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R13 R0 K21 ["Hooks"]
+  GETTABLEKS R12 R13 K23 ["useChromePeekItems"]
+  CALL R11 1 1
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R14 R0 K18 ["Service"]
+  GETTABLEKS R13 R14 K24 ["Types"]
+  CALL R12 1 1
+  GETIMPORT R13 K9 [require]
+  GETTABLEKS R15 R0 K18 ["Service"]
+  GETTABLEKS R14 R15 K25 ["ViewportUtil"]
+  CALL R13 1 1
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R18 R0 K26 ["Parent"]
+  GETTABLEKS R17 R18 K27 ["Integrations"]
+  GETTABLEKS R16 R17 K28 ["MusicUtility"]
+  GETTABLEKS R15 R16 K29 ["shouldUseSmallPeek"]
+  CALL R14 1 1
+  GETTABLEKS R15 R5 K30 ["useMusicPeek"]
+  GETTABLEKS R16 R4 K31 ["usePrevious"]
+  GETTABLEKS R17 R2 K32 ["useEffect"]
+  GETTABLEKS R18 R2 K33 ["useRef"]
+  GETTABLEKS R19 R2 K34 ["useCallback"]
+  GETIMPORT R20 K9 [require]
+  GETTABLEKS R23 R0 K26 ["Parent"]
+  GETTABLEKS R22 R23 K35 ["Flags"]
+  GETTABLEKS R21 R22 K36 ["GetFFlagEnableSongbirdPeek"]
+  CALL R20 1 1
+  GETIMPORT R22 K9 [require]
+  GETTABLEKS R25 R1 K14 ["Workspace"]
+  GETTABLEKS R24 R25 K10 ["Packages"]
+  GETTABLEKS R23 R24 K37 ["SharedFlags"]
+  CALL R22 1 1
+  GETTABLEKS R21 R22 K38 ["GetFFlagChromeCentralizedConfiguration"]
+  GETIMPORT R23 K9 [require]
+  GETTABLEKS R26 R1 K14 ["Workspace"]
+  GETTABLEKS R25 R26 K10 ["Packages"]
+  GETTABLEKS R24 R25 K37 ["SharedFlags"]
+  CALL R23 1 1
+  GETTABLEKS R22 R23 K39 ["GetFFlagDecoupleChromePeekFromCoreScripts"]
+  GETTABLEKS R25 R6 K40 ["Core"]
+  GETTABLEKS R24 R25 K41 ["Style"]
+  GETTABLEKS R23 R24 K42 ["useStyle"]
+  GETTABLEKS R25 R7 K43 ["Enums"]
+  GETTABLEKS R24 R25 K44 ["ControlState"]
+  GETTABLEKS R26 R7 K43 ["Enums"]
+  GETTABLEKS R25 R26 K45 ["StateLayerAffordance"]
+  MOVE R26 R21
+  CALL R26 0 1
+  JUMPIF R26 [+8]
+  DUPCLOSURE R26 K46 [PROTO_0]
+  CAPTURE VAL R20
+  CAPTURE VAL R8
+  SETGLOBAL R26 K47 ["configurePeek"]
+  GETGLOBAL R26 K47 ["configurePeek"]
+  CALL R26 0 0
+  DUPTABLE R26 K51 [{"damping", "mass", "stiffness"}]
+  LOADN R27 20
+  SETTABLEKS R27 R26 K48 ["damping"]
+  LOADN R27 1
+  SETTABLEKS R27 R26 K49 ["mass"]
+  LOADN R27 100
+  SETTABLEKS R27 R26 K50 ["stiffness"]
+  DUPCLOSURE R27 K52 [PROTO_1]
+  MOVE R28 R22
+  CALL R28 0 1
+  JUMPIFNOT R28 [+2]
+  DUPCLOSURE R14 K53 [PROTO_2]
+  CAPTURE VAL R13
+  NEWCLOSURE R28 P3
+  CAPTURE VAL R23
+  CAPTURE VAL R18
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  CAPTURE VAL R16
+  CAPTURE VAL R19
+  CAPTURE VAL R3
+  CAPTURE VAL R24
+  CAPTURE VAL R8
+  CAPTURE VAL R17
+  CAPTURE VAL R26
+  CAPTURE VAL R15
+  CAPTURE REF R14
+  CAPTURE VAL R2
+  CAPTURE VAL R7
+  CAPTURE VAL R25
+  CAPTURE VAL R9
+  CLOSEUPVALS R14
+  RETURN R28 1

@@ -1,0 +1,70 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["onNextPage"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["Frame"]
+  DUPTABLE R3 K4 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R4 K7 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 1
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K2 ["Size"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  DUPTABLE R4 K9 [{"Buttons"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  GETUPVAL R6 1
+  DUPTABLE R7 K11 [{"buttons"}]
+  NEWTABLE R8 0 1
+  DUPTABLE R9 K14 [{"buttonType", "props"}]
+  GETUPVAL R11 2
+  GETTABLEKS R10 R11 K15 ["PrimarySystem"]
+  SETTABLEKS R10 R9 K12 ["buttonType"]
+  DUPTABLE R10 K18 [{"onActivated", "text"}]
+  NEWCLOSURE R11 P0
+  CAPTURE VAL R0
+  SETTABLEKS R11 R10 K16 ["onActivated"]
+  LOADK R11 K19 ["This is page 1. Click to go next"]
+  SETTABLEKS R11 R10 K17 ["text"]
+  SETTABLEKS R10 R9 K13 ["props"]
+  SETLIST R8 R9 1 [1]
+  SETTABLEKS R8 R7 K10 ["buttons"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K8 ["Buttons"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["UIBlox"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["React"]
+  CALL R2 1 1
+  GETTABLEKS R5 R1 K9 ["App"]
+  GETTABLEKS R4 R5 K10 ["Button"]
+  GETTABLEKS R3 R4 K11 ["ButtonStack"]
+  GETTABLEKS R7 R1 K9 ["App"]
+  GETTABLEKS R6 R7 K10 ["Button"]
+  GETTABLEKS R5 R6 K12 ["Enum"]
+  GETTABLEKS R4 R5 K13 ["ButtonType"]
+  DUPCLOSURE R5 K14 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  RETURN R5 1

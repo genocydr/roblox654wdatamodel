@@ -1,0 +1,709 @@
+PROTO_0:
+  GETIMPORT R2 K2 [Instance.new]
+  LOADK R3 K3 ["Frame"]
+  CALL R2 1 1
+  LOADK R3 K4 ["AvatarContextMenu"]
+  SETTABLEKS R3 R2 K5 ["Name"]
+  GETIMPORT R3 K7 [UDim2.new]
+  LOADN R4 0
+  LOADN R5 0
+  LOADN R6 0
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K8 ["Position"]
+  GETIMPORT R3 K7 [UDim2.new]
+  LOADN R4 1
+  LOADN R5 0
+  LOADN R6 1
+  LOADN R7 0
+  CALL R3 4 1
+  SETTABLEKS R3 R2 K9 ["Size"]
+  LOADN R3 1
+  SETTABLEKS R3 R2 K10 ["BackgroundTransparency"]
+  GETUPVAL R3 0
+  SETTABLEKS R3 R2 K11 ["Parent"]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K12 ["AutoLocalize"]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["CloseMenuFunc"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  GETIMPORT R4 K2 [Instance.new]
+  LOADK R5 K3 ["ImageButton"]
+  CALL R4 1 1
+  LOADK R5 K4 ["CloseMenuButton"]
+  SETTABLEKS R5 R4 K5 ["Name"]
+  LOADN R5 1
+  SETTABLEKS R5 R4 K6 ["BackgroundTransparency"]
+  GETIMPORT R5 K8 [Vector2.new]
+  LOADN R6 1
+  LOADN R7 0
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K9 ["AnchorPoint"]
+  GETIMPORT R5 K11 [UDim2.new]
+  LOADN R6 1
+  LOADN R7 246
+  LOADN R8 0
+  LOADN R9 10
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K12 ["Position"]
+  GETIMPORT R5 K11 [UDim2.new]
+  LOADK R6 K13 [0.05]
+  LOADN R7 0
+  LOADK R8 K14 [0.1]
+  LOADN R9 0
+  CALL R5 4 1
+  SETTABLEKS R5 R4 K15 ["Size"]
+  GETTABLEKS R5 R2 K16 ["LeaveMenuImage"]
+  SETTABLEKS R5 R4 K17 ["Image"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K18 ["Selectable"]
+  GETTABLEKS R5 R4 K19 ["Activated"]
+  MOVE R7 R3
+  NAMECALL R5 R5 K20 ["Connect"]
+  CALL R5 2 0
+  GETIMPORT R5 K2 [Instance.new]
+  LOADK R6 K21 ["UIAspectRatioConstraint"]
+  CALL R5 1 1
+  GETIMPORT R6 K25 [Enum.AspectType.FitWithinMaxSize]
+  SETTABLEKS R6 R5 K23 ["AspectType"]
+  GETIMPORT R6 K28 [Enum.DominantAxis.Height]
+  SETTABLEKS R6 R5 K26 ["DominantAxis"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K29 ["AspectRatio"]
+  SETTABLEKS R4 R5 K30 ["Parent"]
+  SETTABLEKS R1 R4 K30 ["Parent"]
+  RETURN R4 1
+
+PROTO_3:
+  GETIMPORT R1 K1 [workspace]
+  GETTABLEKS R0 R1 K2 ["CurrentCamera"]
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K3 ["Disconnect"]
+  CALL R1 1 0
+  LOADK R3 K4 ["ViewportSize"]
+  NAMECALL R1 R0 K5 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  GETUPVAL R3 1
+  NAMECALL R1 R1 K6 ["Connect"]
+  CALL R1 2 1
+  SETUPVAL R1 0
+  GETUPVAL R1 1
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_4:
+  JUMPIFNOTEQKNIL R0 [+2]
+  RETURN R0 0
+  LOADNIL R1
+  NEWCLOSURE R2 P0
+  CAPTURE REF R1
+  CAPTURE VAL R0
+  GETIMPORT R3 K1 [workspace]
+  LOADK R5 K2 ["CurrentCamera"]
+  NAMECALL R3 R3 K3 ["GetPropertyChangedSignal"]
+  CALL R3 2 1
+  MOVE R5 R2
+  NAMECALL R3 R3 K4 ["Connect"]
+  CALL R3 2 0
+  GETIMPORT R4 K1 [workspace]
+  GETTABLEKS R3 R4 K2 ["CurrentCamera"]
+  JUMPIFNOT R1 [+3]
+  NAMECALL R4 R1 K5 ["Disconnect"]
+  CALL R4 1 0
+  LOADK R6 K6 ["ViewportSize"]
+  NAMECALL R4 R3 K3 ["GetPropertyChangedSignal"]
+  CALL R4 2 1
+  MOVE R6 R0
+  NAMECALL R4 R4 K4 ["Connect"]
+  CALL R4 2 1
+  MOVE R1 R4
+  MOVE R4 R0
+  CALL R4 0 0
+  CLOSEUPVALS R1
+  RETURN R0 0
+
+PROTO_5:
+  GETIMPORT R2 K1 [workspace]
+  GETTABLEKS R1 R2 K2 ["CurrentCamera"]
+  GETTABLEKS R0 R1 K3 ["ViewportSize"]
+  GETTABLEKS R1 R0 K4 ["x"]
+  GETTABLEKS R2 R0 K5 ["y"]
+  JUMPIFNOTLT R1 R2 [+7]
+  GETUPVAL R1 0
+  GETIMPORT R2 K9 [Enum.DominantAxis.Width]
+  SETTABLEKS R2 R1 K7 ["DominantAxis"]
+  RETURN R0 0
+  GETUPVAL R1 0
+  GETIMPORT R2 K11 [Enum.DominantAxis.Height]
+  SETTABLEKS R2 R1 K7 ["DominantAxis"]
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  GETIMPORT R1 K2 [UDim2.new]
+  LOADN R2 0
+  LOADN R3 0
+  LOADN R4 0
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K3 ["AbsoluteContentSize"]
+  GETTABLEKS R5 R6 K4 ["Y"]
+  CALL R1 4 1
+  SETTABLEKS R1 R0 K5 ["CanvasSize"]
+  RETURN R0 0
+
+PROTO_7:
+  NAMECALL R2 R0 K0 ["CreateContextMenuHolder"]
+  CALL R2 1 1
+  GETIMPORT R3 K3 [Instance.new]
+  LOADK R4 K4 ["ImageButton"]
+  CALL R3 1 1
+  LOADK R4 K5 ["Menu"]
+  SETTABLEKS R4 R3 K6 ["Name"]
+  GETTABLEKS R4 R1 K7 ["AnchorPoint"]
+  SETTABLEKS R4 R3 K7 ["AnchorPoint"]
+  GETTABLEKS R4 R1 K8 ["Size"]
+  SETTABLEKS R4 R3 K8 ["Size"]
+  GETTABLEKS R4 R1 K9 ["OnScreenPosition"]
+  SETTABLEKS R4 R3 K10 ["Position"]
+  GETTABLEKS R4 R1 K11 ["BackgroundTransparency"]
+  SETTABLEKS R4 R3 K11 ["BackgroundTransparency"]
+  GETTABLEKS R4 R1 K12 ["BackgroundColor"]
+  SETTABLEKS R4 R3 K13 ["BackgroundColor3"]
+  GETTABLEKS R4 R1 K14 ["BackgroundImage"]
+  SETTABLEKS R4 R3 K15 ["Image"]
+  GETTABLEKS R4 R1 K16 ["BackgroundImageScaleType"]
+  SETTABLEKS R4 R3 K17 ["ScaleType"]
+  GETTABLEKS R4 R1 K18 ["BackgroundImageSliceCenter"]
+  SETTABLEKS R4 R3 K19 ["SliceCenter"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K20 ["AutoButtonColor"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K21 ["BorderSizePixel"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K22 ["Selectable"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K23 ["Visible"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K24 ["Active"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K25 ["ClipsDescendants"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K26 ["Modal"]
+  GETUPVAL R4 0
+  LOADK R6 K27 ["AvatarContextMenuGroup"]
+  MOVE R7 R3
+  NAMECALL R4 R4 K28 ["AddSelectionParent"]
+  CALL R4 3 0
+  GETIMPORT R4 K3 [Instance.new]
+  LOADK R5 K29 ["UIAspectRatioConstraint"]
+  CALL R4 1 1
+  GETIMPORT R5 K33 [Enum.AspectType.ScaleWithParentSize]
+  SETTABLEKS R5 R4 K31 ["AspectType"]
+  GETIMPORT R5 K36 [Enum.DominantAxis.Height]
+  SETTABLEKS R5 R4 K34 ["DominantAxis"]
+  LOADK R5 K37 ["MenuAspectRatio"]
+  SETTABLEKS R5 R4 K6 ["Name"]
+  GETTABLEKS R5 R1 K38 ["AspectRatio"]
+  SETTABLEKS R5 R4 K38 ["AspectRatio"]
+  SETTABLEKS R3 R4 K39 ["Parent"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R4
+  JUMPIFNOTEQKNIL R5 [+2]
+  JUMP [+34]
+  LOADNIL R6
+  NEWCLOSURE R7 P1
+  CAPTURE REF R6
+  CAPTURE VAL R5
+  GETIMPORT R8 K41 [workspace]
+  LOADK R10 K42 ["CurrentCamera"]
+  NAMECALL R8 R8 K43 ["GetPropertyChangedSignal"]
+  CALL R8 2 1
+  MOVE R10 R7
+  NAMECALL R8 R8 K44 ["Connect"]
+  CALL R8 2 0
+  GETIMPORT R9 K41 [workspace]
+  GETTABLEKS R8 R9 K42 ["CurrentCamera"]
+  JUMPIFNOT R6 [+3]
+  NAMECALL R9 R6 K45 ["Disconnect"]
+  CALL R9 1 0
+  LOADK R11 K46 ["ViewportSize"]
+  NAMECALL R9 R8 K43 ["GetPropertyChangedSignal"]
+  CALL R9 2 1
+  MOVE R11 R5
+  NAMECALL R9 R9 K44 ["Connect"]
+  CALL R9 2 1
+  MOVE R6 R9
+  MOVE R9 R5
+  CALL R9 0 0
+  CLOSEUPVALS R6
+  GETIMPORT R6 K3 [Instance.new]
+  LOADK R7 K47 ["UISizeConstraint"]
+  CALL R6 1 1
+  LOADK R7 K48 ["MenuSizeConstraint"]
+  SETTABLEKS R7 R6 K6 ["Name"]
+  GETTABLEKS R7 R1 K49 ["MaxSize"]
+  SETTABLEKS R7 R6 K49 ["MaxSize"]
+  GETTABLEKS R7 R1 K50 ["MinSize"]
+  SETTABLEKS R7 R6 K50 ["MinSize"]
+  SETTABLEKS R3 R6 K39 ["Parent"]
+  GETIMPORT R7 K3 [Instance.new]
+  LOADK R8 K51 ["Frame"]
+  CALL R7 1 1
+  LOADK R8 K52 ["Content"]
+  SETTABLEKS R8 R7 K6 ["Name"]
+  GETIMPORT R8 K54 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K8 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K11 ["BackgroundTransparency"]
+  SETTABLEKS R3 R7 K39 ["Parent"]
+  GETIMPORT R8 K3 [Instance.new]
+  LOADK R9 K55 ["UIListLayout"]
+  CALL R8 1 1
+  GETIMPORT R9 K58 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R9 R8 K56 ["HorizontalAlignment"]
+  GETIMPORT R9 K61 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R9 R8 K59 ["VerticalAlignment"]
+  GETIMPORT R9 K64 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R9 R8 K62 ["SortOrder"]
+  SETTABLEKS R7 R8 K39 ["Parent"]
+  GETIMPORT R9 K3 [Instance.new]
+  LOADK R10 K65 ["ScrollingFrame"]
+  CALL R9 1 1
+  LOADK R10 K66 ["ContextActionList"]
+  SETTABLEKS R10 R9 K6 ["Name"]
+  GETIMPORT R10 K68 [Vector2.new]
+  LOADK R11 K69 [0.5]
+  LOADN R12 1
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K7 ["AnchorPoint"]
+  GETTABLEKS R10 R1 K70 ["ButtonFrameColor"]
+  SETTABLEKS R10 R9 K13 ["BackgroundColor3"]
+  GETTABLEKS R10 R1 K71 ["ButtonFrameTransparency"]
+  SETTABLEKS R10 R9 K11 ["BackgroundTransparency"]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K21 ["BorderSizePixel"]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K63 ["LayoutOrder"]
+  GETIMPORT R10 K54 [UDim2.new]
+  LOADN R11 1
+  LOADN R12 244
+  LOADK R13 K72 [0.54]
+  LOADN R14 0
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K8 ["Size"]
+  GETIMPORT R10 K54 [UDim2.new]
+  LOADN R11 0
+  LOADN R12 0
+  LOADN R13 0
+  LOADN R14 208
+  CALL R10 4 1
+  SETTABLEKS R10 R9 K73 ["CanvasSize"]
+  LOADN R10 4
+  SETTABLEKS R10 R9 K74 ["ScrollBarThickness"]
+  LOADB R10 0
+  SETTABLEKS R10 R9 K22 ["Selectable"]
+  SETTABLEKS R7 R9 K39 ["Parent"]
+  GETIMPORT R10 K3 [Instance.new]
+  LOADK R11 K55 ["UIListLayout"]
+  CALL R10 1 1
+  GETIMPORT R11 K58 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R11 R10 K56 ["HorizontalAlignment"]
+  GETIMPORT R11 K64 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R11 R10 K62 ["SortOrder"]
+  GETIMPORT R11 K61 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R11 R10 K59 ["VerticalAlignment"]
+  LOADK R13 K75 ["AbsoluteContentSize"]
+  NAMECALL R11 R10 K43 ["GetPropertyChangedSignal"]
+  CALL R11 2 1
+  NEWCLOSURE R13 P2
+  CAPTURE VAL R9
+  CAPTURE VAL R10
+  NAMECALL R11 R11 K44 ["Connect"]
+  CALL R11 2 0
+  SETTABLEKS R9 R10 K39 ["Parent"]
+  GETIMPORT R11 K3 [Instance.new]
+  LOADK R12 K76 ["TextButton"]
+  CALL R11 1 1
+  LOADK R12 K77 ["NameTag"]
+  SETTABLEKS R12 R11 K6 ["Name"]
+  GETIMPORT R12 K68 [Vector2.new]
+  LOADK R13 K69 [0.5]
+  LOADN R14 1
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K7 ["AnchorPoint"]
+  GETTABLEKS R12 R1 K78 ["NameTagColor"]
+  SETTABLEKS R12 R11 K13 ["BackgroundColor3"]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K20 ["AutoButtonColor"]
+  LOADN R12 0
+  SETTABLEKS R12 R11 K21 ["BorderSizePixel"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K63 ["LayoutOrder"]
+  GETIMPORT R12 K54 [UDim2.new]
+  LOADN R13 1
+  LOADN R14 244
+  LOADK R15 K79 [0.16]
+  LOADN R16 0
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K8 ["Size"]
+  GETTABLEKS R12 R1 K80 ["Font"]
+  SETTABLEKS R12 R11 K80 ["Font"]
+  GETTABLEKS R12 R1 K81 ["TextColor"]
+  SETTABLEKS R12 R11 K82 ["TextColor3"]
+  LOADN R13 24
+  GETTABLEKS R14 R1 K83 ["TextScale"]
+  MUL R12 R13 R14
+  SETTABLEKS R12 R11 K84 ["TextSize"]
+  LOADK R12 K85 [""]
+  SETTABLEKS R12 R11 K86 ["Text"]
+  GETIMPORT R12 K88 [Enum.TextXAlignment.Center]
+  SETTABLEKS R12 R11 K87 ["TextXAlignment"]
+  GETIMPORT R12 K90 [Enum.TextYAlignment.Center]
+  SETTABLEKS R12 R11 K89 ["TextYAlignment"]
+  LOADB R12 0
+  SETTABLEKS R12 R11 K22 ["Selectable"]
+  SETTABLEKS R7 R11 K39 ["Parent"]
+  GETIMPORT R12 K3 [Instance.new]
+  LOADK R13 K51 ["Frame"]
+  CALL R12 1 1
+  LOADK R13 K91 ["Underline"]
+  SETTABLEKS R13 R12 K6 ["Name"]
+  GETTABLEKS R13 R1 K92 ["NameUnderlineColor"]
+  SETTABLEKS R13 R12 K13 ["BackgroundColor3"]
+  GETIMPORT R13 K68 [Vector2.new]
+  LOADN R14 0
+  LOADN R15 1
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K7 ["AnchorPoint"]
+  LOADN R13 0
+  SETTABLEKS R13 R12 K21 ["BorderSizePixel"]
+  GETIMPORT R13 K54 [UDim2.new]
+  LOADN R14 0
+  LOADN R15 0
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K10 ["Position"]
+  GETIMPORT R13 K54 [UDim2.new]
+  LOADN R14 1
+  LOADN R15 0
+  LOADN R16 0
+  LOADN R17 2
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K8 ["Size"]
+  SETTABLEKS R11 R12 K39 ["Parent"]
+  MOVE R15 R3
+  MOVE R16 R1
+  NAMECALL R13 R0 K93 ["CreateLeaveMenuButton"]
+  CALL R13 3 0
+  SETTABLEKS R2 R3 K39 ["Parent"]
+  SETTABLEKS R3 R0 K94 ["ContextMenuFrame"]
+  RETURN R3 1
+
+PROTO_8:
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K1 ["Size"]
+  SETTABLEKS R3 R2 K1 ["Size"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K2 ["AnchorPoint"]
+  SETTABLEKS R3 R2 K2 ["AnchorPoint"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K3 ["BackgroundTransparency"]
+  SETTABLEKS R3 R2 K3 ["BackgroundTransparency"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K4 ["BackgroundColor"]
+  SETTABLEKS R3 R2 K5 ["BackgroundColor3"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K6 ["BackgroundImage"]
+  SETTABLEKS R3 R2 K7 ["Image"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K8 ["BackgroundImageScaleType"]
+  SETTABLEKS R3 R2 K9 ["ScaleType"]
+  GETTABLEKS R2 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R3 R1 K10 ["BackgroundImageSliceCenter"]
+  SETTABLEKS R3 R2 K11 ["SliceCenter"]
+  GETTABLEKS R3 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K12 ["CloseMenuButton"]
+  GETTABLEKS R3 R1 K13 ["LeaveMenuImage"]
+  SETTABLEKS R3 R2 K7 ["Image"]
+  GETTABLEKS R3 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K14 ["MenuSizeConstraint"]
+  GETTABLEKS R3 R1 K15 ["MaxSize"]
+  SETTABLEKS R3 R2 K15 ["MaxSize"]
+  GETTABLEKS R3 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K14 ["MenuSizeConstraint"]
+  GETTABLEKS R3 R1 K16 ["MinSize"]
+  SETTABLEKS R3 R2 K16 ["MinSize"]
+  GETTABLEKS R3 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K17 ["MenuAspectRatio"]
+  GETTABLEKS R3 R1 K18 ["AspectRatio"]
+  SETTABLEKS R3 R2 K18 ["AspectRatio"]
+  GETTABLEKS R3 R0 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K19 ["Content"]
+  GETTABLEKS R3 R2 K20 ["ContextActionList"]
+  GETTABLEKS R4 R1 K21 ["ButtonFrameColor"]
+  SETTABLEKS R4 R3 K5 ["BackgroundColor3"]
+  GETTABLEKS R3 R2 K20 ["ContextActionList"]
+  GETTABLEKS R4 R1 K22 ["ButtonFrameTransparency"]
+  SETTABLEKS R4 R3 K3 ["BackgroundTransparency"]
+  GETTABLEKS R3 R2 K23 ["NameTag"]
+  GETTABLEKS R4 R1 K24 ["NameTagColor"]
+  SETTABLEKS R4 R3 K5 ["BackgroundColor3"]
+  GETTABLEKS R3 R2 K23 ["NameTag"]
+  GETTABLEKS R4 R1 K25 ["Font"]
+  SETTABLEKS R4 R3 K25 ["Font"]
+  GETTABLEKS R3 R2 K23 ["NameTag"]
+  GETTABLEKS R4 R1 K26 ["TextColor"]
+  SETTABLEKS R4 R3 K27 ["TextColor3"]
+  GETTABLEKS R3 R2 K23 ["NameTag"]
+  LOADN R5 24
+  GETTABLEKS R6 R1 K28 ["TextScale"]
+  MUL R4 R5 R6
+  SETTABLEKS R4 R3 K29 ["TextSize"]
+  GETTABLEKS R4 R2 K23 ["NameTag"]
+  GETTABLEKS R3 R4 K30 ["Underline"]
+  GETTABLEKS R4 R1 K31 ["NameUnderlineColor"]
+  SETTABLEKS R4 R3 K5 ["BackgroundColor3"]
+  GETUPVAL R3 0
+  JUMPIFNOT R3 [+5]
+  GETUPVAL R3 0
+  MOVE R5 R1
+  NAMECALL R3 R3 K32 ["UpdateGuiTheme"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_9:
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K1 ["Content"]
+  GETTABLEKS R1 R2 K2 ["NameTag"]
+  GETTABLEKS R2 R0 K3 ["Name"]
+  SETTABLEKS R2 R1 K4 ["Text"]
+  JUMP [+10]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["ContextMenuFrame"]
+  GETTABLEKS R2 R3 K1 ["Content"]
+  GETTABLEKS R1 R2 K2 ["NameTag"]
+  LOADK R2 K5 [""]
+  SETTABLEKS R2 R1 K4 ["Text"]
+  GETUPVAL R1 1
+  MOVE R3 R0
+  NAMECALL R1 R1 K6 ["Fire"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R3 0
+  JUMPIF R3 [+20]
+  GETIMPORT R3 K1 [require]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["PlayerCarousel"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K3 ["new"]
+  MOVE R5 R2
+  CALL R4 1 1
+  SETUPVAL R4 0
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["rbxGui"]
+  GETTABLEKS R6 R0 K5 ["ContextMenuFrame"]
+  GETTABLEKS R5 R6 K6 ["Content"]
+  SETTABLEKS R5 R4 K7 ["Parent"]
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K8 ["ClearPlayerEntries"]
+  CALL R3 1 0
+  GETTABLEKS R3 R0 K9 ["PlayerChangedConnection"]
+  JUMPIFNOT R3 [+5]
+  GETTABLEKS R3 R0 K9 ["PlayerChangedConnection"]
+  NAMECALL R3 R3 K10 ["Disconnect"]
+  CALL R3 1 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K11 ["PlayerChanged"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  NAMECALL R3 R3 K12 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R0 K9 ["PlayerChangedConnection"]
+  LOADN R5 1
+  LENGTH R3 R1
+  LOADN R4 1
+  FORNPREP R3
+  GETUPVAL R6 0
+  GETTABLE R9 R1 R5
+  GETTABLEN R8 R9 1
+  GETTABLE R10 R1 R5
+  GETTABLEN R9 R10 2
+  NAMECALL R6 R6 K13 ["CreatePlayerEntry"]
+  CALL R6 3 0
+  FORNLOOP R3
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K14 ["FadeTowardsEdges"]
+  CALL R3 1 0
+  GETUPVAL R3 0
+  NAMECALL R3 R3 K15 ["AddCarouselDivider"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_11:
+  GETUPVAL R2 0
+  JUMPIF R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["RemovePlayerEntry"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_12:
+  LOADK R1 K0 [0.02]
+  RETURN R1 1
+
+PROTO_13:
+  SETTABLEKS R1 R0 K0 ["CloseMenuFunc"]
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R3 0
+  JUMPIF R3 [+1]
+  RETURN R0 0
+  GETUPVAL R3 0
+  MOVE R5 R1
+  MOVE R6 R2
+  NAMECALL R3 R3 K0 ["SwitchToPlayerEntry"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R2 0
+  JUMPIF R2 [+1]
+  RETURN R0 0
+  GETUPVAL R2 0
+  MOVE R4 R1
+  NAMECALL R2 R2 K0 ["OffsetPlayerEntry"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_16:
+  GETUPVAL R1 0
+  JUMPIF R1 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K0 ["GetSelectedPlayer"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_17:
+  NEWTABLE R1 8 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["CloseMenuFunc"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K3 ["ContextMenuFrame"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["LastSetPlayerIcon"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["PlayerChangedConnection"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K6 ["Event"]
+  SETTABLEKS R1 R0 K7 ["SelectedPlayerChanged"]
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["GuiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R0 K6 ["WaitForChild"]
+  CALL R2 2 1
+  LOADK R5 K7 ["Modules"]
+  NAMECALL R3 R2 K6 ["WaitForChild"]
+  CALL R3 2 1
+  LOADK R6 K8 ["Settings"]
+  NAMECALL R4 R3 K6 ["WaitForChild"]
+  CALL R4 2 1
+  LOADK R7 K9 ["AvatarContextMenu"]
+  NAMECALL R5 R3 K6 ["WaitForChild"]
+  CALL R5 2 1
+  LOADNIL R6
+  GETIMPORT R7 K12 [Instance.new]
+  LOADK R8 K13 ["BindableEvent"]
+  CALL R7 1 1
+  GETIMPORT R8 K15 [require]
+  LOADK R11 K16 ["ContextMenuUtil"]
+  NAMECALL R9 R5 K6 ["WaitForChild"]
+  CALL R9 2 -1
+  CALL R8 -1 1
+  GETIMPORT R9 K15 [require]
+  LOADK R12 K17 ["Utility"]
+  NAMECALL R10 R4 K6 ["WaitForChild"]
+  CALL R10 2 -1
+  CALL R9 -1 1
+  NEWTABLE R10 16 0
+  SETTABLEKS R10 R10 K18 ["__index"]
+  DUPCLOSURE R11 K19 [PROTO_0]
+  CAPTURE VAL R2
+  SETTABLEKS R11 R10 K20 ["CreateContextMenuHolder"]
+  DUPCLOSURE R11 K21 [PROTO_2]
+  SETTABLEKS R11 R10 K22 ["CreateLeaveMenuButton"]
+  DUPCLOSURE R11 K23 [PROTO_4]
+  DUPCLOSURE R12 K24 [PROTO_7]
+  CAPTURE VAL R1
+  SETTABLEKS R12 R10 K25 ["CreateMenuFrame"]
+  NEWCLOSURE R12 P4
+  CAPTURE REF R6
+  SETTABLEKS R12 R10 K26 ["UpdateGuiTheme"]
+  NEWCLOSURE R12 P5
+  CAPTURE REF R6
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  SETTABLEKS R12 R10 K27 ["BuildPlayerCarousel"]
+  NEWCLOSURE R12 P6
+  CAPTURE REF R6
+  SETTABLEKS R12 R10 K28 ["RemovePlayerEntry"]
+  DUPCLOSURE R12 K29 [PROTO_12]
+  SETTABLEKS R12 R10 K30 ["GetBottomScreenPaddingConstant"]
+  DUPCLOSURE R12 K31 [PROTO_13]
+  SETTABLEKS R12 R10 K32 ["SetCloseMenuFunc"]
+  NEWCLOSURE R12 P9
+  CAPTURE REF R6
+  SETTABLEKS R12 R10 K33 ["SwitchToPlayerEntry"]
+  NEWCLOSURE R12 P10
+  CAPTURE REF R6
+  SETTABLEKS R12 R10 K34 ["OffsetPlayerEntry"]
+  NEWCLOSURE R12 P11
+  CAPTURE REF R6
+  SETTABLEKS R12 R10 K35 ["GetSelectedPlayer"]
+  DUPCLOSURE R12 K36 [PROTO_17]
+  CAPTURE VAL R10
+  CAPTURE VAL R7
+  SETTABLEKS R12 R10 K11 ["new"]
+  GETTABLEKS R12 R10 K11 ["new"]
+  CALL R12 0 -1
+  CLOSEUPVALS R6
+  RETURN R12 -1

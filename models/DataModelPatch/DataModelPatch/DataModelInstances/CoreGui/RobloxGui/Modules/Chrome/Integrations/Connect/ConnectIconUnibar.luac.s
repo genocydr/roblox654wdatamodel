@@ -1,0 +1,101 @@
+PROTO_0:
+  JUMPIFNOTEQKS R0 K0 [""] [+8]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["availability"]
+  NAMECALL R1 R1 K2 ["unavailable"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["availability"]
+  NAMECALL R1 R1 K3 ["pinned"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [script]
+  LOADK R3 K6 ["Chrome"]
+  NAMECALL R1 R1 K7 ["FindFirstAncestor"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R3 R1 K10 ["Service"]
+  CALL R2 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R7 R0 K11 ["Workspace"]
+  GETTABLEKS R6 R7 K12 ["Packages"]
+  GETTABLEKS R5 R6 K13 ["SharedFlags"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K14 ["GetFFlagAppChatAddConnectUnibarForActiveSquad"]
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R7 R0 K11 ["Workspace"]
+  GETTABLEKS R6 R7 K12 ["Packages"]
+  GETTABLEKS R5 R6 K15 ["AppChat"]
+  CALL R4 1 1
+  GETTABLEKS R6 R4 K16 ["App"]
+  GETTABLEKS R5 R6 K17 ["InExperienceAppChatModal"]
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R10 R0 K11 ["Workspace"]
+  GETTABLEKS R9 R10 K12 ["Packages"]
+  GETTABLEKS R8 R9 K18 ["SocialExperiments"]
+  CALL R7 1 1
+  GETTABLEKS R6 R7 K19 ["SquadExperimentation"]
+  GETIMPORT R7 K9 [require]
+  GETIMPORT R10 K5 [script]
+  GETTABLEKS R9 R10 K20 ["Parent"]
+  GETTABLEKS R8 R9 K21 ["registerConnectIntegration"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETIMPORT R11 K5 [script]
+  GETTABLEKS R10 R11 K20 ["Parent"]
+  GETTABLEKS R9 R10 K22 ["isConnectUnibarEnabled"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETIMPORT R12 K5 [script]
+  GETTABLEKS R11 R12 K20 ["Parent"]
+  GETTABLEKS R10 R11 K23 ["isConnectDropdownEnabled"]
+  CALL R9 1 1
+  LOADNIL R10
+  MOVE R11 R8
+  CALL R11 0 1
+  JUMPIFNOT R11 [+49]
+  MOVE R11 R3
+  CALL R11 0 1
+  JUMPIFNOT R11 [+6]
+  GETTABLEKS R11 R6 K24 ["getSquadEntrypointsEnabled"]
+  CALL R11 0 1
+  JUMPIFNOT R11 [+2]
+  MOVE R11 R9
+  CALL R11 0 1
+  MOVE R12 R7
+  LOADK R13 K25 ["connect_unibar"]
+  JUMPIFNOT R11 [+5]
+  GETTABLEKS R15 R2 K26 ["AvailabilitySignal"]
+  GETTABLEKS R14 R15 K27 ["Unavailable"]
+  JUMP [+4]
+  GETTABLEKS R15 R2 K26 ["AvailabilitySignal"]
+  GETTABLEKS R14 R15 K28 ["Pinned"]
+  CALL R12 2 1
+  MOVE R10 R12
+  JUMPIFNOT R11 [+25]
+  GETTABLEKS R14 R5 K29 ["default"]
+  GETTABLEKS R13 R14 K30 ["currentSquadId"]
+  JUMPIFNOTEQKS R13 K31 [""] [+2]
+  LOADB R12 0 +1
+  LOADB R12 1
+  JUMPIFNOT R12 [+5]
+  GETTABLEKS R13 R10 K32 ["availability"]
+  NAMECALL R13 R13 K33 ["pinned"]
+  CALL R13 1 0
+  GETTABLEKS R15 R5 K29 ["default"]
+  GETTABLEKS R14 R15 K34 ["currentSquadIdSignal"]
+  GETTABLEKS R13 R14 K35 ["Event"]
+  NEWCLOSURE R15 P0
+  CAPTURE REF R10
+  NAMECALL R13 R13 K36 ["Connect"]
+  CALL R13 2 0
+  CLOSEUPVALS R10
+  RETURN R10 1

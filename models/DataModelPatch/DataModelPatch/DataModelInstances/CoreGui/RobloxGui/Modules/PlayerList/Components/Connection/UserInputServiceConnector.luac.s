@@ -1,0 +1,140 @@
+PROTO_0:
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K0 ["UserInputType"]
+  GETIMPORT R3 K3 [Enum.UserInputType.Touch]
+  JUMPIFEQ R2 R3 [+5]
+  GETIMPORT R3 K5 [Enum.UserInputType.MouseButton1]
+  JUMPIFNOTEQ R2 R3 [+7]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["props"]
+  GETTABLEKS R3 R4 K7 ["closePlayerDropDown"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["Name"]
+  LOADK R3 K1 ["Gamepad"]
+  NAMECALL R1 R1 K2 ["find"]
+  CALL R1 2 1
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["props"]
+  GETTABLEKS R2 R3 K4 ["setIsUsingGamepad"]
+  JUMPIFNOTEQKNIL R1 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K3 [{"InputBeganConnection", "LastInputTypeChangedConnection"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K7 [{"event", "callback"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K8 ["InputBegan"]
+  SETTABLEKS R6 R5 K5 ["event"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K6 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["InputBeganConnection"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K7 [{"event", "callback"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K9 ["LastInputTypeChanged"]
+  SETTABLEKS R6 R5 K5 ["event"]
+  NEWCLOSURE R6 P1
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K6 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K2 ["LastInputTypeChangedConnection"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R1 0 -1
+  CALL R0 -1 -1
+  RETURN R0 -1
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 -1
+  RETURN R1 -1
+
+PROTO_5:
+  DUPTABLE R1 K2 [{"closePlayerDropDown", "setIsUsingGamepad"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["closePlayerDropDown"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["setIsUsingGamepad"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["UserInputService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R6 K11 [script]
+  GETTABLEKS R5 R6 K12 ["Parent"]
+  GETTABLEKS R4 R5 K12 ["Parent"]
+  GETTABLEKS R5 R4 K12 ["Parent"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R5 K13 ["Actions"]
+  GETTABLEKS R7 R8 K14 ["ClosePlayerDropDown"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R5 K13 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["SetIsUsingGamepad"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETIMPORT R11 K11 [script]
+  GETTABLEKS R10 R11 K12 ["Parent"]
+  GETTABLEKS R9 R10 K16 ["EventConnection"]
+  CALL R8 1 1
+  GETTABLEKS R9 R2 K17 ["PureComponent"]
+  LOADK R11 K18 ["UserInputServiceConnector"]
+  NAMECALL R9 R9 K19 ["extend"]
+  CALL R9 2 1
+  DUPCLOSURE R10 K20 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  SETTABLEKS R10 R9 K21 ["render"]
+  DUPCLOSURE R10 K22 [PROTO_5]
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  GETTABLEKS R11 R3 K23 ["connect"]
+  LOADNIL R12
+  MOVE R13 R10
+  CALL R11 2 1
+  MOVE R12 R9
+  CALL R11 1 -1
+  RETURN R11 -1

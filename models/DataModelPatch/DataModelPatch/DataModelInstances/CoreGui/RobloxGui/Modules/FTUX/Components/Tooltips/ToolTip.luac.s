@@ -1,0 +1,109 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  LOADK R2 K1 ["BillboardGui"]
+  DUPTABLE R3 K7 [{"Parent", "Adornee", "AlwaysOnTop", "Active", "Size"}]
+  GETUPVAL R4 1
+  SETTABLEKS R4 R3 K2 ["Parent"]
+  GETUPVAL R4 1
+  SETTABLEKS R4 R3 K3 ["Adornee"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K4 ["AlwaysOnTop"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K5 ["Active"]
+  GETIMPORT R4 K10 [UDim2.new]
+  LOADK R5 K11 [0.5]
+  LOADN R6 0
+  LOADK R7 K11 [0.5]
+  LOADN R8 0
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K6 ["Size"]
+  DUPTABLE R4 K13 [{"TriggerBody"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K14 ["Frame"]
+  NEWTABLE R7 8 0
+  LOADN R8 1
+  SETTABLEKS R8 R7 K15 ["Transparency"]
+  GETIMPORT R8 K10 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K6 ["Size"]
+  GETIMPORT R8 K10 [UDim2.new]
+  LOADK R9 K16 [0.49]
+  LOADN R10 0
+  LOADK R11 K17 [1.02]
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K18 ["Position"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K19 ["Change"]
+  GETTABLEKS R8 R9 K20 ["AbsoluteSize"]
+  SETTABLE R0 R7 R8
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K19 ["Change"]
+  GETTABLEKS R8 R9 K21 ["AbsolutePosition"]
+  SETTABLE R0 R7 R8
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K12 ["TriggerBody"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["controllerPart"]
+  LOADK R4 K1 ["BillboardGui"]
+  NAMECALL R2 R1 K2 ["WaitForChild"]
+  CALL R2 2 1
+  GETUPVAL R3 0
+  DUPTABLE R4 K4 [{"bodyText"}]
+  GETTABLEKS R5 R0 K5 ["tooltipText"]
+  SETTABLEKS R5 R4 K3 ["bodyText"]
+  DUPTABLE R5 K12 [{"preferredOrientation", "guiTarget", "DisplayOrder", "triggerPointName", "active", "DEBUG_useTargetDirectly"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K13 ["Bottom"]
+  SETTABLEKS R6 R5 K6 ["preferredOrientation"]
+  SETTABLEKS R2 R5 K7 ["guiTarget"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K8 ["DisplayOrder"]
+  LOADK R6 K14 ["TriggerPart"]
+  SETTABLEKS R6 R5 K9 ["triggerPointName"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K10 ["active"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K11 ["DEBUG_useTargetDirectly"]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U2
+  CAPTURE VAL R1
+  CALL R3 3 -1
+  RETURN R3 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["UIBlox"]
+  CALL R1 1 1
+  GETTABLEKS R5 R1 K8 ["App"]
+  GETTABLEKS R4 R5 K9 ["Dialog"]
+  GETTABLEKS R3 R4 K10 ["Enum"]
+  GETTABLEKS R2 R3 K11 ["TooltipOrientation"]
+  GETTABLEKS R6 R1 K8 ["App"]
+  GETTABLEKS R5 R6 K9 ["Dialog"]
+  GETTABLEKS R4 R5 K12 ["TooltipV2"]
+  GETTABLEKS R3 R4 K13 ["withTooltip"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K14 ["React"]
+  CALL R4 1 1
+  DUPCLOSURE R5 K15 [PROTO_1]
+  CAPTURE VAL R3
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  RETURN R5 1

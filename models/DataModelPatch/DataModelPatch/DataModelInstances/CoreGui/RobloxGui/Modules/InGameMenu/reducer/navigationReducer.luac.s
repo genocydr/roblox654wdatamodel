@@ -1,0 +1,108 @@
+PROTO_0:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["pagesByKey"]
+  GETTABLEKS R4 R0 K1 ["menuPage"]
+  GETTABLE R2 R3 R4
+  GETTABLEKS R3 R1 K2 ["type"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K3 ["name"]
+  JUMPIFNOTEQ R3 R4 [+76]
+  GETTABLEKS R4 R0 K4 ["respawn"]
+  GETTABLEKS R3 R4 K5 ["dialogOpen"]
+  JUMPIFNOT R3 [+23]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["Dictionary"]
+  GETTABLEKS R3 R4 K7 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K8 [{"respawn"}]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K6 ["Dictionary"]
+  GETTABLEKS R6 R7 K7 ["join"]
+  GETTABLEKS R7 R0 K4 ["respawn"]
+  DUPTABLE R8 K9 [{"dialogOpen"}]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K5 ["dialogOpen"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K4 ["respawn"]
+  CALL R3 2 -1
+  RETURN R3 -1
+  GETTABLEKS R4 R0 K10 ["report"]
+  GETTABLEKS R3 R4 K5 ["dialogOpen"]
+  JUMPIFNOT R3 [+23]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["Dictionary"]
+  GETTABLEKS R3 R4 K7 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K11 [{"report"}]
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K6 ["Dictionary"]
+  GETTABLEKS R6 R7 K7 ["join"]
+  GETTABLEKS R7 R0 K10 ["report"]
+  DUPTABLE R8 K9 [{"dialogOpen"}]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K5 ["dialogOpen"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K10 ["report"]
+  CALL R3 2 -1
+  RETURN R3 -1
+  GETTABLEKS R3 R0 K1 ["menuPage"]
+  JUMPIFNOT R3 [+37]
+  GETTABLEKS R3 R2 K12 ["parentPage"]
+  JUMPIFEQKNIL R3 [+34]
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K6 ["Dictionary"]
+  GETTABLEKS R4 R5 K7 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K13 [{"menuPage"}]
+  SETTABLEKS R3 R6 K1 ["menuPage"]
+  CALL R4 2 -1
+  RETURN R4 -1
+  RETURN R0 1
+  GETTABLEKS R3 R1 K2 ["type"]
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K3 ["name"]
+  JUMPIFNOTEQ R3 R4 [+15]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K6 ["Dictionary"]
+  GETTABLEKS R3 R4 K7 ["join"]
+  MOVE R4 R0
+  DUPTABLE R5 K15 [{"currentlyOpenBubble"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K16 ["None"]
+  SETTABLEKS R6 R5 K14 ["currentlyOpenBubble"]
+  CALL R3 2 -1
+  RETURN R3 -1
+  RETURN R0 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["InGameMenuDependencies"]
+  CALL R1 1 1
+  GETTABLEKS R2 R1 K8 ["Cryo"]
+  GETIMPORT R5 K10 [script]
+  GETTABLEKS R4 R5 K11 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R3 K12 ["Components"]
+  GETTABLEKS R5 R6 K13 ["Pages"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R3 K14 ["Actions"]
+  GETTABLEKS R6 R7 K15 ["NavigateBack"]
+  CALL R5 1 1
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R8 R3 K14 ["Actions"]
+  GETTABLEKS R7 R8 K16 ["SetCurrentPage"]
+  CALL R6 1 1
+  DUPCLOSURE R7 K17 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  RETURN R7 1

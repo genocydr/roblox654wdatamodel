@@ -1,0 +1,284 @@
+PROTO_0:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["assetInfo"]
+  JUMPIF R1 [+2]
+  NEWTABLE R1 0 0
+  GETTABLEKS R3 R1 K2 ["parentBundleId"]
+  JUMPIFNOTEQKNIL R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["bundleInfo"]
+  JUMPIFNOT R2 [+13]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["getBundleId"]
+  MOVE R5 R1
+  CALL R4 1 1
+  GETTABLE R5 R3 R4
+  JUMPIFNOT R5 [+11]
+  GETTABLE R6 R3 R4
+  GETTABLEKS R5 R6 K5 ["numFavorites"]
+  SETTABLEKS R5 R0 K5 ["numFavorites"]
+  RETURN R0 0
+  JUMPIFNOT R1 [+4]
+  GETTABLEKS R4 R1 K5 ["numFavorites"]
+  SETTABLEKS R4 R0 K5 ["numFavorites"]
+  RETURN R0 0
+
+PROTO_1:
+  LOADK R1 K0 [""]
+  SETTABLEKS R1 R0 K1 ["numFavorites"]
+  GETUPVAL R1 0
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K2 ["selectionImageObject"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  JUMPIF R0 [+6]
+  GETUPVAL R0 1
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K0 ["assetId"]
+  CALL R0 1 0
+  RETURN R0 0
+  GETUPVAL R1 3
+  GETTABLEKS R0 R1 K1 ["getBundleId"]
+  GETUPVAL R1 2
+  CALL R0 1 1
+  GETUPVAL R1 4
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["getAssetFavoriteCount"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["getBundleFavoriteCount"]
+  GETTABLEKS R4 R1 K3 ["assetInfo"]
+  JUMPIFNOT R4 [+21]
+  GETTABLEKS R5 R1 K3 ["assetInfo"]
+  GETTABLEKS R7 R5 K4 ["parentBundleId"]
+  JUMPIFNOTEQKNIL R7 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  GETTABLEKS R7 R1 K5 ["gotCurrentFavoriteCount"]
+  JUMPIF R7 [+10]
+  GETIMPORT R8 K8 [coroutine.wrap]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R6
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE UPVAL U0
+  CAPTURE VAL R3
+  CALL R8 1 1
+  CALL R8 0 0
+  RETURN R0 0
+
+PROTO_4:
+  NAMECALL R1 R0 K0 ["setText"]
+  CALL R1 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["createElement"]
+  LOADK R2 K2 ["Frame"]
+  DUPTABLE R3 K6 [{"Size", "BackgroundTransparency", "LayoutOrder"}]
+  GETIMPORT R4 K9 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 16
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K3 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K4 ["BackgroundTransparency"]
+  LOADN R4 3
+  SETTABLEKS R4 R3 K5 ["LayoutOrder"]
+  DUPTABLE R4 K12 [{"FavoriteIcon", "FavoriteText"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["createElement"]
+  LOADK R6 K13 ["ImageButton"]
+  DUPTABLE R7 K17 [{"Selectable", "Size", "BackgroundTransparency", "Image", "SelectionImageObject"}]
+  LOADB R8 0
+  SETTABLEKS R8 R7 K14 ["Selectable"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 16
+  LOADN R11 0
+  LOADN R12 16
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K3 ["Size"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K4 ["BackgroundTransparency"]
+  LOADK R8 K18 ["rbxasset://textures/ui/InspectMenu/ico_favorite.png"]
+  SETTABLEKS R8 R7 K15 ["Image"]
+  GETTABLEKS R8 R0 K19 ["selectionImageObject"]
+  SETTABLEKS R8 R7 K16 ["SelectionImageObject"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K10 ["FavoriteIcon"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K1 ["createElement"]
+  LOADK R6 K20 ["TextLabel"]
+  DUPTABLE R7 K27 [{"Size", "Position", "BackgroundTransparency", "Text", "Font", "TextXAlignment", "TextSize", "TextColor3"}]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 240
+  LOADN R11 1
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K3 ["Size"]
+  GETIMPORT R8 K9 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 21
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K21 ["Position"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K4 ["BackgroundTransparency"]
+  GETTABLEKS R9 R0 K29 ["numFavorites"]
+  ORK R8 R9 K28 [""]
+  SETTABLEKS R8 R7 K22 ["Text"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K30 ["default"]
+  NAMECALL R8 R8 K31 ["getDefault"]
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K23 ["Font"]
+  GETIMPORT R8 K34 [Enum.TextXAlignment.Left]
+  SETTABLEKS R8 R7 K24 ["TextXAlignment"]
+  LOADN R8 12
+  SETTABLEKS R8 R7 K25 ["TextSize"]
+  GETIMPORT R8 K36 [Color3.new]
+  LOADN R9 1
+  LOADN R10 1
+  LOADN R11 1
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K26 ["TextColor3"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K11 ["FavoriteText"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_5:
+  GETTABLEKS R3 R1 K0 ["detailsInformation"]
+  GETTABLEKS R2 R3 K1 ["viewingDetails"]
+  JUMPIF R2 [+2]
+  LOADB R2 0
+  RETURN R2 1
+  LOADB R2 1
+  RETURN R2 1
+
+PROTO_6:
+  GETTABLEKS R3 R0 K0 ["detailsInformation"]
+  GETTABLEKS R2 R3 K1 ["assetId"]
+  DUPTABLE R3 K5 [{"detailsInformation", "assetInfo", "bundleInfo", "gotCurrentFavoriteCount"}]
+  GETTABLEKS R4 R0 K0 ["detailsInformation"]
+  SETTABLEKS R4 R3 K0 ["detailsInformation"]
+  GETTABLEKS R5 R0 K6 ["assets"]
+  GETTABLE R4 R5 R2
+  SETTABLEKS R4 R3 K2 ["assetInfo"]
+  GETTABLEKS R4 R0 K7 ["bundles"]
+  SETTABLEKS R4 R3 K3 ["bundleInfo"]
+  GETUPVAL R4 0
+  MOVE R5 R0
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K4 ["gotCurrentFavoriteCount"]
+  RETURN R3 1
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 -1
+  CALL R1 -1 0
+  RETURN R0 0
+
+PROTO_9:
+  DUPTABLE R1 K2 [{"getAssetFavoriteCount", "getBundleFavoriteCount"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["getAssetFavoriteCount"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K1 ["getBundleFavoriteCount"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R3 K5 [script]
+  GETTABLEKS R2 R3 K6 ["Parent"]
+  GETTABLEKS R1 R2 K6 ["Parent"]
+  GETIMPORT R2 K8 [require]
+  GETTABLEKS R4 R0 K9 ["Packages"]
+  GETTABLEKS R3 R4 K10 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R5 R0 K9 ["Packages"]
+  GETTABLEKS R4 R5 K11 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R8 R0 K12 ["Workspace"]
+  GETTABLEKS R7 R8 K9 ["Packages"]
+  GETTABLEKS R6 R7 K13 ["Style"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K14 ["AppFonts"]
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R6 R1 K15 ["UtilityFunctions"]
+  CALL R5 1 1
+  GETIMPORT R6 K8 [require]
+  GETTABLEKS R8 R1 K16 ["Thunks"]
+  GETTABLEKS R7 R8 K17 ["GetAssetFavoriteCount"]
+  CALL R6 1 1
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R9 R1 K16 ["Thunks"]
+  GETTABLEKS R8 R9 K18 ["GetBundleFavoriteCount"]
+  CALL R7 1 1
+  GETIMPORT R8 K8 [require]
+  GETTABLEKS R10 R1 K19 ["Selectors"]
+  GETTABLEKS R9 R10 K20 ["GotCurrentFavoriteCount"]
+  CALL R8 1 1
+  GETIMPORT R9 K8 [require]
+  GETTABLEKS R10 R1 K21 ["getSelectionImageObjectRegular"]
+  CALL R9 1 1
+  GETTABLEKS R10 R2 K22 ["PureComponent"]
+  LOADK R12 K23 ["Favorites"]
+  NAMECALL R10 R10 K24 ["extend"]
+  CALL R10 2 1
+  DUPCLOSURE R11 K25 [PROTO_0]
+  CAPTURE VAL R5
+  SETTABLEKS R11 R10 K26 ["setText"]
+  DUPCLOSURE R11 K27 [PROTO_1]
+  CAPTURE VAL R9
+  SETTABLEKS R11 R10 K28 ["init"]
+  DUPCLOSURE R11 K29 [PROTO_3]
+  CAPTURE VAL R5
+  SETTABLEKS R11 R10 K30 ["willUpdate"]
+  DUPCLOSURE R11 K31 [PROTO_4]
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  SETTABLEKS R11 R10 K32 ["render"]
+  DUPCLOSURE R11 K33 [PROTO_5]
+  SETTABLEKS R11 R10 K34 ["shouldUpdate"]
+  GETTABLEKS R11 R3 K35 ["UNSTABLE_connect2"]
+  DUPCLOSURE R12 K36 [PROTO_6]
+  CAPTURE VAL R8
+  DUPCLOSURE R13 K37 [PROTO_9]
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CALL R11 2 1
+  MOVE R12 R10
+  CALL R11 1 -1
+  RETURN R11 -1

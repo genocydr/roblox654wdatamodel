@@ -1,0 +1,747 @@
+PROTO_0:
+  JUMPIFNOTEQKNIL R0 [+2]
+  RETURN R0 0
+  LOADK R3 K0 ["FaceControls"]
+  LOADB R4 1
+  NAMECALL R1 R0 K1 ["FindFirstChildWhichIsA"]
+  CALL R1 3 1
+  RETURN R1 1
+
+PROTO_1:
+  JUMPIFEQKNIL R0 [+3]
+  JUMPIFNOTEQKNIL R1 [+3]
+  LOADNIL R2
+  RETURN R2 1
+  NAMECALL R2 R0 K0 ["GetDescendants"]
+  CALL R2 1 1
+  MOVE R3 R2
+  LOADNIL R4
+  LOADNIL R5
+  FORGPREP R3
+  LOADK R10 K1 ["Motor6D"]
+  NAMECALL R8 R7 K2 ["IsA"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+9]
+  GETTABLEKS R8 R7 K3 ["Part1"]
+  JUMPIFEQ R8 R1 [+5]
+  GETTABLEKS R8 R7 K4 ["Name"]
+  JUMPIFNOTEQKS R8 K5 ["Neck"] [+2]
+  RETURN R7 1
+  FORGLOOP R3 2 [-15]
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+26]
+  MOVE R3 R2
+  LOADNIL R4
+  LOADNIL R5
+  FORGPREP R3
+  LOADK R10 K6 ["AnimationConstraint"]
+  NAMECALL R8 R7 K2 ["IsA"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+15]
+  GETTABLEKS R8 R7 K7 ["Parent"]
+  JUMPIFNOTEQ R8 R1 [+12]
+  GETTABLEKS R9 R7 K8 ["Attachment0"]
+  GETTABLEKS R8 R9 K4 ["Name"]
+  JUMPIFEQKS R8 K9 ["NeckRigAttachment"] [+5]
+  GETTABLEKS R8 R7 K4 ["Name"]
+  JUMPIFNOTEQKS R8 K5 ["Neck"] [+2]
+  RETURN R7 1
+  FORGLOOP R3 2 [-21]
+  LOADNIL R3
+  RETURN R3 1
+
+PROTO_2:
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+4]
+  JUMPIFNOTEQKNIL R2 [+3]
+  LOADNIL R3
+  RETURN R3 1
+  NAMECALL R3 R2 K0 ["GetDescendants"]
+  CALL R3 1 1
+  MOVE R4 R3
+  LOADNIL R5
+  LOADNIL R6
+  FORGPREP R4
+  GETUPVAL R9 0
+  CALL R9 0 1
+  JUMPIFNOT R9 [+11]
+  MOVE R11 R1
+  NAMECALL R9 R8 K1 ["IsA"]
+  CALL R9 2 1
+  JUMPIFNOT R9 [+16]
+  GETTABLEKS R9 R8 K2 ["Name"]
+  JUMPIFNOTEQ R9 R0 [+13]
+  RETURN R8 1
+  JUMP [+10]
+  GETTABLEKS R9 R8 K2 ["Name"]
+  JUMPIFNOTEQ R9 R0 [+7]
+  MOVE R11 R1
+  NAMECALL R9 R8 K1 ["IsA"]
+  CALL R9 2 1
+  JUMPIFNOT R9 [+1]
+  RETURN R8 1
+  FORGLOOP R4 2 [-25]
+  LOADNIL R4
+  RETURN R4 1
+
+PROTO_3:
+  JUMPIF R0 [+2]
+  LOADNIL R1
+  RETURN R1 1
+  LOADNIL R1
+  JUMPIFNOTEQKNIL R0 [+3]
+  LOADNIL R2
+  JUMP [+5]
+  LOADK R4 K0 ["FaceControls"]
+  LOADB R5 1
+  NAMECALL R2 R0 K1 ["FindFirstChildWhichIsA"]
+  CALL R2 3 1
+  JUMPIFEQKNIL R2 [+24]
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+18]
+  GETTABLEKS R3 R2 K2 ["Parent"]
+  JUMPIFNOT R3 [+17]
+  GETTABLEKS R4 R2 K2 ["Parent"]
+  GETTABLEKS R3 R4 K3 ["ClassName"]
+  JUMPIFEQKS R3 K4 ["MeshPart"] [+7]
+  GETTABLEKS R4 R2 K2 ["Parent"]
+  GETTABLEKS R3 R4 K3 ["ClassName"]
+  JUMPIFNOTEQKS R3 K5 ["Part"] [+6]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  JUMP [+2]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  JUMPIF R1 [+6]
+  GETUPVAL R3 1
+  LOADK R4 K6 ["Head"]
+  LOADK R5 K4 ["MeshPart"]
+  MOVE R6 R0
+  CALL R3 3 1
+  MOVE R1 R3
+  JUMPIF R1 [+6]
+  GETUPVAL R3 1
+  LOADK R4 K6 ["Head"]
+  LOADK R5 K5 ["Part"]
+  MOVE R6 R0
+  CALL R3 3 1
+  MOVE R1 R3
+  RETURN R1 1
+
+PROTO_4:
+  LOADNIL R2
+  LOADNIL R3
+  LOADN R4 0
+  JUMPIFNOTLT R4 R1 [+56]
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+46]
+  GETUPVAL R4 1
+  CALL R4 0 1
+  JUMPIFNOT R4 [+25]
+  LOADK R6 K0 ["Humanoid"]
+  MOVE R7 R1
+  NAMECALL R4 R0 K1 ["WaitForChild"]
+  CALL R4 3 1
+  JUMPIFNOT R4 [+13]
+  LOADK R7 K0 ["Humanoid"]
+  NAMECALL R5 R4 K2 ["IsA"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+2]
+  MOVE R3 R4
+  JUMP [+50]
+  LOADK R7 K0 ["Humanoid"]
+  NAMECALL R5 R0 K3 ["FindFirstChildWhichIsA"]
+  CALL R5 2 1
+  MOVE R3 R5
+  JUMP [+44]
+  LOADK R7 K0 ["Humanoid"]
+  NAMECALL R5 R0 K3 ["FindFirstChildWhichIsA"]
+  CALL R5 2 1
+  MOVE R3 R5
+  JUMP [+38]
+  LOADK R6 K0 ["Humanoid"]
+  MOVE R7 R1
+  NAMECALL R4 R0 K1 ["WaitForChild"]
+  CALL R4 3 1
+  LOADK R7 K0 ["Humanoid"]
+  NAMECALL R5 R4 K2 ["IsA"]
+  CALL R5 2 1
+  JUMPIFNOT R5 [+2]
+  MOVE R3 R4
+  JUMP [+26]
+  LOADK R7 K0 ["Humanoid"]
+  NAMECALL R5 R0 K3 ["FindFirstChildWhichIsA"]
+  CALL R5 2 1
+  MOVE R3 R5
+  JUMP [+20]
+  LOADK R6 K0 ["Humanoid"]
+  MOVE R7 R1
+  NAMECALL R4 R0 K1 ["WaitForChild"]
+  CALL R4 3 1
+  MOVE R3 R4
+  JUMP [+13]
+  GETUPVAL R4 0
+  JUMPIFNOT R4 [+6]
+  LOADK R6 K0 ["Humanoid"]
+  NAMECALL R4 R0 K3 ["FindFirstChildWhichIsA"]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMP [+5]
+  LOADK R6 K0 ["Humanoid"]
+  NAMECALL R4 R0 K4 ["FindFirstChild"]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMPIFEQKNIL R3 [+16]
+  LOADN R4 0
+  JUMPIFNOTLT R4 R1 [+8]
+  LOADK R6 K5 ["Animator"]
+  MOVE R7 R1
+  NAMECALL R4 R3 K1 ["WaitForChild"]
+  CALL R4 3 1
+  MOVE R2 R4
+  JUMP [+5]
+  LOADK R6 K5 ["Animator"]
+  NAMECALL R4 R3 K4 ["FindFirstChild"]
+  CALL R4 2 1
+  MOVE R2 R4
+  JUMPIFNOTEQKNIL R2 [+7]
+  LOADK R6 K5 ["Animator"]
+  LOADB R7 1
+  NAMECALL R4 R0 K3 ["FindFirstChildWhichIsA"]
+  CALL R4 3 1
+  MOVE R2 R4
+  RETURN R2 1
+
+PROTO_5:
+  GETIMPORT R2 K1 [ipairs]
+  NAMECALL R3 R0 K2 ["GetDescendants"]
+  CALL R3 1 -1
+  CALL R2 -1 3
+  FORGPREP_INEXT R2
+  LOADK R9 K3 ["Decal"]
+  NAMECALL R7 R6 K4 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+4]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K5 ["Transparency"]
+  JUMP [+79]
+  LOADK R9 K6 ["MeshPart"]
+  NAMECALL R7 R6 K4 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+36]
+  GETTABLEKS R7 R6 K7 ["Parent"]
+  JUMPIFNOT R7 [+7]
+  GETTABLEKS R7 R6 K7 ["Parent"]
+  LOADK R9 K8 ["Accessory"]
+  NAMECALL R7 R7 K4 ["IsA"]
+  CALL R7 2 1
+  JUMPIF R7 [+7]
+  GETIMPORT R7 K11 [table.find]
+  GETUPVAL R8 0
+  GETTABLEKS R9 R6 K12 ["Name"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+57]
+  GETIMPORT R7 K11 [table.find]
+  MOVE R8 R1
+  GETTABLEKS R9 R6 K13 ["MeshId"]
+  CALL R7 2 1
+  JUMPIF R7 [+6]
+  GETTABLEKS R7 R6 K13 ["MeshId"]
+  GETTABLEKS R8 R6 K5 ["Transparency"]
+  SETTABLE R8 R1 R7
+  JUMP [+44]
+  GETTABLEKS R8 R6 K13 ["MeshId"]
+  GETTABLE R7 R1 R8
+  SETTABLEKS R7 R6 K5 ["Transparency"]
+  JUMP [+38]
+  LOADK R9 K14 ["Part"]
+  NAMECALL R7 R6 K4 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+33]
+  GETTABLEKS R7 R6 K7 ["Parent"]
+  JUMPIFNOT R7 [+7]
+  GETTABLEKS R7 R6 K7 ["Parent"]
+  LOADK R9 K8 ["Accessory"]
+  NAMECALL R7 R7 K4 ["IsA"]
+  CALL R7 2 1
+  JUMPIF R7 [+7]
+  GETIMPORT R7 K11 [table.find]
+  GETUPVAL R8 0
+  GETTABLEKS R9 R6 K12 ["Name"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+3]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K5 ["Transparency"]
+  GETUPVAL R7 1
+  CALL R7 0 1
+  JUMPIFNOT R7 [+10]
+  GETUPVAL R7 2
+  MOVE R9 R6
+  LOADK R10 K15 ["__RBX__LOCKED_TRANSPARENT"]
+  NAMECALL R7 R7 K16 ["HasTag"]
+  CALL R7 3 1
+  JUMPIFNOT R7 [+3]
+  LOADN R7 1
+  SETTABLEKS R7 R6 K5 ["Transparency"]
+  FORGLOOP R2 2 [inext] [-89]
+  RETURN R0 0
+
+PROTO_6:
+  LOADK R3 K0 ["MeshPart"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIF R1 [+10]
+  LOADK R3 K2 ["Part"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIF R1 [+5]
+  LOADK R3 K3 ["Decal"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K4 ["Transparency"]
+  LOADN R2 1
+  JUMPIFNOTLT R1 R2 [+11]
+  LOADB R1 1
+  RETURN R1 1
+  JUMP [+7]
+  GETUPVAL R2 0
+  GETTABLEKS R3 R0 K5 ["ClassName"]
+  GETTABLE R1 R2 R3
+  JUMPIFNOT R1 [+2]
+  LOADB R1 1
+  RETURN R1 1
+  LOADB R1 0
+  RETURN R1 1
+
+PROTO_7:
+  GETIMPORT R1 K1 [ipairs]
+  NAMECALL R2 R0 K2 ["GetDescendants"]
+  CALL R2 1 -1
+  CALL R1 -1 3
+  FORGPREP_INEXT R1
+  LOADK R8 K3 ["Motor6D"]
+  NAMECALL R6 R5 K4 ["IsA"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+18]
+  GETIMPORT R6 K7 [CFrame.new]
+  GETTABLEKS R8 R5 K8 ["C0"]
+  GETTABLEKS R7 R8 K9 ["Position"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K8 ["C0"]
+  GETIMPORT R6 K7 [CFrame.new]
+  GETTABLEKS R8 R5 K10 ["C1"]
+  GETTABLEKS R7 R8 K9 ["Position"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K10 ["C1"]
+  FORGLOOP R1 2 [inext] [-24]
+  RETURN R0 0
+
+PROTO_8:
+  MOVE R4 R1
+  NAMECALL R2 R0 K0 ["FindFirstChild"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+3]
+  NAMECALL R3 R2 K1 ["Destroy"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_9:
+  LOADK R3 K0 ["Animate"]
+  NAMECALL R1 R0 K1 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+3]
+  NAMECALL R2 R1 K2 ["Destroy"]
+  CALL R2 1 0
+  LOADK R3 K3 ["Health"]
+  NAMECALL R1 R0 K1 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+3]
+  NAMECALL R2 R1 K2 ["Destroy"]
+  CALL R2 1 0
+  GETIMPORT R1 K5 [pairs]
+  NAMECALL R2 R0 K6 ["GetDescendants"]
+  CALL R2 1 -1
+  CALL R1 -1 3
+  FORGPREP_NEXT R1
+  LOADK R8 K7 ["BaseScript"]
+  NAMECALL R6 R5 K8 ["IsA"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+3]
+  NAMECALL R6 R5 K2 ["Destroy"]
+  CALL R6 1 0
+  FORGLOOP R1 2 [-9]
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["GetTags"]
+  CALL R1 2 1
+  GETIMPORT R2 K2 [ipairs]
+  MOVE R3 R1
+  CALL R2 1 3
+  FORGPREP_INEXT R2
+  GETUPVAL R7 1
+  CALL R7 0 1
+  JUMPIFNOT R7 [+9]
+  JUMPIFEQKS R6 K3 ["NoFace"] [+14]
+  GETUPVAL R7 0
+  MOVE R9 R0
+  MOVE R10 R6
+  NAMECALL R7 R7 K4 ["RemoveTag"]
+  CALL R7 3 0
+  JUMP [+6]
+  GETUPVAL R7 0
+  MOVE R9 R0
+  MOVE R10 R6
+  NAMECALL R7 R7 K4 ["RemoveTag"]
+  CALL R7 3 0
+  FORGLOOP R2 2 [inext] [-19]
+  GETIMPORT R2 K2 [ipairs]
+  NAMECALL R3 R0 K5 ["GetDescendants"]
+  CALL R3 1 -1
+  CALL R2 -1 3
+  FORGPREP_INEXT R2
+  GETUPVAL R7 0
+  MOVE R9 R6
+  NAMECALL R7 R7 K0 ["GetTags"]
+  CALL R7 2 1
+  GETIMPORT R8 K2 [ipairs]
+  MOVE R9 R7
+  CALL R8 1 3
+  FORGPREP_INEXT R8
+  GETUPVAL R13 1
+  CALL R13 0 1
+  JUMPIFNOT R13 [+9]
+  JUMPIFEQKS R12 K3 ["NoFace"] [+14]
+  GETUPVAL R13 0
+  MOVE R15 R6
+  MOVE R16 R12
+  NAMECALL R13 R13 K4 ["RemoveTag"]
+  CALL R13 3 0
+  JUMP [+6]
+  GETUPVAL R13 0
+  MOVE R15 R6
+  MOVE R16 R12
+  NAMECALL R13 R13 K4 ["RemoveTag"]
+  CALL R13 3 0
+  FORGLOOP R8 2 [inext] [-19]
+  FORGLOOP R2 2 [inext] [-31]
+  GETUPVAL R2 0
+  MOVE R4 R0
+  NAMECALL R2 R2 K0 ["GetTags"]
+  CALL R2 2 1
+  MOVE R1 R2
+  RETURN R0 0
+
+PROTO_11:
+  NAMECALL R1 R0 K0 ["GetChildren"]
+  CALL R1 1 3
+  FORGPREP R1
+  LOADK R8 K1 ["Script"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+6]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K3 ["Disabled"]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K4 ["Parent"]
+  GETUPVAL R6 0
+  MOVE R7 R5
+  CALL R6 1 0
+  FORGLOOP R1 2 [-15]
+  RETURN R0 0
+
+PROTO_12:
+  NAMECALL R1 R0 K0 ["GetChildren"]
+  CALL R1 1 3
+  FORGPREP R1
+  LOADK R8 K1 ["GuiObject"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIF R6 [+20]
+  LOADK R8 K3 ["ScreenGui"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIF R6 [+15]
+  LOADK R8 K4 ["BillboardGui"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIF R6 [+10]
+  LOADK R8 K5 ["AdGui"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIF R6 [+5]
+  LOADK R8 K6 ["SurfaceGui"]
+  NAMECALL R6 R5 K2 ["IsA"]
+  CALL R6 2 1
+  JUMPIFNOT R6 [+3]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K7 ["Parent"]
+  GETUPVAL R6 0
+  MOVE R7 R5
+  CALL R6 1 0
+  FORGLOOP R1 2 [-32]
+  RETURN R0 0
+
+PROTO_13:
+  NAMECALL R1 R0 K0 ["GetChildren"]
+  CALL R1 1 3
+  FORGPREP R1
+  GETUPVAL R7 0
+  GETTABLEKS R8 R5 K1 ["ClassName"]
+  GETTABLE R6 R7 R8
+  JUMPIF R6 [+3]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K2 ["Parent"]
+  GETUPVAL R6 1
+  MOVE R7 R5
+  CALL R6 1 0
+  FORGLOOP R1 2 [-12]
+  RETURN R0 0
+
+PROTO_14:
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R1 0
+  MOVE R2 R0
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_15:
+  GETUPVAL R1 0
+  MOVE R2 R0
+  LOADN R3 10
+  CALL R1 2 1
+  JUMPIF R1 [+2]
+  LOADB R2 0
+  RETURN R2 1
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R2 1 1
+  JUMPIF R2 [+2]
+  LOADB R3 0
+  RETURN R3 1
+  LOADB R3 1
+  RETURN R3 1
+
+PROTO_16:
+  JUMPIFNOTEQKNIL R0 [+3]
+  LOADNIL R2
+  JUMP [+5]
+  LOADK R4 K0 ["FaceControls"]
+  LOADB R5 1
+  NAMECALL R2 R0 K1 ["FindFirstChildWhichIsA"]
+  CALL R2 3 1
+  JUMPIFNOTEQKNIL R2 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CollectionService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["AvatarJointUpgradeFeature"]
+  NAMECALL R2 R2 K6 ["GetEngineFeature"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K7 ["SelfViewLookUpHumanoidByType"]
+  LOADB R6 0
+  NAMECALL R3 R3 K8 ["DefineFastFlag"]
+  CALL R3 3 1
+  GETIMPORT R4 K10 [require]
+  GETIMPORT R9 K12 [script]
+  GETTABLEKS R8 R9 K13 ["Parent"]
+  GETTABLEKS R7 R8 K13 ["Parent"]
+  GETTABLEKS R6 R7 K14 ["Flags"]
+  GETTABLEKS R5 R6 K15 ["GetFFlagSelfieViewFixMigration"]
+  CALL R4 1 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R9 R0 K16 ["Workspace"]
+  GETTABLEKS R8 R9 K17 ["Packages"]
+  GETTABLEKS R7 R8 K18 ["SharedFlags"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K19 ["GetFFlagSelfieViewMoreFixMigration"]
+  GETIMPORT R6 K10 [require]
+  GETIMPORT R11 K12 [script]
+  GETTABLEKS R10 R11 K13 ["Parent"]
+  GETTABLEKS R9 R10 K13 ["Parent"]
+  GETTABLEKS R8 R9 K14 ["Flags"]
+  GETTABLEKS R7 R8 K20 ["GetFFlagSelfieViewGyroMigration"]
+  CALL R6 1 1
+  DUPTABLE R7 K31 [{"Accessory", "CharacterMesh", "Decal", "MeshPart", "Pants", "Part", "Shirt", "ShirtGraphic", "SpecialMesh", "SurfaceAppearance"}]
+  LOADK R8 K21 ["Accessory"]
+  SETTABLEKS R8 R7 K21 ["Accessory"]
+  LOADK R8 K22 ["CharacterMesh"]
+  SETTABLEKS R8 R7 K22 ["CharacterMesh"]
+  LOADK R8 K23 ["Decal"]
+  SETTABLEKS R8 R7 K23 ["Decal"]
+  LOADK R8 K24 ["MeshPart"]
+  SETTABLEKS R8 R7 K24 ["MeshPart"]
+  LOADK R8 K25 ["Pants"]
+  SETTABLEKS R8 R7 K25 ["Pants"]
+  LOADK R8 K26 ["Part"]
+  SETTABLEKS R8 R7 K26 ["Part"]
+  LOADK R8 K27 ["Shirt"]
+  SETTABLEKS R8 R7 K27 ["Shirt"]
+  LOADK R8 K28 ["ShirtGraphic"]
+  SETTABLEKS R8 R7 K28 ["ShirtGraphic"]
+  LOADK R8 K29 ["SpecialMesh"]
+  SETTABLEKS R8 R7 K29 ["SpecialMesh"]
+  LOADK R8 K30 ["SurfaceAppearance"]
+  SETTABLEKS R8 R7 K30 ["SurfaceAppearance"]
+  DUPCLOSURE R8 K32 [PROTO_0]
+  DUPCLOSURE R9 K33 [PROTO_1]
+  CAPTURE VAL R6
+  DUPCLOSURE R10 K34 [PROTO_2]
+  CAPTURE VAL R5
+  DUPCLOSURE R11 K35 [PROTO_3]
+  CAPTURE VAL R4
+  CAPTURE VAL R10
+  DUPCLOSURE R12 K36 [PROTO_4]
+  CAPTURE VAL R3
+  CAPTURE VAL R5
+  NEWTABLE R13 0 16
+  LOADK R14 K37 ["Head"]
+  LOADK R15 K38 ["UpperTorso"]
+  LOADK R16 K39 ["LowerTorso"]
+  LOADK R17 K40 ["Torso"]
+  LOADK R18 K41 ["LeftFoot"]
+  LOADK R19 K42 ["LeftLowerLeg"]
+  LOADK R20 K43 ["LeftUpperLeg"]
+  LOADK R21 K44 ["RightFoot"]
+  LOADK R22 K45 ["RightLowerLeg"]
+  LOADK R23 K46 ["RightUpperLeg"]
+  LOADK R24 K47 ["LeftHand"]
+  LOADK R25 K48 ["LeftLowerArm"]
+  LOADK R26 K49 ["LeftUpperArm"]
+  LOADK R27 K50 ["RightHand"]
+  LOADK R28 K51 ["RightLowerArm"]
+  LOADK R29 K52 ["RightUpperArm"]
+  SETLIST R13 R14 16 [1]
+  DUPCLOSURE R14 K53 [PROTO_5]
+  CAPTURE VAL R13
+  CAPTURE VAL R5
+  CAPTURE VAL R1
+  DUPCLOSURE R15 K54 [PROTO_6]
+  CAPTURE VAL R7
+  DUPCLOSURE R16 K55 [PROTO_7]
+  DUPCLOSURE R17 K56 [PROTO_8]
+  DUPCLOSURE R18 K57 [PROTO_9]
+  DUPCLOSURE R19 K58 [PROTO_10]
+  CAPTURE VAL R1
+  CAPTURE VAL R4
+  DUPTABLE R20 K79 [{"Accessory", "Animator", "Attachment", "AnimationConstraint", "BallSocketConstraint", "BodyColors", "CharacterMesh", "Decal", "FaceControls", "Humanoid", "HumanoidDescription", "MeshPart", "Motor6D", "NumberValue", "Pants", "Part", "Shirt", "ShirtGraphic", "SpecialMesh", "StringValue", "SurfaceAppearance", "Vector3Value", "WrapTarget", "Weld", "WrapLayer", "WeldConstraint", "AccessoryWeld", "PackageLink", "Folder", "RigidConstraint"}]
+  LOADK R21 K21 ["Accessory"]
+  SETTABLEKS R21 R20 K21 ["Accessory"]
+  LOADK R21 K59 ["Animator"]
+  SETTABLEKS R21 R20 K59 ["Animator"]
+  LOADK R21 K60 ["Attachment"]
+  SETTABLEKS R21 R20 K60 ["Attachment"]
+  JUMPIFNOT R2 [+2]
+  LOADK R21 K61 ["AnimationConstraint"]
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K61 ["AnimationConstraint"]
+  JUMPIFNOT R2 [+2]
+  LOADK R21 K62 ["BallSocketConstraint"]
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K62 ["BallSocketConstraint"]
+  LOADK R21 K63 ["BodyColors"]
+  SETTABLEKS R21 R20 K63 ["BodyColors"]
+  LOADK R21 K22 ["CharacterMesh"]
+  SETTABLEKS R21 R20 K22 ["CharacterMesh"]
+  LOADK R21 K23 ["Decal"]
+  SETTABLEKS R21 R20 K23 ["Decal"]
+  LOADK R21 K64 ["FaceControls"]
+  SETTABLEKS R21 R20 K64 ["FaceControls"]
+  LOADK R21 K65 ["Humanoid"]
+  SETTABLEKS R21 R20 K65 ["Humanoid"]
+  LOADK R21 K66 ["HumanoidDescription"]
+  SETTABLEKS R21 R20 K66 ["HumanoidDescription"]
+  LOADK R21 K24 ["MeshPart"]
+  SETTABLEKS R21 R20 K24 ["MeshPart"]
+  LOADK R21 K67 ["Motor6D"]
+  SETTABLEKS R21 R20 K67 ["Motor6D"]
+  LOADK R21 K68 ["NumberValue"]
+  SETTABLEKS R21 R20 K68 ["NumberValue"]
+  LOADK R21 K25 ["Pants"]
+  SETTABLEKS R21 R20 K25 ["Pants"]
+  LOADK R21 K26 ["Part"]
+  SETTABLEKS R21 R20 K26 ["Part"]
+  LOADK R21 K27 ["Shirt"]
+  SETTABLEKS R21 R20 K27 ["Shirt"]
+  LOADK R21 K28 ["ShirtGraphic"]
+  SETTABLEKS R21 R20 K28 ["ShirtGraphic"]
+  LOADK R21 K29 ["SpecialMesh"]
+  SETTABLEKS R21 R20 K29 ["SpecialMesh"]
+  LOADK R21 K69 ["StringValue"]
+  SETTABLEKS R21 R20 K69 ["StringValue"]
+  LOADK R21 K30 ["SurfaceAppearance"]
+  SETTABLEKS R21 R20 K30 ["SurfaceAppearance"]
+  LOADK R21 K70 ["Vector3Value"]
+  SETTABLEKS R21 R20 K70 ["Vector3Value"]
+  LOADK R21 K71 ["WrapTarget"]
+  SETTABLEKS R21 R20 K71 ["WrapTarget"]
+  LOADK R21 K72 ["Weld"]
+  SETTABLEKS R21 R20 K72 ["Weld"]
+  LOADK R21 K73 ["WrapLayer"]
+  SETTABLEKS R21 R20 K73 ["WrapLayer"]
+  LOADK R21 K74 ["WeldConstraint"]
+  SETTABLEKS R21 R20 K74 ["WeldConstraint"]
+  LOADK R21 K75 ["AccessoryWeld"]
+  SETTABLEKS R21 R20 K75 ["AccessoryWeld"]
+  LOADK R21 K76 ["PackageLink"]
+  SETTABLEKS R21 R20 K76 ["PackageLink"]
+  MOVE R22 R4
+  CALL R22 0 1
+  JUMPIFNOT R22 [+2]
+  LOADK R21 K77 ["Folder"]
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K77 ["Folder"]
+  MOVE R22 R4
+  CALL R22 0 1
+  JUMPIFNOT R22 [+2]
+  LOADK R21 K78 ["RigidConstraint"]
+  JUMP [+1]
+  LOADNIL R21
+  SETTABLEKS R21 R20 K78 ["RigidConstraint"]
+  DUPCLOSURE R21 K80 [PROTO_11]
+  CAPTURE VAL R21
+  DUPCLOSURE R22 K81 [PROTO_12]
+  CAPTURE VAL R22
+  DUPCLOSURE R23 K82 [PROTO_13]
+  CAPTURE VAL R20
+  CAPTURE VAL R23
+  DUPCLOSURE R24 K83 [PROTO_14]
+  CAPTURE VAL R23
+  DUPCLOSURE R25 K84 [PROTO_15]
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  DUPCLOSURE R26 K85 [PROTO_16]
+  DUPTABLE R27 K98 [{"getFaceControls", "getNeck", "getHead", "getAnimator", "updateTransparency", "shouldMarkCloneDirtyForDescendant", "resetPartOrientation", "removeScripts", "removeTags", "sanitizeCharacter", "isValidAvatar", "hasDynamicHead"}]
+  SETTABLEKS R8 R27 K86 ["getFaceControls"]
+  SETTABLEKS R9 R27 K87 ["getNeck"]
+  SETTABLEKS R11 R27 K88 ["getHead"]
+  SETTABLEKS R12 R27 K89 ["getAnimator"]
+  SETTABLEKS R14 R27 K90 ["updateTransparency"]
+  SETTABLEKS R15 R27 K91 ["shouldMarkCloneDirtyForDescendant"]
+  SETTABLEKS R16 R27 K92 ["resetPartOrientation"]
+  SETTABLEKS R18 R27 K93 ["removeScripts"]
+  SETTABLEKS R19 R27 K94 ["removeTags"]
+  SETTABLEKS R24 R27 K95 ["sanitizeCharacter"]
+  SETTABLEKS R25 R27 K96 ["isValidAvatar"]
+  SETTABLEKS R26 R27 K97 ["hasDynamicHead"]
+  RETURN R27 1

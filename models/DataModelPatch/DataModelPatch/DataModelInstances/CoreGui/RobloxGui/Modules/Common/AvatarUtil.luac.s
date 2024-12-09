@@ -1,0 +1,275 @@
+PROTO_0:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onCharacterChanged"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onCharacterChanged"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  NEWTABLE R2 4 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R2 R3 [+3]
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 1
+  SETTABLEKS R0 R1 K2 ["player"]
+  GETIMPORT R2 K5 [Instance.new]
+  LOADK R3 K6 ["BindableEvent"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K7 ["characterChangedEvent"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K8 ["eventQueued"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K9 ["connections"]
+  GETTABLEKS R2 R1 K9 ["connections"]
+  GETTABLEKS R3 R0 K10 ["CharacterAdded"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R1
+  NAMECALL R3 R3 K11 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K12 ["characterAddedConnection"]
+  GETTABLEKS R2 R1 K9 ["connections"]
+  GETTABLEKS R3 R0 K13 ["CharacterAppearanceLoaded"]
+  NEWCLOSURE R5 P1
+  CAPTURE VAL R1
+  NAMECALL R3 R3 K11 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K14 ["characterAppearanceChangedConnection"]
+  GETUPVAL R2 1
+  JUMPIFNOT R2 [+12]
+  GETTABLEKS R3 R1 K2 ["player"]
+  GETTABLEKS R2 R3 K15 ["Character"]
+  JUMPIFNOT R2 [+7]
+  GETTABLEKS R5 R1 K2 ["player"]
+  GETTABLEKS R4 R5 K15 ["Character"]
+  NAMECALL R2 R1 K16 ["onCharacterChanged"]
+  CALL R2 2 0
+  RETURN R1 1
+
+PROTO_3:
+  GETTABLEKS R3 R0 K0 ["connections"]
+  GETTABLE R2 R3 R1
+  JUMPIFNOT R2 [+10]
+  GETTABLEKS R3 R0 K0 ["connections"]
+  GETTABLE R2 R3 R1
+  NAMECALL R2 R2 K1 ["Disconnect"]
+  CALL R2 1 0
+  GETTABLEKS R2 R0 K0 ["connections"]
+  LOADNIL R3
+  SETTABLE R3 R2 R1
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onDescendantAdded"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["onDescendantRemoving"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_6:
+  LOADK R4 K0 ["descendantAddedConnection"]
+  NAMECALL R2 R0 K1 ["removeConnection"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K2 ["connections"]
+  GETTABLEKS R3 R1 K3 ["DescendantAdded"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  NAMECALL R3 R3 K4 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K0 ["descendantAddedConnection"]
+  LOADK R4 K5 ["descendantRemovedConnection"]
+  NAMECALL R2 R0 K1 ["removeConnection"]
+  CALL R2 2 0
+  GETTABLEKS R2 R0 K2 ["connections"]
+  GETTABLEKS R3 R1 K6 ["DescendantRemoving"]
+  NEWCLOSURE R5 P1
+  CAPTURE VAL R0
+  NAMECALL R3 R3 K4 ["Connect"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K5 ["descendantRemovedConnection"]
+  GETIMPORT R2 K8 [pairs]
+  NAMECALL R3 R1 K9 ["GetDescendants"]
+  CALL R3 1 -1
+  CALL R2 -1 3
+  FORGPREP_NEXT R2
+  MOVE R9 R6
+  NAMECALL R7 R0 K10 ["onDescendantAdded"]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-5]
+  NAMECALL R2 R0 K11 ["fireCharacterChanged"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["fireCharacterChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_8:
+  LOADK R4 K0 ["NumberValue"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+18]
+  GETTABLEKS R3 R1 K2 ["Name"]
+  LOADK R4 K3 ["Connection"]
+  CONCAT R2 R3 R4
+  MOVE R5 R2
+  NAMECALL R3 R0 K4 ["removeConnection"]
+  CALL R3 2 0
+  GETTABLEKS R3 R0 K5 ["connections"]
+  GETTABLEKS R4 R1 K6 ["Changed"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  NAMECALL R4 R4 K7 ["Connect"]
+  CALL R4 2 1
+  SETTABLE R4 R3 R2
+  NAMECALL R2 R0 K8 ["fireCharacterChanged"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_9:
+  LOADK R4 K0 ["NumberValue"]
+  NAMECALL R2 R1 K1 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+8]
+  GETTABLEKS R3 R1 K2 ["Name"]
+  LOADK R4 K3 ["Connection"]
+  CONCAT R2 R3 R4
+  MOVE R5 R2
+  NAMECALL R3 R0 K4 ["removeConnection"]
+  CALL R3 2 0
+  NAMECALL R2 R0 K5 ["fireCharacterChanged"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["eventQueued"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["player"]
+  GETTABLEKS R0 R1 K2 ["Character"]
+  JUMPIFNOT R0 [+7]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["characterChangedEvent"]
+  MOVE R3 R0
+  NAMECALL R1 R1 K4 ["Fire"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_11:
+  GETTABLEKS R1 R0 K0 ["eventQueued"]
+  JUMPIFNOT R1 [+1]
+  RETURN R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["eventQueued"]
+  GETIMPORT R1 K3 [task.delay]
+  LOADK R2 K4 [0.1]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_12:
+  NEWTABLE R1 1 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K2 ["playerConnections"]
+  RETURN R0 1
+
+PROTO_13:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["LocalPlayer"]
+  JUMPIF R2 [+10]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["Changed"]
+  NAMECALL R3 R3 K2 ["Wait"]
+  CALL R3 1 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["LocalPlayer"]
+  JUMPBACK [-11]
+  MOVE R5 R2
+  MOVE R6 R1
+  NAMECALL R3 R0 K3 ["connectPlayerCharacterChanges"]
+  CALL R3 3 0
+  RETURN R0 0
+
+PROTO_14:
+  GETTABLEKS R4 R0 K0 ["playerConnections"]
+  GETTABLE R3 R4 R1
+  JUMPIF R3 [+8]
+  GETTABLEKS R3 R0 K0 ["playerConnections"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K1 ["new"]
+  MOVE R5 R1
+  CALL R4 1 1
+  SETTABLE R4 R3 R1
+  GETTABLEKS R6 R0 K0 ["playerConnections"]
+  GETTABLE R5 R6 R1
+  GETTABLEKS R4 R5 K2 ["characterChangedEvent"]
+  GETTABLEKS R3 R4 K3 ["Event"]
+  MOVE R5 R2
+  NAMECALL R3 R3 K4 ["Connect"]
+  CALL R3 2 0
+  GETTABLEKS R4 R0 K0 ["playerConnections"]
+  GETTABLE R3 R4 R1
+  NAMECALL R3 R3 K5 ["fireCharacterChanged"]
+  CALL R3 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Players"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["FixAvatarUtilCharacter"]
+  LOADB R4 0
+  NAMECALL R1 R1 K5 ["DefineFastFlag"]
+  CALL R1 3 1
+  NEWTABLE R2 8 0
+  SETTABLEKS R2 R2 K6 ["__index"]
+  DUPCLOSURE R3 K7 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  SETTABLEKS R3 R2 K8 ["new"]
+  DUPCLOSURE R3 K9 [PROTO_3]
+  SETTABLEKS R3 R2 K10 ["removeConnection"]
+  DUPCLOSURE R3 K11 [PROTO_6]
+  SETTABLEKS R3 R2 K12 ["onCharacterChanged"]
+  DUPCLOSURE R3 K13 [PROTO_8]
+  SETTABLEKS R3 R2 K14 ["onDescendantAdded"]
+  DUPCLOSURE R3 K15 [PROTO_9]
+  SETTABLEKS R3 R2 K16 ["onDescendantRemoving"]
+  DUPCLOSURE R3 K17 [PROTO_11]
+  SETTABLEKS R3 R2 K18 ["fireCharacterChanged"]
+  NEWTABLE R3 4 0
+  SETTABLEKS R3 R3 K6 ["__index"]
+  DUPCLOSURE R4 K19 [PROTO_12]
+  CAPTURE VAL R3
+  SETTABLEKS R4 R3 K8 ["new"]
+  DUPCLOSURE R4 K20 [PROTO_13]
+  CAPTURE VAL R0
+  SETTABLEKS R4 R3 K21 ["connectLocalCharacterChanges"]
+  DUPCLOSURE R4 K22 [PROTO_14]
+  CAPTURE VAL R2
+  SETTABLEKS R4 R3 K23 ["connectPlayerCharacterChanges"]
+  RETURN R3 1

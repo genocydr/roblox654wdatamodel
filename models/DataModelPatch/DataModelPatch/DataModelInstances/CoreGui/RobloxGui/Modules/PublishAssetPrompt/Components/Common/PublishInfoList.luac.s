@@ -1,0 +1,176 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["current"]
+  JUMPIFNOT R1 [+7]
+  GETTABLEKS R1 R0 K1 ["Name"]
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R2 R0 K1 ["Name"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["current"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["current"]
+  GETUPVAL R0 1
+  GETUPVAL R1 2
+  GETIMPORT R3 K2 [game]
+  GETTABLEKS R2 R3 K3 ["GameId"]
+  CALL R0 2 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U3
+  NAMECALL R0 R0 K4 ["andThen"]
+  CALL R0 2 0
+  NEWCLOSURE R0 P1
+  CAPTURE UPVAL U0
+  RETURN R0 1
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["useRef"]
+  LOADB R2 0
+  CALL R1 1 1
+  GETUPVAL R3 1
+  FASTCALL2K ASSERT R3 K1 [+4]
+  LOADK R4 K1 ["LocalPlayer must not be nil"]
+  GETIMPORT R2 K3 [assert]
+  CALL R2 2 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K4 ["Name"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["useState"]
+  LOADNIL R4
+  CALL R3 1 2
+  GETTABLEKS R5 R0 K6 ["typeName"]
+  GETTABLEKS R6 R0 K7 ["LayoutOrder"]
+  GETUPVAL R7 2
+  DUPTABLE R8 K11 [{"creatorText", "attributionText", "typeText"}]
+  LOADK R9 K12 ["Feature.Catalog.Label.Filter.Creator"]
+  SETTABLEKS R9 R8 K8 ["creatorText"]
+  LOADK R9 K13 ["Feature.Catalog.Label.Attribution"]
+  SETTABLEKS R9 R8 K9 ["attributionText"]
+  LOADK R9 K14 ["Feature.Catalog.Label.CategoryType"]
+  SETTABLEKS R9 R8 K10 ["typeText"]
+  CALL R7 1 1
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K15 ["useEffect"]
+  NEWCLOSURE R9 P0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R4
+  NEWTABLE R10 0 0
+  CALL R8 2 0
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K16 ["createElement"]
+  GETUPVAL R9 5
+  DUPTABLE R10 K18 [{"rowData", "LayoutOrder"}]
+  NEWTABLE R11 0 3
+  DUPTABLE R12 K24 [{"infoName", "infoData", "hasVerifiedBadge", "isLoading", "Selectable"}]
+  GETTABLEKS R13 R7 K8 ["creatorText"]
+  SETTABLEKS R13 R12 K19 ["infoName"]
+  SETTABLEKS R2 R12 K20 ["infoData"]
+  GETUPVAL R14 1
+  GETTABLEKS R13 R14 K25 ["HasVerifiedBadge"]
+  SETTABLEKS R13 R12 K21 ["hasVerifiedBadge"]
+  JUMPIFEQKNIL R2 [+2]
+  LOADB R13 0 +1
+  LOADB R13 1
+  SETTABLEKS R13 R12 K22 ["isLoading"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K23 ["Selectable"]
+  DUPTABLE R13 K26 [{"infoName", "infoData", "isLoading", "Selectable"}]
+  GETTABLEKS R14 R7 K9 ["attributionText"]
+  SETTABLEKS R14 R13 K19 ["infoName"]
+  SETTABLEKS R3 R13 K20 ["infoData"]
+  JUMPIFEQKNIL R3 [+2]
+  LOADB R14 0 +1
+  LOADB R14 1
+  SETTABLEKS R14 R13 K22 ["isLoading"]
+  LOADB R14 0
+  SETTABLEKS R14 R13 K23 ["Selectable"]
+  DUPTABLE R14 K26 [{"infoName", "infoData", "isLoading", "Selectable"}]
+  GETTABLEKS R15 R7 K10 ["typeText"]
+  SETTABLEKS R15 R14 K19 ["infoName"]
+  SETTABLEKS R5 R14 K20 ["infoData"]
+  JUMPIFEQKNIL R5 [+2]
+  LOADB R15 0 +1
+  LOADB R15 1
+  SETTABLEKS R15 R14 K22 ["isLoading"]
+  LOADB R15 0
+  SETTABLEKS R15 R14 K23 ["Selectable"]
+  SETLIST R11 R12 3 [1]
+  SETTABLEKS R11 R10 K17 ["rowData"]
+  SETTABLEKS R6 R10 K7 ["LayoutOrder"]
+  CALL R8 2 -1
+  RETURN R8 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["React"]
+  CALL R1 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R6 R0 K8 ["Workspace"]
+  GETTABLEKS R5 R6 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["ItemDetails"]
+  CALL R3 1 1
+  GETTABLEKS R2 R3 K10 ["ItemInfoList"]
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R8 R0 K8 ["Workspace"]
+  GETTABLEKS R7 R8 K6 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["Localization"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K12 ["Hooks"]
+  GETTABLEKS R3 R4 K13 ["useLocalization"]
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K14 ["HttpRbxApiService"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K15 ["CoreGui"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  LOADK R8 K16 ["RobloxGui"]
+  NAMECALL R6 R5 K17 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R10 R6 K18 ["Modules"]
+  GETTABLEKS R9 R10 K19 ["Common"]
+  GETTABLEKS R8 R9 K20 ["httpRequest"]
+  CALL R7 1 1
+  MOVE R8 R7
+  MOVE R9 R4
+  CALL R8 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R13 R0 K8 ["Workspace"]
+  GETTABLEKS R12 R13 K6 ["Packages"]
+  GETTABLEKS R11 R12 K21 ["GameDetailRodux"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K22 ["GetGameNameAndDescription"]
+  GETIMPORT R10 K1 [game]
+  LOADK R12 K23 ["Players"]
+  NAMECALL R10 R10 K3 ["GetService"]
+  CALL R10 2 1
+  GETTABLEKS R11 R10 K24 ["LocalPlayer"]
+  DUPCLOSURE R12 K25 [PROTO_3]
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  CAPTURE VAL R3
+  CAPTURE VAL R9
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  RETURN R12 1

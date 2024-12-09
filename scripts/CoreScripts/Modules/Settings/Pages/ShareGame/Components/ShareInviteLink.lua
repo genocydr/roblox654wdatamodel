@@ -23,14 +23,13 @@ local NetworkStatus = RoduxNetworking.Enum.NetworkStatus
 local Theme = require(RobloxGui.Modules.Settings.Theme)
 
 local GetFFlagEnableNewInviteMenu = require(RobloxGui.Modules.Flags.GetFFlagEnableNewInviteMenu)
-local GetFFlagInviteFriendsDesignUpdates = require(RobloxGui.Modules.Settings.Flags.GetFFlagInviteFriendsDesignUpdates)
 
 local ShareInviteLink = Roact.PureComponent:extend("ShareInviteLink")
 
 local CONTENTS_LEFT_RIGHT_PADDING = 12
 local CONTENTS_TOP_BOTTOM_PADDING = 8
 local SHARE_BUTTON_WIDTH = 69
-if GetFFlagInviteFriendsDesignUpdates() and GetFFlagEnableNewInviteMenu() then
+if GetFFlagEnableNewInviteMenu() then
 	CONTENTS_LEFT_RIGHT_PADDING = 16
 	CONTENTS_TOP_BOTTOM_PADDING = 12
 	SHARE_BUTTON_WIDTH = 66

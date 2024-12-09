@@ -1,0 +1,842 @@
+PROTO_0:
+  GETIMPORT R0 K2 [Instance.new]
+  LOADK R1 K3 ["ScreenGui"]
+  CALL R0 1 1
+  LOADB R1 0
+  SETTABLEKS R1 R0 K4 ["Enabled"]
+  LOADK R1 K5 ["RichTextSizingLabel"]
+  SETTABLEKS R1 R0 K6 ["Name"]
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K7 ["TextLabel"]
+  CALL R1 1 1
+  LOADB R2 1
+  SETTABLEKS R2 R1 K8 ["TextWrapped"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K9 ["RichText"]
+  SETTABLEKS R0 R1 K10 ["Parent"]
+  GETUPVAL R2 0
+  SETTABLEKS R2 R0 K10 ["Parent"]
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["updateWidth"]
+  FASTCALL1 MATH_ROUND R0 [+3]
+  MOVE R3 R0
+  GETIMPORT R2 K3 [math.round]
+  CALL R2 1 1
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["updateHeight"]
+  FASTCALL1 MATH_ROUND R0 [+3]
+  MOVE R3 R0
+  GETIMPORT R2 K3 [math.round]
+  CALL R2 1 1
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETIMPORT R1 K2 [UDim2.fromOffset]
+  GETTABLEN R2 R0 1
+  GETTABLEN R3 R0 2
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_4:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createBinding"]
+  LOADN R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K1 ["width"]
+  SETTABLEKS R2 R0 K2 ["updateWidth"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K3 ["createSingleMotor"]
+  LOADN R2 0
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K4 ["widthMotor"]
+  GETTABLEKS R1 R0 K4 ["widthMotor"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K5 ["onStep"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createBinding"]
+  LOADN R2 0
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K6 ["height"]
+  SETTABLEKS R2 R0 K7 ["updateHeight"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K3 ["createSingleMotor"]
+  LOADN R2 0
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K8 ["heightMotor"]
+  GETTABLEKS R1 R0 K8 ["heightMotor"]
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K5 ["onStep"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createBinding"]
+  LOADN R2 1
+  CALL R1 1 2
+  SETTABLEKS R1 R0 K9 ["transparency"]
+  SETTABLEKS R2 R0 K10 ["updateTransparency"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K3 ["createSingleMotor"]
+  LOADN R2 1
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K11 ["transparencyMotor"]
+  GETTABLEKS R1 R0 K11 ["transparencyMotor"]
+  GETTABLEKS R3 R0 K10 ["updateTransparency"]
+  NAMECALL R1 R1 K5 ["onStep"]
+  CALL R1 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K12 ["joinBindings"]
+  NEWTABLE R2 0 2
+  GETTABLEKS R3 R0 K1 ["width"]
+  GETTABLEKS R4 R0 K6 ["height"]
+  SETLIST R2 R3 2 [1]
+  CALL R1 1 1
+  DUPCLOSURE R3 K13 [PROTO_3]
+  NAMECALL R1 R1 K14 ["map"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K15 ["size"]
+  GETUPVAL R1 2
+  JUMPIFNOT R1 [+4]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K16 ["mockSizingLabel"]
+  JUMP [+28]
+  GETIMPORT R2 K19 [Instance.new]
+  LOADK R3 K20 ["ScreenGui"]
+  CALL R2 1 1
+  LOADB R3 0
+  SETTABLEKS R3 R2 K21 ["Enabled"]
+  LOADK R3 K22 ["RichTextSizingLabel"]
+  SETTABLEKS R3 R2 K23 ["Name"]
+  GETIMPORT R3 K19 [Instance.new]
+  LOADK R4 K24 ["TextLabel"]
+  CALL R3 1 1
+  LOADB R4 1
+  SETTABLEKS R4 R3 K25 ["TextWrapped"]
+  LOADB R4 1
+  SETTABLEKS R4 R3 K26 ["RichText"]
+  SETTABLEKS R2 R3 K27 ["Parent"]
+  GETUPVAL R4 3
+  SETTABLEKS R4 R2 K27 ["Parent"]
+  MOVE R1 R3
+  SETTABLEKS R1 R0 K16 ["mockSizingLabel"]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K28 ["ChatVersion"]
+  GETIMPORT R3 K31 [Enum.ChatVersion.TextChatService]
+  JUMPIFNOTEQ R2 R3 [+5]
+  GETUPVAL R2 5
+  JUMPIFNOT R2 [+2]
+  LOADB R1 1
+  JUMP [+1]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K32 ["isRichTextEnabled"]
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R5 0
+  JUMPIFNOT R5 [+55]
+  GETIMPORT R6 K2 [Instance.new]
+  LOADK R7 K3 ["ScreenGui"]
+  CALL R6 1 1
+  LOADB R7 0
+  SETTABLEKS R7 R6 K4 ["Enabled"]
+  LOADK R7 K5 ["RichTextSizingLabel"]
+  SETTABLEKS R7 R6 K6 ["Name"]
+  GETIMPORT R7 K2 [Instance.new]
+  LOADK R8 K7 ["TextLabel"]
+  CALL R7 1 1
+  LOADB R8 1
+  SETTABLEKS R8 R7 K8 ["TextWrapped"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K9 ["RichText"]
+  SETTABLEKS R6 R7 K10 ["Parent"]
+  GETUPVAL R8 1
+  SETTABLEKS R8 R6 K10 ["Parent"]
+  MOVE R5 R7
+  SETTABLEKS R1 R5 K11 ["Text"]
+  SETTABLEKS R2 R5 K12 ["TextSize"]
+  SETTABLEKS R3 R5 K13 ["Font"]
+  GETIMPORT R6 K16 [UDim2.fromOffset]
+  GETTABLEKS R7 R4 K17 ["X"]
+  GETTABLEKS R8 R4 K18 ["Y"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K19 ["Size"]
+  GETTABLEKS R6 R5 K20 ["TextBounds"]
+  GETUPVAL R7 2
+  JUMPIFNOT R7 [+6]
+  GETTABLEKS R7 R5 K10 ["Parent"]
+  NAMECALL R7 R7 K21 ["Destroy"]
+  CALL R7 1 0
+  RETURN R6 1
+  NAMECALL R7 R5 K21 ["Destroy"]
+  CALL R7 1 0
+  RETURN R6 1
+  GETTABLEKS R5 R0 K22 ["mockSizingLabel"]
+  SETTABLEKS R1 R5 K11 ["Text"]
+  GETTABLEKS R5 R0 K22 ["mockSizingLabel"]
+  SETTABLEKS R2 R5 K12 ["TextSize"]
+  GETTABLEKS R5 R0 K22 ["mockSizingLabel"]
+  SETTABLEKS R3 R5 K13 ["Font"]
+  GETTABLEKS R5 R0 K22 ["mockSizingLabel"]
+  GETIMPORT R6 K16 [UDim2.fromOffset]
+  GETTABLEKS R7 R4 K17 ["X"]
+  GETTABLEKS R8 R4 K18 ["Y"]
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K19 ["Size"]
+  GETTABLEKS R6 R0 K22 ["mockSizingLabel"]
+  GETTABLEKS R5 R6 K20 ["TextBounds"]
+  RETURN R5 1
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["chatSettings"]
+  GETIMPORT R2 K4 [Vector2.new]
+  GETTABLEKS R4 R1 K6 ["Padding"]
+  MULK R3 R4 K5 [4]
+  GETTABLEKS R5 R1 K6 ["Padding"]
+  MULK R4 R5 K7 [2]
+  CALL R2 2 1
+  GETIMPORT R3 K4 [Vector2.new]
+  LOADN R4 0
+  LOADN R5 0
+  CALL R3 2 1
+  GETTABLEKS R4 R0 K8 ["isRichTextEnabled"]
+  JUMPIFNOT R4 [+19]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K9 ["text"]
+  GETTABLEKS R7 R1 K10 ["TextSize"]
+  GETTABLEKS R8 R1 K11 ["Font"]
+  GETIMPORT R9 K4 [Vector2.new]
+  GETTABLEKS R10 R1 K12 ["MaxWidth"]
+  LOADN R11 16
+  CALL R9 2 -1
+  NAMECALL R4 R0 K13 ["getBoundsFromSizingLabel"]
+  CALL R4 -1 1
+  MOVE R3 R4
+  JUMP [+19]
+  GETUPVAL R4 0
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K9 ["text"]
+  GETTABLEKS R7 R1 K10 ["TextSize"]
+  GETTABLEKS R8 R1 K11 ["Font"]
+  GETIMPORT R9 K4 [Vector2.new]
+  GETTABLEKS R10 R1 K12 ["MaxWidth"]
+  LOADN R11 16
+  CALL R9 2 -1
+  NAMECALL R4 R4 K14 ["GetTextSize"]
+  CALL R4 -1 1
+  MOVE R3 R4
+  ADD R4 R3 R2
+  RETURN R4 1
+
+PROTO_7:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["chatSettings"]
+  GETTABLEKS R2 R1 K2 ["BackgroundImage"]
+  GETTABLEKS R3 R1 K3 ["BackgroundGradient"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["renderInsert"]
+  JUMPIFNOT R5 [+10]
+  GETTABLEKS R7 R0 K0 ["props"]
+  GETTABLEKS R6 R7 K5 ["insertSize"]
+  GETTABLEKS R5 R6 K6 ["X"]
+  GETTABLEKS R6 R1 K7 ["Padding"]
+  ADD R4 R5 R6
+  JUMPIF R4 [+1]
+  LOADN R4 0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K8 ["createElement"]
+  LOADK R6 K9 ["Frame"]
+  DUPTABLE R7 K15 [{"LayoutOrder", "AnchorPoint", "Size", "Position", "Transparency"}]
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K16 ["timestamp"]
+  SETTABLEKS R8 R7 K10 ["LayoutOrder"]
+  GETIMPORT R8 K19 [Vector2.new]
+  LOADK R9 K20 [0.5]
+  LOADK R10 K20 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K11 ["AnchorPoint"]
+  GETTABLEKS R8 R0 K21 ["size"]
+  SETTABLEKS R8 R7 K12 ["Size"]
+  GETIMPORT R8 K24 [UDim2.fromScale]
+  LOADN R9 1
+  LOADK R10 K20 [0.5]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K13 ["Position"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K14 ["Transparency"]
+  DUPTABLE R8 K27 [{"Layout", "Frame", "Carat"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K8 ["createElement"]
+  LOADK R10 K28 ["UIListLayout"]
+  DUPTABLE R11 K31 [{"SortOrder", "HorizontalAlignment", "Padding"}]
+  GETIMPORT R12 K33 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R12 R11 K29 ["SortOrder"]
+  GETIMPORT R12 K35 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R12 R11 K30 ["HorizontalAlignment"]
+  GETIMPORT R12 K37 [UDim.new]
+  LOADN R13 0
+  LOADN R14 255
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K7 ["Padding"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K25 ["Layout"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K8 ["createElement"]
+  LOADK R10 K38 ["ImageLabel"]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K39 ["Dictionary"]
+  GETTABLEKS R11 R12 K40 ["join"]
+  MOVE R12 R2
+  DUPTABLE R13 K46 [{"LayoutOrder", "BackgroundColor3", "AnchorPoint", "Size", "BorderSizePixel", "Position", "BackgroundTransparency", "ClipsDescendants", "ImageTransparency"}]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K10 ["LayoutOrder"]
+  GETTABLEKS R14 R1 K41 ["BackgroundColor3"]
+  SETTABLEKS R14 R13 K41 ["BackgroundColor3"]
+  GETIMPORT R14 K19 [Vector2.new]
+  LOADK R15 K20 [0.5]
+  LOADN R16 0
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K11 ["AnchorPoint"]
+  GETIMPORT R14 K24 [UDim2.fromScale]
+  LOADN R15 1
+  LOADN R16 1
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K12 ["Size"]
+  LOADN R14 0
+  SETTABLEKS R14 R13 K42 ["BorderSizePixel"]
+  GETIMPORT R14 K47 [UDim2.new]
+  LOADK R15 K20 [0.5]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K13 ["Position"]
+  GETTABLEKS R15 R2 K48 ["Image"]
+  JUMPIFEQKS R15 K49 [""] [+3]
+  LOADN R14 1
+  JUMP [+2]
+  GETTABLEKS R14 R0 K50 ["transparency"]
+  SETTABLEKS R14 R13 K43 ["BackgroundTransparency"]
+  LOADB R14 1
+  SETTABLEKS R14 R13 K44 ["ClipsDescendants"]
+  GETTABLEKS R14 R0 K50 ["transparency"]
+  SETTABLEKS R14 R13 K45 ["ImageTransparency"]
+  CALL R11 2 1
+  DUPTABLE R12 K55 [{"UICorner", "UIListLayout", "Padding", "Insert", "Text", "Gradient"}]
+  GETTABLEKS R13 R1 K56 ["CornerEnabled"]
+  JUMPIFNOT R13 [+10]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K8 ["createElement"]
+  LOADK R14 K51 ["UICorner"]
+  DUPTABLE R15 K58 [{"CornerRadius"}]
+  GETTABLEKS R16 R1 K57 ["CornerRadius"]
+  SETTABLEKS R16 R15 K57 ["CornerRadius"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K51 ["UICorner"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K8 ["createElement"]
+  LOADK R14 K28 ["UIListLayout"]
+  DUPTABLE R15 K61 [{"FillDirection", "SortOrder", "VerticalAlignment", "Padding"}]
+  GETIMPORT R16 K63 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R16 R15 K59 ["FillDirection"]
+  GETIMPORT R16 K33 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R16 R15 K29 ["SortOrder"]
+  GETIMPORT R16 K65 [Enum.VerticalAlignment.Bottom]
+  SETTABLEKS R16 R15 K60 ["VerticalAlignment"]
+  GETIMPORT R16 K37 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R18 R1 K7 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K7 ["Padding"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K28 ["UIListLayout"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K8 ["createElement"]
+  LOADK R14 K66 ["UIPadding"]
+  DUPTABLE R15 K71 [{"PaddingTop", "PaddingRight", "PaddingBottom", "PaddingLeft"}]
+  GETIMPORT R16 K37 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R18 R1 K7 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K67 ["PaddingTop"]
+  GETIMPORT R16 K37 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R18 R1 K7 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K68 ["PaddingRight"]
+  GETIMPORT R16 K37 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R18 R1 K7 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K69 ["PaddingBottom"]
+  GETIMPORT R16 K37 [UDim.new]
+  LOADN R17 0
+  GETTABLEKS R18 R1 K7 ["Padding"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K70 ["PaddingLeft"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K7 ["Padding"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K4 ["renderInsert"]
+  JUMPIFNOT R13 [+5]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K4 ["renderInsert"]
+  CALL R13 0 1
+  SETTABLEKS R13 R12 K52 ["Insert"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K8 ["createElement"]
+  LOADK R14 K72 ["TextLabel"]
+  DUPTABLE R15 K80 [{"Text", "Size", "AnchorPoint", "Position", "BackgroundTransparency", "Font", "TextColor3", "TextSize", "TextTransparency", "TextWrapped", "AutoLocalize", "LayoutOrder", "RichText"}]
+  GETTABLEKS R17 R0 K0 ["props"]
+  GETTABLEKS R16 R17 K81 ["text"]
+  SETTABLEKS R16 R15 K53 ["Text"]
+  GETIMPORT R16 K47 [UDim2.new]
+  LOADN R17 1
+  MINUS R18 R4
+  LOADN R19 1
+  LOADN R20 0
+  CALL R16 4 1
+  SETTABLEKS R16 R15 K12 ["Size"]
+  GETIMPORT R16 K19 [Vector2.new]
+  LOADK R17 K20 [0.5]
+  LOADK R18 K20 [0.5]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K11 ["AnchorPoint"]
+  GETIMPORT R16 K24 [UDim2.fromScale]
+  LOADK R17 K20 [0.5]
+  LOADK R18 K20 [0.5]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K13 ["Position"]
+  LOADN R16 1
+  SETTABLEKS R16 R15 K43 ["BackgroundTransparency"]
+  GETTABLEKS R16 R1 K73 ["Font"]
+  SETTABLEKS R16 R15 K73 ["Font"]
+  GETTABLEKS R16 R1 K74 ["TextColor3"]
+  SETTABLEKS R16 R15 K74 ["TextColor3"]
+  GETTABLEKS R16 R1 K75 ["TextSize"]
+  SETTABLEKS R16 R15 K75 ["TextSize"]
+  GETTABLEKS R16 R0 K50 ["transparency"]
+  SETTABLEKS R16 R15 K76 ["TextTransparency"]
+  LOADB R16 1
+  SETTABLEKS R16 R15 K77 ["TextWrapped"]
+  LOADB R16 0
+  SETTABLEKS R16 R15 K78 ["AutoLocalize"]
+  LOADN R16 2
+  SETTABLEKS R16 R15 K10 ["LayoutOrder"]
+  GETTABLEKS R16 R0 K82 ["isRichTextEnabled"]
+  SETTABLEKS R16 R15 K79 ["RichText"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K53 ["Text"]
+  GETTABLEKS R13 R3 K83 ["Enabled"]
+  JUMPIFNOT R13 [+6]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K8 ["createElement"]
+  LOADK R14 K84 ["UIGradient"]
+  MOVE R15 R3
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K54 ["Gradient"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K9 ["Frame"]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K85 ["isMostRecent"]
+  JUMPIFNOT R9 [+38]
+  GETTABLEKS R9 R1 K86 ["TailVisible"]
+  JUMPIFNOT R9 [+35]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K87 ["showCarat"]
+  JUMPIFNOT R9 [+30]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K8 ["createElement"]
+  LOADK R10 K38 ["ImageLabel"]
+  DUPTABLE R11 K89 [{"LayoutOrder", "BackgroundTransparency", "Size", "Image", "ImageColor3", "ImageTransparency"}]
+  LOADN R12 2
+  SETTABLEKS R12 R11 K10 ["LayoutOrder"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K43 ["BackgroundTransparency"]
+  GETIMPORT R12 K91 [UDim2.fromOffset]
+  LOADN R13 9
+  LOADN R14 6
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K12 ["Size"]
+  LOADK R12 K92 ["rbxasset://textures/ui/InGameChat/Caret.png"]
+  SETTABLEKS R12 R11 K48 ["Image"]
+  GETTABLEKS R12 R1 K41 ["BackgroundColor3"]
+  SETTABLEKS R12 R11 K88 ["ImageColor3"]
+  GETTABLEKS R12 R0 K50 ["transparency"]
+  SETTABLEKS R12 R11 K45 ["ImageTransparency"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K26 ["Carat"]
+  CALL R5 3 -1
+  RETURN R5 -1
+
+PROTO_8:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["messageId"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R1 R0 K0 ["isFadingOut"]
+  JUMPIF R1 [+24]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["isFadingOut"]
+  GETTABLEKS R1 R0 K1 ["transparencyMotor"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["onComplete"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  GETTABLEKS R3 R0 K3 ["props"]
+  GETTABLEKS R2 R3 K4 ["chatSettings"]
+  CALL R1 1 1
+  GETTABLEKS R2 R0 K1 ["transparencyMotor"]
+  MOVE R4 R1
+  LOADN R5 1
+  CALL R4 1 -1
+  NAMECALL R2 R2 K5 ["setGoal"]
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["fadingOut"]
+  JUMPIFNOT R2 [+3]
+  NAMECALL R2 R0 K2 ["fadeOut"]
+  CALL R2 1 0
+  GETTABLEKS R2 R1 K3 ["text"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["text"]
+  JUMPIFNOTEQ R2 R3 [+25]
+  GETTABLEKS R2 R1 K4 ["chatSettings"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K4 ["chatSettings"]
+  JUMPIFNOTEQ R2 R3 [+17]
+  GETTABLEKS R2 R1 K5 ["renderInsert"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K5 ["renderInsert"]
+  JUMPIFNOTEQ R2 R3 [+9]
+  GETTABLEKS R2 R1 K6 ["insertSize"]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K6 ["insertSize"]
+  JUMPIFEQ R2 R3 [+64]
+  NAMECALL R2 R0 K7 ["getTextBounds"]
+  CALL R2 1 1
+  GETUPVAL R3 0
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K4 ["chatSettings"]
+  CALL R3 1 1
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["chatSettings"]
+  GETTABLEKS R4 R5 K8 ["Padding"]
+  GETTABLEKS R5 R2 K9 ["X"]
+  GETTABLEKS R6 R2 K10 ["Y"]
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K5 ["renderInsert"]
+  JUMPIFNOT R7 [+23]
+  GETTABLEKS R10 R0 K0 ["props"]
+  GETTABLEKS R9 R10 K6 ["insertSize"]
+  GETTABLEKS R8 R9 K9 ["X"]
+  ADD R7 R8 R4
+  ADD R5 R5 R7
+  GETTABLEKS R12 R0 K0 ["props"]
+  GETTABLEKS R11 R12 K6 ["insertSize"]
+  GETTABLEKS R10 R11 K10 ["Y"]
+  MULK R11 R4 K11 [2]
+  ADD R9 R10 R11
+  FASTCALL2 MATH_MAX R6 R9 [+4]
+  MOVE R8 R6
+  GETIMPORT R7 K14 [math.max]
+  CALL R7 2 1
+  MOVE R6 R7
+  GETTABLEKS R7 R0 K15 ["heightMotor"]
+  MOVE R9 R3
+  MOVE R10 R6
+  CALL R9 1 -1
+  NAMECALL R7 R7 K16 ["setGoal"]
+  CALL R7 -1 0
+  GETTABLEKS R7 R0 K17 ["widthMotor"]
+  MOVE R9 R3
+  MOVE R10 R5
+  CALL R9 1 -1
+  NAMECALL R7 R7 K16 ["setGoal"]
+  CALL R7 -1 0
+  RETURN R0 0
+
+PROTO_11:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  NAMECALL R1 R0 K1 ["getTextBounds"]
+  CALL R1 1 1
+  GETTABLEKS R3 R0 K2 ["props"]
+  GETTABLEKS R2 R3 K3 ["chatSettings"]
+  GETUPVAL R3 0
+  MOVE R4 R2
+  CALL R3 1 1
+  GETUPVAL R4 1
+  MOVE R5 R2
+  CALL R4 1 1
+  GETTABLEKS R5 R1 K4 ["X"]
+  GETTABLEKS R6 R1 K5 ["Y"]
+  GETTABLEKS R8 R0 K2 ["props"]
+  GETTABLEKS R7 R8 K6 ["renderInsert"]
+  JUMPIFNOT R7 [+27]
+  GETTABLEKS R10 R0 K2 ["props"]
+  GETTABLEKS R9 R10 K7 ["insertSize"]
+  GETTABLEKS R8 R9 K4 ["X"]
+  GETTABLEKS R9 R2 K8 ["Padding"]
+  ADD R7 R8 R9
+  ADD R5 R5 R7
+  GETTABLEKS R12 R0 K2 ["props"]
+  GETTABLEKS R11 R12 K7 ["insertSize"]
+  GETTABLEKS R10 R11 K5 ["Y"]
+  GETTABLEKS R12 R2 K8 ["Padding"]
+  MULK R11 R12 K9 [2]
+  ADD R9 R10 R11
+  FASTCALL2 MATH_MAX R6 R9 [+4]
+  MOVE R8 R6
+  GETIMPORT R7 K12 [math.max]
+  CALL R7 2 1
+  MOVE R6 R7
+  GETTABLEKS R8 R0 K2 ["props"]
+  GETTABLEKS R7 R8 K13 ["isMostRecent"]
+  JUMPIFNOT R7 [+19]
+  GETTABLEKS R7 R0 K14 ["heightMotor"]
+  MOVE R9 R3
+  MOVE R10 R6
+  CALL R9 1 -1
+  NAMECALL R7 R7 K15 ["setGoal"]
+  CALL R7 -1 0
+  GETTABLEKS R7 R0 K16 ["widthMotor"]
+  GETUPVAL R10 2
+  GETTABLEKS R9 R10 K17 ["instant"]
+  MOVE R10 R5
+  CALL R9 1 -1
+  NAMECALL R7 R7 K15 ["setGoal"]
+  CALL R7 -1 0
+  JUMP [+16]
+  GETTABLEKS R7 R0 K14 ["heightMotor"]
+  MOVE R9 R3
+  MOVE R10 R6
+  CALL R9 1 -1
+  NAMECALL R7 R7 K15 ["setGoal"]
+  CALL R7 -1 0
+  GETTABLEKS R7 R0 K16 ["widthMotor"]
+  MOVE R9 R3
+  MOVE R10 R5
+  CALL R9 1 -1
+  NAMECALL R7 R7 K15 ["setGoal"]
+  CALL R7 -1 0
+  GETTABLEKS R7 R0 K18 ["transparencyMotor"]
+  MOVE R9 R4
+  GETTABLEKS R10 R2 K19 ["Transparency"]
+  CALL R9 1 -1
+  NAMECALL R7 R7 K15 ["setGoal"]
+  CALL R7 -1 0
+  RETURN R0 0
+
+PROTO_12:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["isMounted"]
+  GETTABLEKS R1 R0 K1 ["transparencyMotor"]
+  NAMECALL R1 R1 K2 ["destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K3 ["heightMotor"]
+  NAMECALL R1 R1 K2 ["destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K4 ["widthMotor"]
+  NAMECALL R1 R1 K2 ["destroy"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_13:
+  GETTABLEKS R3 R0 K0 ["messages"]
+  GETTABLEKS R4 R1 K1 ["messageId"]
+  GETTABLE R2 R3 R4
+  DUPTABLE R3 K4 [{"text", "timestamp"}]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R4 R2 K2 ["text"]
+  JUMPIF R4 [+1]
+  LOADK R4 K5 [""]
+  SETTABLEKS R4 R3 K2 ["text"]
+  JUMPIFNOT R2 [+3]
+  GETTABLEKS R4 R2 K3 ["timestamp"]
+  JUMPIF R4 [+1]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K3 ["timestamp"]
+  RETURN R3 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["TextService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["TextChatService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R0 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["Otter"]
+  CALL R3 1 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K8 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R7 R0 K8 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R6 K7 [require]
+  GETTABLEKS R8 R0 K8 ["Packages"]
+  GETTABLEKS R7 R8 K12 ["t"]
+  CALL R6 1 1
+  GETIMPORT R7 K7 [require]
+  GETTABLEKS R9 R0 K8 ["Packages"]
+  GETTABLEKS R8 R9 K13 ["Cryo"]
+  CALL R7 1 1
+  GETIMPORT R10 K15 [script]
+  GETTABLEKS R9 R10 K16 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["Parent"]
+  GETIMPORT R9 K7 [require]
+  GETTABLEKS R10 R8 K17 ["Types"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R12 R8 K18 ["Helpers"]
+  GETTABLEKS R11 R12 K19 ["getSizeSpringFromSettings"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R13 R8 K18 ["Helpers"]
+  GETTABLEKS R12 R13 K20 ["getTransparencySpringFromSettings"]
+  CALL R11 1 1
+  GETIMPORT R12 K1 [game]
+  LOADK R14 K21 ["CoreGui"]
+  NAMECALL R12 R12 K3 ["GetService"]
+  CALL R12 2 1
+  LOADK R15 K22 ["RobloxGui"]
+  NAMECALL R13 R12 K23 ["WaitForChild"]
+  CALL R13 2 1
+  GETIMPORT R14 K7 [require]
+  GETTABLEKS R17 R13 K24 ["Modules"]
+  GETTABLEKS R16 R17 K25 ["Flags"]
+  GETTABLEKS R15 R16 K26 ["FFlagEnableRichTextForBubbleChat"]
+  CALL R14 1 1
+  GETIMPORT R15 K1 [game]
+  LOADK R17 K27 ["FixMockSizingLabelMemoryLeak"]
+  LOADB R18 0
+  NAMECALL R15 R15 K28 ["DefineFastFlag"]
+  CALL R15 3 1
+  GETIMPORT R16 K1 [game]
+  LOADK R18 K29 ["FixMockSizingLabelMemoryLeak2"]
+  LOADB R19 0
+  NAMECALL R16 R16 K28 ["DefineFastFlag"]
+  CALL R16 3 1
+  GETTABLEKS R17 R4 K30 ["PureComponent"]
+  LOADK R19 K31 ["ChatBubble"]
+  NAMECALL R17 R17 K32 ["extend"]
+  CALL R17 2 1
+  GETTABLEKS R18 R6 K33 ["strictInterface"]
+  DUPTABLE R19 K44 [{"messageId", "fadingOut", "onFadeOut", "isMostRecent", "theme", "renderInsert", "insertSize", "chatSettings", "text", "timestamp"}]
+  GETTABLEKS R20 R6 K45 ["string"]
+  SETTABLEKS R20 R19 K34 ["messageId"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K47 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K35 ["fadingOut"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K48 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K36 ["onFadeOut"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K47 ["boolean"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K37 ["isMostRecent"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K45 ["string"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K38 ["theme"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K48 ["callback"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K39 ["renderInsert"]
+  GETTABLEKS R20 R6 K46 ["optional"]
+  GETTABLEKS R21 R6 K49 ["Vector2"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K40 ["insertSize"]
+  GETTABLEKS R20 R9 K50 ["IChatSettings"]
+  SETTABLEKS R20 R19 K41 ["chatSettings"]
+  GETTABLEKS R20 R6 K45 ["string"]
+  SETTABLEKS R20 R19 K42 ["text"]
+  GETTABLEKS R20 R6 K51 ["number"]
+  SETTABLEKS R20 R19 K43 ["timestamp"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K52 ["validateProps"]
+  DUPTABLE R18 K53 [{"theme", "isMostRecent"}]
+  LOADK R19 K54 ["Light"]
+  SETTABLEKS R19 R18 K38 ["theme"]
+  LOADB R19 1
+  SETTABLEKS R19 R18 K37 ["isMostRecent"]
+  SETTABLEKS R18 R17 K55 ["defaultProps"]
+  DUPCLOSURE R18 K56 [PROTO_0]
+  CAPTURE VAL R12
+  DUPCLOSURE R19 K57 [PROTO_4]
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R15
+  CAPTURE VAL R12
+  CAPTURE VAL R2
+  CAPTURE VAL R14
+  SETTABLEKS R19 R17 K58 ["init"]
+  DUPCLOSURE R19 K59 [PROTO_5]
+  CAPTURE VAL R15
+  CAPTURE VAL R12
+  CAPTURE VAL R16
+  SETTABLEKS R19 R17 K60 ["getBoundsFromSizingLabel"]
+  DUPCLOSURE R19 K61 [PROTO_6]
+  CAPTURE VAL R1
+  SETTABLEKS R19 R17 K62 ["getTextBounds"]
+  DUPCLOSURE R19 K63 [PROTO_7]
+  CAPTURE VAL R4
+  CAPTURE VAL R7
+  SETTABLEKS R19 R17 K64 ["render"]
+  DUPCLOSURE R19 K65 [PROTO_9]
+  CAPTURE VAL R11
+  SETTABLEKS R19 R17 K66 ["fadeOut"]
+  DUPCLOSURE R19 K67 [PROTO_10]
+  CAPTURE VAL R10
+  SETTABLEKS R19 R17 K68 ["didUpdate"]
+  DUPCLOSURE R19 K69 [PROTO_11]
+  CAPTURE VAL R10
+  CAPTURE VAL R11
+  CAPTURE VAL R3
+  SETTABLEKS R19 R17 K70 ["didMount"]
+  DUPCLOSURE R19 K71 [PROTO_12]
+  SETTABLEKS R19 R17 K72 ["willUnmount"]
+  DUPCLOSURE R19 K73 [PROTO_13]
+  GETTABLEKS R20 R5 K74 ["connect"]
+  MOVE R21 R19
+  CALL R20 1 1
+  MOVE R21 R17
+  CALL R20 1 -1
+  RETURN R20 -1

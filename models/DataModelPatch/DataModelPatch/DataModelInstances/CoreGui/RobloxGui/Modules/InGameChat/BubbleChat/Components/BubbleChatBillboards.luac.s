@@ -1,0 +1,272 @@
+PROTO_0:
+  DUPTABLE R2 K1 [{"userMessages"}]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["Dictionary"]
+  GETTABLEKS R3 R4 K3 ["join"]
+  GETTABLEKS R4 R1 K0 ["userMessages"]
+  JUMPIF R4 [+2]
+  NEWTABLE R4 0 0
+  GETTABLEKS R5 R0 K0 ["userMessages"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K0 ["userMessages"]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  DUPTABLE R3 K1 [{"userMessages"}]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K2 ["Dictionary"]
+  GETTABLEKS R4 R5 K3 ["join"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K4 ["state"]
+  GETTABLEKS R5 R6 K0 ["userMessages"]
+  NEWTABLE R6 1 0
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K5 ["None"]
+  SETTABLE R7 R6 R0
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K0 ["userMessages"]
+  NAMECALL R1 R1 K6 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  LOADK R3 K0 ["Initializing"]
+  NAMECALL R1 R1 K1 ["debug"]
+  CALL R1 2 0
+  DUPTABLE R3 K3 [{"userMessages"}]
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R3 K2 ["userMessages"]
+  NAMECALL R1 R0 K4 ["setState"]
+  CALL R1 2 0
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  SETTABLEKS R1 R0 K5 ["onBillboardFadeOut"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["voiceEnabled"]
+  JUMPIF R1 [+8]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["bubbleChatEnabled"]
+  JUMPIF R1 [+3]
+  GETUPVAL R1 0
+  JUMPIF R1 [+1]
+  RETURN R0 0
+  NEWTABLE R1 0 0
+  GETIMPORT R2 K4 [pairs]
+  GETTABLEKS R5 R0 K5 ["state"]
+  GETTABLEKS R3 R5 K6 ["userMessages"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  LOADB R7 0
+  SETTABLE R7 R1 R5
+  FORGLOOP R2 2 [-3]
+  GETIMPORT R2 K4 [pairs]
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R3 R5 K7 ["participants"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K8 ["VOICE_STATE"]
+  GETTABLEKS R7 R8 K9 ["HIDDEN"]
+  JUMPIFEQ R6 R7 [+3]
+  LOADB R7 1
+  SETTABLE R7 R1 R5
+  FORGLOOP R2 2 [-10]
+  GETUPVAL R2 0
+  JUMPIFNOT R2 [+11]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K10 ["LocalPlayer"]
+  GETTABLEKS R3 R4 K11 ["UserId"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K13 [tostring]
+  CALL R2 1 1
+  LOADB R3 1
+  SETTABLE R3 R1 R2
+  NEWTABLE R2 0 0
+  GETIMPORT R3 K4 [pairs]
+  MOVE R4 R1
+  CALL R3 1 3
+  FORGPREP_NEXT R3
+  GETUPVAL R8 3
+  LOADK R10 K14 ["Rendering billboard for ...{}"]
+  FASTCALL1 TOSTRING R6 [+3]
+  MOVE R13 R6
+  GETIMPORT R12 K13 [tostring]
+  CALL R12 1 1
+  FASTCALL2K STRING_SUB R12 K15 [+4]
+  LOADK R13 K15 [-4]
+  GETIMPORT R11 K18 [string.sub]
+  CALL R11 2 1
+  NAMECALL R8 R8 K19 ["trace"]
+  CALL R8 3 0
+  LOADK R9 K20 ["BubbleChat_"]
+  MOVE R10 R6
+  CONCAT R8 R9 R10
+  GETUPVAL R10 4
+  GETTABLEKS R9 R10 K21 ["createElement"]
+  GETUPVAL R10 5
+  DUPTABLE R11 K24 [{"userId", "onFadeOut", "voiceEnabled", "bubbleChatEnabled"}]
+  SETTABLEKS R6 R11 K22 ["userId"]
+  GETTABLEKS R12 R0 K25 ["onBillboardFadeOut"]
+  SETTABLEKS R12 R11 K23 ["onFadeOut"]
+  GETTABLEKS R14 R0 K0 ["props"]
+  GETTABLEKS R13 R14 K1 ["voiceEnabled"]
+  AND R12 R13 R7
+  SETTABLEKS R12 R11 K1 ["voiceEnabled"]
+  GETTABLEKS R13 R0 K0 ["props"]
+  GETTABLEKS R12 R13 K2 ["bubbleChatEnabled"]
+  SETTABLEKS R12 R11 K2 ["bubbleChatEnabled"]
+  CALL R9 2 1
+  SETTABLE R9 R2 R8
+  FORGLOOP R3 2 [-46]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K21 ["createElement"]
+  LOADK R4 K26 ["ScreenGui"]
+  DUPTABLE R5 K28 [{"ResetOnSpawn"}]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K27 ["ResetOnSpawn"]
+  MOVE R6 R2
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_4:
+  GETTABLEKS R2 R0 K0 ["components"]
+  GETTABLEKS R1 R2 K1 ["voiceEnabled"]
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+12]
+  GETTABLEKS R3 R0 K0 ["components"]
+  GETTABLEKS R2 R3 K1 ["voiceEnabled"]
+  JUMPIFNOT R2 [+6]
+  GETTABLEKS R4 R0 K2 ["chatSettings"]
+  GETTABLEKS R3 R4 K3 ["Voice"]
+  GETTABLEKS R2 R3 K4 ["ShowIndicator"]
+  MOVE R1 R2
+  DUPTABLE R2 K8 [{"userMessages", "voiceEnabled", "bubbleChatEnabled", "participants"}]
+  GETTABLEKS R3 R0 K5 ["userMessages"]
+  SETTABLEKS R3 R2 K5 ["userMessages"]
+  SETTABLEKS R1 R2 K1 ["voiceEnabled"]
+  GETTABLEKS R4 R0 K0 ["components"]
+  GETTABLEKS R3 R4 K6 ["bubbleChatEnabled"]
+  SETTABLEKS R3 R2 K6 ["bubbleChatEnabled"]
+  GETTABLEKS R3 R0 K9 ["voiceState"]
+  SETTABLEKS R3 R2 K7 ["participants"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K6 ["RobloxGui"]
+  NAMECALL R3 R0 K7 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R1 K10 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["Roact"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R7 R1 K10 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["RoactRodux"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R8 R1 K10 ["Packages"]
+  GETTABLEKS R7 R8 K13 ["t"]
+  CALL R6 1 1
+  GETIMPORT R7 K9 [require]
+  GETTABLEKS R9 R1 K10 ["Packages"]
+  GETTABLEKS R8 R9 K14 ["Cryo"]
+  CALL R7 1 1
+  GETIMPORT R8 K9 [require]
+  GETIMPORT R12 K16 [script]
+  GETTABLEKS R11 R12 K17 ["Parent"]
+  GETTABLEKS R10 R11 K17 ["Parent"]
+  GETTABLEKS R9 R10 K18 ["Constants"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETIMPORT R13 K16 [script]
+  GETTABLEKS R12 R13 K17 ["Parent"]
+  GETTABLEKS R11 R12 K17 ["Parent"]
+  GETTABLEKS R10 R11 K19 ["Logger"]
+  CALL R9 1 1
+  GETIMPORT R11 K16 [script]
+  GETTABLEKS R10 R11 K20 ["Name"]
+  CALL R9 1 1
+  GETIMPORT R10 K9 [require]
+  GETIMPORT R13 K16 [script]
+  GETTABLEKS R12 R13 K17 ["Parent"]
+  GETTABLEKS R11 R12 K21 ["BubbleChatBillboard"]
+  CALL R10 1 1
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R14 R3 K22 ["Modules"]
+  GETTABLEKS R13 R14 K23 ["Flags"]
+  GETTABLEKS R12 R13 K24 ["GetFFlagBubbleVoiceIndicatorSetting"]
+  CALL R11 1 1
+  GETIMPORT R13 K9 [require]
+  GETTABLEKS R16 R1 K25 ["Workspace"]
+  GETTABLEKS R15 R16 K10 ["Packages"]
+  GETTABLEKS R14 R15 K26 ["SharedFlags"]
+  CALL R13 1 1
+  GETTABLEKS R12 R13 K27 ["GetFFlagAvatarChatCoreScriptSupport"]
+  CALL R12 0 1
+  GETTABLEKS R13 R4 K28 ["Component"]
+  LOADK R15 K29 ["ChatBillboards"]
+  NAMECALL R13 R13 K30 ["extend"]
+  CALL R13 2 1
+  GETTABLEKS R14 R6 K31 ["strictInterface"]
+  DUPTABLE R15 K36 [{"userMessages", "bubbleChatEnabled", "voiceEnabled", "participants"}]
+  GETTABLEKS R16 R6 K37 ["map"]
+  GETTABLEKS R17 R6 K38 ["string"]
+  GETTABLEKS R18 R6 K39 ["array"]
+  GETTABLEKS R19 R6 K38 ["string"]
+  CALL R18 1 -1
+  CALL R16 -1 1
+  SETTABLEKS R16 R15 K32 ["userMessages"]
+  GETTABLEKS R16 R6 K40 ["boolean"]
+  SETTABLEKS R16 R15 K33 ["bubbleChatEnabled"]
+  GETTABLEKS R16 R6 K40 ["boolean"]
+  SETTABLEKS R16 R15 K34 ["voiceEnabled"]
+  GETTABLEKS R16 R6 K37 ["map"]
+  GETTABLEKS R17 R6 K38 ["string"]
+  GETTABLEKS R18 R6 K38 ["string"]
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K35 ["participants"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K41 ["validateProps"]
+  DUPCLOSURE R14 K42 [PROTO_0]
+  CAPTURE VAL R7
+  SETTABLEKS R14 R13 K43 ["getDerivedStateFromProps"]
+  DUPCLOSURE R14 K44 [PROTO_2]
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  SETTABLEKS R14 R13 K45 ["init"]
+  DUPCLOSURE R14 K46 [PROTO_3]
+  CAPTURE VAL R12
+  CAPTURE VAL R8
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  CAPTURE VAL R4
+  CAPTURE VAL R10
+  SETTABLEKS R14 R13 K47 ["render"]
+  DUPCLOSURE R14 K48 [PROTO_4]
+  CAPTURE VAL R11
+  GETTABLEKS R15 R5 K49 ["connect"]
+  MOVE R16 R14
+  CALL R15 1 1
+  MOVE R16 R13
+  CALL R15 1 -1
+  RETURN R15 -1

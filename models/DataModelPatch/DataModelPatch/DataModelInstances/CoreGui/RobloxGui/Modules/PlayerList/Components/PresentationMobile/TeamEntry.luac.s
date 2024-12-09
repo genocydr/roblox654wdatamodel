@@ -1,0 +1,250 @@
+PROTO_0:
+  LOADNIL R1
+  LOADNIL R2
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["teamName"]
+  JUMPIFNOT R3 [+19]
+  GETUPVAL R3 1
+  GETUPVAL R5 2
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K0 ["props"]
+  GETTABLEKS R6 R7 K1 ["teamName"]
+  NAMECALL R3 R3 K2 ["TranslateGameText"]
+  CALL R3 3 1
+  MOVE R1 R3
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K3 ["teamColor"]
+  GETTABLEKS R2 R3 K4 ["Color"]
+  JUMP [+8]
+  GETUPVAL R3 3
+  GETTABLEKS R1 R3 K5 ["NeutralTeamName"]
+  GETUPVAL R4 3
+  GETTABLEKS R3 R4 K6 ["NeutralTeamColor"]
+  GETTABLEKS R2 R3 K4 ["Color"]
+  GETTABLEKS R3 R0 K7 ["Settings"]
+  GETTABLEKS R5 R0 K8 ["Theme"]
+  GETTABLEKS R4 R5 K9 ["TextEmphasis"]
+  GETTABLEKS R8 R0 K10 ["Font"]
+  GETTABLEKS R7 R8 K11 ["CaptionHeader"]
+  GETTABLEKS R6 R7 K12 ["RelativeSize"]
+  GETTABLEKS R8 R0 K10 ["Font"]
+  GETTABLEKS R7 R8 K13 ["BaseSize"]
+  MUL R5 R6 R7
+  GETTABLEKS R8 R0 K10 ["Font"]
+  GETTABLEKS R7 R8 K11 ["CaptionHeader"]
+  GETTABLEKS R6 R7 K10 ["Font"]
+  NEWTABLE R7 2 0
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K14 ["createElement"]
+  LOADK R9 K15 ["UIListLayout"]
+  DUPTABLE R10 K19 [{"SortOrder", "FillDirection", "VerticalAlignment"}]
+  GETIMPORT R11 K22 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R11 R10 K16 ["SortOrder"]
+  GETIMPORT R11 K24 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R11 R10 K17 ["FillDirection"]
+  GETIMPORT R11 K26 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R11 R10 K18 ["VerticalAlignment"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K15 ["UIListLayout"]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K14 ["createElement"]
+  LOADK R9 K27 ["TextLabel"]
+  DUPTABLE R10 K37 [{"Size", "TextXAlignment", "Font", "TextSize", "LayoutOrder", "TextColor3", "TextStrokeTransparency", "TextStrokeColor3", "BackgroundTransparency", "Text", "TextTruncate"}]
+  GETIMPORT R11 K40 [UDim2.new]
+  LOADN R12 0
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K41 ["PlayerNameSizeXMobile"]
+  LOADN R14 1
+  LOADN R15 0
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K28 ["Size"]
+  GETIMPORT R11 K43 [Enum.TextXAlignment.Left]
+  SETTABLEKS R11 R10 K29 ["TextXAlignment"]
+  SETTABLEKS R6 R10 K10 ["Font"]
+  SETTABLEKS R5 R10 K30 ["TextSize"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K21 ["LayoutOrder"]
+  GETTABLEKS R11 R4 K4 ["Color"]
+  SETTABLEKS R11 R10 K31 ["TextColor3"]
+  GETTABLEKS R11 R4 K44 ["StrokeTransparency"]
+  SETTABLEKS R11 R10 K32 ["TextStrokeTransparency"]
+  GETTABLEKS R11 R4 K45 ["StrokeColor"]
+  SETTABLEKS R11 R10 K33 ["TextStrokeColor3"]
+  LOADN R11 1
+  SETTABLEKS R11 R10 K34 ["BackgroundTransparency"]
+  SETTABLEKS R1 R10 K35 ["Text"]
+  GETIMPORT R11 K47 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R11 R10 K36 ["TextTruncate"]
+  DUPTABLE R11 K49 [{"UIPadding"}]
+  GETUPVAL R13 4
+  GETTABLEKS R12 R13 K14 ["createElement"]
+  LOADK R13 K48 ["UIPadding"]
+  DUPTABLE R14 K51 [{"PaddingLeft"}]
+  GETIMPORT R15 K53 [UDim.new]
+  LOADN R16 0
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K54 ["TeamEntryTextPaddingMobile"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K50 ["PaddingLeft"]
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K48 ["UIPadding"]
+  CALL R8 3 1
+  SETTABLEKS R8 R7 K55 ["NameFrame"]
+  GETIMPORT R8 K57 [ipairs]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K0 ["props"]
+  GETTABLEKS R9 R11 K58 ["gameStats"]
+  CALL R8 1 3
+  FORGPREP_INEXT R8
+  GETUPVAL R14 3
+  GETTABLEKS R13 R14 K59 ["MaxLeaderstats"]
+  JUMPIFLT R13 R11 [+34]
+  LOADK R14 K60 ["GameStat_"]
+  GETTABLEKS R15 R12 K61 ["name"]
+  CONCAT R13 R14 R15
+  GETUPVAL R15 4
+  GETTABLEKS R14 R15 K14 ["createElement"]
+  GETUPVAL R15 5
+  DUPTABLE R16 K67 [{"statValue", "isTitleEntry", "isTeamEntry", "textStyle", "layoutOrder"}]
+  GETUPVAL R20 0
+  GETTABLEKS R19 R20 K0 ["props"]
+  GETTABLEKS R18 R19 K68 ["leaderstats"]
+  GETTABLEKS R19 R12 K61 ["name"]
+  GETTABLE R17 R18 R19
+  SETTABLEKS R17 R16 K62 ["statValue"]
+  LOADB R17 0
+  SETTABLEKS R17 R16 K63 ["isTitleEntry"]
+  LOADB R17 1
+  SETTABLEKS R17 R16 K64 ["isTeamEntry"]
+  SETTABLEKS R4 R16 K65 ["textStyle"]
+  SETTABLEKS R11 R16 K66 ["layoutOrder"]
+  CALL R14 2 1
+  SETTABLE R14 R7 R13
+  FORGLOOP R8 2 [inext] [-37]
+  GETUPVAL R9 4
+  GETTABLEKS R8 R9 K14 ["createElement"]
+  LOADK R9 K69 ["Frame"]
+  DUPTABLE R10 K73 [{"LayoutOrder", "Size", "Position", "BackgroundTransparency", "BackgroundColor3", "BorderSizePixel"}]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K0 ["props"]
+  GETTABLEKS R11 R12 K66 ["layoutOrder"]
+  SETTABLEKS R11 R10 K21 ["LayoutOrder"]
+  GETIMPORT R11 K40 [UDim2.new]
+  LOADN R12 1
+  LOADN R13 0
+  LOADN R14 0
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K74 ["TeamEntrySizeY"]
+  CALL R11 4 1
+  SETTABLEKS R11 R10 K28 ["Size"]
+  GETUPVAL R13 0
+  GETTABLEKS R12 R13 K0 ["props"]
+  GETTABLEKS R11 R12 K70 ["Position"]
+  SETTABLEKS R11 R10 K70 ["Position"]
+  GETTABLEKS R12 R3 K76 ["PreferredTransparency"]
+  MULK R11 R12 K75 [0.5]
+  SETTABLEKS R11 R10 K34 ["BackgroundTransparency"]
+  SETTABLEKS R2 R10 K71 ["BackgroundColor3"]
+  LOADN R11 0
+  SETTABLEKS R11 R10 K72 ["BorderSizePixel"]
+  MOVE R11 R7
+  CALL R8 3 -1
+  RETURN R8 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_2:
+  GETUPVAL R1 0
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  DUPTABLE R1 K1 [{"isSmallTouchDevice"}]
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K0 ["isSmallTouchDevice"]
+  SETTABLEKS R2 R1 K0 ["isSmallTouchDevice"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["UIBlox"]
+  CALL R4 1 1
+  GETTABLEKS R6 R4 K11 ["Style"]
+  GETTABLEKS R5 R6 K12 ["withStyle"]
+  LOADK R8 K13 ["RobloxGui"]
+  NAMECALL R6 R1 K14 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K15 ["Modules"]
+  GETTABLEKS R8 R9 K16 ["GameTranslator"]
+  CALL R7 1 1
+  GETIMPORT R10 K18 [script]
+  GETTABLEKS R9 R10 K19 ["Parent"]
+  GETTABLEKS R8 R9 K19 ["Parent"]
+  GETTABLEKS R9 R8 K20 ["Connection"]
+  GETIMPORT R10 K6 [require]
+  GETTABLEKS R11 R9 K21 ["LayoutValues"]
+  CALL R10 1 1
+  GETTABLEKS R11 R10 K22 ["WithLayoutValues"]
+  GETIMPORT R12 K6 [require]
+  GETIMPORT R15 K18 [script]
+  GETTABLEKS R14 R15 K19 ["Parent"]
+  GETTABLEKS R13 R14 K23 ["StatEntry"]
+  CALL R12 1 1
+  GETTABLEKS R13 R2 K24 ["PureComponent"]
+  LOADK R15 K25 ["TeamEntry"]
+  NAMECALL R13 R13 K26 ["extend"]
+  CALL R13 2 1
+  DUPCLOSURE R14 K27 [PROTO_2]
+  CAPTURE VAL R11
+  CAPTURE VAL R5
+  CAPTURE VAL R7
+  CAPTURE VAL R1
+  CAPTURE VAL R2
+  CAPTURE VAL R12
+  SETTABLEKS R14 R13 K28 ["render"]
+  DUPCLOSURE R14 K29 [PROTO_3]
+  GETTABLEKS R15 R3 K30 ["connect"]
+  MOVE R16 R14
+  LOADNIL R17
+  CALL R15 2 1
+  MOVE R16 R13
+  CALL R15 1 -1
+  RETURN R15 -1

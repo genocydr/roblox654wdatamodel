@@ -1,0 +1,187 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["menuOpen"]
+  JUMPIF R0 [+2]
+  GETUPVAL R0 1
+  JUMPIFNOT R0 [+11]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K2 ["OverrideMouseIconBehavior"]
+  GETIMPORT R1 K5 [Enum.OverrideMouseIconBehavior.None]
+  JUMPIFNOTEQ R0 R1 [+5]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K6 ["updateMouseIconOverride"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["exitModalOpen"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K2 ["createElement"]
+  GETUPVAL R3 1
+  DUPTABLE R4 K5 [{"event", "callback"}]
+  GETUPVAL R5 2
+  LOADK R7 K6 ["OverrideMouseIconBehavior"]
+  NAMECALL R5 R5 K7 ["GetPropertyChangedSignal"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["event"]
+  NEWCLOSURE R5 P0
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE UPVAL U2
+  SETTABLEKS R5 R4 K4 ["callback"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["didOverrideMouse"]
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["exitModalOpen"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["menuOpen"]
+  JUMPIF R2 [+1]
+  JUMPIFNOT R1 [+32]
+  LOADB R2 1
+  SETTABLEKS R2 R0 K3 ["didOverrideMouse"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K4 ["inputType"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K5 ["Gamepad"]
+  JUMPIFEQ R2 R3 [+5]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K6 ["VREnabled"]
+  JUMPIFNOT R2 [+8]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["push"]
+  GETUPVAL R3 3
+  GETIMPORT R4 K11 [Enum.OverrideMouseIconBehavior.ForceHide]
+  CALL R2 2 0
+  RETURN R0 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K7 ["push"]
+  GETUPVAL R3 3
+  GETIMPORT R4 K13 [Enum.OverrideMouseIconBehavior.ForceShow]
+  CALL R2 2 0
+  RETURN R0 0
+  GETTABLEKS R2 R0 K3 ["didOverrideMouse"]
+  JUMPIFNOT R2 [+8]
+  LOADB R2 0
+  SETTABLEKS R2 R0 K3 ["didOverrideMouse"]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K14 ["pop"]
+  GETUPVAL R3 3
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_4:
+  NAMECALL R1 R0 K0 ["updateMouseIconOverride"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_5:
+  NAMECALL R1 R0 K0 ["updateMouseIconOverride"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R2 R0 K0 ["nativeClosePrompt"]
+  GETTABLEKS R1 R2 K1 ["closingApp"]
+  DUPTABLE R2 K5 [{"menuOpen", "exitModalOpen", "inputType"}]
+  GETTABLEKS R3 R0 K6 ["isMenuOpen"]
+  SETTABLEKS R3 R2 K2 ["menuOpen"]
+  SETTABLEKS R1 R2 K3 ["exitModalOpen"]
+  GETTABLEKS R4 R0 K7 ["displayOptions"]
+  GETTABLEKS R3 R4 K4 ["inputType"]
+  SETTABLEKS R3 R2 K4 ["inputType"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["UserInputService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["VRService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R7 R0 K8 ["Workspace"]
+  GETTABLEKS R6 R7 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["AppCommonLib"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K11 ["Symbol"]
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R6 R0 K12 ["InGameServices"]
+  GETTABLEKS R5 R6 K13 ["MouseIconOverrideService"]
+  CALL R4 1 1
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R7 R0 K9 ["Packages"]
+  GETTABLEKS R6 R7 K14 ["InGameMenuDependencies"]
+  CALL R5 1 1
+  GETTABLEKS R6 R5 K15 ["Roact"]
+  GETTABLEKS R7 R5 K16 ["RoactRodux"]
+  GETTABLEKS R8 R5 K17 ["t"]
+  GETIMPORT R12 K19 [script]
+  GETTABLEKS R11 R12 K20 ["Parent"]
+  GETTABLEKS R10 R11 K20 ["Parent"]
+  GETTABLEKS R9 R10 K20 ["Parent"]
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R12 R9 K21 ["Resources"]
+  GETTABLEKS R11 R12 K22 ["Constants"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R13 R9 K23 ["Utility"]
+  GETTABLEKS R12 R13 K24 ["ExternalEventConnection"]
+  CALL R11 1 1
+  GETTABLEKS R12 R3 K25 ["named"]
+  LOADK R13 K26 ["InGameMenuCursorOverride"]
+  CALL R12 1 1
+  GETTABLEKS R13 R10 K27 ["InputType"]
+  GETTABLEKS R14 R6 K28 ["PureComponent"]
+  LOADK R16 K29 ["MouseOverrideManager"]
+  NAMECALL R14 R14 K30 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R8 K31 ["strictInterface"]
+  DUPTABLE R16 K35 [{"menuOpen", "exitModalOpen", "inputType"}]
+  GETTABLEKS R17 R8 K36 ["boolean"]
+  SETTABLEKS R17 R16 K32 ["menuOpen"]
+  GETTABLEKS R17 R8 K36 ["boolean"]
+  SETTABLEKS R17 R16 K33 ["exitModalOpen"]
+  GETTABLEKS R17 R8 K37 ["string"]
+  SETTABLEKS R17 R16 K34 ["inputType"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K38 ["validateProps"]
+  DUPCLOSURE R15 K39 [PROTO_1]
+  CAPTURE VAL R6
+  CAPTURE VAL R11
+  CAPTURE VAL R1
+  SETTABLEKS R15 R14 K40 ["render"]
+  DUPCLOSURE R15 K41 [PROTO_2]
+  SETTABLEKS R15 R14 K42 ["init"]
+  DUPCLOSURE R15 K43 [PROTO_3]
+  CAPTURE VAL R13
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R12
+  SETTABLEKS R15 R14 K44 ["updateMouseIconOverride"]
+  DUPCLOSURE R15 K45 [PROTO_4]
+  SETTABLEKS R15 R14 K46 ["didMount"]
+  DUPCLOSURE R15 K47 [PROTO_5]
+  SETTABLEKS R15 R14 K48 ["didUpdate"]
+  GETTABLEKS R15 R7 K49 ["UNSTABLE_connect2"]
+  DUPCLOSURE R16 K50 [PROTO_6]
+  LOADNIL R17
+  CALL R15 2 1
+  MOVE R16 R14
+  CALL R15 1 -1
+  RETURN R15 -1

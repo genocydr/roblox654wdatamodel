@@ -1,0 +1,72 @@
+PROTO_0:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  NEWTABLE R2 0 0
+  MOVE R3 R1
+  LOADNIL R4
+  LOADNIL R5
+  FORGPREP R3
+  LOADK R9 K0 ["window_"]
+  GETTABLEKS R11 R7 K1 ["integration"]
+  GETTABLEKS R10 R11 K2 ["id"]
+  CONCAT R8 R9 R10
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K3 ["createElement"]
+  GETUPVAL R10 2
+  DUPTABLE R11 K5 [{"position", "integration"}]
+  GETUPVAL R13 3
+  CALL R13 0 1
+  JUMPIFNOT R13 [+9]
+  GETUPVAL R12 4
+  GETTABLEKS R15 R7 K1 ["integration"]
+  GETTABLEKS R14 R15 K2 ["id"]
+  NAMECALL R12 R12 K6 ["windowPosition"]
+  CALL R12 2 1
+  JUMP [+4]
+  GETTABLEKS R13 R7 K1 ["integration"]
+  GETTABLEKS R12 R13 K7 ["startingWindowPosition"]
+  SETTABLEKS R12 R11 K4 ["position"]
+  SETTABLEKS R7 R11 K1 ["integration"]
+  CALL R9 2 1
+  SETTABLE R9 R2 R8
+  FORGLOOP R3 2 [-34]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["ChromeShared"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [game]
+  LOADK R3 K6 ["CorePackages"]
+  NAMECALL R1 R1 K7 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K9 [require]
+  GETTABLEKS R4 R1 K10 ["Packages"]
+  GETTABLEKS R3 R4 K11 ["React"]
+  CALL R2 1 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R4 R0 K12 ["Service"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R0 K13 ["Hooks"]
+  GETTABLEKS R5 R6 K14 ["useChromeWindowItems"]
+  CALL R4 1 1
+  GETIMPORT R5 K9 [require]
+  GETTABLEKS R8 R0 K15 ["Unibar"]
+  GETTABLEKS R7 R8 K16 ["ComponentHosts"]
+  GETTABLEKS R6 R7 K17 ["WindowHost"]
+  CALL R5 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R0 K18 ["Parent"]
+  GETTABLEKS R8 R9 K19 ["Flags"]
+  GETTABLEKS R7 R8 K20 ["GetFFlagChromeTrackWindowPosition"]
+  CALL R6 1 1
+  DUPCLOSURE R7 K21 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R3
+  RETURN R7 1

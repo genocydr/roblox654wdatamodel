@@ -39,6 +39,7 @@ local GetFFlagShowLikelySpeakingBubbles =
 	require(CorePackages.Workspace.Packages.SharedFlags).GetFFlagShowLikelySpeakingBubbles
 local ChromeEnabled = require(RobloxGui.Modules.Chrome.Enabled)()
 local FFlagEnableSpatialRobloxGui = require(RobloxGui.Modules.Flags.FFlagEnableSpatialRobloxGui)
+local getFFlagExpChatAlwaysRunTCS = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagExpChatAlwaysRunTCS
 
 local getIconVoiceIndicator = require(RobloxGui.Modules.VoiceChat.Components.getIconVoiceIndicator)
 local onClickedVoiceIndicator = require(RobloxGui.Modules.VoiceChat.Components.onClickedVoiceIndicator)
@@ -127,8 +128,12 @@ end
 local createdDefaultChannels
 local validateLegacyBubbleChatSettings
 if GetFFlagConsolidateBubbleChat() then
-	createdDefaultChannels = TextChatService.ChatVersion == Enum.ChatVersion.TextChatService
-		and TextChatService.CreateDefaultTextChannels
+	if getFFlagExpChatAlwaysRunTCS() then
+		createdDefaultChannels = TextChatService.CreateDefaultTextChannels
+	else
+		createdDefaultChannels = TextChatService.ChatVersion == Enum.ChatVersion.TextChatService
+			and TextChatService.CreateDefaultTextChannels
+	end
 	validateLegacyBubbleChatSettings = require(RobloxGui.Modules.InGameChat.BubbleChat.Types).IChatSettings
 else
 	createdDefaultChannels = TextChatService.CreateDefaultTextChannels

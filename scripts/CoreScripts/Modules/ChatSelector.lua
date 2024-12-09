@@ -28,6 +28,7 @@ local VRService = game:GetService("VRService")
 local SharedFlags = require(CorePackages.Workspace.Packages.SharedFlags)
 local GetFFlagReenableTextChatForTenFootInterfaces = SharedFlags.GetFFlagReenableTextChatForTenFootInterfaces
 local getFFlagAppChatCoreUIConflictFix = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagAppChatCoreUIConflictFix
+local getFFlagExpChatAlwaysRunTCS = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagExpChatAlwaysRunTCS
 
 local useModule = nil
 
@@ -115,7 +116,7 @@ do
 		end
 		return not (BubbleChatEnabled or ClassicChatEnabled)
 	end
-	
+
 	if getFFlagAppChatCoreUIConflictFix() then
 		function interface:HideTemp(key: string, hidden: boolean)
 			local function isHideTempKeysEmpty()
@@ -125,19 +126,22 @@ do
 			if isHideTempKeysEmpty() then
 				visibilityBeforeTempKeyAdded = interface:GetVisibility()
 			end
-			
+
 			if hidden then
 				hideTempKeys[key] = hidden
 			else
 				hideTempKeys[key] = nil
 			end
-			
+
 			interface:SetVisible(visibilityBeforeTempKeyAdded and isHideTempKeysEmpty())
 		end
 	end
 
 
 	interface.ChatBarFocusChanged = Util.Signal()
+	if getFFlagExpChatAlwaysRunTCS() then
+		interface.ChromeVisibilityStateChanged = Util.Signal()
+	end
 	interface.VisibilityStateChanged = Util.Signal()
 	interface.MessagesChanged = Util.Signal()
 
@@ -186,6 +190,9 @@ if GetFFlagReenableTextChatForTenFootInterfaces() or (not isConsole) then
 
 		ConnectSignals(useModule, interface, "ChatBarFocusChanged")
 		ConnectSignals(useModule, interface, "VisibilityStateChanged")
+		if getFFlagExpChatAlwaysRunTCS() then
+			ConnectSignals(useModule, interface, "ChromeVisibilityStateChanged")
+		end
 		ConnectSignals(useModule, interface, "BubbleChatOnlySet")
 		ConnectSignals(useModule, interface, "ChatDisabled")
 

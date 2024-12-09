@@ -1,0 +1,408 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["isMenuOpen"]
+  JUMPIFNOT R0 [+9]
+  GETUPVAL R0 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["deviceType"]
+  NAMECALL R0 R0 K3 ["pollDevices"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"ready"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["ready"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K3 ["SetupParticipantListeners"]
+  CALL R0 1 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["DeviceListChanged"]
+  JUMPIFNOT R0 [+8]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["DeviceListChanged"]
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U0
+  NAMECALL R0 R0 K5 ["Connect"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIFNOT R0 [+5]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["Failed to init VoiceChatServiceManager"]
+  NAMECALL R0 R0 K1 ["warning"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  DUPTABLE R3 K4 [{"deviceNames", "deviceGuids", "selectedIndex", "ready"}]
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R3 K0 ["deviceNames"]
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R3 K1 ["deviceGuids"]
+  LOADN R4 0
+  SETTABLEKS R4 R3 K2 ["selectedIndex"]
+  LOADB R4 0
+  SETTABLEKS R4 R3 K3 ["ready"]
+  NAMECALL R1 R0 K5 ["setState"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K6 ["asyncInit"]
+  CALL R1 1 1
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  NAMECALL R1 R1 K7 ["andThen"]
+  CALL R1 2 1
+  DUPCLOSURE R3 K8 [PROTO_2]
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  NAMECALL R1 R1 K9 ["catch"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["deviceType"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K2 ["state"]
+  GETTABLEKS R5 R6 K3 ["deviceNames"]
+  GETTABLE R4 R5 R0
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K2 ["state"]
+  GETTABLEKS R6 R7 K4 ["deviceGuids"]
+  GETTABLE R5 R6 R0
+  NAMECALL R1 R1 K5 ["SwitchDevice"]
+  CALL R1 4 0
+  GETUPVAL R1 1
+  DUPTABLE R3 K7 [{"selectedIndex"}]
+  SETTABLEKS R0 R3 K6 ["selectedIndex"]
+  NAMECALL R1 R1 K8 ["setState"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K1 ["ready"]
+  JUMPIFNOT R1 [+13]
+  GETTABLEKS R2 R0 K0 ["state"]
+  GETTABLEKS R1 R2 K2 ["deviceNames"]
+  JUMPIFEQKNIL R1 [+8]
+  GETTABLEKS R3 R0 K0 ["state"]
+  GETTABLEKS R2 R3 K2 ["deviceNames"]
+  LENGTH R1 R2
+  JUMPIFNOTEQKN R1 K3 [0] [+3]
+  LOADNIL R1
+  RETURN R1 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K4 ["createElement"]
+  LOADK R2 K5 ["Frame"]
+  DUPTABLE R3 K10 [{"Size", "BackgroundTransparency", "LayoutOrder", "ZIndex"}]
+  GETIMPORT R4 K13 [UDim2.new]
+  LOADN R5 1
+  LOADN R6 0
+  LOADN R7 0
+  LOADN R8 120
+  CALL R4 4 1
+  SETTABLEKS R4 R3 K6 ["Size"]
+  LOADN R4 1
+  SETTABLEKS R4 R3 K7 ["BackgroundTransparency"]
+  GETTABLEKS R5 R0 K14 ["props"]
+  GETTABLEKS R4 R5 K8 ["LayoutOrder"]
+  SETTABLEKS R4 R3 K8 ["LayoutOrder"]
+  LOADN R4 2
+  SETTABLEKS R4 R3 K9 ["ZIndex"]
+  DUPTABLE R4 K18 [{"Padding", "InputLabel", "Dropdown"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  LOADK R6 K19 ["UIPadding"]
+  DUPTABLE R7 K22 [{"PaddingLeft", "PaddingRight"}]
+  GETIMPORT R8 K24 [UDim.new]
+  LOADN R9 0
+  LOADN R10 24
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K20 ["PaddingLeft"]
+  GETIMPORT R8 K24 [UDim.new]
+  LOADN R9 0
+  LOADN R10 24
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K21 ["PaddingRight"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K15 ["Padding"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  GETUPVAL R6 1
+  DUPTABLE R7 K32 [{"fontKey", "themeKey", "Size", "Position", "AnchorPoint", "Text", "TextTruncate", "TextXAlignment"}]
+  LOADK R8 K33 ["Body"]
+  SETTABLEKS R8 R7 K25 ["fontKey"]
+  LOADK R8 K34 ["TextDefault"]
+  SETTABLEKS R8 R7 K26 ["themeKey"]
+  GETIMPORT R8 K13 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 56
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K6 ["Size"]
+  GETIMPORT R8 K13 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 0
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K27 ["Position"]
+  GETIMPORT R8 K36 [Vector2.new]
+  LOADN R9 0
+  LOADN R10 0
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K28 ["AnchorPoint"]
+  GETTABLEKS R10 R0 K14 ["props"]
+  GETTABLEKS R9 R10 K37 ["deviceType"]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K38 ["DeviceType"]
+  GETTABLEKS R10 R11 K39 ["Input"]
+  JUMPIFNOTEQ R9 R10 [+3]
+  LOADK R8 K40 ["Input Device"]
+  JUMP [+1]
+  LOADK R8 K41 ["Output Device"]
+  SETTABLEKS R8 R7 K29 ["Text"]
+  GETIMPORT R8 K44 [Enum.TextTruncate.AtEnd]
+  SETTABLEKS R8 R7 K30 ["TextTruncate"]
+  GETIMPORT R8 K46 [Enum.TextXAlignment.Left]
+  SETTABLEKS R8 R7 K31 ["TextXAlignment"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K16 ["InputLabel"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K4 ["createElement"]
+  GETUPVAL R6 3
+  DUPTABLE R7 K57 [{"Size", "Position", "truncate", "selections", "selectedIndex", "placeHolderText", "enabled", "localize", "selectionParentName", "canOpen", "canCaptureFocus", "selectionChanged"}]
+  GETIMPORT R8 K13 [UDim2.new]
+  LOADN R9 1
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 44
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K6 ["Size"]
+  GETIMPORT R8 K13 [UDim2.new]
+  LOADN R9 0
+  LOADN R10 0
+  LOADN R11 0
+  LOADN R12 56
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K27 ["Position"]
+  GETUPVAL R8 4
+  CALL R8 0 1
+  SETTABLEKS R8 R7 K47 ["truncate"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K2 ["deviceNames"]
+  SETTABLEKS R8 R7 K48 ["selections"]
+  GETTABLEKS R9 R0 K0 ["state"]
+  GETTABLEKS R8 R9 K49 ["selectedIndex"]
+  SETTABLEKS R8 R7 K49 ["selectedIndex"]
+  LOADK R8 K58 [""]
+  SETTABLEKS R8 R7 K50 ["placeHolderText"]
+  LOADB R8 1
+  SETTABLEKS R8 R7 K51 ["enabled"]
+  LOADB R8 0
+  SETTABLEKS R8 R7 K52 ["localize"]
+  GETTABLEKS R11 R0 K14 ["props"]
+  GETTABLEKS R9 R11 K37 ["deviceType"]
+  LOADK R10 K59 ["DeviceSelectionEntryDropdown"]
+  CONCAT R8 R9 R10
+  SETTABLEKS R8 R7 K53 ["selectionParentName"]
+  GETTABLEKS R9 R0 K14 ["props"]
+  GETTABLEKS R8 R9 K54 ["canOpen"]
+  SETTABLEKS R8 R7 K54 ["canOpen"]
+  GETTABLEKS R9 R0 K14 ["props"]
+  GETTABLEKS R8 R9 K55 ["canCaptureFocus"]
+  SETTABLEKS R8 R7 K55 ["canCaptureFocus"]
+  NEWCLOSURE R8 P0
+  CAPTURE UPVAL U5
+  CAPTURE VAL R0
+  SETTABLEKS R8 R7 K56 ["selectionChanged"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K17 ["Dropdown"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+PROTO_6:
+  GETUPVAL R0 0
+  GETUPVAL R2 1
+  NAMECALL R0 R0 K0 ["GetDevices"]
+  CALL R0 2 4
+  JUMPIFNOT R0 [+12]
+  GETUPVAL R4 2
+  DUPTABLE R6 K4 [{"deviceNames", "deviceGuids", "selectedIndex"}]
+  SETTABLEKS R1 R6 K1 ["deviceNames"]
+  SETTABLEKS R2 R6 K2 ["deviceGuids"]
+  SETTABLEKS R3 R6 K3 ["selectedIndex"]
+  NAMECALL R4 R4 K5 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+  GETUPVAL R4 3
+  CALL R4 0 1
+  JUMPIFNOT R4 [+6]
+  GETUPVAL R4 4
+  LOADK R6 K6 ["Errors in get {} Device info"]
+  GETUPVAL R7 1
+  NAMECALL R4 R4 K7 ["warning"]
+  CALL R4 3 0
+  GETUPVAL R4 2
+  DUPTABLE R6 K4 [{"deviceNames", "deviceGuids", "selectedIndex"}]
+  NEWTABLE R7 0 0
+  SETTABLEKS R7 R6 K1 ["deviceNames"]
+  NEWTABLE R7 0 0
+  SETTABLEKS R7 R6 K2 ["deviceGuids"]
+  LOADN R7 0
+  SETTABLEKS R7 R6 K3 ["selectedIndex"]
+  NAMECALL R4 R4 K5 ["setState"]
+  CALL R4 2 0
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R2 K1 [spawn]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["isMenuOpen"]
+  JUMPIF R2 [+8]
+  GETTABLEKS R2 R1 K1 ["isMenuOpen"]
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R4 R1 K2 ["deviceType"]
+  NAMECALL R2 R0 K3 ["pollDevices"]
+  CALL R2 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["SoundService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K6 ["RobloxGui"]
+  NAMECALL R3 R0 K7 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R6 R1 K10 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["InGameMenuDependencies"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K12 ["Roact"]
+  GETTABLEKS R6 R4 K13 ["t"]
+  GETIMPORT R10 K15 [script]
+  GETTABLEKS R9 R10 K16 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["Parent"]
+  GETTABLEKS R7 R8 K16 ["Parent"]
+  GETIMPORT R8 K9 [require]
+  GETTABLEKS R10 R7 K17 ["Components"]
+  GETTABLEKS R9 R10 K18 ["DropDownSelection"]
+  CALL R8 1 1
+  GETIMPORT R9 K9 [require]
+  GETTABLEKS R11 R7 K17 ["Components"]
+  GETTABLEKS R10 R11 K19 ["ThemedTextLabel"]
+  CALL R9 1 1
+  GETIMPORT R11 K9 [require]
+  GETTABLEKS R14 R3 K20 ["Modules"]
+  GETTABLEKS R13 R14 K21 ["VoiceChat"]
+  GETTABLEKS R12 R13 K22 ["VoiceChatServiceManager"]
+  CALL R11 1 1
+  GETTABLEKS R10 R11 K23 ["default"]
+  GETIMPORT R12 K9 [require]
+  GETTABLEKS R15 R1 K24 ["Workspace"]
+  GETTABLEKS R14 R15 K10 ["Packages"]
+  GETTABLEKS R13 R14 K25 ["CoreScriptsInitializer"]
+  CALL R12 1 1
+  GETTABLEKS R11 R12 K26 ["CoreLogger"]
+  GETIMPORT R14 K15 [script]
+  GETTABLEKS R13 R14 K27 ["Name"]
+  NAMECALL R11 R11 K28 ["new"]
+  CALL R11 2 1
+  GETTABLEKS R12 R5 K29 ["PureComponent"]
+  LOADK R14 K30 ["DeviceSelectionEntry"]
+  NAMECALL R12 R12 K31 ["extend"]
+  CALL R12 2 1
+  GETTABLEKS R13 R7 K32 ["Flags"]
+  GETIMPORT R14 K9 [require]
+  GETTABLEKS R15 R13 K33 ["GetFFlagTruncateDeviceSelection"]
+  CALL R14 1 1
+  GETIMPORT R15 K9 [require]
+  GETTABLEKS R18 R3 K20 ["Modules"]
+  GETTABLEKS R17 R18 K32 ["Flags"]
+  GETTABLEKS R16 R17 K34 ["GetFFlagVoiceChatUILogging"]
+  CALL R15 1 1
+  DUPTABLE R16 K37 [{"Input", "Output"}]
+  LOADK R17 K35 ["Input"]
+  SETTABLEKS R17 R16 K35 ["Input"]
+  LOADK R17 K36 ["Output"]
+  SETTABLEKS R17 R16 K36 ["Output"]
+  SETTABLEKS R16 R12 K38 ["DeviceType"]
+  GETTABLEKS R16 R6 K39 ["strictInterface"]
+  DUPTABLE R17 K45 [{"LayoutOrder", "deviceType", "isMenuOpen", "canOpen", "canCaptureFocus"}]
+  GETTABLEKS R18 R6 K46 ["integer"]
+  SETTABLEKS R18 R17 K40 ["LayoutOrder"]
+  GETTABLEKS R18 R6 K47 ["string"]
+  SETTABLEKS R18 R17 K41 ["deviceType"]
+  GETTABLEKS R18 R6 K48 ["boolean"]
+  SETTABLEKS R18 R17 K42 ["isMenuOpen"]
+  GETTABLEKS R18 R6 K49 ["optional"]
+  GETTABLEKS R19 R6 K48 ["boolean"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K43 ["canOpen"]
+  GETTABLEKS R18 R6 K49 ["optional"]
+  GETTABLEKS R19 R6 K48 ["boolean"]
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K44 ["canCaptureFocus"]
+  CALL R16 1 1
+  SETTABLEKS R16 R12 K50 ["validateProps"]
+  DUPTABLE R16 K51 [{"canOpen"}]
+  LOADB R17 1
+  SETTABLEKS R17 R16 K43 ["canOpen"]
+  SETTABLEKS R16 R12 K52 ["defaultProps"]
+  DUPCLOSURE R16 K53 [PROTO_3]
+  CAPTURE VAL R10
+  CAPTURE VAL R2
+  CAPTURE VAL R15
+  CAPTURE VAL R11
+  SETTABLEKS R16 R12 K54 ["init"]
+  DUPCLOSURE R16 K55 [PROTO_5]
+  CAPTURE VAL R5
+  CAPTURE VAL R9
+  CAPTURE VAL R12
+  CAPTURE VAL R8
+  CAPTURE VAL R14
+  CAPTURE VAL R10
+  SETTABLEKS R16 R12 K56 ["render"]
+  DUPCLOSURE R16 K57 [PROTO_7]
+  CAPTURE VAL R10
+  CAPTURE VAL R15
+  CAPTURE VAL R11
+  SETTABLEKS R16 R12 K58 ["pollDevices"]
+  DUPCLOSURE R16 K59 [PROTO_8]
+  SETTABLEKS R16 R12 K60 ["willUpdate"]
+  RETURN R12 1

@@ -1,0 +1,426 @@
+PROTO_0:
+  LOADB R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K4 ["Default"]
+  JUMPIFNOTEQ R1 R2 [+12]
+  LOADB R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K5 ["UseAudioApi"]
+  GETIMPORT R2 K8 [Enum.AudioApiRollout.Enabled]
+  JUMPIFNOTEQ R1 R2 [+4]
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K9 ["EnableDefaultVoice"]
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K4 ["Camera"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  RETURN R0 1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K4 ["Character"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  RETURN R0 1
+
+PROTO_3:
+  GETUPVAL R0 0
+  JUMPIF R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K0 ["DefaultListenerLocation"]
+  GETIMPORT R3 K2 [Enum]
+  GETTABLEKS R2 R3 K3 ["ListenerLocation"]
+  GETTABLEKS R1 R2 K4 ["None"]
+  JUMPIFNOTEQ R0 R1 [+3]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K5 ["Camera"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIF R0 [+37]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K6 ["Character"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIF R0 [+23]
+  LOADB R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K7 ["Default"]
+  JUMPIFNOTEQ R1 R2 [+12]
+  LOADB R0 0
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["UseAudioApi"]
+  GETIMPORT R2 K11 [Enum.AudioApiRollout.Enabled]
+  JUMPIFNOTEQ R1 R2 [+4]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K12 ["EnableDefaultVoice"]
+  RETURN R0 1
+
+PROTO_4:
+  GETIMPORT R2 K2 [Instance.new]
+  LOADK R3 K3 ["Wire"]
+  CALL R2 1 1
+  SETTABLEKS R0 R2 K4 ["SourceInstance"]
+  SETTABLEKS R1 R2 K5 ["TargetInstance"]
+  SETTABLEKS R0 R2 K6 ["Parent"]
+  RETURN R2 1
+
+PROTO_5:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["AudioDeviceOutput"]
+  LOADB R3 1
+  NAMECALL R0 R0 K1 ["FindFirstChildWhichIsA"]
+  CALL R0 3 1
+  JUMPIF R0 [+8]
+  GETIMPORT R1 K4 [Instance.new]
+  LOADK R2 K0 ["AudioDeviceOutput"]
+  CALL R1 1 1
+  GETUPVAL R2 0
+  SETTABLEKS R2 R1 K5 ["Parent"]
+  MOVE R0 R1
+  RETURN R0 1
+
+PROTO_6:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETIMPORT R1 K1 [workspace]
+  GETTABLEKS R0 R1 K2 ["CurrentCamera"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETTABLEKS R2 R0 K3 ["CFrame"]
+  GETTABLEKS R1 R2 K4 ["Rotation"]
+  GETUPVAL R2 0
+  GETTABLEKS R3 R1 K5 ["XVector"]
+  SETTABLEKS R3 R2 K6 ["WorldAxis"]
+  GETUPVAL R2 0
+  GETTABLEKS R3 R1 K7 ["YVector"]
+  SETTABLEKS R3 R2 K8 ["WorldSecondaryAxis"]
+  RETURN R0 0
+
+PROTO_8:
+  GETUPVAL R0 0
+  GETIMPORT R2 K1 [game]
+  NAMECALL R0 R0 K2 ["IsDescendantOf"]
+  CALL R0 2 1
+  JUMPIF R0 [+8]
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K3 ["Disconnect"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K3 ["Disconnect"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R1 R0 K0 ["PrimaryPart"]
+  JUMPIF R1 [+11]
+  LOADK R4 K0 ["PrimaryPart"]
+  NAMECALL R2 R0 K1 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K2 ["Once"]
+  CALL R2 2 0
+  RETURN R0 0
+  GETIMPORT R2 K5 [Instance.new]
+  LOADK R3 K6 ["Attachment"]
+  CALL R2 1 1
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R2
+  GETIMPORT R5 K8 [workspace]
+  GETTABLEKS R4 R5 K9 ["CurrentCamera"]
+  JUMPIF R4 [+1]
+  JUMP [+12]
+  GETTABLEKS R6 R4 K10 ["CFrame"]
+  GETTABLEKS R5 R6 K11 ["Rotation"]
+  GETTABLEKS R6 R5 K12 ["XVector"]
+  SETTABLEKS R6 R2 K13 ["WorldAxis"]
+  GETTABLEKS R6 R5 K14 ["YVector"]
+  SETTABLEKS R6 R2 K15 ["WorldSecondaryAxis"]
+  GETIMPORT R4 K5 [Instance.new]
+  LOADK R5 K16 ["AudioListener"]
+  CALL R4 1 1
+  SETTABLEKS R2 R4 K17 ["Parent"]
+  SETTABLEKS R1 R2 K17 ["Parent"]
+  GETUPVAL R6 1
+  LOADK R8 K18 ["AudioDeviceOutput"]
+  LOADB R9 1
+  NAMECALL R6 R6 K19 ["FindFirstChildWhichIsA"]
+  CALL R6 3 1
+  JUMPIF R6 [+8]
+  GETIMPORT R7 K5 [Instance.new]
+  LOADK R8 K18 ["AudioDeviceOutput"]
+  CALL R7 1 1
+  GETUPVAL R8 1
+  SETTABLEKS R8 R7 K17 ["Parent"]
+  MOVE R6 R7
+  MOVE R5 R6
+  GETIMPORT R6 K5 [Instance.new]
+  LOADK R7 K20 ["Wire"]
+  CALL R6 1 1
+  SETTABLEKS R4 R6 K21 ["SourceInstance"]
+  SETTABLEKS R5 R6 K22 ["TargetInstance"]
+  SETTABLEKS R4 R6 K17 ["Parent"]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K23 ["Heartbeat"]
+  MOVE R8 R3
+  NAMECALL R6 R6 K24 ["Connect"]
+  CALL R6 2 1
+  LOADNIL R7
+  GETTABLEKS R8 R2 K25 ["AncestryChanged"]
+  NEWCLOSURE R10 P2
+  CAPTURE VAL R2
+  CAPTURE VAL R6
+  CAPTURE REF R7
+  NAMECALL R8 R8 K24 ["Connect"]
+  CALL R8 2 1
+  MOVE R7 R8
+  CLOSEUPVALS R7
+  RETURN R0 0
+
+PROTO_10:
+  GETUPVAL R1 0
+  JUMPIF R1 [+2]
+  LOADB R0 0
+  JUMP [+64]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K4 ["None"]
+  JUMPIFNOTEQ R1 R2 [+3]
+  LOADB R0 0
+  JUMP [+51]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K5 ["Camera"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIF R0 [+37]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K6 ["Character"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIF R0 [+23]
+  LOADB R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K7 ["Default"]
+  JUMPIFNOTEQ R1 R2 [+12]
+  LOADB R0 0
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["UseAudioApi"]
+  GETIMPORT R2 K11 [Enum.AudioApiRollout.Enabled]
+  JUMPIFNOTEQ R1 R2 [+4]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K12 ["EnableDefaultVoice"]
+  JUMPIF R0 [+1]
+  RETURN R0 0
+  GETUPVAL R0 3
+  JUMPIFNOT R0 [+1]
+  RETURN R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K6 ["Character"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIFNOT R0 [+15]
+  GETUPVAL R1 4
+  GETTABLEKS R0 R1 K6 ["Character"]
+  JUMPIFNOT R0 [+3]
+  GETUPVAL R1 5
+  MOVE R2 R0
+  CALL R1 1 0
+  GETUPVAL R2 4
+  GETTABLEKS R1 R2 K13 ["CharacterAdded"]
+  GETUPVAL R3 5
+  NAMECALL R1 R1 K14 ["Connect"]
+  CALL R1 2 0
+  JUMP [+101]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K5 ["Camera"]
+  JUMPIFEQ R1 R2 [+2]
+  LOADB R0 0 +1
+  LOADB R0 1
+  JUMPIFNOT R0 [+37]
+  GETUPVAL R1 1
+  LOADK R3 K15 ["AudioDeviceOutput"]
+  LOADB R4 1
+  NAMECALL R1 R1 K16 ["FindFirstChildWhichIsA"]
+  CALL R1 3 1
+  JUMPIF R1 [+8]
+  GETIMPORT R2 K19 [Instance.new]
+  LOADK R3 K15 ["AudioDeviceOutput"]
+  CALL R2 1 1
+  GETUPVAL R3 1
+  SETTABLEKS R3 R2 K20 ["Parent"]
+  MOVE R1 R2
+  MOVE R0 R1
+  GETIMPORT R1 K19 [Instance.new]
+  LOADK R2 K21 ["AudioListener"]
+  CALL R1 1 1
+  GETIMPORT R3 K23 [workspace]
+  GETTABLEKS R2 R3 K24 ["CurrentCamera"]
+  SETTABLEKS R2 R1 K20 ["Parent"]
+  GETIMPORT R2 K19 [Instance.new]
+  LOADK R3 K25 ["Wire"]
+  CALL R2 1 1
+  SETTABLEKS R1 R2 K26 ["SourceInstance"]
+  SETTABLEKS R0 R2 K27 ["TargetInstance"]
+  SETTABLEKS R1 R2 K20 ["Parent"]
+  JUMP [+50]
+  LOADB R0 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K0 ["DefaultListenerLocation"]
+  GETIMPORT R4 K2 [Enum]
+  GETTABLEKS R3 R4 K3 ["ListenerLocation"]
+  GETTABLEKS R2 R3 K7 ["Default"]
+  JUMPIFNOTEQ R1 R2 [+12]
+  LOADB R0 0
+  GETUPVAL R2 2
+  GETTABLEKS R1 R2 K8 ["UseAudioApi"]
+  GETIMPORT R2 K11 [Enum.AudioApiRollout.Enabled]
+  JUMPIFNOTEQ R1 R2 [+4]
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K12 ["EnableDefaultVoice"]
+  JUMPIFNOT R0 [+26]
+  GETIMPORT R0 K19 [Instance.new]
+  LOADK R1 K21 ["AudioListener"]
+  CALL R0 1 1
+  GETIMPORT R2 K23 [workspace]
+  GETTABLEKS R1 R2 K24 ["CurrentCamera"]
+  SETTABLEKS R1 R0 K20 ["Parent"]
+  GETIMPORT R1 K19 [Instance.new]
+  LOADK R2 K25 ["Wire"]
+  CALL R1 1 1
+  SETTABLEKS R0 R1 K20 ["Parent"]
+  GETIMPORT R2 K19 [Instance.new]
+  LOADK R3 K15 ["AudioDeviceOutput"]
+  CALL R2 1 1
+  SETTABLEKS R1 R2 K20 ["Parent"]
+  SETTABLEKS R0 R1 K26 ["SourceInstance"]
+  SETTABLEKS R2 R1 K27 ["TargetInstance"]
+  LOADB R0 1
+  SETUPVAL R0 3
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["SoundService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["VoiceChatService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["Players"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K6 ["RunService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K7 ["SoundServiceDefaultListenerLocation2"]
+  LOADB R7 0
+  NAMECALL R4 R4 K8 ["DefineFastFlag"]
+  CALL R4 3 1
+  GETTABLEKS R5 R2 K9 ["LocalPlayer"]
+  DUPCLOSURE R6 K10 [PROTO_0]
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  DUPCLOSURE R7 K11 [PROTO_1]
+  CAPTURE VAL R0
+  DUPCLOSURE R8 K12 [PROTO_2]
+  CAPTURE VAL R0
+  DUPCLOSURE R9 K13 [PROTO_3]
+  CAPTURE VAL R4
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  DUPCLOSURE R10 K14 [PROTO_4]
+  DUPCLOSURE R11 K15 [PROTO_5]
+  CAPTURE VAL R0
+  DUPCLOSURE R12 K16 [PROTO_9]
+  CAPTURE VAL R12
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  LOADB R13 0
+  NEWCLOSURE R14 P7
+  CAPTURE VAL R4
+  CAPTURE VAL R0
+  CAPTURE VAL R1
+  CAPTURE REF R13
+  CAPTURE VAL R5
+  CAPTURE VAL R12
+  MOVE R15 R14
+  CALL R15 0 0
+  LOADK R17 K17 ["DefaultListenerLocation"]
+  NAMECALL R15 R0 K18 ["GetPropertyChangedSignal"]
+  CALL R15 2 1
+  MOVE R17 R14
+  NAMECALL R15 R15 K19 ["Connect"]
+  CALL R15 2 0
+  LOADK R17 K20 ["UseAudioApi"]
+  NAMECALL R15 R1 K18 ["GetPropertyChangedSignal"]
+  CALL R15 2 1
+  MOVE R17 R14
+  NAMECALL R15 R15 K19 ["Connect"]
+  CALL R15 2 0
+  LOADK R17 K21 ["EnableDefaultVoice"]
+  NAMECALL R15 R1 K18 ["GetPropertyChangedSignal"]
+  CALL R15 2 1
+  MOVE R17 R14
+  NAMECALL R15 R15 K19 ["Connect"]
+  CALL R15 2 0
+  CLOSEUPVALS R13
+  RETURN R0 0

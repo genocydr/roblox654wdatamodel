@@ -1,0 +1,56 @@
+PROTO_0:
+  JUMPIFNOT R0 [+7]
+  GETUPVAL R1 0
+  LOADK R3 K0 ["GameInviteMenu"]
+  LOADB R4 1
+  NAMECALL R1 R1 K1 ["HideTemp"]
+  CALL R1 3 0
+  RETURN R0 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["GameInviteMenu"]
+  LOADB R4 0
+  NAMECALL R1 R1 K1 ["HideTemp"]
+  CALL R1 3 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R1 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K8 [require]
+  GETTABLEKS R6 R2 K9 ["Modules"]
+  GETTABLEKS R5 R6 K10 ["PlayerList"]
+  GETTABLEKS R4 R5 K11 ["PlayerListManager"]
+  CALL R3 1 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R7 R0 K12 ["Workspace"]
+  GETTABLEKS R6 R7 K13 ["Packages"]
+  GETTABLEKS R5 R6 K14 ["GameInvite"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K15 ["renderCoreScriptGameInviteModalContainer"]
+  GETTABLEKS R6 R4 K16 ["GameInviteModalManager"]
+  GETIMPORT R7 K8 [require]
+  GETTABLEKS R10 R1 K5 ["RobloxGui"]
+  GETTABLEKS R9 R10 K9 ["Modules"]
+  GETTABLEKS R8 R9 K17 ["ApolloClient"]
+  CALL R7 1 1
+  DUPCLOSURE R8 K18 [PROTO_0]
+  CAPTURE VAL R3
+  MOVE R9 R5
+  MOVE R10 R7
+  CALL R9 1 0
+  GETTABLEKS R10 R6 K19 ["ToggleGameInviteModalEvent"]
+  GETTABLEKS R9 R10 K20 ["Event"]
+  MOVE R11 R8
+  NAMECALL R9 R9 K21 ["Connect"]
+  CALL R9 2 0
+  RETURN R0 0

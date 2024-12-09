@@ -1,0 +1,96 @@
+PROTO_0:
+  GETIMPORT R2 K2 [table.clone]
+  MOVE R3 R0
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K3 ["type"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["UpdateAbuseReason"]
+  JUMPIFNOTEQ R3 R4 [+6]
+  GETTABLEKS R4 R1 K5 ["abuseReason"]
+  SETTABLEKS R4 R2 K5 ["abuseReason"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K6 ["UpdateComment"]
+  JUMPIFNOTEQ R3 R4 [+6]
+  GETTABLEKS R4 R1 K7 ["comment"]
+  SETTABLEKS R4 R2 K7 ["comment"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K8 ["UpdateMethodOfAbuse"]
+  JUMPIFNOTEQ R3 R4 [+13]
+  NEWTABLE R4 0 0
+  SETTABLEKS R4 R2 K9 ["playerObjects"]
+  LOADNIL R4
+  SETTABLEKS R4 R2 K5 ["abuseReason"]
+  GETTABLEKS R4 R1 K10 ["methodOfAbuse"]
+  SETTABLEKS R4 R2 K10 ["methodOfAbuse"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K11 ["UpdateAbuser"]
+  JUMPIFNOTEQ R3 R4 [+10]
+  GETTABLEKS R4 R1 K12 ["abuseId"]
+  SETTABLEKS R4 R2 K13 ["allegedAbuserId"]
+  GETTABLEKS R4 R1 K14 ["abuser"]
+  SETTABLEKS R4 R2 K15 ["allegedAbuser"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K16 ["UpdatePlayerNameMap"]
+  JUMPIFNOTEQ R3 R4 [+6]
+  GETTABLEKS R4 R1 K9 ["playerObjects"]
+  SETTABLEKS R4 R2 K9 ["playerObjects"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K17 ["SetVoiceEnabled"]
+  JUMPIFNOTEQ R3 R4 [+6]
+  GETTABLEKS R4 R1 K18 ["enabled"]
+  SETTABLEKS R4 R2 K19 ["isVoiceEnabled"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K20 ["SetMenuOpenTimestamp"]
+  JUMPIFNOTEQ R3 R4 [+6]
+  GETTABLEKS R4 R1 K21 ["timestamp"]
+  SETTABLEKS R4 R2 K22 ["menuOpenedUnixTimestampMilliseconds"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K23 ["ClearState"]
+  JUMPIFNOTEQ R3 R4 [+9]
+  GETIMPORT R4 K2 [table.clone]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K24 ["InitPersonUIState"]
+  CALL R4 1 1
+  MOVE R2 R4
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K25 ["SetShowModalSelector"]
+  JUMPIFNOTEQ R3 R4 [+10]
+  GETTABLEKS R4 R1 K26 ["isShown"]
+  SETTABLEKS R4 R2 K27 ["isModalSelectorShown"]
+  GETTABLEKS R4 R1 K28 ["cellData"]
+  SETTABLEKS R4 R2 K29 ["modalSelectorCellData"]
+  RETURN R2 1
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K30 ["SetPreselectedPlayer"]
+  JUMPIFNOTEQ R3 R4 [+5]
+  GETTABLEKS R4 R1 K31 ["player"]
+  SETTABLEKS R4 R2 K32 ["preselectedPlayer"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Components"]
+  GETTABLEKS R2 R3 K7 ["Constants"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Components"]
+  GETTABLEKS R3 R4 K8 ["Types"]
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K9 ["PlayerMenuActions"]
+  DUPCLOSURE R4 K10 [PROTO_0]
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  RETURN R4 1

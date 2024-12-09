@@ -1,0 +1,128 @@
+PROTO_0:
+  GETIMPORT R1 K2 [Enum.CoreGuiType]
+  NAMECALL R1 R1 K3 ["GetEnumItems"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [ipairs]
+  MOVE R3 R1
+  CALL R2 1 3
+  FORGPREP_INEXT R2
+  GETIMPORT R7 K7 [Enum.CoreGuiType.All]
+  JUMPIFEQ R6 R7 [+12]
+  GETTABLEKS R8 R0 K8 ["props"]
+  GETTABLEKS R7 R8 K9 ["updateCoreGuiEnabled"]
+  MOVE R8 R6
+  GETUPVAL R9 0
+  MOVE R11 R6
+  NAMECALL R9 R9 K10 ["GetCoreGuiEnabled"]
+  CALL R9 2 -1
+  CALL R7 -1 0
+  FORGLOOP R2 2 [inext] [-16]
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["updateCoreGuiEnabled"]
+  MOVE R3 R0
+  MOVE R4 R1
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createFragment"]
+  DUPTABLE R2 K2 [{"CoreGuiChangedConnection"}]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K3 ["createElement"]
+  GETUPVAL R4 1
+  DUPTABLE R5 K6 [{"event", "callback"}]
+  GETUPVAL R7 2
+  GETTABLEKS R6 R7 K7 ["CoreGuiChangedSignal"]
+  SETTABLEKS R6 R5 K4 ["event"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K5 ["callback"]
+  CALL R3 2 1
+  SETTABLEKS R3 R2 K1 ["CoreGuiChangedConnection"]
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETUPVAL R3 1
+  MOVE R4 R0
+  MOVE R5 R1
+  CALL R3 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"updateCoreGuiEnabled"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["updateCoreGuiEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["StarterGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETTABLEKS R6 R5 K13 ["Parent"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K14 ["Actions"]
+  GETTABLEKS R8 R9 K15 ["UpdateCoreGuiEnabled"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R11 R6 K13 ["Parent"]
+  GETTABLEKS R10 R11 K16 ["Common"]
+  GETTABLEKS R9 R10 K17 ["EventConnection"]
+  CALL R8 1 1
+  GETTABLEKS R9 R2 K18 ["PureComponent"]
+  LOADK R11 K19 ["CoreGuiConnector"]
+  NAMECALL R9 R9 K20 ["extend"]
+  CALL R9 2 1
+  GETTABLEKS R10 R4 K21 ["strictInterface"]
+  DUPTABLE R11 K23 [{"updateCoreGuiEnabled"}]
+  GETTABLEKS R12 R4 K24 ["callback"]
+  SETTABLEKS R12 R11 K22 ["updateCoreGuiEnabled"]
+  CALL R10 1 1
+  SETTABLEKS R10 R9 K25 ["validateProps"]
+  DUPCLOSURE R10 K26 [PROTO_0]
+  CAPTURE VAL R1
+  SETTABLEKS R10 R9 K27 ["didMount"]
+  DUPCLOSURE R10 K28 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  SETTABLEKS R10 R9 K29 ["render"]
+  DUPCLOSURE R10 K30 [PROTO_4]
+  CAPTURE VAL R7
+  GETTABLEKS R11 R3 K31 ["UNSTABLE_connect2"]
+  LOADNIL R12
+  MOVE R13 R10
+  CALL R11 2 1
+  MOVE R12 R9
+  CALL R11 1 -1
+  RETURN R11 -1

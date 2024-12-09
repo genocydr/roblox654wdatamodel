@@ -33,6 +33,7 @@ local MouseIconOverrideService = require(CorePackages.InGameServices.MouseIconOv
 local SharedFlags = CorePackages.Workspace.Packages.SharedFlags
 local isSubjectToDesktopPolicies = require(SharedFlags).isSubjectToDesktopPolicies
 local MenuBackButton = require(RobloxGui.Modules.Settings.Components.MenuBackButton)
+local MenuFrontButton = require(RobloxGui.Modules.Settings.Components.MenuFrontButton)
 local RoactAppExperiment = require(CorePackages.Packages.RoactAppExperiment)
 local IXPServiceWrapper = require(RobloxGui.Modules.Common.IXPServiceWrapper)
 local AppFonts = require(CorePackages.Workspace.Packages.Style).AppFonts
@@ -106,6 +107,7 @@ local FFlagSettingsHubIndependentBackgroundVisibility = require(CorePackages.Wor
 local FFlagAppChatReappearIfClosedByTiltMenu = game:DefineFastFlag("AppChatReappearIfClosedByTiltMenu", true)
 local FFlagInExperienceMenuResetButtonTextToRespawn = require(RobloxGui.Modules.Settings.Flags.FFlagInExperienceMenuResetButtonTextToRespawn)
 local getFFlagAppChatCoreUIConflictFix = require(CorePackages.Workspace.Packages.SharedFlags).getFFlagAppChatCoreUIConflictFix
+local EngineFeatureTeleportHistoryButtons = game:GetEngineFeature("TeleportHistoryButtons")
 
 --[[ SERVICES ]]
 local RobloxReplicatedStorage = game:GetService("RobloxReplicatedStorage")
@@ -306,6 +308,9 @@ local function CreateSettingsHub()
 	this.BottomBarButtonsComponents = {}
 	this.ResizedConnection = nil
 	this.BackBarVisibleConnection = nil
+	if EngineFeatureTeleportHistoryButtons then
+		this.FrontBarVisibleConnection = nil
+	end
 	this.PreferredTransparencyChangedConnection = nil
 	this.TabConnection = nil
 	this.LeaveGamePage = require(RobloxGui.Modules.Settings.Pages.LeaveGame)
@@ -1713,14 +1718,41 @@ local function CreateSettingsHub()
 			SortOrder = Enum.SortOrder.LayoutOrder,
 			Parent = this.HubBar
 		}
-
-		this.BackBarRef = Roact.createRef()
-		this.BackBar = Roact.createElement(RoactAppExperiment.Provider, {
-			value = IXPService,
-		}, {
-			BackButton = Roact.createElement(MenuBackButton,{BackBarRef=this.BackBarRef, HubBar=this.HubBar}),
-		})
-		Roact.mount(this.BackBar, menuParent, "BackBar")
+		if EngineFeatureTeleportHistoryButtons then
+			this.BackBarRef = Roact.createRef()
+			this.FrontBarRef = Roact.createRef()
+			this.BackBar = Roact.createElement(RoactAppExperiment.Provider, {
+				value = IXPService,
+			}, 
+			{
+				ButtonsFrame = Roact.createElement("Frame", {
+					BackgroundTransparency = 1,
+					LayoutOrder = -1,
+					AutomaticSize = Enum.AutomaticSize.Y,
+					Size = UDim2.new(1, 0, 0, 0)
+				}, {
+					BackButton = Roact.createElement(MenuBackButton, {
+						BackBarRef = this.BackBarRef,
+						HubBar = this.HubBar,
+						LayoutOrder = 1,
+					}),
+					FrontButton = Roact.createElement(MenuFrontButton, {
+						FrontBarRef = this.FrontBarRef,
+						HubBar = this.HubBar,
+						LayoutOrder = 2,
+					}),
+				})
+			})
+			Roact.mount(this.BackBar, menuParent, "BackBar")	
+		else
+			this.BackBarRef = Roact.createRef()
+			this.BackBar = Roact.createElement(RoactAppExperiment.Provider, {
+				value = IXPService,
+			}, {
+				BackButton = Roact.createElement(MenuBackButton,{BackBarRef=this.BackBarRef, HubBar=this.HubBar}),
+			})
+			Roact.mount(this.BackBar, menuParent, "BackBar")
+		end
 
 		if utility:IsSmallTouchScreen() then
 			if Theme.UIBloxThemeEnabled then
@@ -1950,7 +1982,7 @@ local function CreateSettingsHub()
 				Padding = UDim.new(0, 12),
 				FillDirection = Enum.FillDirection.Horizontal,
 				VerticalAlignment = Enum.VerticalAlignment.Center,
-				HorizontalAlignment = Enum.HorizontalAlignment.Center,
+				HorizontalAlignment = Enum.HorizontalAlignment.Left,
 				SortOrder = Enum.SortOrder.LayoutOrder,
 				Parent = this.BottomButtonFrame
 			}
@@ -2221,6 +2253,13 @@ local function CreateSettingsHub()
 			return this.BackBarRef:getValue().Visible
 		end
 
+		local function getFrontBarVisible()
+			if not this.FrontBarRef:getValue() then
+				return false
+			end
+			return this.FrontBarRef:getValue().Visible
+		end
+
 		local menuPos = Theme.MenuContainerPosition()
 		local largestPageSize = 600
 		local fullScreenSize = RobloxGui.AbsoluteSize.y
@@ -2242,7 +2281,15 @@ local function CreateSettingsHub()
 
 		local barSize = this.HubBar.Size.Y.Offset
 		local extraSpace = bufferSize*2+barSize*2
-		local extraTopPadding = if getBackBarVisible() and this.BackBarRef:getValue() then this.BackBarRef:getValue().Size.Y.Offset else 0
+		
+		local extraTopPadding = 0
+		if getBackBarVisible() and this.BackBarRef:getValue() then 
+			extraTopPadding = this.BackBarRef:getValue().Size.Y.Offset 
+		end
+
+		if (EngineFeatureTeleportHistoryButtons) and getFrontBarVisible() and this.FrontBarRef:getValue() then
+			extraTopPadding = extraTopPadding + this.FrontBarRef:getValue().Size.Y.Offset
+		end
 
 		local menuAspectRatioParent = this.MenuContainer
 		if Theme.UIBloxThemeEnabled then
@@ -2310,6 +2357,9 @@ local function CreateSettingsHub()
 			end
 			extraSpace = bufferSize*2+(if this.Pages.CurrentPage.DisableTopPadding then 0 else barSize)
 			extraTopPadding = if getBackBarVisible() and this.BackBarRef:getValue() then this.BackBarRef:getValue().Size.Y.Offset else 0
+			if EngineFeatureTeleportHistoryButtons and getFrontBarVisible() and this.FrontBarRef:getValue() then
+				extraTopPadding = extraTopPadding + this.FrontBarRef:getValue().Size.Y.Offset
+			end
 		end
 
 		--We need to wait and let the HubBar AbsoluteSize actually update.
@@ -2386,12 +2436,18 @@ local function CreateSettingsHub()
 		if not isTenFootInterface then
 			if utility:IsSmallTouchScreen() then
 				local backButtonExtraSize = if Theme.UIBloxThemeEnabled or getBackBarVisible() then 0 else 44
+				local frontButtonExtraSize = 0
+				if Theme.UIBloxThemeEnabled then
+					frontButtonExtraSize = 0
+				else
+					frontButtonExtraSize = ((EngineFeatureTeleportHistoryButtons and getFrontBarVisible()) and 0 or 44)
+				end
 
 				newPageViewClipperSize = UDim2.new(
 					0,
 					this.HubBar.AbsoluteSize.X,
 					0,
-					usePageSize + backButtonExtraSize
+					usePageSize + backButtonExtraSize + frontButtonExtraSize
 				)
 			else
 				newPageViewClipperSize = UDim2.new(
@@ -3009,8 +3065,8 @@ local function CreateSettingsHub()
 
 		-- os.time seems to fail occasionally, so if its nil we'll try once to recover during the check
 		if not this.sessionStartTime then
-				this.sessionStartTime = os.time()
-			end
+			this.sessionStartTime = os.time()
+		end
 		if not this.sessionStartTime then
 			return
 		end
@@ -3103,6 +3159,11 @@ local function CreateSettingsHub()
 			this.BackBarVisibleConnection = nil
 		end
 
+		if EngineFeatureTeleportHistoryButtons and this.FrontBarVisibleConnection then
+			this.FrontBarVisibleConnection:disconnect()
+			this.FrontBarVisibleConnection = nil
+		end
+
 		if this.PreferredTransparencyChangedConnection then
 			this.PreferredTransparencyChangedConnection:disconnect()
 			this.PreferredTransparencyChangedConnection = nil
@@ -3129,6 +3190,11 @@ local function CreateSettingsHub()
 			end)
 			if this.BackBarRef:getValue() then
 				this.BackBarVisibleConnection = this.BackBarRef:getValue():GetPropertyChangedSignal("Visible"):connect(function()
+					onScreenSizeChanged()
+				end)
+			end
+			if EngineFeatureTeleportHistoryButtons and this.FrontBarRef:getValue() then
+				this.FrontBarVisibleConnection = this.FrontBarRef:getValue():GetPropertyChangedSignal("Visible"):connect(function()
 					onScreenSizeChanged()
 				end)
 			end
@@ -3420,7 +3486,7 @@ local function CreateSettingsHub()
 			end
 
 			playerList:HideTemp('SettingsMenu', false)
-			
+
 			if getFFlagAppChatCoreUIConflictFix() then
 				chat:HideTemp('SettingsMenu', false)
 			else

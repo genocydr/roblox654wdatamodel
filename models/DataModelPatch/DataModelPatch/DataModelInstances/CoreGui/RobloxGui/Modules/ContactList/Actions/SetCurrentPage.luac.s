@@ -1,0 +1,35 @@
+PROTO_0:
+  DUPTABLE R1 K1 [{"page"}]
+  SETTABLEKS R0 R1 K0 ["page"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CorePackages"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  LOADK R4 K5 ["RobloxGui"]
+  NAMECALL R2 R0 K6 ["WaitForChild"]
+  CALL R2 2 1
+  GETTABLEKS R4 R2 K7 ["Modules"]
+  GETTABLEKS R3 R4 K8 ["ContactList"]
+  GETIMPORT R4 K10 [require]
+  GETTABLEKS R6 R3 K11 ["Enums"]
+  GETTABLEKS R5 R6 K12 ["Pages"]
+  CALL R4 1 1
+  GETIMPORT R6 K10 [require]
+  GETTABLEKS R8 R1 K13 ["Packages"]
+  GETTABLEKS R7 R8 K14 ["Rodux"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K15 ["makeActionCreator"]
+  MOVE R6 R5
+  GETIMPORT R8 K17 [script]
+  GETTABLEKS R7 R8 K18 ["Name"]
+  DUPCLOSURE R8 K19 [PROTO_0]
+  CALL R6 2 -1
+  RETURN R6 -1

@@ -235,6 +235,11 @@ function UIManager.onShowTopBarChanged(self: UIManagerClassType)
 			if panelStruct.uiType == SpatialUIType.SpatialUI or panelStruct.uiType == SpatialUIType.SpatialUIRoact then
 				local panelObject = panelStruct.panelObject :: SurfaceGui
 				panelObject.Enabled = true
+				local panelPart = panelObject.Adornee :: Part
+				panelPart.Parent = workspace
+			elseif panelStruct.uiType == SpatialUIType.SpatialUIPartOnly then
+				local panelObject = panelStruct.panelObject :: Part
+				panelObject.Parent = workspace
 			end
 		end
 	else
@@ -242,6 +247,11 @@ function UIManager.onShowTopBarChanged(self: UIManagerClassType)
 			if panelStruct.uiType == SpatialUIType.SpatialUI or panelStruct.uiType == SpatialUIType.SpatialUIRoact then
 				local panelObject = panelStruct.panelObject :: SurfaceGui
 				panelObject.Enabled = false
+				local panelPart = panelObject.Adornee :: Part
+				panelPart.Parent = nil
+			elseif panelStruct.uiType == SpatialUIType.SpatialUIPartOnly then
+				local panelObject = panelStruct.panelObject :: Part
+				panelObject.Parent = nil
 			end
 		end
 	end

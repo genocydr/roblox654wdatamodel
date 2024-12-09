@@ -1,0 +1,115 @@
+PROTO_0:
+  NEWTABLE R2 0 0
+  GETIMPORT R3 K1 [ipairs]
+  MOVE R4 R1
+  CALL R3 1 3
+  FORGPREP_INEXT R3
+  GETTABLEKS R8 R7 K2 ["Slot"]
+  GETTABLEKS R9 R7 K3 ["Name"]
+  JUMPIFNOT R8 [+4]
+  JUMPIFNOT R9 [+3]
+  GETTABLE R10 R0 R9
+  JUMPIFNOT R10 [+1]
+  SETTABLE R9 R2 R8
+  FORGLOOP R3 2 [inext] [-10]
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"emotesInfo", "currentEmotes"}]
+  GETTABLEKS R5 R1 K5 ["emotes"]
+  SETTABLEKS R5 R4 K2 ["emotesInfo"]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R1 K5 ["emotes"]
+  GETTABLEKS R7 R0 K6 ["equippedEmotes"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["currentEmotes"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_2:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K4 [{"equippedEmotes", "currentEmotes"}]
+  GETTABLEKS R5 R1 K2 ["equippedEmotes"]
+  SETTABLEKS R5 R4 K2 ["equippedEmotes"]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R0 K5 ["emotesInfo"]
+  GETTABLEKS R7 R1 K2 ["equippedEmotes"]
+  CALL R5 2 1
+  SETTABLEKS R5 R4 K3 ["currentEmotes"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+PROTO_3:
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["Dictionary"]
+  GETTABLEKS R2 R3 K1 ["join"]
+  MOVE R3 R0
+  DUPTABLE R4 K3 [{"numberEmotesLoaded"}]
+  GETTABLEKS R5 R1 K2 ["numberEmotesLoaded"]
+  SETTABLEKS R5 R4 K2 ["numberEmotesLoaded"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Rodux"]
+  CALL R2 1 1
+  GETIMPORT R4 K10 [script]
+  GETTABLEKS R3 R4 K11 ["Parent"]
+  GETTABLEKS R4 R3 K11 ["Parent"]
+  GETTABLEKS R5 R4 K12 ["Actions"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R5 K13 ["EmotesChanged"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R8 R5 K14 ["EquippedEmotesChanged"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R9 R5 K15 ["NumberEmotesLoadedChanged"]
+  CALL R8 1 1
+  DUPTABLE R9 K20 [{"emotesInfo", "equippedEmotes", "numberEmotesLoaded", "currentEmotes"}]
+  NEWTABLE R10 0 0
+  SETTABLEKS R10 R9 K16 ["emotesInfo"]
+  NEWTABLE R10 0 0
+  SETTABLEKS R10 R9 K17 ["equippedEmotes"]
+  LOADN R10 255
+  SETTABLEKS R10 R9 K18 ["numberEmotesLoaded"]
+  NEWTABLE R10 0 0
+  SETTABLEKS R10 R9 K19 ["currentEmotes"]
+  DUPCLOSURE R10 K21 [PROTO_0]
+  GETTABLEKS R11 R2 K22 ["createReducer"]
+  MOVE R12 R9
+  NEWTABLE R13 4 0
+  GETTABLEKS R14 R6 K23 ["name"]
+  DUPCLOSURE R15 K24 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R10
+  SETTABLE R15 R13 R14
+  GETTABLEKS R14 R7 K23 ["name"]
+  DUPCLOSURE R15 K25 [PROTO_2]
+  CAPTURE VAL R1
+  CAPTURE VAL R10
+  SETTABLE R15 R13 R14
+  GETTABLEKS R14 R8 K23 ["name"]
+  DUPCLOSURE R15 K26 [PROTO_3]
+  CAPTURE VAL R1
+  SETTABLE R15 R13 R14
+  CALL R11 2 -1
+  RETURN R11 -1

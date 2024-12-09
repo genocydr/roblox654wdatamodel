@@ -1,0 +1,592 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["height"]
+  GETTABLEKS R2 R0 K1 ["renderInsert"]
+  JUMPIFNOT R2 [+11]
+  GETTABLEKS R5 R0 K2 ["insertSize"]
+  GETTABLEKS R4 R5 K3 ["Y"]
+  FASTCALL2 MATH_MAX R1 R4 [+4]
+  MOVE R3 R1
+  GETIMPORT R2 K6 [math.max]
+  CALL R2 2 1
+  MOVE R1 R2
+  GETTABLEKS R4 R0 K8 ["chatSettings"]
+  GETTABLEKS R3 R4 K9 ["Padding"]
+  MULK R2 R3 K7 [2]
+  ADD R1 R1 R2
+  RETURN R1 1
+
+PROTO_1:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["updateWidth"]
+  FASTCALL1 MATH_ROUND R0 [+3]
+  MOVE R3 R0
+  GETIMPORT R2 K3 [math.round]
+  CALL R2 1 1
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R1 K2 [UDim2.fromOffset]
+  GETTABLEN R2 R0 1
+  GETTABLEN R3 R0 2
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createBinding"]
+  LOADN R3 0
+  CALL R2 1 2
+  SETTABLEKS R2 R0 K1 ["width"]
+  SETTABLEKS R3 R0 K2 ["updateWidth"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["createSingleMotor"]
+  LOADN R3 0
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K4 ["widthMotor"]
+  GETTABLEKS R2 R0 K4 ["widthMotor"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K5 ["onStep"]
+  CALL R2 2 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createBinding"]
+  GETTABLEKS R4 R1 K6 ["height"]
+  GETTABLEKS R5 R1 K7 ["renderInsert"]
+  JUMPIFNOT R5 [+11]
+  GETTABLEKS R8 R1 K8 ["insertSize"]
+  GETTABLEKS R7 R8 K9 ["Y"]
+  FASTCALL2 MATH_MAX R4 R7 [+4]
+  MOVE R6 R4
+  GETIMPORT R5 K12 [math.max]
+  CALL R5 2 1
+  MOVE R4 R5
+  GETTABLEKS R7 R1 K14 ["chatSettings"]
+  GETTABLEKS R6 R7 K15 ["Padding"]
+  MULK R5 R6 K13 [2]
+  ADD R4 R4 R5
+  MOVE R3 R4
+  CALL R2 1 2
+  SETTABLEKS R2 R0 K6 ["height"]
+  SETTABLEKS R3 R0 K16 ["updateHeight"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K17 ["joinBindings"]
+  NEWTABLE R3 0 2
+  GETTABLEKS R4 R0 K1 ["width"]
+  GETTABLEKS R5 R0 K6 ["height"]
+  SETLIST R3 R4 2 [1]
+  CALL R2 1 1
+  DUPCLOSURE R4 K18 [PROTO_2]
+  NAMECALL R2 R2 K19 ["map"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K20 ["frameSize"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createBinding"]
+  LOADN R3 1
+  CALL R2 1 2
+  SETTABLEKS R2 R0 K21 ["transparency"]
+  SETTABLEKS R3 R0 K22 ["updateTransparency"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K3 ["createSingleMotor"]
+  LOADN R3 1
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K23 ["transparencyMotor"]
+  GETTABLEKS R2 R0 K23 ["transparencyMotor"]
+  GETTABLEKS R4 R0 K22 ["updateTransparency"]
+  NAMECALL R2 R2 K5 ["onStep"]
+  CALL R2 2 0
+  GETTABLEKS R2 R1 K24 ["fadingOut"]
+  JUMPIFNOT R2 [+3]
+  NAMECALL R2 R0 K25 ["fadeOut"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R2 R0 K0 ["chatSettings"]
+  LOADNIL R3
+  GETTABLEKS R4 R0 K1 ["renderInsert"]
+  JUMPIFNOT R4 [+12]
+  GETTABLEKS R5 R0 K2 ["width"]
+  GETTABLEKS R7 R0 K3 ["insertSize"]
+  GETTABLEKS R6 R7 K4 ["X"]
+  ADD R4 R5 R6
+  GETTABLEKS R6 R2 K6 ["Padding"]
+  MULK R5 R6 K5 [2]
+  ADD R3 R4 R5
+  JUMP [+6]
+  GETTABLEKS R4 R0 K2 ["width"]
+  GETTABLEKS R6 R2 K6 ["Padding"]
+  MULK R5 R6 K5 [2]
+  ADD R3 R4 R5
+  GETTABLEKS R5 R0 K7 ["height"]
+  GETTABLEKS R6 R0 K1 ["renderInsert"]
+  JUMPIFNOT R6 [+11]
+  GETTABLEKS R9 R0 K3 ["insertSize"]
+  GETTABLEKS R8 R9 K8 ["Y"]
+  FASTCALL2 MATH_MAX R5 R8 [+4]
+  MOVE R7 R5
+  GETIMPORT R6 K11 [math.max]
+  CALL R6 2 1
+  MOVE R5 R6
+  GETTABLEKS R8 R0 K0 ["chatSettings"]
+  GETTABLEKS R7 R8 K6 ["Padding"]
+  MULK R6 R7 K5 [2]
+  ADD R5 R5 R6
+  MOVE R4 R5
+  GETTABLEKS R5 R1 K12 ["fullWidth"]
+  JUMPIFNOTEQ R3 R5 [+5]
+  GETTABLEKS R5 R1 K13 ["fullHeight"]
+  JUMPIFEQ R4 R5 [+7]
+  DUPTABLE R5 K14 [{"fullWidth", "fullHeight"}]
+  SETTABLEKS R3 R5 K12 ["fullWidth"]
+  SETTABLEKS R4 R5 K13 ["fullHeight"]
+  RETURN R5 1
+  LOADNIL R5
+  RETURN R5 1
+
+PROTO_5:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["chatSettings"]
+  GETTABLEKS R2 R1 K2 ["BackgroundImage"]
+  GETTABLEKS R3 R1 K3 ["BackgroundGradient"]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K4 ["renderInsert"]
+  JUMPIFNOT R5 [+7]
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K5 ["insertSize"]
+  GETTABLEKS R4 R5 K6 ["X"]
+  JUMPIF R4 [+1]
+  LOADN R4 0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["createElement"]
+  LOADK R6 K8 ["Frame"]
+  DUPTABLE R7 K13 [{"AnchorPoint", "Size", "Position", "Transparency"}]
+  GETIMPORT R8 K16 [Vector2.new]
+  LOADK R9 K17 [0.5]
+  LOADN R10 1
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K9 ["AnchorPoint"]
+  GETIMPORT R8 K20 [UDim2.fromOffset]
+  GETTABLEKS R10 R0 K21 ["state"]
+  GETTABLEKS R9 R10 K22 ["fullWidth"]
+  GETTABLEKS R11 R0 K21 ["state"]
+  GETTABLEKS R10 R11 K23 ["fullHeight"]
+  CALL R8 2 1
+  SETTABLEKS R8 R7 K10 ["Size"]
+  GETIMPORT R8 K24 [UDim2.new]
+  LOADK R9 K17 [0.5]
+  LOADN R10 0
+  LOADN R11 1
+  LOADN R12 248
+  CALL R8 4 1
+  SETTABLEKS R8 R7 K11 ["Position"]
+  LOADN R8 1
+  SETTABLEKS R8 R7 K12 ["Transparency"]
+  DUPTABLE R8 K28 [{"Scale", "Carat", "RoundedFrame"}]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K29 ["UIScale"]
+  DUPTABLE R11 K30 [{"Scale"}]
+  LOADK R12 K31 [0.75]
+  SETTABLEKS R12 R11 K25 ["Scale"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K25 ["Scale"]
+  GETTABLEKS R9 R1 K32 ["TailVisible"]
+  JUMPIFNOT R9 [+43]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K33 ["ImageLabel"]
+  DUPTABLE R11 K38 [{"AnchorPoint", "BackgroundTransparency", "Position", "Size", "Image", "ImageColor3", "ImageTransparency"}]
+  GETIMPORT R12 K16 [Vector2.new]
+  LOADK R13 K17 [0.5]
+  LOADN R14 0
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K9 ["AnchorPoint"]
+  LOADN R12 1
+  SETTABLEKS R12 R11 K34 ["BackgroundTransparency"]
+  GETIMPORT R12 K24 [UDim2.new]
+  LOADK R13 K17 [0.5]
+  LOADN R14 0
+  LOADN R15 1
+  LOADN R16 255
+  CALL R12 4 1
+  SETTABLEKS R12 R11 K11 ["Position"]
+  GETIMPORT R12 K20 [UDim2.fromOffset]
+  LOADN R13 12
+  LOADN R14 8
+  CALL R12 2 1
+  SETTABLEKS R12 R11 K10 ["Size"]
+  LOADK R12 K39 ["rbxasset://textures/ui/InGameChat/Caret.png"]
+  SETTABLEKS R12 R11 K35 ["Image"]
+  GETTABLEKS R12 R1 K40 ["BackgroundColor3"]
+  SETTABLEKS R12 R11 K36 ["ImageColor3"]
+  GETTABLEKS R12 R0 K41 ["transparency"]
+  SETTABLEKS R12 R11 K37 ["ImageTransparency"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K26 ["Carat"]
+  GETUPVAL R10 0
+  GETTABLEKS R9 R10 K7 ["createElement"]
+  LOADK R10 K33 ["ImageLabel"]
+  GETUPVAL R13 1
+  GETTABLEKS R12 R13 K42 ["Dictionary"]
+  GETTABLEKS R11 R12 K43 ["join"]
+  MOVE R12 R2
+  DUPTABLE R13 K46 [{"Size", "BackgroundColor3", "BackgroundTransparency", "BorderSizePixel", "AnchorPoint", "Position", "ClipsDescendants", "ImageTransparency"}]
+  GETTABLEKS R14 R0 K47 ["frameSize"]
+  SETTABLEKS R14 R13 K10 ["Size"]
+  GETTABLEKS R14 R1 K40 ["BackgroundColor3"]
+  SETTABLEKS R14 R13 K40 ["BackgroundColor3"]
+  GETTABLEKS R15 R2 K35 ["Image"]
+  JUMPIFNOTEQKS R15 K48 [""] [+4]
+  GETTABLEKS R14 R0 K41 ["transparency"]
+  JUMPIF R14 [+1]
+  LOADN R14 1
+  SETTABLEKS R14 R13 K34 ["BackgroundTransparency"]
+  LOADN R14 0
+  SETTABLEKS R14 R13 K44 ["BorderSizePixel"]
+  GETIMPORT R14 K16 [Vector2.new]
+  LOADK R15 K17 [0.5]
+  LOADN R16 0
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K9 ["AnchorPoint"]
+  GETIMPORT R14 K24 [UDim2.new]
+  LOADK R15 K17 [0.5]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K11 ["Position"]
+  LOADB R14 1
+  SETTABLEKS R14 R13 K45 ["ClipsDescendants"]
+  GETTABLEKS R14 R0 K41 ["transparency"]
+  SETTABLEKS R14 R13 K37 ["ImageTransparency"]
+  CALL R11 2 1
+  DUPTABLE R12 K52 [{"UICorner", "Contents", "Gradient"}]
+  GETTABLEKS R13 R1 K53 ["CornerEnabled"]
+  JUMPIFNOT R13 [+10]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K49 ["UICorner"]
+  DUPTABLE R15 K55 [{"CornerRadius"}]
+  GETTABLEKS R16 R1 K54 ["CornerRadius"]
+  SETTABLEKS R16 R15 K54 ["CornerRadius"]
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K49 ["UICorner"]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K8 ["Frame"]
+  DUPTABLE R15 K56 [{"Size", "BackgroundTransparency"}]
+  GETIMPORT R16 K58 [UDim2.fromScale]
+  LOADN R17 1
+  LOADN R18 1
+  CALL R16 2 1
+  SETTABLEKS R16 R15 K10 ["Size"]
+  LOADN R16 1
+  SETTABLEKS R16 R15 K34 ["BackgroundTransparency"]
+  DUPTABLE R16 K63 [{"Padding", "UIListLayout", "Insert", "Ellipsis"}]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K7 ["createElement"]
+  LOADK R18 K64 ["UIPadding"]
+  DUPTABLE R19 K69 [{"PaddingTop", "PaddingRight", "PaddingBottom", "PaddingLeft"}]
+  GETIMPORT R20 K71 [UDim.new]
+  LOADN R21 0
+  GETTABLEKS R22 R1 K59 ["Padding"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K65 ["PaddingTop"]
+  GETIMPORT R20 K71 [UDim.new]
+  LOADN R21 0
+  GETTABLEKS R22 R1 K59 ["Padding"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K66 ["PaddingRight"]
+  GETIMPORT R20 K71 [UDim.new]
+  LOADN R21 0
+  GETTABLEKS R22 R1 K59 ["Padding"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K67 ["PaddingBottom"]
+  GETIMPORT R20 K71 [UDim.new]
+  LOADN R21 0
+  GETTABLEKS R22 R1 K59 ["Padding"]
+  CALL R20 2 1
+  SETTABLEKS R20 R19 K68 ["PaddingLeft"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K59 ["Padding"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K7 ["createElement"]
+  LOADK R18 K60 ["UIListLayout"]
+  DUPTABLE R19 K74 [{"FillDirection", "SortOrder"}]
+  GETIMPORT R20 K77 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R20 R19 K72 ["FillDirection"]
+  GETIMPORT R20 K79 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R20 R19 K73 ["SortOrder"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K60 ["UIListLayout"]
+  GETTABLEKS R18 R0 K0 ["props"]
+  GETTABLEKS R17 R18 K4 ["renderInsert"]
+  JUMPIFNOT R17 [+5]
+  GETTABLEKS R18 R0 K0 ["props"]
+  GETTABLEKS R17 R18 K4 ["renderInsert"]
+  CALL R17 0 1
+  SETTABLEKS R17 R16 K61 ["Insert"]
+  GETUPVAL R18 0
+  GETTABLEKS R17 R18 K7 ["createElement"]
+  LOADK R18 K80 ["TextLabel"]
+  DUPTABLE R19 K86 [{"BackgroundTransparency", "Text", "TextColor3", "TextTransparency", "Font", "TextScaled", "Size", "LayoutOrder"}]
+  LOADN R20 1
+  SETTABLEKS R20 R19 K34 ["BackgroundTransparency"]
+  LOADK R20 K87 ["…"]
+  SETTABLEKS R20 R19 K81 ["Text"]
+  GETTABLEKS R20 R1 K82 ["TextColor3"]
+  SETTABLEKS R20 R19 K82 ["TextColor3"]
+  GETTABLEKS R20 R0 K41 ["transparency"]
+  SETTABLEKS R20 R19 K83 ["TextTransparency"]
+  GETUPVAL R21 2
+  GETTABLEKS R20 R21 K88 ["default"]
+  NAMECALL R20 R20 K89 ["getBlack"]
+  CALL R20 1 1
+  SETTABLEKS R20 R19 K84 ["Font"]
+  LOADB R20 1
+  SETTABLEKS R20 R19 K85 ["TextScaled"]
+  GETIMPORT R20 K24 [UDim2.new]
+  LOADN R21 1
+  MINUS R22 R4
+  LOADN R23 1
+  LOADN R24 0
+  CALL R20 4 1
+  SETTABLEKS R20 R19 K10 ["Size"]
+  LOADN R20 2
+  SETTABLEKS R20 R19 K78 ["LayoutOrder"]
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K62 ["Ellipsis"]
+  CALL R13 3 1
+  SETTABLEKS R13 R12 K50 ["Contents"]
+  GETTABLEKS R13 R3 K90 ["Enabled"]
+  JUMPIFNOT R13 [+6]
+  GETUPVAL R14 0
+  GETTABLEKS R13 R14 K7 ["createElement"]
+  LOADK R14 K91 ["UIGradient"]
+  MOVE R15 R3
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K51 ["Gradient"]
+  CALL R9 3 1
+  SETTABLEKS R9 R8 K27 ["RoundedFrame"]
+  CALL R5 3 -1
+  RETURN R5 -1
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  JUMPIFNOT R0 [+6]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["onFadeOut"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_7:
+  GETTABLEKS R1 R0 K0 ["isFadingOut"]
+  JUMPIF R1 [+24]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["isFadingOut"]
+  GETTABLEKS R1 R0 K1 ["transparencyMotor"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["onComplete"]
+  CALL R1 2 0
+  GETUPVAL R1 0
+  GETTABLEKS R3 R0 K3 ["props"]
+  GETTABLEKS R2 R3 K4 ["chatSettings"]
+  CALL R1 1 1
+  GETTABLEKS R2 R0 K1 ["transparencyMotor"]
+  MOVE R4 R1
+  LOADN R5 1
+  CALL R4 1 -1
+  NAMECALL R2 R2 K5 ["setGoal"]
+  CALL R2 -1 0
+  RETURN R0 0
+
+PROTO_8:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["fadingOut"]
+  JUMPIFNOT R3 [+4]
+  NAMECALL R3 R0 K2 ["fadeOut"]
+  CALL R3 1 0
+  RETURN R0 0
+  GETTABLEKS R4 R0 K3 ["state"]
+  GETTABLEKS R3 R4 K4 ["fullHeight"]
+  GETTABLEKS R4 R2 K4 ["fullHeight"]
+  JUMPIFEQ R3 R4 [+8]
+  GETTABLEKS R3 R0 K5 ["updateHeight"]
+  GETTABLEKS R5 R0 K3 ["state"]
+  GETTABLEKS R4 R5 K4 ["fullHeight"]
+  CALL R3 1 0
+  GETTABLEKS R4 R0 K3 ["state"]
+  GETTABLEKS R3 R4 K6 ["fullWidth"]
+  GETTABLEKS R4 R2 K6 ["fullWidth"]
+  JUMPIFEQ R3 R4 [+19]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K7 ["chatSettings"]
+  GETUPVAL R4 0
+  MOVE R5 R3
+  CALL R4 1 1
+  GETTABLEKS R5 R0 K8 ["widthMotor"]
+  MOVE R7 R4
+  GETTABLEKS R9 R0 K3 ["state"]
+  GETTABLEKS R8 R9 K6 ["fullWidth"]
+  CALL R7 1 -1
+  NAMECALL R5 R5 K9 ["setGoal"]
+  CALL R5 -1 0
+  RETURN R0 0
+
+PROTO_9:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["fadingOut"]
+  JUMPIF R1 [+34]
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K2 ["chatSettings"]
+  GETUPVAL R2 0
+  MOVE R3 R1
+  CALL R2 1 1
+  GETUPVAL R3 1
+  MOVE R4 R1
+  CALL R3 1 1
+  GETTABLEKS R4 R0 K3 ["transparencyMotor"]
+  MOVE R6 R3
+  GETTABLEKS R9 R0 K0 ["props"]
+  GETTABLEKS R8 R9 K2 ["chatSettings"]
+  GETTABLEKS R7 R8 K4 ["Transparency"]
+  CALL R6 1 -1
+  NAMECALL R4 R4 K5 ["setGoal"]
+  CALL R4 -1 0
+  GETTABLEKS R4 R0 K6 ["widthMotor"]
+  MOVE R6 R2
+  GETTABLEKS R8 R0 K7 ["state"]
+  GETTABLEKS R7 R8 K8 ["fullWidth"]
+  CALL R6 1 -1
+  NAMECALL R4 R4 K5 ["setGoal"]
+  CALL R4 -1 0
+  RETURN R0 0
+
+PROTO_10:
+  GETTABLEKS R1 R0 K0 ["transparencyMotor"]
+  NAMECALL R1 R1 K1 ["destroy"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K2 ["widthMotor"]
+  NAMECALL R1 R1 K1 ["destroy"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Otter"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["t"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["Cryo"]
+  CALL R4 1 1
+  GETIMPORT R7 K12 [script]
+  GETTABLEKS R6 R7 K13 ["Parent"]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R7 R5 K14 ["Types"]
+  CALL R6 1 1
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R5 K15 ["Helpers"]
+  GETTABLEKS R8 R9 K16 ["getSizeSpringFromSettings"]
+  CALL R7 1 1
+  GETIMPORT R8 K5 [require]
+  GETTABLEKS R10 R5 K15 ["Helpers"]
+  GETTABLEKS R9 R10 K17 ["getTransparencySpringFromSettings"]
+  CALL R8 1 1
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R13 R0 K18 ["Workspace"]
+  GETTABLEKS R12 R13 K6 ["Packages"]
+  GETTABLEKS R11 R12 K19 ["Style"]
+  CALL R10 1 1
+  GETTABLEKS R9 R10 K20 ["AppFonts"]
+  GETIMPORT R10 K1 [game]
+  LOADK R12 K21 ["CoreGui"]
+  NAMECALL R10 R10 K3 ["GetService"]
+  CALL R10 2 1
+  LOADK R12 K22 ["RobloxGui"]
+  NAMECALL R10 R10 K23 ["WaitForChild"]
+  CALL R10 2 1
+  GETTABLEKS R11 R2 K24 ["PureComponent"]
+  LOADK R13 K25 ["ChatBubbleDistant"]
+  NAMECALL R11 R11 K26 ["extend"]
+  CALL R11 2 1
+  GETTABLEKS R12 R3 K27 ["strictInterface"]
+  DUPTABLE R13 K35 [{"width", "height", "fadingOut", "onFadeOut", "chatSettings", "renderInsert", "insertSize"}]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K37 ["number"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K28 ["width"]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K37 ["number"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K29 ["height"]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K38 ["boolean"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K30 ["fadingOut"]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K39 ["callback"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K31 ["onFadeOut"]
+  GETTABLEKS R14 R6 K40 ["IChatSettings"]
+  SETTABLEKS R14 R13 K32 ["chatSettings"]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K39 ["callback"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K33 ["renderInsert"]
+  GETTABLEKS R14 R3 K36 ["optional"]
+  GETTABLEKS R15 R3 K41 ["Vector2"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K34 ["insertSize"]
+  CALL R12 1 1
+  SETTABLEKS R12 R11 K42 ["validateProps"]
+  DUPTABLE R12 K43 [{"width", "height"}]
+  LOADN R13 32
+  SETTABLEKS R13 R12 K28 ["width"]
+  LOADN R13 16
+  SETTABLEKS R13 R12 K29 ["height"]
+  SETTABLEKS R12 R11 K44 ["defaultProps"]
+  DUPCLOSURE R12 K45 [PROTO_0]
+  DUPCLOSURE R13 K46 [PROTO_3]
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  SETTABLEKS R13 R11 K47 ["init"]
+  DUPCLOSURE R13 K48 [PROTO_4]
+  SETTABLEKS R13 R11 K49 ["getDerivedStateFromProps"]
+  DUPCLOSURE R13 K50 [PROTO_5]
+  CAPTURE VAL R2
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  SETTABLEKS R13 R11 K51 ["render"]
+  DUPCLOSURE R13 K52 [PROTO_7]
+  CAPTURE VAL R8
+  SETTABLEKS R13 R11 K53 ["fadeOut"]
+  DUPCLOSURE R13 K54 [PROTO_8]
+  CAPTURE VAL R7
+  SETTABLEKS R13 R11 K55 ["didUpdate"]
+  DUPCLOSURE R13 K56 [PROTO_9]
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  SETTABLEKS R13 R11 K57 ["didMount"]
+  DUPCLOSURE R13 K58 [PROTO_10]
+  SETTABLEKS R13 R11 K59 ["willUnmount"]
+  RETURN R11 1

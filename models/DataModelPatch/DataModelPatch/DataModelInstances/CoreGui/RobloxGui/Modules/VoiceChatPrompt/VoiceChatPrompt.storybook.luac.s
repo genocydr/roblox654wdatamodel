@@ -1,0 +1,48 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  MOVE R3 R0
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE VAL R0
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["UIBlox"]
+  CALL R2 1 1
+  GETTABLEKS R3 R2 K9 ["init"]
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R0 K10 ["Workspace"]
+  GETTABLEKS R6 R7 K6 ["Packages"]
+  GETTABLEKS R5 R6 K11 ["RobloxAppUIBloxConfig"]
+  CALL R4 1 -1
+  CALL R3 -1 0
+  GETTABLEKS R3 R1 K12 ["setGlobalConfig"]
+  DUPTABLE R4 K15 [{"elementTracing", "propValidation"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K13 ["elementTracing"]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K14 ["propValidation"]
+  CALL R3 1 0
+  DUPTABLE R3 K18 [{"roact", "mapStory"}]
+  SETTABLEKS R1 R3 K16 ["roact"]
+  DUPCLOSURE R4 K19 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLEKS R4 R3 K17 ["mapStory"]
+  RETURN R3 1

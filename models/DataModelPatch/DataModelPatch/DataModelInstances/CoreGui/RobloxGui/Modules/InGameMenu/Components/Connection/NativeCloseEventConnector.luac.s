@@ -1,0 +1,172 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["isEducationalPopupEnabled"]
+  JUMPIFNOT R0 [+23]
+  GETUPVAL R0 1
+  LOADK R2 K2 ["LeaveGame_NativeClose"]
+  LOADN R3 1
+  NAMECALL R0 R0 K3 ["ReportCounter"]
+  CALL R0 3 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["new"]
+  CALL R0 0 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["props"]
+  GETTABLEKS R1 R2 K5 ["openEducationalPopup"]
+  GETUPVAL R2 3
+  MOVE R3 R0
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["props"]
+  GETTABLEKS R4 R5 K6 ["maxDisplayCount"]
+  CALL R1 3 0
+  GETUPVAL R0 4
+  GETUPVAL R2 5
+  GETTABLEKS R1 R2 K7 ["AnalyticsInGameMenuName"]
+  LOADK R2 K2 ["LeaveGame_NativeClose"]
+  NEWTABLE R3 0 0
+  CALL R0 3 0
+  RETURN R0 0
+
+PROTO_1:
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  SETTABLEKS R1 R0 K0 ["onNativeCloseConnect"]
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K3 [{"event", "callback"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K4 ["NativeClose"]
+  SETTABLEKS R4 R3 K1 ["event"]
+  GETTABLEKS R4 R0 K5 ["onNativeCloseConnect"]
+  SETTABLEKS R4 R3 K2 ["callback"]
+  CALL R1 2 -1
+  RETURN R1 -1
+
+PROTO_3:
+  DUPTABLE R2 K2 [{"isEducationalPopupEnabled", "maxDisplayCount"}]
+  GETTABLEKS R3 R0 K3 ["enableEducationalPopup"]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K0 ["isEducationalPopupEnabled"]
+  GETTABLEKS R3 R0 K4 ["educationalPopupMaxDisplayCount"]
+  CALL R3 0 1
+  SETTABLEKS R3 R2 K1 ["maxDisplayCount"]
+  RETURN R2 1
+
+PROTO_4:
+  GETUPVAL R3 0
+  GETUPVAL R4 1
+  MOVE R5 R0
+  MOVE R6 R1
+  MOVE R7 R2
+  CALL R4 3 -1
+  CALL R3 -1 -1
+  RETURN R3 -1
+
+PROTO_5:
+  DUPTABLE R1 K1 [{"openEducationalPopup"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["openEducationalPopup"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["GuiService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RbxAnalyticsService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R5 R2 K8 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["InGameMenuDependencies"]
+  CALL R3 1 1
+  GETTABLEKS R4 R3 K10 ["Roact"]
+  GETTABLEKS R5 R3 K11 ["RoactRodux"]
+  GETTABLEKS R6 R3 K12 ["t"]
+  GETIMPORT R10 K14 [script]
+  GETTABLEKS R9 R10 K15 ["Parent"]
+  GETTABLEKS R8 R9 K15 ["Parent"]
+  GETTABLEKS R7 R8 K15 ["Parent"]
+  GETIMPORT R8 K7 [require]
+  GETTABLEKS R10 R7 K16 ["Thunks"]
+  GETTABLEKS R9 R10 K17 ["OpenEducationalPopup"]
+  CALL R8 1 1
+  GETIMPORT R9 K7 [require]
+  GETTABLEKS R11 R7 K18 ["Utility"]
+  GETTABLEKS R10 R11 K19 ["ExternalEventConnection"]
+  CALL R9 1 1
+  GETIMPORT R10 K7 [require]
+  GETTABLEKS R11 R7 K20 ["InGameMenuPolicy"]
+  CALL R10 1 1
+  GETIMPORT R11 K7 [require]
+  GETTABLEKS R13 R7 K18 ["Utility"]
+  GETTABLEKS R12 R13 K21 ["UserLocalStore"]
+  CALL R11 1 1
+  GETIMPORT R12 K7 [require]
+  GETTABLEKS R14 R7 K18 ["Utility"]
+  GETTABLEKS R13 R14 K22 ["SendAnalytics"]
+  CALL R12 1 1
+  GETIMPORT R13 K7 [require]
+  GETTABLEKS R15 R7 K23 ["Resources"]
+  GETTABLEKS R14 R15 K24 ["Constants"]
+  CALL R13 1 1
+  GETTABLEKS R14 R4 K25 ["PureComponent"]
+  LOADK R16 K26 ["NativeCloseEventConnector"]
+  NAMECALL R14 R14 K27 ["extend"]
+  CALL R14 2 1
+  GETTABLEKS R15 R6 K28 ["strictInterface"]
+  DUPTABLE R16 K32 [{"isEducationalPopupEnabled", "maxDisplayCount", "openEducationalPopup"}]
+  GETTABLEKS R17 R6 K33 ["boolean"]
+  SETTABLEKS R17 R16 K29 ["isEducationalPopupEnabled"]
+  GETTABLEKS R17 R6 K34 ["integer"]
+  SETTABLEKS R17 R16 K30 ["maxDisplayCount"]
+  GETTABLEKS R17 R6 K35 ["optional"]
+  GETTABLEKS R18 R6 K36 ["callback"]
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K31 ["openEducationalPopup"]
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K37 ["validateProps"]
+  DUPCLOSURE R15 K38 [PROTO_1]
+  CAPTURE VAL R1
+  CAPTURE VAL R11
+  CAPTURE VAL R0
+  CAPTURE VAL R12
+  CAPTURE VAL R13
+  SETTABLEKS R15 R14 K39 ["init"]
+  DUPCLOSURE R15 K40 [PROTO_2]
+  CAPTURE VAL R4
+  CAPTURE VAL R9
+  CAPTURE VAL R0
+  SETTABLEKS R15 R14 K41 ["render"]
+  GETTABLEKS R15 R10 K42 ["connect"]
+  DUPCLOSURE R16 K43 [PROTO_3]
+  CALL R15 1 1
+  MOVE R16 R14
+  CALL R15 1 1
+  MOVE R14 R15
+  GETTABLEKS R15 R5 K44 ["UNSTABLE_connect2"]
+  LOADNIL R16
+  DUPCLOSURE R17 K45 [PROTO_5]
+  CAPTURE VAL R8
+  CALL R15 2 1
+  MOVE R16 R14
+  CALL R15 1 -1
+  RETURN R15 -1

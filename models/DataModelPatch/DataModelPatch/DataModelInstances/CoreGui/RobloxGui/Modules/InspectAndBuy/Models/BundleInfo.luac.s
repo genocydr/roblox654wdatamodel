@@ -1,0 +1,357 @@
+PROTO_0:
+  NEWTABLE R0 0 0
+  RETURN R0 1
+
+PROTO_1:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["new"]
+  CALL R0 0 1
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K2 ["name"]
+  GETUPVAL R1 1
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["bundleId"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K4 ["description"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K5 ["bundleType"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K6 ["creatorId"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K7 ["creatorName"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K8 ["productId"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K9 ["isForSale"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K10 ["price"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K11 ["assetIds"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K12 ["numFavorites"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K13 ["costumeId"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K14 ["owned"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K9 ["isForSale"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K15 ["collectibleItemId"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K16 ["collectibleIsLimited"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K17 ["collectibleProductId"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K18 ["collectibleLowestResalePrice"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K19 ["collectibleLowestAvailableResaleProductId"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K20 ["collectibleLowestAvailableResaleItemInstanceId"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K21 ["collectibleQuantityLimitPerUser"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K22 ["remaining"]
+  LOADK R1 K1 [""]
+  SETTABLEKS R1 R0 K23 ["productType"]
+  RETURN R0 1
+
+PROTO_2:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  CALL R1 0 1
+  GETTABLEKS R2 R0 K1 ["name"]
+  SETTABLEKS R2 R1 K1 ["name"]
+  GETTABLEKS R3 R0 K2 ["id"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K4 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K5 ["bundleId"]
+  GETTABLEKS R2 R0 K6 ["description"]
+  SETTABLEKS R2 R1 K6 ["description"]
+  GETTABLEKS R2 R0 K7 ["bundleType"]
+  SETTABLEKS R2 R1 K7 ["bundleType"]
+  GETTABLEKS R4 R0 K8 ["creator"]
+  GETTABLEKS R3 R4 K2 ["id"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K4 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K9 ["creatorId"]
+  GETTABLEKS R3 R0 K8 ["creator"]
+  GETTABLEKS R2 R3 K1 ["name"]
+  SETTABLEKS R2 R1 K10 ["creatorName"]
+  GETTABLEKS R4 R0 K11 ["product"]
+  GETTABLEKS R3 R4 K2 ["id"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K4 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K12 ["productId"]
+  GETTABLEKS R2 R0 K13 ["collectibleItemDetail"]
+  JUMPIFNOT R2 [+93]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K14 ["saleStatus"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K15 ["SaleStatus"]
+  GETTABLEKS R4 R5 K16 ["OnSale"]
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  SETTABLEKS R2 R1 K17 ["isForSale"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K19 ["collectibleItemId"]
+  ORK R2 R3 K18 [""]
+  SETTABLEKS R2 R1 K19 ["collectibleItemId"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K20 ["collectibleProductId"]
+  ORK R2 R3 K18 [""]
+  SETTABLEKS R2 R1 K20 ["collectibleProductId"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K22 ["lowestResalePrice"]
+  ORK R2 R3 K21 [0]
+  SETTABLEKS R2 R1 K23 ["collectibleLowestResalePrice"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K24 ["lowestAvailableResaleProductId"]
+  ORK R2 R3 K18 [""]
+  SETTABLEKS R2 R1 K25 ["collectibleLowestAvailableResaleProductId"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K26 ["lowestAvailableResaleItemInstanceId"]
+  ORK R2 R3 K18 [""]
+  SETTABLEKS R2 R1 K27 ["collectibleLowestAvailableResaleItemInstanceId"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K28 ["quantityLimitPerUser"]
+  ORK R2 R3 K21 [0]
+  SETTABLEKS R2 R1 K29 ["collectibleQuantityLimitPerUser"]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K30 ["ProductType"]
+  GETTABLEKS R2 R3 K31 ["CollectibleItem"]
+  SETTABLEKS R2 R1 K32 ["productType"]
+  GETTABLEKS R3 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R2 R3 K33 ["price"]
+  SETTABLEKS R2 R1 K33 ["price"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K34 ["unitsAvailable"]
+  ORK R2 R3 K21 [0]
+  SETTABLEKS R2 R1 K35 ["remaining"]
+  GETTABLEKS R4 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R3 R4 K36 ["collectibleItemType"]
+  JUMPIFEQKS R3 K37 ["Limited"] [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  SETTABLEKS R2 R1 K38 ["collectibleIsLimited"]
+  GETTABLEKS R3 R0 K13 ["collectibleItemDetail"]
+  GETTABLEKS R2 R3 K39 ["saleLocation"]
+  SETTABLEKS R2 R1 K39 ["saleLocation"]
+  NEWTABLE R2 0 0
+  SETTABLEKS R2 R1 K40 ["assetIds"]
+  GETIMPORT R2 K42 [pairs]
+  GETTABLEKS R3 R0 K43 ["items"]
+  CALL R2 1 3
+  FORGPREP_NEXT R2
+  GETTABLEKS R7 R6 K44 ["type"]
+  JUMPIFNOTEQKS R7 K45 ["UserOutfit"] [+10]
+  GETTABLEKS R8 R6 K2 ["id"]
+  FASTCALL1 TOSTRING R8 [+2]
+  GETIMPORT R7 K4 [tostring]
+  CALL R7 1 1
+  SETTABLEKS R7 R1 K46 ["costumeId"]
+  JUMP [+13]
+  GETTABLEKS R8 R1 K40 ["assetIds"]
+  GETTABLEKS R10 R6 K2 ["id"]
+  FASTCALL1 TOSTRING R10 [+2]
+  GETIMPORT R9 K4 [tostring]
+  CALL R9 1 1
+  FASTCALL2 TABLE_INSERT R8 R9 [+3]
+  GETIMPORT R7 K49 [table.insert]
+  CALL R7 2 0
+  FORGLOOP R2 2 [-27]
+  RETURN R1 1
+
+PROTO_3:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  CALL R1 0 1
+  GETTABLEKS R3 R0 K1 ["Id"]
+  FASTCALL1 TOSTRING R3 [+2]
+  GETIMPORT R2 K3 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K4 ["bundleId"]
+  GETTABLEKS R2 R0 K5 ["Owned"]
+  SETTABLEKS R2 R1 K6 ["owned"]
+  GETTABLEKS R2 R0 K7 ["IsPurchasable"]
+  SETTABLEKS R2 R1 K8 ["isForSale"]
+  GETTABLEKS R3 R0 K10 ["Price"]
+  ORK R2 R3 K9 [0]
+  SETTABLEKS R2 R1 K11 ["price"]
+  GETTABLEKS R2 R0 K12 ["HasResellers"]
+  SETTABLEKS R2 R1 K13 ["hasResellers"]
+  GETTABLEKS R2 R0 K14 ["CollectibleItemId"]
+  SETTABLEKS R2 R1 K15 ["collectibleItemId"]
+  RETURN R1 1
+
+PROTO_4:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["new"]
+  CALL R2 0 1
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R4 R0
+  GETIMPORT R3 K2 [tostring]
+  CALL R3 1 1
+  SETTABLEKS R3 R2 K3 ["bundleId"]
+  SETTABLEKS R1 R2 K4 ["numFavorites"]
+  RETURN R2 1
+
+PROTO_5:
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K0 ["new"]
+  CALL R4 0 1
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K2 [tostring]
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K3 ["bundleId"]
+  SETTABLEKS R0 R4 K4 ["owned"]
+  SETTABLEKS R2 R4 K5 ["price"]
+  SETTABLEKS R3 R4 K6 ["isForSale"]
+  RETURN R4 1
+
+PROTO_6:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["new"]
+  CALL R1 0 1
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R3 R0
+  GETIMPORT R2 K2 [tostring]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K3 ["bundleId"]
+  LOADB R2 1
+  SETTABLEKS R2 R1 K4 ["owned"]
+  RETURN R1 1
+
+PROTO_7:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["joinDeep"]
+  NEWTABLE R2 0 0
+  MOVE R3 R0
+  CALL R1 2 1
+  GETTABLEKS R2 R0 K1 ["productType"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K2 ["ProductType"]
+  GETTABLEKS R3 R4 K3 ["CollectibleItem"]
+  JUMPIFNOTEQ R2 R3 [+98]
+  GETTABLEKS R2 R1 K4 ["saleLocation"]
+  MOVE R3 R2
+  JUMPIFNOT R3 [+11]
+  GETTABLEKS R4 R2 K5 ["saleLocationTypeId"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K6 ["SaleLocationType"]
+  GETTABLEKS R5 R6 K7 ["ShopOnly"]
+  JUMPIFNOTEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  MOVE R4 R2
+  JUMPIFNOT R4 [+11]
+  GETTABLEKS R5 R2 K5 ["saleLocationTypeId"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K6 ["SaleLocationType"]
+  GETTABLEKS R6 R7 K8 ["ShopAndExperiencesById"]
+  JUMPIFNOTEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  MOVE R5 R2
+  JUMPIFNOT R5 [+32]
+  LOADB R5 0
+  GETTABLEKS R6 R2 K5 ["saleLocationTypeId"]
+  GETUPVAL R9 1
+  GETTABLEKS R8 R9 K6 ["SaleLocationType"]
+  GETTABLEKS R7 R8 K8 ["ShopAndExperiencesById"]
+  JUMPIFNOTEQ R6 R7 [+23]
+  LOADB R5 0
+  GETTABLEKS R7 R2 K9 ["universeIds"]
+  FASTCALL1 TYPE R7 [+2]
+  GETIMPORT R6 K11 [type]
+  CALL R6 1 1
+  JUMPIFNOTEQKS R6 K12 ["table"] [+14]
+  GETIMPORT R6 K14 [table.find]
+  GETTABLEKS R7 R2 K9 ["universeIds"]
+  GETIMPORT R9 K16 [game]
+  GETTABLEKS R8 R9 K17 ["GameId"]
+  CALL R6 2 1
+  JUMPIFNOTEQKNIL R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R6 R2
+  JUMPIFNOT R6 [+11]
+  GETTABLEKS R7 R2 K5 ["saleLocationTypeId"]
+  GETUPVAL R10 1
+  GETTABLEKS R9 R10 K6 ["SaleLocationType"]
+  GETTABLEKS R8 R9 K18 ["ExperiencesDevApiOnly"]
+  JUMPIFNOTEQ R7 R8 [+2]
+  LOADB R6 0 +1
+  LOADB R6 1
+  GETTABLEKS R7 R1 K19 ["isForSale"]
+  JUMPIFNOT R7 [+6]
+  MOVE R7 R3
+  JUMPIFNOT R7 [+4]
+  JUMPIF R4 [+2]
+  MOVE R7 R5
+  JUMPIFNOT R7 [+1]
+  MOVE R7 R6
+  SETTABLEKS R7 R1 K19 ["isForSale"]
+  GETTABLEKS R7 R0 K20 ["collectibleIsLimited"]
+  JUMPIF R7 [+8]
+  GETTABLEKS R7 R1 K19 ["isForSale"]
+  JUMPIFNOT R7 [+3]
+  GETTABLEKS R8 R1 K21 ["owned"]
+  NOT R7 R8
+  SETTABLEKS R7 R1 K19 ["isForSale"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Dash"]
+  CALL R1 1 1
+  GETIMPORT R4 K9 [script]
+  GETTABLEKS R3 R4 K10 ["Parent"]
+  GETTABLEKS R2 R3 K10 ["Parent"]
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R4 R2 K11 ["Constants"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETIMPORT R8 K9 [script]
+  GETTABLEKS R7 R8 K10 ["Parent"]
+  GETTABLEKS R6 R7 K10 ["Parent"]
+  GETTABLEKS R5 R6 K12 ["MockId"]
+  CALL R4 1 1
+  NEWTABLE R5 8 0
+  DUPCLOSURE R6 K13 [PROTO_0]
+  SETTABLEKS R6 R5 K14 ["new"]
+  DUPCLOSURE R6 K15 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  SETTABLEKS R6 R5 K16 ["mock"]
+  DUPCLOSURE R6 K17 [PROTO_2]
+  CAPTURE VAL R5
+  CAPTURE VAL R3
+  SETTABLEKS R6 R5 K18 ["fromGetAssetBundles"]
+  DUPCLOSURE R6 K19 [PROTO_3]
+  CAPTURE VAL R5
+  SETTABLEKS R6 R5 K20 ["fromGetItemDetails"]
+  DUPCLOSURE R6 K21 [PROTO_4]
+  CAPTURE VAL R5
+  SETTABLEKS R6 R5 K22 ["fromGetBundleFavoriteCount"]
+  DUPCLOSURE R6 K23 [PROTO_5]
+  CAPTURE VAL R5
+  SETTABLEKS R6 R5 K24 ["fromGetEconomyProductInfo"]
+  DUPCLOSURE R6 K25 [PROTO_6]
+  CAPTURE VAL R5
+  SETTABLEKS R6 R5 K26 ["fromPurchaseSuccess"]
+  DUPCLOSURE R6 K27 [PROTO_7]
+  CAPTURE VAL R1
+  CAPTURE VAL R3
+  SETTABLEKS R6 R5 K28 ["getSaleDetailsForCollectibles"]
+  RETURN R5 1

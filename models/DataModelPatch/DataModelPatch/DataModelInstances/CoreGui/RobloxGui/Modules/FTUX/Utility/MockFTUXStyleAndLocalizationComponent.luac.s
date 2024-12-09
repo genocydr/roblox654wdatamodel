@@ -1,0 +1,81 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  DUPTABLE R3 K2 [{"localization"}]
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K3 ["new"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K4 ["RobloxLocaleId"]
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K1 ["localization"]
+  DUPTABLE R4 K6 [{"FTUXMock"}]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K0 ["createElement"]
+  LOADK R6 K7 ["ScreenGui"]
+  NEWTABLE R7 0 0
+  DUPTABLE R8 K9 [{"ThemeProvider"}]
+  GETUPVAL R9 4
+  DUPTABLE R10 K11 [{"Frame"}]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K0 ["createElement"]
+  LOADK R12 K10 ["Frame"]
+  DUPTABLE R13 K13 [{"Size"}]
+  GETIMPORT R14 K15 [UDim2.new]
+  LOADN R15 1
+  LOADN R16 0
+  LOADN R17 1
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K12 ["Size"]
+  MOVE R14 R0
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K10 ["Frame"]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K8 ["ThemeProvider"]
+  CALL R5 3 1
+  SETTABLEKS R5 R4 K5 ["FTUXMock"]
+  CALL R1 3 -1
+  RETURN R1 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K8 ["LocalizationService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K5 [require]
+  GETIMPORT R9 K10 [script]
+  GETTABLEKS R8 R9 K11 ["Parent"]
+  GETTABLEKS R7 R8 K11 ["Parent"]
+  GETTABLEKS R6 R7 K11 ["Parent"]
+  GETTABLEKS R5 R6 K12 ["Common"]
+  GETTABLEKS R4 R5 K13 ["renderWithCoreScriptsStyleProvider"]
+  CALL R3 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R8 R0 K14 ["Workspace"]
+  GETTABLEKS R7 R8 K6 ["Packages"]
+  GETTABLEKS R6 R7 K15 ["InExperienceLocales"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K16 ["Localization"]
+  GETIMPORT R6 K5 [require]
+  GETTABLEKS R9 R0 K14 ["Workspace"]
+  GETTABLEKS R8 R9 K6 ["Packages"]
+  GETTABLEKS R7 R8 K16 ["Localization"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K17 ["LocalizationProvider"]
+  DUPCLOSURE R6 K18 [PROTO_0]
+  CAPTURE VAL R1
+  CAPTURE VAL R5
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  RETURN R6 1

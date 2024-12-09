@@ -1,0 +1,1632 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["VREnabled"]
+  JUMPIFNOT R0 [+2]
+  LOADB R0 0
+  RETURN R0 1
+  GETUPVAL R0 1
+  JUMPIF R0 [+2]
+  LOADB R0 1
+  RETURN R0 1
+  GETUPVAL R0 2
+  LOADK R2 K1 ["RobloxGui"]
+  NAMECALL R0 R0 K2 ["WaitForChild"]
+  CALL R0 2 1
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R3 R0 K5 ["Modules"]
+  GETTABLEKS R2 R3 K6 ["Common"]
+  LOADK R4 K7 ["PolicyService"]
+  NAMECALL R2 R2 K2 ["WaitForChild"]
+  CALL R2 2 -1
+  CALL R1 -1 1
+  NAMECALL R3 R1 K8 ["IsSubjectToChinaPolicies"]
+  CALL R3 1 1
+  NOT R2 R3
+  RETURN R2 1
+
+PROTO_1:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"modalOpen"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["modalOpen"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["props"]
+  GETTABLEKS R0 R1 K4 ["closeMenu"]
+  CALL R0 0 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K5 ["RenderStepped"]
+  NAMECALL R0 R0 K6 ["Wait"]
+  CALL R0 1 0
+  GETUPVAL R1 1
+  GETTABLEKS R0 R1 K5 ["RenderStepped"]
+  NAMECALL R0 R0 K6 ["Wait"]
+  CALL R0 1 0
+  GETUPVAL R0 2
+  NAMECALL R0 R0 K7 ["TakeScreenshot"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["ToggleRecording"]
+  CALL R0 1 0
+  GETUPVAL R0 1
+  DUPTABLE R2 K2 [{"modalOpen"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K1 ["modalOpen"]
+  NAMECALL R0 R0 K3 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"modalOpen"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["modalOpen"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["props"]
+  GETTABLEKS R0 R1 K4 ["startRespawning"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_4:
+  NEWTABLE R3 0 0
+  GETTABLEKS R5 R0 K0 ["props"]
+  GETTABLEKS R4 R5 K1 ["inputType"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K2 ["VREnabled"]
+  JUMPIFNOT R6 [+2]
+  LOADB R5 0
+  JUMP [+24]
+  GETUPVAL R6 1
+  JUMPIF R6 [+2]
+  LOADB R5 1
+  JUMP [+20]
+  GETUPVAL R6 2
+  LOADK R8 K3 ["RobloxGui"]
+  NAMECALL R6 R6 K4 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R6 K7 ["Modules"]
+  GETTABLEKS R8 R9 K8 ["Common"]
+  LOADK R10 K9 ["PolicyService"]
+  NAMECALL R8 R8 K4 ["WaitForChild"]
+  CALL R8 2 -1
+  CALL R7 -1 1
+  NAMECALL R8 R7 K10 ["IsSubjectToChinaPolicies"]
+  CALL R8 1 1
+  NOT R5 R8
+  JUMPIFNOT R5 [+95]
+  GETUPVAL R5 1
+  JUMPIFNOT R5 [+22]
+  DUPTABLE R7 K14 [{"icon", "text", "onActivated"}]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K15 ["icons/controls/screenshot"]
+  SETTABLEKS R8 R7 K11 ["icon"]
+  GETTABLEKS R8 R2 K16 ["screenCapture"]
+  SETTABLEKS R8 R7 K12 ["text"]
+  NEWCLOSURE R8 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U2
+  SETTABLEKS R8 R7 K13 ["onActivated"]
+  FASTCALL2 TABLE_INSERT R3 R7 [+4]
+  MOVE R6 R3
+  GETIMPORT R5 K19 [table.insert]
+  CALL R5 2 0
+  GETUPVAL R6 5
+  GETTABLEKS R5 R6 K20 ["VideoCaptureEnabled"]
+  JUMPIFNOT R5 [+67]
+  GETUPVAL R5 6
+  JUMPIFNOT R5 [+65]
+  GETTABLEKS R5 R2 K21 ["recordVideo"]
+  LOADNIL R6
+  GETTABLEKS R8 R0 K0 ["props"]
+  GETTABLEKS R7 R8 K22 ["recording"]
+  JUMPIFNOT R7 [+30]
+  GETIMPORT R7 K25 [os.date]
+  LOADK R8 K26 ["*t"]
+  GETTABLEKS R10 R0 K27 ["state"]
+  GETTABLEKS R9 R10 K28 ["recordingDuration"]
+  CALL R7 2 1
+  LOADK R8 K29 ["%d:%02d"]
+  GETTABLEKS R10 R7 K30 ["min"]
+  GETTABLEKS R11 R7 K31 ["sec"]
+  NAMECALL R8 R8 K32 ["format"]
+  CALL R8 3 1
+  GETTABLEKS R9 R2 K22 ["recording"]
+  LOADK R11 K33 ["{DURATION}"]
+  MOVE R12 R8
+  NAMECALL R9 R9 K34 ["gsub"]
+  CALL R9 3 1
+  MOVE R5 R9
+  GETTABLEKS R10 R1 K35 ["Theme"]
+  GETTABLEKS R9 R10 K36 ["Alert"]
+  GETTABLEKS R6 R9 K37 ["Color"]
+  DUPTABLE R9 K41 [{"icon", "text", "onActivated", "keyCodeLabel", "iconColorOverride", "textColorOverride"}]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K42 ["icons/controls/screenrecord"]
+  SETTABLEKS R10 R9 K11 ["icon"]
+  SETTABLEKS R5 R9 K12 ["text"]
+  NEWCLOSURE R10 P1
+  CAPTURE UPVAL U2
+  CAPTURE VAL R0
+  SETTABLEKS R10 R9 K13 ["onActivated"]
+  GETUPVAL R11 7
+  GETTABLE R10 R11 R4
+  SETTABLEKS R10 R9 K38 ["keyCodeLabel"]
+  SETTABLEKS R6 R9 K39 ["iconColorOverride"]
+  SETTABLEKS R6 R9 K40 ["textColorOverride"]
+  FASTCALL2 TABLE_INSERT R3 R9 [+4]
+  MOVE R8 R3
+  GETIMPORT R7 K19 [table.insert]
+  CALL R7 2 0
+  GETTABLEKS R6 R0 K0 ["props"]
+  GETTABLEKS R5 R6 K43 ["respawnButtonVisible"]
+  JUMPIFNOT R5 [+26]
+  DUPTABLE R7 K44 [{"icon", "text", "onActivated", "keyCodeLabel"}]
+  GETUPVAL R10 8
+  GETTABLEKS R9 R10 K45 ["Images"]
+  GETTABLEKS R8 R9 K46 ["RespawnIcon"]
+  SETTABLEKS R8 R7 K11 ["icon"]
+  GETTABLEKS R8 R2 K47 ["respawnCharacter"]
+  SETTABLEKS R8 R7 K12 ["text"]
+  NEWCLOSURE R8 P2
+  CAPTURE VAL R0
+  SETTABLEKS R8 R7 K13 ["onActivated"]
+  GETUPVAL R9 9
+  GETTABLE R8 R9 R4
+  SETTABLEKS R8 R7 K38 ["keyCodeLabel"]
+  FASTCALL2 TABLE_INSERT R3 R7 [+4]
+  MOVE R6 R3
+  GETIMPORT R5 K19 [table.insert]
+  CALL R5 2 0
+  RETURN R3 1
+
+PROTO_5:
+  GETUPVAL R1 0
+  SETTABLEKS R0 R1 K0 ["moreMenuFrameRef"]
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R1 0
+  SETTABLEKS R0 R1 K0 ["moreMenuFirstItemFrameRef"]
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["default"]
+  NAMECALL R0 R0 K1 ["getRecordingDuration"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+3]
+  GETTABLEKS R1 R0 K2 ["recordingDuration"]
+  JUMPIF R1 [+1]
+  LOADN R1 0
+  RETURN R1 1
+
+PROTO_8:
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["moreMenuFrameRef"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["moreMenuFirstItemFrameRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["moreMenuButtonRef"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["createRef"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K4 ["mainPageFirstButtonRef"]
+  NEWCLOSURE R1 P0
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K5 ["setMoreMenuRef"]
+  NEWCLOSURE R1 P1
+  CAPTURE VAL R0
+  SETTABLEKS R1 R0 K6 ["setMoreMenuFirstItemRef"]
+  DUPCLOSURE R1 K7 [PROTO_7]
+  CAPTURE UPVAL U1
+  SETTABLEKS R1 R0 K8 ["getRecordingDuration"]
+  DUPTABLE R1 K11 [{"modalOpen", "recordingDuration"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K9 ["modalOpen"]
+  LOADN R2 0
+  SETTABLEKS R2 R1 K10 ["recordingDuration"]
+  SETTABLEKS R1 R0 K12 ["state"]
+  RETURN R0 0
+
+PROTO_9:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+9]
+  GETTABLEKS R1 R0 K0 ["isMainPageInForeground"]
+  JUMPIF R1 [+14]
+  DUPTABLE R1 K2 [{"modalOpen"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["modalOpen"]
+  RETURN R1 1
+  JUMP [+8]
+  GETTABLEKS R1 R0 K3 ["canCaptureFocus"]
+  JUMPIF R1 [+5]
+  DUPTABLE R1 K2 [{"modalOpen"}]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K1 ["modalOpen"]
+  RETURN R1 1
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_10:
+  GETIMPORT R2 K3 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R1 R2 [+12]
+  GETUPVAL R2 0
+  DUPTABLE R4 K5 [{"modalOpen"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K4 ["modalOpen"]
+  NAMECALL R2 R2 K6 ["setState"]
+  CALL R2 2 0
+  GETIMPORT R2 K9 [Enum.ContextActionResult.Sink]
+  RETURN R2 1
+  GETIMPORT R2 K11 [Enum.ContextActionResult.Pass]
+  RETURN R2 1
+
+PROTO_11:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIF R1 [+10]
+  GETUPVAL R1 1
+  LOADK R3 K0 ["LeftStickTogglesMoreMenuAction"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U2
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.ButtonL3]
+  NAMECALL R1 R1 K5 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R1 3
+  MOVE R2 R0
+  JUMPIF R2 [+6]
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["mainPageFirstButtonRef"]
+  NAMECALL R2 R2 K7 ["getValue"]
+  CALL R2 1 1
+  SETTABLEKS R2 R1 K8 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_12:
+  GETIMPORT R2 K3 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R1 R2 [+17]
+  GETUPVAL R2 0
+  DUPTABLE R4 K5 [{"modalOpen"}]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K6 ["state"]
+  GETTABLEKS R6 R7 K4 ["modalOpen"]
+  NOT R5 R6
+  SETTABLEKS R5 R4 K4 ["modalOpen"]
+  NAMECALL R2 R2 K7 ["setState"]
+  CALL R2 2 0
+  GETIMPORT R2 K10 [Enum.ContextActionResult.Sink]
+  RETURN R2 1
+  GETIMPORT R2 K12 [Enum.ContextActionResult.Pass]
+  RETURN R2 1
+
+PROTO_13:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["LeftStickTogglesMoreMenuAction"]
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U1
+  LOADB R4 0
+  GETIMPORT R5 K4 [Enum.KeyCode.ButtonL3]
+  NAMECALL R0 R0 K5 ["BindCoreAction"]
+  CALL R0 5 0
+  RETURN R0 0
+
+PROTO_14:
+  GETUPVAL R0 0
+  CALL R0 0 1
+  JUMPIF R0 [+5]
+  GETUPVAL R0 1
+  LOADK R2 K0 ["LeftStickTogglesMoreMenuAction"]
+  NAMECALL R0 R0 K1 ["UnbindCoreAction"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_15:
+  GETTABLEKS R1 R0 K0 ["canGamepadCaptureFocus"]
+  GETTABLEKS R2 R0 K1 ["props"]
+  CALL R1 1 1
+  LOADNIL R2
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+27]
+  GETTABLEKS R4 R0 K2 ["state"]
+  GETTABLEKS R3 R4 K3 ["modalOpen"]
+  GETTABLEKS R4 R0 K0 ["canGamepadCaptureFocus"]
+  GETTABLEKS R5 R0 K1 ["props"]
+  CALL R4 1 1
+  JUMPIFNOT R4 [+1]
+  NOT R4 R3
+  MOVE R1 R4
+  GETTABLEKS R6 R0 K1 ["props"]
+  GETTABLEKS R5 R6 K4 ["open"]
+  NOT R4 R5
+  JUMPIF R4 [+8]
+  GETTABLEKS R6 R0 K1 ["props"]
+  GETTABLEKS R5 R6 K5 ["currentZone"]
+  JUMPIFEQKN R5 K6 [0] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  MOVE R2 R4
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K7 ["createElement"]
+  GETUPVAL R4 2
+  DUPTABLE R5 K12 [{"isFocused", "shouldForgetPreviousSelection", "didFocus", "didBlur"}]
+  SETTABLEKS R1 R5 K8 ["isFocused"]
+  SETTABLEKS R2 R5 K9 ["shouldForgetPreviousSelection"]
+  GETUPVAL R7 0
+  CALL R7 0 1
+  JUMPIFNOT R7 [+6]
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  CAPTURE UPVAL U5
+  JUMPIF R6 [+3]
+  NEWCLOSURE R6 P1
+  CAPTURE UPVAL U4
+  CAPTURE VAL R0
+  SETTABLEKS R6 R5 K10 ["didFocus"]
+  DUPCLOSURE R6 K13 [PROTO_14]
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  SETTABLEKS R6 R5 K11 ["didBlur"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_16:
+  GETIMPORT R2 K3 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R1 R2 [+12]
+  GETUPVAL R2 0
+  DUPTABLE R4 K5 [{"modalOpen"}]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K4 ["modalOpen"]
+  NAMECALL R2 R2 K6 ["setState"]
+  CALL R2 2 0
+  GETIMPORT R2 K9 [Enum.ContextActionResult.Sink]
+  RETURN R2 1
+  GETIMPORT R2 K11 [Enum.ContextActionResult.Pass]
+  RETURN R2 1
+
+PROTO_17:
+  NEWCLOSURE R0 P0
+  CAPTURE UPVAL U0
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R1 2
+  LOADK R3 K0 ["CloseMoreMenuAction"]
+  MOVE R4 R0
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.ButtonB]
+  GETIMPORT R7 K6 [Enum.KeyCode.ButtonL3]
+  NAMECALL R1 R1 K7 ["BindCoreAction"]
+  CALL R1 6 0
+  JUMP [+9]
+  GETUPVAL R1 2
+  LOADK R3 K0 ["CloseMoreMenuAction"]
+  MOVE R4 R0
+  LOADB R5 0
+  GETIMPORT R6 K4 [Enum.KeyCode.ButtonB]
+  NAMECALL R1 R1 K7 ["BindCoreAction"]
+  CALL R1 5 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K8 ["moreMenuFrameRef"]
+  JUMPIFEQKNIL R1 [+6]
+  GETUPVAL R1 3
+  LOADK R3 K9 ["MainPageMoreMenu"]
+  NAMECALL R1 R1 K10 ["RemoveSelectionGroup"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  LOADK R3 K9 ["MainPageMoreMenu"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K8 ["moreMenuFrameRef"]
+  NAMECALL R1 R1 K11 ["AddSelectionParent"]
+  CALL R1 3 0
+  GETUPVAL R1 3
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K12 ["moreMenuFirstItemFrameRef"]
+  SETTABLEKS R2 R1 K13 ["SelectedCoreObject"]
+  RETURN R0 0
+
+PROTO_18:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["CloseMoreMenuAction"]
+  NAMECALL R0 R0 K1 ["UnbindCoreAction"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_19:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+20]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["isMainPageInForeground"]
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["inputType"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K3 ["InputType"]
+  GETTABLEKS R4 R5 K4 ["Gamepad"]
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  MOVE R1 R2
+  JUMP [+6]
+  GETTABLEKS R2 R0 K5 ["canGamepadCaptureFocus"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  CALL R2 1 1
+  MOVE R1 R2
+  GETTABLEKS R3 R0 K6 ["state"]
+  GETTABLEKS R2 R3 K7 ["modalOpen"]
+  GETUPVAL R4 2
+  GETTABLEKS R3 R4 K8 ["createElement"]
+  GETUPVAL R4 3
+  DUPTABLE R5 K12 [{"isFocused", "didFocus", "didBlur"}]
+  AND R6 R1 R2
+  SETTABLEKS R6 R5 K9 ["isFocused"]
+  NEWCLOSURE R6 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  SETTABLEKS R6 R5 K10 ["didFocus"]
+  DUPCLOSURE R6 K13 [PROTO_18]
+  CAPTURE UPVAL U5
+  SETTABLEKS R6 R5 K11 ["didBlur"]
+  CALL R3 2 -1
+  RETURN R3 -1
+
+PROTO_20:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"modalOpen"}]
+  LOADB R3 1
+  SETTABLEKS R3 R2 K0 ["modalOpen"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_21:
+  GETUPVAL R0 0
+  LOADK R2 K0 ["VRInGameMenuMainPage"]
+  NAMECALL R0 R0 K1 ["ToggleMic"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_22:
+  GETUPVAL R0 0
+  DUPTABLE R2 K1 [{"modalOpen"}]
+  LOADB R3 0
+  SETTABLEKS R3 R2 K0 ["modalOpen"]
+  NAMECALL R0 R0 K2 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_23:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createElement"]
+  GETUPVAL R2 1
+  NEWTABLE R3 8 0
+  GETUPVAL R5 2
+  GETTABLEKS R4 R5 K1 ["Secondary"]
+  SETTABLEKS R4 R3 K2 ["buttonType"]
+  GETIMPORT R4 K5 [UDim2.fromOffset]
+  LOADN R5 44
+  LOADN R6 44
+  CALL R4 2 1
+  SETTABLEKS R4 R3 K6 ["size"]
+  NEWCLOSURE R4 P0
+  CAPTURE UPVAL U3
+  SETTABLEKS R4 R3 K7 ["onActivated"]
+  GETUPVAL R6 4
+  GETTABLEKS R5 R6 K8 ["Images"]
+  GETTABLEKS R4 R5 K9 ["MoreActions"]
+  SETTABLEKS R4 R3 K10 ["icon"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K11 ["Ref"]
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K12 ["moreMenuButtonRef"]
+  SETTABLE R5 R3 R4
+  CALL R1 2 1
+  GETUPVAL R2 3
+  GETUPVAL R4 5
+  MOVE R5 R0
+  NAMECALL R2 R2 K13 ["renderButtonModels"]
+  CALL R2 3 1
+  GETUPVAL R5 3
+  GETTABLEKS R4 R5 K14 ["props"]
+  GETTABLEKS R3 R4 K15 ["respawnButtonVisible"]
+  GETUPVAL R4 6
+  JUMPIFNOT R4 [+6]
+  LENGTH R4 R2
+  LOADN R5 0
+  JUMPIFLT R5 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  GETUPVAL R6 3
+  GETTABLEKS R5 R6 K14 ["props"]
+  GETTABLEKS R4 R5 K16 ["inputType"]
+  GETUPVAL R7 7
+  GETTABLEKS R6 R7 K17 ["VREnabled"]
+  JUMPIFNOT R6 [+5]
+  GETUPVAL R6 8
+  JUMPIFNOT R6 [+3]
+  GETIMPORT R5 K21 [Enum.KeyCode.ButtonX]
+  JUMP [+2]
+  GETUPVAL R6 9
+  GETTABLE R5 R6 R4
+  JUMPIFNOT R3 [+2]
+  LOADN R6 200
+  JUMP [+1]
+  LOADN R6 0
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K22 ["state"]
+  GETTABLEKS R7 R8 K23 ["modalOpen"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R9 10
+  DUPTABLE R10 K26 [{"canCaptureFocus", "isMainPageMoreMenuOpen"}]
+  GETUPVAL R11 11
+  SETTABLEKS R11 R10 K24 ["canCaptureFocus"]
+  SETTABLEKS R7 R10 K25 ["isMainPageMoreMenuOpen"]
+  CALL R8 2 1
+  LOADNIL R9
+  GETUPVAL R12 3
+  GETTABLEKS R11 R12 K14 ["props"]
+  GETTABLEKS R10 R11 K27 ["voiceEnabled"]
+  JUMPIFNOT R10 [+33]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K0 ["createElement"]
+  GETUPVAL R11 12
+  DUPTABLE R12 K31 [{"size", "userId", "iconStyle", "onClicked"}]
+  GETIMPORT R13 K5 [UDim2.fromOffset]
+  LOADN R14 44
+  LOADN R15 44
+  CALL R13 2 1
+  SETTABLEKS R13 R12 K6 ["size"]
+  GETUPVAL R16 13
+  GETTABLEKS R15 R16 K32 ["LocalPlayer"]
+  GETTABLEKS R14 R15 K33 ["UserId"]
+  FASTCALL1 TOSTRING R14 [+2]
+  GETIMPORT R13 K35 [tostring]
+  CALL R13 1 1
+  SETTABLEKS R13 R12 K28 ["userId"]
+  LOADK R13 K36 ["MicLight"]
+  SETTABLEKS R13 R12 K29 ["iconStyle"]
+  DUPCLOSURE R13 K37 [PROTO_21]
+  CAPTURE UPVAL U14
+  SETTABLEKS R13 R12 K30 ["onClicked"]
+  CALL R10 2 1
+  MOVE R9 R10
+  SUBK R6 R6 K38 [56]
+  GETUPVAL R11 0
+  GETTABLEKS R10 R11 K0 ["createElement"]
+  LOADK R11 K39 ["TextButton"]
+  DUPTABLE R12 K48 [{"Size", "BackgroundColor3", "BackgroundTransparency", "BorderSizePixel", "Visible", "Text", "AutoButtonColor", "Selectable"}]
+  GETIMPORT R13 K50 [UDim2.new]
+  LOADN R14 0
+  LOADN R15 144
+  LOADN R16 1
+  LOADN R17 0
+  CALL R13 4 1
+  SETTABLEKS R13 R12 K40 ["Size"]
+  GETUPVAL R16 5
+  GETTABLEKS R15 R16 K51 ["Theme"]
+  GETTABLEKS R14 R15 K52 ["BackgroundDefault"]
+  GETTABLEKS R13 R14 K53 ["Color"]
+  SETTABLEKS R13 R12 K41 ["BackgroundColor3"]
+  GETUPVAL R16 5
+  GETTABLEKS R15 R16 K51 ["Theme"]
+  GETTABLEKS R14 R15 K52 ["BackgroundDefault"]
+  GETTABLEKS R13 R14 K54 ["Transparency"]
+  SETTABLEKS R13 R12 K42 ["BackgroundTransparency"]
+  LOADN R13 0
+  SETTABLEKS R13 R12 K43 ["BorderSizePixel"]
+  GETUPVAL R15 3
+  GETTABLEKS R14 R15 K14 ["props"]
+  GETTABLEKS R13 R14 K55 ["open"]
+  SETTABLEKS R13 R12 K44 ["Visible"]
+  LOADK R13 K56 [""]
+  SETTABLEKS R13 R12 K45 ["Text"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K46 ["AutoButtonColor"]
+  LOADB R13 0
+  SETTABLEKS R13 R12 K47 ["Selectable"]
+  DUPTABLE R13 K65 [{"MoreMenuFocusHandler", "MainPageFocusHandler", "ControllerBar", "ZonePortal", "GameIconHeader", "PageNavigation", "ContextualMenu", "BottomButtons"}]
+  GETUPVAL R14 3
+  NAMECALL R14 R14 K66 ["renderMoreMenuFocusHandler"]
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K57 ["MoreMenuFocusHandler"]
+  GETUPVAL R16 7
+  GETTABLEKS R15 R16 K17 ["VREnabled"]
+  JUMPIF R15 [+5]
+  GETUPVAL R14 3
+  NAMECALL R14 R14 K67 ["renderMainPageFocusHandler"]
+  CALL R14 1 1
+  JUMPIF R14 [+1]
+  LOADNIL R14
+  SETTABLEKS R14 R13 K58 ["MainPageFocusHandler"]
+  SETTABLEKS R8 R13 K59 ["ControllerBar"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K0 ["createElement"]
+  GETUPVAL R15 15
+  DUPTABLE R16 K70 [{"targetZone", "direction"}]
+  LOADN R17 0
+  SETTABLEKS R17 R16 K68 ["targetZone"]
+  GETUPVAL R18 16
+  GETTABLEKS R17 R18 K71 ["Left"]
+  SETTABLEKS R17 R16 K69 ["direction"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K60 ["ZonePortal"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K0 ["createElement"]
+  GETUPVAL R15 17
+  CALL R14 1 1
+  SETTABLEKS R14 R13 K61 ["GameIconHeader"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K0 ["createElement"]
+  GETUPVAL R15 18
+  DUPTABLE R16 K74 [{"Position", "mainPageFirstButtonRef"}]
+  GETIMPORT R17 K50 [UDim2.new]
+  LOADN R18 0
+  GETUPVAL R21 19
+  GETTABLEKS R20 R21 K75 ["Zone"]
+  GETTABLEKS R19 R20 K76 ["ContentOffset"]
+  LOADN R20 0
+  LOADN R21 148
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K72 ["Position"]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K73 ["mainPageFirstButtonRef"]
+  SETTABLEKS R17 R16 K73 ["mainPageFirstButtonRef"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K62 ["PageNavigation"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K0 ["createElement"]
+  GETUPVAL R15 20
+  DUPTABLE R16 K85 [{"buttonProps", "setFrameRef", "setFirstItemRef", "open", "menuDirection", "openPositionY", "closeBackgroundVisible", "screenSize", "onDismiss"}]
+  SETTABLEKS R2 R16 K77 ["buttonProps"]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K86 ["setMoreMenuRef"]
+  SETTABLEKS R17 R16 K78 ["setFrameRef"]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K87 ["setMoreMenuFirstItemRef"]
+  SETTABLEKS R17 R16 K79 ["setFirstItemRef"]
+  SETTABLEKS R7 R16 K55 ["open"]
+  GETUPVAL R18 21
+  GETTABLEKS R17 R18 K88 ["Up"]
+  SETTABLEKS R17 R16 K80 ["menuDirection"]
+  GETIMPORT R17 K90 [UDim.new]
+  LOADN R18 1
+  LOADN R19 172
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K81 ["openPositionY"]
+  LOADB R17 1
+  SETTABLEKS R17 R16 K82 ["closeBackgroundVisible"]
+  GETUPVAL R19 3
+  GETTABLEKS R18 R19 K14 ["props"]
+  GETTABLEKS R17 R18 K83 ["screenSize"]
+  SETTABLEKS R17 R16 K83 ["screenSize"]
+  NEWCLOSURE R17 P2
+  CAPTURE UPVAL U3
+  SETTABLEKS R17 R16 K84 ["onDismiss"]
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K63 ["ContextualMenu"]
+  GETUPVAL R15 0
+  GETTABLEKS R14 R15 K0 ["createElement"]
+  LOADK R15 K91 ["Frame"]
+  DUPTABLE R16 K93 [{"Size", "Position", "AnchorPoint", "BackgroundTransparency"}]
+  GETIMPORT R17 K50 [UDim2.new]
+  LOADN R18 1
+  LOADN R19 0
+  LOADN R20 0
+  LOADN R21 84
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K40 ["Size"]
+  GETIMPORT R17 K50 [UDim2.new]
+  LOADN R18 0
+  LOADN R19 0
+  LOADN R20 1
+  LOADN R21 0
+  CALL R17 4 1
+  SETTABLEKS R17 R16 K72 ["Position"]
+  GETIMPORT R17 K95 [Vector2.new]
+  LOADN R18 0
+  LOADN R19 1
+  CALL R17 2 1
+  SETTABLEKS R17 R16 K92 ["AnchorPoint"]
+  LOADN R17 1
+  SETTABLEKS R17 R16 K42 ["BackgroundTransparency"]
+  DUPTABLE R17 K101 [{"Layout", "Padding", "LeaveGame", "VoiceChatMuteButton", "MoreButton"}]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K0 ["createElement"]
+  LOADK R19 K102 ["UIListLayout"]
+  DUPTABLE R20 K107 [{"FillDirection", "HorizontalAlignment", "Padding", "SortOrder", "VerticalAlignment"}]
+  GETIMPORT R21 K109 [Enum.FillDirection.Horizontal]
+  SETTABLEKS R21 R20 K103 ["FillDirection"]
+  GETIMPORT R21 K111 [Enum.HorizontalAlignment.Center]
+  SETTABLEKS R21 R20 K104 ["HorizontalAlignment"]
+  GETIMPORT R21 K90 [UDim.new]
+  LOADN R22 0
+  LOADN R23 12
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K97 ["Padding"]
+  GETIMPORT R21 K113 [Enum.SortOrder.LayoutOrder]
+  SETTABLEKS R21 R20 K105 ["SortOrder"]
+  GETIMPORT R21 K114 [Enum.VerticalAlignment.Center]
+  SETTABLEKS R21 R20 K106 ["VerticalAlignment"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K96 ["Layout"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K0 ["createElement"]
+  LOADK R19 K115 ["UIPadding"]
+  DUPTABLE R20 K120 [{"PaddingTop", "PaddingBottom", "PaddingLeft", "PaddingRight"}]
+  GETIMPORT R21 K90 [UDim.new]
+  LOADN R22 0
+  LOADN R23 24
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K116 ["PaddingTop"]
+  GETIMPORT R21 K90 [UDim.new]
+  LOADN R22 0
+  LOADN R23 24
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K117 ["PaddingBottom"]
+  GETIMPORT R21 K90 [UDim.new]
+  LOADN R22 0
+  LOADN R23 24
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K118 ["PaddingLeft"]
+  GETIMPORT R21 K90 [UDim.new]
+  LOADN R22 0
+  LOADN R23 24
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K119 ["PaddingRight"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K97 ["Padding"]
+  GETUPVAL R19 0
+  GETTABLEKS R18 R19 K0 ["createElement"]
+  LOADK R19 K91 ["Frame"]
+  DUPTABLE R20 K121 [{"BackgroundTransparency", "Size", "Position", "AnchorPoint", "LayoutOrder"}]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K42 ["BackgroundTransparency"]
+  GETIMPORT R21 K50 [UDim2.new]
+  LOADN R22 1
+  MOVE R23 R6
+  LOADN R24 0
+  LOADN R25 44
+  CALL R21 4 1
+  SETTABLEKS R21 R20 K40 ["Size"]
+  GETIMPORT R21 K123 [UDim2.fromScale]
+  LOADN R22 1
+  LOADN R23 0
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K72 ["Position"]
+  GETIMPORT R21 K95 [Vector2.new]
+  LOADN R22 1
+  LOADN R23 0
+  CALL R21 2 1
+  SETTABLEKS R21 R20 K92 ["AnchorPoint"]
+  LOADN R21 1
+  SETTABLEKS R21 R20 K112 ["LayoutOrder"]
+  DUPTABLE R21 K126 [{"Button", "KeyLabel"}]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K0 ["createElement"]
+  GETUPVAL R23 1
+  DUPTABLE R24 K128 [{"buttonType", "size", "onActivated", "text"}]
+  GETUPVAL R26 2
+  GETTABLEKS R25 R26 K129 ["PrimarySystem"]
+  SETTABLEKS R25 R24 K2 ["buttonType"]
+  GETIMPORT R25 K123 [UDim2.fromScale]
+  LOADN R26 1
+  LOADN R27 1
+  CALL R25 2 1
+  SETTABLEKS R25 R24 K6 ["size"]
+  GETUPVAL R27 3
+  GETTABLEKS R26 R27 K14 ["props"]
+  GETTABLEKS R25 R26 K130 ["startLeavingGame"]
+  SETTABLEKS R25 R24 K7 ["onActivated"]
+  GETTABLEKS R25 R0 K131 ["leaveGame"]
+  SETTABLEKS R25 R24 K127 ["text"]
+  CALL R22 2 1
+  SETTABLEKS R22 R21 K124 ["Button"]
+  JUMPIFNOT R5 [+37]
+  GETUPVAL R23 0
+  GETTABLEKS R22 R23 K0 ["createElement"]
+  GETUPVAL R23 22
+  DUPTABLE R24 K136 [{"keyCode", "iconThemeKey", "textThemeKey", "AnchorPoint", "Position", "LayoutOrder", "ZIndex"}]
+  SETTABLEKS R5 R24 K132 ["keyCode"]
+  LOADK R25 K137 ["UIDefault"]
+  SETTABLEKS R25 R24 K133 ["iconThemeKey"]
+  LOADK R25 K138 ["SystemPrimaryContent"]
+  SETTABLEKS R25 R24 K134 ["textThemeKey"]
+  GETIMPORT R25 K95 [Vector2.new]
+  LOADN R26 1
+  LOADK R27 K139 [0.5]
+  CALL R25 2 1
+  SETTABLEKS R25 R24 K92 ["AnchorPoint"]
+  GETIMPORT R25 K50 [UDim2.new]
+  LOADN R26 1
+  LOADN R27 240
+  LOADK R28 K139 [0.5]
+  LOADN R29 0
+  CALL R25 4 1
+  SETTABLEKS R25 R24 K72 ["Position"]
+  LOADN R25 2
+  SETTABLEKS R25 R24 K112 ["LayoutOrder"]
+  LOADN R25 2
+  SETTABLEKS R25 R24 K135 ["ZIndex"]
+  CALL R22 2 1
+  JUMPIF R22 [+1]
+  LOADNIL R22
+  SETTABLEKS R22 R21 K125 ["KeyLabel"]
+  CALL R18 3 1
+  SETTABLEKS R18 R17 K98 ["LeaveGame"]
+  SETTABLEKS R9 R17 K99 ["VoiceChatMuteButton"]
+  AND R18 R3 R1
+  SETTABLEKS R18 R17 K100 ["MoreButton"]
+  CALL R14 3 1
+  SETTABLEKS R14 R13 K64 ["BottomButtons"]
+  CALL R10 3 -1
+  RETURN R10 -1
+
+PROTO_24:
+  GETUPVAL R1 0
+  DUPTABLE R2 K5 [{"leaveGame", "respawnCharacter", "recordVideo", "recording", "screenCapture"}]
+  LOADK R3 K6 ["CoreScripts.InGameMenu.LeaveGame"]
+  SETTABLEKS R3 R2 K0 ["leaveGame"]
+  LOADK R3 K7 ["CoreScripts.InGameMenu.RespawnCharacter"]
+  SETTABLEKS R3 R2 K1 ["respawnCharacter"]
+  LOADK R3 K8 ["CoreScripts.InGameMenu.Record.StartRecording"]
+  SETTABLEKS R3 R2 K2 ["recordVideo"]
+  LOADK R3 K9 ["CoreScripts.InGameMenu.Record.Duration"]
+  SETTABLEKS R3 R2 K3 ["recording"]
+  LOADK R3 K10 ["CoreScripts.InGameMenu.Controls.Screenshot"]
+  SETTABLEKS R3 R2 K4 ["screenCapture"]
+  CALL R1 1 1
+  NEWCLOSURE R2 P0
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U2
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE VAL R0
+  CAPTURE UPVAL U6
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U19
+  CAPTURE UPVAL U20
+  CAPTURE UPVAL U21
+  CAPTURE UPVAL U22
+  CALL R1 1 -1
+  RETURN R1 -1
+
+PROTO_25:
+  LOADNIL R1
+  GETUPVAL R2 0
+  CALL R2 0 1
+  JUMPIFNOT R2 [+20]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K1 ["isMainPageInForeground"]
+  JUMPIFNOT R2 [+13]
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K2 ["inputType"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K3 ["InputType"]
+  GETTABLEKS R4 R5 K4 ["Gamepad"]
+  JUMPIFEQ R3 R4 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  MOVE R1 R2
+  JUMP [+6]
+  GETTABLEKS R2 R0 K5 ["canGamepadCaptureFocus"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  CALL R2 1 1
+  MOVE R1 R2
+  GETUPVAL R2 2
+  NEWCLOSURE R3 P0
+  CAPTURE UPVAL U3
+  CAPTURE UPVAL U4
+  CAPTURE UPVAL U5
+  CAPTURE UPVAL U6
+  CAPTURE VAL R0
+  CAPTURE UPVAL U7
+  CAPTURE UPVAL U8
+  CAPTURE UPVAL U9
+  CAPTURE UPVAL U10
+  CAPTURE UPVAL U11
+  CAPTURE UPVAL U12
+  CAPTURE REF R1
+  CAPTURE UPVAL U13
+  CAPTURE UPVAL U14
+  CAPTURE UPVAL U15
+  CAPTURE UPVAL U16
+  CAPTURE UPVAL U17
+  CAPTURE UPVAL U18
+  CAPTURE UPVAL U19
+  CAPTURE UPVAL U1
+  CAPTURE UPVAL U20
+  CAPTURE UPVAL U21
+  CAPTURE UPVAL U22
+  CALL R2 1 -1
+  CLOSEUPVALS R1
+  RETURN R2 -1
+
+PROTO_26:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["recording"]
+  GETUPVAL R1 0
+  LOADK R3 K1 ["MainPageMoreMenu"]
+  NAMECALL R1 R1 K2 ["RemoveSelectionGroup"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  CALL R1 0 1
+  JUMPIFNOT R1 [+5]
+  GETUPVAL R1 2
+  LOADK R3 K3 ["LeftStickTogglesMoreMenuAction"]
+  NAMECALL R1 R1 K4 ["UnbindCoreAction"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_27:
+  GETTABLEKS R1 R0 K0 ["canCaptureFocus"]
+  JUMPIFNOT R1 [+11]
+  GETTABLEKS R2 R0 K1 ["inputType"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K2 ["InputType"]
+  GETTABLEKS R3 R4 K3 ["Gamepad"]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  RETURN R1 1
+
+PROTO_28:
+  GETTABLEKS R2 R0 K0 ["isMainPageInForeground"]
+  JUMPIFNOT R2 [+11]
+  LOADB R2 0
+  GETTABLEKS R3 R0 K1 ["inputType"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K2 ["InputType"]
+  GETTABLEKS R4 R5 K3 ["Gamepad"]
+  JUMPIFNOTEQ R3 R4 [+2]
+  NOT R2 R1
+  RETURN R2 1
+
+PROTO_29:
+  GETIMPORT R2 K3 [Enum.UserInputState.End]
+  JUMPIFNOTEQ R1 R2 [+12]
+  GETUPVAL R2 0
+  DUPTABLE R4 K5 [{"modalOpen"}]
+  LOADB R5 1
+  SETTABLEKS R5 R4 K4 ["modalOpen"]
+  NAMECALL R2 R2 K6 ["setState"]
+  CALL R2 2 0
+  GETIMPORT R2 K9 [Enum.ContextActionResult.Sink]
+  RETURN R2 1
+  GETIMPORT R2 K11 [Enum.ContextActionResult.Pass]
+  RETURN R2 1
+
+PROTO_30:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["recording"]
+  JUMPIFNOT R0 [+5]
+  GETIMPORT R0 K2 [delay]
+  LOADK R1 K3 [0.2]
+  GETUPVAL R2 1
+  CALL R0 2 0
+  GETUPVAL R0 0
+  DUPTABLE R2 K5 [{"recordingDuration"}]
+  GETIMPORT R4 K7 [tick]
+  CALL R4 0 1
+  GETUPVAL R5 2
+  SUB R3 R4 R5
+  SETTABLEKS R3 R2 K4 ["recordingDuration"]
+  NAMECALL R0 R0 K8 ["setState"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_31:
+  GETTABLEKS R4 R0 K0 ["state"]
+  GETTABLEKS R3 R4 K1 ["modalOpen"]
+  GETTABLEKS R4 R2 K1 ["modalOpen"]
+  GETUPVAL R5 0
+  CALL R5 0 1
+  JUMPIF R5 [+30]
+  GETTABLEKS R5 R0 K2 ["canGamepadCaptureFocus"]
+  GETTABLEKS R6 R0 K3 ["props"]
+  CALL R5 1 1
+  JUMPIFNOT R5 [+24]
+  JUMPIF R3 [+23]
+  JUMPIFNOT R4 [+9]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R0 K4 ["moreMenuButtonRef"]
+  NAMECALL R6 R6 K5 ["getValue"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K6 ["SelectedCoreObject"]
+  JUMP [+13]
+  GETTABLEKS R5 R0 K2 ["canGamepadCaptureFocus"]
+  MOVE R6 R1
+  CALL R5 1 1
+  JUMPIF R5 [+8]
+  GETUPVAL R5 1
+  GETTABLEKS R6 R0 K7 ["mainPageFirstButtonRef"]
+  NAMECALL R6 R6 K5 ["getValue"]
+  CALL R6 1 1
+  SETTABLEKS R6 R5 K6 ["SelectedCoreObject"]
+  GETUPVAL R5 2
+  CALL R5 0 1
+  JUMPIFNOT R5 [+82]
+  DUPCLOSURE R5 K8 [PROTO_28]
+  CAPTURE UPVAL U3
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R6 R7 K9 ["isMainPageInForeground"]
+  JUMPIFNOT R6 [+11]
+  LOADB R6 0
+  GETTABLEKS R8 R7 K10 ["inputType"]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K11 ["InputType"]
+  GETTABLEKS R9 R10 K12 ["Gamepad"]
+  JUMPIFNOTEQ R8 R9 [+2]
+  NOT R6 R3
+  JUMPIFNOT R6 [+26]
+  GETTABLEKS R6 R1 K9 ["isMainPageInForeground"]
+  JUMPIFNOT R6 [+11]
+  LOADB R6 0
+  GETTABLEKS R7 R1 K10 ["inputType"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K11 ["InputType"]
+  GETTABLEKS R8 R9 K12 ["Gamepad"]
+  JUMPIFNOTEQ R7 R8 [+2]
+  NOT R6 R4
+  JUMPIF R6 [+11]
+  GETUPVAL R6 4
+  LOADK R8 K13 ["LeftStickTogglesMoreMenuAction"]
+  NEWCLOSURE R9 P1
+  CAPTURE VAL R0
+  LOADB R10 0
+  GETIMPORT R11 K17 [Enum.KeyCode.ButtonL3]
+  NAMECALL R6 R6 K18 ["BindCoreAction"]
+  CALL R6 5 0
+  JUMP [+37]
+  GETTABLEKS R7 R0 K3 ["props"]
+  GETTABLEKS R6 R7 K9 ["isMainPageInForeground"]
+  JUMPIFNOT R6 [+11]
+  LOADB R6 0
+  GETTABLEKS R8 R7 K10 ["inputType"]
+  GETUPVAL R11 3
+  GETTABLEKS R10 R11 K11 ["InputType"]
+  GETTABLEKS R9 R10 K12 ["Gamepad"]
+  JUMPIFNOTEQ R8 R9 [+2]
+  NOT R6 R3
+  JUMPIF R6 [+20]
+  GETTABLEKS R6 R1 K9 ["isMainPageInForeground"]
+  JUMPIFNOT R6 [+11]
+  LOADB R6 0
+  GETTABLEKS R7 R1 K10 ["inputType"]
+  GETUPVAL R10 3
+  GETTABLEKS R9 R10 K11 ["InputType"]
+  GETTABLEKS R8 R9 K12 ["Gamepad"]
+  JUMPIFNOTEQ R7 R8 [+2]
+  NOT R6 R4
+  JUMPIFNOT R6 [+5]
+  GETUPVAL R6 4
+  LOADK R8 K13 ["LeftStickTogglesMoreMenuAction"]
+  NAMECALL R6 R6 K19 ["UnbindCoreAction"]
+  CALL R6 2 0
+  GETUPVAL R5 5
+  JUMPIFNOT R5 [+38]
+  GETTABLEKS R6 R0 K3 ["props"]
+  GETTABLEKS R5 R6 K20 ["recording"]
+  JUMPIFNOT R5 [+30]
+  GETTABLEKS R5 R1 K20 ["recording"]
+  JUMPIF R5 [+30]
+  LOADB R5 1
+  SETTABLEKS R5 R0 K20 ["recording"]
+  GETIMPORT R6 K22 [tick]
+  CALL R6 0 1
+  GETTABLEKS R7 R0 K23 ["getRecordingDuration"]
+  CALL R7 0 1
+  SUB R5 R6 R7
+  NEWCLOSURE R6 P2
+  CAPTURE VAL R0
+  CAPTURE VAL R6
+  CAPTURE VAL R5
+  DUPTABLE R9 K25 [{"recordingDuration"}]
+  LOADN R10 0
+  SETTABLEKS R10 R9 K24 ["recordingDuration"]
+  NAMECALL R7 R0 K26 ["setState"]
+  CALL R7 2 0
+  GETIMPORT R7 K28 [delay]
+  LOADK R8 K29 [0.2]
+  MOVE R9 R6
+  CALL R7 2 0
+  JUMP [+3]
+  LOADB R5 0
+  SETTABLEKS R5 R0 K20 ["recording"]
+  GETUPVAL R6 6
+  GETTABLEKS R5 R6 K30 ["VREnabled"]
+  JUMPIFNOT R5 [+5]
+  GETUPVAL R5 7
+  GETIMPORT R6 K33 [Enum.OverrideMouseIconBehavior.ForceHide]
+  SETTABLEKS R6 R5 K31 ["OverrideMouseIconBehavior"]
+  RETURN R0 0
+
+PROTO_32:
+  LOADNIL R2
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIFNOT R3 [+19]
+  GETTABLEKS R3 R0 K0 ["isMenuOpen"]
+  JUMPIFNOT R3 [+15]
+  GETTABLEKS R5 R0 K1 ["respawn"]
+  GETTABLEKS R4 R5 K2 ["dialogOpen"]
+  NOT R3 R4
+  JUMPIFNOT R3 [+9]
+  GETTABLEKS R4 R0 K3 ["menuPage"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K4 ["MainPagePageKey"]
+  JUMPIFEQ R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  MOVE R2 R3
+  LOADNIL R3
+  GETUPVAL R4 2
+  CALL R4 0 1
+  JUMPIFNOT R4 [+2]
+  GETTABLEKS R3 R0 K5 ["currentZone"]
+  LOADB R4 0
+  GETTABLEKS R5 R0 K3 ["menuPage"]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K4 ["MainPagePageKey"]
+  JUMPIFNOTEQ R5 R6 [+16]
+  GETTABLEKS R4 R0 K0 ["isMenuOpen"]
+  JUMPIFNOT R4 [+12]
+  GETTABLEKS R6 R0 K1 ["respawn"]
+  GETTABLEKS R5 R6 K2 ["dialogOpen"]
+  NOT R4 R5
+  JUMPIFNOT R4 [+6]
+  GETTABLEKS R5 R0 K5 ["currentZone"]
+  JUMPIFEQKN R5 K6 [1] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  DUPTABLE R5 K15 [{"open", "respawnButtonVisible", "recording", "screenSize", "voiceEnabled", "canCaptureFocus", "currentZone", "inputType", "isMainPageInForeground"}]
+  GETTABLEKS R6 R0 K0 ["isMenuOpen"]
+  SETTABLEKS R6 R5 K7 ["open"]
+  GETTABLEKS R7 R0 K1 ["respawn"]
+  GETTABLEKS R6 R7 K16 ["enabled"]
+  SETTABLEKS R6 R5 K8 ["respawnButtonVisible"]
+  GETTABLEKS R6 R0 K9 ["recording"]
+  SETTABLEKS R6 R5 K9 ["recording"]
+  GETTABLEKS R6 R0 K10 ["screenSize"]
+  SETTABLEKS R6 R5 K10 ["screenSize"]
+  GETTABLEKS R7 R0 K17 ["voiceState"]
+  GETTABLEKS R6 R7 K11 ["voiceEnabled"]
+  SETTABLEKS R6 R5 K11 ["voiceEnabled"]
+  SETTABLEKS R4 R5 K12 ["canCaptureFocus"]
+  SETTABLEKS R3 R5 K5 ["currentZone"]
+  GETTABLEKS R7 R0 K18 ["displayOptions"]
+  GETTABLEKS R6 R7 K13 ["inputType"]
+  SETTABLEKS R6 R5 K13 ["inputType"]
+  SETTABLEKS R2 R5 K14 ["isMainPageInForeground"]
+  RETURN R5 1
+
+PROTO_33:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K0 ["LeaveGamePromptPageKey"]
+  CALL R1 1 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_34:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  LOADB R2 1
+  CALL R1 1 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_35:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_36:
+  DUPTABLE R1 K3 [{"startLeavingGame", "startRespawning", "closeMenu"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  SETTABLEKS R2 R1 K0 ["startLeavingGame"]
+  NEWCLOSURE R2 P1
+  CAPTURE VAL R0
+  CAPTURE UPVAL U2
+  SETTABLEKS R2 R1 K1 ["startRespawning"]
+  NEWCLOSURE R2 P2
+  CAPTURE VAL R0
+  CAPTURE UPVAL U3
+  SETTABLEKS R2 R1 K2 ["closeMenu"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K6 ["CorePackages"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R3 K1 [game]
+  LOADK R5 K7 ["RunService"]
+  NAMECALL R3 R3 K3 ["GetService"]
+  CALL R3 2 1
+  GETIMPORT R4 K9 [settings]
+  CALL R4 0 1
+  LOADK R6 K10 ["Game Options"]
+  NAMECALL R4 R4 K11 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+5]
+  GETIMPORT R4 K13 [error]
+  LOADK R5 K14 ["Game Options does not exist"]
+  LOADN R6 0
+  CALL R4 2 1
+  GETIMPORT R5 K1 [game]
+  LOADK R7 K15 ["ContextActionService"]
+  NAMECALL R5 R5 K3 ["GetService"]
+  CALL R5 2 1
+  GETIMPORT R6 K1 [game]
+  LOADK R8 K16 ["GuiService"]
+  NAMECALL R6 R6 K3 ["GetService"]
+  CALL R6 2 1
+  GETIMPORT R7 K1 [game]
+  LOADK R9 K17 ["Players"]
+  NAMECALL R7 R7 K3 ["GetService"]
+  CALL R7 2 1
+  GETIMPORT R8 K1 [game]
+  LOADK R10 K18 ["UserInputService"]
+  NAMECALL R8 R8 K3 ["GetService"]
+  CALL R8 2 1
+  GETIMPORT R9 K1 [game]
+  LOADK R11 K19 ["VRService"]
+  NAMECALL R9 R9 K3 ["GetService"]
+  CALL R9 2 1
+  GETIMPORT R10 K21 [require]
+  GETTABLEKS R12 R2 K22 ["Packages"]
+  GETTABLEKS R11 R12 K23 ["InGameMenuDependencies"]
+  CALL R10 1 1
+  GETIMPORT R11 K21 [require]
+  GETTABLEKS R14 R2 K24 ["Workspace"]
+  GETTABLEKS R13 R14 K22 ["Packages"]
+  GETTABLEKS R12 R13 K25 ["VideoProtocol"]
+  CALL R11 1 1
+  GETTABLEKS R12 R10 K26 ["Roact"]
+  GETTABLEKS R13 R10 K27 ["RoactRodux"]
+  GETTABLEKS R14 R10 K28 ["UIBlox"]
+  GETTABLEKS R15 R10 K29 ["t"]
+  GETTABLEKS R18 R14 K30 ["Core"]
+  GETTABLEKS R17 R18 K31 ["Style"]
+  GETTABLEKS R16 R17 K32 ["withStyle"]
+  GETTABLEKS R19 R14 K33 ["App"]
+  GETTABLEKS R18 R19 K34 ["Menu"]
+  GETTABLEKS R17 R18 K35 ["ContextualMenu"]
+  GETTABLEKS R20 R14 K33 ["App"]
+  GETTABLEKS R19 R20 K34 ["Menu"]
+  GETTABLEKS R18 R19 K36 ["MenuDirection"]
+  GETTABLEKS R21 R14 K33 ["App"]
+  GETTABLEKS R20 R21 K34 ["Menu"]
+  GETTABLEKS R19 R20 K37 ["KeyLabel"]
+  GETTABLEKS R22 R14 K33 ["App"]
+  GETTABLEKS R21 R22 K38 ["Button"]
+  GETTABLEKS R20 R21 K38 ["Button"]
+  GETTABLEKS R24 R14 K33 ["App"]
+  GETTABLEKS R23 R24 K38 ["Button"]
+  GETTABLEKS R22 R23 K39 ["Enum"]
+  GETTABLEKS R21 R22 K40 ["ButtonType"]
+  GETIMPORT R24 K42 [script]
+  GETTABLEKS R23 R24 K43 ["Parent"]
+  GETTABLEKS R22 R23 K43 ["Parent"]
+  GETIMPORT R23 K21 [require]
+  GETTABLEKS R25 R22 K44 ["Localization"]
+  GETTABLEKS R24 R25 K45 ["withLocalization"]
+  CALL R23 1 1
+  GETIMPORT R24 K21 [require]
+  GETTABLEKS R26 R22 K46 ["Actions"]
+  GETTABLEKS R25 R26 K47 ["SetRespawning"]
+  CALL R24 1 1
+  GETIMPORT R25 K21 [require]
+  GETTABLEKS R27 R22 K48 ["Thunks"]
+  GETTABLEKS R26 R27 K49 ["CloseMenu"]
+  CALL R25 1 1
+  GETIMPORT R26 K21 [require]
+  GETTABLEKS R28 R22 K50 ["Resources"]
+  GETTABLEKS R27 R28 K51 ["Assets"]
+  CALL R26 1 1
+  GETIMPORT R27 K21 [require]
+  GETTABLEKS R29 R22 K46 ["Actions"]
+  GETTABLEKS R28 R29 K52 ["SetCurrentPage"]
+  CALL R27 1 1
+  GETIMPORT R28 K21 [require]
+  GETTABLEKS R32 R1 K53 ["Modules"]
+  GETTABLEKS R31 R32 K54 ["VoiceChat"]
+  GETTABLEKS R30 R31 K55 ["Components"]
+  GETTABLEKS R29 R30 K56 ["VoiceIndicator"]
+  CALL R28 1 1
+  GETIMPORT R29 K21 [require]
+  GETTABLEKS R31 R22 K50 ["Resources"]
+  GETTABLEKS R30 R31 K57 ["Constants"]
+  CALL R29 1 1
+  GETIMPORT R30 K21 [require]
+  GETTABLEKS R32 R22 K58 ["Enums"]
+  GETTABLEKS R31 R32 K59 ["Direction"]
+  CALL R30 1 1
+  GETIMPORT R31 K21 [require]
+  GETIMPORT R34 K42 [script]
+  GETTABLEKS R33 R34 K43 ["Parent"]
+  GETTABLEKS R32 R33 K60 ["PageNavigation"]
+  CALL R31 1 1
+  GETIMPORT R32 K21 [require]
+  GETIMPORT R35 K42 [script]
+  GETTABLEKS R34 R35 K43 ["Parent"]
+  GETTABLEKS R33 R34 K61 ["GameIconHeader"]
+  CALL R32 1 1
+  GETIMPORT R33 K21 [require]
+  GETIMPORT R36 K42 [script]
+  GETTABLEKS R35 R36 K43 ["Parent"]
+  GETTABLEKS R34 R35 K62 ["ZonePortal"]
+  CALL R33 1 1
+  GETTABLEKS R34 R22 K63 ["Flags"]
+  GETIMPORT R35 K21 [require]
+  GETTABLEKS R36 R34 K64 ["FFlagRecordRecording"]
+  CALL R35 1 1
+  GETIMPORT R36 K1 [game]
+  LOADK R38 K65 ["TakeAScreenshotOfThis"]
+  LOADB R39 0
+  NAMECALL R36 R36 K66 ["DefineFastFlag"]
+  CALL R36 3 1
+  GETIMPORT R37 K1 [game]
+  LOADK R39 K67 ["ShowContextMenuWhenButtonsArePresent"]
+  LOADB R40 0
+  NAMECALL R37 R37 K66 ["DefineFastFlag"]
+  CALL R37 3 1
+  GETIMPORT R38 K1 [game]
+  LOADK R40 K68 ["UseVRSpecificLeaveButton"]
+  LOADB R41 0
+  NAMECALL R38 R38 K66 ["DefineFastFlag"]
+  CALL R38 3 1
+  GETIMPORT R39 K21 [require]
+  GETTABLEKS R40 R34 K69 ["GetFFlagIGMGamepadSelectionHistory"]
+  CALL R39 1 1
+  GETIMPORT R40 K21 [require]
+  GETTABLEKS R41 R34 K70 ["GetFFlagSideNavControllerBar"]
+  CALL R40 1 1
+  GETTABLEKS R43 R14 K33 ["App"]
+  GETTABLEKS R42 R43 K71 ["ImageSet"]
+  GETTABLEKS R41 R42 K72 ["Images"]
+  GETIMPORT R42 K21 [require]
+  GETIMPORT R46 K42 [script]
+  GETTABLEKS R45 R46 K43 ["Parent"]
+  GETTABLEKS R44 R45 K73 ["Connection"]
+  GETTABLEKS R43 R44 K74 ["FocusHandler"]
+  CALL R42 1 1
+  GETIMPORT R43 K21 [require]
+  GETIMPORT R46 K42 [script]
+  GETTABLEKS R45 R46 K43 ["Parent"]
+  GETTABLEKS R44 R45 K75 ["IGMMainPageControllerBar"]
+  CALL R43 1 1
+  GETIMPORT R45 K21 [require]
+  GETTABLEKS R48 R1 K53 ["Modules"]
+  GETTABLEKS R47 R48 K54 ["VoiceChat"]
+  GETTABLEKS R46 R47 K76 ["VoiceChatServiceManager"]
+  CALL R45 1 1
+  GETTABLEKS R44 R45 K77 ["default"]
+  NEWTABLE R45 2 0
+  GETTABLEKS R47 R29 K78 ["InputType"]
+  GETTABLEKS R46 R47 K79 ["MouseAndKeyboard"]
+  GETIMPORT R47 K82 [Enum.KeyCode.R]
+  SETTABLE R47 R45 R46
+  GETTABLEKS R47 R29 K78 ["InputType"]
+  GETTABLEKS R46 R47 K83 ["Gamepad"]
+  GETIMPORT R47 K85 [Enum.KeyCode.ButtonY]
+  SETTABLE R47 R45 R46
+  NEWTABLE R46 1 0
+  GETTABLEKS R48 R29 K78 ["InputType"]
+  GETTABLEKS R47 R48 K79 ["MouseAndKeyboard"]
+  GETIMPORT R48 K87 [Enum.KeyCode.F12]
+  SETTABLE R48 R46 R47
+  NEWTABLE R47 2 0
+  GETTABLEKS R49 R29 K78 ["InputType"]
+  GETTABLEKS R48 R49 K79 ["MouseAndKeyboard"]
+  GETIMPORT R49 K89 [Enum.KeyCode.L]
+  SETTABLE R49 R47 R48
+  GETTABLEKS R49 R29 K78 ["InputType"]
+  GETTABLEKS R48 R49 K83 ["Gamepad"]
+  GETIMPORT R49 K91 [Enum.KeyCode.ButtonX]
+  SETTABLE R49 R47 R48
+  GETTABLEKS R48 R12 K92 ["PureComponent"]
+  LOADK R50 K93 ["MainPage"]
+  NAMECALL R48 R48 K94 ["extend"]
+  CALL R48 2 1
+  DUPCLOSURE R49 K95 [PROTO_0]
+  CAPTURE VAL R9
+  CAPTURE VAL R36
+  CAPTURE VAL R0
+  DUPCLOSURE R50 K96 [PROTO_4]
+  CAPTURE VAL R9
+  CAPTURE VAL R36
+  CAPTURE VAL R0
+  CAPTURE VAL R41
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R35
+  CAPTURE VAL R46
+  CAPTURE VAL R26
+  CAPTURE VAL R45
+  SETTABLEKS R50 R48 K97 ["renderButtonModels"]
+  GETTABLEKS R50 R15 K98 ["strictInterface"]
+  DUPTABLE R51 K114 [{"open", "isMainPageMoreMenuOpen", "respawnButtonVisible", "startLeavingGame", "startRespawning", "setMainPageMoreMenuOpen", "closeMenu", "recording", "screenSize", "canCaptureFocus", "inputType", "setFirstItemRef", "voiceEnabled", "currentZone", "isMainPageInForeground"}]
+  GETTABLEKS R52 R15 K115 ["boolean"]
+  SETTABLEKS R52 R51 K99 ["open"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K115 ["boolean"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K100 ["isMainPageMoreMenuOpen"]
+  GETTABLEKS R52 R15 K115 ["boolean"]
+  SETTABLEKS R52 R51 K101 ["respawnButtonVisible"]
+  GETTABLEKS R52 R15 K117 ["callback"]
+  SETTABLEKS R52 R51 K102 ["startLeavingGame"]
+  GETTABLEKS R52 R15 K117 ["callback"]
+  SETTABLEKS R52 R51 K103 ["startRespawning"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K117 ["callback"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K104 ["setMainPageMoreMenuOpen"]
+  GETTABLEKS R52 R15 K117 ["callback"]
+  SETTABLEKS R52 R51 K105 ["closeMenu"]
+  GETTABLEKS R52 R15 K115 ["boolean"]
+  SETTABLEKS R52 R51 K106 ["recording"]
+  GETTABLEKS R52 R15 K118 ["Vector2"]
+  SETTABLEKS R52 R51 K107 ["screenSize"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K115 ["boolean"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K108 ["canCaptureFocus"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K119 ["string"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K109 ["inputType"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K117 ["callback"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K110 ["setFirstItemRef"]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K115 ["boolean"]
+  CALL R52 1 1
+  SETTABLEKS R52 R51 K111 ["voiceEnabled"]
+  MOVE R53 R39
+  CALL R53 0 1
+  JUMPIFNOT R53 [+6]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K120 ["number"]
+  CALL R52 1 1
+  JUMPIF R52 [+1]
+  LOADNIL R52
+  SETTABLEKS R52 R51 K112 ["currentZone"]
+  MOVE R53 R40
+  CALL R53 0 1
+  JUMPIFNOT R53 [+6]
+  GETTABLEKS R52 R15 K116 ["optional"]
+  GETTABLEKS R53 R15 K115 ["boolean"]
+  CALL R52 1 1
+  JUMPIF R52 [+1]
+  LOADNIL R52
+  SETTABLEKS R52 R51 K113 ["isMainPageInForeground"]
+  CALL R50 1 1
+  SETTABLEKS R50 R48 K121 ["validateProps"]
+  DUPCLOSURE R50 K122 [PROTO_8]
+  CAPTURE VAL R12
+  CAPTURE VAL R11
+  SETTABLEKS R50 R48 K123 ["init"]
+  DUPCLOSURE R50 K124 [PROTO_9]
+  CAPTURE VAL R40
+  SETTABLEKS R50 R48 K125 ["getDerivedStateFromProps"]
+  DUPCLOSURE R50 K126 [PROTO_15]
+  CAPTURE VAL R39
+  CAPTURE VAL R12
+  CAPTURE VAL R42
+  CAPTURE VAL R40
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  SETTABLEKS R50 R48 K127 ["renderMainPageFocusHandler"]
+  DUPCLOSURE R50 K128 [PROTO_19]
+  CAPTURE VAL R40
+  CAPTURE VAL R29
+  CAPTURE VAL R12
+  CAPTURE VAL R42
+  CAPTURE VAL R39
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  SETTABLEKS R50 R48 K129 ["renderMoreMenuFocusHandler"]
+  DUPCLOSURE R50 K130 [PROTO_25]
+  CAPTURE VAL R40
+  CAPTURE VAL R29
+  CAPTURE VAL R16
+  CAPTURE VAL R23
+  CAPTURE VAL R12
+  CAPTURE VAL R20
+  CAPTURE VAL R21
+  CAPTURE VAL R26
+  CAPTURE VAL R37
+  CAPTURE VAL R9
+  CAPTURE VAL R38
+  CAPTURE VAL R47
+  CAPTURE VAL R43
+  CAPTURE VAL R28
+  CAPTURE VAL R7
+  CAPTURE VAL R44
+  CAPTURE VAL R33
+  CAPTURE VAL R30
+  CAPTURE VAL R32
+  CAPTURE VAL R31
+  CAPTURE VAL R17
+  CAPTURE VAL R18
+  CAPTURE VAL R19
+  SETTABLEKS R50 R48 K131 ["render"]
+  DUPCLOSURE R50 K132 [PROTO_26]
+  CAPTURE VAL R6
+  CAPTURE VAL R40
+  CAPTURE VAL R5
+  SETTABLEKS R50 R48 K133 ["willUnmount"]
+  DUPCLOSURE R50 K134 [PROTO_27]
+  CAPTURE VAL R29
+  SETTABLEKS R50 R48 K135 ["canGamepadCaptureFocus"]
+  DUPCLOSURE R50 K136 [PROTO_31]
+  CAPTURE VAL R39
+  CAPTURE VAL R6
+  CAPTURE VAL R40
+  CAPTURE VAL R29
+  CAPTURE VAL R5
+  CAPTURE VAL R35
+  CAPTURE VAL R9
+  CAPTURE VAL R8
+  SETTABLEKS R50 R48 K137 ["didUpdate"]
+  GETTABLEKS R50 R13 K138 ["UNSTABLE_connect2"]
+  DUPCLOSURE R51 K139 [PROTO_32]
+  CAPTURE VAL R40
+  CAPTURE VAL R29
+  CAPTURE VAL R39
+  DUPCLOSURE R52 K140 [PROTO_36]
+  CAPTURE VAL R27
+  CAPTURE VAL R29
+  CAPTURE VAL R24
+  CAPTURE VAL R25
+  CALL R50 2 1
+  MOVE R51 R48
+  CALL R50 1 -1
+  RETURN R50 -1

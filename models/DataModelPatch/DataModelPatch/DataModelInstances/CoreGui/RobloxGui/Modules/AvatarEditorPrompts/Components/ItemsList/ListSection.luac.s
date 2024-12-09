@@ -1,0 +1,244 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["createRefCache"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K1 ["listRefCache"]
+  RETURN R0 0
+
+PROTO_1:
+  NEWTABLE R1 0 0
+  LOADN R2 0
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["createElement"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K1 ["Focusable"]
+  GETUPVAL R6 2
+  GETTABLE R4 R5 R6
+  NEWTABLE R5 8 0
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K3 ["headerText"]
+  SETTABLEKS R6 R5 K4 ["text"]
+  LOADB R6 0
+  SETTABLEKS R6 R5 K5 ["hasBullet"]
+  LOADN R6 0
+  SETTABLEKS R6 R5 K6 ["layoutOrder"]
+  GETTABLEKS R8 R0 K2 ["props"]
+  GETTABLEKS R7 R8 K7 ["isFirstSection"]
+  JUMPIFNOT R7 [+3]
+  GETTABLEKS R6 R0 K8 ["firstEntryPositionChanged"]
+  JUMPIF R6 [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K9 ["positionChangedCallback"]
+  GETTABLEKS R9 R0 K2 ["props"]
+  GETTABLEKS R8 R9 K10 ["items"]
+  LENGTH R7 R8
+  LOADN R8 0
+  JUMPIFNOTLT R8 R7 [+5]
+  GETTABLEKS R7 R0 K11 ["listRefCache"]
+  GETTABLEN R6 R7 1
+  JUMPIF R6 [+1]
+  LOADNIL R6
+  SETTABLEKS R6 R5 K12 ["NextSelectionDown"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K13 ["Ref"]
+  GETTABLEKS R8 R0 K11 ["listRefCache"]
+  LOADN R9 0
+  GETTABLE R7 R8 R9
+  SETTABLE R7 R5 R6
+  CALL R3 2 1
+  SETTABLE R3 R1 R2
+  GETIMPORT R2 K15 [ipairs]
+  GETTABLEKS R5 R0 K2 ["props"]
+  GETTABLEKS R3 R5 K10 ["items"]
+  CALL R2 1 3
+  FORGPREP_INEXT R2
+  LOADNIL R7
+  GETTABLEKS R9 R0 K2 ["props"]
+  GETTABLEKS R8 R9 K16 ["isLastSection"]
+  JUMPIFNOT R8 [+9]
+  GETTABLEKS R10 R0 K2 ["props"]
+  GETTABLEKS R9 R10 K10 ["items"]
+  LENGTH R8 R9
+  JUMPIFNOTEQ R5 R8 [+3]
+  GETTABLEKS R7 R0 K17 ["lastEntryPositionChanged"]
+  GETUPVAL R9 0
+  GETTABLEKS R8 R9 K0 ["createElement"]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K1 ["Focusable"]
+  GETUPVAL R11 2
+  GETTABLE R9 R10 R11
+  NEWTABLE R10 8 0
+  SETTABLEKS R6 R10 K4 ["text"]
+  LOADB R11 1
+  SETTABLEKS R11 R10 K5 ["hasBullet"]
+  SETTABLEKS R5 R10 K6 ["layoutOrder"]
+  SETTABLEKS R7 R10 K9 ["positionChangedCallback"]
+  GETTABLEKS R12 R0 K11 ["listRefCache"]
+  SUBK R13 R5 K18 [1]
+  GETTABLE R11 R12 R13
+  SETTABLEKS R11 R10 K19 ["NextSelectionUp"]
+  GETTABLEKS R14 R0 K2 ["props"]
+  GETTABLEKS R13 R14 K10 ["items"]
+  LENGTH R12 R13
+  JUMPIFEQ R5 R12 [+6]
+  GETTABLEKS R12 R0 K11 ["listRefCache"]
+  ADDK R13 R5 K18 [1]
+  GETTABLE R11 R12 R13
+  JUMPIF R11 [+1]
+  LOADNIL R11
+  SETTABLEKS R11 R10 K12 ["NextSelectionDown"]
+  GETUPVAL R12 0
+  GETTABLEKS R11 R12 K13 ["Ref"]
+  GETTABLEKS R13 R0 K11 ["listRefCache"]
+  GETTABLE R12 R13 R5
+  SETTABLE R12 R10 R11
+  CALL R8 2 1
+  SETTABLE R8 R1 R5
+  FORGLOOP R2 2 [inext] [-65]
+  GETTABLEKS R3 R0 K2 ["props"]
+  GETTABLEKS R2 R3 K20 ["forwardRef"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K0 ["createElement"]
+  GETUPVAL R6 1
+  GETTABLEKS R5 R6 K1 ["Focusable"]
+  GETUPVAL R7 3
+  GETTABLEKS R6 R7 K21 ["FitFrameVertical"]
+  GETTABLE R4 R5 R6
+  NEWTABLE R5 16 0
+  GETIMPORT R6 K24 [UDim.new]
+  LOADN R7 1
+  LOADN R8 0
+  CALL R6 2 1
+  SETTABLEKS R6 R5 K25 ["width"]
+  GETIMPORT R6 K29 [Enum.FillDirection.Vertical]
+  SETTABLEKS R6 R5 K27 ["FillDirection"]
+  GETIMPORT R6 K32 [Enum.VerticalAlignment.Top]
+  SETTABLEKS R6 R5 K30 ["VerticalAlignment"]
+  LOADN R6 1
+  SETTABLEKS R6 R5 K33 ["BackgroundTransparency"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K6 ["layoutOrder"]
+  SETTABLEKS R6 R5 K34 ["LayoutOrder"]
+  GETTABLEKS R7 R0 K11 ["listRefCache"]
+  LOADN R8 0
+  GETTABLE R6 R7 R8
+  SETTABLEKS R6 R5 K35 ["defaultChild"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K36 ["NextSelectionLeft"]
+  SETTABLEKS R6 R5 K36 ["NextSelectionLeft"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K37 ["NextSelectionRight"]
+  SETTABLEKS R6 R5 K37 ["NextSelectionRight"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K19 ["NextSelectionUp"]
+  SETTABLEKS R6 R5 K19 ["NextSelectionUp"]
+  GETTABLEKS R7 R0 K2 ["props"]
+  GETTABLEKS R6 R7 K12 ["NextSelectionDown"]
+  SETTABLEKS R6 R5 K12 ["NextSelectionDown"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K13 ["Ref"]
+  SETTABLE R2 R5 R6
+  MOVE R6 R1
+  CALL R3 3 -1
+  RETURN R3 -1
+
+PROTO_2:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["createElement"]
+  GETUPVAL R3 1
+  GETUPVAL R6 2
+  GETTABLEKS R5 R6 K1 ["Dictionary"]
+  GETTABLEKS R4 R5 K2 ["join"]
+  MOVE R5 R0
+  DUPTABLE R6 K4 [{"forwardRef"}]
+  SETTABLEKS R1 R6 K3 ["forwardRef"]
+  CALL R4 2 -1
+  CALL R2 -1 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Cryo"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K5 [require]
+  GETTABLEKS R5 R0 K6 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactGamepad"]
+  CALL R3 1 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R6 R0 K6 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  GETIMPORT R5 K5 [require]
+  GETTABLEKS R7 R0 K6 ["Packages"]
+  GETTABLEKS R6 R7 K11 ["AvatarExperienceDeps"]
+  CALL R5 1 1
+  GETTABLEKS R6 R5 K12 ["RoactFitComponents"]
+  GETIMPORT R7 K5 [require]
+  GETIMPORT R10 K14 [script]
+  GETTABLEKS R9 R10 K15 ["Parent"]
+  GETTABLEKS R8 R9 K16 ["ListEntry"]
+  CALL R7 1 1
+  GETTABLEKS R8 R2 K17 ["PureComponent"]
+  LOADK R10 K18 ["ListSection"]
+  NAMECALL R8 R8 K19 ["extend"]
+  CALL R8 2 1
+  GETTABLEKS R9 R4 K20 ["strictInterface"]
+  DUPTABLE R10 K31 [{"headerText", "items", "layoutOrder", "isFirstSection", "isLastSection", "NextSelectionLeft", "NextSelectionRight", "NextSelectionUp", "NextSelectionDown", "forwardRef"}]
+  GETTABLEKS R11 R4 K32 ["string"]
+  SETTABLEKS R11 R10 K21 ["headerText"]
+  GETTABLEKS R11 R4 K33 ["array"]
+  GETTABLEKS R12 R4 K32 ["string"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K22 ["items"]
+  GETTABLEKS R11 R4 K34 ["integer"]
+  SETTABLEKS R11 R10 K23 ["layoutOrder"]
+  GETTABLEKS R11 R4 K35 ["boolean"]
+  SETTABLEKS R11 R10 K24 ["isFirstSection"]
+  GETTABLEKS R11 R4 K35 ["boolean"]
+  SETTABLEKS R11 R10 K25 ["isLastSection"]
+  GETTABLEKS R11 R4 K36 ["optional"]
+  GETTABLEKS R12 R4 K37 ["table"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K26 ["NextSelectionLeft"]
+  GETTABLEKS R11 R4 K36 ["optional"]
+  GETTABLEKS R12 R4 K37 ["table"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K27 ["NextSelectionRight"]
+  GETTABLEKS R11 R4 K36 ["optional"]
+  GETTABLEKS R12 R4 K37 ["table"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K28 ["NextSelectionUp"]
+  GETTABLEKS R11 R4 K36 ["optional"]
+  GETTABLEKS R12 R4 K37 ["table"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K29 ["NextSelectionDown"]
+  GETTABLEKS R11 R4 K37 ["table"]
+  SETTABLEKS R11 R10 K30 ["forwardRef"]
+  CALL R9 1 1
+  SETTABLEKS R9 R8 K38 ["validateProps"]
+  DUPCLOSURE R9 K39 [PROTO_0]
+  CAPTURE VAL R3
+  SETTABLEKS R9 R8 K40 ["init"]
+  DUPCLOSURE R9 K41 [PROTO_1]
+  CAPTURE VAL R2
+  CAPTURE VAL R3
+  CAPTURE VAL R7
+  CAPTURE VAL R6
+  SETTABLEKS R9 R8 K42 ["render"]
+  GETTABLEKS R9 R2 K30 ["forwardRef"]
+  DUPCLOSURE R10 K43 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R8
+  CAPTURE VAL R1
+  CALL R9 1 -1
+  RETURN R9 -1

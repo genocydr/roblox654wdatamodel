@@ -1,0 +1,46 @@
+PROTO_0:
+  DUPTABLE R2 K1 [{"name"}]
+  GETTABLEKS R3 R1 K2 ["gameName"]
+  SETTABLEKS R3 R2 K0 ["name"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Rodux"]
+  CALL R2 1 1
+  LOADK R5 K9 ["RobloxGui"]
+  NAMECALL R3 R1 K10 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R3 K11 ["Modules"]
+  GETTABLEKS R5 R6 K12 ["RobloxTranslator"]
+  CALL R4 1 1
+  GETIMPORT R8 K14 [script]
+  GETTABLEKS R7 R8 K15 ["Parent"]
+  GETTABLEKS R6 R7 K15 ["Parent"]
+  GETTABLEKS R5 R6 K16 ["Actions"]
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R7 R5 K17 ["SetGameName"]
+  CALL R6 1 1
+  GETTABLEKS R7 R2 K18 ["createReducer"]
+  DUPTABLE R8 K20 [{"name"}]
+  LOADK R11 K21 ["CoreScripts.TopBar.GameNamePlaceHolder"]
+  NAMECALL R9 R4 K22 ["FormatByKey"]
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K19 ["name"]
+  NEWTABLE R9 1 0
+  GETTABLEKS R10 R6 K19 ["name"]
+  DUPCLOSURE R11 K23 [PROTO_0]
+  SETTABLE R11 R9 R10
+  CALL R7 2 -1
+  RETURN R7 -1

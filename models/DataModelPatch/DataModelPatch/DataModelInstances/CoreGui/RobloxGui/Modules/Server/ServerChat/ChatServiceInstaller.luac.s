@@ -1,0 +1,439 @@
+PROTO_0:
+  GETIMPORT R3 K1 [script]
+  GETTABLEKS R2 R3 K2 ["Parent"]
+  MOVE R4 R0
+  NAMECALL R2 R2 K3 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K6 [Instance.new]
+  LOADK R4 K7 ["Script"]
+  CALL R3 1 1
+  SETTABLEKS R0 R3 K8 ["Name"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K9 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R4 0 1
+  JUMPIFNOT R4 [+8]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K10 ["getSourceForServerScript"]
+  MOVE R5 R2
+  CALL R4 1 1
+  SETTABLEKS R4 R3 K11 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R4 R2 K11 ["Source"]
+  SETTABLEKS R4 R3 K11 ["Source"]
+  SETTABLEKS R1 R3 K2 ["Parent"]
+  RETURN R3 1
+
+PROTO_1:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K3 [Instance.new]
+  LOADK R5 K4 ["ModuleScript"]
+  CALL R4 1 1
+  SETTABLEKS R1 R4 K5 ["Name"]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K6 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R5 0 1
+  JUMPIFNOT R5 [+8]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K7 ["getSourceForServerScript"]
+  MOVE R6 R3
+  CALL R5 1 1
+  SETTABLEKS R5 R4 K8 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R5 R3 K8 ["Source"]
+  SETTABLEKS R5 R4 K8 ["Source"]
+  SETTABLEKS R2 R4 K9 ["Parent"]
+  RETURN R4 1
+
+PROTO_2:
+  MOVE R5 R1
+  NAMECALL R3 R0 K0 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+8]
+  LOADK R6 K1 ["BoolValue"]
+  NAMECALL R4 R3 K2 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R4 R3 K3 ["Value"]
+  RETURN R4 1
+  RETURN R2 1
+
+PROTO_3:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["LocalizationTable"]
+  CALL R1 1 1
+  LOADK R2 K4 ["ChatLocalization"]
+  SETTABLEKS R2 R1 K5 ["Name"]
+  LOADB R2 0
+  SETTABLEKS R2 R1 K6 ["Archivable"]
+  LOADK R2 K7 ["en-us"]
+  SETTABLEKS R2 R1 K8 ["SourceLocaleId"]
+  GETIMPORT R4 K10 [require]
+  GETIMPORT R6 K12 [script]
+  GETTABLEKS R5 R6 K13 ["Parent"]
+  LOADK R7 K14 ["DefaultChatLocalization"]
+  NAMECALL R5 R5 K15 ["WaitForChild"]
+  CALL R5 2 -1
+  CALL R4 -1 -1
+  NAMECALL R2 R1 K16 ["SetEntries"]
+  CALL R2 -1 0
+  LOADB R4 1
+  NAMECALL R2 R1 K17 ["SetIsExemptFromUGCAnalytics"]
+  CALL R2 2 0
+  SETTABLEKS R0 R1 K13 ["Parent"]
+  RETURN R0 0
+
+PROTO_4:
+  NEWTABLE R0 0 0
+  GETUPVAL R1 0
+  LOADK R3 K0 ["ChatLocalization"]
+  NAMECALL R1 R1 K1 ["FindFirstChild"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+10]
+  LOADK R4 K2 ["LocalizationTable"]
+  NAMECALL R2 R1 K3 ["IsA"]
+  CALL R2 2 1
+  JUMPIFNOT R2 [+8]
+  LOADB R4 1
+  NAMECALL R2 R1 K4 ["SetIsExemptFromUGCAnalytics"]
+  CALL R2 2 0
+  JUMP [+3]
+  GETUPVAL R2 1
+  GETUPVAL R3 0
+  CALL R2 1 0
+  LOADB R2 1
+  GETUPVAL R3 0
+  LOADK R5 K5 ["ChatServiceRunner"]
+  NAMECALL R3 R3 K1 ["FindFirstChild"]
+  CALL R3 2 1
+  JUMPIF R3 [+147]
+  LOADB R2 0
+  GETUPVAL R4 2
+  LOADK R5 K5 ["ChatServiceRunner"]
+  GETUPVAL R6 0
+  CALL R4 2 1
+  MOVE R3 R4
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  MOVE R5 R3
+  LOADK R8 K9 ["ChatService"]
+  NAMECALL R6 R4 K10 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K13 [Instance.new]
+  LOADK R8 K14 ["ModuleScript"]
+  CALL R7 1 1
+  LOADK R8 K9 ["ChatService"]
+  SETTABLEKS R8 R7 K15 ["Name"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+8]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K17 ["getSourceForServerScript"]
+  MOVE R9 R6
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R8 R6 K18 ["Source"]
+  SETTABLEKS R8 R7 K18 ["Source"]
+  SETTABLEKS R5 R7 K8 ["Parent"]
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  MOVE R5 R3
+  LOADK R8 K19 ["ChatChannel"]
+  NAMECALL R6 R4 K10 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K13 [Instance.new]
+  LOADK R8 K14 ["ModuleScript"]
+  CALL R7 1 1
+  LOADK R8 K19 ["ChatChannel"]
+  SETTABLEKS R8 R7 K15 ["Name"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+8]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K17 ["getSourceForServerScript"]
+  MOVE R9 R6
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R8 R6 K18 ["Source"]
+  SETTABLEKS R8 R7 K18 ["Source"]
+  SETTABLEKS R5 R7 K8 ["Parent"]
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  MOVE R5 R3
+  LOADK R8 K20 ["Speaker"]
+  NAMECALL R6 R4 K10 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K13 [Instance.new]
+  LOADK R8 K14 ["ModuleScript"]
+  CALL R7 1 1
+  LOADK R8 K20 ["Speaker"]
+  SETTABLEKS R8 R7 K15 ["Name"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+8]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K17 ["getSourceForServerScript"]
+  MOVE R9 R6
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R8 R6 K18 ["Source"]
+  SETTABLEKS R8 R7 K18 ["Source"]
+  SETTABLEKS R5 R7 K8 ["Parent"]
+  GETIMPORT R5 K7 [script]
+  GETTABLEKS R4 R5 K8 ["Parent"]
+  MOVE R5 R3
+  LOADK R8 K21 ["Util"]
+  NAMECALL R6 R4 K10 ["WaitForChild"]
+  CALL R6 2 1
+  GETIMPORT R7 K13 [Instance.new]
+  LOADK R8 K14 ["ModuleScript"]
+  CALL R7 1 1
+  LOADK R8 K21 ["Util"]
+  SETTABLEKS R8 R7 K15 ["Name"]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R8 0 1
+  JUMPIFNOT R8 [+8]
+  GETUPVAL R9 3
+  GETTABLEKS R8 R9 K17 ["getSourceForServerScript"]
+  MOVE R9 R6
+  CALL R8 1 1
+  SETTABLEKS R8 R7 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R8 R6 K18 ["Source"]
+  SETTABLEKS R8 R7 K18 ["Source"]
+  SETTABLEKS R5 R7 K8 ["Parent"]
+  JUMP [+5]
+  GETUPVAL R4 4
+  JUMPIFNOT R4 [+3]
+  LOADK R4 K22 ["True"]
+  SETTABLEKS R4 R0 K5 ["ChatServiceRunner"]
+  GETUPVAL R4 0
+  LOADK R6 K23 ["ChatModules"]
+  NAMECALL R4 R4 K1 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+26]
+  GETIMPORT R5 K13 [Instance.new]
+  LOADK R6 K24 ["Folder"]
+  CALL R5 1 1
+  MOVE R4 R5
+  LOADK R5 K23 ["ChatModules"]
+  SETTABLEKS R5 R4 K15 ["Name"]
+  LOADB R5 0
+  SETTABLEKS R5 R4 K25 ["Archivable"]
+  GETIMPORT R5 K13 [Instance.new]
+  LOADK R6 K26 ["BoolValue"]
+  CALL R5 1 1
+  LOADK R6 K27 ["InsertDefaultModules"]
+  SETTABLEKS R6 R5 K15 ["Name"]
+  LOADB R6 1
+  SETTABLEKS R6 R5 K28 ["Value"]
+  SETTABLEKS R4 R5 K8 ["Parent"]
+  GETUPVAL R6 0
+  SETTABLEKS R6 R4 K8 ["Parent"]
+  FASTCALL2K ASSERT R4 K29 [+5]
+  MOVE R6 R4
+  LOADK R7 K29 [""]
+  GETIMPORT R5 K31 [assert]
+  CALL R5 2 0
+  MOVE R6 R4
+  LOADK R9 K27 ["InsertDefaultModules"]
+  NAMECALL R7 R6 K1 ["FindFirstChild"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+8]
+  LOADK R10 K26 ["BoolValue"]
+  NAMECALL R8 R7 K3 ["IsA"]
+  CALL R8 2 1
+  JUMPIFNOT R8 [+3]
+  GETTABLEKS R5 R7 K28 ["Value"]
+  JUMP [+1]
+  LOADB R5 0
+  JUMPIFNOT R5 [+163]
+  LOADK R8 K32 ["Utility"]
+  NAMECALL R6 R4 K1 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIF R6 [+9]
+  GETIMPORT R6 K13 [Instance.new]
+  LOADK R7 K24 ["Folder"]
+  CALL R6 1 1
+  LOADK R7 K32 ["Utility"]
+  SETTABLEKS R7 R6 K15 ["Name"]
+  SETTABLEKS R4 R6 K8 ["Parent"]
+  GETIMPORT R8 K7 [script]
+  GETTABLEKS R7 R8 K8 ["Parent"]
+  GETTABLEKS R6 R7 K33 ["DefaultChatModules"]
+  NAMECALL R6 R6 K34 ["GetChildren"]
+  CALL R6 1 1
+  LOADN R9 1
+  LENGTH R7 R6
+  LOADN R8 1
+  FORNPREP R7
+  GETTABLEKS R10 R6 K35 ["className"]
+  JUMPIFEQKS R10 K24 ["Folder"] [+48]
+  GETTABLE R13 R6 R9
+  GETTABLEKS R12 R13 K15 ["Name"]
+  NAMECALL R10 R4 K1 ["FindFirstChild"]
+  CALL R10 2 1
+  JUMPIF R10 [+40]
+  GETIMPORT R12 K7 [script]
+  GETTABLEKS R11 R12 K8 ["Parent"]
+  GETTABLEKS R10 R11 K33 ["DefaultChatModules"]
+  GETTABLE R12 R6 R9
+  GETTABLEKS R11 R12 K15 ["Name"]
+  MOVE R12 R4
+  MOVE R15 R11
+  NAMECALL R13 R10 K10 ["WaitForChild"]
+  CALL R13 2 1
+  GETIMPORT R14 K13 [Instance.new]
+  LOADK R15 K14 ["ModuleScript"]
+  CALL R14 1 1
+  SETTABLEKS R11 R14 K15 ["Name"]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R15 0 1
+  JUMPIFNOT R15 [+8]
+  GETUPVAL R16 3
+  GETTABLEKS R15 R16 K17 ["getSourceForServerScript"]
+  MOVE R16 R13
+  CALL R15 1 1
+  SETTABLEKS R15 R14 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R15 R13 K18 ["Source"]
+  SETTABLEKS R15 R14 K18 ["Source"]
+  SETTABLEKS R12 R14 K8 ["Parent"]
+  JUMP [+11]
+  GETUPVAL R10 4
+  JUMPIFNOT R10 [+9]
+  GETTABLEKS R10 R6 K35 ["className"]
+  JUMPIFEQKS R10 K24 ["Folder"] [+6]
+  GETTABLE R11 R6 R9
+  GETTABLEKS R10 R11 K15 ["Name"]
+  LOADK R11 K22 ["True"]
+  SETTABLE R11 R0 R10
+  FORNLOOP R7
+  GETIMPORT R7 K37 [pairs]
+  GETIMPORT R11 K7 [script]
+  GETTABLEKS R10 R11 K8 ["Parent"]
+  GETTABLEKS R9 R10 K33 ["DefaultChatModules"]
+  GETTABLEKS R8 R9 K32 ["Utility"]
+  NAMECALL R8 R8 K34 ["GetChildren"]
+  CALL R8 1 -1
+  CALL R7 -1 3
+  FORGPREP_NEXT R7
+  GETTABLEKS R12 R4 K32 ["Utility"]
+  GETTABLEKS R14 R11 K15 ["Name"]
+  NAMECALL R12 R12 K1 ["FindFirstChild"]
+  CALL R12 2 1
+  JUMPIF R12 [+42]
+  GETIMPORT R15 K7 [script]
+  GETTABLEKS R14 R15 K8 ["Parent"]
+  GETTABLEKS R13 R14 K33 ["DefaultChatModules"]
+  GETTABLEKS R12 R13 K32 ["Utility"]
+  GETTABLEKS R13 R11 K15 ["Name"]
+  GETTABLEKS R14 R4 K32 ["Utility"]
+  MOVE R17 R13
+  NAMECALL R15 R12 K10 ["WaitForChild"]
+  CALL R15 2 1
+  GETIMPORT R16 K13 [Instance.new]
+  LOADK R17 K14 ["ModuleScript"]
+  CALL R16 1 1
+  SETTABLEKS R13 R16 K15 ["Name"]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K16 ["getFFlagServerCoreScriptSourceCode"]
+  CALL R17 0 1
+  JUMPIFNOT R17 [+8]
+  GETUPVAL R18 3
+  GETTABLEKS R17 R18 K17 ["getSourceForServerScript"]
+  MOVE R18 R15
+  CALL R17 1 1
+  SETTABLEKS R17 R16 K18 ["Source"]
+  JUMP [+4]
+  GETTABLEKS R17 R15 K18 ["Source"]
+  SETTABLEKS R17 R16 K18 ["Source"]
+  SETTABLEKS R14 R16 K8 ["Parent"]
+  JUMP [+6]
+  GETUPVAL R12 4
+  JUMPIFNOT R12 [+4]
+  GETTABLEKS R12 R11 K15 ["Name"]
+  LOADK R13 K22 ["True"]
+  SETTABLE R13 R0 R12
+  FORGLOOP R7 2 [-57]
+  GETUPVAL R6 5
+  LOADK R8 K5 ["ChatServiceRunner"]
+  NAMECALL R6 R6 K1 ["FindFirstChild"]
+  CALL R6 2 1
+  JUMPIF R6 [+9]
+  NAMECALL R6 R3 K38 ["Clone"]
+  CALL R6 1 1
+  LOADB R7 0
+  SETTABLEKS R7 R6 K25 ["Archivable"]
+  GETUPVAL R7 5
+  SETTABLEKS R7 R6 K8 ["Parent"]
+  SETTABLEKS R2 R3 K25 ["Archivable"]
+  GETUPVAL R6 4
+  JUMPIFNOT R6 [+4]
+  GETUPVAL R6 6
+  LOADK R7 K39 ["LoadServerDefaultChatForkedModules"]
+  MOVE R8 R0
+  CALL R6 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["Chat"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["ServerScriptService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R4 K6 ["RobloxGui"]
+  NAMECALL R2 R2 K7 ["WaitForChild"]
+  CALL R2 2 1
+  GETIMPORT R3 K9 [require]
+  GETTABLEKS R7 R2 K10 ["Modules"]
+  GETTABLEKS R6 R7 K11 ["Common"]
+  GETTABLEKS R5 R6 K12 ["Flags"]
+  GETTABLEKS R4 R5 K13 ["FFlagEnableForkedChatAnalytics"]
+  CALL R3 1 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R7 R2 K10 ["Modules"]
+  GETTABLEKS R6 R7 K14 ["Server"]
+  GETTABLEKS R5 R6 K15 ["ServerUtil"]
+  CALL R4 1 1
+  LOADNIL R5
+  JUMPIFNOT R3 [+10]
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R2 K10 ["Modules"]
+  GETTABLEKS R8 R9 K14 ["Server"]
+  GETTABLEKS R7 R8 K16 ["SendChatAnalytics"]
+  CALL R6 1 1
+  MOVE R5 R6
+  DUPCLOSURE R6 K17 [PROTO_0]
+  CAPTURE VAL R4
+  DUPCLOSURE R7 K18 [PROTO_1]
+  CAPTURE VAL R4
+  DUPCLOSURE R8 K19 [PROTO_2]
+  DUPCLOSURE R9 K20 [PROTO_3]
+  NEWCLOSURE R10 P4
+  CAPTURE VAL R0
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R4
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  CAPTURE REF R5
+  CLOSEUPVALS R5
+  RETURN R10 1

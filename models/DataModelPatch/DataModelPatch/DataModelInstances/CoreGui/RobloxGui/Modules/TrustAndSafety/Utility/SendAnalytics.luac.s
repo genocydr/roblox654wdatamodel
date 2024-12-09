@@ -1,0 +1,169 @@
+PROTO_0:
+  GETUPVAL R0 1
+  NAMECALL R0 R0 K0 ["GetPlatform"]
+  CALL R0 1 1
+  SETUPVAL R0 0
+  RETURN R0 0
+
+PROTO_1:
+  LOADK R0 K0 ["unknownLua"]
+  GETIMPORT R1 K4 [Enum.Platform.None]
+  GETIMPORT R2 K6 [pcall]
+  NEWCLOSURE R3 P0
+  CAPTURE REF R1
+  CAPTURE UPVAL U0
+  CALL R2 1 0
+  LOADB R2 1
+  GETIMPORT R3 K8 [Enum.Platform.Windows]
+  JUMPIFEQ R1 R3 [+7]
+  GETIMPORT R3 K10 [Enum.Platform.OSX]
+  JUMPIFEQ R1 R3 [+2]
+  LOADB R2 0 +1
+  LOADB R2 1
+  LOADB R3 1
+  GETIMPORT R4 K12 [Enum.Platform.IOS]
+  JUMPIFEQ R1 R4 [+7]
+  GETIMPORT R4 K14 [Enum.Platform.Android]
+  JUMPIFEQ R1 R4 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  MOVE R4 R3
+  JUMPIF R4 [+6]
+  GETIMPORT R5 K16 [Enum.Platform.UWP]
+  JUMPIFEQ R1 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  MOVE R3 R4
+  LOADB R4 1
+  GETIMPORT R5 K18 [Enum.Platform.XBox360]
+  JUMPIFEQ R1 R5 [+7]
+  GETIMPORT R5 K20 [Enum.Platform.XBoxOne]
+  JUMPIFEQ R1 R5 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  MOVE R5 R4
+  JUMPIF R5 [+11]
+  LOADB R5 1
+  GETIMPORT R6 K22 [Enum.Platform.PS3]
+  JUMPIFEQ R1 R6 [+7]
+  GETIMPORT R6 K24 [Enum.Platform.PS4]
+  JUMPIFEQ R1 R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R4 R5
+  MOVE R5 R4
+  JUMPIF R5 [+6]
+  GETIMPORT R6 K26 [Enum.Platform.WiiU]
+  JUMPIFEQ R1 R6 [+2]
+  LOADB R5 0 +1
+  LOADB R5 1
+  MOVE R4 R5
+  JUMPIFNOT R2 [+2]
+  LOADK R0 K27 ["client"]
+  JUMP [+13]
+  JUMPIFNOT R3 [+2]
+  LOADK R0 K28 ["mobile"]
+  JUMP [+10]
+  JUMPIFNOT R4 [+2]
+  LOADK R0 K29 ["console"]
+  JUMP [+7]
+  MOVE R5 R0
+  FASTCALL1 TOSTRING R1 [+3]
+  MOVE R7 R1
+  GETIMPORT R6 K31 [tostring]
+  CALL R6 1 1
+  CONCAT R0 R5 R6
+  CLOSEUPVALS R1
+  RETURN R0 1
+
+PROTO_2:
+  FASTCALL1 TYPE R0 [+3]
+  MOVE R6 R0
+  GETIMPORT R5 K1 [type]
+  CALL R5 1 1
+  JUMPIFEQKS R5 K2 ["string"] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K3 [+4]
+  LOADK R5 K3 ["Expected eventContext to be a string"]
+  GETIMPORT R3 K5 [assert]
+  CALL R3 2 0
+  FASTCALL1 TYPE R1 [+3]
+  MOVE R6 R1
+  GETIMPORT R5 K1 [type]
+  CALL R5 1 1
+  JUMPIFEQKS R5 K2 ["string"] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K6 [+4]
+  LOADK R5 K6 ["Expected eventName to be a string"]
+  GETIMPORT R3 K5 [assert]
+  CALL R3 2 0
+  FASTCALL1 TYPE R2 [+3]
+  MOVE R6 R2
+  GETIMPORT R5 K1 [type]
+  CALL R5 1 1
+  JUMPIFEQKS R5 K7 ["table"] [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  FASTCALL2K ASSERT R4 K8 [+4]
+  LOADK R5 K8 ["Expected eventTable to be a table"]
+  GETIMPORT R3 K5 [assert]
+  CALL R3 2 0
+  GETUPVAL R3 0
+  CALL R3 0 1
+  JUMPIF R2 [+2]
+  NEWTABLE R2 0 0
+  GETIMPORT R6 K10 [game]
+  GETTABLEKS R5 R6 K11 ["GameId"]
+  FASTCALL1 TOSTRING R5 [+2]
+  GETIMPORT R4 K13 [tostring]
+  CALL R4 1 1
+  SETTABLEKS R4 R2 K14 ["universeId"]
+  GETUPVAL R4 1
+  MOVE R6 R3
+  MOVE R7 R0
+  MOVE R8 R1
+  MOVE R9 R2
+  NAMECALL R4 R4 K15 ["sendEventDeferred"]
+  CALL R4 5 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["UserInputService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["EventIngestService"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  GETIMPORT R4 K7 [require]
+  GETTABLEKS R7 R0 K8 ["Workspace"]
+  GETTABLEKS R6 R7 K9 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["SharedFlags"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K11 ["GetFFlagShareGetPlatformTargetImpl"]
+  LOADNIL R4
+  MOVE R5 R3
+  CALL R5 0 1
+  JUMPIFNOT R5 [+12]
+  GETIMPORT R5 K7 [require]
+  GETTABLEKS R8 R0 K8 ["Workspace"]
+  GETTABLEKS R7 R8 K9 ["Packages"]
+  GETTABLEKS R6 R7 K12 ["Analytics"]
+  CALL R5 1 1
+  GETTABLEKS R4 R5 K13 ["getPlatformTarget"]
+  JUMP [+2]
+  DUPCLOSURE R4 K14 [PROTO_1]
+  CAPTURE VAL R1
+  NEWCLOSURE R5 P1
+  CAPTURE REF R4
+  CAPTURE VAL R2
+  CLOSEUPVALS R4
+  RETURN R5 1

@@ -1,0 +1,8 @@
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R1 K1 [script]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  GETIMPORT R1 K4 [require]
+  GETTABLEKS R2 R0 K5 ["InGameMenu"]
+  CALL R1 1 -1
+  RETURN R1 -1

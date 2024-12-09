@@ -1,0 +1,59 @@
+PROTO_0:
+  GETTABLEKS R1 R0 K0 ["responseBody"]
+  GETTABLEKS R2 R1 K1 ["name"]
+  RETURN R2 1
+
+PROTO_1:
+  GETIMPORT R1 K2 [string.format]
+  LOADK R2 K3 ["%s/v3/outfits/%s/details"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K4 ["AVATAR_URL"]
+  FASTCALL1 TOSTRING R0 [+3]
+  MOVE R5 R0
+  GETIMPORT R4 K6 [tostring]
+  CALL R4 1 1
+  CALL R1 3 1
+  GETUPVAL R2 1
+  MOVE R3 R1
+  LOADK R4 K7 ["GET"]
+  CALL R2 2 1
+  DUPCLOSURE R4 K8 [PROTO_0]
+  NAMECALL R2 R2 K9 ["andThen"]
+  CALL R2 2 -1
+  RETURN R2 -1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["HttpRbxApiService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K5 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K6 ["RobloxGui"]
+  NAMECALL R3 R2 K7 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K9 [require]
+  GETTABLEKS R7 R3 K10 ["Modules"]
+  GETTABLEKS R6 R7 K11 ["Common"]
+  GETTABLEKS R5 R6 K12 ["httpRequest"]
+  CALL R4 1 1
+  GETIMPORT R6 K9 [require]
+  GETTABLEKS R9 R0 K13 ["Workspace"]
+  GETTABLEKS R8 R9 K14 ["Packages"]
+  GETTABLEKS R7 R8 K15 ["Http"]
+  CALL R6 1 1
+  GETTABLEKS R5 R6 K16 ["Url"]
+  MOVE R6 R4
+  MOVE R7 R1
+  CALL R6 1 1
+  DUPCLOSURE R7 K17 [PROTO_1]
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  RETURN R7 1

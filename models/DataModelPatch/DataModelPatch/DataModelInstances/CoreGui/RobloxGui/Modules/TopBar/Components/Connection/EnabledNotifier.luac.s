@@ -1,0 +1,121 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["topBarEnabled"]
+  NAMECALL R1 R1 K2 ["SetTopBarEnabled"]
+  CALL R1 2 0
+  GETUPVAL R1 1
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["topBarEnabled"]
+  NAMECALL R1 R1 K3 ["TopbarEnabledChanged"]
+  CALL R1 2 0
+  GETUPVAL R1 2
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["topBarEnabled"]
+  NAMECALL R1 R1 K3 ["TopbarEnabledChanged"]
+  CALL R1 2 0
+  GETUPVAL R1 3
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["topBarEnabled"]
+  NAMECALL R1 R1 K4 ["setTopBarEnabled"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_1:
+  NAMECALL R1 R0 K0 ["notifyEnabled"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_2:
+  LOADNIL R1
+  RETURN R1 1
+
+PROTO_3:
+  GETTABLEKS R4 R0 K0 ["props"]
+  GETTABLEKS R3 R4 K1 ["topBarEnabled"]
+  GETTABLEKS R4 R1 K1 ["topBarEnabled"]
+  JUMPIFEQ R3 R4 [+4]
+  NAMECALL R3 R0 K2 ["notifyEnabled"]
+  CALL R3 1 0
+  RETURN R0 0
+
+PROTO_4:
+  DUPTABLE R1 K1 [{"topBarEnabled"}]
+  GETTABLEKS R3 R0 K2 ["displayOptions"]
+  GETTABLEKS R2 R3 K3 ["topbarEnabled"]
+  SETTABLEKS R2 R1 K0 ["topBarEnabled"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K6 [require]
+  GETTABLEKS R6 R0 K7 ["Packages"]
+  GETTABLEKS R5 R6 K10 ["t"]
+  CALL R4 1 1
+  LOADK R7 K11 ["RobloxGui"]
+  NAMECALL R5 R1 K12 ["WaitForChild"]
+  CALL R5 2 1
+  GETIMPORT R6 K6 [require]
+  GETTABLEKS R8 R5 K13 ["Modules"]
+  GETTABLEKS R7 R8 K14 ["ChatSelector"]
+  CALL R6 1 1
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R9 R5 K13 ["Modules"]
+  GETTABLEKS R8 R9 K15 ["BackpackScript"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R11 R5 K13 ["Modules"]
+  GETTABLEKS R10 R11 K16 ["EmotesMenu"]
+  GETTABLEKS R9 R10 K17 ["EmotesMenuMaster"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R12 R5 K13 ["Modules"]
+  GETTABLEKS R11 R12 K18 ["PlayerList"]
+  GETTABLEKS R10 R11 K19 ["PlayerListManager"]
+  CALL R9 1 1
+  GETTABLEKS R10 R2 K20 ["PureComponent"]
+  LOADK R12 K21 ["CoreGuiCEnabledNotifieronnector"]
+  NAMECALL R10 R10 K22 ["extend"]
+  CALL R10 2 1
+  GETTABLEKS R11 R4 K23 ["strictInterface"]
+  DUPTABLE R12 K25 [{"topBarEnabled"}]
+  GETTABLEKS R13 R4 K26 ["boolean"]
+  SETTABLEKS R13 R12 K24 ["topBarEnabled"]
+  CALL R11 1 1
+  SETTABLEKS R11 R10 K27 ["validateProps"]
+  DUPCLOSURE R11 K28 [PROTO_0]
+  CAPTURE VAL R9
+  CAPTURE VAL R6
+  CAPTURE VAL R7
+  CAPTURE VAL R8
+  SETTABLEKS R11 R10 K29 ["notifyEnabled"]
+  DUPCLOSURE R11 K30 [PROTO_1]
+  SETTABLEKS R11 R10 K31 ["didMount"]
+  DUPCLOSURE R11 K32 [PROTO_2]
+  SETTABLEKS R11 R10 K33 ["render"]
+  DUPCLOSURE R11 K34 [PROTO_3]
+  SETTABLEKS R11 R10 K35 ["didUpdate"]
+  DUPCLOSURE R11 K36 [PROTO_4]
+  GETTABLEKS R12 R3 K37 ["UNSTABLE_connect2"]
+  MOVE R13 R11
+  LOADNIL R14
+  CALL R12 2 1
+  MOVE R13 R10
+  CALL R12 1 -1
+  RETURN R12 -1

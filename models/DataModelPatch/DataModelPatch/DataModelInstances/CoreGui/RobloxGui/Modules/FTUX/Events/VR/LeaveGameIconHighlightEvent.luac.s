@@ -1,0 +1,44 @@
+PROTO_0:
+  GETUPVAL R0 0
+  LOADB R2 1
+  NAMECALL R0 R0 K0 ["SetShowHighlightedLeaveGameIconToggled"]
+  CALL R0 2 0
+  RETURN R0 0
+
+PROTO_1:
+  GETUPVAL R0 0
+  LOADB R2 0
+  NAMECALL R0 R0 K0 ["SetShowHighlightedLeaveGameIconToggled"]
+  CALL R0 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CoreGui"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  LOADK R3 K4 ["RobloxGui"]
+  NAMECALL R1 R0 K5 ["WaitForChild"]
+  CALL R1 2 1
+  GETIMPORT R2 K7 [require]
+  GETIMPORT R6 K9 [script]
+  GETTABLEKS R5 R6 K10 ["Parent"]
+  GETTABLEKS R4 R5 K10 ["Parent"]
+  GETTABLEKS R3 R4 K11 ["EventType"]
+  CALL R2 1 1
+  GETIMPORT R3 K7 [require]
+  GETTABLEKS R6 R1 K12 ["Modules"]
+  GETTABLEKS R5 R6 K13 ["VR"]
+  GETTABLEKS R4 R5 K14 ["VRHub"]
+  CALL R3 1 1
+  DUPTABLE R4 K16 [{"Name"}]
+  LOADK R5 K17 ["LeaveGameIconHighlightEvent"]
+  SETTABLEKS R5 R4 K15 ["Name"]
+  DUPCLOSURE R5 K18 [PROTO_0]
+  CAPTURE VAL R3
+  SETTABLEKS R5 R4 K19 ["StartEvent"]
+  DUPCLOSURE R5 K20 [PROTO_1]
+  CAPTURE VAL R3
+  SETTABLEKS R5 R4 K21 ["StopEvent"]
+  RETURN R4 1

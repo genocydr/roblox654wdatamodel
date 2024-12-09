@@ -1,0 +1,60 @@
+PROTO_0:
+  GETUPVAL R0 0
+  JUMPIFNOT R0 [+30]
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["IsStarted"]
+  CALL R0 1 1
+  JUMPIFNOT R0 [+25]
+  GETUPVAL R0 0
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["VideoAnimationEnabled"]
+  NOT R1 R2
+  SETTABLEKS R1 R0 K1 ["VideoAnimationEnabled"]
+  GETUPVAL R0 1
+  LOADK R2 K2 ["bubbleChatToggle"]
+  NAMECALL R0 R0 K3 ["setLastCtx"]
+  CALL R0 2 0
+  GETUPVAL R1 2
+  GETTABLEKS R0 R1 K4 ["getSelfViewIsOpenAndVisible"]
+  CALL R0 0 1
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["VideoAnimationEnabled"]
+  JUMPIFNOT R1 [+5]
+  JUMPIF R0 [+4]
+  GETUPVAL R1 3
+  NAMECALL R1 R1 K5 ["fire"]
+  CALL R1 1 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["FaceAnimatorService"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["CoreGui"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETTABLEKS R3 R1 K5 ["RobloxGui"]
+  GETTABLEKS R2 R3 K6 ["Modules"]
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R2 K9 ["SelfView"]
+  GETTABLEKS R5 R6 K10 ["Analytics"]
+  CALL R4 1 1
+  GETTABLEKS R3 R4 K11 ["new"]
+  CALL R3 0 1
+  GETIMPORT R4 K8 [require]
+  GETTABLEKS R6 R2 K9 ["SelfView"]
+  GETTABLEKS R5 R6 K12 ["publicApi"]
+  CALL R4 1 1
+  GETIMPORT R5 K8 [require]
+  GETTABLEKS R7 R2 K9 ["SelfView"]
+  GETTABLEKS R6 R7 K13 ["toggleSelfViewSignal"]
+  CALL R5 1 1
+  DUPCLOSURE R6 K14 [PROTO_0]
+  CAPTURE VAL R0
+  CAPTURE VAL R3
+  CAPTURE VAL R4
+  CAPTURE VAL R5
+  RETURN R6 1

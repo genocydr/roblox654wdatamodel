@@ -1,0 +1,127 @@
+PROTO_0:
+  NEWTABLE R0 4 0
+  GETUPVAL R3 0
+  FASTCALL2 SETMETATABLE R0 R3 [+4]
+  MOVE R2 R0
+  GETIMPORT R1 K1 [setmetatable]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K2 ["new"]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K3 ["_serverStatsUpdated"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K4 ["_serverStatsData"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K5 ["_isRunning"]
+  RETURN R0 1
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["_serverStatsUpdated"]
+  RETURN R1 1
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["_serverStatsData"]
+  RETURN R1 1
+
+PROTO_3:
+  GETTABLEKS R1 R0 K0 ["_isRunning"]
+  RETURN R1 1
+
+PROTO_4:
+  JUMPIFNOT R0 [+27]
+  GETTABLEKS R1 R0 K0 ["ServerLuauHeapData"]
+  JUMPIFNOT R1 [+24]
+  GETTABLEKS R2 R0 K0 ["ServerLuauHeapData"]
+  LENGTH R1 R2
+  LOADN R2 0
+  JUMPIFNOTLT R2 R1 [+19]
+  GETUPVAL R1 0
+  GETUPVAL R2 1
+  GETTABLEKS R4 R0 K0 ["ServerLuauHeapData"]
+  NAMECALL R2 R2 K1 ["JSONDecode"]
+  CALL R2 2 1
+  SETTABLEKS R2 R1 K2 ["_serverStatsData"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K3 ["_serverStatsUpdated"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K2 ["_serverStatsData"]
+  NAMECALL R1 R1 K4 ["Fire"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  CALL R1 0 1
+  JUMPIFNOT R1 [+20]
+  GETTABLEKS R2 R0 K0 ["_statsListenerConnection"]
+  JUMPIF R2 [+17]
+  GETTABLEKS R2 R1 K1 ["StatsReceived"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U1
+  NAMECALL R2 R2 K2 ["connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K0 ["_statsListenerConnection"]
+  LOADB R4 1
+  NAMECALL R2 R1 K3 ["RequestServerStats"]
+  CALL R2 2 0
+  LOADB R2 1
+  SETTABLEKS R2 R0 K4 ["_isRunning"]
+  RETURN R0 0
+
+PROTO_6:
+  GETTABLEKS R1 R0 K0 ["_statsListenerConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["_statsListenerConnection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["_statsListenerConnection"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K2 ["_isRunning"]
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["ScriptContext"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["HttpService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETIMPORT R7 K8 [script]
+  GETTABLEKS R6 R7 K9 ["Parent"]
+  GETTABLEKS R5 R6 K9 ["Parent"]
+  GETTABLEKS R4 R5 K9 ["Parent"]
+  GETTABLEKS R3 R4 K10 ["Signal"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETIMPORT R9 K8 [script]
+  GETTABLEKS R8 R9 K9 ["Parent"]
+  GETTABLEKS R7 R8 K9 ["Parent"]
+  GETTABLEKS R6 R7 K9 ["Parent"]
+  GETTABLEKS R5 R6 K11 ["Util"]
+  GETTABLEKS R4 R5 K12 ["getClientReplicator"]
+  CALL R3 1 1
+  NEWTABLE R4 8 0
+  SETTABLEKS R4 R4 K13 ["__index"]
+  DUPCLOSURE R5 K14 [PROTO_0]
+  CAPTURE VAL R4
+  CAPTURE VAL R2
+  SETTABLEKS R5 R4 K15 ["new"]
+  DUPCLOSURE R5 K16 [PROTO_1]
+  SETTABLEKS R5 R4 K10 ["Signal"]
+  DUPCLOSURE R5 K17 [PROTO_2]
+  SETTABLEKS R5 R4 K18 ["getCurrentData"]
+  DUPCLOSURE R5 K19 [PROTO_3]
+  SETTABLEKS R5 R4 K20 ["isRunning"]
+  DUPCLOSURE R5 K21 [PROTO_5]
+  CAPTURE VAL R3
+  CAPTURE VAL R1
+  SETTABLEKS R5 R4 K22 ["start"]
+  DUPCLOSURE R5 K23 [PROTO_6]
+  SETTABLEKS R5 R4 K24 ["stop"]
+  RETURN R4 1

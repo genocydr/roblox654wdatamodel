@@ -1,0 +1,144 @@
+PROTO_0:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["unmount"]
+  GETUPVAL R1 1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETIMPORT R0 K1 [pcall]
+  NEWCLOSURE R1 P0
+  CAPTURE UPVAL U0
+  CAPTURE UPVAL U1
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_2:
+  GETIMPORT R1 K2 [Instance.new]
+  LOADK R2 K3 ["ScreenGui"]
+  CALL R1 1 1
+  LOADK R2 K4 ["SelfViewTooltipOnCloseGui"]
+  SETTABLEKS R2 R1 K5 ["Name"]
+  LOADN R2 255
+  SETTABLEKS R2 R1 K6 ["DisplayOrder"]
+  GETIMPORT R2 K10 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R2 R1 K8 ["ZIndexBehavior"]
+  GETUPVAL R2 0
+  SETTABLEKS R2 R1 K11 ["Parent"]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K12 ["createElement"]
+  GETUPVAL R3 2
+  DUPTABLE R4 K14 [{"style"}]
+  DUPTABLE R5 K16 [{"themeName"}]
+  GETUPVAL R6 3
+  SETTABLEKS R6 R5 K15 ["themeName"]
+  SETTABLEKS R5 R4 K13 ["style"]
+  DUPTABLE R5 K18 [{"frame"}]
+  GETUPVAL R7 1
+  GETTABLEKS R6 R7 K12 ["createElement"]
+  LOADK R7 K19 ["Frame"]
+  DUPTABLE R8 K24 [{"Position", "Size", "BackgroundTransparency", "Visible"}]
+  GETIMPORT R9 K27 [UDim2.fromOffset]
+  GETUPVAL R10 4
+  GETUPVAL R12 5
+  MINUS R11 R12
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K20 ["Position"]
+  GETIMPORT R9 K27 [UDim2.fromOffset]
+  GETUPVAL R10 5
+  GETUPVAL R11 5
+  CALL R9 2 1
+  SETTABLEKS R9 R8 K21 ["Size"]
+  LOADN R9 0
+  SETTABLEKS R9 R8 K22 ["BackgroundTransparency"]
+  LOADB R9 0
+  SETTABLEKS R9 R8 K23 ["Visible"]
+  DUPTABLE R9 K29 [{"tooltip"}]
+  GETUPVAL R11 1
+  GETTABLEKS R10 R11 K12 ["createElement"]
+  GETUPVAL R11 6
+  DUPTABLE R12 K33 [{"fallbackText", "translationKey", "tooltipLifetime"}]
+  GETTABLEKS R13 R0 K30 ["fallbackText"]
+  SETTABLEKS R13 R12 K30 ["fallbackText"]
+  GETTABLEKS R13 R0 K31 ["translationKey"]
+  SETTABLEKS R13 R12 K31 ["translationKey"]
+  GETTABLEKS R13 R0 K32 ["tooltipLifetime"]
+  SETTABLEKS R13 R12 K32 ["tooltipLifetime"]
+  CALL R10 2 1
+  SETTABLEKS R10 R9 K28 ["tooltip"]
+  CALL R6 3 1
+  SETTABLEKS R6 R5 K17 ["frame"]
+  CALL R2 3 1
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K34 ["mount"]
+  MOVE R4 R2
+  MOVE R5 R1
+  LOADK R6 K35 ["SelfViewTooltipOnClose"]
+  CALL R3 3 1
+  GETUPVAL R5 7
+  GETTABLEKS R4 R5 K36 ["delay"]
+  GETTABLEKS R6 R0 K32 ["tooltipLifetime"]
+  ADDK R5 R6 K37 [5]
+  CALL R4 1 1
+  NEWCLOSURE R6 P0
+  CAPTURE UPVAL U1
+  CAPTURE VAL R3
+  NAMECALL R4 R4 K38 ["andThen"]
+  CALL R4 2 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Packages"]
+  GETTABLEKS R2 R3 K7 ["Roact"]
+  CALL R1 1 1
+  GETIMPORT R2 K1 [game]
+  LOADK R4 K8 ["CoreGui"]
+  NAMECALL R2 R2 K3 ["GetService"]
+  CALL R2 2 1
+  LOADK R5 K9 ["RobloxGui"]
+  NAMECALL R3 R2 K10 ["WaitForChild"]
+  CALL R3 2 1
+  GETIMPORT R4 K5 [require]
+  GETTABLEKS R7 R3 K11 ["Modules"]
+  GETTABLEKS R6 R7 K12 ["TopBar"]
+  GETTABLEKS R5 R6 K13 ["Constants"]
+  CALL R4 1 1
+  GETTABLEKS R5 R4 K14 ["ScreenSideOffset"]
+  GETTABLEKS R6 R4 K15 ["TopBarButtonHeight"]
+  GETIMPORT R7 K5 [require]
+  GETTABLEKS R9 R0 K6 ["Packages"]
+  GETTABLEKS R8 R9 K16 ["UIBlox"]
+  CALL R7 1 1
+  GETTABLEKS R10 R7 K17 ["App"]
+  GETTABLEKS R9 R10 K18 ["Style"]
+  GETTABLEKS R8 R9 K19 ["AppStyleProvider"]
+  GETTABLEKS R13 R7 K17 ["App"]
+  GETTABLEKS R12 R13 K18 ["Style"]
+  GETTABLEKS R11 R12 K13 ["Constants"]
+  GETTABLEKS R10 R11 K20 ["ThemeName"]
+  GETTABLEKS R9 R10 K21 ["Dark"]
+  GETIMPORT R10 K5 [require]
+  GETTABLEKS R12 R0 K6 ["Packages"]
+  GETTABLEKS R11 R12 K22 ["Promise"]
+  CALL R10 1 1
+  GETIMPORT R11 K5 [require]
+  GETIMPORT R14 K24 [script]
+  GETTABLEKS R13 R14 K25 ["Parent"]
+  GETTABLEKS R12 R13 K26 ["SelfViewTooltipFTUX"]
+  CALL R11 1 1
+  DUPCLOSURE R12 K27 [PROTO_2]
+  CAPTURE VAL R2
+  CAPTURE VAL R1
+  CAPTURE VAL R8
+  CAPTURE VAL R9
+  CAPTURE VAL R5
+  CAPTURE VAL R6
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  RETURN R12 1

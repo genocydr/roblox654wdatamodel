@@ -1,0 +1,1589 @@
+PROTO_0:
+  GETIMPORT R0 K1 [UserSettings]
+  CALL R0 0 1
+  LOADK R2 K2 ["UserFixGamepadMaxZoom"]
+  NAMECALL R0 R0 K3 ["IsUserFeatureEnabled"]
+  CALL R0 2 -1
+  RETURN R0 -1
+
+PROTO_1:
+  GETUPVAL R1 0
+  MOVE R3 R0
+  NAMECALL R1 R1 K0 ["OnCharacterAdded"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnPlayerCameraPropertyChange"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnPlayerCameraPropertyChange"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnPlayerCameraPropertyChange"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnDevTouchMovementModeChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_6:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnGameSettingsTouchMovementModeChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_7:
+  GETUPVAL R0 0
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["hasGameLoaded"]
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K1 ["gameLoadedConn"]
+  NAMECALL R0 R0 K2 ["Disconnect"]
+  CALL R0 1 0
+  GETUPVAL R0 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["gameLoadedConn"]
+  RETURN R0 0
+
+PROTO_8:
+  NEWTABLE R1 64 0
+  GETUPVAL R2 0
+  FASTCALL2 SETMETATABLE R1 R2 [+3]
+  GETIMPORT R0 K1 [setmetatable]
+  CALL R0 2 1
+  NEWTABLE R1 0 3
+  LOADN R2 0
+  LOADN R3 10
+  LOADN R4 20
+  SETLIST R1 R2 3 [1]
+  SETTABLEKS R1 R0 K2 ["gamepadZoomLevels"]
+  LOADN R1 1
+  SETTABLEKS R1 R0 K3 ["FIRST_PERSON_DISTANCE_THRESHOLD"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["cameraType"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["cameraMovementMode"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K6 ["lastCameraTransform"]
+  GETIMPORT R1 K8 [tick]
+  CALL R1 0 1
+  SETTABLEKS R1 R0 K9 ["lastUserPanCamera"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K10 ["humanoidRootPart"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K11 ["humanoidCache"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K12 ["lastSubject"]
+  LOADK R1 K13 [{0, 5, 0}]
+  SETTABLEKS R1 R0 K14 ["lastSubjectPosition"]
+  GETIMPORT R1 K17 [CFrame.new]
+  GETTABLEKS R2 R0 K14 ["lastSubjectPosition"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K18 ["lastSubjectCFrame"]
+  LOADK R2 K19 [12.5]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K20 ["CameraMinZoomDistance"]
+  GETUPVAL R5 1
+  GETTABLEKS R4 R5 K21 ["CameraMaxZoomDistance"]
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R1 K24 [math.clamp]
+  CALL R1 3 1
+  SETTABLEKS R1 R0 K25 ["currentSubjectDistance"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K26 ["inFirstPerson"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K27 ["inMouseLockedMode"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K28 ["portraitMode"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K29 ["isSmallTouchScreen"]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K30 ["resetCameraAngle"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K31 ["enabled"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K32 ["PlayerGui"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K33 ["cameraChangedConn"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K34 ["viewportSizeChangedConn"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K35 ["shouldUseVRRotation"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K36 ["VRRotationIntensityAvailable"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K37 ["lastVRRotationIntensityCheckTime"]
+  LOADN R1 0
+  SETTABLEKS R1 R0 K38 ["lastVRRotationTime"]
+  NEWTABLE R1 0 0
+  SETTABLEKS R1 R0 K39 ["vrRotateKeyCooldown"]
+  LOADK R1 K40 [{1, 1, 1}]
+  SETTABLEKS R1 R0 K41 ["cameraTranslationConstraints"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K42 ["humanoidJumpOrigin"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K43 ["trackingHumanoid"]
+  LOADB R1 0
+  SETTABLEKS R1 R0 K44 ["cameraFrozen"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K45 ["subjectStateChangedConn"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K46 ["gamepadZoomPressConnection"]
+  LOADK R1 K47 [{0, 0, 0}]
+  SETTABLEKS R1 R0 K48 ["mouseLockOffset"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K49 ["Character"]
+  JUMPIFNOT R1 [+6]
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K49 ["Character"]
+  NAMECALL R1 R0 K50 ["OnCharacterAdded"]
+  CALL R1 2 0
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K51 ["CharacterAdded"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 0
+  GETTABLEKS R1 R0 K53 ["playerCameraModeChangeConn"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K53 ["playerCameraModeChangeConn"]
+  NAMECALL R1 R1 K54 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADK R3 K55 ["CameraMode"]
+  NAMECALL R1 R1 K56 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K53 ["playerCameraModeChangeConn"]
+  GETTABLEKS R1 R0 K57 ["minDistanceChangeConn"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K57 ["minDistanceChangeConn"]
+  NAMECALL R1 R1 K54 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADK R3 K20 ["CameraMinZoomDistance"]
+  NAMECALL R1 R1 K56 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P2
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K57 ["minDistanceChangeConn"]
+  GETTABLEKS R1 R0 K58 ["maxDistanceChangeConn"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K58 ["maxDistanceChangeConn"]
+  NAMECALL R1 R1 K54 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADK R3 K21 ["CameraMaxZoomDistance"]
+  NAMECALL R1 R1 K56 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P3
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K58 ["maxDistanceChangeConn"]
+  GETTABLEKS R1 R0 K59 ["playerDevTouchMoveModeChangeConn"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K59 ["playerDevTouchMoveModeChangeConn"]
+  NAMECALL R1 R1 K54 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 1
+  LOADK R3 K60 ["DevTouchMovementMode"]
+  NAMECALL R1 R1 K56 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P4
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K59 ["playerDevTouchMoveModeChangeConn"]
+  NAMECALL R1 R0 K61 ["OnDevTouchMovementModeChanged"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K62 ["gameSettingsTouchMoveMoveChangeConn"]
+  JUMPIFNOT R1 [+5]
+  GETTABLEKS R1 R0 K62 ["gameSettingsTouchMoveMoveChangeConn"]
+  NAMECALL R1 R1 K54 ["Disconnect"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  LOADK R3 K63 ["TouchMovementMode"]
+  NAMECALL R1 R1 K56 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P5
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K62 ["gameSettingsTouchMoveMoveChangeConn"]
+  NAMECALL R1 R0 K64 ["OnGameSettingsTouchMovementModeChanged"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K65 ["SetCameraYInvertVisible"]
+  CALL R1 1 0
+  GETUPVAL R1 2
+  NAMECALL R1 R1 K66 ["SetGamepadCameraSensitivityVisible"]
+  CALL R1 1 0
+  GETIMPORT R1 K68 [game]
+  NAMECALL R1 R1 K69 ["IsLoaded"]
+  CALL R1 1 1
+  SETTABLEKS R1 R0 K70 ["hasGameLoaded"]
+  GETTABLEKS R1 R0 K70 ["hasGameLoaded"]
+  JUMPIF R1 [+11]
+  GETIMPORT R2 K68 [game]
+  GETTABLEKS R1 R2 K71 ["Loaded"]
+  NEWCLOSURE R3 P6
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K52 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K72 ["gameLoadedConn"]
+  NAMECALL R1 R0 K73 ["OnPlayerCameraPropertyChange"]
+  CALL R1 1 0
+  RETURN R0 1
+
+PROTO_9:
+  LOADK R1 K0 ["BaseCamera"]
+  RETURN R1 1
+
+PROTO_10:
+  LOADK R3 K0 ["Tool"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 0
+  LOADB R2 1
+  SETTABLEKS R2 R1 K2 ["isAToolEquipped"]
+  RETURN R0 0
+
+PROTO_11:
+  LOADK R3 K0 ["Tool"]
+  NAMECALL R1 R0 K1 ["IsA"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+4]
+  GETUPVAL R1 0
+  LOADB R2 0
+  SETTABLEKS R2 R1 K2 ["isAToolEquipped"]
+  RETURN R0 0
+
+PROTO_12:
+  GETTABLEKS R2 R0 K0 ["resetCameraAngle"]
+  JUMPIF R2 [+3]
+  NAMECALL R2 R0 K1 ["GetEnabled"]
+  CALL R2 1 1
+  SETTABLEKS R2 R0 K0 ["resetCameraAngle"]
+  LOADNIL R2
+  SETTABLEKS R2 R0 K2 ["humanoidRootPart"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K3 ["TouchEnabled"]
+  JUMPIFNOT R2 [+38]
+  GETUPVAL R2 1
+  LOADK R4 K4 ["PlayerGui"]
+  NAMECALL R2 R2 K5 ["WaitForChild"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K4 ["PlayerGui"]
+  GETIMPORT R2 K7 [ipairs]
+  NAMECALL R3 R1 K8 ["GetChildren"]
+  CALL R3 1 -1
+  CALL R2 -1 3
+  FORGPREP_INEXT R2
+  LOADK R9 K9 ["Tool"]
+  NAMECALL R7 R6 K10 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+3]
+  LOADB R7 1
+  SETTABLEKS R7 R0 K11 ["isAToolEquipped"]
+  FORGLOOP R2 2 [inext] [-9]
+  GETTABLEKS R2 R1 K12 ["ChildAdded"]
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K13 ["Connect"]
+  CALL R2 2 0
+  GETTABLEKS R2 R1 K14 ["ChildRemoved"]
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K13 ["Connect"]
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_13:
+  GETTABLEKS R1 R0 K0 ["humanoidRootPart"]
+  JUMPIF R1 [+16]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["Character"]
+  JUMPIFNOT R1 [+12]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["Character"]
+  LOADK R3 K2 ["Humanoid"]
+  NAMECALL R1 R1 K3 ["FindFirstChildOfClass"]
+  CALL R1 2 1
+  JUMPIFNOT R1 [+4]
+  GETTABLEKS R2 R1 K4 ["RootPart"]
+  SETTABLEKS R2 R0 K0 ["humanoidRootPart"]
+  GETTABLEKS R1 R0 K0 ["humanoidRootPart"]
+  RETURN R1 1
+
+PROTO_14:
+  NAMECALL R3 R1 K0 ["GetState"]
+  CALL R3 1 1
+  GETIMPORT R4 K4 [Enum.HumanoidStateType.Dead]
+  JUMPIFNOTEQ R3 R4 [+17]
+  GETTABLEKS R3 R1 K5 ["Parent"]
+  JUMPIFNOT R3 [+13]
+  LOADK R6 K6 ["Model"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+8]
+  LOADK R6 K8 ["Head"]
+  NAMECALL R4 R3 K9 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+2]
+  GETTABLEKS R4 R1 K10 ["RootPart"]
+  RETURN R4 1
+  GETTABLEKS R3 R1 K10 ["RootPart"]
+  RETURN R3 1
+
+PROTO_15:
+  GETTABLEKS R1 R0 K0 ["lastSubjectCFrame"]
+  GETIMPORT R3 K2 [workspace]
+  GETTABLEKS R2 R3 K3 ["CurrentCamera"]
+  MOVE R3 R2
+  JUMPIFNOT R3 [+2]
+  GETTABLEKS R3 R2 K4 ["CameraSubject"]
+  JUMPIF R3 [+1]
+  RETURN R1 1
+  LOADK R6 K5 ["Humanoid"]
+  NAMECALL R4 R3 K6 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+95]
+  NAMECALL R5 R3 K7 ["GetState"]
+  CALL R5 1 1
+  GETIMPORT R6 K11 [Enum.HumanoidStateType.Dead]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  GETTABLEKS R5 R3 K12 ["CameraOffset"]
+  GETUPVAL R6 0
+  JUMPIFNOT R6 [+9]
+  NAMECALL R6 R0 K13 ["GetIsMouseLocked"]
+  CALL R6 1 1
+  JUMPIFNOT R6 [+5]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R6 K16 [Vector3.new]
+  CALL R6 0 1
+  MOVE R5 R6
+  GETTABLEKS R6 R3 K17 ["RootPart"]
+  JUMPIFNOT R4 [+17]
+  GETTABLEKS R7 R3 K18 ["Parent"]
+  JUMPIFNOT R7 [+14]
+  GETTABLEKS R7 R3 K18 ["Parent"]
+  LOADK R9 K19 ["Model"]
+  NAMECALL R7 R7 K6 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+7]
+  GETTABLEKS R7 R3 K18 ["Parent"]
+  LOADK R9 K20 ["Head"]
+  NAMECALL R7 R7 K21 ["FindFirstChild"]
+  CALL R7 2 1
+  OR R6 R7 R6
+  JUMPIFNOT R6 [+77]
+  LOADK R9 K22 ["BasePart"]
+  NAMECALL R7 R6 K6 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+72]
+  LOADNIL R7
+  GETTABLEKS R8 R3 K23 ["RigType"]
+  GETIMPORT R9 K26 [Enum.HumanoidRigType.R15]
+  JUMPIFNOTEQ R8 R9 [+30]
+  GETTABLEKS R8 R3 K27 ["AutomaticScalingEnabled"]
+  JUMPIFNOT R8 [+24]
+  LOADK R7 K28 [{0, 1.5, 0}]
+  GETTABLEKS R8 R3 K17 ["RootPart"]
+  JUMPIFNOTEQ R6 R8 [+23]
+  GETTABLEKS R12 R8 K30 ["Size"]
+  GETTABLEKS R11 R12 K31 ["Y"]
+  LOADK R13 K32 [{2, 2, 1}]
+  GETTABLEKS R12 R13 K31 ["Y"]
+  SUB R10 R11 R12
+  DIVK R9 R10 K29 [2]
+  LOADN R11 0
+  LOADN R13 0
+  FASTCALL3 VECTOR R11 R9 R13
+  MOVE R12 R9
+  GETIMPORT R10 K16 [Vector3.new]
+  CALL R10 3 1
+  ADD R7 R7 R10
+  JUMP [+3]
+  LOADK R7 K33 [{0, 2, 0}]
+  JUMP [+1]
+  LOADK R7 K28 [{0, 1.5, 0}]
+  JUMPIFNOT R4 [+1]
+  LOADK R7 K34 [{0, 0, 0}]
+  GETTABLEKS R8 R6 K35 ["CFrame"]
+  GETIMPORT R9 K36 [CFrame.new]
+  ADD R10 R7 R5
+  CALL R9 1 1
+  MUL R1 R8 R9
+  JUMP [+25]
+  LOADK R6 K22 ["BasePart"]
+  NAMECALL R4 R3 K6 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+3]
+  GETTABLEKS R1 R3 K35 ["CFrame"]
+  JUMP [+17]
+  LOADK R6 K19 ["Model"]
+  NAMECALL R4 R3 K6 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+12]
+  GETTABLEKS R4 R3 K37 ["PrimaryPart"]
+  JUMPIFNOT R4 [+5]
+  NAMECALL R4 R3 K38 ["GetPrimaryPartCFrame"]
+  CALL R4 1 1
+  MOVE R1 R4
+  JUMP [+4]
+  GETIMPORT R4 K36 [CFrame.new]
+  CALL R4 0 1
+  MOVE R1 R4
+  JUMPIFNOT R1 [+2]
+  SETTABLEKS R1 R0 K0 ["lastSubjectCFrame"]
+  RETURN R1 1
+
+PROTO_16:
+  GETIMPORT R2 K1 [workspace]
+  GETTABLEKS R1 R2 K2 ["CurrentCamera"]
+  MOVE R2 R1
+  JUMPIFNOT R2 [+2]
+  GETTABLEKS R2 R1 K3 ["CameraSubject"]
+  JUMPIF R2 [+2]
+  LOADK R3 K4 [{0, 0, 0}]
+  RETURN R3 1
+  LOADK R5 K5 ["BasePart"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R3 R2 K7 ["Velocity"]
+  RETURN R3 1
+  LOADK R5 K8 ["Humanoid"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+7]
+  GETTABLEKS R3 R2 K9 ["RootPart"]
+  JUMPIFNOT R3 [+15]
+  GETTABLEKS R4 R3 K7 ["Velocity"]
+  RETURN R4 1
+  JUMP [+11]
+  LOADK R5 K10 ["Model"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+6]
+  GETTABLEKS R3 R2 K11 ["PrimaryPart"]
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R4 R3 K7 ["Velocity"]
+  RETURN R4 1
+  LOADK R3 K4 [{0, 0, 0}]
+  RETURN R3 1
+
+PROTO_17:
+  GETIMPORT R2 K1 [workspace]
+  GETTABLEKS R1 R2 K2 ["CurrentCamera"]
+  MOVE R2 R1
+  JUMPIFNOT R2 [+2]
+  GETTABLEKS R2 R1 K3 ["CameraSubject"]
+  JUMPIF R2 [+2]
+  LOADK R3 K4 [{0, 0, 0}]
+  RETURN R3 1
+  LOADK R5 K5 ["BasePart"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R3 R2 K7 ["RotVelocity"]
+  RETURN R3 1
+  LOADK R5 K8 ["Humanoid"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+7]
+  GETTABLEKS R3 R2 K9 ["RootPart"]
+  JUMPIFNOT R3 [+15]
+  GETTABLEKS R4 R3 K7 ["RotVelocity"]
+  RETURN R4 1
+  JUMP [+11]
+  LOADK R5 K10 ["Model"]
+  NAMECALL R3 R2 K6 ["IsA"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+6]
+  GETTABLEKS R3 R2 K11 ["PrimaryPart"]
+  JUMPIFNOT R3 [+3]
+  GETTABLEKS R4 R3 K7 ["RotVelocity"]
+  RETURN R4 1
+  LOADK R3 K4 [{0, 0, 0}]
+  RETURN R3 1
+
+PROTO_18:
+  GETTABLEKS R1 R0 K0 ["currentSubjectDistance"]
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["getZoomDelta"]
+  CALL R2 0 1
+  FASTCALL1 MATH_ABS R2 [+3]
+  MOVE R4 R2
+  GETIMPORT R3 K4 [math.abs]
+  CALL R3 1 1
+  LOADN R4 0
+  JUMPIFNOTLT R4 R3 [+41]
+  LOADNIL R3
+  LOADN R4 0
+  JUMPIFNOTLT R4 R2 [+16]
+  LOADN R6 1
+  MULK R7 R1 K5 [0.5]
+  ADD R5 R6 R7
+  MUL R4 R2 R5
+  ADD R3 R1 R4
+  GETTABLEKS R6 R0 K6 ["FIRST_PERSON_DISTANCE_THRESHOLD"]
+  FASTCALL2 MATH_MAX R3 R6 [+4]
+  MOVE R5 R3
+  GETIMPORT R4 K8 [math.max]
+  CALL R4 2 1
+  MOVE R3 R4
+  JUMP [+12]
+  ADD R4 R1 R2
+  MULK R6 R2 K5 [0.5]
+  SUBRK R5 R9 K6 ["FIRST_PERSON_DISTANCE_THRESHOLD"]
+  DIV R3 R4 R5
+  FASTCALL2K MATH_MAX R3 K5 [+5]
+  MOVE R5 R3
+  LOADK R6 K5 [0.5]
+  GETIMPORT R4 K8 [math.max]
+  CALL R4 2 1
+  MOVE R3 R4
+  GETTABLEKS R4 R0 K6 ["FIRST_PERSON_DISTANCE_THRESHOLD"]
+  JUMPIFNOTLT R3 R4 [+2]
+  LOADK R3 K5 [0.5]
+  MOVE R6 R3
+  NAMECALL R4 R0 K10 ["SetCameraToSubjectDistance"]
+  CALL R4 2 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K11 ["GetZoomRadius"]
+  CALL R3 0 -1
+  RETURN R3 -1
+
+PROTO_19:
+  GETTABLEKS R1 R0 K0 ["lastSubjectPosition"]
+  GETIMPORT R4 K2 [game]
+  GETTABLEKS R3 R4 K3 ["Workspace"]
+  GETTABLEKS R2 R3 K4 ["CurrentCamera"]
+  MOVE R3 R2
+  JUMPIFNOT R3 [+2]
+  GETTABLEKS R3 R2 K5 ["CameraSubject"]
+  JUMPIFNOT R3 [+166]
+  LOADK R6 K6 ["Humanoid"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+102]
+  NAMECALL R5 R3 K8 ["GetState"]
+  CALL R5 1 1
+  GETIMPORT R6 K12 [Enum.HumanoidStateType.Dead]
+  JUMPIFEQ R5 R6 [+2]
+  LOADB R4 0 +1
+  LOADB R4 1
+  GETTABLEKS R5 R3 K13 ["CameraOffset"]
+  GETUPVAL R6 0
+  JUMPIFNOT R6 [+9]
+  NAMECALL R6 R0 K14 ["GetIsMouseLocked"]
+  CALL R6 1 1
+  JUMPIFNOT R6 [+5]
+  FASTCALL VECTOR [+2]
+  GETIMPORT R6 K17 [Vector3.new]
+  CALL R6 0 1
+  MOVE R5 R6
+  GETTABLEKS R6 R3 K18 ["RootPart"]
+  JUMPIFNOT R4 [+17]
+  GETTABLEKS R7 R3 K19 ["Parent"]
+  JUMPIFNOT R7 [+14]
+  GETTABLEKS R7 R3 K19 ["Parent"]
+  LOADK R9 K20 ["Model"]
+  NAMECALL R7 R7 K7 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+7]
+  GETTABLEKS R7 R3 K19 ["Parent"]
+  LOADK R9 K21 ["Head"]
+  NAMECALL R7 R7 K22 ["FindFirstChild"]
+  CALL R7 2 1
+  OR R6 R7 R6
+  JUMPIFNOT R6 [+120]
+  LOADK R9 K23 ["BasePart"]
+  NAMECALL R7 R6 K7 ["IsA"]
+  CALL R7 2 1
+  JUMPIFNOT R7 [+115]
+  LOADNIL R7
+  GETTABLEKS R8 R3 K24 ["RigType"]
+  GETIMPORT R9 K27 [Enum.HumanoidRigType.R15]
+  JUMPIFNOTEQ R8 R9 [+33]
+  GETTABLEKS R8 R3 K28 ["AutomaticScalingEnabled"]
+  JUMPIFNOT R8 [+27]
+  LOADK R7 K29 [{0, 1.5, 0}]
+  GETTABLEKS R8 R3 K18 ["RootPart"]
+  JUMPIFNOTEQ R6 R8 [+26]
+  GETTABLEKS R12 R3 K18 ["RootPart"]
+  GETTABLEKS R11 R12 K31 ["Size"]
+  GETTABLEKS R10 R11 K32 ["Y"]
+  DIVK R9 R10 K30 [2]
+  LOADK R12 K33 [{2, 2, 1}]
+  GETTABLEKS R11 R12 K32 ["Y"]
+  DIVK R10 R11 K30 [2]
+  SUB R8 R9 R10
+  LOADN R10 0
+  LOADN R12 0
+  FASTCALL3 VECTOR R10 R8 R12
+  MOVE R11 R8
+  GETIMPORT R9 K17 [Vector3.new]
+  CALL R9 3 1
+  ADD R7 R7 R9
+  JUMP [+3]
+  LOADK R7 K34 [{0, 2, 0}]
+  JUMP [+1]
+  LOADK R7 K29 [{0, 1.5, 0}]
+  JUMPIFNOT R4 [+1]
+  LOADK R7 K35 [{0, 0, 0}]
+  GETTABLEKS R9 R6 K36 ["CFrame"]
+  GETTABLEKS R8 R9 K37 ["p"]
+  GETTABLEKS R9 R6 K36 ["CFrame"]
+  ADD R11 R7 R5
+  NAMECALL R9 R9 K38 ["vectorToWorldSpace"]
+  CALL R9 2 1
+  ADD R1 R8 R9
+  JUMP [+61]
+  LOADK R6 K39 ["VehicleSeat"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+12]
+  GETTABLEKS R5 R3 K36 ["CFrame"]
+  GETTABLEKS R4 R5 K37 ["p"]
+  GETTABLEKS R5 R3 K36 ["CFrame"]
+  LOADK R7 K40 [{0, 5, 0}]
+  NAMECALL R5 R5 K38 ["vectorToWorldSpace"]
+  CALL R5 2 1
+  ADD R1 R4 R5
+  JUMP [+44]
+  LOADK R6 K41 ["SkateboardPlatform"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+7]
+  GETTABLEKS R5 R3 K36 ["CFrame"]
+  GETTABLEKS R4 R5 K37 ["p"]
+  LOADK R5 K40 [{0, 5, 0}]
+  ADD R1 R4 R5
+  JUMP [+32]
+  LOADK R6 K23 ["BasePart"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+5]
+  GETTABLEKS R4 R3 K36 ["CFrame"]
+  GETTABLEKS R1 R4 K37 ["p"]
+  JUMP [+22]
+  LOADK R6 K20 ["Model"]
+  NAMECALL R4 R3 K7 ["IsA"]
+  CALL R4 2 1
+  JUMPIFNOT R4 [+17]
+  GETTABLEKS R4 R3 K42 ["PrimaryPart"]
+  JUMPIFNOT R4 [+6]
+  NAMECALL R4 R3 K43 ["GetPrimaryPartCFrame"]
+  CALL R4 1 1
+  GETTABLEKS R1 R4 K37 ["p"]
+  JUMP [+8]
+  NAMECALL R4 R3 K44 ["GetModelCFrame"]
+  CALL R4 1 1
+  GETTABLEKS R1 R4 K37 ["p"]
+  JUMP [+2]
+  LOADNIL R4
+  RETURN R4 1
+  SETTABLEKS R3 R0 K45 ["lastSubject"]
+  SETTABLEKS R1 R0 K0 ["lastSubjectPosition"]
+  RETURN R1 1
+
+PROTO_20:
+  GETIMPORT R3 K1 [game]
+  GETTABLEKS R2 R3 K2 ["Workspace"]
+  GETTABLEKS R1 R2 K3 ["CurrentCamera"]
+  GETTABLEKS R2 R1 K4 ["ViewportSize"]
+  GETTABLEKS R4 R2 K5 ["X"]
+  GETTABLEKS R5 R2 K6 ["Y"]
+  JUMPIFLT R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R0 K7 ["portraitMode"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K8 ["TouchEnabled"]
+  JUMPIFNOT R3 [+13]
+  LOADB R3 1
+  GETTABLEKS R4 R2 K6 ["Y"]
+  LOADN R5 244
+  JUMPIFLT R4 R5 [+8]
+  GETTABLEKS R4 R2 K5 ["X"]
+  LOADN R5 188
+  JUMPIFLT R4 R5 [+2]
+  LOADB R3 0 +1
+  LOADB R3 1
+  SETTABLEKS R3 R0 K9 ["isSmallTouchScreen"]
+  RETURN R0 0
+
+PROTO_21:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnViewportSizeChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_22:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnNewCameraSubject"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_23:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+32]
+  GETTABLEKS R1 R0 K1 ["viewportSizeChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K1 ["viewportSizeChangedConn"]
+  NAMECALL R1 R1 K2 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K1 ["viewportSizeChangedConn"]
+  GETIMPORT R3 K4 [game]
+  GETTABLEKS R2 R3 K5 ["Workspace"]
+  GETTABLEKS R1 R2 K6 ["CurrentCamera"]
+  JUMPIFNOT R1 [+14]
+  NAMECALL R2 R0 K7 ["OnViewportSizeChanged"]
+  CALL R2 1 0
+  LOADK R4 K8 ["ViewportSize"]
+  NAMECALL R2 R1 K9 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  NEWCLOSURE R4 P0
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K10 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K1 ["viewportSizeChangedConn"]
+  GETTABLEKS R1 R0 K11 ["cameraSubjectChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K11 ["cameraSubjectChangedConn"]
+  NAMECALL R1 R1 K2 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K11 ["cameraSubjectChangedConn"]
+  GETIMPORT R3 K4 [game]
+  GETTABLEKS R2 R3 K5 ["Workspace"]
+  GETTABLEKS R1 R2 K6 ["CurrentCamera"]
+  JUMPIFNOT R1 [+14]
+  LOADK R4 K12 ["CameraSubject"]
+  NAMECALL R2 R1 K9 ["GetPropertyChangedSignal"]
+  CALL R2 2 1
+  NEWCLOSURE R4 P1
+  CAPTURE VAL R0
+  NAMECALL R2 R2 K10 ["Connect"]
+  CALL R2 2 1
+  SETTABLEKS R2 R0 K11 ["cameraSubjectChangedConn"]
+  NAMECALL R2 R0 K13 ["OnNewCameraSubject"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_24:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["TouchEnabled"]
+  JUMPIFNOT R1 [+3]
+  LOADB R1 1
+  SETTABLEKS R1 R0 K1 ["isDynamicThumbstickEnabled"]
+  RETURN R0 0
+
+PROTO_25:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["isDynamicThumbstickEnabled"]
+  RETURN R0 0
+
+PROTO_26:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DevTouchMovementMode"]
+  GETIMPORT R2 K3 [Enum.DevTouchMovementMode.UserChoice]
+  JUMPIFNOTEQ R1 R2 [+22]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["TouchMovementMode"]
+  GETIMPORT R2 K6 [Enum.TouchMovementMode.DynamicThumbstick]
+  JUMPIFEQ R1 R2 [+8]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K4 ["TouchMovementMode"]
+  GETIMPORT R2 K8 [Enum.TouchMovementMode.Default]
+  JUMPIFNOTEQ R1 R2 [+5]
+  NAMECALL R1 R0 K9 ["OnDynamicThumbstickEnabled"]
+  CALL R1 1 0
+  RETURN R0 0
+  NAMECALL R1 R0 K10 ["OnDynamicThumbstickDisabled"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_27:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["DevTouchMovementMode"]
+  GETIMPORT R2 K3 [Enum.DevTouchMovementMode.DynamicThumbstick]
+  JUMPIFNOTEQ R1 R2 [+5]
+  NAMECALL R1 R0 K4 ["OnDynamicThumbstickEnabled"]
+  CALL R1 1 0
+  RETURN R0 0
+  NAMECALL R1 R0 K5 ["OnGameSettingsTouchMovementModeChanged"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_28:
+  GETTABLEKS R3 R0 K0 ["currentSubjectDistance"]
+  NAMECALL R1 R0 K1 ["SetCameraToSubjectDistance"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_29:
+  MUL R3 R1 R2
+  RETURN R3 1
+
+PROTO_30:
+  NAMECALL R1 R0 K0 ["GetCameraToSubjectDistance"]
+  CALL R1 1 1
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K1 ["CameraMaxZoomDistance"]
+  GETTABLEKS R6 R0 K2 ["gamepadZoomLevels"]
+  LENGTH R5 R6
+  LOADN R3 1
+  LOADN R4 255
+  FORNPREP R3
+  GETTABLEKS R7 R0 K2 ["gamepadZoomLevels"]
+  GETTABLE R6 R7 R5
+  JUMPIFLT R2 R6 [+28]
+  GETUPVAL R8 0
+  GETTABLEKS R7 R8 K3 ["CameraMinZoomDistance"]
+  JUMPIFNOTLT R6 R7 [+8]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K3 ["CameraMinZoomDistance"]
+  GETUPVAL R7 1
+  JUMPIFNOT R7 [+2]
+  JUMPIFEQ R2 R6 [+17]
+  GETUPVAL R7 1
+  JUMPIF R7 [+2]
+  JUMPIFEQ R2 R6 [+13]
+  SUB R9 R2 R6
+  DIVK R8 R9 K4 [2]
+  ADD R7 R6 R8
+  JUMPIFNOTLT R7 R1 [+6]
+  MOVE R9 R6
+  NAMECALL R7 R0 K5 ["SetCameraToSubjectDistance"]
+  CALL R7 2 0
+  RETURN R0 0
+  MOVE R2 R6
+  FORNLOOP R3
+  GETTABLEKS R6 R0 K2 ["gamepadZoomLevels"]
+  GETTABLEKS R8 R0 K2 ["gamepadZoomLevels"]
+  LENGTH R7 R8
+  GETTABLE R5 R6 R7
+  NAMECALL R3 R0 K5 ["SetCameraToSubjectDistance"]
+  CALL R3 2 0
+  RETURN R0 0
+
+PROTO_31:
+  GETTABLEKS R2 R0 K0 ["enabled"]
+  JUMPIFEQ R2 R1 [+6]
+  SETTABLEKS R1 R0 K0 ["enabled"]
+  NAMECALL R2 R0 K1 ["OnEnabledChanged"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_32:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["GamepadZoomPress"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_33:
+  GETUPVAL R0 0
+  NAMECALL R0 R0 K0 ["OnCurrentCameraChanged"]
+  CALL R0 1 0
+  RETURN R0 0
+
+PROTO_34:
+  GETTABLEKS R1 R0 K0 ["enabled"]
+  JUMPIFNOT R1 [+59]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["setInputEnabled"]
+  LOADB R2 1
+  CALL R1 1 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K2 ["gamepadZoomPress"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K4 ["gamepadZoomPressConnection"]
+  GETUPVAL R2 1
+  GETTABLEKS R1 R2 K5 ["CameraMode"]
+  GETIMPORT R2 K8 [Enum.CameraMode.LockFirstPerson]
+  JUMPIFNOTEQ R1 R2 [+10]
+  LOADK R1 K9 [0.5]
+  SETTABLEKS R1 R0 K10 ["currentSubjectDistance"]
+  GETTABLEKS R1 R0 K11 ["inFirstPerson"]
+  JUMPIF R1 [+3]
+  NAMECALL R1 R0 K12 ["EnterFirstPerson"]
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K13 ["cameraChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K13 ["cameraChangedConn"]
+  NAMECALL R1 R1 K14 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K13 ["cameraChangedConn"]
+  GETIMPORT R1 K16 [workspace]
+  LOADK R3 K17 ["CurrentCamera"]
+  NAMECALL R1 R1 K18 ["GetPropertyChangedSignal"]
+  CALL R1 2 1
+  NEWCLOSURE R3 P1
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K3 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K13 ["cameraChangedConn"]
+  NAMECALL R1 R0 K19 ["OnCurrentCameraChanged"]
+  CALL R1 1 0
+  RETURN R0 0
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["setInputEnabled"]
+  LOADB R2 0
+  CALL R1 1 0
+  GETTABLEKS R1 R0 K4 ["gamepadZoomPressConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K4 ["gamepadZoomPressConnection"]
+  NAMECALL R1 R1 K14 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["gamepadZoomPressConnection"]
+  NAMECALL R1 R0 K20 ["Cleanup"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_35:
+  GETTABLEKS R1 R0 K0 ["enabled"]
+  RETURN R1 1
+
+PROTO_36:
+  GETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  GETTABLEKS R1 R0 K2 ["viewportSizeChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K2 ["viewportSizeChangedConn"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K2 ["viewportSizeChangedConn"]
+  GETTABLEKS R1 R0 K3 ["cameraChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K3 ["cameraChangedConn"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K3 ["cameraChangedConn"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K4 ["lastCameraTransform"]
+  LOADNIL R1
+  SETTABLEKS R1 R0 K5 ["lastSubjectCFrame"]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K6 ["restoreMouseBehavior"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_37:
+  GETUPVAL R3 0
+  GETTABLEKS R2 R3 K0 ["ComputerMovementMode"]
+  GETIMPORT R3 K3 [Enum.ComputerMovementMode.ClickToMove]
+  JUMPIFEQ R2 R3 [+2]
+  LOADB R1 0 +1
+  LOADB R1 1
+  GETTABLEKS R2 R0 K4 ["isCameraToggle"]
+  JUMPIFNOT R2 [+16]
+  JUMPIFNOTEQKB R1 FALSE [+15]
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["setCameraModeToastEnabled"]
+  LOADB R3 1
+  CALL R2 1 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K6 ["enableCameraToggleInput"]
+  CALL R2 0 0
+  GETUPVAL R2 3
+  GETTABLEKS R3 R0 K7 ["inFirstPerson"]
+  CALL R2 1 0
+  RETURN R0 0
+  GETUPVAL R3 1
+  GETTABLEKS R2 R3 K5 ["setCameraModeToastEnabled"]
+  LOADB R3 0
+  CALL R2 1 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K8 ["disableCameraToggleInput"]
+  CALL R2 0 0
+  GETTABLEKS R2 R0 K7 ["inFirstPerson"]
+  JUMPIF R2 [+3]
+  GETTABLEKS R2 R0 K9 ["inMouseLockedMode"]
+  JUMPIFNOT R2 [+13]
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K10 ["setRotationTypeOverride"]
+  GETIMPORT R3 K13 [Enum.RotationType.CameraRelative]
+  CALL R2 1 0
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K14 ["setMouseBehaviorOverride"]
+  GETIMPORT R3 K17 [Enum.MouseBehavior.LockCenter]
+  CALL R2 1 0
+  RETURN R0 0
+  GETUPVAL R3 4
+  GETTABLEKS R2 R3 K18 ["restoreRotationType"]
+  CALL R2 0 0
+  GETUPVAL R3 2
+  GETTABLEKS R2 R3 K19 ["getRotationActivated"]
+  CALL R2 0 1
+  JUMPIFNOT R2 [+7]
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K14 ["setMouseBehaviorOverride"]
+  GETIMPORT R4 K21 [Enum.MouseBehavior.LockCurrentPosition]
+  CALL R3 1 0
+  RETURN R0 0
+  GETUPVAL R4 4
+  GETTABLEKS R3 R4 K22 ["restoreMouseBehavior"]
+  CALL R3 0 0
+  RETURN R0 0
+
+PROTO_38:
+  GETTABLEKS R3 R0 K0 ["currentSubjectDistance"]
+  NAMECALL R1 R0 K1 ["SetCameraToSubjectDistance"]
+  CALL R1 2 0
+  RETURN R0 0
+
+PROTO_39:
+  GETTABLEKS R2 R0 K0 ["currentSubjectDistance"]
+  GETUPVAL R4 0
+  GETTABLEKS R3 R4 K1 ["CameraMode"]
+  GETIMPORT R4 K4 [Enum.CameraMode.LockFirstPerson]
+  JUMPIFNOTEQ R3 R4 [+11]
+  LOADK R3 K5 [0.5]
+  SETTABLEKS R3 R0 K0 ["currentSubjectDistance"]
+  GETTABLEKS R3 R0 K6 ["inFirstPerson"]
+  JUMPIF R3 [+37]
+  NAMECALL R3 R0 K7 ["EnterFirstPerson"]
+  CALL R3 1 0
+  JUMP [+33]
+  GETUPVAL R6 0
+  GETTABLEKS R5 R6 K8 ["CameraMinZoomDistance"]
+  GETUPVAL R7 0
+  GETTABLEKS R6 R7 K9 ["CameraMaxZoomDistance"]
+  FASTCALL3 MATH_CLAMP R1 R5 R6
+  MOVE R4 R1
+  GETIMPORT R3 K12 [math.clamp]
+  CALL R3 3 1
+  LOADN R4 1
+  JUMPIFNOTLT R3 R4 [+11]
+  LOADK R4 K5 [0.5]
+  SETTABLEKS R4 R0 K0 ["currentSubjectDistance"]
+  GETTABLEKS R4 R0 K6 ["inFirstPerson"]
+  JUMPIF R4 [+12]
+  NAMECALL R4 R0 K7 ["EnterFirstPerson"]
+  CALL R4 1 0
+  JUMP [+8]
+  SETTABLEKS R3 R0 K0 ["currentSubjectDistance"]
+  GETTABLEKS R4 R0 K6 ["inFirstPerson"]
+  JUMPIFNOT R4 [+3]
+  NAMECALL R4 R0 K13 ["LeaveFirstPerson"]
+  CALL R4 1 0
+  GETUPVAL R4 1
+  GETTABLEKS R3 R4 K14 ["SetZoomParameters"]
+  GETTABLEKS R4 R0 K0 ["currentSubjectDistance"]
+  SUB R6 R1 R2
+  FASTCALL1 MATH_SIGN R6 [+2]
+  GETIMPORT R5 K16 [math.sign]
+  CALL R5 1 1
+  CALL R3 2 0
+  GETTABLEKS R3 R0 K0 ["currentSubjectDistance"]
+  RETURN R3 1
+
+PROTO_40:
+  SETTABLEKS R1 R0 K0 ["cameraType"]
+  RETURN R0 0
+
+PROTO_41:
+  GETTABLEKS R1 R0 K0 ["cameraType"]
+  RETURN R1 1
+
+PROTO_42:
+  SETTABLEKS R1 R0 K0 ["cameraMovementMode"]
+  RETURN R0 0
+
+PROTO_43:
+  GETTABLEKS R1 R0 K0 ["cameraMovementMode"]
+  RETURN R1 1
+
+PROTO_44:
+  SETTABLEKS R1 R0 K0 ["inMouseLockedMode"]
+  RETURN R0 0
+
+PROTO_45:
+  GETTABLEKS R1 R0 K0 ["inMouseLockedMode"]
+  RETURN R1 1
+
+PROTO_46:
+  SETTABLEKS R1 R0 K0 ["mouseLockOffset"]
+  RETURN R0 0
+
+PROTO_47:
+  GETTABLEKS R1 R0 K0 ["mouseLockOffset"]
+  RETURN R1 1
+
+PROTO_48:
+  GETTABLEKS R1 R0 K0 ["inFirstPerson"]
+  RETURN R1 1
+
+PROTO_49:
+  LOADB R1 1
+  SETTABLEKS R1 R0 K0 ["inFirstPerson"]
+  NAMECALL R1 R0 K1 ["UpdateMouseBehavior"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_50:
+  LOADB R1 0
+  SETTABLEKS R1 R0 K0 ["inFirstPerson"]
+  NAMECALL R1 R0 K1 ["UpdateMouseBehavior"]
+  CALL R1 1 0
+  RETURN R0 0
+
+PROTO_51:
+  GETTABLEKS R1 R0 K0 ["currentSubjectDistance"]
+  RETURN R1 1
+
+PROTO_52:
+  GETIMPORT R3 K1 [game]
+  GETTABLEKS R2 R3 K2 ["Workspace"]
+  GETTABLEKS R1 R2 K3 ["CurrentCamera"]
+  JUMPIFNOT R1 [+12]
+  GETTABLEKS R5 R1 K4 ["CoordinateFrame"]
+  GETTABLEKS R4 R5 K5 ["p"]
+  GETTABLEKS R6 R1 K6 ["Focus"]
+  GETTABLEKS R5 R6 K5 ["p"]
+  SUB R3 R4 R5
+  GETTABLEKS R2 R3 K7 ["magnitude"]
+  RETURN R2 1
+  LOADNIL R2
+  RETURN R2 1
+
+PROTO_53:
+  GETIMPORT R4 K1 [game]
+  GETTABLEKS R3 R4 K2 ["Workspace"]
+  GETTABLEKS R2 R3 K3 ["CurrentCamera"]
+  JUMPIFNOT R2 [+11]
+  GETIMPORT R5 K1 [game]
+  GETTABLEKS R4 R5 K2 ["Workspace"]
+  GETTABLEKS R3 R4 K3 ["CurrentCamera"]
+  GETTABLEKS R2 R3 K4 ["CFrame"]
+  GETTABLEKS R1 R2 K5 ["LookVector"]
+  JUMPIF R1 [+1]
+  LOADK R1 K6 [{0, 0, 1}]
+  RETURN R1 1
+
+PROTO_54:
+  MOVE R3 R1
+  JUMPIF R3 [+3]
+  NAMECALL R3 R0 K0 ["GetCameraLookVector"]
+  CALL R3 1 1
+  GETTABLEKS R5 R3 K1 ["Y"]
+  FASTCALL1 MATH_ASIN R5 [+2]
+  GETIMPORT R4 K4 [math.asin]
+  CALL R4 1 1
+  GETTABLEKS R6 R2 K1 ["Y"]
+  LOADK R8 K5 [-1.39626340159546]
+  ADD R7 R8 R4
+  LOADK R9 K6 [1.39626340159546]
+  ADD R8 R9 R4
+  FASTCALL MATH_CLAMP [+2]
+  GETIMPORT R5 K8 [math.clamp]
+  CALL R5 3 1
+  GETIMPORT R6 K11 [Vector2.new]
+  GETTABLEKS R7 R2 K12 ["X"]
+  MOVE R8 R5
+  CALL R6 2 1
+  GETIMPORT R7 K14 [CFrame.new]
+  LOADK R8 K15 [{0, 0, 0}]
+  MOVE R9 R3
+  CALL R7 2 1
+  GETIMPORT R10 K17 [CFrame.Angles]
+  LOADN R11 0
+  GETTABLEKS R13 R6 K12 ["X"]
+  MINUS R12 R13
+  LOADN R13 0
+  CALL R10 3 1
+  MUL R9 R10 R7
+  GETIMPORT R10 K17 [CFrame.Angles]
+  GETTABLEKS R12 R6 K1 ["Y"]
+  MINUS R11 R12
+  LOADN R12 0
+  LOADN R13 0
+  CALL R10 3 1
+  MUL R8 R9 R10
+  RETURN R8 1
+
+PROTO_55:
+  MOVE R5 R1
+  MOVE R6 R2
+  NAMECALL R3 R0 K0 ["CalculateNewLookCFrameFromArg"]
+  CALL R3 3 1
+  GETTABLEKS R4 R3 K1 ["LookVector"]
+  RETURN R4 1
+
+PROTO_56:
+  NAMECALL R2 R0 K0 ["GetSubjectPosition"]
+  CALL R2 1 1
+  GETIMPORT R8 K2 [game]
+  GETTABLEKS R7 R8 K3 ["Workspace"]
+  GETTABLEKS R6 R7 K4 ["CurrentCamera"]
+  GETTABLEKS R5 R6 K5 ["CFrame"]
+  GETTABLEKS R4 R5 K6 ["p"]
+  SUB R3 R2 R4
+  LOADK R6 K7 [{1, 0, 1}]
+  MUL R5 R3 R6
+  GETTABLEKS R4 R5 K8 ["unit"]
+  GETIMPORT R5 K11 [Vector2.new]
+  GETTABLEKS R6 R1 K12 ["X"]
+  LOADN R7 0
+  CALL R5 2 1
+  GETIMPORT R6 K13 [CFrame.new]
+  LOADK R7 K14 [{0, 0, 0}]
+  MOVE R8 R4
+  CALL R6 2 1
+  GETIMPORT R10 K16 [CFrame.Angles]
+  LOADN R11 0
+  GETTABLEKS R13 R5 K12 ["X"]
+  MINUS R12 R13
+  LOADN R13 0
+  CALL R10 3 1
+  MUL R9 R10 R6
+  GETIMPORT R10 K16 [CFrame.Angles]
+  GETTABLEKS R12 R5 K17 ["Y"]
+  MINUS R11 R12
+  LOADN R12 0
+  LOADN R13 0
+  CALL R10 3 1
+  MUL R8 R9 R10
+  GETTABLEKS R7 R8 K18 ["LookVector"]
+  LOADK R10 K7 [{1, 0, 1}]
+  MUL R9 R7 R10
+  GETTABLEKS R8 R9 K8 ["unit"]
+  RETURN R8 1
+
+PROTO_57:
+  GETUPVAL R1 0
+  JUMPIFNOT R1 [+3]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["Character"]
+  JUMPIFNOT R1 [+25]
+  GETTABLEKS R3 R0 K1 ["humanoidCache"]
+  GETUPVAL R4 0
+  GETTABLE R2 R3 R4
+  JUMPIFNOT R2 [+5]
+  GETTABLEKS R3 R2 K2 ["Parent"]
+  JUMPIFNOTEQ R3 R1 [+2]
+  RETURN R2 1
+  GETTABLEKS R3 R0 K1 ["humanoidCache"]
+  GETUPVAL R4 0
+  LOADNIL R5
+  SETTABLE R5 R3 R4
+  LOADK R5 K3 ["Humanoid"]
+  NAMECALL R3 R1 K4 ["FindFirstChildOfClass"]
+  CALL R3 2 1
+  JUMPIFNOT R3 [+4]
+  GETTABLEKS R4 R0 K1 ["humanoidCache"]
+  GETUPVAL R5 0
+  SETTABLE R3 R4 R5
+  RETURN R3 1
+  LOADNIL R2
+  RETURN R2 1
+
+PROTO_58:
+  GETIMPORT R3 K3 [Enum.HumanoidStateType.Dead]
+  JUMPIFNOTEQ R2 R3 [+15]
+  GETTABLEKS R3 R1 K4 ["Parent"]
+  JUMPIFNOT R3 [+8]
+  LOADK R6 K5 ["Head"]
+  NAMECALL R4 R3 K6 ["FindFirstChild"]
+  CALL R4 2 1
+  JUMPIF R4 [+2]
+  GETTABLEKS R4 R1 K7 ["Torso"]
+  RETURN R4 1
+  GETTABLEKS R4 R1 K7 ["Torso"]
+  RETURN R4 1
+  GETTABLEKS R3 R1 K7 ["Torso"]
+  RETURN R3 1
+
+PROTO_59:
+  GETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["subjectStateChangedConn"]
+  RETURN R0 0
+
+PROTO_60:
+  GETTABLEKS R1 R0 K0 ["inFirstPerson"]
+  RETURN R1 1
+
+PROTO_61:
+  GETIMPORT R2 K1 [error]
+  LOADK R3 K2 ["BaseCamera:Update() This is a virtual function that should never be getting called."]
+  LOADN R4 2
+  CALL R2 2 0
+  RETURN R0 0
+
+PROTO_62:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["VREnabled"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K1 ["inFirstPerson"]
+  JUMPIF R1 [+5]
+  LOADK R2 K2 [0.258819045102521]
+  GETTABLEKS R3 R0 K3 ["currentSubjectDistance"]
+  MUL R1 R2 R3
+  RETURN R1 1
+  LOADN R1 0
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R2 K1 [script]
+  GETTABLEKS R1 R2 K2 ["Parent"]
+  GETTABLEKS R0 R1 K2 ["Parent"]
+  LOADK R2 K3 ["CommonUtils"]
+  NAMECALL R0 R0 K4 ["WaitForChild"]
+  CALL R0 2 1
+  GETIMPORT R1 K6 [require]
+  LOADK R4 K7 ["FlagUtil"]
+  NAMECALL R2 R0 K4 ["WaitForChild"]
+  CALL R2 2 -1
+  CALL R1 -1 1
+  LOADNIL R2
+  GETIMPORT R3 K9 [pcall]
+  DUPCLOSURE R4 K10 [PROTO_0]
+  CALL R3 1 2
+  AND R2 R3 R4
+  GETTABLEKS R3 R1 K11 ["getUserFlag"]
+  LOADK R4 K12 ["UserFixCameraOffsetJitter2"]
+  CALL R3 1 1
+  GETIMPORT R4 K15 [Vector2.new]
+  LOADK R5 K16 [0.261799387799149]
+  LOADN R6 0
+  CALL R4 2 1
+  GETIMPORT R5 K15 [Vector2.new]
+  LOADK R6 K17 [0.785398163397448]
+  LOADN R7 0
+  CALL R5 2 1
+  GETIMPORT R6 K15 [Vector2.new]
+  LOADN R7 0
+  LOADN R8 0
+  CALL R6 2 1
+  GETIMPORT R7 K6 [require]
+  GETIMPORT R9 K1 [script]
+  GETTABLEKS R8 R9 K2 ["Parent"]
+  LOADK R10 K18 ["CameraUtils"]
+  NAMECALL R8 R8 K4 ["WaitForChild"]
+  CALL R8 2 -1
+  CALL R7 -1 1
+  GETIMPORT R8 K6 [require]
+  GETIMPORT R10 K1 [script]
+  GETTABLEKS R9 R10 K2 ["Parent"]
+  LOADK R11 K19 ["ZoomController"]
+  NAMECALL R9 R9 K4 ["WaitForChild"]
+  CALL R9 2 -1
+  CALL R8 -1 1
+  GETIMPORT R9 K6 [require]
+  GETIMPORT R11 K1 [script]
+  GETTABLEKS R10 R11 K2 ["Parent"]
+  LOADK R12 K20 ["CameraToggleStateController"]
+  NAMECALL R10 R10 K4 ["WaitForChild"]
+  CALL R10 2 -1
+  CALL R9 -1 1
+  GETIMPORT R10 K6 [require]
+  GETIMPORT R12 K1 [script]
+  GETTABLEKS R11 R12 K2 ["Parent"]
+  LOADK R13 K21 ["CameraInput"]
+  NAMECALL R11 R11 K4 ["WaitForChild"]
+  CALL R11 2 -1
+  CALL R10 -1 1
+  GETIMPORT R11 K6 [require]
+  GETIMPORT R13 K1 [script]
+  GETTABLEKS R12 R13 K2 ["Parent"]
+  LOADK R14 K22 ["CameraUI"]
+  NAMECALL R12 R12 K4 ["WaitForChild"]
+  CALL R12 2 -1
+  CALL R11 -1 1
+  GETIMPORT R12 K24 [game]
+  LOADK R14 K25 ["Players"]
+  NAMECALL R12 R12 K26 ["GetService"]
+  CALL R12 2 1
+  GETIMPORT R13 K24 [game]
+  LOADK R15 K27 ["UserInputService"]
+  NAMECALL R13 R13 K26 ["GetService"]
+  CALL R13 2 1
+  GETIMPORT R14 K24 [game]
+  LOADK R16 K28 ["StarterGui"]
+  NAMECALL R14 R14 K26 ["GetService"]
+  CALL R14 2 1
+  GETIMPORT R15 K24 [game]
+  LOADK R17 K29 ["VRService"]
+  NAMECALL R15 R15 K26 ["GetService"]
+  CALL R15 2 1
+  GETIMPORT R16 K31 [UserSettings]
+  CALL R16 0 1
+  LOADK R18 K32 ["UserGameSettings"]
+  NAMECALL R16 R16 K26 ["GetService"]
+  CALL R16 2 1
+  GETTABLEKS R17 R12 K33 ["LocalPlayer"]
+  NEWTABLE R18 64 0
+  SETTABLEKS R18 R18 K34 ["__index"]
+  DUPCLOSURE R19 K35 [PROTO_8]
+  CAPTURE VAL R18
+  CAPTURE VAL R17
+  CAPTURE VAL R16
+  SETTABLEKS R19 R18 K14 ["new"]
+  DUPCLOSURE R19 K36 [PROTO_9]
+  SETTABLEKS R19 R18 K37 ["GetModuleName"]
+  DUPCLOSURE R19 K38 [PROTO_12]
+  CAPTURE VAL R13
+  CAPTURE VAL R17
+  SETTABLEKS R19 R18 K39 ["OnCharacterAdded"]
+  DUPCLOSURE R19 K40 [PROTO_13]
+  CAPTURE VAL R17
+  SETTABLEKS R19 R18 K41 ["GetHumanoidRootPart"]
+  DUPCLOSURE R19 K42 [PROTO_14]
+  SETTABLEKS R19 R18 K43 ["GetBodyPartToFollow"]
+  DUPCLOSURE R19 K44 [PROTO_15]
+  CAPTURE VAL R3
+  SETTABLEKS R19 R18 K45 ["GetSubjectCFrame"]
+  DUPCLOSURE R19 K46 [PROTO_16]
+  SETTABLEKS R19 R18 K47 ["GetSubjectVelocity"]
+  DUPCLOSURE R19 K48 [PROTO_17]
+  SETTABLEKS R19 R18 K49 ["GetSubjectRotVelocity"]
+  DUPCLOSURE R19 K50 [PROTO_18]
+  CAPTURE VAL R10
+  CAPTURE VAL R8
+  SETTABLEKS R19 R18 K51 ["StepZoom"]
+  DUPCLOSURE R19 K52 [PROTO_19]
+  CAPTURE VAL R3
+  SETTABLEKS R19 R18 K53 ["GetSubjectPosition"]
+  DUPCLOSURE R19 K54 [PROTO_20]
+  CAPTURE VAL R13
+  SETTABLEKS R19 R18 K55 ["OnViewportSizeChanged"]
+  DUPCLOSURE R19 K56 [PROTO_23]
+  CAPTURE VAL R13
+  SETTABLEKS R19 R18 K57 ["OnCurrentCameraChanged"]
+  DUPCLOSURE R19 K58 [PROTO_24]
+  CAPTURE VAL R13
+  SETTABLEKS R19 R18 K59 ["OnDynamicThumbstickEnabled"]
+  DUPCLOSURE R19 K60 [PROTO_25]
+  SETTABLEKS R19 R18 K61 ["OnDynamicThumbstickDisabled"]
+  DUPCLOSURE R19 K62 [PROTO_26]
+  CAPTURE VAL R17
+  CAPTURE VAL R16
+  SETTABLEKS R19 R18 K63 ["OnGameSettingsTouchMovementModeChanged"]
+  DUPCLOSURE R19 K64 [PROTO_27]
+  CAPTURE VAL R17
+  SETTABLEKS R19 R18 K65 ["OnDevTouchMovementModeChanged"]
+  DUPCLOSURE R19 K66 [PROTO_28]
+  SETTABLEKS R19 R18 K67 ["OnPlayerCameraPropertyChange"]
+  DUPCLOSURE R19 K68 [PROTO_29]
+  SETTABLEKS R19 R18 K69 ["InputTranslationToCameraAngleChange"]
+  NEWCLOSURE R19 P19
+  CAPTURE VAL R17
+  CAPTURE REF R2
+  SETTABLEKS R19 R18 K70 ["GamepadZoomPress"]
+  DUPCLOSURE R19 K71 [PROTO_31]
+  SETTABLEKS R19 R18 K72 ["Enable"]
+  DUPCLOSURE R19 K73 [PROTO_34]
+  CAPTURE VAL R10
+  CAPTURE VAL R17
+  SETTABLEKS R19 R18 K74 ["OnEnabledChanged"]
+  DUPCLOSURE R19 K75 [PROTO_35]
+  SETTABLEKS R19 R18 K76 ["GetEnabled"]
+  DUPCLOSURE R19 K77 [PROTO_36]
+  CAPTURE VAL R7
+  SETTABLEKS R19 R18 K78 ["Cleanup"]
+  DUPCLOSURE R19 K79 [PROTO_37]
+  CAPTURE VAL R16
+  CAPTURE VAL R11
+  CAPTURE VAL R10
+  CAPTURE VAL R9
+  CAPTURE VAL R7
+  SETTABLEKS R19 R18 K80 ["UpdateMouseBehavior"]
+  DUPCLOSURE R19 K81 [PROTO_38]
+  SETTABLEKS R19 R18 K82 ["UpdateForDistancePropertyChange"]
+  DUPCLOSURE R19 K83 [PROTO_39]
+  CAPTURE VAL R17
+  CAPTURE VAL R8
+  SETTABLEKS R19 R18 K84 ["SetCameraToSubjectDistance"]
+  DUPCLOSURE R19 K85 [PROTO_40]
+  SETTABLEKS R19 R18 K86 ["SetCameraType"]
+  DUPCLOSURE R19 K87 [PROTO_41]
+  SETTABLEKS R19 R18 K88 ["GetCameraType"]
+  DUPCLOSURE R19 K89 [PROTO_42]
+  SETTABLEKS R19 R18 K90 ["SetCameraMovementMode"]
+  DUPCLOSURE R19 K91 [PROTO_43]
+  SETTABLEKS R19 R18 K92 ["GetCameraMovementMode"]
+  DUPCLOSURE R19 K93 [PROTO_44]
+  SETTABLEKS R19 R18 K94 ["SetIsMouseLocked"]
+  DUPCLOSURE R19 K95 [PROTO_45]
+  SETTABLEKS R19 R18 K96 ["GetIsMouseLocked"]
+  DUPCLOSURE R19 K97 [PROTO_46]
+  SETTABLEKS R19 R18 K98 ["SetMouseLockOffset"]
+  DUPCLOSURE R19 K99 [PROTO_47]
+  SETTABLEKS R19 R18 K100 ["GetMouseLockOffset"]
+  DUPCLOSURE R19 K101 [PROTO_48]
+  SETTABLEKS R19 R18 K102 ["InFirstPerson"]
+  DUPCLOSURE R19 K103 [PROTO_49]
+  SETTABLEKS R19 R18 K104 ["EnterFirstPerson"]
+  DUPCLOSURE R19 K105 [PROTO_50]
+  SETTABLEKS R19 R18 K106 ["LeaveFirstPerson"]
+  DUPCLOSURE R19 K107 [PROTO_51]
+  SETTABLEKS R19 R18 K108 ["GetCameraToSubjectDistance"]
+  DUPCLOSURE R19 K109 [PROTO_52]
+  SETTABLEKS R19 R18 K110 ["GetMeasuredDistanceToFocus"]
+  DUPCLOSURE R19 K111 [PROTO_53]
+  SETTABLEKS R19 R18 K112 ["GetCameraLookVector"]
+  DUPCLOSURE R19 K113 [PROTO_54]
+  SETTABLEKS R19 R18 K114 ["CalculateNewLookCFrameFromArg"]
+  DUPCLOSURE R19 K115 [PROTO_55]
+  SETTABLEKS R19 R18 K116 ["CalculateNewLookVectorFromArg"]
+  DUPCLOSURE R19 K117 [PROTO_56]
+  SETTABLEKS R19 R18 K118 ["CalculateNewLookVectorVRFromArg"]
+  DUPCLOSURE R19 K119 [PROTO_57]
+  CAPTURE VAL R17
+  SETTABLEKS R19 R18 K120 ["GetHumanoid"]
+  DUPCLOSURE R19 K121 [PROTO_58]
+  SETTABLEKS R19 R18 K122 ["GetHumanoidPartToFollow"]
+  DUPCLOSURE R19 K123 [PROTO_59]
+  SETTABLEKS R19 R18 K124 ["OnNewCameraSubject"]
+  DUPCLOSURE R19 K125 [PROTO_60]
+  SETTABLEKS R19 R18 K126 ["IsInFirstPerson"]
+  DUPCLOSURE R19 K127 [PROTO_61]
+  SETTABLEKS R19 R18 K128 ["Update"]
+  DUPCLOSURE R19 K129 [PROTO_62]
+  CAPTURE VAL R15
+  SETTABLEKS R19 R18 K130 ["GetCameraHeight"]
+  CLOSEUPVALS R2
+  RETURN R18 1

@@ -1,0 +1,30 @@
+PROTO_0:
+  GETIMPORT R2 K2 [table.clone]
+  MOVE R3 R0
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K3 ["type"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K4 ["UpdateComment"]
+  JUMPIFNOTEQ R3 R4 [+5]
+  GETTABLEKS R4 R1 K5 ["comment"]
+  SETTABLEKS R4 R2 K5 ["comment"]
+  RETURN R2 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [script]
+  LOADK R2 K2 ["AbuseReportMenu"]
+  NAMECALL R0 R0 K3 ["FindFirstAncestor"]
+  CALL R0 2 1
+  GETIMPORT R1 K5 [require]
+  GETTABLEKS R3 R0 K6 ["Components"]
+  GETTABLEKS R2 R3 K7 ["Constants"]
+  CALL R1 1 1
+  GETIMPORT R2 K5 [require]
+  GETTABLEKS R4 R0 K6 ["Components"]
+  GETTABLEKS R3 R4 K8 ["Types"]
+  CALL R2 1 1
+  GETTABLEKS R3 R1 K9 ["PlayerMenuActions"]
+  DUPCLOSURE R4 K10 [PROTO_0]
+  CAPTURE VAL R3
+  RETURN R4 1

@@ -1,0 +1,280 @@
+PROTO_0:
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K0 ["props"]
+  GETTABLEKS R0 R1 K1 ["failedInvites"]
+  LENGTH R1 R0
+  JUMPIFNOTEQKN R1 K2 [0] [+6]
+  GETUPVAL R1 0
+  NAMECALL R1 R1 K3 ["stopTimer"]
+  CALL R1 1 0
+  RETURN R0 0
+  LENGTH R2 R0
+  GETTABLE R1 R0 R2
+  GETTABLEKS R3 R1 K5 ["timeStamp"]
+  ADDK R2 R3 K4 [4]
+  GETIMPORT R3 K7 [tick]
+  CALL R3 0 1
+  JUMPIFNOTLT R2 R3 [+5]
+  GETUPVAL R4 0
+  NAMECALL R4 R4 K3 ["stopTimer"]
+  CALL R4 1 0
+  RETURN R0 0
+
+PROTO_1:
+  GETTABLEKS R1 R0 K0 ["timerConnection"]
+  JUMPIF R1 [+10]
+  GETUPVAL R2 0
+  GETTABLEKS R1 R2 K1 ["RenderStepped"]
+  NEWCLOSURE R3 P0
+  CAPTURE VAL R0
+  NAMECALL R1 R1 K2 ["Connect"]
+  CALL R1 2 1
+  SETTABLEKS R1 R0 K0 ["timerConnection"]
+  RETURN R0 0
+
+PROTO_2:
+  GETTABLEKS R1 R0 K0 ["timerConnection"]
+  JUMPIFNOT R1 [+8]
+  GETTABLEKS R1 R0 K0 ["timerConnection"]
+  NAMECALL R1 R1 K1 ["Disconnect"]
+  CALL R1 1 0
+  LOADNIL R1
+  SETTABLEKS R1 R0 K0 ["timerConnection"]
+  GETTABLEKS R2 R0 K2 ["props"]
+  GETTABLEKS R1 R2 K3 ["stoppedTimerDispatch"]
+  CALL R1 0 0
+  RETURN R0 0
+
+PROTO_3:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["failedInvites"]
+  LENGTH R2 R1
+  JUMPIFEQKN R2 K2 [0] [+4]
+  NAMECALL R2 R0 K3 ["restartTimer"]
+  CALL R2 1 0
+  RETURN R0 0
+
+PROTO_4:
+  GETTABLEKS R2 R0 K0 ["props"]
+  GETTABLEKS R1 R2 K1 ["deviceLayout"]
+  GETTABLEKS R3 R0 K0 ["props"]
+  GETTABLEKS R2 R3 K2 ["failedInvites"]
+  GETUPVAL R5 0
+  GETTABLEKS R4 R5 K3 ["LayoutSpecific"]
+  GETTABLE R3 R4 R1
+  GETTABLEKS R4 R3 K4 ["TOAST_HEIGHT"]
+  LENGTH R5 R2
+  JUMPIFNOTEQKN R5 K5 [0] [+2]
+  RETURN R0 0
+  LOADNIL R5
+  LENGTH R8 R2
+  GETTABLE R7 R2 R8
+  GETTABLEKS R6 R7 K6 ["status"]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K7 ["Moderated"]
+  JUMPIFNOTEQ R6 R7 [+3]
+  LOADK R5 K8 ["Feature.SettingsHub.Label.ModeratedInviteError"]
+  JUMP [+8]
+  GETUPVAL R8 1
+  GETTABLEKS R7 R8 K9 ["Failed"]
+  JUMPIFNOTEQ R6 R7 [+3]
+  LOADK R5 K10 ["Feature.SettingsHub.Label.GameInviteError"]
+  JUMP [+1]
+  RETURN R0 0
+  GETUPVAL R8 2
+  GETTABLEKS R7 R8 K11 ["createElement"]
+  LOADK R8 K12 ["ScreenGui"]
+  DUPTABLE R9 K15 [{"DisplayOrder", "ZIndexBehavior"}]
+  LOADN R10 2
+  SETTABLEKS R10 R9 K13 ["DisplayOrder"]
+  GETIMPORT R10 K18 [Enum.ZIndexBehavior.Sibling]
+  SETTABLEKS R10 R9 K14 ["ZIndexBehavior"]
+  DUPTABLE R10 K20 [{"ToastFrame"}]
+  GETUPVAL R12 2
+  GETTABLEKS R11 R12 K11 ["createElement"]
+  LOADK R12 K21 ["Frame"]
+  DUPTABLE R13 K27 [{"AnchorPoint", "BackgroundColor3", "BorderSizePixel", "Position", "Size"}]
+  GETIMPORT R14 K30 [Vector2.new]
+  LOADK R15 K31 [0.5]
+  LOADN R16 0
+  CALL R14 2 1
+  SETTABLEKS R14 R13 K22 ["AnchorPoint"]
+  GETUPVAL R16 0
+  GETTABLEKS R15 R16 K32 ["Color"]
+  GETTABLEKS R14 R15 K33 ["RED"]
+  SETTABLEKS R14 R13 K23 ["BackgroundColor3"]
+  LOADN R14 0
+  SETTABLEKS R14 R13 K24 ["BorderSizePixel"]
+  GETIMPORT R14 K35 [UDim2.new]
+  LOADK R15 K31 [0.5]
+  LOADN R16 0
+  LOADN R17 0
+  LOADN R18 0
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K25 ["Position"]
+  GETIMPORT R14 K35 [UDim2.new]
+  LOADK R15 K31 [0.5]
+  LOADN R16 0
+  LOADN R17 0
+  MOVE R18 R4
+  CALL R14 4 1
+  SETTABLEKS R14 R13 K26 ["Size"]
+  DUPTABLE R14 K38 [{"InnerTextPadding", "ToastText"}]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K11 ["createElement"]
+  LOADK R16 K39 ["UIPadding"]
+  DUPTABLE R17 K42 [{"PaddingLeft", "PaddingRight"}]
+  GETIMPORT R18 K44 [UDim.new]
+  LOADN R19 0
+  LOADN R20 6
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K40 ["PaddingLeft"]
+  GETIMPORT R18 K44 [UDim.new]
+  LOADN R19 0
+  LOADN R20 6
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K41 ["PaddingRight"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K36 ["InnerTextPadding"]
+  GETUPVAL R16 2
+  GETTABLEKS R15 R16 K11 ["createElement"]
+  LOADK R16 K45 ["TextLabel"]
+  DUPTABLE R17 K52 [{"BackgroundTransparency", "Font", "Size", "Text", "TextColor3", "TextSize", "TextWrapped"}]
+  LOADN R18 1
+  SETTABLEKS R18 R17 K46 ["BackgroundTransparency"]
+  GETUPVAL R19 3
+  GETTABLEKS R18 R19 K53 ["font"]
+  GETIMPORT R19 K55 [Enum.Font.SourceSansSemibold]
+  LOADK R20 K56 ["Semibold"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K47 ["Font"]
+  GETIMPORT R18 K35 [UDim2.new]
+  LOADN R19 1
+  LOADN R20 0
+  LOADN R21 1
+  LOADN R22 0
+  CALL R18 4 1
+  SETTABLEKS R18 R17 K26 ["Size"]
+  GETUPVAL R18 4
+  MOVE R20 R5
+  NAMECALL R18 R18 K57 ["FormatByKey"]
+  CALL R18 2 1
+  SETTABLEKS R18 R17 K48 ["Text"]
+  GETUPVAL R20 0
+  GETTABLEKS R19 R20 K32 ["Color"]
+  GETTABLEKS R18 R19 K58 ["WHITE"]
+  SETTABLEKS R18 R17 K49 ["TextColor3"]
+  GETUPVAL R19 3
+  GETTABLEKS R18 R19 K59 ["textSize"]
+  LOADN R19 16
+  CALL R18 1 1
+  SETTABLEKS R18 R17 K50 ["TextSize"]
+  LOADB R18 1
+  SETTABLEKS R18 R17 K51 ["TextWrapped"]
+  CALL R15 2 1
+  SETTABLEKS R15 R14 K37 ["ToastText"]
+  CALL R11 3 1
+  SETTABLEKS R11 R10 K19 ["ToastFrame"]
+  CALL R7 3 -1
+  RETURN R7 -1
+
+PROTO_5:
+  DUPTABLE R1 K2 [{"deviceLayout", "failedInvites"}]
+  GETTABLEKS R3 R0 K3 ["DeviceInfo"]
+  GETTABLEKS R2 R3 K4 ["DeviceLayout"]
+  SETTABLEKS R2 R1 K0 ["deviceLayout"]
+  GETTABLEKS R3 R0 K5 ["Toasts"]
+  GETTABLEKS R2 R3 K1 ["failedInvites"]
+  SETTABLEKS R2 R1 K1 ["failedInvites"]
+  RETURN R1 1
+
+PROTO_6:
+  GETUPVAL R0 0
+  GETUPVAL R1 1
+  CALL R1 0 -1
+  CALL R0 -1 0
+  RETURN R0 0
+
+PROTO_7:
+  DUPTABLE R1 K1 [{"stoppedTimerDispatch"}]
+  NEWCLOSURE R2 P0
+  CAPTURE VAL R0
+  CAPTURE UPVAL U0
+  SETTABLEKS R2 R1 K0 ["stoppedTimerDispatch"]
+  RETURN R1 1
+
+MAIN:
+  PREPVARARGS 0
+  GETIMPORT R0 K1 [game]
+  LOADK R2 K2 ["CorePackages"]
+  NAMECALL R0 R0 K3 ["GetService"]
+  CALL R0 2 1
+  GETIMPORT R1 K1 [game]
+  LOADK R3 K4 ["RunService"]
+  NAMECALL R1 R1 K3 ["GetService"]
+  CALL R1 2 1
+  GETIMPORT R2 K6 [require]
+  GETTABLEKS R4 R0 K7 ["Packages"]
+  GETTABLEKS R3 R4 K8 ["Roact"]
+  CALL R2 1 1
+  GETIMPORT R3 K6 [require]
+  GETTABLEKS R5 R0 K7 ["Packages"]
+  GETTABLEKS R4 R5 K9 ["RoactRodux"]
+  CALL R3 1 1
+  GETIMPORT R4 K1 [game]
+  LOADK R6 K10 ["CoreGui"]
+  NAMECALL R4 R4 K3 ["GetService"]
+  CALL R4 2 1
+  LOADK R7 K11 ["RobloxGui"]
+  NAMECALL R5 R4 K12 ["WaitForChild"]
+  CALL R5 2 1
+  GETTABLEKS R9 R5 K13 ["Modules"]
+  GETTABLEKS R8 R9 K14 ["Settings"]
+  GETTABLEKS R7 R8 K15 ["Pages"]
+  GETTABLEKS R6 R7 K16 ["ShareGame"]
+  GETIMPORT R7 K6 [require]
+  GETTABLEKS R8 R6 K17 ["Constants"]
+  CALL R7 1 1
+  GETIMPORT R8 K6 [require]
+  GETTABLEKS R10 R6 K18 ["Actions"]
+  GETTABLEKS R9 R10 K19 ["StoppedToastTimer"]
+  CALL R8 1 1
+  GETIMPORT R9 K6 [require]
+  GETTABLEKS R12 R5 K13 ["Modules"]
+  GETTABLEKS R11 R12 K14 ["Settings"]
+  GETTABLEKS R10 R11 K20 ["Theme"]
+  CALL R9 1 1
+  GETTABLEKS R10 R7 K21 ["InviteStatus"]
+  GETIMPORT R11 K6 [require]
+  GETTABLEKS R12 R6 K22 ["getTranslator"]
+  CALL R11 1 1
+  MOVE R12 R11
+  CALL R12 0 1
+  GETTABLEKS R13 R2 K23 ["PureComponent"]
+  LOADK R15 K24 ["ErrorToaster"]
+  NAMECALL R13 R13 K25 ["extend"]
+  CALL R13 2 1
+  DUPCLOSURE R14 K26 [PROTO_1]
+  CAPTURE VAL R1
+  SETTABLEKS R14 R13 K27 ["restartTimer"]
+  DUPCLOSURE R14 K28 [PROTO_2]
+  SETTABLEKS R14 R13 K29 ["stopTimer"]
+  DUPCLOSURE R14 K30 [PROTO_3]
+  SETTABLEKS R14 R13 K31 ["didUpdate"]
+  DUPCLOSURE R14 K32 [PROTO_4]
+  CAPTURE VAL R7
+  CAPTURE VAL R10
+  CAPTURE VAL R2
+  CAPTURE VAL R9
+  CAPTURE VAL R12
+  SETTABLEKS R14 R13 K33 ["render"]
+  DUPCLOSURE R14 K34 [PROTO_5]
+  DUPCLOSURE R15 K35 [PROTO_7]
+  CAPTURE VAL R8
+  GETTABLEKS R16 R3 K36 ["UNSTABLE_connect2"]
+  MOVE R17 R14
+  MOVE R18 R15
+  CALL R16 2 1
+  MOVE R17 R13
+  CALL R16 1 -1
+  RETURN R16 -1

@@ -1,0 +1,49 @@
+PROTO_0:
+  RETURN R0 0
+
+PROTO_1:
+  RETURN R0 0
+
+PROTO_2:
+  GETUPVAL R1 0
+  SETTABLEKS R0 R1 K0 ["preScreenshot"]
+  RETURN R0 0
+
+PROTO_3:
+  GETUPVAL R1 0
+  SETTABLEKS R0 R1 K0 ["postScreenshot"]
+  RETURN R0 0
+
+PROTO_4:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["preScreenshot"]
+  CALL R0 0 0
+  RETURN R0 0
+
+PROTO_5:
+  GETUPVAL R1 0
+  GETTABLEKS R0 R1 K0 ["postScreenshot"]
+  CALL R0 0 0
+  RETURN R0 0
+
+MAIN:
+  PREPVARARGS 0
+  DUPTABLE R0 K2 [{"preScreenshot", "postScreenshot"}]
+  DUPCLOSURE R1 K3 [PROTO_0]
+  SETTABLEKS R1 R0 K0 ["preScreenshot"]
+  DUPCLOSURE R1 K4 [PROTO_1]
+  SETTABLEKS R1 R0 K1 ["postScreenshot"]
+  DUPTABLE R1 K9 [{"setPreScreenshotHook", "setPostScreenshotHook", "doPreScreenshot", "doPostScreenshot"}]
+  DUPCLOSURE R2 K10 [PROTO_2]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K5 ["setPreScreenshotHook"]
+  DUPCLOSURE R2 K11 [PROTO_3]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K6 ["setPostScreenshotHook"]
+  DUPCLOSURE R2 K12 [PROTO_4]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K7 ["doPreScreenshot"]
+  DUPCLOSURE R2 K13 [PROTO_5]
+  CAPTURE VAL R0
+  SETTABLEKS R2 R1 K8 ["doPostScreenshot"]
+  RETURN R1 1
