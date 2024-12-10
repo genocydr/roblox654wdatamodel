@@ -2798,7 +2798,6 @@
 [C++] DFLogPartStreamingRequests_PlaceFilter
 [C++] DFLogPlayerCharacterLoadingLog
 [C++] DFLogPlayerCharacterLoadingLog_PlaceFilter
-[C++] DFLogPreloadAvatarAssets
 [C++] DFLogPreloadLinkedScriptsTiming
 [C++] DFLogRakNetConnectTrace_PlaceFilter
 [C++] DFLogRakNetMissingPingPong
@@ -3301,7 +3300,7 @@
 [C++] FFlagAppEnableSurfaceControllerErrorReport
 [C++] FFlagAppEnableSurfaceControllerNullReport
 [Lua] FFlagAppendBodyPartToTitle
-[C++] FFlagAppendBodyPartToTitle_Staged
+[C++] FFlagAppendBodyPartToTitle
 [C++] FFlagAppendTranslatedTextSpecifyTextSizeFix
 [C++] FFlagAppLocalesLogCandidateKeyUsed2
 [C++] FFlagAppLocalesLogCandidateKeyUsedIAP2
@@ -6017,7 +6016,7 @@
 [C++] FFlagFixPSCMissingUniverseIdFromLuaStartPage
 [C++] FFlagFixPseudoInstanceBugs
 [Lua] FFlagFixPublishAvatarVRViewports
-[C++] FFlagFixPublishAvatarVRViewports_Staged
+[C++] FFlagFixPublishAvatarVRViewports
 [C++] FFlagFixQRCodeErrorMsgsForConsole
 [C++] FFlagFixRecastCountourCrash
 [C++] FFlagFixRecastCountourCrash_PlaceFilter
