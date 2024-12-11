@@ -14822,7 +14822,6 @@ Codebeispiel
 CodeBlockCopy
 Codeblocks
 CODEC_CLOSE_FAILED
-CODEC_ID_MOCK_AUDIO
 CODEC_INIT_FAILED
 CODECAPI_AVDecMmcssClass
 CodecCloseFailed
@@ -67411,7 +67410,7 @@ WildcardInProperty
 WilError_03
 WillReturn
 Win32HardwareSleepListener
-Win64.654.52655
+Win64.654.52411
 WinchEnabled
 WinchForce
 WinchResponsiveness
